@@ -7118,22 +7118,27 @@ namespace ServerManagerTool.Lib
 
         public static string GetProfileSavePath(ServerProfile profile)
         {
-            return GetProfileSavePath(profile?.InstallDirectory, profile?.AltSaveDirectoryName, profile?.PGM_Enabled ?? false, profile?.PGM_Name);
+            return GetProfileSavePath(profile?.InstallDirectory, profile?.AltSaveDirectoryName, profile?.ServerMap);
         }
 
-        public static string GetProfileSavePath(string installDirectory, string altSaveDirectoryName, bool pgmEnabled, string pgmName)
+        /// <summary>
+        /// The folder with a map's world save, player and tribe files. ASA keeps each map in its own subfolder:
+        /// ShooterGame\Saved\SavedArks\&lt;map&gt;, or ShooterGame\Saved\&lt;AltSaveDirectoryName&gt;\&lt;map&gt;.
+        /// </summary>
+        public static string GetProfileSavePath(string installDirectory, string altSaveDirectoryName, string serverMap)
         {
-            if (!string.IsNullOrWhiteSpace(altSaveDirectoryName))
-            {
-                if (pgmEnabled)
-                    return Path.Combine(installDirectory ?? string.Empty, Config.Default.SavedRelativePath, altSaveDirectoryName, Config.Default.SavedPGMRelativePath, pgmName ?? string.Empty);
-                return Path.Combine(installDirectory ?? string.Empty, Config.Default.SavedRelativePath, altSaveDirectoryName);
-            }
+            var savedArksFolder = string.IsNullOrWhiteSpace(altSaveDirectoryName)
+                ? Path.Combine(installDirectory ?? string.Empty, Config.Default.SavedFilesRelativePath)
+                : Path.Combine(installDirectory ?? string.Empty, Config.Default.SavedRelativePath, altSaveDirectoryName);
 
-            if (pgmEnabled)
-                return Path.Combine(installDirectory ?? string.Empty, Config.Default.SavedFilesRelativePath, Config.Default.SavedPGMRelativePath, pgmName ?? string.Empty);
-            return Path.Combine(installDirectory ?? string.Empty, Config.Default.SavedFilesRelativePath);
+            return Path.Combine(savedArksFolder, ModUtils.GetMapName(serverMap));
         }
+
+        /// <summary>
+        /// Extension of the backups the server makes of the world save in the save folder
+        /// (e.g. TheIsland_WP_21.11.2026_23.28.20.arkrbf). They are SQLite databases like the world save itself.
+        /// </summary>
+        public const string ServerBackupFileExtension = ".arkrbf";
         #endregion
 
         #endregion

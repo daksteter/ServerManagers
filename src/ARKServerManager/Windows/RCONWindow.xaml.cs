@@ -571,7 +571,7 @@ namespace ServerManagerTool
             {
                 return new RelayCommand<PlayerInfo>(
                     execute: (player) => {
-                        var savedArksPath = ServerProfile.GetProfileSavePath(this.RCONParameters.InstallDirectory, this.RCONParameters.AltSaveDirectoryName, this.RCONParameters.PGM_Enabled, this.RCONParameters.PGM_Name);
+                        var savedArksPath = ServerProfile.GetProfileSavePath(this.RCONParameters.InstallDirectory, this.RCONParameters.AltSaveDirectoryName, this.RCONParameters.ServerMap);
                         var window = new PlayerProfileWindow(player, savedArksPath);
                         window.Owner = this;
                         window.ShowDialog();
@@ -587,7 +587,7 @@ namespace ServerManagerTool
             {
                 return new RelayCommand<PlayerInfo>(
                     execute: (player) => {
-                        var savedArksPath = ServerProfile.GetProfileSavePath(this.RCONParameters.InstallDirectory, this.RCONParameters.AltSaveDirectoryName, this.RCONParameters.PGM_Enabled, this.RCONParameters.PGM_Name);
+                        var savedArksPath = ServerProfile.GetProfileSavePath(this.RCONParameters.InstallDirectory, this.RCONParameters.AltSaveDirectoryName, this.RCONParameters.ServerMap);
                         var window = new TribeProfileWindow(player, this.ServerRCON.Players, savedArksPath);
                         window.Owner = this;
                         window.ShowDialog();
@@ -711,6 +711,7 @@ namespace ServerManagerTool
                     PlayerListWidth = server.Profile.RCONPlayerListWidth,
 
                     Server = server,
+                    ServerMap = ServerProfile.GetProfileMapName(server?.Profile),
                     InstallDirectory = server.Runtime.ProfileSnapshot.InstallDirectory,
                     AltSaveDirectoryName = server.Runtime.ProfileSnapshot.AltSaveDirectoryName,
                     ProfileId = server.Runtime.ProfileSnapshot.ProfileId,

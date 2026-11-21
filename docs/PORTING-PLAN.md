@@ -44,7 +44,8 @@ What phases 1–2 changed is in the commit messages. Highlights that affect late
 | Server log (`ShooterGame\Saved\Logs\ShooterGame.log`) has `ARK Version: 98.9` near the top and `Server has completed startup and is now advertising for join` when ready | Verified live (ARK 98.9) | test server |
 | Saves: per-map subfolder under `ShooterGame\Saved\SavedArks\<Map>\` (also with `AltSaveDirectoryName`) | Confirmed | ARK wiki |
 | `.ark` world saves are **SQLite**; `.arkprofile` / `.arktribe` use a new UE5 layout | Confirmed by multiple parsers | AsaSavegameToolkit, arkparse, ark-sa-save-tools |
-| Player IDs are EOS IDs (hex), not SteamID64 | Likely, verify live | — |
+| Player IDs are EOS IDs (hex), not SteamID64 | Verified live: 32 hex digits, e.g. `0002b0e8…6db0.arkprofile` | test server |
+| Save folder `SavedArks\TheIsland_WP\` holds `TheIsland_WP.ark`, `<EOS id>.arkprofile`, the server's own timestamped backups `TheIsland_WP_21.11.2026_23.28.20.arkrbf` and `TheIsland_WP_AntiCorruptionBackup.bak` | Verified live | test server |
 | SOTF and PGM do not exist; maps use `_WP` names (`TheIsland_WP`, `ScorchedEarth_WP`, …) | Confirmed | — |
 | Windows only (Linux needs Proton) | Confirmed | ARK wiki |
 
@@ -172,12 +173,22 @@ Decision: **plain CurseForge IDs** (no CurseForge API for now).
 
 ### M5. Saves, backups and player data
 
-- [ ] Save paths: `ServerProfile.GetProfileSavePath` (~7342) has no per-map subfolder. Add the map to the
-      path and update callers (`Server.cs`, `ServerApp` save/world-file getters and backup,
-      `ServerPlayers`, `ServerRCON`, `PlayerListWindow`, `RCONWindow`, `WorldSaveRestoreWindow`,
-      `RestoreSaveFiles`). `PlayerListParameters` needs the map name.
-- [ ] Backup/restore (`ServerApp.CreateServerBackupArchiveFile` ~2114–2318, `RestoreSaveFiles` ~5296–5436):
-      new file layout; SQLite `.ark` must not be copied mid-write (check for `-wal` / `-shm` files).
+- [x] Save paths: `ServerProfile.GetProfileSavePath(installDirectory, altSaveDirectoryName, serverMap)` now
+      ends in the map folder (`SavedArks\<map>`, or `Saved\<AltSaveDirectoryName>\<map>`); all callers updated
+      (world file check, backup, restore, reset, player list / RCON parameters). The RCON window now passes the
+      map and the player list window the alt save folder name (both were missing).
+- [ ] Verify the `AltSaveDirectoryName` layout (`Saved\<alt>\<map>`, per the wiki) on a live server.
+- [x] Backup: the world save, `.arkprofile`, `.arktribe` and `.arktributetribe` files are copied to a temp
+      folder first (full sharing, so the server's writes are never blocked; retried if an SQLite `-journal`
+      / `-wal` file appears or the file changes during the copy), then zipped as before. Verified live: the
+      server does not hold the `.ark` open between saves, and has no journal file at rest.
+- [x] Restore window lists the server's own backups (`<map>_<date>.arkrbf`, SQLite like the world save) next
+      to the world save and the app's zip backups; restoring one copies it over `<map>.ark` (unchanged code).
+      The server writes an `.arkrbf` on every save (autosave or `saveworld`; date in UTC) and prunes old ones
+      itself (4 were kept on the test server).
+- [x] **Test:** manual backup with the server running: it saved first, then wrote a zip with the world save
+      and player file (CRCs OK, SQLite `integrity_check` = ok, no temp copies left). The restore window
+      (server stopped) lists the world save, the zip and the `.arkrbf` backups. Restore itself not run yet.
 - [x] Decision: **hide the player list for now.** Hidden: Player List button (server settings), Server Monitor
       player-list button when RCON is off, RCON "View Profile" / "View Tribe"; the RCON window's save-file
       player enrichment (`ServerRCON.UpdatePlayerDetailsAsync`) is switched off.

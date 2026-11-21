@@ -2214,7 +2214,26 @@ namespace ServerManagerTool.Lib
                                 }
                             }
 
-                            ZipUtils.ZipFiles(backupFile, files, comment.ToString());
+                            // The running server can write these files at any moment, and ASA world saves are SQLite
+                            // databases, so zip consistent copies instead of the live files.
+                            var copyFolder = Path.Combine(Path.GetTempPath(), $"JVHArkAscendedServerManager_backup_{Guid.NewGuid():N}");
+                            Directory.CreateDirectory(copyFolder);
+                            try
+                            {
+                                files[string.Empty] = files[string.Empty].Select(file => CopySaveFile(file, copyFolder)).ToList();
+                                ZipUtils.ZipFiles(backupFile, files, comment.ToString());
+                            }
+                            finally
+                            {
+                                try
+                                {
+                                    Directory.Delete(copyFolder, true);
+                                }
+                                catch
+                                {
+                                    // only temporary copies; Windows cleans the temp folder eventually
+                                }
+                            }
 
                             LogProfileMessage($"Backed up world files - {saveFolder}");
                             LogProfileMessage($"Backup file created - {backupFile}");
@@ -2313,6 +2332,47 @@ namespace ServerManagerTool.Lib
                 _profile = oldProfile;
             }
         }
+
+        /// <summary>
+        /// Copies a save file that the running server may write at any moment into a folder, keeping its name and
+        /// last write time. The file is opened with full sharing so the server's writes are never blocked, and the
+        /// copy is repeated if a save happened while it was read: ASA world saves are SQLite databases, and an SQLite
+        /// journal or WAL file next to one means a save is in progress.
+        /// </summary>
+        /// <returns>The path of the copy.</returns>
+        private static string CopySaveFile(string sourceFile, string destinationFolder)
+        {
+            const int MaxAttempts = 5;
+            var destinationFile = Path.Combine(destinationFolder, Path.GetFileName(sourceFile));
+
+            for (var attempt = 1; ; attempt++)
+            {
+                // wait (up to a minute) for a save in progress to finish
+                for (var wait = 0; wait < 60 && IsSaveInProgress(sourceFile); wait++)
+                {
+                    Task.Delay(1000).Wait();
+                }
+
+                var before = new FileInfo(sourceFile);
+                using (var source = new FileStream(sourceFile, FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete))
+                using (var destination = new FileStream(destinationFile, FileMode.Create, FileAccess.Write, FileShare.None))
+                {
+                    source.CopyTo(destination);
+                }
+
+                var after = new FileInfo(sourceFile);
+                if (!IsSaveInProgress(sourceFile) && after.LastWriteTimeUtc == before.LastWriteTimeUtc && after.Length == before.Length)
+                {
+                    File.SetLastWriteTimeUtc(destinationFile, before.LastWriteTimeUtc);
+                    return destinationFile;
+                }
+
+                if (attempt == MaxAttempts)
+                    throw new IOException($"{Path.GetFileName(sourceFile)} kept changing while it was being copied; the server may be saving continuously.");
+            }
+        }
+
+        private static bool IsSaveInProgress(string file) => File.Exists($"{file}-journal") || File.Exists($"{file}-wal");
 
         public static void DirectoryCopy(string sourceFolder, string destinationFolder, bool copySubFolders, bool useSmartCopy, ProgressDelegate progressCallback)
         {
@@ -2604,7 +2664,7 @@ namespace ServerManagerTool.Lib
 
         private string GetServerTimeFile() => IOUtils.NormalizePath(Path.Combine(_profile.InstallDirectory, Config.Default.LastUpdatedTimeFile));
 
-        private string GetServerSaveFolder() => IOUtils.NormalizePath(ServerProfile.GetProfileSavePath(_profile.InstallDirectory, _profile.AltSaveDirectoryName, _profile.PGM_Enabled, _profile.PGM_Name));
+        private string GetServerSaveFolder() => IOUtils.NormalizePath(ServerProfile.GetProfileSavePath(_profile.InstallDirectory, _profile.AltSaveDirectoryName, _profile.ServerMap));
 
         private string GetServerSaveGamesFolder() => IOUtils.NormalizePath(ServerProfile.GetProfileSaveGamesPath(_profile.InstallDirectory));
 

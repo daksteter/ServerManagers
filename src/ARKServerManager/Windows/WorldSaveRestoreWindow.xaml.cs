@@ -277,7 +277,11 @@ namespace ServerManagerTool
                 var mapFileName = $"{mapName}{Config.Default.MapExtension}";
                 var searchPattern = $"{mapName}*{Config.Default.MapExtension}";
 
-                var saveFiles = saveFolderInfo.GetFiles(searchPattern);
+                // The world save plus the server's own backups of it ({map}_<date>.arkrbf on ASA; ASE wrote {map}_<date>.ark).
+                var saveFiles = saveFolderInfo.GetFiles(searchPattern)
+                    .Concat(saveFolderInfo.GetFiles($"{mapName}*{ServerProfile.ServerBackupFileExtension}"))
+                    .GroupBy(file => file.FullName)
+                    .Select(group => group.First());
                 foreach (var file in saveFiles)
                 {
                     WorldSaveFiles.Add(new WorldSaveFile { File = file.FullName , FileName = file.Name, FileSize = file.Length, CreatedDate = file.CreationTime, UpdatedDate = file.LastWriteTime, IsArchiveFile = false, IsActiveFile = file.Name.Equals(mapFileName, StringComparison.OrdinalIgnoreCase) });

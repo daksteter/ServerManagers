@@ -199,7 +199,7 @@ namespace ServerManagerTool
             {
                 return new RelayCommand<PlayerInfo>(
                     execute: (player) => {
-                        var savedArksPath = ServerProfile.GetProfileSavePath(this.PlayerListParameters.InstallDirectory, this.PlayerListParameters.AltSaveDirectoryName, this.PlayerListParameters.PGM_Enabled, this.PlayerListParameters.PGM_Name);
+                        var savedArksPath = ServerProfile.GetProfileSavePath(this.PlayerListParameters.InstallDirectory, this.PlayerListParameters.AltSaveDirectoryName, this.PlayerListParameters.ServerMap);
                         var window = new PlayerProfileWindow(player, savedArksPath);
                         window.Owner = this;
                         window.ShowDialog();
@@ -215,7 +215,7 @@ namespace ServerManagerTool
             {
                 return new RelayCommand<PlayerInfo>(
                     execute: (player) => {
-                        var savedArksPath = ServerProfile.GetProfileSavePath(this.PlayerListParameters.InstallDirectory, this.PlayerListParameters.AltSaveDirectoryName, this.PlayerListParameters.PGM_Enabled, this.PlayerListParameters.PGM_Name);
+                        var savedArksPath = ServerProfile.GetProfileSavePath(this.PlayerListParameters.InstallDirectory, this.PlayerListParameters.AltSaveDirectoryName, this.PlayerListParameters.ServerMap);
                         var window = new TribeProfileWindow(player, this.ServerPlayers.Players, savedArksPath);
                         window.Owner = this;
                         window.ShowDialog();
@@ -284,6 +284,7 @@ namespace ServerManagerTool
                     Server = server,
                     ServerMap = ServerProfile.GetProfileMapName(server?.Profile),
                     InstallDirectory = server.Runtime.ProfileSnapshot.InstallDirectory,
+                    AltSaveDirectoryName = server.Runtime.ProfileSnapshot.AltSaveDirectoryName,
                     ProfileName = server.Runtime.ProfileSnapshot.ProfileName,
                     ProfileId = server.Runtime.ProfileSnapshot.ProfileId,
                 });

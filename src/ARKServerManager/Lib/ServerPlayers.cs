@@ -127,7 +127,7 @@ namespace ServerManagerTool.Lib
         {
             if (!string.IsNullOrWhiteSpace(_playerListParameters.InstallDirectory))
             {
-                var savedPath = ServerProfile.GetProfileSavePath(_playerListParameters.InstallDirectory, _playerListParameters.AltSaveDirectoryName, _playerListParameters.PGM_Enabled, _playerListParameters.PGM_Name);
+                var savedPath = ServerProfile.GetProfileSavePath(_playerListParameters.InstallDirectory, _playerListParameters.AltSaveDirectoryName, _playerListParameters.ServerMap);
                 DataContainer dataContainer = null;
                 DateTime lastSteamUpdateUtc = DateTime.MinValue;
 

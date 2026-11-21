@@ -521,7 +521,7 @@ namespace ServerManagerTool.Lib
 
             try
             {
-                var savedPath = ServerProfile.GetProfileSavePath(_rconParameters.InstallDirectory, _rconParameters.AltSaveDirectoryName, _rconParameters.PGM_Enabled, _rconParameters.PGM_Name);
+                var savedPath = ServerProfile.GetProfileSavePath(_rconParameters.InstallDirectory, _rconParameters.AltSaveDirectoryName, _rconParameters.ServerMap);
 
                 // load the player data from the files.
                 dataContainer = await DataContainer.CreateAsync(savedPath, savedPath);
