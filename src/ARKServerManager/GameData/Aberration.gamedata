@@ -1647,12 +1647,5 @@
       "Mod": "Aberration"
     }
   ],
-  "GameMaps": [
-    {
-      "IsSotF": false,
-      "ClassName": "Aberration_P",
-      "Description": "Aberration",
-      "Mod": "Aberration"
-    }
-  ]
+  "GameMaps": []
 }

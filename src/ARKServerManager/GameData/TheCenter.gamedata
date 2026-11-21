@@ -182,12 +182,5 @@
       "Mod": "TheCenter"
     }
   ],
-  "GameMaps": [
-    {
-      "IsSotF": false,
-      "ClassName": "TheCenter",
-      "Description": "The Center",
-      "Mod": "TheCenter"
-    }
-  ]
+  "GameMaps": []
 }

@@ -366,12 +366,5 @@
 		  "Mod": "Valguero"
 		}
 	],
-	"GameMaps": [
-		{
-			"IsSotF": false,
-			"ClassName": "Valguero_P",
-			"Description": "Valguero",
-			"Mod": "Valguero"
-		}
-	]
+	"GameMaps": []
 }

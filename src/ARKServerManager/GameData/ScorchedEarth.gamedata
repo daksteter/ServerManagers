@@ -1418,12 +1418,5 @@
       "Mod": "ScorchedEarth"
     }
   ],
-  "GameMaps": [
-    {
-      "IsSotF": false,
-      "ClassName": "ScorchedEarth_P",
-      "Description": "Scorched Earth",
-      "Mod": "ScorchedEarth"
-    }
-  ]
+  "GameMaps": []
 }

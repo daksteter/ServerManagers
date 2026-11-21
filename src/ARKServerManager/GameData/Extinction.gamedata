@@ -1220,12 +1220,5 @@
       "Mod": "Extinction"
     }
   ],
-  "GameMaps": [
-    {
-      "IsSotF": false,
-      "ClassName": "Extinction",
-      "Description": "Extinction",
-      "Mod": "Extinction"
-    }
-  ]
+  "GameMaps": []
 }

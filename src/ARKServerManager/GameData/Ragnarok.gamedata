@@ -293,12 +293,5 @@
       "Mod": "Ragnarok"
     }
   ],
-  "GameMaps": [
-    {
-      "IsSotF": false,
-      "ClassName": "Ragnarok",
-      "Description": "Ragnarok",
-      "Mod": "Ragnarok"
-    }
-  ]
+  "GameMaps": []
 }
