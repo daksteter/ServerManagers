@@ -3,7 +3,6 @@ using System.Net;
 using System.Linq;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using System.Runtime.Remoting;
 using System;
 
 /// <summary>
@@ -56,9 +55,10 @@ namespace ArkData
                     Players[i].Online = online_player != null;
                 }
             }
-            catch (SSQLServerException)
+            catch (SSQLServerException ex)
             {
-                throw new ServerException("The connection to the server failed. Please check the configured IP address and port.");
+                // was System.Runtime.Remoting.ServerException, which doesn't exist on .NET
+                throw new InvalidOperationException("The connection to the server failed. Please check the configured IP address and port.", ex);
             }
         }
 

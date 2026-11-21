@@ -150,22 +150,12 @@ namespace ServerManagerTool
 
         private string GetDeployedVersion()
         {
-            XmlDocument xmlDoc = new XmlDocument();
-            Assembly asmCurrent = System.Reflection.Assembly.GetExecutingAssembly();
-            string executePath = new Uri(asmCurrent.GetName().CodeBase).LocalPath;
-
-            xmlDoc.Load(executePath + ".manifest");
-            XmlNamespaceManager ns = new XmlNamespaceManager(xmlDoc.NameTable);
-            ns.AddNamespace("asmv1", "urn:schemas-microsoft-com:asm.v1");
-            string xPath = "/asmv1:assembly/asmv1:assemblyIdentity/@version";
-            XmlNode node = xmlDoc.SelectSingleNode(xPath, ns);
-            string version = node.Value;
-            return version;
+            return AppUtils.GetDeployedVersion(Assembly.GetExecutingAssembly());
         }
 
         private void ApplySteamAPIKey_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start(Config.Default.SteamAPIKeyUrl);
+            ProcessUtils.OpenWithShell(Config.Default.SteamAPIKeyUrl);
         }
 
         private async void SendTestEmail_Click(object sender, RoutedEventArgs e)
@@ -331,7 +321,7 @@ namespace ServerManagerTool
 
         private void SteamAPIKeyHelp_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start(Config.Default.SteamWebAPIKeyHelpUrl);
+            ProcessUtils.OpenWithShell(Config.Default.SteamWebAPIKeyHelpUrl);
         }
 
         private async void SteamCMDAuthenticate_Click(object sender, RoutedEventArgs e)
@@ -380,12 +370,12 @@ namespace ServerManagerTool
 
         private void DiscordBotApply_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start(Config.Default.DiscordBotApplyUrl);
+            ProcessUtils.OpenWithShell(Config.Default.DiscordBotApplyUrl);
         }
 
         private void DiscordBotHelp_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start(Config.Default.DiscordBotHelpUrl);
+            ProcessUtils.OpenWithShell(Config.Default.DiscordBotHelpUrl);
         }
 
         private void ComboBox_PreviewMouseWheel(object sender, MouseWheelEventArgs e)

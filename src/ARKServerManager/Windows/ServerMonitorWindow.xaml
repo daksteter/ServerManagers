@@ -11,7 +11,7 @@
         xmlns:clib="clr-namespace:ServerManagerTool.Common.Lib;assembly=ServerManager.Common"
         xmlns:com="clr-namespace:ServerManagerTool.Common;assembly=ServerManager.Common"
         xmlns:vm="clr-namespace:ServerManagerTool.Lib.ViewModel"
-        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
         MinWidth="600" MinHeight="500" Width="900" Height="500" Left="50" Top="50" ResizeMode="CanResize"
         Loaded="ServerMonitorWindow_Loaded" SizeChanged="ServerMonitorWindow_SizeChanged" StateChanged="ServerMonitorWindow_StateChanged" LocationChanged="ServerMonitorWindow_LocationChanged"

@@ -1,6 +1,5 @@
 ﻿using Discord.Commands;
 using Discord.Interactions;
-using Discord.Net.Providers.WS4Net;
 using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -60,11 +59,6 @@ namespace ServerManagerTool.DiscordBot
                 LogLevel = LogLevelHelper.GetLogSeverity(discordBotConfig.LogLevel),
                 MessageCacheSize = 1000,
             };
-            if (Environment.OSVersion.Version < new Version(6, 2))
-            {
-                // windows 7 or early
-                socketConfig.WebSocketProvider = WS4NetProvider.Instance;
-            }
 
             var commandConfig = new CommandServiceConfig
             {

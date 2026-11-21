@@ -18,7 +18,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Interactivity;
+using Microsoft.Xaml.Behaviors;
 using System.Windows.Media;
 using WPFSharp.Globalizer;
 
@@ -422,7 +422,7 @@ namespace ServerManagerTool
                         try
                         {
                             logsDir = App.GetProfileLogFolder(this.RCONParameters.ProfileId);
-                            Process.Start(logsDir);
+                            ProcessUtils.OpenWithShell(logsDir);
                         }
                         catch(Exception ex)
                         {

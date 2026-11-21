@@ -53,7 +53,7 @@ namespace ServerManagerTool
 
                 var taskKey = TaskSchedulerUtils.ComputeKey(Config.Default.DataDir);
 
-                var command = Assembly.GetEntryAssembly().Location;
+                var command = Environment.ProcessPath;
                 if (!TaskSchedulerUtils.ScheduleAutoUpdate(taskKey, null, command, Config.Default.AutoUpdate_EnableUpdate ? Config.Default.AutoUpdate_UpdatePeriod : 0, Config.Default.AutoUpdate_TaskPriority))
                 {
                     MessageBox.Show(_globalizer.GetResourceString("GlobalSettings_CacheTaskUpdate_ErrorLabel"), _globalizer.GetResourceString("GlobalSettings_CacheTaskUpdate_ErrorTitle"), MessageBoxButton.OK, MessageBoxImage.Error);

@@ -102,7 +102,7 @@ namespace ServerManagerTool
 
         private void PluginsForum_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start(Config.Default.ServerManagerPluginUrl);
+            ProcessUtils.OpenWithShell(Config.Default.ServerManagerPluginUrl);
         }
 
         private void RemovePlugin_Click(object sender, RoutedEventArgs e)

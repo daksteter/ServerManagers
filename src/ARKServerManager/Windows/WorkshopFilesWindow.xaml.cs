@@ -145,7 +145,7 @@ namespace ServerManagerTool
         {
             var item = ((WorkshopFileItem)((Hyperlink)e.Source).DataContext);
 
-            Process.Start(new ProcessStartInfo(item.WorkshopUrl));
+            ProcessUtils.OpenWithShell(item.WorkshopUrl);
             e.Handled = true;
         }
 

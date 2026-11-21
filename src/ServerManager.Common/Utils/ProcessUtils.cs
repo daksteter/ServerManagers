@@ -255,6 +255,16 @@ namespace ServerManagerTool.Common.Utils
             return hWnd;
         }
 
+        /// <summary>
+        /// Opens a URL, folder or document with its default Windows handler.
+        /// On .NET (unlike .NET Framework) Process.Start does not use the shell by default,
+        /// so passing a URL or folder straight to Process.Start throws.
+        /// </summary>
+        public static void OpenWithShell(string target)
+        {
+            Process.Start(new ProcessStartInfo(target) { UseShellExecute = true })?.Dispose();
+        }
+
         public static bool IsAlreadyRunning()
         {
             var assemblyLocation = Assembly.GetEntryAssembly().Location;

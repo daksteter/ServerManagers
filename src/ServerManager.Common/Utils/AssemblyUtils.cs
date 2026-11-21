@@ -140,7 +140,7 @@ namespace ServerManagerTool.Common.Utils
                 }
             }
             // if there is no title attribute or if the title attribute was an empty string, then return the .exe name
-            return Path.GetFileNameWithoutExtension(Assembly.GetExecutingAssembly().CodeBase);
+            return Path.GetFileNameWithoutExtension(Assembly.GetExecutingAssembly().Location);
         }
 
         public static string GetTrademark()

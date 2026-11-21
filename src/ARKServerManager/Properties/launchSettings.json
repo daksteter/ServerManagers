@@ -1,0 +1,23 @@
+{
+  "profiles": {
+    "Normal": {
+      "commandName": "Project"
+    },
+    "Beta": {
+      "commandName": "Project",
+      "commandLineArgs": "-beta"
+    },
+    "Server Monitor": {
+      "commandName": "Project",
+      "commandLineArgs": "-sm"
+    },
+    "Auto Update (all servers)": {
+      "commandName": "Project",
+      "commandLineArgs": "-au"
+    },
+    "Auto Backup (all servers)": {
+      "commandName": "Project",
+      "commandLineArgs": "-ab"
+    }
+  }
+}

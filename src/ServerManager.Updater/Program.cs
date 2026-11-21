@@ -216,7 +216,7 @@ namespace ServerManagerTool.Updater
             }
 
             // remove the updater from the files to be updated
-            var assemblyFile = Assembly.GetEntryAssembly().Location;
+            var assemblyFile = Environment.ProcessPath;
             var assemblyPath = Path.GetDirectoryName(assemblyFile);
 
             var updaterFile = Path.Combine(extractPath, assemblyFile.Replace($"{assemblyPath}\\", ""));

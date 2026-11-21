@@ -1,5 +1,4 @@
-﻿using IWshRuntimeLibrary;
-using NLog;
+﻿using NLog;
 using ServerManagerTool.Common.Enums;
 using ServerManagerTool.Common.Lib;
 using ServerManagerTool.Common.Utils;
@@ -307,10 +306,12 @@ namespace ServerManagerTool.Windows
 
             var desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
             var shortcutLocation = Path.Combine(desktopPath, name + ".lnk");
-            var applicationFile = Assembly.GetExecutingAssembly().Location;
+            // the .exe (Assembly.Location is the .dll on .NET)
+            var applicationFile = Environment.ProcessPath;
 
-            WshShell shell = new WshShell();
-            IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(shortcutLocation);
+            // late-bound Windows Script Host, so the build needs no COM interop reference
+            dynamic shell = Activator.CreateInstance(Type.GetTypeFromProgID("WScript.Shell"));
+            dynamic shortcut = shell.CreateShortcut(shortcutLocation);
 
             shortcut.Description = name;
             shortcut.Arguments = "-sm";
@@ -381,7 +382,7 @@ namespace ServerManagerTool.Windows
                 if (string.IsNullOrWhiteSpace(url))
                     return;
 
-                Process.Start(url);
+                ProcessUtils.OpenWithShell(url);
             }
         }
 

@@ -4966,7 +4966,7 @@ namespace ServerManagerTool.Lib
             }
 
             TimeSpan shutdownTime;
-            var command = Assembly.GetEntryAssembly().Location;
+            var command = Environment.ProcessPath;
             if (!TaskSchedulerUtils.ScheduleAutoShutdown(taskKey, "#1", command, this.EnableAutoShutdown1 ? (TimeSpan.TryParseExact(this.AutoShutdownTime1, "g", null, out shutdownTime) ? shutdownTime : (TimeSpan?)null) : null, ShutdownDaysOfTheWeek1, ProfileName, TaskSchedulerUtils.ShutdownType.Shutdown1, Config.Default.AutoShutdown_TaskPriority))
             {
                 return false;

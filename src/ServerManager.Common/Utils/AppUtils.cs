@@ -26,18 +26,9 @@ namespace ServerManagerTool.Common.Utils
 
             try
             {
-                string executePath = new Uri(assembly.GetName().CodeBase).LocalPath;
-
-                var xmlDoc = new XmlDocument();
-                xmlDoc.Load(executePath + ".manifest");
-
-                var ns = new XmlNamespaceManager(xmlDoc.NameTable);
-                ns.AddNamespace("asmv1", "urn:schemas-microsoft-com:asm.v1");
-
-                var xPath = "/asmv1:assembly/asmv1:assemblyIdentity/@version";
-                var node = xmlDoc.SelectSingleNode(xPath, ns);
-
-                return node.Value;
+                // The .NET Framework build read this from the ClickOnce "<exe>.manifest" file,
+                // which .NET builds don't produce; use the assembly's own version instead.
+                return assembly.GetName().Version?.ToString() ?? "Unknown";
             }
             catch
             {

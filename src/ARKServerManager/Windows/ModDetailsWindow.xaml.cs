@@ -168,7 +168,7 @@ namespace ServerManagerTool
         {
             var mod = ((ModDetail)((Hyperlink)e.Source).DataContext);
 
-            Process.Start(new ProcessStartInfo(mod.ModUrl));
+            ProcessUtils.OpenWithShell(mod.ModUrl);
             e.Handled = true;
         }
 

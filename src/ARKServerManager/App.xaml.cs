@@ -455,7 +455,7 @@ namespace ServerManagerTool
                 var result = MessageBox.Show(_globalizer.GetResourceString("Application_RunAsAdministratorLabel"), _globalizer.GetResourceString("Application_RunAsAdministratorTitle"), MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (result == MessageBoxResult.Yes)
                 {
-                    var processInfo = new ProcessStartInfo(Assembly.GetExecutingAssembly().CodeBase)
+                    var processInfo = new ProcessStartInfo(Environment.ProcessPath)
                     {
 
                         // The following properties run the new process as administrator

@@ -75,7 +75,7 @@ namespace ServerManagerTool
             if (string.IsNullOrWhiteSpace(url))
                 return;
 
-            Process.Start(url);
+            ProcessUtils.OpenWithShell(url);
         }
 
         private void LoadFeed()

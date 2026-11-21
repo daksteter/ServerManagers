@@ -1,5 +1,4 @@
-﻿using EO.Wpf;
-using NLog;
+﻿using NLog;
 using ServerManagerTool.Common;
 using ServerManagerTool.Common.Enums;
 using ServerManagerTool.Common.Lib;
@@ -321,7 +320,7 @@ namespace ServerManagerTool
                 if (string.IsNullOrWhiteSpace(url))
                     return;
 
-                Process.Start(url);
+                ProcessUtils.OpenWithShell(url);
             }
         }
 
@@ -333,7 +332,7 @@ namespace ServerManagerTool
             var result = MessageBox.Show(_globalizer.GetResourceString("MainWindow_Donate_Label"), _globalizer.GetResourceString("MainWindow_Donate_Title"), MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
-                Process.Start(Config.Default.DonationUrl);
+                ProcessUtils.OpenWithShell(Config.Default.DonationUrl);
             }
         }
 
@@ -342,7 +341,7 @@ namespace ServerManagerTool
             if (string.IsNullOrWhiteSpace(Config.Default.HelpUrl))
                 return;
 
-            Process.Start(Config.Default.HelpUrl);
+            ProcessUtils.OpenWithShell(Config.Default.HelpUrl);
         }
 
         private void OpenLogFolder_Click(object sender, RoutedEventArgs e)
@@ -530,24 +529,25 @@ namespace ServerManagerTool
             if (string.IsNullOrWhiteSpace(Config.Default.DiscordUrl))
                 return;
 
-            Process.Start(Config.Default.DiscordUrl);
+            ProcessUtils.OpenWithShell(Config.Default.DiscordUrl);
         }
 
-        public void Servers_AddNew(object sender, NewItemRequestedEventArgs e)
+        public void Servers_AddNew(object sender, RoutedEventArgs e)
         {
             var index = this.ServerManager.AddNew();
-            ((EO.Wpf.TabControl)e.Source).SelectedIndex = index;
+            Tabs.SelectedIndex = index;
         }
 
-        public void Servers_Remove(object sender, TabItemCloseEventArgs args)
+        public void Servers_Remove(object sender, RoutedEventArgs e)
         {
-            args.Canceled = true;
-            var server = ServerManager.Instance.Servers[args.ItemIndex];
+            // the close button sits inside the tab header, so its DataContext is that tab's server
+            if (!((sender as FrameworkElement)?.DataContext is Server server))
+                return;
+
             var result = MessageBox.Show(_globalizer.GetResourceString("MainWindow_ProfileDelete_Label"), String.Format(_globalizer.GetResourceString("MainWindow_ProfileDelete_Title"), server.Profile.ProfileName), MessageBoxButton.YesNo, MessageBoxImage.Warning);
-            if(result == MessageBoxResult.Yes)
+            if (result == MessageBoxResult.Yes)
             {
                 ServerManager.Instance.Remove(server, deleteProfile: true);
-                args.Canceled = false;
             }
         }
 
