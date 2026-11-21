@@ -21,6 +21,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Windows;
 using TinyCsvParser;
+using TinyCsvParser.Models;
 using WPFSharp.Globalizer;
 
 namespace ServerManagerTool.Lib
@@ -5508,15 +5509,15 @@ namespace ServerManagerTool.Lib
             if (string.IsNullOrWhiteSpace(fileName) && !File.Exists(fileName))
                 return;
 
-            var csvParserOptions = new CsvParserOptions(false, CSV_DELIMITER);
+            var csvParserOptions = new CsvOptions(CSV_DELIMITER, '"', '"', Encoding.ASCII);
             var csvMapper = new CsvDinoLevelMapping();
             var csvParser = new CsvParser<ImportLevel>(csvParserOptions, csvMapper);
 
-            var result = csvParser.ReadFromFile(fileName, Encoding.ASCII).ToList();
-            if (result.Any(r => !r.IsValid))
+            var result = csvParser.ReadFromFile(fileName).ToList();
+            if (result.Any(r => r.IsError))
             {
-                var error = result.First(r => r.Error != null);
-                throw new Exception($"Import error occured in column {error.Error.ColumnIndex} with a value of {error.Error.Value}");
+                var error = result.First(r => r.IsError).Error;
+                throw new Exception($"Import error occured in column {error.ColumnIndex} with a value of {error.Value}");
             }
 
             var list = GetLevelList(LevelProgression.Dino);
@@ -5535,15 +5536,15 @@ namespace ServerManagerTool.Lib
             if (string.IsNullOrWhiteSpace(fileName) && !File.Exists(fileName))
                 return;
 
-            var csvParserOptions = new CsvParserOptions(false, CSV_DELIMITER);
+            var csvParserOptions = new CsvOptions(CSV_DELIMITER, '"', '"', Encoding.ASCII);
             var csvMapper = new CsvPlayerLevelMapping();
             var csvParser = new CsvParser<ImportLevel>(csvParserOptions, csvMapper);
 
-            var result = csvParser.ReadFromFile(fileName, Encoding.ASCII).ToList();
-            if (result.Any(r => !r.IsValid))
+            var result = csvParser.ReadFromFile(fileName).ToList();
+            if (result.Any(r => r.IsError))
             {
-                var error = result.First(r => r.Error != null);
-                throw new Exception($"Import error occured in column {error.Error.ColumnIndex} with a value of {error.Error.Value}");
+                var error = result.First(r => r.IsError).Error;
+                throw new Exception($"Import error occured in column {error.ColumnIndex} with a value of {error.Value}");
             }
 
             var list = GetLevelList(LevelProgression.Player);

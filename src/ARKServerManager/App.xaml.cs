@@ -234,10 +234,9 @@ namespace ServerManagerTool
                 {
                     FileName = Path.Combine(logFilePath, $"{logName}.log"),
                     Layout = "${time} [${level:uppercase=true}] ${message}",
-                    ArchiveFileName = Path.Combine(logFilePath, $"{logName}.{{#}}.log"),
-                    ArchiveNumbering = ArchiveNumberingMode.DateAndSequence,
+                    // NLog 6: archives are named "<name>.<yyyyMMdd>_<nn>.log"
+                    ArchiveSuffixFormat = ".{1:yyyyMMdd}_{0:00}",
                     ArchiveEvery = FileArchivePeriod.Day,
-                    ArchiveDateFormat = "yyyyMMdd",
                     ArchiveOldFileOnStartup = true,
                     MaxArchiveFiles = Config.Default.LoggingMaxArchiveFiles,
                     MaxArchiveDays = Config.Default.LoggingMaxArchiveDays,
@@ -584,7 +583,6 @@ namespace ServerManagerTool
             {
                 var fileName = Path.GetFileNameWithoutExtension(fileTarget.FileName.ToString());
                 fileTarget.FileName = Path.Combine(logDir, $"{fileName}.log");
-                fileTarget.ArchiveFileName = Path.Combine(logDir, $"{fileName}.{{#}}.log");
                 fileTarget.MaxArchiveFiles = Config.Default.LoggingMaxArchiveFiles;
                 fileTarget.MaxArchiveDays = Config.Default.LoggingMaxArchiveDays;
                 fileTarget.CreateDirs = true;

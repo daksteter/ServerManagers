@@ -72,10 +72,9 @@ namespace ServerManagerTool.DiscordBot.Services
                 {
                     FileName = Path.Combine(logFilePath, $"{logName}.log"),                    
                     Layout = "${time} [${level:uppercase=true}] ${message}",
-                    ArchiveFileName = Path.Combine(logFilePath, $"{logName}.{{#}}.log"),
-                    ArchiveNumbering = ArchiveNumberingMode.Date,
+                    // NLog 6: archives are named "<name>.<yyyyMMdd>_<nn>.log"
+                    ArchiveSuffixFormat = ".{1:yyyyMMdd}_{0:00}",
                     ArchiveEvery = FileArchivePeriod.Day,
-                    ArchiveDateFormat = "yyyyMMdd",
                     ArchiveOldFileOnStartup = true,
                     MaxArchiveFiles = maxArchiveFiles,
                     MaxArchiveDays = maxArchiveDays,

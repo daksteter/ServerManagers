@@ -6,7 +6,7 @@ using System.Windows;
 using System.Text.RegularExpressions;
 using System.Diagnostics;
 using System.Xml.Serialization;
-using TinyCsvParser.Mapping;
+using TinyCsvParser;
 using System.Runtime.Serialization;
 using ServerManagerTool.Common.Model;
 
