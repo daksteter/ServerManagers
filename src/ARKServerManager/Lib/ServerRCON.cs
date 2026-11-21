@@ -339,10 +339,11 @@ namespace ServerManagerTool.Lib
         {
             /*
                 > listplayers
-                0. Bletch, 76561197991984752 <- steam
-                0. Bletch, 7171521174456260817 <- epic
+                0. Bletch, 76561197991984752 <- ASE steam
+                0. Bletch, 7171521174456260817 <- ASE epic
+                0. Bletch, 0002a1b2c3d4e5f60718293a4b5c6d7e <- ASA (EOS product user ID, hex)
             */
-            var matchRegex = new Regex(@"^(?<index>\d*)\. (?<playerName>.*), (?<playerId>\d*)$");
+            var matchRegex = new Regex(@"^\s*(?<index>\d+)\. (?<playerName>.*), (?<playerId>[0-9A-Za-z]+)\s*$");
             var output = new List<string>();
             var onlinePlayers = new List<PlayerInfo>();
 

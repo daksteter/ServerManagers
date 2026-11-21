@@ -168,6 +168,8 @@ namespace ServerManagerTool.Lib
                     ServerProfile.QueryPortProperty,
                     ServerProfile.ServerIPProperty,
                     ServerProfile.MaxPlayersProperty,
+                    ServerProfile.RCONEnabledProperty,
+                    ServerProfile.RCONPortProperty,
 
                     ServerProfile.ServerPasswordProperty,
                     ServerProfile.AdminPasswordProperty,
@@ -187,49 +189,24 @@ namespace ServerManagerTool.Lib
                 }));
         }
 
-        private void GetServerEndpoints(out IPEndPoint localServerQueryEndPoint, out IPEndPoint steamServerQueryEndPoint)
+        private void GetServerEndpoints(out IPEndPoint localEndPoint, out IPEndPoint rconEndPoint)
         {
-            localServerQueryEndPoint = null;
-            steamServerQueryEndPoint = null;
+            localEndPoint = null;
+            rconEndPoint = null;
 
-            //
-            // Get the local endpoint for querying the local network
-            //
-            if (!ushort.TryParse(this.ProfileSnapshot.QueryPort.ToString(), out _))
+            if (!ushort.TryParse(this.ProfileSnapshot.ServerPort.ToString(), out _))
             {
-                _logger.Error($"Port is out of range ({this.ProfileSnapshot.QueryPort})");
+                _logger.Error($"Port is out of range ({this.ProfileSnapshot.ServerPort})");
                 return;
             }
 
-            localServerQueryEndPoint = new IPEndPoint(this.ProfileSnapshot.ServerIPAddress, Convert.ToUInt16(this.ProfileSnapshot.QueryPort));
+            localEndPoint = new IPEndPoint(this.ProfileSnapshot.ServerIPAddress, this.ProfileSnapshot.ServerPort);
 
-            //
-            // Get the public endpoint for querying Steam
-            //
-            steamServerQueryEndPoint = null;
-            if (!string.IsNullOrWhiteSpace(Config.Default.MachinePublicIP))
+            // ASA has no query port and doesn't answer Steam queries; the status watcher uses RCON instead (when enabled).
+            if (this.ProfileSnapshot.RCONEnabled && ushort.TryParse(this.ProfileSnapshot.RCONPort.ToString(), out _))
             {
-                if (IPAddress.TryParse(Config.Default.MachinePublicIP, out IPAddress steamServerIpAddress))
-                {
-                    // Use the Public IP explicitly specified
-                    steamServerQueryEndPoint = new IPEndPoint(steamServerIpAddress, Convert.ToUInt16(this.ProfileSnapshot.QueryPort));
-                }
-                else
-                {
-                    // Resolve the IP from the DNS name provided
-                    try
-                    {
-                        var addresses = Dns.GetHostAddresses(Config.Default.MachinePublicIP);
-                        if (addresses.Length > 0)
-                        {
-                            steamServerQueryEndPoint = new IPEndPoint(addresses[0], Convert.ToUInt16(this.ProfileSnapshot.QueryPort));
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        _logger.Error($"{nameof(GetServerEndpoints)} - Failed to resolve DNS address {Config.Default.MachinePublicIP}. {ex.Message}\r\n{ex.StackTrace}");
-                    }
-                }
+                var rconAddress = IPAddress.Any.Equals(this.ProfileSnapshot.ServerIPAddress) ? IPAddress.Loopback : this.ProfileSnapshot.ServerIPAddress;
+                rconEndPoint = new IPEndPoint(rconAddress, this.ProfileSnapshot.RCONPort);
             }
         }
 
@@ -414,24 +391,17 @@ namespace ServerManagerTool.Lib
 
                 var previousOnlinePlayerCount = this.Players;
                 this.Players = update.OnlinePlayerCount;
-                this.MaxPlayers = update.ServerInfo?.MaxPlayers ?? this.ProfileSnapshot.MaxPlayerCount;
+                this.MaxPlayers = this.ProfileSnapshot.MaxPlayerCount;
 
                 if (previousOnlinePlayerCount != this.Players)
                 {
                     PluginHelper.Instance.ProcessAlert(AlertType.OnlinePlayerCountChanged, this.ProfileSnapshot.ProfileName, $"{Config.Default.Alert_OnlinePlayerCountChange} {this.Players} / {this.MaxPlayers}");
                 }
 
-                if (update.ServerInfo != null)
+                if (update.Version != null)
                 {
-                    var match = Regex.Match(update.ServerInfo.Name, @"\(v([0-9]+\.[0-9]*)\)");
-                    if (match.Success && match.Groups.Count >= 2)
-                    {
-                        var serverVersion = match.Groups[1].Value;
-                        if (!string.IsNullOrWhiteSpace(serverVersion) && Version.TryParse(serverVersion, out Version temp))
-                        {
-                            this.Version = temp;
-                        }
-                    }
+                    // Reported in the server log ("ARK Version: x.y").
+                    this.Version = update.Version;
                 }
 
                 UpdateModStatus();
@@ -485,11 +455,11 @@ namespace ServerManagerTool.Lib
         {
             if (this.updateRegistration == null)
             {
-                GetServerEndpoints(out IPEndPoint localServerQueryEndPoint, out IPEndPoint steamServerQueryEndPoint);
-                if (localServerQueryEndPoint == null || steamServerQueryEndPoint == null)
+                GetServerEndpoints(out IPEndPoint localEndPoint, out IPEndPoint rconEndPoint);
+                if (localEndPoint == null)
                     return;
 
-                this.updateRegistration = ServerStatusWatcher.Instance.RegisterForUpdates(this.ProfileSnapshot.InstallDirectory, this.ProfileSnapshot.ProfileId, this.ProfileSnapshot.ServerPort, localServerQueryEndPoint, steamServerQueryEndPoint, ProcessStatusUpdate);
+                this.updateRegistration = ServerStatusWatcher.Instance.RegisterForUpdates(this.ProfileSnapshot.InstallDirectory, this.ProfileSnapshot.ProfileId, localEndPoint, rconEndPoint, this.ProfileSnapshot.RCONPassword, ProcessStatusUpdate);
             }
         }
 

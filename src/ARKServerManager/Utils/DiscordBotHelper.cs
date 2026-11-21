@@ -101,7 +101,7 @@ namespace ServerManagerTool.Utils
                 return new List<string> { string.Format(_globalizer.GetResourceString("DiscordBot_ProfileMissing"), CommandType.Info) };
             }
 
-            var profileList = new List<ServerProfileSnapshot>();
+            var profileList = new List<(ServerProfileSnapshot Profile, int Players, int MaxPlayers)>();
             var responseList = new List<string>();
 
             TaskUtils.RunOnUIThreadAsync(() =>
@@ -151,35 +151,18 @@ namespace ServerManagerTool.Utils
                         }
 
                         _currentProfileCommands.Add(server.Profile.ProfileID, CommandType.Info);
-                        profileList.Add(ServerProfileSnapshot.Create(server.Profile));
+                        profileList.Add((ServerProfileSnapshot.Create(server.Profile), server.Runtime.Players, server.Runtime.MaxPlayers));
                     }
                 }
             }).Wait(token);
 
-            foreach (var profile in profileList)
+            // ASA servers don't answer Steam (A2S) queries; report the status the app already tracks (players via RCON).
+            foreach (var (profile, players, maxPlayers) in profileList)
             {
-                try
-                {
-                    using (var gameServer = ServerQuery.GetServerInstance(EngineType.Source, new IPEndPoint(profile.ServerIPAddress, profile.QueryPort)))
-                    {
-                        var info = gameServer?.GetInfo();
-                        if (info is null)
-                        {
-                            responseList.Add(string.Format(_globalizer.GetResourceString("DiscordBot_InfoFailed"), profile.ServerName));
-                        }
-                        else
-                        {
-                            var mapName = _globalizer.GetResourceString($"Map_{info.Map}") ?? info.Map;
-                            responseList.Add($"```{info.Name}\n" +
-                                $"{_globalizer.GetResourceString("DiscordBot_MapLabel")} {mapName}\n" +
-                                $"{_globalizer.GetResourceString("ServerSettings_PlayersLabel")} {info.Players} / {info.MaxPlayers}```");
-                        }
-                    }
-                }
-                catch (Exception)
-                {
-                    responseList.Add(string.Format(_globalizer.GetResourceString("DiscordBot_InfoFailed"), profile.ServerName));
-                }
+                var mapName = _globalizer.GetResourceString($"Map_{profile.ServerMap}") ?? profile.ServerMap;
+                responseList.Add($"```{profile.ServerName}\n" +
+                    $"{_globalizer.GetResourceString("DiscordBot_MapLabel")} {mapName}\n" +
+                    $"{_globalizer.GetResourceString("ServerSettings_PlayersLabel")} {players} / {maxPlayers}```");
 
                 _currentProfileCommands.Remove(profile.ProfileId);
             }

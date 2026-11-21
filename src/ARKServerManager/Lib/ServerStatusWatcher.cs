@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
-using NLog;
+﻿﻿using NLog;
 using QueryMaster;
 using ServerManagerTool.Common.Enums;
 using ServerManagerTool.Common.Utils;
@@ -7,22 +6,37 @@ using ServerManagerTool.Enums;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Net.Sockets;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
 
 namespace ServerManagerTool.Lib
 {
+    /// <summary>
+    /// Polls the status of each registered server.
+    /// ASA servers don't answer Steam (A2S) queries; they are listed through Epic Online Services instead. So a running
+    /// server process counts as started once it answers RCON, which also gives the player count, or, without RCON,
+    /// once its log says it is advertising for players to join.
+    /// </summary>
     public class ServerStatusWatcher
     {
+        private const int RCON_TIMEOUT = 3000;
+        private const string SERVER_LOG_FOLDER = "Logs";
+        private const string SERVER_LOG_FILE = "ShooterGame.log";
+        private const string SERVER_LOG_STARTUP_COMPLETE = "Server has completed startup and is now advertising for join";
+
+        // Every server log line starts with a UTC timestamp: [2026.11.21-22.44.00:664]
+        private static readonly Regex LogTimestampRegex = new Regex(@"^\[(\d{4}\.\d{2}\.\d{2}-\d{2}\.\d{2}\.\d{2}):\d{3}\]", RegexOptions.Compiled);
+        private static readonly Regex LogVersionRegex = new Regex(@"ARK Version: (\d+(?:\.\d+)+)", RegexOptions.Compiled);
+
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
         private readonly List<ServerStatusUpdateRegistration> _serverRegistrations = new List<ServerStatusUpdateRegistration>();
         private readonly ActionBlock<Func<Task>> _eventQueue;
-        private readonly Dictionary<string, DateTime> _nextExternalStatusQuery = new Dictionary<string, DateTime>();
 
         static ServerStatusWatcher()
         {
@@ -41,28 +55,30 @@ namespace ServerManagerTool.Lib
             private set;
         }
 
-        public IAsyncDisposable RegisterForUpdates(string installDirectory, string profileId, int gamePort, IPEndPoint localEndpoint, IPEndPoint steamEndpoint, Action<IAsyncDisposable, ServerStatusUpdate> updateCallback)
+        public IAsyncDisposable RegisterForUpdates(string installDirectory, string profileId, IPEndPoint localEndpoint, IPEndPoint rconEndpoint, string rconPassword, Action<IAsyncDisposable, ServerStatusUpdate> updateCallback)
         {
             var registration = new ServerStatusUpdateRegistration
             {
                 InstallDirectory = installDirectory,
                 ProfileId = profileId,
-                GamePort = gamePort,
-                LocalEndpoint = localEndpoint, 
-                PublicEndpoint = steamEndpoint, 
+                GamePort = localEndpoint.Port,
+                LocalEndpoint = localEndpoint,
+                RconEndpoint = rconEndpoint,
+                RconPassword = rconPassword,
                 UpdateCallback = updateCallback,
             };
 
-            registration.UnregisterAction = async () => 
+            registration.UnregisterAction = async () =>
                 {
                     var tcs = new TaskCompletionSource<bool>();
-                    _eventQueue.Post(() => 
+                    _eventQueue.Post(() =>
                     {
                         if(_serverRegistrations.Contains(registration))
                         {
-                            Logger.Debug($"{nameof(RegisterForUpdates)} Removing registration for L:{registration.LocalEndpoint} P:{registration.PublicEndpoint}");
+                            Logger.Debug($"{nameof(RegisterForUpdates)} Removing registration for {registration.LocalEndpoint}");
                             _serverRegistrations.Remove(registration);
                         }
+                        CloseRcon(registration);
                         tcs.TrySetResult(true);
                         return Task.FromResult(true);
                     });
@@ -74,11 +90,8 @@ namespace ServerManagerTool.Lib
                 {
                     if (!_serverRegistrations.Contains(registration))
                     {
-                        Logger.Debug($"{nameof(RegisterForUpdates)} Adding registration for L:{registration.LocalEndpoint} P:{registration.PublicEndpoint}");
+                        Logger.Debug($"{nameof(RegisterForUpdates)} Adding registration for {registration.LocalEndpoint}");
                         _serverRegistrations.Add(registration);
-
-                        var registrationKey = registration.PublicEndpoint.ToString();
-                        _nextExternalStatusQuery[registrationKey] = DateTime.MinValue;
                     }
                     return Task.FromResult(true);
                 }
@@ -87,7 +100,7 @@ namespace ServerManagerTool.Lib
             return registration;
         }
 
-        private async Task DoUpdateAsync()
+        private Task DoUpdateAsync()
         {
             try
             {
@@ -97,9 +110,8 @@ namespace ServerManagerTool.Lib
 
                     try
                     {
-                        Logger.Info($"{nameof(DoUpdateAsync)} Start: {registration.LocalEndpoint}, {registration.PublicEndpoint}");
-                        statusUpdate = await DoServerStatusUpdateAsync(registration);
-                        
+                        statusUpdate = GetServerStatus(registration);
+
                         PostServerStatusUpdate(registration, statusUpdate);
                     }
                     catch (Exception ex)
@@ -110,7 +122,7 @@ namespace ServerManagerTool.Lib
                     }
                     finally
                     {
-                        Logger.Info($"{nameof(DoUpdateAsync)} End: {registration.LocalEndpoint}, {registration.PublicEndpoint}, Status: {statusUpdate.Status}");
+                        Logger.Info($"{nameof(DoUpdateAsync)} {registration.LocalEndpoint}: {statusUpdate.Status}, players: {statusUpdate.OnlinePlayerCount}");
                     }
                 }
             }
@@ -120,12 +132,12 @@ namespace ServerManagerTool.Lib
                     .ContinueWith(_ => _eventQueue.Post(DoUpdateAsync))
                     .DoNotWait();
             }
+
+            return Task.CompletedTask;
         }
 
-        private async Task<ServerStatusUpdate> DoServerStatusUpdateAsync(ServerStatusUpdateRegistration registration)
+        private static ServerStatusUpdate GetServerStatus(ServerStatusUpdateRegistration registration)
         {
-            var registrationKey = registration.PublicEndpoint.ToString();
-
             //
             // First check the process status
             //
@@ -133,12 +145,15 @@ namespace ServerManagerTool.Lib
             switch (processStatus)
             {
                 case ServerProcessStatus.NotInstalled:
+                    CloseRcon(registration);
                     return new ServerStatusUpdate { Status = WatcherServerStatus.NotInstalled };
 
                 case ServerProcessStatus.Stopped:
+                    CloseRcon(registration);
                     return new ServerStatusUpdate { Status = WatcherServerStatus.Stopped };
 
                 case ServerProcessStatus.Unknown:
+                    CloseRcon(registration);
                     return new ServerStatusUpdate { Status = WatcherServerStatus.Unknown };
 
                 case ServerProcessStatus.Running:
@@ -149,66 +164,19 @@ namespace ServerManagerTool.Lib
                     break;
             }
 
-            var currentStatus = WatcherServerStatus.Initializing;
+            var rconAnswered = TryGetRconPlayerCount(registration, out int onlinePlayerCount);
+            UpdateServerLogStatus(registration, process);
 
-            Logger.Info($"{nameof(DoServerStatusUpdateAsync)} Checking server local (directly) status at {registration.LocalEndpoint}");
-
-            // get the server information direct from the server using local endpoint.
-            var serverStatus = GetLocalNetworkStatus(registration.LocalEndpoint, out ServerInfo localInfo, out int onlinePlayerCount);
-
-            if (serverStatus)
-            {
-                currentStatus = WatcherServerStatus.LocalSuccess;
-
-                Logger.Info($"{nameof(DoServerStatusUpdateAsync)} Checking server public (directly) status at {registration.PublicEndpoint}");
-
-                // get the server information direct from the server using public endpoint.
-                serverStatus = GetPublicNetworkStatusDirectly(registration.PublicEndpoint);
-
-                if (serverStatus)
-                {
-                    _nextExternalStatusQuery[registrationKey] = DateTime.MinValue;
-
-                    currentStatus = WatcherServerStatus.Published;
-                }
-                else if (!string.IsNullOrWhiteSpace(Config.Default.ServerStatusUrlFormat))
-                {
-                    var nextExternalStatusQuery = _nextExternalStatusQuery.ContainsKey(registrationKey) ? _nextExternalStatusQuery[registrationKey] : DateTime.MinValue;
-                    if (DateTime.Now >= nextExternalStatusQuery)
-                    {
-                        Logger.Info($"{nameof(DoServerStatusUpdateAsync)} Checking server public (externally) status at {registration.PublicEndpoint}");
-
-                        // get the server information direct from the server using external endpoint.
-                        var url = string.Format(Config.Default.ServerStatusUrlFormat, Config.Default.ServerManagerCode, App.Instance.Version, registration.PublicEndpoint.Address, registration.PublicEndpoint.Port);
-                        var uri = new Uri(url);
-                        serverStatus = await GetPublicNetworkStatusViaAPIAsync(uri, registration.PublicEndpoint);
-
-                        var remoteStatusQueryDelay = serverStatus 
-                            ? Config.Default.ServerStatusWatcher_RemoteStatusQueryDelay 
-                            : 15000;
-                        _nextExternalStatusQuery[registrationKey] = DateTime.Now.AddMilliseconds(remoteStatusQueryDelay);
-
-                        if (serverStatus)
-                        {
-                            currentStatus = WatcherServerStatus.ExternalSuccess;
-                        }
-                    }
-                    else
-                    {
-                        currentStatus = WatcherServerStatus.ExternalSkipped;
-                    }
-                }
-            }
-
-            var statusUpdate = new ServerStatusUpdate
+            return new ServerStatusUpdate
             {
                 Process = process,
-                Status = currentStatus,
-                ServerInfo = localInfo,
+                // Published shows as Running / Available: the server has finished starting and is advertising itself
+                // for players to join. Whether it can be reached from the internet (port forwarding etc.) is no longer
+                // checked, because that check relied on Steam queries.
+                Status = rconAnswered || registration.LogStartupComplete ? WatcherServerStatus.Published : WatcherServerStatus.Initializing,
                 OnlinePlayerCount = onlinePlayerCount,
+                Version = registration.LogVersion,
             };
-
-            return await Task.FromResult(statusUpdate);
         }
 
         private static ServerProcessStatus GetServerProcessStatus(ServerStatusUpdateRegistration updateContext, out Process serverProcess)
@@ -278,109 +246,121 @@ namespace ServerManagerTool.Lib
             return ServerProcessStatus.Stopped;
         }
 
-        private static bool GetLocalNetworkStatus(IPEndPoint endpoint, out ServerInfo serverInfo, out int onlinePlayerCount)
+        /// <summary>
+        /// Sends ListPlayers over RCON and counts the players in the reply. The RCON connection stays open between polls.
+        /// </summary>
+        /// <returns>true if the server answered.</returns>
+        private static bool TryGetRconPlayerCount(ServerStatusUpdateRegistration registration, out int playerCount)
         {
-            serverInfo = null;
-            onlinePlayerCount = 0;
+            playerCount = 0;
+            if (registration.RconEndpoint == null)
+            {
+                return false;
+            }
 
             try
             {
-                using (var server = ServerQuery.GetServerInstance(EngineType.Source, endpoint))
+                if (registration.Rcon == null)
                 {
-                    try
-                    {
-                        serverInfo = server?.GetInfo();
-                    }
-                    catch (Exception)
-                    {
-                        serverInfo = null;
-                    }
-
-                    try
-                    {
-                        var playerInfo = server?.GetPlayers()?.Where(p => !string.IsNullOrWhiteSpace(p.Name?.Trim()));
-                        onlinePlayerCount = playerInfo?.Count() ?? 0;
-                    }
-                    catch (Exception)
-                    {
-                        onlinePlayerCount = 0;
-                    }
+                    registration.RconServer = ServerQuery.GetServerInstance(EngineType.Source, registration.RconEndpoint, sendTimeOut: RCON_TIMEOUT, receiveTimeOut: RCON_TIMEOUT);
+                    registration.Rcon = registration.RconServer.GetControl(registration.RconPassword ?? string.Empty);
                 }
 
-                return serverInfo != null;
-            }
-            catch (SocketException ex)
-            {
-                // Common when the server is unreachable.  Ignore it.
-                Logger.Debug($"{nameof(GetLocalNetworkStatus)} - Failed checking local status for: {endpoint.Address}:{endpoint.Port}. {ex.Message}");
+                // A failed login leaves the connection closed, so this throws for a wrong password as well.
+                playerCount = RconPlayerList.CountPlayers(registration.Rcon.SendCommand(RconPlayerList.Command));
+                return true;
             }
             catch (Exception ex)
             {
-                Logger.Debug($"{nameof(GetLocalNetworkStatus)} - Failed checking local status for: {endpoint.Address}:{endpoint.Port}. {ex.Message}");
+                // Expected while the server is starting, before its RCON port opens.
+                Logger.Debug($"{nameof(TryGetRconPlayerCount)} - No RCON reply from {registration.RconEndpoint}. {ex.Message}");
+                CloseRcon(registration);
+                return false;
             }
-
-            return false;
         }
 
-        private static bool GetPublicNetworkStatusDirectly(IPEndPoint endpoint)
+        private static void CloseRcon(ServerStatusUpdateRegistration registration)
         {
-            ServerInfo serverInfo;
-
             try
             {
-                using (var server = ServerQuery.GetServerInstance(EngineType.Source, endpoint))
-                {
-                    serverInfo = server.GetInfo();
-                }
-
-                return serverInfo != null;
+                // Disposing the server also disposes its RCON connection.
+                registration.RconServer?.Dispose();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Logger.Debug($"{nameof(GetPublicNetworkStatusDirectly)} - Failed checking public status for: {endpoint.Address}:{endpoint.Port}. {ex.Message}");
+                // Nothing useful to do if the connection is already broken.
             }
 
-            return false;
+            registration.RconServer = null;
+            registration.Rcon = null;
         }
 
-        public static async Task<bool> GetPublicNetworkStatusViaAPIAsync(Uri uri, IPEndPoint endpoint)
+        /// <summary>
+        /// Reads the running server's log for its version and for the line that says startup is complete.
+        /// The results are kept per process, so the log is no longer read once startup is complete.
+        /// </summary>
+        private static void UpdateServerLogStatus(ServerStatusUpdateRegistration registration, Process process)
         {
+            if (registration.LogProcessId != process.Id)
+            {
+                registration.LogProcessId = process.Id;
+                registration.LogStartupComplete = false;
+                registration.LogVersion = null;
+            }
+
+            if (registration.LogStartupComplete)
+            {
+                return;
+            }
+
+            var logFile = Path.Combine(registration.InstallDirectory, Config.Default.SavedRelativePath, SERVER_LOG_FOLDER, SERVER_LOG_FILE);
+
             try
             {
-                string jsonString;
-                using (var client = new WebClient())
+                if (!File.Exists(logFile))
                 {
-                    jsonString = await client.DownloadStringTaskAsync(uri);
+                    return;
                 }
 
-                if (jsonString == null)
-                {
-                    Logger.Debug($"Server info request returned null string for {endpoint.Address}:{endpoint.Port}");
-                    return false;
-                }
+                var processStartUtc = process.StartTime.ToUniversalTime();
 
-                JObject query = JObject.Parse(jsonString);
-                if (query == null)
+                using (var stream = new FileStream(logFile, FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete))
+                using (var reader = new StreamReader(stream, Encoding.UTF8, detectEncodingFromByteOrderMarks: true))
                 {
-                    Logger.Debug($"Server info request failed to parse for {endpoint.Address}:{endpoint.Port} - '{jsonString}'");
-                    return false;
-                }
+                    // The server renames the previous run's log when it starts, so until then this can be an older log.
+                    // The first line's timestamp tells whether it belongs to the running process.
+                    var match = LogTimestampRegex.Match(reader.ReadLine() ?? string.Empty);
+                    if (!match.Success ||
+                        !DateTime.TryParseExact(match.Groups[1].Value, "yyyy.MM.dd-HH.mm.ss", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal | DateTimeStyles.AdjustToUniversal, out DateTime logOpenedUtc) ||
+                        logOpenedUtc < processStartUtc.AddSeconds(-5))
+                    {
+                        return;
+                    }
 
-                var available = query.SelectToken("available");
-                if (available == null)
-                {
-                    Logger.Debug($"Server at {endpoint.Address}:{endpoint.Port} returned no availability.");
-                    return false;
-                }
+                    string line;
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        if (registration.LogVersion == null)
+                        {
+                            var versionMatch = LogVersionRegex.Match(line);
+                            if (versionMatch.Success && Version.TryParse(versionMatch.Groups[1].Value, out Version version))
+                            {
+                                registration.LogVersion = version;
+                            }
+                        }
 
-                return (bool)available;
+                        if (line.Contains(SERVER_LOG_STARTUP_COMPLETE, StringComparison.Ordinal))
+                        {
+                            registration.LogStartupComplete = true;
+                            break;
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {
-                Logger.Debug($"{nameof(GetPublicNetworkStatusViaAPIAsync)} - Failed checking public status for: {endpoint.Address}:{endpoint.Port}. {ex.Message}");
+                Logger.Debug($"{nameof(UpdateServerLogStatus)} - Failed reading {logFile}. {ex.Message}");
             }
-
-            return false;
         }
 
         private void PostServerStatusUpdate(ServerStatusUpdateRegistration registration, ServerStatusUpdate statusUpdate)

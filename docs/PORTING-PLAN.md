@@ -40,15 +40,17 @@ What phases 1–2 changed is in the commit messages. Highlights that affect late
 | Crossplay: `-ServerPlatform=PC+XSX+PS5` (or `ALL`); `-crossplay` / `-epiconly` obsolete | Confirmed (values from wiki summary) | ARK wiki |
 | If `?ServerAdminPassword=` is on the command line it must be the **last** `?` option | Confirmed | ARK wiki |
 | Max players: `-WinLiveMaxPlayers=N`; `?MaxPlayers=` is ignored | Strong (forum + guides) | Steam forums, wikily.gg |
-| Query port is unused; servers list via Epic Online Services, so **A2S queries won't work** — use RCON (`ListPlayers`) | Strong (forums), verify live | Steam forums, ark.wiki.gg Server Browser |
+| Query port is unused; servers list via Epic Online Services, so **A2S queries won't work** — use RCON (`ListPlayers`) | Verified live: the server binds UDP 27015 but never answers A2S; RCON `ListPlayers` works | Steam forums, ark.wiki.gg Server Browser |
+| Server log (`ShooterGame\Saved\Logs\ShooterGame.log`) has `ARK Version: 98.9` near the top and `Server has completed startup and is now advertising for join` when ready | Verified live (ARK 98.9) | test server |
 | Saves: per-map subfolder under `ShooterGame\Saved\SavedArks\<Map>\` (also with `AltSaveDirectoryName`) | Confirmed | ARK wiki |
 | `.ark` world saves are **SQLite**; `.arkprofile` / `.arktribe` use a new UE5 layout | Confirmed by multiple parsers | AsaSavegameToolkit, arkparse, ark-sa-save-tools |
 | Player IDs are EOS IDs (hex), not SteamID64 | Likely, verify live | — |
 | SOTF and PGM do not exist; maps use `_WP` names (`TheIsland_WP`, `ScorchedEarth_WP`, …) | Confirmed | — |
 | Windows only (Linux needs Proton) | Confirmed | ARK wiki |
 
-**Verify on a real ASA server before relying on it:** `ListPlayers` output format, whether `version.txt`
-exists in the install, which INI settings ASE had that ASA ignores, `AllowedCheaterSteamIDs.txt` naming.
+**Verify on a real ASA server before relying on it:** `ListPlayers` output with players connected (empty
+server replies `No Players Connected`), which INI settings ASE had that ASA ignores,
+`AllowedCheaterSteamIDs.txt` naming. (Verified: there is no `version.txt`.)
 
 ---
 
@@ -83,26 +85,38 @@ Ordered so each milestone leaves the app runnable. Tick boxes as commits land.
       an empty version when missing). Use the Steam build ID from `steamapps\appmanifest_2430930.acf`,
       or the version the server reports, instead.
 - [ ] Check branch handling against the ASA depot.
-- [ ] **Test:** install a fresh ASA server through the app, start it, confirm status shows Running and
-      the generated `RunServer.cmd` / command line is correct.
+- [x] **Test:** installed a fresh ASA server through the app (`Q:\asmdata\Servers\Server2`) and started it:
+      `RunServer.cmd` is correct, the server starts in ~1 minute (game port 7777/UDP, RCON 32330/TCP),
+      session name and RCON settings come through from `GameUserSettings.ini`, and the app detects the
+      process. Status stayed "Initializing" until M2 (A2S).
+- [ ] Note: a new profile defaults to the next free `ServerN` folder and must be installed before Start
+      is enabled (upstream behaviour); pointing it at an existing install also works.
 
 ### M2. Server status and players via RCON
 
 A2S (QueryMaster) is used for status, player counts, the "Published" state, the stop-countdown
 online check, and the Discord `info` command. Replace with process state + RCON.
 
-- [ ] `ServerStatusWatcher` (~280–383): drop local/public A2S checks and the dead external-API path;
-      Running = process alive + RCON reachable (when RCON is enabled), player list from `ListPlayers`.
-- [ ] Decide what replaces "Published / publicly reachable" (probably drop it — no public query to ask).
-- [ ] `ServerRuntime.ProcessStatusUpdate` (~239–442): player count, max players, version (was parsed
-      from the A2S server name).
-- [ ] `ServerRuntime.RegisterForUpdates` (~483–493) silently skips servers without a public IP — remove that dependency.
-- [ ] `ServerApp.StopServer` (~436–486) online-player check → RCON.
-- [ ] `DiscordBotHelper` `info` command (~163–176) → RCON.
-- [ ] `ServerRCON` `listplayers` regex (~345) only accepts numeric IDs → accept EOS IDs (verify format live).
+- [x] `ServerStatusWatcher`: A2S checks and the dead external-API path removed. A running process counts
+      as started (Running / Available) once it answers RCON `ListPlayers` (kept open between polls; also
+      gives the player count) or, without RCON, once its log says it is advertising for join. The log
+      also gives the running server's version (`ARK Version: x.y`).
+- [x] "Published / publicly reachable": dropped. "Available" now means "finished starting and advertising";
+      whether the server is reachable from the internet (port forwarding) is no longer checked.
+- [x] `ServerRuntime.ProcessStatusUpdate`: player count from RCON, max players from the profile, version
+      from the server log.
+- [x] `ServerRuntime.RegisterForUpdates` no longer needs a query port or the machine's public IP.
+- [x] `ServerApp.StopServer` online-player check → RCON (`ListPlayers`); no RCON → count down in full.
+- [x] `DiscordBotHelper` `info` command → the app's own status (players via RCON).
+- [x] `ServerRCON` `listplayers` regex accepts alphanumeric (EOS) IDs. Verify with a player connected.
+- [x] RCON password no longer written to the profile debug log.
 - [ ] RCON currently comes from `QueryMaster.Server.GetControl` (which also opens an A2S socket).
       Consider a small standalone Source-RCON client and retiring most of QueryMaster.
-- [ ] RCON must be enabled for status to work — make that clear in the UI / validation.
+- [ ] Without RCON there is no player count — make that clear in the UI (or default RCON on for new profiles).
+- [x] **Test:** with the test server running, the app reports Running / Available, 0 players, within one
+      poll of starting, over a single RCON connection that stays open.
+- [ ] **Test:** player count and RCON player list change when a player joins; stop with countdown skips
+      the countdown on an empty server.
 
 ### M3. Mods: Steam Workshop → CurseForge
 

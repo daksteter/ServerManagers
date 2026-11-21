@@ -430,15 +430,10 @@ namespace ServerManagerTool.Lib
             ServerStatusChangeCallback?.Invoke(ServerStatus.Stopping);
             LogProfileMessage($"Server process found PID {process.Id}.");
 
-            QueryMaster.Server gameServer = null;
             var sent = false;
 
             try
             {
-                // create a connection to the server
-                var endPoint = new IPEndPoint(_profile.ServerIPAddress, _profile.QueryPort);
-                gameServer = QueryMaster.ServerQuery.GetServerInstance(QueryMaster.EngineType.Source, endPoint);
-
                 // check if there is a shutdown reason
                 if (!string.IsNullOrWhiteSpace(ShutdownReason) && !AllMessagesShowShutdownReason)
                 {
@@ -482,20 +477,18 @@ namespace ServerManagerTool.Lib
 
                     if (CheckForOnlinePlayers)
                     {
+                        // ASA servers don't answer Steam (A2S) player queries; ask over RCON. -1 = unknown, keep counting down.
                         var playerCount = -1;
 
-                        try
+                        var response = SendCommandWithResponse(RconPlayerList.Command, cancellationToken);
+                        if (response == null)
                         {
-                            var playerInfo = gameServer?.GetPlayers()?.Where(p => !string.IsNullOrWhiteSpace(p.Name?.Trim()));
-                            playerCount = playerInfo?.Count() ?? -1;
-
-                            LogProfileMessage($"Online players: {playerCount}.");
+                            LogProfileError("Error getting online players (RCON did not answer).", false);
                         }
-                        catch (Exception ex)
+                        else
                         {
-                            LogProfileError("Error getting online players.", false);
-                            LogProfileError(ex.Message, false);
-                            LogProfileError("", false);
+                            playerCount = RconPlayerList.CountPlayers(response);
+                            LogProfileMessage($"Online players: {playerCount}.");
                         }
 
                         // check if anyone is logged into the server
@@ -638,8 +631,6 @@ namespace ServerManagerTool.Lib
             }
             finally
             {
-                gameServer?.Dispose();
-                gameServer = null;
             }
 
             if (cancellationToken.IsCancellationRequested)
@@ -2818,10 +2809,16 @@ namespace ServerManagerTool.Lib
 
         private bool SendCommand(string command, CancellationToken token)
         {
+            return SendCommandWithResponse(command, token) != null;
+        }
+
+        /// <returns>The server's reply, or null if the command could not be sent.</returns>
+        private string SendCommandWithResponse(string command, CancellationToken token)
+        {
             if (_profile == null || !_profile.RCONEnabled)
-                return false;
+                return null;
             if (string.IsNullOrWhiteSpace(command))
-                return false;
+                return null;
 
             var rconRetries = MAXRETRIES_RCON;
 
@@ -2844,8 +2841,7 @@ namespace ServerManagerTool.Lib
                     {
                         try
                         {
-                            _rconConsole.SendCommand(command);
-                            return true;
+                            return _rconConsole.SendCommand(command) ?? string.Empty;
                         }
                         catch (Exception ex)
                         {
@@ -2863,7 +2859,7 @@ namespace ServerManagerTool.Lib
                 CloseRconConsole();
             }
 
-            return false;
+            return null;
         }
 
         private bool SendMessage(string message, CancellationToken token)
@@ -2975,11 +2971,11 @@ namespace ServerManagerTool.Lib
                 _rconConsole = server.GetControl(_profile.RCONPassword);
                 if (_rconConsole == null)
                 {
-                    LogProfileDebug($"FAILED: {nameof(SetupRconConsole)} - RconConsole could not be created ({_profile.RCONPassword}).", false);
+                    LogProfileDebug($"FAILED: {nameof(SetupRconConsole)} - RconConsole could not be created.", false);
                     return;
                 }
 
-                LogProfileDebug($"SUCCESS: {nameof(SetupRconConsole)} - RconConsole was created ({_profile.RCONPassword}).", false);
+                LogProfileDebug($"SUCCESS: {nameof(SetupRconConsole)} - RconConsole was created.", false);
             }
             catch (Exception ex)
             {
