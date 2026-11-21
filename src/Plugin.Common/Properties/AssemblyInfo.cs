@@ -18,7 +18,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyVersion("1.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
 
-[assembly: InternalsVisibleTo("ARK Server Manager")]
+[assembly: InternalsVisibleTo("JVH Ark Ascended Server Manager")]
 [assembly: InternalsVisibleTo("ConanServerManager")]
 [assembly: InternalsVisibleTo("ServerManager")]
 [assembly: InternalsVisibleTo("ServerManager.Plugin.Common.UnitTests")]

@@ -35,39 +35,39 @@
         </Grid.ColumnDefinitions>
 
         <Button Grid.Row="0" Grid.Column="0" Width="22" Height="22" Margin="5,5,5,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="SaveMods_Click" ToolTip="{DynamicResource ModDetails_SaveModsTooltip}">
-            <Image Source="{com:Icon Path=/Ark Server Manager;component/Art/Save.ico,Size=32}"/>
+            <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Save.ico,Size=32}"/>
         </Button>
 
         <Button Grid.Row="0" Grid.Column="1" Width="22" Height="22" Margin="10,5,5,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="AddMods_Click" ToolTip="{DynamicResource ModDetails_AddModsTooltip}">
-            <Image Source="{com:Icon Path=/Ark Server Manager;component/Art/Add.ico,Size=32}"/>
+            <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Add.ico,Size=32}"/>
         </Button>
 
         <Button Grid.Row="0" Grid.Column="2" Width="22" Height="22" Margin="0,5,5,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="RemoveAllMods_Click" ToolTip="{DynamicResource ModDetails_RemoveAllModsTooltip}">
-            <Image Source="{com:Icon Path=/Ark Server Manager;component/Art/Delete.ico,Size=32}"/>
+            <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Delete.ico,Size=32}"/>
         </Button>
 
         <Button Grid.Row="0" Grid.Column="3" Width="22" Height="22" Margin="10,5,5,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="RefreshMods_Click" ToolTip="{DynamicResource ModDetails_RefreshModsTooltip}">
-            <Image Source="{com:Icon Path=/Ark Server Manager;component/Art/Refresh.ico,Size=32}"/>
+            <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Refresh.ico,Size=32}"/>
         </Button>
 
         <Button Grid.Row="0" Grid.Column="4" Width="22" Height="22" Margin="0,5,5,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="ReloadMods_Click" ToolTip="{DynamicResource ModDetails_ReloadModsTooltip}">
-            <Image Source="{com:Icon Path=/Ark Server Manager;component/Art/Reload.ico,Size=32}"/>
+            <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Reload.ico,Size=32}"/>
         </Button>
 
         <Button Grid.Row="0" Grid.Column="5" Width="22" Height="22" Margin="0,5,5,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="LoadMods_Click" ToolTip="{DynamicResource ModDetails_LoadModsTooltip}">
-            <Image Source="{com:Icon Path=/Ark Server Manager;component/Art/FolderImport.ico,Size=32}"/>
+            <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/FolderImport.ico,Size=32}"/>
         </Button>
 
         <Button Grid.Row="0" Grid.Column="6" Width="22" Height="22" Margin="10,5,5,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="PurgeModsFolder_Click" IsEnabled="{Binding Path=ModDetailsChanged, ElementName=ModDetailsUI, Converter={StaticResource InvertBooleanConverter}}" ToolTip="{DynamicResource ModDetails_PurgeModsFolderTooltip}">
-            <Image Source="{com:Icon Path=/Ark Server Manager;component/Art/FolderDelete.ico,Size=32}"/>
+            <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/FolderDelete.ico,Size=32}"/>
         </Button>
 
         <Button Grid.Row="0" Grid.Column="7" Width="22" Height="22" Margin="10,5,5,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="SaveModDetails_Click" ToolTip="{DynamicResource ModDetails_SaveModDetailsTooltip}">
-            <Image Source="{com:Icon Path=/Ark Server Manager;component/Art/Copy.ico,Size=32}"/>
+            <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Copy.ico,Size=32}"/>
         </Button>
 
         <Button Grid.Row="0" Grid.Column="8" Width="22" Height="22" Margin="10,5,5,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="OpenModFolder_Click" ToolTip="{DynamicResource ModDetails_OpenModFolderTooltip}">
-            <Image Source="{com:Icon Path=/Ark Server Manager;component/Art/FolderOpen.ico,Size=32}"/>
+            <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/FolderOpen.ico,Size=32}"/>
         </Button>
 
         <StackPanel Grid.Row="0" Grid.Column="9" Orientation="Horizontal">
@@ -79,7 +79,7 @@
             <TextBlock Margin="5,0,5,0" Text="{DynamicResource General_FilterLabel}" VerticalAlignment="Center" />
             <TextBox x:Name="ModDetailsFilterStringTextBox" Margin="5,0,5,0" Text="{Binding ModDetailsFilterString, Mode=TwoWay}" Width="200" Padding="2" VerticalAlignment="Center"/>
             <Button Margin="5,0,5,0" Width="22" Height="22" HorizontalAlignment="Left" VerticalAlignment="Center" Click="FilterMods_Click" ToolTip="{DynamicResource General_FilterButtonTooltip}">
-                <Image Source="{com:Icon Path=/Ark Server Manager;component/Art/Filter.ico,Size=32}"/>
+                <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Filter.ico,Size=32}"/>
             </Button>
             <TextBlock Margin="5,0,5,0" Text="{Binding ModDetailsStatusMessage}" VerticalAlignment="Center" Foreground="SteelBlue" />
         </StackPanel>
@@ -191,7 +191,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Width="22" Height="22" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" Click="MoveModUp_Click" ToolTip="{DynamicResource ModDetails_MoveModUpTooltip}">
-                                <Image Source="{com:Icon Path=/Ark Server Manager;component/Art/Up.ico,Size=32}"/>
+                                <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Up.ico,Size=32}"/>
                             </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -212,7 +212,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Width="22" Height="22" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" Click="MoveModDown_Click" ToolTip="{DynamicResource ModDetails_MoveModDownTooltip}">
-                                <Image Source="{com:Icon Path=/Ark Server Manager;component/Art/Down.ico,Size=32}"/>
+                                <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Down.ico,Size=32}"/>
                             </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -233,7 +233,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Width="22" Height="22" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" Click="RemoveMod_Click" ToolTip="{DynamicResource ModDetails_RemoveModTooltip}">
-                                <Image Source="{com:Icon Path=/Ark Server Manager;component/Art/Delete.ico,Size=32}"/>
+                                <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Delete.ico,Size=32}"/>
                             </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -242,7 +242,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Width="22" Height="22" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" Click="WriteTimestampMod_Click" ToolTip="{DynamicResource ModDetails_WriteTimestampModTooltip}">
-                                <Image Source="{com:Icon Path=/Ark Server Manager;component/Art/Edit.ico,Size=32}"/>
+                                <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Edit.ico,Size=32}"/>
                             </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -263,7 +263,7 @@
         <Popup Grid.Row="0" Grid.Column="0" x:Name="popup" IsHitTestVisible="False" Placement="RelativePoint" PlacementTarget="{Binding ElementName=ModDetailsUI}" AllowsTransparency="True">
             <Border BorderBrush="LightSteelBlue" BorderThickness="2" Background="White" Opacity="0.75">
                 <StackPanel Orientation="Horizontal" Margin="4,3,8,3">
-                    <Image Source="{com:Icon Path=/Ark Server Manager;component/Art/Drag.ico,Size=32}" Width="16" Height="16"/>
+                    <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Drag.ico,Size=32}" Width="16" Height="16"/>
                     <TextBlock FontSize="14" VerticalAlignment="Center" Text="{Binding DraggedItem, ElementName=ModDetailsUI}" Margin="8,0,0,0" />
                 </StackPanel>
             </Border>

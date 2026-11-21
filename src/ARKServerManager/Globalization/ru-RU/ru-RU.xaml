@@ -126,10 +126,10 @@
     <sys:String x:Key="Application_SingleInstance_FailedLabel">Не удалось переключиться на другой экземпляр приложения. Запуск нового экземпляра приложения.</sys:String>
 
     <sys:String x:Key="Application_DataDirectoryTitle">Выберите каталог данных</sys:String>
-    <sys:String x:Key="Application_DataDirectoryLabel">Кажется, у вас нет набора каталогов данных. Каталог данных - это где ваши профили и SteamCMD будут сохранены. Это не то же самое, что и каталог установки сервера, который вы можете выбрать для каждого профиля. Теперь вам будет предложено выбрать местоположение, в котором находится каталог данных Ark Server Manager. Вы можете позже изменить это в окне настроек.</sys:String>
+    <sys:String x:Key="Application_DataDirectoryLabel">Кажется, у вас нет набора каталогов данных. Каталог данных - это где ваши профили и SteamCMD будут сохранены. Это не то же самое, что и каталог установки сервера, который вы можете выбрать для каждого профиля. Теперь вам будет предложено выбрать местоположение, в котором находится каталог данных JVH Ark Ascended Server Manager. Вы можете позже изменить это в окне настроек.</sys:String>
     <sys:String x:Key="Application_DataDirectory_DialogTitle">Выберите каталог данных</sys:String>
     <sys:String x:Key="Application_DataDirectory_ConfirmTitle">Подтвердить расположение</sys:String>
-    <sys:String x:Key="Application_DataDirectory_ConfirmLabel">Ark Server Manager будет хранить профили и SteamCMD в следующих каталогах:\r\n\r\nПрофили: {0}\r\nSteamCMD: {1}\r\n\r\nВы подтверждаете?</sys:String>
+    <sys:String x:Key="Application_DataDirectory_ConfirmLabel">JVH Ark Ascended Server Manager будет хранить профили и SteamCMD в следующих каталогах:\r\n\r\nПрофили: {0}\r\nSteamCMD: {1}\r\n\r\nВы подтверждаете?</sys:String>
     <sys:String x:Key="Application_DataDirectory_DataDirectoryFolderErrorTitle">Выбор каталога данных ошибок</sys:String>
     <sys:String x:Key="Application_DataDirectory_DataDirectoryWithinInstallFolderErrorLabel">Каталог, который вы выбрали, находится в папке установки менеджера сервера. Это не рекомендуется, пожалуйста, выберите другую папку.</sys:String>
     <sys:String x:Key="Application_DataDirectory_DataDirectoryWithinDesktopFolderErrorLabel">Выбранный вами каталог находится на рабочем столе. Это не рекомендуется, пожалуйста, выберите другую папку.</sys:String>
@@ -539,7 +539,7 @@
     <!--#endregion-->
 
     <!--#region GlobalSettings Window -->
-    <sys:String x:Key="GlobalSettings_Title">ARK: Survival Evolved™ Server Manager</sys:String>
+    <sys:String x:Key="GlobalSettings_Title">JVH Ark Ascended Server Manager</sys:String>
     <sys:String x:Key="GlobalSettings_VersionLabel">Версия:</sys:String>
     <sys:String x:Key="GlobalSettings_ResetButtonLabel">Сброс</sys:String>
     <sys:String x:Key="GlobalSettings_ResetButtonTooltip">Это приведет к сбросу всех глобальных параметров пользователя в диспетчере сервера. Менеджер сервера будет закрыт, если сброс будет успешным.</sys:String>
@@ -857,9 +857,9 @@
     <!--#endregion-->
 
     <!--#region Main Window -->   
-    <sys:String x:Key="MainWindow_Title">ARK: Survival Evolved™ Server Manager</sys:String>
-    <sys:String x:Key="MainWindow_TitleWithAdmin">ARK: Survival Evolved™ Server Manager (Администратор)</sys:String>
-    <sys:String x:Key="MainWindow_ArkNameLabel">ARK: Survival Evolved™ Server Manager</sys:String>
+    <sys:String x:Key="MainWindow_Title">JVH Ark Ascended Server Manager</sys:String>
+    <sys:String x:Key="MainWindow_TitleWithAdmin">JVH Ark Ascended Server Manager (Администратор)</sys:String>
+    <sys:String x:Key="MainWindow_ArkNameLabel">JVH Ark Ascended Server Manager</sys:String>
     <sys:String x:Key="MainWindow_NewProfileTooltip">Создать новый Профиль Сервера.</sys:String>
     <sys:String x:Key="MainWindow_CloseProfileTooltip">Удалить Профиль Сервера</sys:String>
     <sys:String x:Key="MainWindow_VersionLabel">Версия:</sys:String>
@@ -915,7 +915,7 @@
     <sys:String x:Key="MainWindow_ProfileDelete_Title">Удалить Профиль {0}?</sys:String>
     <sys:String x:Key="MainWindow_ProfileDelete_Label">Вы действительно хотите удалить этот профиль?\r\n\r\nПримечание: Это удалит только профиль, а не каталог установки, сохранит игру или файлы настроек, содержащиеся в нем.</sys:String>
     <sys:String x:Key="MainWindow_Donate_Title">Сделать пожертвование?</sys:String>
-    <sys:String x:Key="MainWindow_Donate_Label">Ark Server Manager - это проект с открытым исходным кодом, предоставляемый совершенно бесплатно. Вы можете пожертвовать, если хотите; Однако вы не обязаны. Если вы хотите пожертвовать, ваш браузер откроется на веб-сайте PayPal, где вы можете пожертвовать сколько вам не жалко :) Вы хотите пожертвовать сейчас?</sys:String>
+    <sys:String x:Key="MainWindow_Donate_Label">JVH Ark Ascended Server Manager - это проект с открытым исходным кодом, предоставляемый совершенно бесплатно. Вы можете пожертвовать, если хотите; Однако вы не обязаны. Если вы хотите пожертвовать, ваш браузер откроется на веб-сайте PayPal, где вы можете пожертвовать сколько вам не жалко :) Вы хотите пожертвовать сейчас?</sys:String>
     <sys:String x:Key="MainWindow_Upgrade_Title">Доступно Обновление</sys:String>
     <sys:String x:Key="MainWindow_Upgrade_Label">Версия {0} доступна. Для обновления, приложение должно быть закрыто. Закрыть и обновить сейчас?</sys:String>
     <sys:String x:Key="MainWindow_OverlayMessage_UpgradeLabel">Запуск Обновления...</sys:String>
@@ -1353,7 +1353,7 @@
     <!--#region Server Settings - Automatic Management -->
     <sys:String x:Key="ServerSettings_AutomaticManagementLabel">Автоуправление</sys:String>
     <sys:String x:Key="ServerSettings_NoAutoManagementButtonLabel">Почему я не могу использовать это?</sys:String>
-    <sys:String x:Key="ServerSettings_ASMSettingLabel">Настройки Ark Server Manager</sys:String>
+    <sys:String x:Key="ServerSettings_ASMSettingLabel">Настройки JVH Ark Ascended Server Manager</sys:String>
     <sys:String x:Key="ServerSettings_AutoStartLabel">Автозапуск при загрузке операционной системы</sys:String>
     <sys:String x:Key="ServerSettings_AutoStartTooltip">Автоматически запускать сервер при включении компьютера.</sys:String>
     <sys:String x:Key="ServerSettings_AutoStartServerOnBootLabel">при загрузке</sys:String>

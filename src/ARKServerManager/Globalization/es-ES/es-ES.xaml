@@ -441,7 +441,7 @@
     <!--#endregion-->
 
     <!--#region GlobalSettings Window -->
-    <sys:String x:Key="GlobalSettings_Title">Gestor de servidores de ARK: Survival Evolved™</sys:String>
+    <sys:String x:Key="GlobalSettings_Title">JVH Ark Ascended Server Manager</sys:String>
     <sys:String x:Key="GlobalSettings_VersionLabel">Versión:</sys:String>
     <sys:String x:Key="GlobalSettings_ResetButtonLabel">Reiniciar</sys:String>
     <sys:String x:Key="GlobalSettings_ResetButtonTooltip">Esto reiniciará TODOS los ajustes globales de usuario del gestor de servidores. El gestor de servidores se cerrará si se ejecuta correctamente.</sys:String>
@@ -676,9 +676,9 @@
     <!--#endregion-->
 
     <!--#region Main Window -->   
-    <sys:String x:Key="MainWindow_Title">Gestor de servidores de ARK: Survival Evolved™</sys:String>
-    <sys:String x:Key="MainWindow_TitleWithAdmin">Gestor de servidores de ARK: Survival Evolved™ (Administrador)</sys:String>
-    <sys:String x:Key="MainWindow_ArkNameLabel">Gestor de servidores de ARK: Survival Evolved™</sys:String>
+    <sys:String x:Key="MainWindow_Title">JVH Ark Ascended Server Manager</sys:String>
+    <sys:String x:Key="MainWindow_TitleWithAdmin">JVH Ark Ascended Server Manager (Administrador)</sys:String>
+    <sys:String x:Key="MainWindow_ArkNameLabel">JVH Ark Ascended Server Manager</sys:String>
     <sys:String x:Key="MainWindow_NewProfileTooltip">Crea un nuevo perfil de servidor.</sys:String>
     <sys:String x:Key="MainWindow_CloseProfileTooltip">Elimina el perfil del servidor.</sys:String>
     <sys:String x:Key="MainWindow_VersionLabel">Versión:</sys:String>

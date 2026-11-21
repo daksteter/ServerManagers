@@ -127,10 +127,10 @@
 
     <sys:String x:Key="Application_DataDirectoryTitle">Selecione Diretório de Dados</sys:String>
     <sys:String x:Key="Application_DataDirectoryLabel" xml:space="preserve">Parece que você não tem um diretório de dados definido. O diretório de dados é onde seus perfis e SteamCMD serão armazenados.
-Não é o mesmo que o diretório de instalação do servidor, que você pode escolher para cada perfil. Você será solicitado a selecionar o local onde o diretório de dados do Ark Server Manager está localizado. Você pode alterar isso posteriormente na janela Configurações.</sys:String>
+Não é o mesmo que o diretório de instalação do servidor, que você pode escolher para cada perfil. Você será solicitado a selecionar o local onde o diretório de dados do JVH Ark Ascended Server Manager está localizado. Você pode alterar isso posteriormente na janela Configurações.</sys:String>
     <sys:String x:Key="Application_DataDirectory_DialogTitle">Selecione um diretório de dados</sys:String>
     <sys:String x:Key="Application_DataDirectory_ConfirmTitle">Confirme a localização</sys:String>
-    <sys:String x:Key="Application_DataDirectory_ConfirmLabel">O Ark Server Manager armazenará os perfis e o SteamCMD nos seguintes diretórios:\r\n\r\nProfiles: {0}\r\nSteamCMD: {1}\r\n\r\n Está tudo bem?</sys:String>
+    <sys:String x:Key="Application_DataDirectory_ConfirmLabel">O JVH Ark Ascended Server Manager armazenará os perfis e o SteamCMD nos seguintes diretórios:\r\n\r\nProfiles: {0}\r\nSteamCMD: {1}\r\n\r\n Está tudo bem?</sys:String>
     <sys:String x:Key="Application_DataDirectory_DataDirectoryFolderErrorTitle">Erro na seleção do diretório de dados</sys:String>
     <sys:String x:Key="Application_DataDirectory_DataDirectoryWithinInstallFolderErrorLabel">O diretório que você escolheu está dentro da pasta de instalação do gerenciador de servidor. Isso não é recomendado, escolha outra pasta.</sys:String>
     <sys:String x:Key="Application_DataDirectory_DataDirectoryWithinDesktopFolderErrorLabel">O diretório que você escolheu está na área de trabalho. Isso não é recomendado, escolha outra pasta.</sys:String>    
@@ -142,7 +142,7 @@ Não é o mesmo que o diretório de instalação do servidor, que você pode esc
     <!--#endregion-->
 
     <!--#region Updater Window -->
-    <sys:String x:Key="AutoUpdater_Title">ARK Server Manager - Atualizando ...</sys:String>
+    <sys:String x:Key="AutoUpdater_Title">JVH Ark Ascended Server Manager - Atualizando ...</sys:String>
     <sys:String x:Key="AutoUpdater_Status">Status</sys:String>
     <sys:String x:Key="AutoUpdater_Status_CleaningSteamCmd">Limpando o SteamCMD ...</sys:String>
     <sys:String x:Key="AutoUpdater_Status_DownloadingSteamCmd">Fazendo o download do SteamCMD ...</sys:String>
@@ -541,7 +541,7 @@ Caso contrário, o desligamento aguardará até que o temporizador do período d
     <!--#endregion-->
 
     <!--#region GlobalSettings Window -->
-	<sys:String x:Key="GlobalSettings_Title">ARK: Survival Evolved™ Server Manager</sys:String>
+	<sys:String x:Key="GlobalSettings_Title">JVH Ark Ascended Server Manager</sys:String>
     <sys:String x:Key="GlobalSettings_VersionLabel">Versão:</sys:String>
     <sys:String x:Key="GlobalSettings_ResetButtonLabel">Redefinir</sys:String>
     <sys:String x:Key="GlobalSettings_ResetButtonTooltip">Isso redefinirá TODAS as configurações globais do usuário para o gerenciador do servidor. O gerenciador do servidor será fechado se for bem-sucedido.</sys:String>
@@ -861,9 +861,9 @@ Caso contrário, o desligamento aguardará até que o temporizador do período d
     <!--#endregion-->
 
     <!--#region Main Window -->   
-	<sys:String x:Key="MainWindow_Title">ARK: Survival Evolved™ Server Manager</sys:String>
-    <sys:String x:Key="MainWindow_TitleWithAdmin">ARK: Survival Evolved™ Server Manager (Administrador)</sys:String>
-    <sys:String x:Key="MainWindow_ArkNameLabel">ARK: Survival Evolved™ Server Manager</sys:String>
+	<sys:String x:Key="MainWindow_Title">JVH Ark Ascended Server Manager</sys:String>
+    <sys:String x:Key="MainWindow_TitleWithAdmin">JVH Ark Ascended Server Manager (Administrador)</sys:String>
+    <sys:String x:Key="MainWindow_ArkNameLabel">JVH Ark Ascended Server Manager</sys:String>
     <sys:String x:Key="MainWindow_NewProfileTooltip">Crie um novo perfil de servidor.</sys:String>
     <sys:String x:Key="MainWindow_CloseProfileTooltip">Exclua o perfil do servidor.</sys:String>
     <sys:String x:Key="MainWindow_VersionLabel">Versão:</sys:String>
@@ -919,7 +919,7 @@ Caso contrário, o desligamento aguardará até que o temporizador do período d
     <sys:String x:Key="MainWindow_ProfileDelete_Title">Excluir perfil {0}?</sys:String>
     <sys:String x:Key="MainWindow_ProfileDelete_Label">Tem certeza de que deseja excluir este perfil?\r\n\r\nNOTA: Isso excluirá apenas o perfil, não o diretório de instalação, salvará os arquivos de jogos ou configurações contidos nele.</sys:String>
     <sys:String x:Key="MainWindow_Donate_Title">Faça uma doação?</sys:String>
-    <sys:String x:Key="MainWindow_Donate_Label" xml:space="preserve">O Ark Server Manager é um projeto de código aberto, totalmente gratuito. Você ainda pode doar se quiser; no entanto você não tem nenhuma obrigação.
+    <sys:String x:Key="MainWindow_Donate_Label" xml:space="preserve">O JVH Ark Ascended Server Manager é um projeto de código aberto, totalmente gratuito. Você ainda pode doar se quiser; no entanto você não tem nenhuma obrigação.
 Se você deseja doar, seu navegador será aberto ao site do PayPal, onde você poderá doar o mínimo ou o quanto quiser. Gostaria de doar agora?</sys:String>
     <sys:String x:Key="MainWindow_Upgrade_Title">Atualização disponível</sys:String>
     <sys:String x:Key="MainWindow_Upgrade_Label">A versão {0} está agora disponível. Para atualizar o aplicativo deve fechar. Fechar e atualizar agora?</sys:String>
@@ -1379,7 +1379,7 @@ Undocumented bye wildcard.</sys:String>
     <!--#region Server Settings - Automatic Management -->
     <sys:String x:Key="ServerSettings_AutomaticManagementLabel">Gerenciamento Automático</sys:String>
     <sys:String x:Key="ServerSettings_NoAutoManagementButtonLabel">Por que não posso usar isso?</sys:String>
-    <sys:String x:Key="ServerSettings_ASMSettingLabel">Configurações do Ark Server Manager</sys:String>
+    <sys:String x:Key="ServerSettings_ASMSettingLabel">Configurações do JVH Ark Ascended Server Manager</sys:String>
     <sys:String x:Key="ServerSettings_AutoStartServerLabel">Inicialização automática</sys:String>
     <sys:String x:Key="ServerSettings_AutoStartServerTooltip">Iniciar o servidor automaticamente.</sys:String>
     <sys:String x:Key="ServerSettings_AutoStartServerOnBootLabel">Na inicialização</sys:String>

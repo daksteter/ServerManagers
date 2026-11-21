@@ -188,7 +188,7 @@ namespace ServerManagerTool
                         Credentials = Config.Default.Email_UseDetaultCredentials ? null : new System.Net.NetworkCredential(Config.Default.Email_Username, Config.Default.Email_Password),
                     };
 
-                    email.SendEmail(Config.Default.Email_From, Config.Default.Email_To?.Split(','), "Ark Server Manager Test Email", "This is a test email sent from the Ark Server Manager settings window.", true);
+                    email.SendEmail(Config.Default.Email_From, Config.Default.Email_To?.Split(','), "JVH Ark Ascended Server Manager Test Email", "This is a test email sent from the JVH Ark Ascended Server Manager settings window.", true);
 
                 });
                 MessageBox.Show("Test email sent.", "Send Email Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);

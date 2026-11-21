@@ -537,7 +537,7 @@
     <!--#endregion-->
 
     <!--#region GlobalSettings Window -->
-    <sys:String x:Key="GlobalSettings_Title">ARK: Survival Evolved™ Sunucu Yöneticisi</sys:String>
+    <sys:String x:Key="GlobalSettings_Title">JVH Ark Ascended Server Manager</sys:String>
     <sys:String x:Key="GlobalSettings_VersionLabel">Sürüm:</sys:String>
     <sys:String x:Key="GlobalSettings_ResetButtonLabel">Sıfırla</sys:String>
     <sys:String x:Key="GlobalSettings_ResetButtonTooltip">Bu, sunucu yöneticisi için TÜM kullanıcı global ayarlarını sıfırlar. Başarılı ise sunucu yöneticisi kapatılacaktır.</sys:String>
@@ -885,9 +885,9 @@
     <!--#endregion-->
 
     <!--#region Main Window -->   
-    <sys:String x:Key="MainWindow_Title">ARK: Survival Evolved™ Sunucu Yöneticisi</sys:String>
-    <sys:String x:Key="MainWindow_TitleWithAdmin">ARK: Survival Evolved™ Sunucu Yöneticisi (Yönetici)</sys:String>
-    <sys:String x:Key="MainWindow_ArkNameLabel">ARK: Survival Evolved™ Sunucu Yöneticisi</sys:String>
+    <sys:String x:Key="MainWindow_Title">JVH Ark Ascended Server Manager</sys:String>
+    <sys:String x:Key="MainWindow_TitleWithAdmin">JVH Ark Ascended Server Manager (Yönetici)</sys:String>
+    <sys:String x:Key="MainWindow_ArkNameLabel">JVH Ark Ascended Server Manager</sys:String>
     <sys:String x:Key="MainWindow_NewProfileTooltip">Yeni bir sunucu profili oluşturun.</sys:String>
     <sys:String x:Key="MainWindow_CloseProfileTooltip">Sunucu profili silin.</sys:String>
     <sys:String x:Key="MainWindow_VersionLabel">Sürüm:</sys:String>

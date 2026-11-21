@@ -126,10 +126,10 @@
     <sys:String x:Key="Application_SingleInstance_FailedLabel">Impossible de passer à l'autre instance d'application. Lancement d'une nouvelle instance d'application.</sys:String>
 
     <sys:String x:Key="Application_DataDirectoryTitle">Sélectionner le répertoire de données</sys:String>
-    <sys:String x:Key="Application_DataDirectoryLabel">Il semble que vous n'ayez pas défini de répertoire de données. Le répertoire de données est l'endroit où vos profils et SteamCMD seront stockés. Ce n'est pas la même chose que le répertoire d'installation du serveur, que vous pouvez choisir pour chaque profil. Vous serez maintenant invité à sélectionner l'emplacement où se trouve le répertoire de données Ark Server Manager. Vous pouvez le modifier ultérieurement dans la fenêtre Paramètres.</sys:String>
+    <sys:String x:Key="Application_DataDirectoryLabel">Il semble que vous n'ayez pas défini de répertoire de données. Le répertoire de données est l'endroit où vos profils et SteamCMD seront stockés. Ce n'est pas la même chose que le répertoire d'installation du serveur, que vous pouvez choisir pour chaque profil. Vous serez maintenant invité à sélectionner l'emplacement où se trouve le répertoire de données JVH Ark Ascended Server Manager. Vous pouvez le modifier ultérieurement dans la fenêtre Paramètres.</sys:String>
     <sys:String x:Key="Application_DataDirectory_DialogTitle">Sélectionnez un répertoire de données</sys:String>
     <sys:String x:Key="Application_DataDirectory_ConfirmTitle">Confirmer l'emplacement</sys:String>
-    <sys:String x:Key="Application_DataDirectory_ConfirmLabel">Ark Server Manager stockera les profils et SteamCMD dans les répertoires suivants:\r\n\r\n Profils:{0}\r\n SteamCMD:{1}\r\n\r\n Est-ce correct?</sys:String>
+    <sys:String x:Key="Application_DataDirectory_ConfirmLabel">JVH Ark Ascended Server Manager stockera les profils et SteamCMD dans les répertoires suivants:\r\n\r\n Profils:{0}\r\n SteamCMD:{1}\r\n\r\n Est-ce correct?</sys:String>
     <sys:String x:Key="Application_DataDirectory_DataDirectoryFolderErrorTitle">Erreur de sélection du répertoire de données</sys:String>
     <sys:String x:Key="Application_DataDirectory_DataDirectoryWithinInstallFolderErrorLabel">Le répertoire que vous avez choisi se trouve dans le dossier d'installation du gestionnaire du serveur. Ce n'est pas recommandé, veuillez choisir un autre dossier.</sys:String>
     <sys:String x:Key="Application_DataDirectory_DataDirectoryWithinDesktopFolderErrorLabel">Le répertoire que vous avez choisi est sur le bureau. Ceci n'est pas recommandé, veuillez choisir un autre dossier .</sys:String>
@@ -141,7 +141,7 @@
     <!--#endregion-->
 
     <!--#region Updater Window -->
-    <sys:String x:Key="AutoUpdater_Title">ARK Server Manager - Mise à jour...</sys:String>
+    <sys:String x:Key="AutoUpdater_Title">JVH Ark Ascended Server Manager - Mise à jour...</sys:String>
     <sys:String x:Key="AutoUpdater_Status">Statut</sys:String>
     <sys:String x:Key="AutoUpdater_Status_CleaningSteamCmd">Nettoyage de SteamCMD...</sys:String>
     <sys:String x:Key="AutoUpdater_Status_DownloadingSteamCmd">Téléchargement de SteamCMD...</sys:String>
@@ -538,7 +538,7 @@
     <!--#endregion-->
 
     <!--#region GlobalSettings Window -->
-    <sys:String x:Key="GlobalSettings_Title">ARK: Survival Evolved™ Server Manager</sys:String>
+    <sys:String x:Key="GlobalSettings_Title">JVH Ark Ascended Server Manager</sys:String>
     <sys:String x:Key="GlobalSettings_VersionLabel">Version:</sys:String>
     <sys:String x:Key="GlobalSettings_ResetButtonLabel">Réinitialiser</sys:String>
     <sys:String x:Key="GlobalSettings_ResetButtonTooltip">Cela réinitialisera TOUS les paramètres globaux de l'utilisateur pour le gestionnaire de serveur. Le gestionnaire de serveur sera fermé en cas de succès.</sys:String>
@@ -837,9 +837,9 @@
     <!--#endregion-->
 
     <!--#region Main Window -->
-    <sys:String x:Key="MainWindow_Title">ARK: Survival Evolved™ Server Manager</sys:String>
-    <sys:String x:Key="MainWindow_TitleWithAdmin">ARK: Survival Evolved™ Server Manager (Administrateur)</sys:String>
-    <sys:String x:Key="MainWindow_ArkNameLabel">ARK: Survival Evolved™ Server Manager</sys:String>
+    <sys:String x:Key="MainWindow_Title">JVH Ark Ascended Server Manager</sys:String>
+    <sys:String x:Key="MainWindow_TitleWithAdmin">JVH Ark Ascended Server Manager (Administrateur)</sys:String>
+    <sys:String x:Key="MainWindow_ArkNameLabel">JVH Ark Ascended Server Manager</sys:String>
     <sys:String x:Key="MainWindow_NewProfileTooltip">Créer un nouveau profil de serveur.</sys:String>
     <sys:String x:Key="MainWindow_CloseProfileTooltip">Supprimer le profil du serveur.</sys:String>
     <sys:String x:Key="MainWindow_VersionLabel">Version ASM:</sys:String>
@@ -895,7 +895,7 @@
     <sys:String x:Key="MainWindow_ProfileDelete_Title">Supprimer le profil {0}?</sys:String>
     <sys:String x:Key="MainWindow_ProfileDelete_Label">Êtes-vous sûr de vouloir supprimer ce profil??\r\n\r\nNOTE: Cela supprimera uniquement le profil, pas le répertoire d'installation, sauvegardera les jeux ou les fichiers de paramètres qui y sont contenus.</sys:String>
     <sys:String x:Key="MainWindow_Donate_Title">Faire un don?</sys:String>
-    <sys:String x:Key="MainWindow_Donate_Label">Ark Server Manager est un projet open-source, entièrement gratuit. Vous pouvez toujours faire un don si vous le souhaitez; Cependant, vous n'êtes pas obligé. Si vous souhaitez faire un don, votre navigateur s'ouvrira sur le site Web de PayPal où vous pouvez donner aussi peu ou autant que vous le souhaitez. Aimeriez-vous faire un don maintenant?</sys:String>
+    <sys:String x:Key="MainWindow_Donate_Label">JVH Ark Ascended Server Manager est un projet open-source, entièrement gratuit. Vous pouvez toujours faire un don si vous le souhaitez; Cependant, vous n'êtes pas obligé. Si vous souhaitez faire un don, votre navigateur s'ouvrira sur le site Web de PayPal où vous pouvez donner aussi peu ou autant que vous le souhaitez. Aimeriez-vous faire un don maintenant?</sys:String>
     <sys:String x:Key="MainWindow_Upgrade_Title">Mise à jour disponible</sys:String>
     <sys:String x:Key="MainWindow_Upgrade_Label">Version {0} est maintenant disponible. Pour mettre à niveau l'application doit fermer. Fermer et mettre à jour maintenant?</sys:String>
     <sys:String x:Key="MainWindow_OverlayMessage_UpgradeLabel">Démarrage de la Mise à jour...</sys:String>

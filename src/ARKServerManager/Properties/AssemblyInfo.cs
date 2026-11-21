@@ -2,11 +2,11 @@
 using System.Runtime.InteropServices;
 using System.Windows;
 
-[assembly: AssemblyTitle("ARK: Survival Evolved™ Server Manager")]
-[assembly: AssemblyDescription("The server manager makes it easy to setup and manage your ARK: Survival Evolved™ dedicated servers.")]
+[assembly: AssemblyTitle("JVH Ark Ascended Server Manager")]
+[assembly: AssemblyDescription("Makes it easy to set up and manage your ARK: Survival Ascended dedicated servers.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Bletch1971")]
-[assembly: AssemblyProduct("Server Managers")]
+[assembly: AssemblyCompany("JVH")]
+[assembly: AssemblyProduct("JVH Ark Ascended Server Manager")]
 [assembly: AssemblyCopyright("Copyright © 2015-2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

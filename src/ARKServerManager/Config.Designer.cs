@@ -1962,7 +1962,7 @@ namespace ServerManagerTool {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("ARK Server:")]
+        [global::System.Configuration.DefaultSettingValueAttribute("ARK Ascended Server:")]
         public string FirewallRulePrefix {
             get {
                 return ((string)(this["FirewallRulePrefix"]));
@@ -2199,7 +2199,7 @@ namespace ServerManagerTool {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("ArkServerManager")]
+        [global::System.Configuration.DefaultSettingValueAttribute("JVHArkAscendedServerManager")]
         public string ScheduledTaskFolder {
             get {
                 return ((string)(this["ScheduledTaskFolder"]));

@@ -506,7 +506,7 @@ namespace ServerManagerTool.Lib
         {
             if(!Environment.Is64BitOperatingSystem)
             {
-                MessageBox.Show("The server requires a 64-bit operating system to run. Your operating system is 32-bit and therefore the Ark Server Manager cannot start the server. You may still load and save profiles and settings files for use on other machines.", "64-bit OS Required", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("The server requires a 64-bit operating system to run. Your operating system is 32-bit and therefore JVH Ark Ascended Server Manager cannot start the server. You may still load and save profiles and settings files for use on other machines.", "64-bit OS Required", MessageBoxButton.OK, MessageBoxImage.Error);
                 return TaskUtils.FinishedTask;
             }
 
@@ -622,7 +622,7 @@ namespace ServerManagerTool.Lib
         {
             if (updateServer && !Environment.Is64BitOperatingSystem)
             {
-                var result = MessageBox.Show("The server requires a 64-bit operating system to run. Your operating system is 32-bit and therefore the Ark Server Manager will be unable to start the server, but you may still install it or load and save profiles and settings files for use on other machines.\r\n\r\nDo you wish to continue?", "64-bit OS Required", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                var result = MessageBox.Show("The server requires a 64-bit operating system to run. Your operating system is 32-bit and therefore JVH Ark Ascended Server Manager will be unable to start the server, but you may still install it or load and save profiles and settings files for use on other machines.\r\n\r\nDo you wish to continue?", "64-bit OS Required", MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 if (result == MessageBoxResult.No)
                 {
                     return false;

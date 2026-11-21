@@ -22,16 +22,16 @@
             <GroupBox.Header>
                 <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
                     <Button Width="22" Height="22" Click="AddPlugin_Click" ToolTip="{DynamicResource PluginsWindow_AddPluginTooltip}">
-                        <Image Source="{com:Icon Path=/Ark Server Manager;component/Art/Add.ico,Size=32}"/>
+                        <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Add.ico,Size=32}"/>
                     </Button>
                     <Button Width="22" Height="22" Click="ClearPlugins_Click" Margin="10,0,0,0" ToolTip="{DynamicResource PluginsWindow_ClearPluginsTooltip}">
-                        <Image Source="{com:Icon Path=/Ark Server Manager;component/Art/Delete.ico,Size=32}"/>
+                        <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Delete.ico,Size=32}"/>
                     </Button>
                     <Button Width="22" Height="22" Click="OpenPluginsFolder_Click" Margin="10,0,0,0" ToolTip="{DynamicResource PluginsWindow_OpenPluginsFolderTooltip}">
-                        <Image Source="{com:Icon Path=/Ark Server Manager;component/Art/FolderOpen.ico,Size=32}"/>
+                        <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/FolderOpen.ico,Size=32}"/>
                     </Button>
                     <Button Width="22" Height="22" Click="PluginsForum_Click" Margin="20,0,0,0" ToolTip="{DynamicResource PluginsWindow_PluginsForumTooltip}">
-                        <Image Source="{com:Icon Path=/Ark Server Manager;component/Art/Help.ico,Size=32}"/>
+                        <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Help.ico,Size=32}"/>
                     </Button>
                 </StackPanel>
             </GroupBox.Header>
@@ -82,7 +82,7 @@
                                             </Style.Triggers>
                                         </Style>
                                     </Button.Style>
-                                    <Image Source="{com:Icon Path=/Ark Server Manager;component/Art/Settings.ico,Size=32}"/>
+                                    <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Settings.ico,Size=32}"/>
                                 </Button>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
@@ -91,7 +91,7 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Button Width="22" Height="22" Margin="0" IsTabStop="False" HorizontalAlignment="Center" VerticalAlignment="Center" Click="RemovePlugin_Click" ToolTip="{DynamicResource PluginsWindow_RemovePluginTooltip}">
-                                    <Image Source="{com:Icon Path=/Ark Server Manager;component/Art/Delete.ico,Size=32}"/>
+                                    <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Delete.ico,Size=32}"/>
                                 </Button>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>

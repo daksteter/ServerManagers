@@ -49,7 +49,7 @@ namespace ServerManagerTool
                 File.WriteAllText(file, details.ToString());
 
                 var message = new StringBuilder();
-                message.AppendLine("OOPS! ARK Server Manager has suffered from an internal error and must shut down, this is probably a bug and should be reported. The error files are:");
+                message.AppendLine("OOPS! JVH Ark Ascended Server Manager has suffered from an internal error and must shut down, this is probably a bug and should be reported. The error files are:");
                 message.AppendLine($"Error File: {file}");
                 details.AppendLine();
                 details.AppendLine();

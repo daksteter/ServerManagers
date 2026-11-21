@@ -30,14 +30,14 @@
 
             <DataTemplate x:Key="StopButtonContent">
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="{com:Icon Path=/Ark Server Manager;component/Art/Stop.ico,Size=32}" Width="16" VerticalAlignment="Center"/>
-                    <Image Source="{com:Icon Path=/Ark Server Manager;component/Art/DropArrow.ico,Size=32}" Width="8" Margin="2,0,0,0" VerticalAlignment="Center"/>
+                    <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Stop.ico,Size=32}" Width="16" VerticalAlignment="Center"/>
+                    <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/DropArrow.ico,Size=32}" Width="8" Margin="2,0,0,0" VerticalAlignment="Center"/>
                 </StackPanel>
             </DataTemplate>
             <DataTemplate x:Key="UpdateButtonContent">
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="{com:Icon Path=/Ark Server Manager;component/Art/Download.ico,Size=32}" Width="16" VerticalAlignment="Center"/>
-                    <Image Source="{com:Icon Path=/Ark Server Manager;component/Art/DropArrow.ico,Size=32}" Width="8" Margin="2,0,0,0" VerticalAlignment="Center"/>
+                    <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Download.ico,Size=32}" Width="16" VerticalAlignment="Center"/>
+                    <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/DropArrow.ico,Size=32}" Width="8" Margin="2,0,0,0" VerticalAlignment="Center"/>
                 </StackPanel>
             </DataTemplate>
         </ResourceDictionary>
@@ -71,23 +71,23 @@
                 </Grid.ColumnDefinitions>
 
                 <Button Grid.Row="0" Grid.Column="0" Width="22" Height="22" Margin="5,5,5,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="CreateShortcut_Click" ToolTip="{DynamicResource ServerMonitor_CreateShortcutButtonTooltip}">
-                    <Image Source="{com:Icon Path=/Ark Server Manager;component/Art/Shortcut.ico,Size=32}"/>
+                    <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Shortcut.ico,Size=32}"/>
                 </Button>
 
                 <Button Grid.Row="0" Grid.Column="1" Width="22" Height="22" Margin="10,5,5,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="SelectAllServers_Click" ToolTip="{DynamicResource ServerMonitor_SelectAllServersButtonTooltip}">
-                    <Image Source="{com:Icon Path=/Ark Server Manager;component/Art/Checked.ico,Size=32}"/>
+                    <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Checked.ico,Size=32}"/>
                 </Button>
 
                 <Button Grid.Row="0" Grid.Column="2" Width="22" Height="22" Margin="0,5,5,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="UnselectAllServers_Click" ToolTip="{DynamicResource ServerMonitor_UnselectAllServersButtonTooltip}">
-                    <Image Source="{com:Icon Path=/Ark Server Manager;component/Art/Unchecked.ico,Size=32}"/>
+                    <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Unchecked.ico,Size=32}"/>
                 </Button>
 
                 <Button Grid.Row="0" Grid.Column="3" Width="22" Height="22" Margin="10,5,5,0" HorizontalAlignment="Left" VerticalAlignment="Top" Command="{Binding StartServersCommand}" CommandParameter="{Binding}" ToolTip="{DynamicResource ServerMonitor_StartServersButtonTooltip}">
-                    <Image Source="{com:Icon Path=/Ark Server Manager;component/Art/Start.ico,Size=32}"/>
+                    <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Start.ico,Size=32}"/>
                 </Button>
 
                 <Button Grid.Row="0" Grid.Column="4" Width="22" Height="22" Margin="0,5,5,0" HorizontalAlignment="Left" VerticalAlignment="Top" Command="{Binding RestartServersCommand}" CommandParameter="{Binding}" ToolTip="{DynamicResource ServerMonitor_RestartServersButtonTooltip}">
-                    <Image Source="{com:Icon Path=/Ark Server Manager;component/Art/Restart.ico,Size=32}"/>
+                    <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Restart.ico,Size=32}"/>
                 </Button>
 
                 <controls:DropDownButton Grid.Row="0" Grid.Column="5" Width="35" Height="22" Margin="0,5,5,0" HorizontalAlignment="Left" VerticalAlignment="Center">
@@ -113,11 +113,11 @@
                 </controls:DropDownButton>
 
                 <Button Grid.Row="0" Grid.Column="7" Width="22" Height="22" Margin="0,5,5,0" HorizontalAlignment="Left" VerticalAlignment="Top" Command="{Binding BackupServersCommand}" CommandParameter="{Binding}" ToolTip="{DynamicResource ServerMonitor_BackupServersButtonTooltip}">
-                    <Image Source="{com:Icon Path=/Ark Server Manager;component/Art/Save.ico,Size=32}"/>
+                    <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Save.ico,Size=32}"/>
                 </Button>
 
                 <Button Grid.Row="0" Grid.Column="8" Width="22" Height="22" Margin="10,5,5,0" HorizontalAlignment="Left" VerticalAlignment="Top" Command="{Binding CancelServersCommand}" CommandParameter="{Binding}" ToolTip="{DynamicResource ServerMonitor_CancelServersButtonTooltip}">
-                    <Image Source="{com:Icon Path=/Ark Server Manager;component/Art/Stop.ico,Size=32}"/>
+                    <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Stop.ico,Size=32}"/>
                 </Button>
 
                 <CheckBox Grid.Row="0" Grid.Column="9" Content="{DynamicResource ServerMonitor_ProcessServersSequentiallyLabel}" IsChecked="{Binding ProcessServersSequentially}" Margin="10,5,5,0" VerticalAlignment="Center" ToolTip="{DynamicResource ServerMonitor_ProcessServersSequentiallyTooltip}"/>
@@ -156,7 +156,7 @@
                         </Style>
                     </Button.Style>
 
-                    <Image Source="{com:Icon Path=/Ark Server Manager;component/Art/ChangeNotes.ico,Size=32}"/>
+                    <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/ChangeNotes.ico,Size=32}"/>
                 </Button>
 
                 <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="13" Margin="1,2,5,1">
@@ -424,28 +424,28 @@
                                                 <Style TargetType="{x:Type Image}">
                                                     <Style.Triggers>
                                                         <DataTrigger Binding="{Binding Runtime.Status}" Value="{x:Null}">
-                                                            <Setter Property="Source" Value="{com:Icon Path=/Ark Server Manager;component/Art/Cancel.ico,Size=32}"/>
+                                                            <Setter Property="Source" Value="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Cancel.ico,Size=32}"/>
                                                         </DataTrigger>
                                                         <DataTrigger Binding="{Binding Runtime.Status}" Value="{x:Static ce:ServerStatus.Initializing}">
-                                                            <Setter Property="Source" Value="{com:Icon Path=/Ark Server Manager;component/Art/Stop.ico,Size=32}"/>
+                                                            <Setter Property="Source" Value="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Stop.ico,Size=32}"/>
                                                         </DataTrigger>
                                                         <DataTrigger Binding="{Binding Runtime.Status}" Value="{x:Static ce:ServerStatus.Running}">
-                                                            <Setter Property="Source" Value="{com:Icon Path=/Ark Server Manager;component/Art/Stop.ico,Size=32}"/>
+                                                            <Setter Property="Source" Value="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Stop.ico,Size=32}"/>
                                                         </DataTrigger>
                                                         <DataTrigger Binding="{Binding Runtime.Status}" Value="{x:Static ce:ServerStatus.Stopping}">
-                                                            <Setter Property="Source" Value="{com:Icon Path=/Ark Server Manager;component/Art/Stop.ico,Size=32}"/>
+                                                            <Setter Property="Source" Value="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Stop.ico,Size=32}"/>
                                                         </DataTrigger>
                                                         <DataTrigger Binding="{Binding Runtime.Status}" Value="{x:Static ce:ServerStatus.Stopped}">
-                                                            <Setter Property="Source" Value="{com:Icon Path=/Ark Server Manager;component/Art/Start.ico,Size=32}"/>
+                                                            <Setter Property="Source" Value="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Start.ico,Size=32}"/>
                                                         </DataTrigger>
                                                         <DataTrigger Binding="{Binding Runtime.Status}" Value="{x:Static ce:ServerStatus.Unknown}">
-                                                            <Setter Property="Source" Value="{com:Icon Path=/Ark Server Manager;component/Art/Cancel.ico,Size=32}"/>
+                                                            <Setter Property="Source" Value="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Cancel.ico,Size=32}"/>
                                                         </DataTrigger>
                                                         <DataTrigger Binding="{Binding Runtime.Status}" Value="{x:Static ce:ServerStatus.Updating}">
-                                                            <Setter Property="Source" Value="{com:Icon Path=/Ark Server Manager;component/Art/Cancel.ico,Size=32}"/>
+                                                            <Setter Property="Source" Value="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Cancel.ico,Size=32}"/>
                                                         </DataTrigger>
                                                         <DataTrigger Binding="{Binding Runtime.Status}" Value="{x:Static ce:ServerStatus.Uninstalled}">
-                                                            <Setter Property="Source" Value="{com:Icon Path=/Ark Server Manager;component/Art/Cancel.ico,Size=32}"/>
+                                                            <Setter Property="Source" Value="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Cancel.ico,Size=32}"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
                                                 </Style>
@@ -502,28 +502,28 @@
                                                 <Style TargetType="{x:Type Image}">
                                                     <Style.Triggers>
                                                         <DataTrigger Binding="{Binding Runtime.Status}" Value="{x:Null}">
-                                                            <Setter Property="Source" Value="{com:Icon Path=/Ark Server Manager;component/Art/Cancel.ico,Size=32}"/>
+                                                            <Setter Property="Source" Value="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Cancel.ico,Size=32}"/>
                                                         </DataTrigger>
                                                         <DataTrigger Binding="{Binding Runtime.Status}" Value="{x:Static ce:ServerStatus.Initializing}">
-                                                            <Setter Property="Source" Value="{com:Icon Path=/Ark Server Manager;component/Art/Download.ico,Size=32}"/>
+                                                            <Setter Property="Source" Value="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Download.ico,Size=32}"/>
                                                         </DataTrigger>
                                                         <DataTrigger Binding="{Binding Runtime.Status}" Value="{x:Static ce:ServerStatus.Running}">
-                                                            <Setter Property="Source" Value="{com:Icon Path=/Ark Server Manager;component/Art/Download.ico,Size=32}"/>
+                                                            <Setter Property="Source" Value="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Download.ico,Size=32}"/>
                                                         </DataTrigger>
                                                         <DataTrigger Binding="{Binding Runtime.Status}" Value="{x:Static ce:ServerStatus.Stopping}">
-                                                            <Setter Property="Source" Value="{com:Icon Path=/Ark Server Manager;component/Art/Download.ico,Size=32}"/>
+                                                            <Setter Property="Source" Value="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Download.ico,Size=32}"/>
                                                         </DataTrigger>
                                                         <DataTrigger Binding="{Binding Runtime.Status}" Value="{x:Static ce:ServerStatus.Stopped}">
-                                                            <Setter Property="Source" Value="{com:Icon Path=/Ark Server Manager;component/Art/Download.ico,Size=32}"/>
+                                                            <Setter Property="Source" Value="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Download.ico,Size=32}"/>
                                                         </DataTrigger>
                                                         <DataTrigger Binding="{Binding Runtime.Status}" Value="{x:Static ce:ServerStatus.Unknown}">
-                                                            <Setter Property="Source" Value="{com:Icon Path=/Ark Server Manager;component/Art/Cancel.ico,Size=32}"/>
+                                                            <Setter Property="Source" Value="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Cancel.ico,Size=32}"/>
                                                         </DataTrigger>
                                                         <DataTrigger Binding="{Binding Runtime.Status}" Value="{x:Static ce:ServerStatus.Updating}">
-                                                            <Setter Property="Source" Value="{com:Icon Path=/Ark Server Manager;component/Art/Stop.ico,Size=32}"/>
+                                                            <Setter Property="Source" Value="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Stop.ico,Size=32}"/>
                                                         </DataTrigger>
                                                         <DataTrigger Binding="{Binding Runtime.Status}" Value="{x:Static ce:ServerStatus.Uninstalled}">
-                                                            <Setter Property="Source" Value="{com:Icon Path=/Ark Server Manager;component/Art/Download.ico,Size=32}"/>
+                                                            <Setter Property="Source" Value="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Download.ico,Size=32}"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
                                                 </Style>
@@ -584,10 +584,10 @@
                                                 <Style TargetType="{x:Type Image}">
                                                     <Style.Triggers>
                                                         <DataTrigger Binding="{Binding Profile.RCONEnabled}" Value="False">
-                                                            <Setter Property="Source" Value="{com:Icon Path=/Ark Server Manager;component/Art/Players.ico,Size=32}"/>
+                                                            <Setter Property="Source" Value="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Players.ico,Size=32}"/>
                                                         </DataTrigger>
                                                         <DataTrigger Binding="{Binding Profile.RCONEnabled}" Value="True">
-                                                            <Setter Property="Source" Value="{com:Icon Path=/Ark Server Manager;component/Art/Command.ico,Size=32}"/>
+                                                            <Setter Property="Source" Value="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Command.ico,Size=32}"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
                                                 </Style>
@@ -637,7 +637,7 @@
                                                 </Style.Triggers>
                                             </Style>
                                         </Button.Style>
-                                        <Image Source="{com:Icon Path=/Ark Server Manager;component/Art/Save.ico,Size=32}" />
+                                        <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Save.ico,Size=32}" />
                                     </Button>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
@@ -652,7 +652,7 @@
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Button Width="22" Height="22" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" Click="OpenServerFolder_Click" ToolTip="{DynamicResource ServerSettings_OpenServerFolderTooltip}">
-                                        <Image Source="{com:Icon Path=/Ark Server Manager;component/Art/FolderOpen.ico,Size=32}" />
+                                        <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/FolderOpen.ico,Size=32}" />
                                     </Button>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
@@ -688,7 +688,7 @@
         <Popup x:Name="popup" IsHitTestVisible="False" Placement="RelativePoint" PlacementTarget="{Binding ElementName=ServerMonitorUI}" AllowsTransparency="True" Grid.ColumnSpan="2">
             <Border BorderBrush="LightSteelBlue" BorderThickness="2" Background="White" Opacity="0.75">
                 <StackPanel Orientation="Horizontal" Margin="4,3,8,3">
-                    <Image Source="{com:Icon Path=/Ark Server Manager;component/Art/Drag.ico,Size=32}" Width="16" Height="16"/>
+                    <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Drag.ico,Size=32}" Width="16" Height="16"/>
                     <TextBlock FontSize="14" VerticalAlignment="Center" Text="{Binding DraggedItem.Profile.ProfileName, ElementName=ServerMonitorUI}" Margin="8,0,0,0" />
                 </StackPanel>
             </Border>

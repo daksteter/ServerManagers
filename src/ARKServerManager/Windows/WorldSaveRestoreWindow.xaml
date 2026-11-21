@@ -26,7 +26,7 @@
         </Grid.ColumnDefinitions>
 
         <Button Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Reload_Click" Margin="5,5,5,0" Width="22" Height="22" ToolTip="{DynamicResource WorldSaveRestore_ReloadTooltip}">
-            <Image Source="{com:Icon Path=/ARK Server Manager;component/Art/Reload.ico,Size=32}"  />
+            <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Reload.ico,Size=32}"  />
         </Button>
 
         <DataGrid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" ItemsSource="{Binding WorldSaveFiles}" Margin="5" AutoGenerateColumns="False" CanUserAddRows="False" CanUserReorderColumns="False" CanUserSortColumns="True" RowHeaderWidth="0" SelectionMode="Single">
@@ -96,7 +96,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Width="22" Height="22" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Restore_Click" ToolTip="{DynamicResource WorldSaveRestore_RestoreTooltip}">
-                                <Image Source="{com:Icon Path=/ARK Server Manager;component/Art/Download.ico,Size=32}"  />
+                                <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Download.ico,Size=32}"  />
                             </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -114,7 +114,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Width="22" Height="22" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Delete_Click" ToolTip="{DynamicResource WorldSaveRestore_DeleteTooltip}">
-                                <Image Source="{com:Icon Path=/ARK Server Manager;component/Art/Delete.ico,Size=32}"  />
+                                <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Delete.ico,Size=32}"  />
                             </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

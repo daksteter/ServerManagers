@@ -536,7 +536,7 @@
     <!--#endregion-->
 
     <!--#region 全局设置窗口 -->
-    <sys:String x:Key="GlobalSettings_Title">方舟: 生存进化™服务器管理器</sys:String>
+    <sys:String x:Key="GlobalSettings_Title">JVH Ark Ascended Server Manager</sys:String>
     <sys:String x:Key="GlobalSettings_VersionLabel">当前版本:</sys:String>
     <sys:String x:Key="GlobalSettings_ResetButtonLabel">重置</sys:String>
     <sys:String x:Key="GlobalSettings_ResetButtonTooltip">这将重置服务器管理器的所有用户全局设置。 成功后，服务器管理器将关闭。</sys:String>
@@ -850,9 +850,9 @@
     <!--#endregion-->
 
     <!--#region 主窗口 -->   
-    <sys:String x:Key="MainWindow_Title">方舟: 生存进化™服务器管理器</sys:String>
-    <sys:String x:Key="MainWindow_TitleWithAdmin">方舟: 生存进化™服务器管理器(管理员)</sys:String>
-    <sys:String x:Key="MainWindow_ArkNameLabel">方舟: 生存进化™服务器管理器</sys:String>
+    <sys:String x:Key="MainWindow_Title">JVH Ark Ascended Server Manager</sys:String>
+    <sys:String x:Key="MainWindow_TitleWithAdmin">JVH Ark Ascended Server Manager (管理员)</sys:String>
+    <sys:String x:Key="MainWindow_ArkNameLabel">JVH Ark Ascended Server Manager</sys:String>
     <sys:String x:Key="MainWindow_NewProfileTooltip">创建一个新的服务器配置文件.</sys:String>
     <sys:String x:Key="MainWindow_CloseProfileTooltip">删除当前的服务器配置文件.</sys:String>
     <sys:String x:Key="MainWindow_VersionLabel">当前版本:</sys:String>

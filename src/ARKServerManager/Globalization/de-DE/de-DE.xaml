@@ -484,7 +484,7 @@
     <!--#endregion-->
 
     <!--#region GlobalSettings Window -->
-    <sys:String x:Key="GlobalSettings_Title">ARK: Survival Evolved™ Server Manager</sys:String>
+    <sys:String x:Key="GlobalSettings_Title">JVH Ark Ascended Server Manager</sys:String>
     <sys:String x:Key="GlobalSettings_VersionLabel">Version:</sys:String>
     <sys:String x:Key="GlobalSettings_ResetButtonLabel">Zurücksetzen</sys:String>
     <sys:String x:Key="GlobalSettings_ResetButtonTooltip">Dadurch werden ALLE globalen Benutzereinstellungen für den Server Manager zurückgesetzt. Der Server Manager wird bei Erfolg geschlossen.</sys:String>
@@ -762,9 +762,9 @@
     <!--#endregion-->
 
     <!--#region Main Window -->   
-    <sys:String x:Key="MainWindow_Title">ARK: Survival Evolved™ Server Manager</sys:String>
-    <sys:String x:Key="MainWindow_TitleWithAdmin">ARK: Survival Evolved™ Server Manager (Administrator)</sys:String>
-    <sys:String x:Key="MainWindow_ArkNameLabel">ARK: Survival Evolved™ Server Manager</sys:String>
+    <sys:String x:Key="MainWindow_Title">JVH Ark Ascended Server Manager</sys:String>
+    <sys:String x:Key="MainWindow_TitleWithAdmin">JVH Ark Ascended Server Manager (Administrator)</sys:String>
+    <sys:String x:Key="MainWindow_ArkNameLabel">JVH Ark Ascended Server Manager</sys:String>
     <sys:String x:Key="MainWindow_NewProfileTooltip">Erstelle ein neues Serverprofil.</sys:String>
     <sys:String x:Key="MainWindow_CloseProfileTooltip">Lösche das Serverprofil.</sys:String>
     <sys:String x:Key="MainWindow_VersionLabel">Version:</sys:String>
