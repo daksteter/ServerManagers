@@ -44,7 +44,8 @@
                         </Style>
                     </DockPanel.Style>
 
-                    <Grid DockPanel.Dock="Top" Background="Red" Visibility="{Binding CommonConfig.SteamAPIKey, Converter={StaticResource InvertStringNullOrEmptyToVisibilityConverter}}">
+                    <!-- "Steam Web API key missing" banner: the key was needed for Workshop mod details, which ASA doesn't use. -->
+                    <Grid DockPanel.Dock="Top" Background="Red" Visibility="Collapsed">
                         <TextBlock Text="{DynamicResource MainWindow_SteamWebApiKeyMissingLabel}" Margin="0,5,0,5" HorizontalAlignment="Center" Foreground="White"/>
                     </Grid>
 

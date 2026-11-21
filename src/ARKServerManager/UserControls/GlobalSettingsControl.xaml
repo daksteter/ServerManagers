@@ -350,7 +350,8 @@
                     </Grid>
                 </GroupBox>
 
-                <GroupBox Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="4" Style="{StaticResource GroupBoxStyle}">
+                <!-- Steam Workshop mod update options: not applicable to ASA (the server updates its CurseForge mods). -->
+                <GroupBox Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="4" Visibility="Collapsed" Style="{StaticResource GroupBoxStyle}">
                     <GroupBox.Header>
                         <Label Content="{DynamicResource GlobalSettings_UpdateModSettingsLabel}"/>
                     </GroupBox.Header>

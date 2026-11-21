@@ -513,7 +513,8 @@
                             </Style>
                         </Button.Style>
                     </Button>
-                    <Button Grid.Row="4" Grid.Column="4" Margin="2" DataContext="{Binding Profile}" Content="{StaticResource PlayerListButtonContent}" ToolTip="{DynamicResource ServerSettings_PlayerListButtonTooltip}" Click="OpenPlayerList_Click">
+                    <!-- Hidden: the player list reads ASE save files; ASA saves (SQLite/UE5) aren't supported yet. -->
+                    <Button Grid.Row="4" Grid.Column="4" Margin="2" Visibility="Collapsed" DataContext="{Binding Profile}" Content="{StaticResource PlayerListButtonContent}" ToolTip="{DynamicResource ServerSettings_PlayerListButtonTooltip}" Click="OpenPlayerList_Click">
                         <Button.Style>
                             <Style BasedOn="{StaticResource {x:Type Button}}" TargetType="{x:Type Button}">
                                 <Setter Property="Visibility" Value="Visible"/>
@@ -791,9 +792,10 @@
                                             </Button.Style>
                                         </Button>
 
-                                        <Label   Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Content="{DynamicResource ServerSettings_TotalConversionLabel}" ToolTip="{DynamicResource ServerSettings_TotalConversionTooltip}" VerticalAlignment="Center" Foreground="{DynamicResource UnSyncedSetting}"/>
-                                        <ComboBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="1" Name="TotalConversionComboBox" ItemsSource="{Binding BaseTotalConversions, ElementName=SettingsControl}" SelectedValue="{Binding TotalConversionModId, Mode=TwoWay, UpdateSourceTrigger=Explicit}" SelectedValuePath="ValueMember" DisplayMemberPath="DisplayMember" IsEditable="True" ToolTip="{DynamicResource ServerSettings_TotalConversionTooltip}" LostFocus="ComboBoxItemList_LostFocus" PreviewMouseWheel="ComboBox_PreviewMouseWheel"/>
-                                        <Button  Grid.Row="1" Grid.Column="3" Width="22" Height="22" Margin="5,1,0,0" ToolTip="{DynamicResource ServerSettings_FindTotalConversionMapNameTooltip}" HorizontalAlignment="Left" Command="{Binding ResetActionCommand, ElementName=SettingsControl}" CommandParameter="{x:Static enum:ServerSettingsResetAction.MapNameTotalConversionProperty}">
+                                        <!-- ASA has no total conversions or Workshop mod tools: mods are CurseForge IDs passed as -mods= -->
+                                        <Label   Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Visibility="Collapsed" Content="{DynamicResource ServerSettings_TotalConversionLabel}" ToolTip="{DynamicResource ServerSettings_TotalConversionTooltip}" VerticalAlignment="Center" Foreground="{DynamicResource UnSyncedSetting}"/>
+                                        <ComboBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="1" Name="TotalConversionComboBox" Visibility="Collapsed" ItemsSource="{Binding BaseTotalConversions, ElementName=SettingsControl}" SelectedValue="{Binding TotalConversionModId, Mode=TwoWay, UpdateSourceTrigger=Explicit}" SelectedValuePath="ValueMember" DisplayMemberPath="DisplayMember" IsEditable="True" ToolTip="{DynamicResource ServerSettings_TotalConversionTooltip}" LostFocus="ComboBoxItemList_LostFocus" PreviewMouseWheel="ComboBox_PreviewMouseWheel"/>
+                                        <Button  Grid.Row="1" Grid.Column="3" Width="22" Height="22" Margin="5,1,0,0" Visibility="Collapsed" ToolTip="{DynamicResource ServerSettings_FindTotalConversionMapNameTooltip}" HorizontalAlignment="Left" Command="{Binding ResetActionCommand, ElementName=SettingsControl}" CommandParameter="{x:Static enum:ServerSettingsResetAction.MapNameTotalConversionProperty}">
                                             <Button.Style>
                                                 <Style BasedOn="{StaticResource ButtonStyle1}" TargetType="{x:Type Button}">
                                                     <Setter Property="Visibility" Value="Visible"/>
@@ -840,7 +842,7 @@
                                                 </Style>
                                             </Button.Style>
                                         </Button>
-                                        <Button  Grid.Row="2" Grid.Column="8" DataContext="{Binding Runtime, ElementName=SettingsControl}" ToolTip="{DynamicResource ServerSettings_ModUpgradeTooltip}" Click="ModUpgrade_Click">
+                                        <Button  Grid.Row="2" Grid.Column="8" DataContext="{Binding Runtime, ElementName=SettingsControl}" Visibility="Collapsed" ToolTip="{DynamicResource ServerSettings_ModUpgradeTooltip}" Click="ModUpgrade_Click">
                                             <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Download.ico,Size=32}"/>
                                             <Button.Style>
                                                 <Style BasedOn="{StaticResource ButtonStyle1}" TargetType="{x:Type Button}">

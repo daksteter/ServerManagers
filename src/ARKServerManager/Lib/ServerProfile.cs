@@ -418,7 +418,7 @@ namespace ServerManagerTool.Lib
 
         public static readonly DependencyProperty ServerModIdsProperty = DependencyProperty.Register(nameof(ServerModIds), typeof(string), typeof(ServerProfile), new PropertyMetadata(String.Empty));
         [DataMember]
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Administration, "ActiveMods")]
+        // ASA: passed on the command line as -mods= (CurseForge project IDs); ActiveMods is no longer used.
         public string ServerModIds
         {
             get { return (string)GetValue(ServerModIdsProperty); }
@@ -4152,9 +4152,11 @@ namespace ServerManagerTool.Lib
             serverArgs.Append($" -port={this.ServerPort}");
             serverArgs.Append($" -WinLiveMaxPlayers={this.MaxPlayers}");
 
-            if (!string.IsNullOrWhiteSpace(this.TotalConversionModId))
+            // CurseForge project IDs, in load order; the server downloads and updates these mods itself.
+            var modIds = string.Join(",", (this.ServerModIds ?? string.Empty).Split(new[] { ',', ';', ' ' }, StringSplitOptions.RemoveEmptyEntries));
+            if (!string.IsNullOrWhiteSpace(modIds))
             {
-                serverArgs.Append($" -TotalConversionMod={this.TotalConversionModId}");
+                serverArgs.Append($" -mods={modIds}");
             }
 
             if (!string.IsNullOrWhiteSpace(this.EventName))
@@ -5044,22 +5046,8 @@ namespace ServerManagerTool.Lib
 
             if (forceValidate || Config.Default.ValidateProfileOnServerStart)
             {
-                // build a list of mods to be processed
-                var serverMapModId = GetProfileMapModId(this);
-                var serverMapName = GetProfileMapName(this);
-                var modIds = ModUtils.GetModIdList(ServerModIds);
-                modIds = ModUtils.ValidateModList(modIds);
-
-                var modIdList = new List<string>();
-                if (!string.IsNullOrWhiteSpace(serverMapModId))
-                    modIdList.Add(serverMapModId);
-                if (!string.IsNullOrWhiteSpace(TotalConversionModId))
-                    modIdList.Add(TotalConversionModId);
-                modIdList.AddRange(modIds);
-
-                modIdList = ModUtils.ValidateModList(modIdList);
-
-                var modDetails = SteamUtils.GetSteamModDetails(modIdList);
+                // ASA mods are CurseForge project IDs that the server downloads itself, so the Steam Workshop
+                // checks (map mod, total conversion, mod files) no longer apply.
 
                 // check for map name.
                 if (string.IsNullOrWhiteSpace(ServerMap))
@@ -5088,196 +5076,6 @@ namespace ServerManagerTool.Lib
                     {
                         var message = _globalizer.GetResourceString("ProfileValidation_ServerDifferentApplication");
                         result.AppendLine(message);
-                    }
-                }
-
-                // check if the map is a mod and confirm the map name.
-                if (!string.IsNullOrWhiteSpace(serverMapModId))
-                {
-                    var modFolder = ModUtils.GetModPath(InstallDirectory, serverMapModId);
-                    if (!Directory.Exists(modFolder))
-                    {
-                        var message = _globalizer.GetResourceString("ProfileValidation_MapModNotDownloaded");
-                        result.AppendLine(message);
-                    }
-                    else if (!File.Exists($"{modFolder}.mod"))
-                    {
-                        var message = _globalizer.GetResourceString("ProfileValidation_MapModFileNotDownloaded");
-                        result.AppendLine(message);
-                    }
-                    else
-                    {
-                        var modType = ModUtils.GetModType(InstallDirectory, serverMapModId);
-                        if (modType == ModUtils.MODTYPE_UNKNOWN)
-                        {
-                            var message = _globalizer.GetResourceString("ProfileValidation_MapModFileInvalid");
-                            result.AppendLine(message);
-                        }
-                        else if (modType != ModUtils.MODTYPE_MAP)
-                        {
-                            var message = _globalizer.GetResourceString("ProfileValidation_MapModInvalid");
-                            result.AppendLine(message);
-                        }
-                        else
-                        {
-                            // do not process any mods that are not included in the mod list.
-                            if (modIdList.Contains(serverMapModId))
-                            {
-                                var mapName = ModUtils.GetMapName(InstallDirectory, serverMapModId);
-                                if (string.IsNullOrWhiteSpace(mapName))
-                                {
-                                    var message = _globalizer.GetResourceString("ProfileValidation_MapModNameInvalid");
-                                    result.AppendLine(message);
-                                }
-                                else if (!mapName.Equals(serverMapName))
-                                {
-                                    var message = _globalizer.GetResourceString("ProfileValidation_MapModNameMismatch");
-                                    result.AppendLine(message);
-                                }
-                                else
-                                {
-                                    var modDetail = modDetails?.publishedfiledetails?.FirstOrDefault(d => d.publishedfileid.Equals(serverMapModId));
-                                    if (modDetail != null && modDetail.consumer_app_id != null)
-                                    {
-                                        if (!modDetail.consumer_app_id.Equals(appId))
-                                        {
-                                            var message = _globalizer.GetResourceString("ProfileValidation_MapModDifferentApplication");
-                                            result.AppendLine(message);
-                                        }
-                                        else
-                                        {
-                                            var modVersion = ModUtils.GetModLatestTime(ModUtils.GetLatestModTimeFile(InstallDirectory, serverMapModId));
-                                            if (!modVersion.Equals(modDetail.time_updated))
-                                            {
-                                                var message = _globalizer.GetResourceString("ProfileValidation_MapModOutdated");
-                                                result.AppendLine(message);
-                                            }
-                                        }
-                                    }
-                                    else
-                                    {
-                                        var message = _globalizer.GetResourceString("ProfileValidation_MapModSteamError");
-                                        result.AppendLine(message);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-
-                // check for a total conversion mod
-                if (!string.IsNullOrWhiteSpace(TotalConversionModId))
-                {
-                    var modFolder = ModUtils.GetModPath(InstallDirectory, TotalConversionModId);
-                    if (!Directory.Exists(modFolder))
-                    {
-                        var message = _globalizer.GetResourceString("ProfileValidation_TCModNotDownloaded");
-                        result.AppendLine(message);
-                    }
-                    else if (!File.Exists($"{modFolder}.mod"))
-                    {
-                        var message = _globalizer.GetResourceString("ProfileValidation_TCModFileNotDownloaded");
-                        result.AppendLine(message);
-                    }
-                    else
-                    {
-                        var modType = ModUtils.GetModType(InstallDirectory, TotalConversionModId);
-                        if (modType == ModUtils.MODTYPE_UNKNOWN)
-                        {
-                            var message = _globalizer.GetResourceString("ProfileValidation_TCModFileInvalid");
-                            result.AppendLine(message);
-                        }
-                        else if (modType != ModUtils.MODTYPE_TOTCONV)
-                        {
-                            var message = _globalizer.GetResourceString("ProfileValidation_TCModInvalid");
-                            result.AppendLine(message);
-                        }
-                        else
-                        {
-                            // do not process any mods that are not included in the mod list.
-                            if (modIdList.Contains(TotalConversionModId))
-                            {
-                                var mapName = ModUtils.GetMapName(InstallDirectory, TotalConversionModId);
-                                if (string.IsNullOrWhiteSpace(mapName))
-                                {
-                                    var message = _globalizer.GetResourceString("ProfileValidation_TCModNameInvalid");
-                                    result.AppendLine(message);
-                                }
-                                else if (!mapName.Equals(serverMapName))
-                                {
-                                    var message = _globalizer.GetResourceString("ProfileValidation_TCModNameMismatch");
-                                    result.AppendLine(message);
-                                }
-                                else
-                                {
-                                    var modDetail = modDetails?.publishedfiledetails?.FirstOrDefault(d => d.publishedfileid.Equals(TotalConversionModId));
-                                    if (modDetail != null && modDetail.consumer_app_id != null)
-                                    {
-                                        if (!modDetail.consumer_app_id.Equals(appId))
-                                        {
-                                            var message = _globalizer.GetResourceString("ProfileValidation_TCModDifferentApplication");
-                                            result.AppendLine(message);
-                                        }
-                                        else
-                                        {
-                                            var modVersion = ModUtils.GetModLatestTime(ModUtils.GetLatestModTimeFile(InstallDirectory, TotalConversionModId));
-                                            if (!modVersion.Equals(modDetail.time_updated))
-                                            {
-                                                var message = _globalizer.GetResourceString("ProfileValidation_TCModOutdated");
-                                                result.AppendLine(message);
-                                            }
-                                        }
-                                    }
-                                    else
-                                    {
-                                        var message = _globalizer.GetResourceString("ProfileValidation_TCModSteamError");
-                                        result.AppendLine(message);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-
-                // check for the mods
-                foreach (var modId in modIds)
-                {
-                    var modFolder = ModUtils.GetModPath(InstallDirectory, modId);
-                    if (!Directory.Exists(modFolder))
-                    {
-                        var message = _globalizer.GetResourceString("ProfileValidation_ModNotDownloaded")?.Replace("{modId}", modId);
-                        result.AppendLine(message);
-                    }
-                    else if (!File.Exists($"{modFolder}.mod"))
-                    {
-                        var message = _globalizer.GetResourceString("ProfileValidation_ModFileNotDownloaded")?.Replace("{modId}", modId);
-                        result.AppendLine(message);
-                    }
-                    else
-                    {
-                        var modDetail = modDetails?.publishedfiledetails?.FirstOrDefault(d => d.publishedfileid.Equals(modId));
-                        if (modDetail != null && modDetail.consumer_app_id != null)
-                        {
-                            if (!modDetail.consumer_app_id.Equals(appId))
-                            {
-                                var message = _globalizer.GetResourceString("ProfileValidation_ModDifferentApplication")?.Replace("modId", modId);
-                                result.AppendLine(message);
-                            }
-                            else
-                            {
-                                var modVersion = ModUtils.GetModLatestTime(ModUtils.GetLatestModTimeFile(InstallDirectory, modId));
-                                if (modVersion == 0 || !modVersion.Equals(modDetail.time_updated))
-                                {
-                                    var message = _globalizer.GetResourceString("ProfileValidation_ModOutdated")?.Replace("{modId}", modId);
-                                    result.AppendLine(message);
-                                }
-                            }
-                        }
-                        else
-                        {
-                            var message = _globalizer.GetResourceString("ProfileValidation_ModSteamError")?.Replace("{modId}", modId);
-                            result.AppendLine(message);
-                        }
                     }
                 }
             }

@@ -335,7 +335,7 @@ namespace ServerManagerTool
 
             this.ServerManager = ServerManager.Instance;
             this.IsAdministrator = SecurityUtils.IsAdministrator();
-            this.DisplayModInformation = !string.IsNullOrWhiteSpace(SteamUtils.SteamWebApiKey);
+            this.DisplayModInformation = false; // Steam Workshop mod details don't apply to ASA's CurseForge mods
 
             RefreshBaseDinoModList();
             RefreshBaseEngramModList();
@@ -412,7 +412,7 @@ namespace ServerManagerTool
                         ssc.RefreshBaseBranchesList();
                         ssc.RefreshBaseEventsList();
                         ssc.RefreshProcessPrioritiesList();
-                        ssc.DisplayModInformation = !string.IsNullOrWhiteSpace(SteamUtils.SteamWebApiKey);
+                        ssc.DisplayModInformation = false; // Steam Workshop mod details don't apply to ASA's CurseForge mods
                         ssc.UpdateLastStartedDetails(false);
                     }).DoNotWait();
             }

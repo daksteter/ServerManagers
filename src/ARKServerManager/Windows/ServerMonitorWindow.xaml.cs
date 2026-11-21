@@ -327,16 +327,11 @@ namespace ServerManagerTool.Windows
             if (server == null)
                 return;
 
-            Window window = null;
+            // The save-file player list (PlayerListWindow) doesn't support ASA saves yet, so only RCON is offered.
+            if (!server.Profile.RCONEnabled)
+                return;
 
-            if (server.Profile.RCONEnabled)
-            {
-                window = RCONWindow.GetRCONForServer(server);
-            }
-            else
-            {
-                window = PlayerListWindow.GetWindowForServer(server);
-            }
+            Window window = RCONWindow.GetRCONForServer(server);
 
             window.Closed += Window_Closed;
             window.Show();

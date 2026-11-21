@@ -107,7 +107,7 @@
                     <controls:DropDownButton.Menu>
                         <ContextMenu>
                             <MenuItem Header="{DynamicResource ServerMonitor_UpdateServersButtonLabel}" Command="{Binding UpdateServersCommand}" CommandParameter="{Binding}"/>
-                            <MenuItem Header="{DynamicResource ServerMonitor_UpdateModsButtonLabel}" Command="{Binding UpdateModsCommand}" CommandParameter="{Binding}"/>
+                            <MenuItem Visibility="Collapsed" Header="{DynamicResource ServerMonitor_UpdateModsButtonLabel}" Command="{Binding UpdateModsCommand}" CommandParameter="{Binding}"/>
                         </ContextMenu>
                     </controls:DropDownButton.Menu>
                 </controls:DropDownButton>
@@ -546,8 +546,9 @@
                                         <Button.Style>
                                             <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
                                                 <Style.Triggers>
+                                                    <!-- Without RCON this opened the save-file player list, which doesn't support ASA yet. -->
                                                     <DataTrigger Binding="{Binding Profile.RCONEnabled}" Value="False">
-                                                        <Setter Property="ToolTip" Value="{DynamicResource ServerMonitor_PlayerListButtonTooltip}" />
+                                                        <Setter Property="Visibility" Value="Hidden" />
                                                     </DataTrigger>
                                                     <DataTrigger Binding="{Binding Profile.RCONEnabled}" Value="True">
                                                         <Setter Property="ToolTip" Value="{DynamicResource ServerMonitor_RCONButtonTooltip}" />

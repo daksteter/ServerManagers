@@ -1161,7 +1161,7 @@
     <sys:String x:Key="ServerSettings_FindTotalConversionMapNameErrorTitle">Find Total Conversion Map Name Error</sys:String>
     <sys:String x:Key="ServerSettings_FindTotalConversionMapNameErrorLabel">The map name could not be found, please check the total conversion mod id is correct and the mod has been downloaded.</sys:String>
     <sys:String x:Key="ServerSettings_ModIdsLabel">Mod IDs:</sys:String>
-    <sys:String x:Key="ServerSettings_ModIdsTooltip">A comma-separated list of mod ids, in the order in which they should be applied.</sys:String>
+    <sys:String x:Key="ServerSettings_ModIdsTooltip">A comma-separated list of CurseForge mod project IDs, in load order. The server downloads and updates them itself when it starts (passed as -mods=).</sys:String>
     <sys:String x:Key="ServerSettings_ModDetailsTooltip">View the mod details.</sys:String>
     <sys:String x:Key="ServerSettings_ModUpgradeTooltip">Upgrade to the latest version of the mods that is currently available to download.</sys:String>
     <sys:String x:Key="ServerSettings_ResetServerButtonLabel">Reset</sys:String>

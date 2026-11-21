@@ -61,8 +61,8 @@ Ordered so each milestone leaves the app runnable. Tick boxes as commits land.
 - [x] App IDs: `AppIdServer` 376030 → 2430930, `AppId` 346110 → 2399830 (ASA client; only used for the
       `steam_appid.txt` check and Workshop). Remove `AppId_SotF` / `AppIdServer_SotF` in M4.
 - [x] Exe / process: `ServerExe` → `ArkAscendedServer.exe`, `ServerProcessName` → `ArkAscendedServer`.
-- [ ] **Verify on a real install:** `ServerProfile.Validate` compares `Binaries\Win64\steam_appid.txt` with
-      `AppId`. ASE's file held the client ID; confirm ASA's holds 2399830 (or whether the file exists at all).
+- [x] Verified on a real install: ASA's `Binaries\Win64\steam_appid.txt` holds `2399830`, so the
+      `ServerProfile.Validate` app-ID check passes with the new `AppId`.
 - [x] Process detection: `ServerStatusWatcher.GetServerProcessStatus` now matches `-port=<game port>`
       (`ServerCommandLineArgsMatchFormat`, plus `?MultiHome=` when an IP is set) instead of `?QueryPort=`.
 - [ ] `GetServerArgs()` (`ServerProfile.cs` ~4091–4459):
@@ -77,8 +77,12 @@ Ordered so each milestone leaves the app runnable. Tick boxes as commits land.
 - [ ] Ports: remove the query port from UI/validation/firewall; check whether ASA still uses the peer
       port (port+1) and drop it if not. Firewall rules: `ServerRuntime.StartAsync` ~527–554.
 - [x] Startup alert text used `{port}` = query port → now the game port.
-- [ ] Install/update path (SteamCMD `app_update`): mostly unchanged; check `version.txt` reading
-      (`ServerRuntime.cs` ~742) and branch handling against the ASA depot.
+- [x] Install via SteamCMD `app_update 2430930` works (anonymous login, ~11.5 GB): test server at
+      `Q:\asmdata\Servers\Server1`.
+- [ ] ASA has **no `version.txt`** (upstream read the installed version from it; `GetServerVersion` returns
+      an empty version when missing). Use the Steam build ID from `steamapps\appmanifest_2430930.acf`,
+      or the version the server reports, instead.
+- [ ] Check branch handling against the ASA depot.
 - [ ] **Test:** install a fresh ASA server through the app, start it, confirm status shows Running and
       the generated `RunServer.cmd` / command line is correct.
 
@@ -104,9 +108,15 @@ online check, and the Discord `info` command. Replace with process state + RCON.
 
 ~4,500 lines of Workshop code become unnecessary because the ASA server manages mods itself.
 
-- [ ] Profile: keep `ServerModIds` (comma-separated, Int64 validation already fits CurseForge IDs) but
-      emit it as `-mods=` instead of GUS `ActiveMods`; drop `TotalConversionModId` and map-mod handling.
-- [ ] Remove: `Utils/ModUtils.cs`, `WorkshopFilesWindow`, Workshop models in `ServerManager.Common/Model`,
+Decision: **plain CurseForge IDs** (no CurseForge API for now).
+
+- [x] Profile: `ServerModIds` (comma-separated; Int64 validation fits CurseForge IDs) is emitted as `-mods=`
+      and no longer written to GUS `ActiveMods`; `-TotalConversionMod` is no longer emitted.
+- [x] Switched off the Workshop paths: mod update in `ServerApp.UpgradeLocal` and `ServerRuntime.UpgradeAsync`,
+      the mod cache (`GetModList`), the 15-minute Steam mod status poll, and the Workshop checks in `Validate`.
+- [x] Hidden: total conversion row, mod details / mod update buttons, out-of-date mod panel, global mod update
+      options, Server Monitor "Update mods", and the "Steam Web API key missing" banner.
+- [ ] Delete the now-dead code: `Utils/ModUtils.cs`, `WorkshopFilesWindow`, Workshop models in `ServerManager.Common/Model`,
       `SteamUtils` mod/Workshop queries, mod sections of `ServerApp.UpgradeLocal` / `UpdateFiles` /
       `UpdateModCache` / `GetModList`, `ServerRuntime.UpdateModStatus` / mod part of `UpgradeAsync`,
       mod validation in `ServerProfile.Validate` (~5043–5281), mod update settings and UI.
@@ -132,16 +142,20 @@ online check, and the Discord `info` command. Replace with process state + RCON.
       `RestoreSaveFiles`). `PlayerListParameters` needs the map name.
 - [ ] Backup/restore (`ServerApp.CreateServerBackupArchiveFile` ~2114–2318, `RestoreSaveFiles` ~5296–5436):
       new file layout; SQLite `.ark` must not be copied mid-write (check for `-wal` / `-shm` files).
-- [ ] Player/tribe data: `ArkData` parses the ASE binary format and looks names up on Steam — both
-      wrong for ASA. Options: (a) replace with **AsaSavegameToolkit** (NuGet, MIT, .NET 8+, reads
-      `.ark` / `.arkprofile` / `.arktribe`), (b) hide the player list until later. Steam name lookups
+- [x] Decision: **hide the player list for now.** Hidden: Player List button (server settings), Server Monitor
+      player-list button when RCON is off, RCON "View Profile" / "View Tribe"; the RCON window's save-file
+      player enrichment (`ServerRCON.UpdatePlayerDetailsAsync`) is switched off.
+- [ ] Later: replace `ArkData` (ASE binary format + Steam name lookups) with **AsaSavegameToolkit**
+      (NuGet, MIT, .NET 8+, reads `.ark` / `.arkprofile` / `.arktribe`). Steam name lookups
       (`DataContainerAsync.LoadSteamAsync`, cheater/whitelist lists) won't work with EOS IDs.
 - [ ] Delete unused `ArkData/SSQLib` (~1,000 lines).
 
 ### M6. Maps and game data
 
-- [ ] Map list: ASA `_WP` maps (The Island, Scorched Earth, The Center, Aberration, Extinction,
-      Ragnarok, Valguero, Lost Colony, … — confirm current list) plus premium/mod maps by CurseForge ID.
+- [x] Map list: the ten playable maps found in the installed server's pak tables of contents —
+      `TheIsland_WP`, `ScorchedEarth_WP`, `TheCenter_WP`, `Aberration_WP`, `Extinction_WP`, `Ragnarok_WP`,
+      `Valguero_WP`, `LostColony_WP`, `Genesis_WP`, `Astraeos_WP` (in `SurvivalEvolved.gamedata`; ASE map
+      entries removed from the other files). Mod maps can still be typed into the editable map box.
 - [ ] `GameData/*.gamedata` (14 files, ~22k lines of ASE creatures/engrams/items/crates/maps) must be
       rebuilt for ASA. Decide the source (manual, community data, or extracted from the server).
       Start with maps only; ship ASE content files disabled until replaced.

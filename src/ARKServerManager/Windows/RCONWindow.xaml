@@ -191,9 +191,10 @@
                                         <MenuItem Header="{DynamicResource RCON_Menu_ChatPlayer}"                                        Command="{Binding Source={StaticResource proxy}, Path=Data.ChatPlayerCommand}" CommandParameter="{Binding}" />
                                         <MenuItem Header="{DynamicResource RCON_Menu_RenamePlayer}"                                      Command="{Binding Source={StaticResource proxy}, Path=Data.RenamePlayerCommand}" CommandParameter="{Binding}" />
                                         <MenuItem Header="{DynamicResource RCON_Menu_RenameTribe}"                                       Command="{Binding Source={StaticResource proxy}, Path=Data.RenameTribeCommand}" CommandParameter="{Binding}" />
-                                        <Separator/>
-                                        <MenuItem Header="{DynamicResource RCON_Menu_ViewProfile}"                                       Command="{Binding Source={StaticResource proxy}, Path=Data.ViewPlayerProfileCommand}" CommandParameter="{Binding}" />
-                                        <MenuItem Header="{DynamicResource RCON_Menu_ViewTribe}"                                         Command="{Binding Source={StaticResource proxy}, Path=Data.ViewPlayerTribeCommand}" CommandParameter="{Binding}"/>
+                                        <!-- Hidden: profile/tribe views read ASE save files; ASA saves aren't supported yet. -->
+                                        <Separator Visibility="Collapsed"/>
+                                        <MenuItem Visibility="Collapsed" Header="{DynamicResource RCON_Menu_ViewProfile}"                                       Command="{Binding Source={StaticResource proxy}, Path=Data.ViewPlayerProfileCommand}" CommandParameter="{Binding}" />
+                                        <MenuItem Visibility="Collapsed" Header="{DynamicResource RCON_Menu_ViewTribe}"                                         Command="{Binding Source={StaticResource proxy}, Path=Data.ViewPlayerTribeCommand}" CommandParameter="{Binding}"/>
                                         <Separator/>
                                         <MenuItem Header="{DynamicResource RCON_Menu_CopyId}"                                            Command="{Binding Source={StaticResource proxy}, Path=Data.CopyIDCommand}" CommandParameter="{Binding}"/>
                                         <MenuItem Header="{DynamicResource RCON_Menu_CopyPlayerId}"                                      Command="{Binding Source={StaticResource proxy}, Path=Data.CopyPlayerIDCommand}" CommandParameter="{Binding}"/>

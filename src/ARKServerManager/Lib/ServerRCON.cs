@@ -504,9 +504,13 @@ namespace ServerManagerTool.Lib
             }
         }
 
+        // Off until ASA save files are supported: ArkData only understands the ASE binary format, and its
+        // Steam name lookup doesn't apply to ASA's Epic player IDs. Online players still come from RCON.
+        private const bool PlayerDetailsFromSaveFilesEnabled = false;
+
         private async Task UpdatePlayerDetailsAsync(CancellationToken token)
         {
-            if (_disposed)
+            if (_disposed || !PlayerDetailsFromSaveFilesEnabled)
                 return;
 
             if (string.IsNullOrWhiteSpace(_rconParameters.InstallDirectory))

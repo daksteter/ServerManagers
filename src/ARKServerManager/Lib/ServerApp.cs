@@ -34,6 +34,9 @@ namespace ServerManagerTool.Lib
         private readonly GlobalizedApplication _globalizer = GlobalizedApplication.Instance;
         private readonly PluginHelper _pluginHelper = PluginHelper.Instance;
 
+        // Steam Workshop mods are an ASE feature; ASA uses CurseForge mods that the server manages itself.
+        private static readonly bool SteamWorkshopModsSupported = false;
+
         public const int MUTEX_TIMEOUT = 5;         // 5 minutes
         public const int MUTEX_ATTEMPTDELAY = 5000; // 5 seconds
 
@@ -768,6 +771,9 @@ namespace ServerManagerTool.Lib
 
         private void UpgradeLocal(ServerUpdateType updateType, bool validate, bool steamCmdRemoveQuit, CancellationToken cancellationToken)
         {
+            // ASA servers download their CurseForge mods themselves; the Steam Workshop mod update no longer applies.
+            updateType &= ~ServerUpdateType.Mods;
+
             if (_profile == null)
             {
                 ExitCode = EXITCODE_BADPROFILE;
@@ -2431,6 +2437,10 @@ namespace ServerManagerTool.Lib
         private List<(string AppId, List<string> ModIdList)> GetModList()
         {
             var appMods = new List<(string AppId, List<string> ModIdList)>();
+
+            // ASA servers download their CurseForge mods themselves; there is no Workshop mod cache to maintain.
+            if (!SteamWorkshopModsSupported)
+                return appMods;
 
             // check if we need to update the mods.
             if (Config.Default.ServerUpdate_UpdateModsWhenUpdatingServer)

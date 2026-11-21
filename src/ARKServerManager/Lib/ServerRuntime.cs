@@ -106,7 +106,8 @@ namespace ServerManagerTool.Lib
             protected set { SetValue(OutOfDateModCountProperty, value); }
         }
 
-        public static bool EnableUpdateModStatus { get; set; } = true;
+        // Off for ASA: this polled the Steam Workshop for out-of-date mods; CurseForge mods are updated by the server.
+        public static bool EnableUpdateModStatus { get; set; } = false;
 
         #endregion
 
@@ -620,6 +621,9 @@ namespace ServerManagerTool.Lib
 
         public async Task<bool> UpgradeAsync(CancellationToken cancellationToken, bool updateServer, BranchSnapshot branch, bool validate, bool updateMods, string[] updateModIds, ProgressDelegate progressCallback)
         {
+            // ASA servers download their CurseForge mods themselves; skip the Steam Workshop mod update.
+            updateMods = false;
+
             if (updateServer && !Environment.Is64BitOperatingSystem)
             {
                 var result = MessageBox.Show("The server requires a 64-bit operating system to run. Your operating system is 32-bit and therefore JVH Ark Ascended Server Manager will be unable to start the server, but you may still install it or load and save profiles and settings files for use on other machines.\r\n\r\nDo you wish to continue?", "64-bit OS Required", MessageBoxButton.YesNo, MessageBoxImage.Warning);
