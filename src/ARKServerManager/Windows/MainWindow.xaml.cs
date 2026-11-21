@@ -191,6 +191,10 @@ namespace ServerManagerTool
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            // hide link buttons that have no destination configured.
+            DonateButton.Visibility = string.IsNullOrWhiteSpace(Config.Default.DonationUrl) ? Visibility.Collapsed : Visibility.Visible;
+            DiscordButton.Visibility = string.IsNullOrWhiteSpace(Config.Default.DiscordUrl) ? Visibility.Collapsed : Visibility.Visible;
+
             //
             // Kick off the initialization.
             //

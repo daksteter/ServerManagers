@@ -102,14 +102,14 @@
                             <ColumnDefinition MinWidth="25"/>
                         </Grid.ColumnDefinitions>
 
-                        <Button Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Margin="5,2,0,0" HorizontalAlignment="Right" Click="Donate_Click" ToolTip="{DynamicResource MainWindow_DonateTooltip}" Style="{StaticResource ButtonStyle3}">
+                        <Button x:Name="DonateButton" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Margin="5,2,0,0" HorizontalAlignment="Right" Click="Donate_Click" ToolTip="{DynamicResource MainWindow_DonateTooltip}" Style="{StaticResource ButtonStyle3}">
                             <Image Source="../Art/Donate.png"/>
                         </Button>
                         <Button Grid.Row="0" Grid.Column="5" Margin="5,2,0,0" HorizontalAlignment="Right" Click="Help_Click" ToolTip="{DynamicResource MainWindow_OpenHelpTooltip}" Style="{StaticResource ButtonStyle1}">
                             <Image Source="{com:Icon Path=/Ark Server Manager;component/Art/Help.ico,Size=32}"/>
                         </Button>
 
-                        <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Discord_Click" ToolTip="{DynamicResource MainWindow_JoinDiscordTooltip}" Style="{StaticResource ButtonStyle4}">
+                        <Button x:Name="DiscordButton" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Discord_Click" ToolTip="{DynamicResource MainWindow_JoinDiscordTooltip}" Style="{StaticResource ButtonStyle4}">
                             <Image Source="{com:Icon Path=/Ark Server Manager;component/Art/Discord.ico,Size=64}"/>
                         </Button>
                         <Button Grid.Row="1" Grid.Column="3" Margin="5,0,0,0" HorizontalAlignment="Right" Click="GameData_Click" ToolTip="{DynamicResource MainWindow_OpenGameDataTooltip}" Style="{StaticResource ButtonStyle1}">

@@ -151,20 +151,6 @@ namespace ServerManagerTool
             }
         }
 
-        private async Task CallHomeAsync()
-        {
-            try
-            {
-                var publicIP = await NetworkUtils.DiscoverPublicIPAsync();
-                var url = new Uri(string.Format(Config.Default.ServerCallUrlFormat, Config.Default.ServerManagerCode, publicIP));
-                await NetworkUtils.PerformCallToAPIAsync(url);
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Failed calling home to API.\r\n{ex.Message}");
-            }
-        }
-
         private void CheckForValidSettings()
         {
             try
@@ -561,14 +547,6 @@ namespace ServerManagerTool
             if (Config.Default.DiscordBotEnabled)
             {
                 StartDiscordBot();
-            }
-
-            if (Config.Default.ServerCallUrlLast.AddHours(Config.Default.ServerCallUrlDelay) < DateTime.Now)
-            {
-                CallHomeAsync().DoNotWait();
-
-                Config.Default.ServerCallUrlLast = DateTime.Now;
-                Config.Default.Save();
             }
         }
 

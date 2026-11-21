@@ -81,7 +81,7 @@
       <Value Profile="(Default)">?MultiHome={0}</Value>
     </Setting>
     <Setting Name="LatestASMVersionUrl" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">https://raw.githubusercontent.com/Bletch1971/ServerManagers/master/ASM/latest.txt</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="UpdateCheckTime" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">720</Value>
@@ -315,19 +315,19 @@
       <Value Profile="(Default)">Clusters</Value>
     </Setting>
     <Setting Name="LatestASMBetaVersionUrl" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">https://raw.githubusercontent.com/Bletch1971/ServerManagers/master/ASM/beta/latest.txt</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="LatestASMBetaDownloadUrl" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">https://raw.githubusercontent.com/Bletch1971/ServerManagers/master/ASM/beta/latest.zip</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="LatestASMDownloadUrl" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">https://raw.githubusercontent.com/Bletch1971/ServerManagers/master/ASM/latest.zip</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="LatestASMPatchNotesUrl" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">https://arkservermanager.freeforums.net/thread/5193/downloads</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="LatestASMBetaPatchNotesUrl" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">https://arkservermanager.freeforums.net/board/11/beta-testers</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="ServerWhitelistFile" Type="System.String" Scope="Application">
       <Value Profile="(Default)">PlayersJoinNoCheckList.txt</Value>
@@ -348,7 +348,7 @@
       <Value Profile="(Default)">Server</Value>
     </Setting>
     <Setting Name="ServerStatusUrlFormat" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">https://servermanagers.azurewebsites.net/api/server/{0}/{1}/{2}/{3}</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="DefaultServerMap_PGM" Type="System.String" Scope="Application">
       <Value Profile="(Default)">PGARK</Value>
@@ -528,7 +528,7 @@
       <Value Profile="(Default)">ARK Server:</Value>
     </Setting>
     <Setting Name="DonationUrl" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=bletch1971%40hotmail%2ecom&amp;lc=US&amp;item_name=Server%20Manager&amp;currency_code=USD&amp;bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="GameDataApplication" Type="System.String" Scope="Application">
       <Value Profile="(Default)">ark</Value>
@@ -549,10 +549,10 @@
       <Value Profile="(Default)">1</Value>
     </Setting>
     <Setting Name="ServerManagerVersionFeedUrl" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">https://raw.githubusercontent.com/Bletch1971/ServerManagers/master/ASM/VersionFeed.xml</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="ServerManagerVersionBetaFeedUrl" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">https://raw.githubusercontent.com/Bletch1971/ServerManagers/master/ASM/beta/VersionFeed.xml</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="DefaultServerBranchName" Type="System.String" Scope="Application">
       <Value Profile="(Default)">live</Value>
@@ -812,15 +812,6 @@
     <Setting Name="LoggingMaxArchiveDays" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">30</Value>
     </Setting>
-    <Setting Name="ServerCallUrlFormat" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">https://servermanagers.azurewebsites.net/api/server/call/{0}/{1}/</Value>
-    </Setting>
-    <Setting Name="ServerCallUrlDelay" Type="System.Int32" Scope="Application">
-      <Value Profile="(Default)">12</Value>
-    </Setting>
-    <Setting Name="ServerCallUrlLast" Type="System.DateTime" Scope="User">
-      <Value Profile="(Default)">2000-01-01</Value>
-    </Setting>
     <Setting Name="CheckIfServerManagerRunningOnStartup" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
@@ -864,7 +855,7 @@
       <Value Profile="(Default)">Normal</Value>
     </Setting>
     <Setting Name="DiscordUrl" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">https://discord.gg/cJdHJSG</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="Alert_OnlinePlayerCountChange" Type="System.String" Scope="User">
       <Value Profile="(Default)">Online Player Count:</Value>

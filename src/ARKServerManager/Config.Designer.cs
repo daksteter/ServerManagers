@@ -271,8 +271,7 @@ namespace ServerManagerTool {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://raw.githubusercontent.com/Bletch1971/ServerManagers/master/ASM/latest.txt" +
-            "")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string LatestASMVersionUrl {
             get {
                 return ((string)(this["LatestASMVersionUrl"]));
@@ -1151,8 +1150,7 @@ namespace ServerManagerTool {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://raw.githubusercontent.com/Bletch1971/ServerManagers/master/ASM/beta/lates" +
-            "t.txt")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string LatestASMBetaVersionUrl {
             get {
                 return ((string)(this["LatestASMBetaVersionUrl"]));
@@ -1161,8 +1159,7 @@ namespace ServerManagerTool {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://raw.githubusercontent.com/Bletch1971/ServerManagers/master/ASM/beta/lates" +
-            "t.zip")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string LatestASMBetaDownloadUrl {
             get {
                 return ((string)(this["LatestASMBetaDownloadUrl"]));
@@ -1171,8 +1168,7 @@ namespace ServerManagerTool {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://raw.githubusercontent.com/Bletch1971/ServerManagers/master/ASM/latest.zip" +
-            "")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string LatestASMDownloadUrl {
             get {
                 return ((string)(this["LatestASMDownloadUrl"]));
@@ -1181,7 +1177,7 @@ namespace ServerManagerTool {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://arkservermanager.freeforums.net/thread/5193/downloads")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string LatestASMPatchNotesUrl {
             get {
                 return ((string)(this["LatestASMPatchNotesUrl"]));
@@ -1190,7 +1186,7 @@ namespace ServerManagerTool {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://arkservermanager.freeforums.net/board/11/beta-testers")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string LatestASMBetaPatchNotesUrl {
             get {
                 return ((string)(this["LatestASMBetaPatchNotesUrl"]));
@@ -1259,7 +1255,7 @@ namespace ServerManagerTool {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://servermanagers.azurewebsites.net/api/server/{0}/{1}/{2}/{3}")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string ServerStatusUrlFormat {
             get {
                 return ((string)(this["ServerStatusUrlFormat"]));
@@ -1975,9 +1971,7 @@ namespace ServerManagerTool {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=bletch1971%40hotmai" +
-            "l%2ecom&lc=US&item_name=Server%20Manager&currency_code=USD&bn=PP%2dDonationsBF%3" +
-            "abtn_donate_SM%2egif%3aNonHosted")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string DonationUrl {
             get {
                 return ((string)(this["DonationUrl"]));
@@ -2049,8 +2043,7 @@ namespace ServerManagerTool {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://raw.githubusercontent.com/Bletch1971/ServerManagers/master/ASM/VersionFee" +
-            "d.xml")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string ServerManagerVersionFeedUrl {
             get {
                 return ((string)(this["ServerManagerVersionFeedUrl"]));
@@ -2059,8 +2052,7 @@ namespace ServerManagerTool {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://raw.githubusercontent.com/Bletch1971/ServerManagers/master/ASM/beta/Versi" +
-            "onFeed.xml")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string ServerManagerVersionBetaFeedUrl {
             get {
                 return ((string)(this["ServerManagerVersionBetaFeedUrl"]));
@@ -3053,36 +3045,6 @@ namespace ServerManagerTool {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://servermanagers.azurewebsites.net/api/server/call/{0}/{1}/")]
-        public string ServerCallUrlFormat {
-            get {
-                return ((string)(this["ServerCallUrlFormat"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("12")]
-        public int ServerCallUrlDelay {
-            get {
-                return ((int)(this["ServerCallUrlDelay"]));
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2000-01-01")]
-        public global::System.DateTime ServerCallUrlLast {
-            get {
-                return ((global::System.DateTime)(this["ServerCallUrlLast"]));
-            }
-            set {
-                this["ServerCallUrlLast"] = value;
-            }
-        }
-        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
@@ -3250,7 +3212,7 @@ namespace ServerManagerTool {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://discord.gg/cJdHJSG")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string DiscordUrl {
             get {
                 return ((string)(this["DiscordUrl"]));

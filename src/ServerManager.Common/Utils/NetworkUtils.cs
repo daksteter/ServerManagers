@@ -35,6 +35,10 @@ namespace ServerManagerTool.Common.Utils
 
         public static async Task<Version> GetLatestServerManagerVersion(string url)
         {
+            // no update channel configured - report "no newer version" without hitting the network.
+            if (string.IsNullOrWhiteSpace(url))
+                return new Version();
+
             using (var webClient = new WebClient())
             {
                 try
