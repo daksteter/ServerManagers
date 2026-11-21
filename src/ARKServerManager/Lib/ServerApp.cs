@@ -384,7 +384,7 @@ namespace ServerManagerTool.Lib
                 {
                     var ipAndPortMessage = Config.Default.Alert_ServerStartedMessageIPandPort
                         .Replace("{ipaddress}", Config.Default.MachinePublicIP)
-                        .Replace("{port}", _profile.QueryPort.ToString());
+                        .Replace("{port}", _profile.ServerPort.ToString());
                     startupMessage += $" {ipAndPortMessage}";
                 }
                 ProcessAlert(AlertType.Startup, startupMessage);

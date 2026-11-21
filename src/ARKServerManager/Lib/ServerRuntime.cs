@@ -488,7 +488,7 @@ namespace ServerManagerTool.Lib
                 if (localServerQueryEndPoint == null || steamServerQueryEndPoint == null)
                     return;
 
-                this.updateRegistration = ServerStatusWatcher.Instance.RegisterForUpdates(this.ProfileSnapshot.InstallDirectory, this.ProfileSnapshot.ProfileId, localServerQueryEndPoint, steamServerQueryEndPoint, ProcessStatusUpdate);
+                this.updateRegistration = ServerStatusWatcher.Instance.RegisterForUpdates(this.ProfileSnapshot.InstallDirectory, this.ProfileSnapshot.ProfileId, this.ProfileSnapshot.ServerPort, localServerQueryEndPoint, steamServerQueryEndPoint, ProcessStatusUpdate);
             }
         }
 

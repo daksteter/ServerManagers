@@ -863,7 +863,7 @@ namespace ServerManagerTool
                     {
                         var ipAndPortMessage = Config.Default.Alert_ServerStartedMessageIPandPort
                             .Replace("{ipaddress}", Config.Default.MachinePublicIP)
-                            .Replace("{port}", server.Profile.QueryPort.ToString());
+                            .Replace("{port}", server.Profile.ServerPort.ToString());
                         startupMessage += $" {ipAndPortMessage}";
                     }
                     PluginHelper.Instance.ProcessAlert(AlertType.Startup, server.Profile.ProfileName, startupMessage);

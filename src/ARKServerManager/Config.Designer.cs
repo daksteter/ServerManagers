@@ -136,7 +136,7 @@ namespace ServerManagerTool {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("ShooterGameServer.exe")]
+        [global::System.Configuration.DefaultSettingValueAttribute("ArkAscendedServer.exe")]
         public string ServerExe {
             get {
                 return ((string)(this["ServerExe"]));
@@ -145,7 +145,7 @@ namespace ServerManagerTool {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("?QueryPort={0}")]
+        [global::System.Configuration.DefaultSettingValueAttribute("-port={0}")]
         public string ServerCommandLineArgsMatchFormat {
             get {
                 return ((string)(this["ServerCommandLineArgsMatchFormat"]));
@@ -193,7 +193,7 @@ namespace ServerManagerTool {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("ShooterGameServer")]
+        [global::System.Configuration.DefaultSettingValueAttribute("ArkAscendedServer")]
         public string ServerProcessName {
             get {
                 return ((string)(this["ServerProcessName"]));
@@ -1096,7 +1096,7 @@ namespace ServerManagerTool {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("346110")]
+        [global::System.Configuration.DefaultSettingValueAttribute("2399830")]
         public string AppId {
             get {
                 return ((string)(this["AppId"]));
@@ -1114,7 +1114,7 @@ namespace ServerManagerTool {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("376030")]
+        [global::System.Configuration.DefaultSettingValueAttribute("2430930")]
         public string AppIdServer {
             get {
                 return ((string)(this["AppIdServer"]));

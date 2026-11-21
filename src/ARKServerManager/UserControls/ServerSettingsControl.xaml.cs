@@ -557,7 +557,7 @@ namespace ServerManagerTool
                             {
                                 var ipAndPortMessage = Config.Default.Alert_ServerStartedMessageIPandPort
                                     .Replace("{ipaddress}", Config.Default.MachinePublicIP)
-                                    .Replace("{port}", this.Settings.QueryPort.ToString());
+                                    .Replace("{port}", this.Settings.ServerPort.ToString());
                                 startupMessage += $" {ipAndPortMessage}";
                             }
                             PluginHelper.Instance.ProcessAlert(AlertType.Startup, this.Settings.ProfileName, startupMessage);

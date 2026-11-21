@@ -41,12 +41,13 @@ namespace ServerManagerTool.Lib
             private set;
         }
 
-        public IAsyncDisposable RegisterForUpdates(string installDirectory, string profileId, IPEndPoint localEndpoint, IPEndPoint steamEndpoint, Action<IAsyncDisposable, ServerStatusUpdate> updateCallback)
+        public IAsyncDisposable RegisterForUpdates(string installDirectory, string profileId, int gamePort, IPEndPoint localEndpoint, IPEndPoint steamEndpoint, Action<IAsyncDisposable, ServerStatusUpdate> updateCallback)
         {
-            var registration = new ServerStatusUpdateRegistration 
-            { 
+            var registration = new ServerStatusUpdateRegistration
+            {
                 InstallDirectory = installDirectory,
                 ProfileId = profileId,
+                GamePort = gamePort,
                 LocalEndpoint = localEndpoint, 
                 PublicEndpoint = steamEndpoint, 
                 UpdateCallback = updateCallback,
@@ -237,7 +238,7 @@ namespace ServerManagerTool.Lib
                         (commandLine.StartsWith(serverExePath, StringComparison.OrdinalIgnoreCase) || commandLine.StartsWith($"\"{serverExePath}\"", StringComparison.OrdinalIgnoreCase)))
                     {
                         // Does this match our server exe and port?
-                        var serverArgMatch = string.Format(Config.Default.ServerCommandLineArgsMatchFormat, updateContext.LocalEndpoint.Port).ToLower();
+                        var serverArgMatch = string.Format(Config.Default.ServerCommandLineArgsMatchFormat, updateContext.GamePort).ToLower();
                         if (commandLine.Contains(serverArgMatch))
                         {
                             // Was an IP set on it?

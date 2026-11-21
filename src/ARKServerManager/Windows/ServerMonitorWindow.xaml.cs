@@ -717,7 +717,7 @@ namespace ServerManagerTool.Windows
                             {
                                 var ipAndPortMessage = Config.Default.Alert_ServerStartedMessageIPandPort
                                     .Replace("{ipaddress}", Config.Default.MachinePublicIP)
-                                    .Replace("{port}", serverProfile.QueryPort.ToString());
+                                    .Replace("{port}", serverProfile.ServerPort.ToString());
                                 startupMessage += $" {ipAndPortMessage}";
                             }
                             PluginHelper.Instance.ProcessAlert(AlertType.Startup, serverProfile.ProfileName, startupMessage);

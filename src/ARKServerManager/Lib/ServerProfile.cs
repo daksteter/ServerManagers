@@ -4096,14 +4096,11 @@ namespace ServerManagerTool.Lib
 
             serverArgs.Append("?listen");
 
-            // These are used to match the server to the profile.
+            // ?MultiHome= and -port= (below) are used to match a running process to its profile.
             if (!string.IsNullOrWhiteSpace(this.ServerIP))
             {
                 serverArgs.Append("?MultiHome=").Append(this.ServerIP);
             }
-            serverArgs.Append("?Port=").Append(this.ServerPort);
-            serverArgs.Append("?QueryPort=").Append(this.QueryPort);
-            serverArgs.Append("?MaxPlayers=").Append(this.MaxPlayers);
 
             if (!string.IsNullOrWhiteSpace(this.AltSaveDirectoryName))
             {
@@ -4150,6 +4147,10 @@ namespace ServerManagerTool.Lib
                     serverArgs.Append(" ");
                 serverArgs.Append(addArgs);
             }
+
+            // ASA ignores ?Port= and ?MaxPlayers= (they must be dash options) and has no query port.
+            serverArgs.Append($" -port={this.ServerPort}");
+            serverArgs.Append($" -WinLiveMaxPlayers={this.MaxPlayers}");
 
             if (!string.IsNullOrWhiteSpace(this.TotalConversionModId))
             {

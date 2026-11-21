@@ -58,17 +58,15 @@ Ordered so each milestone leaves the app runnable. Tick boxes as commits land.
 
 ### M1. Server identity, install and launch
 
-- [ ] App IDs: `AppIdServer` 376030 → 2430930; review `AppId` (346110, client — used for Workshop and
-      `steam_appid.txt` validation). Remove `AppId_SotF` / `AppIdServer_SotF`.
-      `Config.settings` ~299–311; `ServerProfileSnapshot.cs:92`; `BranchSnapshot.cs:144`.
-- [ ] Exe / process: `ServerExe` → `ArkAscendedServer.exe`, `ServerProcessName` → `ArkAscendedServer`.
-- [ ] `ServerProfile.Validate` compares `steam_appid.txt` against the *client* app ID (~5020, 5085) — fix for ASA.
-- [ ] **Process detection first:** `ServerStatusWatcher.GetServerProcessStatus` (~213–278) identifies a
-      running server by `?QueryPort=<n>` in its command line (`ServerCommandLineArgsMatchFormat`).
-      Switch it to `-port=<n>` (and `?MultiHome=` / IP) **before** removing `?QueryPort`, or every
-      server will show as Stopped.
+- [x] App IDs: `AppIdServer` 376030 → 2430930, `AppId` 346110 → 2399830 (ASA client; only used for the
+      `steam_appid.txt` check and Workshop). Remove `AppId_SotF` / `AppIdServer_SotF` in M4.
+- [x] Exe / process: `ServerExe` → `ArkAscendedServer.exe`, `ServerProcessName` → `ArkAscendedServer`.
+- [ ] **Verify on a real install:** `ServerProfile.Validate` compares `Binaries\Win64\steam_appid.txt` with
+      `AppId`. ASE's file held the client ID; confirm ASA's holds 2399830 (or whether the file exists at all).
+- [x] Process detection: `ServerStatusWatcher.GetServerProcessStatus` now matches `-port=<game port>`
+      (`ServerCommandLineArgsMatchFormat`, plus `?MultiHome=` when an IP is set) instead of `?QueryPort=`.
 - [ ] `GetServerArgs()` (`ServerProfile.cs` ~4091–4459):
-  - [ ] `?Port=` → `-port=`; drop `?QueryPort=`; `?MaxPlayers=` → `-WinLiveMaxPlayers=`.
+  - [x] `?Port=` → `-port=`; drop `?QueryPort=`; `?MaxPlayers=` → `-WinLiveMaxPlayers=`.
   - [ ] Replace `-crossplay`, `-epiconly`, `-PublicIPForEpic`, `-UseDynamicConfig` with a
         `-ServerPlatform=` setting (new profile property + UI).
   - [ ] Drop ASE-only flags: `-TotalConversionMod`, `-ActiveEvent`, SOTF block, `-d3d10`, `-sm4`,
@@ -78,8 +76,7 @@ Ordered so each milestone leaves the app runnable. Tick boxes as commits land.
   - [ ] `AdditionalArgs` are glued on raw — enforce "`?ServerAdminPassword` last" if it ever goes on the command line.
 - [ ] Ports: remove the query port from UI/validation/firewall; check whether ASA still uses the peer
       port (port+1) and drop it if not. Firewall rules: `ServerRuntime.StartAsync` ~527–554.
-- [ ] Startup alert text uses `{port}` = query port (`ServerApp.cs:387`, `SSC.xaml.cs:560`,
-      `MainWindow.xaml.cs:866`, `ServerMonitorWindow.xaml.cs:720`) → use game port.
+- [x] Startup alert text used `{port}` = query port → now the game port.
 - [ ] Install/update path (SteamCMD `app_update`): mostly unchanged; check `version.txt` reading
       (`ServerRuntime.cs` ~742) and branch handling against the ASA depot.
 - [ ] **Test:** install a fresh ASA server through the app, start it, confirm status shows Running and
