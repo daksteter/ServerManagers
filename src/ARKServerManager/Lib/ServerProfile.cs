@@ -768,6 +768,39 @@ namespace ServerManagerTool.Lib
             set { SetValue(EnablePublicIPForEpicProperty, value); }
         }
 
+        // ASA -ServerPlatform: which platforms may join. All are allowed by default, as the server does without the option.
+        public static readonly DependencyProperty ServerPlatformPCProperty = DependencyProperty.Register(nameof(ServerPlatformPC), typeof(bool), typeof(ServerProfile), new PropertyMetadata(true));
+        [DataMember]
+        public bool ServerPlatformPC
+        {
+            get { return (bool)GetValue(ServerPlatformPCProperty); }
+            set { SetValue(ServerPlatformPCProperty, value); }
+        }
+
+        public static readonly DependencyProperty ServerPlatformXboxProperty = DependencyProperty.Register(nameof(ServerPlatformXbox), typeof(bool), typeof(ServerProfile), new PropertyMetadata(true));
+        [DataMember]
+        public bool ServerPlatformXbox
+        {
+            get { return (bool)GetValue(ServerPlatformXboxProperty); }
+            set { SetValue(ServerPlatformXboxProperty, value); }
+        }
+
+        public static readonly DependencyProperty ServerPlatformPlayStationProperty = DependencyProperty.Register(nameof(ServerPlatformPlayStation), typeof(bool), typeof(ServerProfile), new PropertyMetadata(true));
+        [DataMember]
+        public bool ServerPlatformPlayStation
+        {
+            get { return (bool)GetValue(ServerPlatformPlayStationProperty); }
+            set { SetValue(ServerPlatformPlayStationProperty, value); }
+        }
+
+        public static readonly DependencyProperty ServerPlatformMicrosoftStoreProperty = DependencyProperty.Register(nameof(ServerPlatformMicrosoftStore), typeof(bool), typeof(ServerProfile), new PropertyMetadata(true));
+        [DataMember]
+        public bool ServerPlatformMicrosoftStore
+        {
+            get { return (bool)GetValue(ServerPlatformMicrosoftStoreProperty); }
+            set { SetValue(ServerPlatformMicrosoftStoreProperty, value); }
+        }
+
         public static readonly DependencyProperty UseVivoxProperty = DependencyProperty.Register(nameof(UseVivox), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
         [DataMember]
         public bool UseVivox
@@ -4088,6 +4121,26 @@ namespace ServerManagerTool.Lib
 
         public string GetServerExeFile() => Path.Combine(this.InstallDirectory, Config.Default.ServerBinaryRelativePath, Config.Default.ServerExe);
 
+        /// <summary>
+        /// The -ServerPlatform value: "ALL", a "+"-separated subset such as "PC+XSX", or null when no platform is selected.
+        /// </summary>
+        public string GetServerPlatformArg()
+        {
+            var platforms = new List<string>();
+            if (this.ServerPlatformPC)
+                platforms.Add("PC");
+            if (this.ServerPlatformXbox)
+                platforms.Add("XSX");
+            if (this.ServerPlatformPlayStation)
+                platforms.Add("PS5");
+            if (this.ServerPlatformMicrosoftStore)
+                platforms.Add("WINGDK");
+
+            if (platforms.Count == 0)
+                return null;
+            return platforms.Count == 4 ? "ALL" : string.Join("+", platforms);
+        }
+
         public string GetServerArgs()
         {
             var serverArgs = new StringBuilder();
@@ -4101,6 +4154,10 @@ namespace ServerManagerTool.Lib
             {
                 serverArgs.Append("?MultiHome=").Append(this.ServerIP);
             }
+
+            // ASA doesn't answer server-browser queries, but the server still opens a Steam port (UDP 27015 by
+            // default), so give each profile its own in case several servers run on one machine.
+            serverArgs.Append("?QueryPort=").Append(this.QueryPort);
 
             if (!string.IsNullOrWhiteSpace(this.AltSaveDirectoryName))
             {
@@ -4125,21 +4182,12 @@ namespace ServerManagerTool.Lib
                 serverArgs.Append("?RingStartTime=").Append(this.SOTF_RingStartTime);
             }
 
-            if (this.EventColorsChanceOverride > 0)
-            {
-                serverArgs.Append("?EventColorsChanceOverride=").Append(this.EventColorsChanceOverride);
-            }
-            
-            if (this.NewYear1UTC.HasValue)
-            {
-                serverArgs.Append("?NewYear1UTC=").Append((new DateTimeOffset(this.NewYear1UTC.Value.ToUniversalTime())).ToUnixTimeSeconds().ToString());
-            }
+            // Not passed any more because the ASA server doesn't know them (their names aren't in its binary):
+            // ?EventColorsChanceOverride, ?NewYear1UTC, ?NewYear2UTC and -NewYearEvent, -UseBattlEye (BattlEye is on
+            // unless -NoBattlEye), -noantispeedhack, -speedhackbias, -nocombineclientmoves, -nomansky, -nomemorybias,
+            // -ServerAllowAnsel, -structurememopts, -UseStructureStasisGrid, -SecureSendArKPayload, -UseSecureSpawnRules,
+            // -epiconly, -PublicIPForEpic, -UseVivox, -newsaveformat. -crossplay is replaced by -ServerPlatform.
 
-            if (this.NewYear2UTC.HasValue)
-            {
-                serverArgs.Append("?NewYear2UTC=").Append((new DateTimeOffset(this.NewYear2UTC.Value.ToUniversalTime())).ToUnixTimeSeconds().ToString());
-            }
-            
             if (!string.IsNullOrWhiteSpace(this.AdditionalArgs))
             {
                 var addArgs = this.AdditionalArgs.TrimStart();
@@ -4151,6 +4199,12 @@ namespace ServerManagerTool.Lib
             // ASA ignores ?Port= and ?MaxPlayers= (they must be dash options) and has no query port.
             serverArgs.Append($" -port={this.ServerPort}");
             serverArgs.Append($" -WinLiveMaxPlayers={this.MaxPlayers}");
+
+            var serverPlatform = GetServerPlatformArg();
+            if (serverPlatform != null)
+            {
+                serverArgs.Append($" -ServerPlatform={serverPlatform}");
+            }
 
             // CurseForge project IDs, in load order; the server downloads and updates these mods itself.
             var modIds = string.Join(",", (this.ServerModIds ?? string.Empty).Split(new[] { ',', ';', ' ' }, StringSplitOptions.RemoveEmptyEntries));
@@ -4241,11 +4295,6 @@ namespace ServerManagerTool.Lib
                 serverArgs.Append(" -webalarm");
             }
 
-            if (this.UseBattlEye)
-            {
-                serverArgs.Append(" -UseBattlEye");
-            }
-
             if (!this.UseBattlEye)
             {
                 serverArgs.Append(" -NoBattlEye");
@@ -4254,20 +4303,6 @@ namespace ServerManagerTool.Lib
             if (this.DisableValveAntiCheatSystem)
             {
                 serverArgs.Append(" -insecure");
-            }
-
-            if (this.DisableAntiSpeedHackDetection || this.SpeedHackBias == 0.0f)
-            {
-                serverArgs.Append(" -noantispeedhack");
-            }
-            else if (this.SpeedHackBias != 1.0f)
-            {
-                serverArgs.Append($" -speedhackbias={this.SpeedHackBias}f");
-            }
-
-            if (this.DisablePlayerMovePhysicsOptimization)
-            {
-                serverArgs.Append(" -nocombineclientmoves");
             }
 
             if (this.ForceRespawnDinos)
@@ -4310,16 +4345,6 @@ namespace ServerManagerTool.Lib
                 serverArgs.Append(" -lowmemory");
             }
 
-            if (this.ForceNoManSky)
-            {
-                serverArgs.Append(" -nomansky");
-            }
-
-            if (this.UseNoMemoryBias)
-            {
-                serverArgs.Append(" -nomemorybias");
-            }
-
             if (this.StasisKeepControllers)
             {
                 serverArgs.Append(" -StasisKeepControllers");
@@ -4335,34 +4360,9 @@ namespace ServerManagerTool.Lib
                 serverArgs.Append(" -exclusivejoin");
             }
 
-            if (this.ServerAllowAnsel)
-            {
-                serverArgs.Append(" -ServerAllowAnsel");
-            }
-
-            if (this.StructureMemoryOptimizations)
-            {
-                serverArgs.Append(" -structurememopts");
-            }
-
-            if (this.UseStructureStasisGrid)
-            {
-                serverArgs.Append(" -UseStructureStasisGrid");
-            }
-
-            if (this.SecureSendArKPayload)
-            {
-                serverArgs.Append(" -SecureSendArKPayload");
-            }
-
             if (this.UseItemDupeCheck)
             {
                 serverArgs.Append(" -UseItemDupeCheck");
-            }
-
-            if (this.UseSecureSpawnRules)
-            {
-                serverArgs.Append(" -UseSecureSpawnRules");
             }
 
             if (this.NoUnderMeshChecking)
@@ -4380,34 +4380,14 @@ namespace ServerManagerTool.Lib
                 serverArgs.Append(" -NoDinos");
             }
 
-            if (this.Crossplay)
-            {
-                serverArgs.Append(" -crossplay");
-            }
-
-            if (this.EpicOnly)
-            {
-                serverArgs.Append(" -epiconly");
-            }
-
             if (this.EnableCustomDynamicConfigUrl && !string.IsNullOrWhiteSpace(this.CustomDynamicConfigUrl))
             {
                 serverArgs.Append(" -UseDynamicConfig ");
             }
 
-            if ((this.Crossplay || this.EpicOnly) && this.EnablePublicIPForEpic)
-            {
-                serverArgs.Append($" -PublicIPForEpic={Config.Default.MachinePublicIP}");
-            }
-
             if (this.DisableRailgunPVP)
             {
                 serverArgs.Append(" -DisableRailgunPVP");
-            }
-
-            if (this.UseVivox)
-            {
-                serverArgs.Append(" -UseVivox");
             }
 
             serverArgs.Append(' ');
@@ -4433,11 +4413,6 @@ namespace ServerManagerTool.Lib
                 serverArgs.Append(" -culture=").Append(this.Culture);
             }
 
-            if (this.NewSaveFormat)
-            {
-                serverArgs.Append(" -newsaveformat");
-            }
-
             if (this.UseStore)
             {
                 serverArgs.Append(" -usestore");
@@ -4451,11 +4426,6 @@ namespace ServerManagerTool.Lib
             if (this.MaxNumOfSaveBackups != 20)
             {
                 serverArgs.Append(" -MaxNumOfSaveBackups=").Append(this.MaxNumOfSaveBackups);
-            }
-            
-            if (this.NewYear1UTC.HasValue || this.NewYear2UTC.HasValue)
-            {
-                serverArgs.Append(" -NewYearEvent");
             }
             
             return serverArgs.ToString();
@@ -5044,6 +5014,11 @@ namespace ServerManagerTool.Lib
                 result.AppendLine(message);
             }
 
+            if (GetServerPlatformArg() == null)
+            {
+                result.AppendLine(_globalizer.GetResourceString("ProfileValidation_ServerPlatformNone"));
+            }
+
             if (forceValidate || Config.Default.ValidateProfileOnServerStart)
             {
                 // ASA mods are CurseForge project IDs that the server downloads itself, so the Steam Workshop
@@ -5497,6 +5472,10 @@ namespace ServerManagerTool.Lib
             this.ClearValue(CrossplayProperty);
             this.ClearValue(EpicOnlyProperty);
             this.ClearValue(EnablePublicIPForEpicProperty);
+            this.ClearValue(ServerPlatformPCProperty);
+            this.ClearValue(ServerPlatformXboxProperty);
+            this.ClearValue(ServerPlatformPlayStationProperty);
+            this.ClearValue(ServerPlatformMicrosoftStoreProperty);
             this.ClearValue(OutputServerLogProperty);
             this.ClearValue(SecureSendArKPayloadProperty);
             this.ClearValue(UseItemDupeCheckProperty);
@@ -6218,6 +6197,10 @@ namespace ServerManagerTool.Lib
             this.SetValue(CrossplayProperty, sourceProfile.Crossplay);
             this.SetValue(EpicOnlyProperty, sourceProfile.EpicOnly);
             this.SetValue(EnablePublicIPForEpicProperty, sourceProfile.EnablePublicIPForEpic);
+            this.SetValue(ServerPlatformPCProperty, sourceProfile.ServerPlatformPC);
+            this.SetValue(ServerPlatformXboxProperty, sourceProfile.ServerPlatformXbox);
+            this.SetValue(ServerPlatformPlayStationProperty, sourceProfile.ServerPlatformPlayStation);
+            this.SetValue(ServerPlatformMicrosoftStoreProperty, sourceProfile.ServerPlatformMicrosoftStore);
             this.SetValue(OutputServerLogProperty, sourceProfile.OutputServerLog);
             //this.SetValue(AltSaveDirectoryNameProperty, sourceProfile.AltSaveDirectoryName);
             if (Config.Default.ProfileSyncCrossArkClusterIdEnabled)

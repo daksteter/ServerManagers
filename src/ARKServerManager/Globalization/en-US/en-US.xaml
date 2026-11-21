@@ -1131,7 +1131,7 @@
     <sys:String x:Key="ServerSettings_ServerPeerPortLabel">Peer Port:</sys:String>
     <sys:String x:Key="ServerSettings_ServerPeerPortTooltip">Pinger port used to determine server availability. Default is 7778.</sys:String>
     <sys:String x:Key="ServerSettings_QueryPortLabel">Query Port:</sys:String>
-    <sys:String x:Key="ServerSettings_QueryPortTooltip">The port Steam uses to communicate with your server. Default is 27015. Change this and Server Port if you wish to host multiple servers on one machine.</sys:String>
+    <sys:String x:Key="ServerSettings_QueryPortTooltip">A Steam port (UDP) the server opens; ASA servers don't answer server-browser queries on it. Default is 27015. Give each server on a machine its own query port and server port.</sys:String>
     <sys:String x:Key="ServerSettings_LocalIPLabel">Local IP:</sys:String>
     <sys:String x:Key="ServerSettings_LocalIPTooltip">Sets the local (private) IP the server will listen on. This should be your primary network card which routes to the public internet.</sys:String>
     <sys:String x:Key="ServerSettings_LocalIPGameChooseLabel">Let the server choose</sys:String>
@@ -1271,6 +1271,12 @@
     <sys:String x:Key="ServerSettings_UseVivoxTooltip">If enabled, will turn on Vivox. NOTE: Steam Servers only.</sys:String>
     <sys:String x:Key="ServerSettings_AllowSharedConnectionsLabel">Allow Shared Connections</sys:String>
     <sys:String x:Key="ServerSettings_AllowSharedConnectionsTooltip">If disabled, will disable family sharing.</sys:String>
+    <sys:String x:Key="ServerSettings_ServerPlatformLabel">Players from:</sys:String>
+    <sys:String x:Key="ServerSettings_ServerPlatformTooltip">Which platforms may join the server (-ServerPlatform). With all of them ticked, players on any platform can join (crossplay).</sys:String>
+    <sys:String x:Key="ServerSettings_ServerPlatformPCLabel">PC (Steam)</sys:String>
+    <sys:String x:Key="ServerSettings_ServerPlatformMicrosoftStoreLabel">PC (Microsoft Store)</sys:String>
+    <sys:String x:Key="ServerSettings_ServerPlatformXboxLabel">Xbox</sys:String>
+    <sys:String x:Key="ServerSettings_ServerPlatformPlayStationLabel">PlayStation</sys:String>
     <sys:String x:Key="ServerSettings_CrossplayLabel">Enable Crossplay</sys:String>
     <sys:String x:Key="ServerSettings_CrossplayTooltip">If enabled, will turn on crossplay, so players using clients from different stores can connect to the dedicated server.</sys:String>
     <sys:String x:Key="ServerSettings_EpicOnlyLabel">Epic Store Players Only</sys:String>
@@ -5787,6 +5793,7 @@ Undocumented bye wildcard.</sys:String>
 
     <sys:String x:Key="ProfileValidation_ServerPort">The server port is outside the valid range ({PortMinimum}-{PortMaximum}).</sys:String>
     <sys:String x:Key="ProfileValidation_ServerPeerPort">The server peer port is outside the valid range ({PortMinimum}-{PortMaximum}).</sys:String>
+    <sys:String x:Key="ProfileValidation_ServerPlatformNone">No server platform is selected. Tick at least one under "Players from" in the Administration section.</sys:String>
     <sys:String x:Key="ProfileValidation_QueryPort">The query port is outside the valid range ({PortMinimum}-{PortMaximum}).</sys:String>
     <sys:String x:Key="ProfileValidation_RconPort">The rcon port is outside the valid range ({PortMinimum}-{PortMaximum}).</sys:String>
 

@@ -1347,7 +1347,7 @@ namespace ServerManagerTool.Lib
                             }
 
                             // update the version number
-                            _profile.LastInstalledVersion = GetServerVersion(GetServerVersionFile()).ToString();
+                            _profile.LastInstalledVersion = GetServerVersion(_profile.InstallDirectory).ToString();
 
                             LogProfileMessage("Updated server from cache. See patch notes.");
                             LogProfileMessage(Config.Default.AppPatchNotesUrl);
@@ -1379,7 +1379,7 @@ namespace ServerManagerTool.Lib
                     LogProfileMessage("Server is already up to date, no update required.");
                 }
 
-                var serverVersion = GetServerVersion(GetServerVersionFile()).ToString();
+                var serverVersion = GetServerVersion(_profile.InstallDirectory).ToString();
                 LogProfileMessage($"Server version: {serverVersion}");
 
                 emailMessage.AppendLine($"Server version: {serverVersion}");
@@ -1523,7 +1523,7 @@ namespace ServerManagerTool.Lib
                 else
                     LogProfileMessage("The server files are already up to date, no updates required.");
 
-                var serverVersion = GetServerVersion(GetServerVersionFile()).ToString();
+                var serverVersion = GetServerVersion(_profile.InstallDirectory).ToString();
                 LogProfileMessage($"Server version: {serverVersion}");
 
                 _serverRunning = GetServerProcess() != null;
@@ -1909,7 +1909,7 @@ namespace ServerManagerTool.Lib
             else
                 LogBranchMessage(appIdServer, branchName, $"Server cache does not exist.");
 
-            var cacheVersion = GetServerVersion(GetServerCacheVersionFile(appIdServer, branchName)).ToString();
+            var cacheVersion = GetServerVersion(GetServerCacheFolder(appIdServer, branchName)).ToString();
             LogBranchMessage(appIdServer, branchName, $"Server cache version: {cacheVersion}");
 
             LogBranchMessage(appIdServer, branchName, "-----------------------------");
@@ -2563,7 +2563,6 @@ namespace ServerManagerTool.Lib
 
         private static string GetServerCacheTimeFile(string appIdServer, string branchName) => IOUtils.NormalizePath(Path.Combine(GetServerCacheFolder(appIdServer, branchName), Config.Default.LastUpdatedTimeFile));
 
-        private static string GetServerCacheVersionFile(string appIdServer, string branchName) => IOUtils.NormalizePath(Path.Combine(GetServerCacheFolder(appIdServer, branchName), Config.Default.VersionFile));
 
         private string GetServerExecutableFile() => IOUtils.NormalizePath(Path.Combine(_profile.InstallDirectory, Config.Default.ServerBinaryRelativePath, Config.Default.ServerExe));
 
@@ -2609,33 +2608,24 @@ namespace ServerManagerTool.Lib
 
         private string GetServerSaveGamesFolder() => IOUtils.NormalizePath(ServerProfile.GetProfileSaveGamesPath(_profile.InstallDirectory));
 
-        private string GetServerVersionFile() => IOUtils.NormalizePath(Path.Combine(_profile.InstallDirectory, Config.Default.VersionFile));
-
-        public static Version GetServerVersion(string versionFile)
+        /// <summary>
+        /// The version of the server installed in a folder, e.g. 98.9: the "ArkVersion" entry in the server exe's
+        /// version resource (ASA has no version.txt). 0.0 when no server is installed there.
+        /// </summary>
+        public static Version GetServerVersion(string installDirectory)
         {
-            if (!string.IsNullOrWhiteSpace(versionFile) && File.Exists(versionFile))
+            if (string.IsNullOrWhiteSpace(installDirectory))
+                return new Version(0, 0);
+
+            try
             {
-                try
-                {
-                    var fileValue = File.ReadAllText(versionFile);
-
-                    if (!string.IsNullOrWhiteSpace(fileValue))
-                    {
-                        string versionString = fileValue.ToString();
-                        if (versionString.IndexOf('.') == -1)
-                            versionString = versionString + ".0";
-
-                        if (Version.TryParse(versionString, out Version version))
-                            return version;
-                    }
-                }
-                catch (Exception)
-                {
-                    // do nothing, just leave
-                }
+                var serverExe = Path.Combine(installDirectory, Config.Default.ServerBinaryRelativePath, Config.Default.ServerExe);
+                return VersionUtils.ParseVersion(VersionUtils.GetVersionResourceString(serverExe, "ArkVersion"));
             }
-
-            return new Version(0, 0);
+            catch (Exception)
+            {
+                return new Version(0, 0);
+            }
         }
 
         private string GetServerWorldFile()

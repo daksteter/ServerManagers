@@ -143,7 +143,13 @@ namespace ServerManagerTool.Lib
             this.motdIntervalTimer = new System.Timers.Timer(this.ProfileSnapshot.MOTDInterval * 60 * 1000);
             this.motdIntervalTimer.Elapsed += async (sender, e) => await HandleMotDIntervalTimer();
 
-            if (Version.TryParse(profile.LastInstalledVersion, out Version lastInstalled))
+            // The installed server exe knows its own version; fall back to the last one recorded for the profile.
+            var installedVersion = ServerApp.GetServerVersion(profile.InstallDirectory);
+            if (installedVersion > new Version(0, 0))
+            {
+                this.Version = installedVersion;
+            }
+            else if (Version.TryParse(profile.LastInstalledVersion, out Version lastInstalled))
             {
                 this.Version = lastInstalled;
             }
@@ -499,7 +505,8 @@ namespace ServerManagerTool.Lib
             {
                 if (SecurityUtils.IsAdministrator())
                 {
-                    var ports = new List<int>() { this.ProfileSnapshot.ServerPort, this.ProfileSnapshot.ServerPeerPort, this.ProfileSnapshot.QueryPort };
+                    // ASA uses no peer port (game port + 1).
+                    var ports = new List<int>() { this.ProfileSnapshot.ServerPort, this.ProfileSnapshot.QueryPort };
                     if (this.ProfileSnapshot.RCONEnabled)
                     {
                         ports.Add(this.ProfileSnapshot.RCONPort);
@@ -713,8 +720,7 @@ namespace ServerManagerTool.Lib
                             progressCallback?.Invoke(0, $"{SteamCmdUpdater.OUTPUT_PREFIX} New server version - {gotNewVersion.ToString().ToUpperInvariant()}.");
 
                             // update the version number of the server.
-                            var versionFile = Path.Combine(this.ProfileSnapshot.InstallDirectory, Config.Default.VersionFile);
-                            this.Version = ServerApp.GetServerVersion(versionFile);
+                            this.Version = ServerApp.GetServerVersion(this.ProfileSnapshot.InstallDirectory);
 
                             progressCallback?.Invoke(0, $"{SteamCmdUpdater.OUTPUT_PREFIX} Server version: {this.Version}\r\n");
                         }

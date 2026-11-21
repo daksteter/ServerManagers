@@ -67,24 +67,46 @@ Ordered so each milestone leaves the app runnable. Tick boxes as commits land.
       `ServerProfile.Validate` app-ID check passes with the new `AppId`.
 - [x] Process detection: `ServerStatusWatcher.GetServerProcessStatus` now matches `-port=<game port>`
       (`ServerCommandLineArgsMatchFormat`, plus `?MultiHome=` when an IP is set) instead of `?QueryPort=`.
-- [ ] `GetServerArgs()` (`ServerProfile.cs` ~4091–4459):
-  - [x] `?Port=` → `-port=`; drop `?QueryPort=`; `?MaxPlayers=` → `-WinLiveMaxPlayers=`.
-  - [ ] Replace `-crossplay`, `-epiconly`, `-PublicIPForEpic`, `-UseDynamicConfig` with a
-        `-ServerPlatform=` setting (new profile property + UI).
-  - [ ] Drop ASE-only flags: `-TotalConversionMod`, `-ActiveEvent`, SOTF block, `-d3d10`, `-sm4`,
-        `-nomansky`, `-ServerAllowAnsel`, `-UseVivox`, `-DisableRailgunPVP`, `-newsaveformat`,
-        `-usestore`, `-webalarm` (verify each against the ASA option list).
-  - [ ] Keep: cluster args, BattlEye (`-NoBattlEye` still valid), `-log`, `-culture`, `-servergamelog`, etc.
+- [x] `GetServerArgs()` (`ServerProfile.cs`):
+  - [x] `?Port=` → `-port=`; `?MaxPlayers=` → `-WinLiveMaxPlayers=`.
+  - [x] `-ServerPlatform=` setting ("Players from": PC (Steam), PC (Microsoft Store), Xbox, PlayStation →
+        `PC`, `WINGDK`, `XSX`, `PS5`, or `ALL` when all are ticked; default all, like the server). Replaces
+        the `-crossplay`, `-epiconly`, `-PublicIPForEpic` checkboxes. At least one is required (validation).
+  - [x] Options dropped by checking the **ASA server binary** for each option name (UE parses options as
+        `TEXT("Name")` literals, so an option the server reads has its name in the exe as UTF-16; the wiki's
+        ASE/ASA marks were not reliable enough). Not in the binary, so no longer passed and hidden in the UI:
+        `?EventColorsChanceOverride`, `?NewYear1UTC/2UTC`, `-NewYearEvent`, `-UseBattlEye` (BattlEye is on
+        unless `-NoBattlEye`), `-noantispeedhack`, `-speedhackbias`, `-nocombineclientmoves`, `-nomansky`,
+        `-nomemorybias`, `-ServerAllowAnsel`, `-structurememopts`, `-UseStructureStasisGrid`,
+        `-SecureSendArKPayload`, `-UseSecureSpawnRules`, `-epiconly`, `-PublicIPForEpic`, `-UseVivox`,
+        `-newsaveformat`. Kept because the binary has them: `-log`, `-nosteamclient`, `-game`, `-server`,
+        `-MinimumTimeBetweenInventoryRetrieval`, `-webalarm`, `-UseDynamicConfig`, `-ActiveEvent`, `-usestore`,
+        `-d3d10`, `-sm4`, `-lowmemory`, `-NoHangDetection`, `-StasisKeepControllers`, `-UseItemDupeCheck`,
+        cluster options, `-servergamelog*`, `-exclusivejoin`, `-NoDinos`, `-imprintlimit`, `-culture`, etc.
+        Re-run the check after big server updates (scratchpad script `exe_options.py`; could become a test).
+  - [x] Their profile properties still exist (old profiles load); delete them in the Phase 4 cleanup.
+  - [ ] Options in the binary that the app doesn't offer yet: `-passivemods`, `-NoWildBabies`,
+        `-GBUsageToForceRestart`, `-BattlEyeServerRecheck`, `-AlwaysTickDedicatedSkeletalMeshes` (M7).
   - [ ] `AdditionalArgs` are glued on raw — enforce "`?ServerAdminPassword` last" if it ever goes on the command line.
-- [ ] Ports: remove the query port from UI/validation/firewall; check whether ASA still uses the peer
-      port (port+1) and drop it if not. Firewall rules: `ServerRuntime.StartAsync` ~527–554.
+- [x] Ports: ASA binds no peer port (verified with netstat: only the game port, UDP 27015 and RCON), so the
+      peer port is hidden and no longer gets a firewall rule. The server **does** open UDP 27015 (Steam)
+      although it doesn't answer queries there, so the query port stays (field, validation, firewall) and
+      `?QueryPort=` is passed again so each server on a machine can have its own.
+- [x] Verified: the server honours `?QueryPort=` (started with 27016, it bound UDP 27016 instead of 27015).
+      Ports it opens: game port (UDP), query port (UDP), RCON (TCP), plus two TCP ports on 127.0.0.1 only
+      (8888 and one ephemeral) that need no firewall rule.
+- [x] **Test:** restarted with the new arguments (`-ServerPlatform=ALL`, `?QueryPort=27016`, no dropped
+      options): starts and is joinable as before; the app shows version 98.9 from the exe.
 - [x] Startup alert text used `{port}` = query port → now the game port.
 - [x] Install via SteamCMD `app_update 2430930` works (anonymous login, ~11.5 GB): test server at
       `Q:\asmdata\Servers\Server1`.
-- [ ] ASA has **no `version.txt`** (upstream read the installed version from it; `GetServerVersion` returns
-      an empty version when missing). Use the Steam build ID from `steamapps\appmanifest_2430930.acf`,
-      or the version the server reports, instead.
-- [ ] Check branch handling against the ASA depot.
+- [x] ASA has **no `version.txt`**. The server exe's version resource has an `ArkVersion` entry (`98.9`),
+      plus `ProductVersion` `5.8.3-841389+++ARK1+Rel-1.97`. `ServerApp.GetServerVersion(installDirectory)`
+      reads `ArkVersion` via `GetFileVersionInfo`/`VerQueryValue` (`VersionUtils.GetVersionResourceString`;
+      .NET's `FileVersionInfo` returns nothing for this exe). Used for the installed and cached versions, and
+      when a profile is loaded, so the version shows before the server has ever run. Update detection was
+      already based on file times, not the version. `Config.VersionFile` is now unused (Phase 4).
+- [x] Branch handling: nothing ASA-specific (Steam beta branches and passwords work the same way).
 - [x] **Test:** installed a fresh ASA server through the app (`Q:\asmdata\Servers\Server2`) and started it:
       `RunServer.cmd` is correct, the server starts in ~1 minute (game port 7777/UDP, RCON 32330/TCP),
       session name and RCON settings come through from `GameUserSettings.ini`, and the app detects the
