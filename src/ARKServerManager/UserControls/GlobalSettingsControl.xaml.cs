@@ -8,6 +8,7 @@ using ServerManagerTool.Lib;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -29,6 +30,7 @@ namespace ServerManagerTool
     {
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         private readonly GlobalizedApplication _globalizer = GlobalizedApplication.Instance;
+        private bool _populatingLanguages;
 
         public static readonly DependencyProperty AppInstanceProperty = DependencyProperty.Register(nameof(AppInstance), typeof(App), typeof(GlobalSettingsControl), new PropertyMetadata(null));
         public static readonly DependencyProperty IsAdministratorProperty = DependencyProperty.Register(nameof(IsAdministrator), typeof(bool), typeof(GlobalSettingsControl), new PropertyMetadata(false));
@@ -52,6 +54,7 @@ namespace ServerManagerTool
             InitializeComponent();
             WindowUtils.RemoveDefaultResourceDictionary(this, Config.Default.DefaultGlobalizationFile);
 
+            PopulateLanguagesComboBox();
             PopulateWindowsStatesMainWindowComboBox();
             PopulateWindowsStatesServerMonitorWindowComboBox();
             PopulateDiscordBotLogLevelsComboBox();
@@ -382,10 +385,34 @@ namespace ServerManagerTool
             PopulateRconMessageModesComboBox();
         }
 
-        private void LanguageSelectionComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void PopulateLanguagesComboBox()
         {
-            Config.CultureName = AvailableLanguages.Instance.SelectedLanguage;
+            var comboBoxList = new ComboBoxItemList();
+            foreach (var (code, name) in _globalizer.GetLanguages())
+                comboBoxList.Add(new Common.Model.ComboBoxItem(code, name));
 
+            _populatingLanguages = true;
+            try
+            {
+                this.LanguageComboBox.ItemsSource = comboBoxList;
+                this.LanguageComboBox.SelectedValue = CultureInfo.CurrentCulture.Name;
+            }
+            finally
+            {
+                _populatingLanguages = false;
+            }
+        }
+
+        private void LanguageComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (_populatingLanguages || this.LanguageComboBox.SelectedValue is not string language || language == CultureInfo.CurrentCulture.Name)
+                return;
+
+            _globalizer.LoadLanguage(language);
+            Config.CultureName = CultureInfo.CurrentCulture.Name;
+
+            // the language names, now in the new language (not from inside this handler)
+            Dispatcher.BeginInvoke(new Action(PopulateLanguagesComboBox));
             PopulateWindowsStatesMainWindowComboBox();
             PopulateWindowsStatesServerMonitorWindowComboBox();
             PopulateTaskPrioritiesComboBox();

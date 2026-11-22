@@ -6,7 +6,6 @@
              xmlns:cctl="clr-namespace:ServerManagerTool.Common.Controls;assembly=ServerManager.Common"
              xmlns:cc="clr-namespace:ServerManagerTool.Common.Converters;assembly=ServerManager.Common"
              xmlns:cvr="clr-namespace:ServerManagerTool.Common.ValidationRules;assembly=ServerManager.Common"
-             xmlns:globcntrls="clr-namespace:WPFSharp.Globalizer.Controls;assembly=WPFSharp.Globalizer"
              mc:Ignorable="d" 
              d:DesignWidth="800"
              x:Name="GlobalSettings">
@@ -96,7 +95,7 @@
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
 
-                        <globcntrls:LanguageSelectionComboBox Grid.Row="0" Grid.Column="0" Margin="0,0,5,0" SelectionChanged="LanguageSelectionComboBox_SelectionChanged"/>
+                        <ComboBox Name="LanguageComboBox" Grid.Row="0" Grid.Column="0" Margin="0,0,5,0" SelectedValuePath="ValueMember" DisplayMemberPath="DisplayMember" AutomationProperties.Name="{DynamicResource GlobalSettings_LanguageSelectionLabel}" SelectionChanged="LanguageComboBox_SelectionChanged" PreviewMouseWheel="ComboBox_PreviewMouseWheel"/>
                         <StackPanel Grid.Row="0" Grid.Column="1" Margin="5,0,0,0" Orientation="Horizontal">
                             <StackPanel.Style>
                                 <Style TargetType="{x:Type StackPanel}">

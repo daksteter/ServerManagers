@@ -440,8 +440,24 @@ The Island, Scorched Earth, The Center, Aberration, Extinction, Astraeos, Ragnar
         does; NeXt.Vdf wrote the manifest back as UTF-16. Its output matches the real ASA manifest byte for byte.
         The unused manifest reader (`SteamUtils.ReadSteamCmdAppManifestFile`, `SteamCmdAppManifest*` models) went
         with it. `VdfFileUnitTest` covers both.
-      - Left: WPFSharp.Globalizer (custom license; forbids publicly releasing builds compiled from a public copy of
-        its source, which is how this repo builds it). See THIRD-PARTY-NOTICES.md.
+- [x] WPFSharp.Globalizer: its license allows shipping the author's compiled releases in a non-competing project,
+      but forbids publicly releasing builds compiled from a public copy of its source, which is what the repo did
+      (`src\WPFSharp.Globalizer`, modified by Bletch). Now the published NuGet package, 1.2.4 (net5.0-windows build,
+      same license text). Bletch's changes the app relied on are now app code, written against the package's
+      public API (`GlobalizerExtensions.cs`):
+      - `GetResourceString` (832 calls): an extension method on `GlobalizedApplication`, over
+        `ResourceUtils.GetResourceString`.
+      - English under every other language, so untranslated texts stay English: `LoadLanguage` loads `en-US.xaml`,
+        then the language's file, through the manager's `LoadDictionariesFromFiles`. The package's
+        `SwitchLanguage` loads only the language and throws for an unknown one. An unknown language falls back to
+        English.
+      - Styles: `LoadStyle` loads `Styles\Default.xaml` (the package looks for "Default Style.xaml") and lays a
+        chosen style over it.
+      - The language list in Settings is a plain combo box filled by the app. The package's
+        `LanguageSelectionComboBox` calls the package's `SwitchLanguage`, which has no English fallback.
+      Checked with UiDriver on the test copy: switching to German retitles Settings and translates the main window,
+      the untranslated "New profile" stays English, the language names relist in German, and switching back
+      works.
 
 ---
 

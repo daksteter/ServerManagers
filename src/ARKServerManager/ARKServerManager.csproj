@@ -46,6 +46,7 @@
     <PackageReference Include="ProDotNetZip" Version="1.20.0" />
     <PackageReference Include="TaskScheduler" Version="2.12.2" />
     <PackageReference Include="TinyCsvParser" Version="3.0.13" />
+    <PackageReference Include="WPFSharp.Globalizer" Version="1.2.4" />
   </ItemGroup>
 
   <ItemGroup>
@@ -55,7 +56,6 @@
     <ProjectReference Include="..\ServerManager.Common\ServerManager.Common.csproj" />
     <ProjectReference Include="..\ServerManager.Discord\ServerManager.Discord.csproj" />
     <ProjectReference Include="..\ServerManager.Updater\ServerManager.Updater.csproj" />
-    <ProjectReference Include="..\WPFSharp.Globalizer\WPFSharp.Globalizer.csproj" />
   </ItemGroup>
 
   <!-- Windows-only app: copy only the Windows builds of package native libraries (SQLite ships ~20 platforms, ~30 MB). -->

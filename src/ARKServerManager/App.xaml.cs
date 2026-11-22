@@ -352,14 +352,14 @@ namespace ServerManagerTool
             _globalizer = GlobalizedApplication.Instance;
             try
             {
-                var langCode = GlobalizationManager.FallBackLanguage;
+                var langCode = GlobalizerExtensions.FallbackLanguage;
 
                 if (string.IsNullOrWhiteSpace(Config.Default.DataDir))
                     langCode = CultureInfo.CurrentCulture.Name;
                 else if (!string.IsNullOrWhiteSpace(Config.Default.CultureName))
                     langCode = Config.Default.CultureName;
 
-                _globalizer.GlobalizationManager.SwitchLanguage(langCode, true);
+                _globalizer.LoadLanguage(langCode);
             }
             catch (Exception ex)
             {
@@ -369,8 +369,7 @@ namespace ServerManagerTool
 
             try
             {
-                if (!string.IsNullOrWhiteSpace(Config.Default.StyleName))
-                    _globalizer.StyleManager.SwitchStyle(Config.Default.StyleName, true);
+                _globalizer.LoadStyle(Config.Default.StyleName);
             }
             catch (Exception ex)
             {

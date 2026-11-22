@@ -25,7 +25,7 @@ The app itself is a fork of [ARK Server Manager](https://github.com/Bletch1971/S
 | TaskScheduler | 2.12.2 | MIT | Copyright © 2002-2025 David Hall | https://github.com/dahall/taskscheduler |
 | TinyCsvParser | 3.0.13 | MIT | Copyright © 2026 Philipp Wagner | https://github.com/bytefish/TinyCsvParser |
 | WindowsFirewallHelper | 2.2.0.86 | MIT | Copyright (c) 2016-2019 Soroush | https://github.com/falahati/WindowsFirewallHelper |
-| WPFSharp.Globalizer | 2015 source | Custom (below) | Copyright (c) 2015, Jared Barneck (Rhyous) | — |
+| WPFSharp.Globalizer | 1.2.4 | Custom (below) | Copyright (c) 2015, Jared Barneck (Rhyous) | https://github.com/rhyous/WPFSharp.Globalizer |
 
 ## Game data
 
@@ -216,6 +216,8 @@ Code is provided under MIT licence:
 
 ### WPFSharp.Globalizer
 
+The package's License.txt, unchanged:
+
 ```text
 WPFSharp.Globalizer - A project deisgned to make localization and styling
                       easier by decoupling both process from the build.
@@ -255,5 +257,4 @@ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
 ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
 ```

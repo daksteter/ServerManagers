@@ -1,7 +1,0 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <UseWPF>true</UseWPF>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>WPFSharp.Globalizer.Key.snk</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
-</Project>

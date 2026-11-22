@@ -129,5 +129,8 @@ First release for ARK: Survival Ascended (ASA). Servers for ARK: Survival Evolve
 - Two libraries whose licenses conflict with a release were replaced: the Windows API Code Pack (file and folder
   pickers now use the dialogs built into .NET) and NeXt.Vdf (GPL; SteamCMD's manifest is now read and written by
   the app's own code).
+- WPFSharp.Globalizer comes from its published NuGet package (1.2.4), as its license requires for a public
+  release, instead of a modified copy of its source. The changes the app relied on (English under other languages,
+  resource strings, style loading, the language list) are now in the app.
 - Unit tests for the RCON client, the accessible names and the manifest reader.
 - `docs/PORTING-PLAN.md`: what was changed for ASA and why, with the facts it relies on.
