@@ -759,7 +759,6 @@
     <sys:String x:Key="MainWindow_MyIpTooltip">这个IP地址是互联网玩家能够连接到您的服务器.</sys:String>
     <sys:String x:Key="MainWindow_MyIpError">无效的IP地址或主机名</sys:String>
     <sys:String x:Key="MainWindow_RefreshMyIpTooltip">请确认您现在的公网IP地址。</sys:String>
-    <sys:String x:Key="MainWindow_DonateTooltip">点击这里捐赠，以表示对我们工作的支持！</sys:String>
     <sys:String x:Key="MainWindow_SteamCMDTooltip">重新安装SteamCMD.</sys:String>
     <sys:String x:Key="MainWindow_OpenRCONTooltip">打开远程控制台</sys:String>
     <sys:String x:Key="MainWindow_OpenLogFolderTooltip">打开方舟服务器日志文件夹</sys:String>
@@ -768,7 +767,6 @@
     <sys:String x:Key="MainWindow_OpenPluginsTooltip">打开插件</sys:String>
     <sys:String x:Key="MainWindow_OpenHelpTooltip">打开帮助</sys:String>
     <sys:String x:Key="MainWindow_OpenServerMonitorTooltip">打开服务器监控器</sys:String>
-	<sys:String x:Key="MainWindow_JoinDiscordTooltip">加入不和谐Discord服务器</sys:String>
     <sys:String x:Key="MainWindow_TaskStatusLabel">任务状态</sys:String>
     <sys:String x:Key="MainWindow_TaskAdminErrorTitle">需要管理权限</sys:String>
     <sys:String x:Key="MainWindow_TaskAdminErrorLabel">无法执行此功能，因为它需要管理权限。</sys:String>
@@ -804,8 +802,6 @@
     <sys:String x:Key="MainWindow_ProfileLoad_FailedLabel">在配置文件 {0} 加载失败. 错误是: {1}\r\n{2}</sys:String>
     <sys:String x:Key="MainWindow_ProfileDelete_Title">删除配置文件 {0}?</sys:String>
     <sys:String x:Key="MainWindow_ProfileDelete_Label">确实要删除此配置文件吗?\r\n\r\nNOTE: 这将只删除配置文件，而不是安装目录，保存游戏或设置文件中包含的文件.</sys:String>
-    <sys:String x:Key="MainWindow_Donate_Title">捐助?</sys:String>
-    <sys:String x:Key="MainWindow_Donate_Label">方舟服务器管理器是一个开源项目，完全免费提供。你仍然可以捐赠，如果你愿意想捐赠，您的浏览器将打开贝宝的网站为我们捐款，你可以捐多少随你喜欢。你现在愿意捐赠吗?</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_Title">重新安装 SteamCMD</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_Label">如果你进行重新安装，整个SteamCMD文件夹将被删除，包括所有的MOD下载缓存.\r\n你确定你想重新安装 SteamCMD?</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_FailedTitle">重新安装 SteamCMD 错误</sys:String>

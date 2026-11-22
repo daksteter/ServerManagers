@@ -12,6 +12,7 @@ The app itself is a fork of [ARK Server Manager](https://github.com/Bletch1971/S
 |---|---|---|---|---|
 | AsaSavegameToolkit | 1.0.2 | MIT | Flint Thatchwood | https://github.com/flintthatchwood/AsaSavegameToolkit |
 | Discord.Net | 3.20.2 | MIT | Discord.Net Contributors | https://github.com/discord-net/Discord.Net |
+| Fluent UI System Icons: the app's icons, recoloured and converted to XAML, and the shapes in the app icon | 1.1.347 | MIT | Copyright (c) 2020 Microsoft Corporation | https://github.com/microsoft/fluentui-system-icons |
 | Hardcodet.NotifyIcon.Wpf | 2.0.1 | MIT | Copyright (c) 2009 - 2019 Philipp Sumi, 2019 - 2024 Philipp Sumi, Robin Krom, Jan Karger | https://github.com/hardcodet/wpf-notifyicon |
 | Microsoft.Data.Sqlite | 10.0.2 | MIT | © Microsoft Corporation | https://github.com/dotnet/efcore |
 | Microsoft.Extensions.Configuration, .DependencyInjection, .Logging | 10.0.2 / 11.0.0 | MIT | © Microsoft Corporation | https://github.com/dotnet/runtime |
@@ -41,9 +42,9 @@ endorsed by Studio Wildcard or Snail Games.
 
 ### MIT License
 
-Applies to AsaSavegameToolkit, Discord.Net, Hardcodet.NotifyIcon.Wpf, Microsoft.Data.Sqlite, Microsoft.Extensions.*,
-Microsoft.Xaml.Behaviors.Wpf, Newtonsoft.Json, the System.* packages, TaskScheduler, TinyCsvParser and
-WindowsFirewallHelper, each with the copyright notice listed above.
+Applies to AsaSavegameToolkit, Discord.Net, Fluent UI System Icons, Hardcodet.NotifyIcon.Wpf, Microsoft.Data.Sqlite,
+Microsoft.Extensions.*, Microsoft.Xaml.Behaviors.Wpf, Newtonsoft.Json, the System.* packages, TaskScheduler,
+TinyCsvParser and WindowsFirewallHelper, each with the copyright notice listed above.
 
 ```text
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated

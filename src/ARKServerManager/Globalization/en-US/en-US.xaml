@@ -786,7 +786,6 @@
     <sys:String x:Key="MainWindow_MyIpTooltip">The IP address players use to connect to your server.</sys:String>
     <sys:String x:Key="MainWindow_MyIpError">Invalid IP address or hostname</sys:String>
     <sys:String x:Key="MainWindow_RefreshMyIpTooltip">Attempt to determine your current public IP</sys:String>
-    <sys:String x:Key="MainWindow_DonateTooltip">Like what you see and want to show your appreciation?  Donate here!</sys:String>
     <sys:String x:Key="MainWindow_SteamCMDTooltip">Reinstall SteamCMD from the internet.</sys:String>
     <sys:String x:Key="MainWindow_OpenRCONTooltip">Open remote console</sys:String>
     <sys:String x:Key="MainWindow_OpenLogFolderTooltip">Open server manager logs folder</sys:String>
@@ -795,7 +794,6 @@
     <sys:String x:Key="MainWindow_OpenPluginsTooltip">Open Plugins</sys:String>
     <sys:String x:Key="MainWindow_OpenHelpTooltip">Open Help</sys:String>
     <sys:String x:Key="MainWindow_OpenServerMonitorTooltip">Open Server Monitor</sys:String>
-    <sys:String x:Key="MainWindow_JoinDiscordTooltip">Join the Discord Server</sys:String>
     <sys:String x:Key="MainWindow_TaskStatusLabel">Task Status</sys:String>
     <sys:String x:Key="MainWindow_TaskAdminErrorTitle">Requires Administration Permissions</sys:String>
     <sys:String x:Key="MainWindow_TaskAdminErrorLabel">This function cannot be performed as it requires administration permissions.</sys:String>
@@ -831,8 +829,6 @@
     <sys:String x:Key="MainWindow_ProfileLoad_FailedLabel">The profile at {0} failed to load. The error was: {1}\r\n{2}</sys:String>
     <sys:String x:Key="MainWindow_ProfileDelete_Title">Delete Profile {0}?</sys:String>
     <sys:String x:Key="MainWindow_ProfileDelete_Label">Are you sure you want to delete this profile?\r\n\r\nNOTE: This will only delete the profile, not the installation directory, save games or settings files contained therein.</sys:String>
-    <sys:String x:Key="MainWindow_Donate_Title">Make a donation?</sys:String>
-    <sys:String x:Key="MainWindow_Donate_Label">This server manager is provided completely free of charge. You can still donate if you would like; however you are under no obligation. If you wish to donate, your browser will open to PayPal's website where you may donate as little or as much as you like. Would you like to donate now?</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_Title">Reinstall SteamCMD</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_Label">If you proceed the entire SteamCMD folder will be removed including all mod cache downloads.\r\nAre you sure you want to reinstall SteamCMD?</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_FailedTitle">Reinstall SteamCMD Error</sys:String>

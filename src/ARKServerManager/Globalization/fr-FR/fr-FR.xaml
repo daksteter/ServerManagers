@@ -735,7 +735,6 @@
     <sys:String x:Key="MainWindow_MyIpTooltip">Adresse IP utilisé pour se connecter à votre serveur.</sys:String>
     <sys:String x:Key="MainWindow_MyIpError">Adresse IP ou nom d'hôte non valide</sys:String>
     <sys:String x:Key="MainWindow_RefreshMyIpTooltip">Essayez de déterminer votre adresse IP publique actuelle</sys:String>
-    <sys:String x:Key="MainWindow_DonateTooltip">Faire un don ici!</sys:String>
     <sys:String x:Key="MainWindow_SteamCMDTooltip">Réinstaller SteamCMD a partir d'internet.</sys:String>
     <sys:String x:Key="MainWindow_OpenRCONTooltip">Ouvrir la console distante</sys:String>
     <sys:String x:Key="MainWindow_OpenLogFolderTooltip">Ouvrir le dossier des Logs ASM</sys:String>
@@ -744,7 +743,6 @@
     <sys:String x:Key="MainWindow_OpenPluginsTooltip">Ouvrir les plugins</sys:String>
     <sys:String x:Key="MainWindow_OpenHelpTooltip">Ouvrir l'aide</sys:String>
     <sys:String x:Key="MainWindow_OpenServerMonitorTooltip">Ouvrir Moniteur de serveur</sys:String>
-    <sys:String x:Key="MainWindow_JoinDiscordTooltip">Rejoidre le serveur Discord</sys:String>
     <sys:String x:Key="MainWindow_TaskStatusLabel">Statut des tâches</sys:String>
     <sys:String x:Key="MainWindow_TaskAdminErrorTitle">Requiert l'autorisation d'administrations</sys:String>
     <sys:String x:Key="MainWindow_TaskAdminErrorLabel">Cette fonction ne peut pas être effectuée car elle nécessite des autorisations d'administration.</sys:String>
@@ -780,8 +778,6 @@
     <sys:String x:Key="MainWindow_ProfileLoad_FailedLabel">Le profil sur {0} n'a pas pu être chargé. L'erreur était: {1}\r\n{2}</sys:String>
     <sys:String x:Key="MainWindow_ProfileDelete_Title">Supprimer le profil {0}?</sys:String>
     <sys:String x:Key="MainWindow_ProfileDelete_Label">Êtes-vous sûr de vouloir supprimer ce profil??\r\n\r\nNOTE: Cela supprimera uniquement le profil, pas le répertoire d'installation, sauvegardera les jeux ou les fichiers de paramètres qui y sont contenus.</sys:String>
-    <sys:String x:Key="MainWindow_Donate_Title">Faire un don?</sys:String>
-    <sys:String x:Key="MainWindow_Donate_Label">JVH Ark Ascended Server Manager est un projet open-source, entièrement gratuit. Vous pouvez toujours faire un don si vous le souhaitez; Cependant, vous n'êtes pas obligé. Si vous souhaitez faire un don, votre navigateur s'ouvrira sur le site Web de PayPal où vous pouvez donner aussi peu ou autant que vous le souhaitez. Aimeriez-vous faire un don maintenant?</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_Title">Réinstaller SteamCMD</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_Label">Si vous continuez, l'intégralité du dossier SteamCMD sera supprimé, y compris tous les téléchargements de cache mod..\r\nÊtes-vous sûr de vouloir réinstaller SteamCMD??</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_FailedTitle">Erreur lors de la réinstallation de SteamCMD</sys:String>

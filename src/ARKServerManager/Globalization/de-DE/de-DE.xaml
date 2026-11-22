@@ -662,7 +662,6 @@
     <sys:String x:Key="MainWindow_MyIpTooltip">Die IP-Adress, die Spieler verwenden, um eine Verbindung zu Deinem Server herzustellen.</sys:String>
     <sys:String x:Key="MainWindow_MyIpError">Ungültige IP-Adresse oder ungültiger Hostname</sys:String>
     <sys:String x:Key="MainWindow_RefreshMyIpTooltip">Versuche Deine aktuelle öffentliche IP zu ermitteln</sys:String>
-    <sys:String x:Key="MainWindow_DonateTooltip">Gefällt dir was du siehst und willst deine Wertschätzung zeigen? Spenden hier!</sys:String>
     <sys:String x:Key="MainWindow_SteamCMDTooltip">Installiere SteamCMD über das Internet neu.</sys:String>
     <sys:String x:Key="MainWindow_OpenRCONTooltip">Öffne die Remote Konsole</sys:String>
     <sys:String x:Key="MainWindow_OpenLogFolderTooltip">Öffne den Servermanager Protokollordner</sys:String>
@@ -706,8 +705,6 @@
     <sys:String x:Key="MainWindow_ProfileLoad_FailedLabel">Das Profil bei {0} konnte nicht geladen werden. Der Fehler war: {1}\r\n{2}</sys:String>
     <sys:String x:Key="MainWindow_ProfileDelete_Title">Profil löschen {0}?</sys:String>
     <sys:String x:Key="MainWindow_ProfileDelete_Label">Möchtest Du dieses Profil wirklich löschen?\r\n\r\nHINWEIS: Hiermit wird nur das Profil gelöscht, nicht das Installationsverzeichnis, und die darin enthaltenen Spiele oder Einstellungsdateien werden gespeichert.</sys:String>
-    <sys:String x:Key="MainWindow_Donate_Title">Spenden?</sys:String>
-    <sys:String x:Key="MainWindow_Donate_Label">Dieser Server Manager wird völlig kostenlos zur Verfügung gestellt. Du kannst trotzdem spenden, wenn Du möchtest ist jedoch nicht verpflichtet. Wenn Du spenden möchtest, wird Dein Browser auf der PayPal Website geöffnet, auf der Du so wenig oder so viel spenden kannst, wie Du möchtest. Möchten Du jetzt spenden?</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_Title">Installiere SteamCMD neu</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_Label">Wenn Du fortfährst, wird der gesamte SteamCMD Ordner einschließlich aller Mod Cache Downloads entfernt.\r\nBist Du sicher, dass Du SteamCMD neu installieren möchtest?</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_FailedTitle">Fehler bei SteamCMD Reinstallation</sys:String>

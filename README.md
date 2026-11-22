@@ -67,6 +67,7 @@ carry users' settings over from earlier builds.
 
 - `docs/PORTING-PLAN.md` explains what was changed for ASA and why.
 - `tools/UiDriver` can drive the app's UI from a shell for testing.
+- `tools/Icons/Build-Icons.ps1` generates the app's icons; see the comment at its top to add or change one.
 
 ## Changes
 
@@ -79,6 +80,7 @@ See [CHANGELOG.md](CHANGELOG.md).
 - **Game data** (creature, item and engram names and engram levels) includes content from the
   [ARK Wiki](https://ark.wiki.gg/) by its contributors, licensed under
   [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+- **Icons:** [Fluent UI System Icons](https://github.com/microsoft/fluentui-system-icons) by Microsoft, MIT License.
 - **Third-party libraries:** see [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
 
 ## License

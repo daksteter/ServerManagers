@@ -65,8 +65,8 @@
                                 </Label.Style>
                             </Label>
                             <Label Margin="5,0,0,0" Background="Transparent" Foreground="White" FontSize="12" Content="{Binding Source={x:Static local:App.Instance}, Path=Version}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                            <Button x:Name="PatchNotesButton" Margin="5" Click="PatchNotes_Click" ToolTip="{DynamicResource ServerSettings_PatchNotesTooltip}" Style="{StaticResource ButtonStyle1}">
-                                <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/ChangeNotes.ico,Size=32}"/>
+                            <Button x:Name="PatchNotesButton" Margin="5" Click="PatchNotes_Click" ToolTip="{DynamicResource ServerSettings_PatchNotesTooltip}" Style="{StaticResource HeaderButtonStyle}">
+                                <Image Source="{StaticResource Icon.ChangeNotes.OnDark}"/>
                             </Button>
                         </StackPanel>
                     </Grid>
@@ -86,34 +86,28 @@
                             <ColumnDefinition MinWidth="25"/>
                         </Grid.ColumnDefinitions>
 
-                        <Button x:Name="DonateButton" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Margin="5,2,0,0" HorizontalAlignment="Right" Click="Donate_Click" ToolTip="{DynamicResource MainWindow_DonateTooltip}" Style="{StaticResource ButtonStyle3}">
-                            <Image Source="../Art/Donate.png"/>
-                        </Button>
-                        <Button Grid.Row="0" Grid.Column="5" Margin="5,2,0,0" HorizontalAlignment="Right" Click="Help_Click" ToolTip="{DynamicResource MainWindow_OpenHelpTooltip}" Style="{StaticResource ButtonStyle1}">
-                            <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Help.ico,Size=32}"/>
+                        <Button Grid.Row="0" Grid.Column="5" Margin="5,2,0,0" HorizontalAlignment="Right" Click="Help_Click" ToolTip="{DynamicResource MainWindow_OpenHelpTooltip}" Style="{StaticResource HeaderButtonStyle}">
+                            <Image Source="{StaticResource Icon.Help.OnDark}"/>
                         </Button>
 
-                        <Button x:Name="DiscordButton" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Discord_Click" ToolTip="{DynamicResource MainWindow_JoinDiscordTooltip}" Style="{StaticResource ButtonStyle4}">
-                            <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Discord.ico,Size=64}"/>
+                        <Button Grid.Row="1" Grid.Column="3" Margin="5,0,0,0" HorizontalAlignment="Right" Click="GameData_Click" ToolTip="{DynamicResource MainWindow_OpenGameDataTooltip}" Style="{StaticResource HeaderButtonStyle}">
+                            <Image Source="{StaticResource Icon.Document.OnDark}"/>
                         </Button>
-                        <Button Grid.Row="1" Grid.Column="3" Margin="5,0,0,0" HorizontalAlignment="Right" Click="GameData_Click" ToolTip="{DynamicResource MainWindow_OpenGameDataTooltip}" Style="{StaticResource ButtonStyle1}">
-                            <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Document.ico,Size=32}"/>
+                        <Button Grid.Row="1" Grid.Column="4" Margin="5,0,0,0" HorizontalAlignment="Right" Click="Plugins_Click" ToolTip="{DynamicResource MainWindow_OpenPluginsTooltip}" Style="{StaticResource HeaderButtonStyle}">
+                            <Image Source="{StaticResource Icon.Plugin.OnDark}"/>
                         </Button>
-                        <Button Grid.Row="1" Grid.Column="4" Margin="5,0,0,0" HorizontalAlignment="Right" Click="Plugins_Click" ToolTip="{DynamicResource MainWindow_OpenPluginsTooltip}" Style="{StaticResource ButtonStyle1}">
-                            <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Plugin.ico,Size=32}"/>
-                        </Button>
-                        <Button Grid.Row="1" Grid.Column="5" Margin="5,0,0,0" HorizontalAlignment="Right" Click="OpenLogFolder_Click" ToolTip="{DynamicResource MainWindow_OpenLogFolderTooltip}" Style="{StaticResource ButtonStyle1}">
-                            <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Logs.ico,Size=32}"/>
+                        <Button Grid.Row="1" Grid.Column="5" Margin="5,0,0,0" HorizontalAlignment="Right" Click="OpenLogFolder_Click" ToolTip="{DynamicResource MainWindow_OpenLogFolderTooltip}" Style="{StaticResource HeaderButtonStyle}">
+                            <Image Source="{StaticResource Icon.Logs.OnDark}"/>
                         </Button>
          
-                        <Button Grid.Row="2" Grid.Column="3" Margin="5,0,0,0" HorizontalAlignment="Right" Click="RCON_Click" ToolTip="{DynamicResource MainWindow_OpenRCONTooltip}" Style="{StaticResource ButtonStyle1}">
-                            <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Command.ico,Size=32}"/>
+                        <Button Grid.Row="2" Grid.Column="3" Margin="5,0,0,0" HorizontalAlignment="Right" Click="RCON_Click" ToolTip="{DynamicResource MainWindow_OpenRCONTooltip}" Style="{StaticResource HeaderButtonStyle}">
+                            <Image Source="{StaticResource Icon.Command.OnDark}"/>
                         </Button>
-                        <Button Grid.Row="2" Grid.Column="4" Margin="5,0,0,0" HorizontalAlignment="Right" Click="SteamCMD_Click" ToolTip="{DynamicResource MainWindow_SteamCMDTooltip}" Style="{StaticResource ButtonStyle1}">
-                            <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Steam.ico,Size=32}"/>
+                        <Button Grid.Row="2" Grid.Column="4" Margin="5,0,0,0" HorizontalAlignment="Right" Click="SteamCMD_Click" ToolTip="{DynamicResource MainWindow_SteamCMDTooltip}" Style="{StaticResource HeaderButtonStyle}">
+                            <Image Source="{StaticResource Icon.Steam.OnDark}"/>
                         </Button>
-                        <Button Grid.Row="2" Grid.Column="5" Margin="5,0,0,0" HorizontalAlignment="Right" Click="Settings_Click" ToolTip="{DynamicResource MainWindow_OpenSettingsTooltip}" Style="{StaticResource ButtonStyle1}">
-                            <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Settings.ico,Size=32}"/>
+                        <Button Grid.Row="2" Grid.Column="5" Margin="5,0,0,0" HorizontalAlignment="Right" Click="Settings_Click" ToolTip="{DynamicResource MainWindow_OpenSettingsTooltip}" Style="{StaticResource HeaderButtonStyle}">
+                            <Image Source="{StaticResource Icon.Settings.OnDark}"/>
                         </Button>
                     </Grid>
 
@@ -342,7 +336,7 @@
                             </TextBox.Text>
                         </TextBox>
                         <Button Grid.Row="1" Grid.Column="1" Margin="2,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Click="RefreshPublicIP_Click" ToolTip="{DynamicResource MainWindow_RefreshMyIpTooltip}" Style="{StaticResource ButtonStyle2}">
-                            <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Reload.ico,Size=32}"/>
+                            <Image Source="{StaticResource Icon.Reload}"/>
                         </Button>
 
                         <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,0,2" Height="26" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Click="ServerMonitor_Click" Content="{StaticResource ServerMonitorButtonContent}" ToolTip="{DynamicResource MainWindow_OpenServerMonitorTooltip}"/>
@@ -376,7 +370,7 @@
                                                         </LinearGradientBrush.GradientStops>
                                                     </LinearGradientBrush>
                                                 </Border.Background>
-                                                <Image Margin="0,2" VerticalAlignment="Center" Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Add.ico,Size=32}" Width="16" Height="16"/>
+                                                <Image Margin="0,2" VerticalAlignment="Center" Source="{StaticResource Icon.Add.16}" Width="16" Height="16"/>
                                             </Border>
                                         </ControlTemplate>
                                     </Button.Template>
@@ -454,35 +448,35 @@
                                             <Style TargetType="{x:Type Image}">
                                                 <Style.Triggers>
                                                     <DataTrigger Binding="{Binding Runtime.Status}" Value="{x:Null}">
-                                                        <Setter Property="Source" Value="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/StatusUnknown.ico,Size=32}"/>
+                                                        <Setter Property="Source" Value="{StaticResource Icon.StatusUnknown}"/>
                                                         <Setter Property="ToolTip" Value="{DynamicResource ServerSettings_RuntimeStatusUnknownLabel}"/>
                                                     </DataTrigger>
                                                     <DataTrigger Binding="{Binding Runtime.Status}" Value="{x:Static ce:ServerStatus.Initializing}">
-                                                        <Setter Property="Source" Value="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/StatusStarting.ico,Size=32}"/>
+                                                        <Setter Property="Source" Value="{StaticResource Icon.StatusStarting}"/>
                                                         <Setter Property="ToolTip" Value="{DynamicResource ServerSettings_RuntimeStatusInitializingLabel}"/>
                                                     </DataTrigger>
                                                     <DataTrigger Binding="{Binding Runtime.Status}" Value="{x:Static ce:ServerStatus.Running}">
-                                                        <Setter Property="Source" Value="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/StatusOn.ico,Size=32}"/>
+                                                        <Setter Property="Source" Value="{StaticResource Icon.StatusOn}"/>
                                                         <Setter Property="ToolTip" Value="{DynamicResource ServerSettings_RuntimeStatusRunningLabel}"/>
                                                     </DataTrigger>
                                                     <DataTrigger Binding="{Binding Runtime.Status}" Value="{x:Static ce:ServerStatus.Stopping}">
-                                                        <Setter Property="Source" Value="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/StatusStarting.ico,Size=32}"/>
+                                                        <Setter Property="Source" Value="{StaticResource Icon.StatusStarting}"/>
                                                         <Setter Property="ToolTip" Value="{DynamicResource ServerSettings_RuntimeStatusStoppingLabel}"/>
                                                     </DataTrigger>
                                                     <DataTrigger Binding="{Binding Runtime.Status}" Value="{x:Static ce:ServerStatus.Stopped}">
-                                                        <Setter Property="Source" Value="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/StatusOff.ico,Size=32}"/>
+                                                        <Setter Property="Source" Value="{StaticResource Icon.StatusOff}"/>
                                                         <Setter Property="ToolTip" Value="{DynamicResource ServerSettings_RuntimeStatusStoppedLabel}"/>
                                                     </DataTrigger>
                                                     <DataTrigger Binding="{Binding Runtime.Status}" Value="{x:Static ce:ServerStatus.Unknown}">
-                                                        <Setter Property="Source" Value="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/StatusUnknown.ico,Size=32}"/>
+                                                        <Setter Property="Source" Value="{StaticResource Icon.StatusUnknown}"/>
                                                         <Setter Property="ToolTip" Value="{DynamicResource ServerSettings_RuntimeStatusUnknownLabel}"/>
                                                     </DataTrigger>
                                                     <DataTrigger Binding="{Binding Runtime.Status}" Value="{x:Static ce:ServerStatus.Updating}">
-                                                        <Setter Property="Source" Value="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Download.ico,Size=32}"/>
+                                                        <Setter Property="Source" Value="{StaticResource Icon.Download}"/>
                                                         <Setter Property="ToolTip" Value="{DynamicResource ServerSettings_RuntimeStatusUpdatingLabel}"/>
                                                     </DataTrigger>
                                                     <DataTrigger Binding="{Binding Runtime.Status}" Value="{x:Static ce:ServerStatus.Uninstalled}">
-                                                        <Setter Property="Source" Value="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/StatusUnknown.ico,Size=32}"/>
+                                                        <Setter Property="Source" Value="{StaticResource Icon.StatusUnknown}"/>
                                                         <Setter Property="ToolTip" Value="{DynamicResource ServerSettings_RuntimeStatusUninstalledLabel}"/>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -501,7 +495,7 @@
                                     <Button.Template>
                                         <ControlTemplate TargetType="{x:Type Button}">
                                             <Border Background="Transparent">
-                                                <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Delete.ico,Size=32}" Width="8" Height="8"/>
+                                                <Image Source="{StaticResource Icon.Close}" Width="8" Height="8"/>
                                             </Border>
                                         </ControlTemplate>
                                     </Button.Template>

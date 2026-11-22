@@ -419,9 +419,6 @@
     <Setting Name="FirewallRulePrefix" Type="System.String" Scope="Application">
       <Value Profile="(Default)">ARK Ascended Server:</Value>
     </Setting>
-    <Setting Name="DonationUrl" Type="System.String" Scope="Application">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="GameDataApplication" Type="System.String" Scope="Application">
       <Value Profile="(Default)">ark</Value>
     </Setting>
@@ -724,9 +721,6 @@
     </Setting>
     <Setting Name="AutoStart_TaskPriority" Type="System.Diagnostics.ProcessPriorityClass" Scope="User">
       <Value Profile="(Default)">Normal</Value>
-    </Setting>
-    <Setting Name="DiscordUrl" Type="System.String" Scope="Application">
-      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="Alert_OnlinePlayerCountChange" Type="System.String" Scope="User">
       <Value Profile="(Default)">Online Player Count:</Value>

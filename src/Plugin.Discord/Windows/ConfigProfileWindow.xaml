@@ -10,6 +10,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/ServerManager.Plugin.Discord;component/Globalization/en-US/en-US.xaml"/>
+                <ResourceDictionary Source="/ServerManager.Plugin.Discord;component/Resources/Icons.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <SolidColorBrush x:Key="BeigeBorder" Color="#FFD8CCBC"/>
@@ -118,10 +119,10 @@
                         <StackPanel Orientation="Horizontal">
                             <Label Content="{DynamicResource ConfigProfileWindow_ProfileNamesLabel}"/>
                             <Button Width="22" Height="22" Click="AddProfileName_Click" Margin="20,0,0,0" ToolTip="{DynamicResource ConfigProfileWindow_AddProfileNameTooltip}">
-                                <Image Source="{pc:Icon Path=/ServerManager.Plugin.Discord;component/Art/Add.ico,Size=32}" />
+                                <Image Source="{StaticResource Icon.Add}" />
                             </Button>
                             <Button Width="22" Height="22" Click="ClearProfileNames_Click" Margin="10,0,0,0" ToolTip="{DynamicResource ConfigProfileWindow_ClearProfileNamesTooltip}">
-                                <Image Source="{pc:Icon Path=/ServerManager.Plugin.Discord;component/Art/Delete.ico,Size=32}" />
+                                <Image Source="{StaticResource Icon.Delete}" />
                             </Button>
                         </StackPanel>
                     </GroupBox.Header>
@@ -159,7 +160,7 @@
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Button Width="22" Height="22" Margin="0" IsTabStop="False" HorizontalAlignment="Center" VerticalAlignment="Center" Click="DeleteProfileName_Click" ToolTip="{DynamicResource ConfigProfileWindow_DeleteProfileNameTooltip}">
-                                            <Image Source="{pc:Icon Path=/ServerManager.Plugin.Discord;component/Art/Delete.ico,Size=32}" />
+                                            <Image Source="{StaticResource Icon.Delete}" />
                                         </Button>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
@@ -173,10 +174,10 @@
                         <StackPanel Orientation="Horizontal">
                             <Label Content="{DynamicResource ConfigProfileWindow_AlertTypesLabel}"/>
                             <Button Width="22" Height="22" Click="AddAlertType_Click" Margin="20,0,0,0" ToolTip="{DynamicResource ConfigProfileWindow_AddAlertTypeTooltip}">
-                                <Image Source="{pc:Icon Path=/ServerManager.Plugin.Discord;component/Art/Add.ico,Size=32}" />
+                                <Image Source="{StaticResource Icon.Add}" />
                             </Button>
                             <Button Width="22" Height="22" Click="ClearAlertTypes_Click" Margin="10,0,0,0" ToolTip="{DynamicResource ConfigProfileWindow_ClearAlertTypesTooltip}">
-                                <Image Source="{pc:Icon Path=/ServerManager.Plugin.Discord;component/Art/Delete.ico,Size=32}" />
+                                <Image Source="{StaticResource Icon.Delete}" />
                             </Button>
                         </StackPanel>
 
@@ -215,7 +216,7 @@
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Button Width="22" Height="22" Margin="0" IsTabStop="False" HorizontalAlignment="Center" VerticalAlignment="Center" Click="DeleteAlertType_Click" ToolTip="{DynamicResource ConfigProfileWindow_DeleteAlertTypeTooltip}">
-                                            <Image Source="{pc:Icon Path=/ServerManager.Plugin.Discord;component/Art/Delete.ico,Size=32}" />
+                                            <Image Source="{StaticResource Icon.Delete}" />
                                         </Button>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>

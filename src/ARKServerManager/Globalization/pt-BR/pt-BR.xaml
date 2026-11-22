@@ -759,7 +759,6 @@ Caso contrário, o desligamento aguardará até que o temporizador do período d
     <sys:String x:Key="MainWindow_MyIpTooltip">Os endereços de IP que os jogadores usam para se conectar ao seu servidor.</sys:String>
     <sys:String x:Key="MainWindow_MyIpError">Endereço IP ou nome de host inválido</sys:String>
     <sys:String x:Key="MainWindow_RefreshMyIpTooltip">Tente determinar seu IP público atual</sys:String>
-    <sys:String x:Key="MainWindow_DonateTooltip">Gosta do que vê e quer mostrar sua apreciação? Doe aqui!</sys:String>
     <sys:String x:Key="MainWindow_SteamCMDTooltip">Reinstale o SteamCMD da internet.</sys:String>
     <sys:String x:Key="MainWindow_OpenRCONTooltip">Abra o console remoto</sys:String>
     <sys:String x:Key="MainWindow_OpenLogFolderTooltip">Abra a pasta de logs do ASM</sys:String>
@@ -768,7 +767,6 @@ Caso contrário, o desligamento aguardará até que o temporizador do período d
     <sys:String x:Key="MainWindow_OpenPluginsTooltip">Abra Plugins</sys:String>
     <sys:String x:Key="MainWindow_OpenHelpTooltip">Abra a Ajuda</sys:String>
 	<sys:String x:Key="MainWindow_OpenServerMonitorTooltip">Abrir Monitor de servidor</sys:String>
-    <sys:String x:Key="MainWindow_JoinDiscordTooltip">Junte-se ao Discord</sys:String>
     <sys:String x:Key="MainWindow_TaskStatusLabel">Status da Tarefa</sys:String>
     <sys:String x:Key="MainWindow_TaskAdminErrorTitle">Requer permissões de administração</sys:String>
     <sys:String x:Key="MainWindow_TaskAdminErrorLabel">Esta função não pode ser executada, pois requer permissões de administração.</sys:String>
@@ -804,9 +802,6 @@ Caso contrário, o desligamento aguardará até que o temporizador do período d
     <sys:String x:Key="MainWindow_ProfileLoad_FailedLabel">O perfil em {0} falhou ao carregar. O erro foi: {1}\r\n{2}</sys:String>
     <sys:String x:Key="MainWindow_ProfileDelete_Title">Excluir perfil {0}?</sys:String>
     <sys:String x:Key="MainWindow_ProfileDelete_Label">Tem certeza de que deseja excluir este perfil?\r\n\r\nNOTA: Isso excluirá apenas o perfil, não o diretório de instalação, salvará os arquivos de jogos ou configurações contidos nele.</sys:String>
-    <sys:String x:Key="MainWindow_Donate_Title">Faça uma doação?</sys:String>
-    <sys:String x:Key="MainWindow_Donate_Label" xml:space="preserve">O JVH Ark Ascended Server Manager é um projeto de código aberto, totalmente gratuito. Você ainda pode doar se quiser; no entanto você não tem nenhuma obrigação.
-Se você deseja doar, seu navegador será aberto ao site do PayPal, onde você poderá doar o mínimo ou o quanto quiser. Gostaria de doar agora?</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_Title">Reinstale o SteamCMD</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_Label">Se você prosseguir, toda a pasta do SteamCMD será removida, incluindo todos os downloads de cache mod.\R\n Tem certeza de que deseja reinstalar o SteamCMD?</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_FailedTitle">Reinstale o erro do SteamCMD</sys:String>

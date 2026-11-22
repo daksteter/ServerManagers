@@ -48,7 +48,7 @@
                 <DockPanel DockPanel.Dock="Top">
                     <Label DockPanel.Dock="Left" Content="{DynamicResource General_FilterLabel}" HorizontalAlignment="Center" VerticalAlignment="Center" />
                     <Button DockPanel.Dock="Right" Margin="5,0,5,0" Width="22" Height="22" HorizontalAlignment="Right" VerticalAlignment="Center" Click="FilterPlayerList_Click" ToolTip="{DynamicResource General_FilterButtonTooltip}">
-                        <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Filter.ico,Size=32}"/>
+                        <Image Source="{StaticResource Icon.Filter}"/>
                     </Button>
                     <TextBox x:Name="PlayerListFilterStringTextBox" DockPanel.Dock="Left" Text="{Binding PlayerListFilterString, Mode=TwoWay}" BorderBrush="LightGray" VerticalAlignment="Center" VerticalContentAlignment="Center" IsTabStop="True" Margin="0" Padding="2"/>
                 </DockPanel>

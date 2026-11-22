@@ -349,6 +349,10 @@ namespace ServerManagerTool
 
             ReconfigureLogging();
 
+            // the icons (Resources\Icons.xaml, made by tools\Icons\Build-Icons.ps1), before any window or style uses
+            // them. Added to the app's merged dictionaries, not set in App.xaml: Globalizer manages that collection.
+            Resources.MergedDictionaries.Add(new ResourceDictionary { Source = new Uri("/JVH Ark Ascended Server Manager;component/Resources/Icons.xaml", UriKind.Relative) });
+
             _globalizer = GlobalizedApplication.Instance;
             try
             {

@@ -783,7 +783,6 @@
     <sys:String x:Key="MainWindow_MyIpTooltip">Oyuncuların sunucunuza bağlanmak için kullandığı IP adresi.</sys:String>
     <sys:String x:Key="MainWindow_MyIpError">Geçersiz IP adresi veya ana bilgisayar adı</sys:String>
     <sys:String x:Key="MainWindow_RefreshMyIpTooltip">Geçerli Public IP'nizi belirlemeye çalışın.</sys:String>
-    <sys:String x:Key="MainWindow_DonateTooltip">Görüntülediğiniz şeyi beğendiniz ve teşekkürünüzü göstermek mi istiyorsunuz? Buradan bağış yapın!</sys:String>
     <sys:String x:Key="MainWindow_SteamCMDTooltip">SteamCMD'yi internetten yeniden yükleyin.</sys:String>
     <sys:String x:Key="MainWindow_OpenRCONTooltip">Uzak konsolu aç</sys:String>
     <sys:String x:Key="MainWindow_OpenLogFolderTooltip">Sunucu yönetici günlüklerinin klasörünü aç</sys:String>
@@ -792,7 +791,6 @@
     <sys:String x:Key="MainWindow_OpenPluginsTooltip">Eklentileri Aç</sys:String>
     <sys:String x:Key="MainWindow_OpenHelpTooltip">Yardımı Aç</sys:String>
     <sys:String x:Key="MainWindow_OpenServerMonitorTooltip">Sunucu İzleyiciyi Aç</sys:String>
-    <sys:String x:Key="MainWindow_JoinDiscordTooltip">Discord Sunucusuna Katılın</sys:String>
     <sys:String x:Key="MainWindow_TaskStatusLabel">Görev Durumu</sys:String>
     <sys:String x:Key="MainWindow_TaskAdminErrorTitle">Yönetici İzinleri Gerekiyor</sys:String>
     <sys:String x:Key="MainWindow_TaskAdminErrorLabel">Bu işlem yönetici izinleri gerektirdiği için gerçekleştirilemez.</sys:String>
@@ -826,8 +824,6 @@
     <sys:String x:Key="MainWindow_ProfileLoad_FailedLabel">Şu konumda bulunan profil yüklenemedi: {0}. Hata şuydu: {1}\r\n{2}</sys:String>
     <sys:String x:Key="MainWindow_ProfileDelete_Title">Profil {0} Silinsin mi?</sys:String>
     <sys:String x:Key="MainWindow_ProfileDelete_Label">Bu profili silmek istediğinizden emin misiniz?\r\n\r\nNOT: Bu sadece profili siler, yükleme dizinini, kayıt oyunlarını veya içeren ayar dosyalarını silmez.</sys:String>
-    <sys:String x:Key="MainWindow_Donate_Title">Bağış Yapmak İster misiniz?</sys:String>
-    <sys:String x:Key="MainWindow_Donate_Label">Bu sunucu yöneticisi tamamen ücretsiz olarak sunulmaktadır. Bağış yapmak isterseniz yapabilirsiniz, ancak bağlı değilsinizdir. Bağış yapmak isterseniz tarayıcınız PayPal'ın web sitesine yönlendirecek ve ne kadar bağış yapmak isterseniz o kadarını yapabileceksiniz. Şimdi bağış yapmak ister misiniz?</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_Title">SteamCMD Yeniden Yükle</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_Label">Devam ederseniz, tüm SteamCMD klasörü, mod önbellek indirmeleri dahil olmak üzere kaldırılacaktır.\r\nSteamCMD'yi yeniden yüklemek istediğinizden emin misiniz?</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_FailedTitle">SteamCMD Yeniden Yükleme Hatası</sys:String>

@@ -89,7 +89,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Width="22" Height="22" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" Click="MoveModUp_Click" ToolTip="{DynamicResource ModList_MoveUpTooltip}">
-                                <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Up.ico,Size=32}"/>
+                                <Image Source="{StaticResource Icon.Up}"/>
                                 <Button.Style>
                                     <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
                                         <Style.Triggers>
@@ -107,7 +107,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Width="22" Height="22" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" Click="MoveModDown_Click" ToolTip="{DynamicResource ModList_MoveDownTooltip}">
-                                <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Down.ico,Size=32}"/>
+                                <Image Source="{StaticResource Icon.Down}"/>
                                 <Button.Style>
                                     <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
                                         <Style.Triggers>
@@ -125,7 +125,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Width="22" Height="22" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" Click="RemoveMod_Click" ToolTip="{DynamicResource ModList_RemoveTooltip}">
-                                <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Delete.ico,Size=32}"/>
+                                <Image Source="{StaticResource Icon.Delete}"/>
                             </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

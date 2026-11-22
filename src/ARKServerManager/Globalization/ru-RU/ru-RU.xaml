@@ -755,7 +755,6 @@
     <sys:String x:Key="MainWindow_MyIpTooltip">Этот IP адрес игроки используют для подключения к вашему серверу.</sys:String>
     <sys:String x:Key="MainWindow_MyIpError">Неверный IP-адрес или имя хоста</sys:String>
     <sys:String x:Key="MainWindow_RefreshMyIpTooltip">Попытка определить ваш текущий публичный IP</sys:String>
-    <sys:String x:Key="MainWindow_DonateTooltip">Вам нравится то что вы видите и хотите показать свою признательность?  Пожертвуйте здесь!</sys:String>
     <sys:String x:Key="MainWindow_SteamCMDTooltip">Переустановить SteamCMD из интернета.</sys:String>
     <sys:String x:Key="MainWindow_OpenRCONTooltip">Открыть удаленную консоль</sys:String>
     <sys:String x:Key="MainWindow_OpenLogFolderTooltip">Открыть папку ASM логов</sys:String>
@@ -764,7 +763,6 @@
     <sys:String x:Key="MainWindow_OpenPluginsTooltip">Открыть плагины</sys:String>
     <sys:String x:Key="MainWindow_OpenHelpTooltip">Открыть Помощь</sys:String>
     <sys:String x:Key="MainWindow_OpenServerMonitorTooltip">Открыть Сервер Монитор</sys:String>
-    <sys:String x:Key="MainWindow_JoinDiscordTooltip">Присоединяйтесь к серверу Discord</sys:String>
     <sys:String x:Key="MainWindow_TaskStatusLabel">Статус задач</sys:String>
     <sys:String x:Key="MainWindow_TaskAdminErrorTitle">Требуется разрешение администратора</sys:String>
     <sys:String x:Key="MainWindow_TaskAdminErrorLabel">Эта функция не может быть выполнена, так как она требует права администратора.</sys:String>
@@ -800,8 +798,6 @@
     <sys:String x:Key="MainWindow_ProfileLoad_FailedLabel">Не удалось загрузить профиль в {0}. Ошибка: {1}\r\n{2}</sys:String>
     <sys:String x:Key="MainWindow_ProfileDelete_Title">Удалить Профиль {0}?</sys:String>
     <sys:String x:Key="MainWindow_ProfileDelete_Label">Вы действительно хотите удалить этот профиль?\r\n\r\nПримечание: Это удалит только профиль, а не каталог установки, сохранит игру или файлы настроек, содержащиеся в нем.</sys:String>
-    <sys:String x:Key="MainWindow_Donate_Title">Сделать пожертвование?</sys:String>
-    <sys:String x:Key="MainWindow_Donate_Label">JVH Ark Ascended Server Manager - это проект с открытым исходным кодом, предоставляемый совершенно бесплатно. Вы можете пожертвовать, если хотите; Однако вы не обязаны. Если вы хотите пожертвовать, ваш браузер откроется на веб-сайте PayPal, где вы можете пожертвовать сколько вам не жалко :) Вы хотите пожертвовать сейчас?</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_Title">Переустановить SteamCMD</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_Label">Если запустить, SteamCMD будет удален, включая все загрузки кэша Модов.\r\nВы уверены, что хотите переустановить SteamCMD?</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_FailedTitle">Ошибка переустановки SteamCMD</sys:String>

@@ -578,7 +578,6 @@
     <sys:String x:Key="MainWindow_MyIpTooltip">La dirección IP que los jugadores usan para conectar a tu servidor.</sys:String>
     <sys:String x:Key="MainWindow_MyIpError">Dirección IP o nombre de host no válidos</sys:String>
     <sys:String x:Key="MainWindow_RefreshMyIpTooltip">Trata de determinar tu IP pública actual</sys:String>
-    <sys:String x:Key="MainWindow_DonateTooltip">¿Te gusta lo que ves y quieres mostrar tu aprecio? ¡Dona aquí!</sys:String>
     <sys:String x:Key="MainWindow_SteamCMDTooltip">Reinstala SteamCMD desde internet.</sys:String>
     <sys:String x:Key="MainWindow_OpenRCONTooltip">Abrir Consola remota</sys:String>
     <sys:String x:Key="MainWindow_OpenLogFolderTooltip">Abrir Carpeta de registros del gestor de servidores</sys:String>
@@ -616,8 +615,6 @@
     <sys:String x:Key="MainWindow_ProfileLoad_FailedLabel">El perfil en {0} falló al cargar. El error fue: {1}\r\n{2}</sys:String>
     <sys:String x:Key="MainWindow_ProfileDelete_Title">¿Eliminar perfil {0}?</sys:String>
     <sys:String x:Key="MainWindow_ProfileDelete_Label">¿Estás seguro que quieres eliminar este perfil?\r\n\r\nNOTA: Esto sólo eliminará el perfil, no el directorio de instalación, archivos de guardado o de ajustes que contenga.</sys:String>
-    <sys:String x:Key="MainWindow_Donate_Title">¿Haces una donación?</sys:String>
-    <sys:String x:Key="MainWindow_Donate_Label">Este gestor de servidores se ofrece completamente gratis. Pero puedes hacer una donación siempre que lo desees, sin ninguna obligación. Si deseas hacer una donación, tu navegador abrirá el sitio de Paypal donde podrás donar lo poco o mucho que quieras. ¿Te gustaría donar ahora?</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_Title">Reinstalar SteamCMD</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_Label">Si continúas, la carpeta SteamCMD al completo será eliminada, incluyendo toda la caché de mods descargados.\r\n¿Estás seguro de que quieres reinstalar SteamCMD?</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_FailedTitle">Error al reinstalar SteamCMD</sys:String>

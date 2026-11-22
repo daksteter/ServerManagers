@@ -9,6 +9,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/ServerManager.Plugin.Discord;component/Globalization/en-US/en-US.xaml"/>
+                <ResourceDictionary Source="/ServerManager.Plugin.Discord;component/Resources/Icons.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <SolidColorBrush x:Key="BeigeBorder" Color="#FFD8CCBC"/>
@@ -45,7 +46,7 @@
 
             <TextBlock Text="{DynamicResource Global_NewVersionAvailableLabel}" TextWrapping="Wrap" VerticalAlignment="Center" FontWeight="Bold"/>
             <Button Width="22" Height="22" Click="DownloadPlugin_Click" Margin="10,0,0,0" ToolTip="{DynamicResource Global_DownloadNewVersionTooltip}">
-                <Image Source="{pc:Icon Path=/ServerManager.Plugin.Discord;component/Art/Download.ico,Size=32}" />
+                <Image Source="{StaticResource Icon.Download}" />
             </Button>
         </StackPanel>
 
@@ -53,13 +54,13 @@
             <GroupBox.Header>
                 <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
                     <Button Width="22" Height="22" Click="PatchNotes_Click" ToolTip="{DynamicResource ConfigWindow_PatchNotesTooltip}">
-                        <Image Source="{pc:Icon Path=/ServerManager.Plugin.Discord;component/Art/ChangeNotes.ico,Size=32}" />
+                        <Image Source="{StaticResource Icon.ChangeNotes}" />
                     </Button>
                     <Button Width="22" Height="22" Click="AddConfigProfile_Click" Margin="20,0,0,0" ToolTip="{DynamicResource ConfigWindow_AddConfigProfileTooltip}">
-                        <Image Source="{pc:Icon Path=/ServerManager.Plugin.Discord;component/Art/Add.ico,Size=32}" />
+                        <Image Source="{StaticResource Icon.Add}" />
                     </Button>
                     <Button Width="22" Height="22" Click="ClearConfigProfiles_Click" Margin="10,0,0,0" ToolTip="{DynamicResource ConfigWindow_ClearConfigProfilesTooltip}">
-                        <Image Source="{pc:Icon Path=/ServerManager.Plugin.Discord;component/Art/Delete.ico,Size=32}" />
+                        <Image Source="{StaticResource Icon.Delete}" />
                     </Button>
                 </StackPanel>
             </GroupBox.Header>
@@ -111,7 +112,7 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Button Width="22" Height="22" Margin="0" IsTabStop="False" HorizontalAlignment="Center" VerticalAlignment="Center" Click="EditConfigProfile_Click" ToolTip="{DynamicResource ConfigWindow_EditConfigProfileTooltip}">
-                                    <Image Source="{pc:Icon Path=/ServerManager.Plugin.Discord;component/Art/Edit.ico,Size=32}" />
+                                    <Image Source="{StaticResource Icon.Edit}" />
                                 </Button>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
@@ -120,7 +121,7 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Button Width="22" Height="22" Margin="0" IsTabStop="False" HorizontalAlignment="Center" VerticalAlignment="Center" Click="DeleteConfigProfile_Click" ToolTip="{DynamicResource ConfigWindow_DeleteConfigProfileTooltip}">
-                                    <Image Source="{pc:Icon Path=/ServerManager.Plugin.Discord;component/Art/Delete.ico,Size=32}" />
+                                    <Image Source="{StaticResource Icon.Delete}" />
                                 </Button>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
@@ -138,7 +139,7 @@
         <Popup x:Name="popup" IsHitTestVisible="False" Placement="RelativePoint" PlacementTarget="{Binding ElementName=ConfigUI}" AllowsTransparency="True">
             <Border BorderBrush="LightSteelBlue" BorderThickness="2" Background="White" Opacity="0.75">
                 <StackPanel Orientation="Horizontal" Margin="4,3,8,3">
-                    <Image Source="{pc:Icon Path=/ServerManager.Plugin.Discord;component/Art/Drag.ico,Size=32}" Width="16" Height="16"/>
+                    <Image Source="{StaticResource Icon.Drag.16}" Width="16" Height="16"/>
                     <TextBlock FontSize="14" VerticalAlignment="Center" Text="{Binding DraggedItem.Name, ElementName=ConfigUI}" Margin="8,0,0,0" />
                 </StackPanel>
             </Border>

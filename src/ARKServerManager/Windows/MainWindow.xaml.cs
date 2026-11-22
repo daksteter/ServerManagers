@@ -175,8 +175,6 @@ namespace ServerManagerTool
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             // hide link buttons that have no destination configured.
-            DonateButton.Visibility = string.IsNullOrWhiteSpace(Config.Default.DonationUrl) ? Visibility.Collapsed : Visibility.Visible;
-            DiscordButton.Visibility = string.IsNullOrWhiteSpace(Config.Default.DiscordUrl) ? Visibility.Collapsed : Visibility.Visible;
             PatchNotesButton.Visibility = App.HasServerManagerPatchNotes ? Visibility.Visible : Visibility.Collapsed;
 
             //
@@ -306,18 +304,6 @@ namespace ServerManagerTool
             }
         }
 
-        private void Donate_Click(object sender, RoutedEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(Config.Default.DonationUrl))
-                return;
-
-            var result = MessageBox.Show(_globalizer.GetResourceString("MainWindow_Donate_Label"), _globalizer.GetResourceString("MainWindow_Donate_Title"), MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (result == MessageBoxResult.Yes)
-            {
-                ProcessUtils.OpenWithShell(Config.Default.DonationUrl);
-            }
-        }
-
         private void Help_Click(object sender, RoutedEventArgs args)
         {
             if (string.IsNullOrWhiteSpace(Config.Default.HelpUrl))
@@ -434,14 +420,6 @@ namespace ServerManagerTool
                         window.CloseWindow();
                 }
             }
-        }
-
-        private void Discord_Click(object sender, RoutedEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(Config.Default.DiscordUrl))
-                return;
-
-            ProcessUtils.OpenWithShell(Config.Default.DiscordUrl);
         }
 
         public void Servers_AddNew(object sender, RoutedEventArgs e)

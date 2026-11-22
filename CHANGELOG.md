@@ -61,6 +61,8 @@ First release for ARK: Survival Ascended (ASA). Servers for ARK: Survival Evolve
 
 - **New name and icon:** JVH Ark Ascended Server Manager. Scheduled tasks and firewall rules use their own
   names, so they don't collide with an installed ARK Server Manager.
+- **New icons throughout,** from Microsoft's Fluent UI System Icons: the Windows 11 style, sharp at any display
+  scaling. Icons on disabled buttons fade, and the main window's header icons are light on its dark background.
 - **Runs on .NET 11** (was .NET Framework 4.6.2), with up-to-date libraries. Needs the .NET 11 Desktop Runtime.
 - **Server status from RCON and the server log.** ASA servers don't answer Steam server queries.
   - "Running / Available" means the server has finished starting and is accepting players. Whether it can be
@@ -136,6 +138,9 @@ First release for ARK: Survival Ascended (ASA). Servers for ARK: Survival Evolve
   of the app, for checking the UI from a shell.
 - `tools/Release/Build-Release.ps1` builds a release zip: a clean build with the README, changelog and notices,
   checked for settings backups and leftovers. The version is set once, in `src/Directory.Build.props`.
+- `tools/Icons/Build-Icons.ps1` generates the icon resources (`Resources/Icons.xaml`) from the Fluent UI System
+  Icons SVGs kept in `tools/Icons/fluent`. The old icons, whose origins and licenses couldn't be established, are
+  gone.
 - The self-updater project and upstream's Azure DevOps, Inno Setup and GitHub build files are gone.
 - Two libraries whose licenses conflict with a release were replaced: the Windows API Code Pack (file and folder
   pickers now use the dialogs built into .NET) and NeXt.Vdf (GPL; SteamCMD's manifest is now read and written by

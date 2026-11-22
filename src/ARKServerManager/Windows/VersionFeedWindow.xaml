@@ -46,7 +46,7 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
         <Button Grid.Row="0" Grid.Column="2" Width="22" Height="22" Margin="5,5,5,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="PatchNotes_Click" ToolTip="{DynamicResource ServerSettings_PatchNotesTooltip}">
-            <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Website.ico,Size=32}"/>
+            <Image Source="{StaticResource Icon.Website}"/>
         </Button>
 
         <WebBrowser Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="5" clib:BrowserBehavior.Html="{Binding SelectedFeedEntry.Content}"/>

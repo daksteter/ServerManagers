@@ -1626,15 +1626,6 @@ namespace ServerManagerTool {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string DonationUrl {
-            get {
-                return ((string)(this["DonationUrl"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("ark")]
         public string GameDataApplication {
             get {
@@ -2790,15 +2781,6 @@ namespace ServerManagerTool {
             }
             set {
                 this["AutoStart_TaskPriority"] = value;
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string DiscordUrl {
-            get {
-                return ((string)(this["DiscordUrl"]));
             }
         }
         
