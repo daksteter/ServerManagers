@@ -359,7 +359,9 @@ namespace ServerManagerTool.Lib
             set { SetValue(KickIdlePlayersPeriodProperty, value); }
         }
 
-        public static readonly DependencyProperty RCONEnabledProperty = DependencyProperty.Register(nameof(RCONEnabled), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
+        // On by default: ASA answers no Steam queries, so the player count, shutdown messages and world save before a
+        // stop all need RCON (the admin password is generated for a new profile). Saved profiles keep their own value.
+        public static readonly DependencyProperty RCONEnabledProperty = DependencyProperty.Register(nameof(RCONEnabled), typeof(bool), typeof(ServerProfile), new PropertyMetadata(true));
         [DataMember]
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Administration)]
         public bool RCONEnabled

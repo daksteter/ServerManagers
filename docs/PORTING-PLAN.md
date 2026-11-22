@@ -168,7 +168,12 @@ online check, and the Discord `info` command. Replace with process state + RCON.
       bar, the Server Monitor and the Shutdown window show "–" with a tooltip that says why and what to do; the
       Discord `info` reply adds the same note. The "player count changed" alert compares with the last known
       count, so an RCON reply missing for a poll (or while the server starts) no longer reports 0 players and
-      back. RCON stays off by default for new profiles.
+      back.
+- [x] RCON is on by default for new profiles (and after resetting the Administration section): the player count,
+      shutdown messages and the world save before a stop all need it. New profiles already get a generated admin
+      password; saved profiles keep their own setting (the profile file always stores it). With automatic firewall
+      management on, the RCON port is opened in Windows Firewall as before.
+- [x] **Test:** a new profile has Enable RCON ticked; an existing profile is unchanged.
 - [x] **Test:** RCON off → "–" with the RCON-off tooltip while the server runs; RCON on → "–" (no reply yet)
       while it starts, then the count. (A rejected password only happens if the server's ini is edited by hand:
       the profile writes the password it uses.)
