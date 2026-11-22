@@ -523,18 +523,6 @@ namespace ServerManagerTool {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool SectionSOTFIsExpanded {
-            get {
-                return ((bool)(this["SectionSOTFIsExpanded"]));
-            }
-            set {
-                this["SectionSOTFIsExpanded"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1000")]
         public int CustomLevelXPIncrease_Player {
             get {
@@ -563,15 +551,6 @@ namespace ServerManagerTool {
         public string AppPatchNotesUrl {
             get {
                 return ((string)(this["AppPatchNotesUrl"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://survivetheark.com/index.php?/forums/forum/9-changelog-patch-notes/")]
-        public string AppPatchNotesUrlSotF {
-            get {
-                return ((string)(this["AppPatchNotesUrlSotF"]));
             }
         }
         
@@ -1105,28 +1084,10 @@ namespace ServerManagerTool {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("407530")]
-        public string AppId_SotF {
-            get {
-                return ((string)(this["AppId_SotF"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("2430930")]
         public string AppIdServer {
             get {
                 return ((string)(this["AppIdServer"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("445400")]
-        public string AppIdServer_SotF {
-            get {
-                return ((string)(this["AppIdServer_SotF"]));
             }
         }
         
@@ -1259,45 +1220,6 @@ namespace ServerManagerTool {
         public string ServerStatusUrlFormat {
             get {
                 return ((string)(this["ServerStatusUrlFormat"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("PGARK")]
-        public string DefaultServerMap_PGM {
-            get {
-                return ((string)(this["DefaultServerMap_PGM"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("PGArks")]
-        public string SavedPGMRelativePath {
-            get {
-                return ((string)(this["SavedPGMRelativePath"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("AsmPGArk")]
-        public string DefaultPGMapName {
-            get {
-                return ((string)(this["DefaultPGMapName"]));
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public string SectionPGMIsExpanded {
-            get {
-                return ((string)(this["SectionPGMIsExpanded"]));
-            }
-            set {
-                this["SectionPGMIsExpanded"] = value;
             }
         }
         
@@ -2110,30 +2032,6 @@ namespace ServerManagerTool {
         public string SteamManifestFolderRelativePath {
             get {
                 return ((string)(this["SteamManifestFolderRelativePath"]));
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool SectionPGMEnabled {
-            get {
-                return ((bool)(this["SectionPGMEnabled"]));
-            }
-            set {
-                this["SectionPGMEnabled"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool SectionSOTFEnabled {
-            get {
-                return ((bool)(this["SectionSOTFEnabled"]));
-            }
-            set {
-                this["SectionSOTFEnabled"] = value;
             }
         }
         

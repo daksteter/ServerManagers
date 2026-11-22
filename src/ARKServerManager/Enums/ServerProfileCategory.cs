@@ -26,7 +26,5 @@
         ExcludeItemIndicesOverrides,
         StackSizeOverrides,
         PreventTransferOverrides,
-        PGM,
-        SOTF,
     }
 }

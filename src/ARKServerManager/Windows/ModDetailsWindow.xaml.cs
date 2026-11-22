@@ -510,7 +510,7 @@ namespace ServerManagerTool
         {
             WorkshopFileDetailResponse localCache = null;
 
-            var appId = _profile.SOTF_Enabled ? Config.Default.AppId_SotF : Config.Default.AppId;
+            var appId = Config.Default.AppId;
             var workshopCacheFile = string.Format(Config.Default.WorkshopCacheFile, appId);
 
             await Task.Run(() => {

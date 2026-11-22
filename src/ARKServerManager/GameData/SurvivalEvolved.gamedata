@@ -13654,61 +13654,51 @@
   ],
   "GameMaps": [
     {
-      "IsSotF": false,
       "ClassName": "TheIsland_WP",
       "Description": "The Island",
       "Mod": "ArkPrime"
     },
     {
-      "IsSotF": false,
       "ClassName": "ScorchedEarth_WP",
       "Description": "Scorched Earth",
       "Mod": "ArkPrime"
     },
     {
-      "IsSotF": false,
       "ClassName": "TheCenter_WP",
       "Description": "The Center",
       "Mod": "ArkPrime"
     },
     {
-      "IsSotF": false,
       "ClassName": "Aberration_WP",
       "Description": "Aberration",
       "Mod": "ArkPrime"
     },
     {
-      "IsSotF": false,
       "ClassName": "Extinction_WP",
       "Description": "Extinction",
       "Mod": "ArkPrime"
     },
     {
-      "IsSotF": false,
       "ClassName": "Ragnarok_WP",
       "Description": "Ragnarok",
       "Mod": "ArkPrime"
     },
     {
-      "IsSotF": false,
       "ClassName": "Valguero_WP",
       "Description": "Valguero",
       "Mod": "ArkPrime"
     },
     {
-      "IsSotF": false,
       "ClassName": "LostColony_WP",
       "Description": "Lost Colony",
       "Mod": "ArkPrime"
     },
     {
-      "IsSotF": false,
       "ClassName": "Genesis_WP",
       "Description": "Genesis",
       "Mod": "ArkPrime"
     },
     {
-      "IsSotF": false,
       "ClassName": "Astraeos_WP",
       "Description": "Astraeos",
       "Mod": "ArkPrime"
@@ -13717,42 +13707,34 @@
   "Branches": [],
   "Events": [
     {
-      "IsSotF": false,
       "EventName": "none",
       "Description": "None"
     },
     {
-      "IsSotF": false,
       "EventName": "vday",
       "Description": "Valentines Day"
     },
     {
-      "IsSotF": false,
       "EventName": "Easter",
       "Description": "Easter"
     },
     {
-      "IsSotF": false,
       "EventName": "FearEvolved",
       "Description": "Halloween"
     },
     {
-      "IsSotF": false,
       "EventName": "TurkeyTrial",
       "Description": "Turkey Trial"
     },
     {
-      "IsSotF": false,
       "EventName": "WinterWonderland",
       "Description": "Winter Wonderland"
     },
     {
-      "IsSotF": false,
       "EventName": "Summer",
       "Description": "Summer Bash"
     },
     {
-      "IsSotF": false,
       "EventName": "PAX",
       "Description": "PAX Party"
     }

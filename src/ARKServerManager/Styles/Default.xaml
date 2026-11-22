@@ -557,14 +557,6 @@
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="1"/>
-        <Style.Triggers>
-            <DataTrigger Binding="{Binding ElementName=EnableSOTFCheckbox, Path=IsChecked}" Value="True">
-                <Setter Property="Foreground" Value="DarkRed"/>
-            </DataTrigger>
-            <DataTrigger Binding="{Binding ElementName=EnablePGMCheckbox, Path=IsChecked}" Value="True">
-                <Setter Property="Foreground" Value="#4E008B"/>
-            </DataTrigger>
-        </Style.Triggers>
     </Style>
     
     <Style x:Key="ExpanderHeaderTextStyle" TargetType="TextBlock">

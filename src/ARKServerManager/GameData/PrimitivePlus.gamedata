@@ -3150,7 +3150,6 @@
   ],
   "TotalConversions": [
     {
-      "IsSotF": false,
       "ClassName": "111111111",
       "Description": "Primitive Plus",
       "Mod": "PrimitivePlus"

@@ -671,7 +671,7 @@ namespace ServerManagerTool
 
         private void PatchNotes_Click(object sender, RoutedEventArgs e)
         {
-            var url = Settings.SOTF_Enabled ? Config.Default.AppPatchNotesUrlSotF : Config.Default.AppPatchNotesUrl;
+            var url = Config.Default.AppPatchNotesUrl;
             if (string.IsNullOrWhiteSpace(url))
                 return;
 
@@ -839,7 +839,7 @@ namespace ServerManagerTool
                 }
 
                 // <data folder>\SteamCMD\steamapps\workshop\content\<app id>
-                var appId = this.Settings.SOTF_Enabled ? Config.Default.AppId_SotF : Config.Default.AppId;
+                var appId = Config.Default.AppId;
                 var workshopPath = string.Format(Config.Default.AppSteamWorkshopFolderRelativePath, appId);
                 folder = Path.Combine(Config.Default.DataDir, Config.Default.SteamCmdDir, workshopPath);
                 if (Directory.Exists(folder))
@@ -850,16 +850,12 @@ namespace ServerManagerTool
                         if (File.Exists(file)) files.Add(file);
                     }
                 }
-
-                if (!this.Settings.SOTF_Enabled)
+                // <server cache>
+                if (!string.IsNullOrWhiteSpace(Config.Default.AutoUpdate_CacheDir))
                 {
-                    // <server cache>
-                    if (!string.IsNullOrWhiteSpace(Config.Default.AutoUpdate_CacheDir))
-                    {
-                        var branchName = string.IsNullOrWhiteSpace(this.Settings.BranchName) ? Config.Default.DefaultServerBranchName : this.Settings.BranchName;
-                        file = IOUtils.NormalizePath(Path.Combine(Config.Default.AutoUpdate_CacheDir, $"{Config.Default.ServerBranchFolderPrefix}{branchName}", Config.Default.LastUpdatedTimeFile));
-                        if (File.Exists(file)) files.Add(file);
-                    }
+                    var branchName = string.IsNullOrWhiteSpace(this.Settings.BranchName) ? Config.Default.DefaultServerBranchName : this.Settings.BranchName;
+                    file = IOUtils.NormalizePath(Path.Combine(Config.Default.AutoUpdate_CacheDir, $"{Config.Default.ServerBranchFolderPrefix}{branchName}", Config.Default.LastUpdatedTimeFile));
+                    if (File.Exists(file)) files.Add(file);
                 }
 
                 // scheduled tasks (profile level)
@@ -920,8 +916,6 @@ namespace ServerManagerTool
                 comment.AppendLine($"Profiles Directory: {Config.Default.ConfigDirectory}");
                 comment.AppendLine($"Server Directory: {this.Settings.InstallDirectory}");
 
-                comment.AppendLine($"SotF Server: {this.Settings.SOTF_Enabled}");
-                comment.AppendLine($"PGM Server: {this.Settings.PGM_Enabled}");
 
                 comment.AppendLine($"IsAdministrator: {SecurityUtils.IsAdministrator()}");
                 comment.AppendLine($"RunAsAdministratorPrompt: {Config.Default.RunAsAdministratorPrompt}");
@@ -945,8 +939,6 @@ namespace ServerManagerTool
                 comment.AppendLine($"SectionMapSpawnerOverridesEnabled: {Config.Default.SectionMapSpawnerOverridesEnabled}");
                 comment.AppendLine($"SectionSupplyCrateOverridesEnabled: {Config.Default.SectionSupplyCrateOverridesEnabled}");
                 comment.AppendLine($"SectionPreventTransferOverridesEnabled: {Config.Default.SectionPreventTransferOverridesEnabled}");
-                comment.AppendLine($"SectionPGMEnabled: {Config.Default.SectionPGMEnabled}");
-                comment.AppendLine($"SectionSOTFEnabled: {Config.Default.SectionSOTFEnabled}");
 
                 comment.AppendLine($"CustomLevelXPIncrease_Player: {Config.Default.CustomLevelXPIncrease_Player}");
                 comment.AppendLine($"CustomLevelXPIncrease_Dino: {Config.Default.CustomLevelXPIncrease_Dino}");
@@ -1355,25 +1347,6 @@ namespace ServerManagerTool
             window.Owner = Window.GetWindow(this);
             window.Closed += Window_Closed;
             window.ShowDialog();
-        }
-
-        private void EnableSOTFCheckbox_SourceUpdated(object sender, DataTransferEventArgs e)
-        {
-            var checkBox = sender as CheckBoxAndTextBlock;
-            if (checkBox == null || checkBox != EnableSOTFCheckbox)
-                return;
-
-            this.Settings.ServerMap = string.Empty;
-            this.Settings.TotalConversionModId = string.Empty;
-            this.Settings.ServerModIds = string.Empty;
-            this.Settings.BranchName = string.Empty;
-            this.Settings.BranchPassword = string.Empty;
-            this.Settings.EventName = string.Empty;
-
-            RefreshBaseGameMapsList();
-            RefreshBaseTotalConversionsList();
-            RefreshBaseBranchesList();
-            RefreshBaseEventsList();
         }
 
         private void OpenAffinity_Click(object sender, RoutedEventArgs e)
@@ -2941,64 +2914,6 @@ namespace ServerManagerTool
         }
         #endregion
 
-        #region PGM Settings
-        private void PastePGMSettings_Click(object sender, RoutedEventArgs e)
-        {
-            var window = new CustomConfigDataWindow();
-            window.ConfigDataTextWrapping = TextWrapping.Wrap;
-            window.Title = _globalizer.GetResourceString("ServerSettings_PGM_PasteSettingsTitle");
-            window.Owner = Window.GetWindow(this);
-            window.Closed += Window_Closed;
-            var result = window.ShowDialog();
-
-            if (!result.HasValue || !result.Value)
-                return;
-
-            if (MessageBox.Show(_globalizer.GetResourceString("ServerSettings_PGM_PasteSettingsConfirmLabel"), _globalizer.GetResourceString("ServerSettings_PGM_PasteSettingsConfirmTitle"), MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
-                return;
-
-            // read the pasted data into an ini file.
-            var iniFile = IniFileUtils.ReadString(window.ConfigData);
-
-            var prop = Settings.GetType().GetProperty(nameof(Settings.PGM_Terrain));
-            if (prop == null)
-                return;
-            var attr = prop.GetCustomAttributes(typeof(IniFileEntryAttribute), false).OfType<IniFileEntryAttribute>().FirstOrDefault();
-            var keyName = string.IsNullOrWhiteSpace(attr?.Key) ? prop.Name : attr.Key;
-
-            // cycle through the sections, adding them to the engrams list. Will bypass any sections that are named as per the ARK default sections.
-            foreach (var section in iniFile.Sections.Where(s => s.SectionName != null && !SystemIniFile.IniSectionNames.ContainsValue(s.SectionName)))
-            {
-                foreach (var key in section.Keys.Where(s => s.KeyName.Equals(keyName)))
-                {
-                    Settings.PGM_Terrain.InitializeFromINIValue(key.KeyValue);
-                }
-            }
-        }
-
-        private void SavePGMSettings_Click(object sender, RoutedEventArgs e)
-        {
-            var prop = Settings.GetType().GetProperty(nameof(Settings.PGM_Terrain));
-            if (prop == null)
-                return;
-            var attr = prop.GetCustomAttributes(typeof(IniFileEntryAttribute), false).OfType<IniFileEntryAttribute>().FirstOrDefault();
-            var iniName = string.IsNullOrWhiteSpace(attr?.Key) ? prop.Name : attr.Key;
-            var iniValue = $"{iniName}={Settings.PGM_Terrain.ToINIValue()}";
-
-            var window = new CommandLineWindow(iniValue);
-            window.OutputTextWrapping = TextWrapping.Wrap;
-            window.Height = 500;
-            window.Title = _globalizer.GetResourceString("ServerSettings_PGM_SaveSettingsTitle");
-            window.Owner = Window.GetWindow(this);
-            window.ShowDialog();
-        }
-
-        private void RandomPGMSettings_Click(object sender, RoutedEventArgs e)
-        {
-            Settings.RandomizePGMSettings();
-        }
-        #endregion
-
         #region Map Spawner Overrides
         private void AddNPCSpawn_Click(object sender, RoutedEventArgs e)
         {
@@ -4068,22 +3983,10 @@ namespace ServerManagerTool
         public void RefreshBaseGameMapsList()
         {
             var newList = new ComboBoxItemList();
-
-            if (this.Settings.SOTF_Enabled)
+            foreach (var item in GameData.GetGameMaps())
             {
-                foreach (var item in GameData.GetGameMapsSotF())
-                {
-                    item.DisplayMember = GameData.FriendlyMapSotFNameForClass(item.ValueMember);
-                    newList.Add(item);
-                }
-            }
-            else
-            {
-                foreach (var item in GameData.GetGameMaps())
-                {
-                    item.DisplayMember = GameData.FriendlyMapNameForClass(item.ValueMember);
-                    newList.Add(item);
-                }
+                item.DisplayMember = GameData.FriendlyMapNameForClass(item.ValueMember);
+                newList.Add(item);
             }
 
             if (!string.IsNullOrWhiteSpace(this.Settings.ServerMap))
@@ -4092,7 +3995,7 @@ namespace ServerManagerTool
                 {
                     newList.Add(new Common.Model.ComboBoxItem
                     {
-                        DisplayMember = this.Settings.SOTF_Enabled ? GameData.FriendlyMapSotFNameForClass(this.Settings.ServerMap) : GameData.FriendlyMapNameForClass(this.Settings.ServerMap),
+                        DisplayMember = GameData.FriendlyMapNameForClass(this.Settings.ServerMap),
                         ValueMember = this.Settings.ServerMap,
                     });
                 }
@@ -4105,22 +4008,10 @@ namespace ServerManagerTool
         public void RefreshBaseTotalConversionsList()
         {
             var newList = new ComboBoxItemList();
-
-            if (this.Settings.SOTF_Enabled)
+            foreach (var item in GameData.GetTotalConversions())
             {
-                foreach (var item in GameData.GetTotalConversionsSotF())
-                {
-                    item.DisplayMember = GameData.FriendlyTotalConversionSotFNameForClass(item.ValueMember);
-                    newList.Add(item);
-                }
-            }
-            else
-            {
-                foreach (var item in GameData.GetTotalConversions())
-                {
-                    item.DisplayMember = GameData.FriendlyTotalConversionNameForClass(item.ValueMember);
-                    newList.Add(item);
-                }
+                item.DisplayMember = GameData.FriendlyTotalConversionNameForClass(item.ValueMember);
+                newList.Add(item);
             }
 
             if (!string.IsNullOrWhiteSpace(this.Settings.TotalConversionModId))
@@ -4129,7 +4020,7 @@ namespace ServerManagerTool
                 {
                     newList.Add(new Common.Model.ComboBoxItem
                     {
-                        DisplayMember = this.Settings.SOTF_Enabled ? GameData.FriendlyTotalConversionSotFNameForClass(this.Settings.TotalConversionModId) : GameData.FriendlyTotalConversionNameForClass(this.Settings.TotalConversionModId),
+                        DisplayMember = GameData.FriendlyTotalConversionNameForClass(this.Settings.TotalConversionModId),
                         ValueMember = this.Settings.TotalConversionModId,
                     });
                 }
@@ -4142,22 +4033,10 @@ namespace ServerManagerTool
         public void RefreshBaseBranchesList()
         {
             var newList = new ComboBoxItemList();
-
-            if (this.Settings.SOTF_Enabled)
+            foreach (var item in GameData.GetBranches())
             {
-                foreach (var item in GameData.GetBranchesSotF())
-                {
-                    item.DisplayMember = GameData.FriendlyBranchSotFName(string.IsNullOrWhiteSpace(item.ValueMember) ? Config.Default.DefaultServerBranchName : item.ValueMember);
-                    newList.Add(item);
-                }
-            }
-            else
-            {
-                foreach (var item in GameData.GetBranches())
-                {
-                    item.DisplayMember = GameData.FriendlyBranchName(string.IsNullOrWhiteSpace(item.ValueMember) ? Config.Default.DefaultServerBranchName : item.ValueMember);
-                    newList.Add(item);
-                }
+                item.DisplayMember = GameData.FriendlyBranchName(string.IsNullOrWhiteSpace(item.ValueMember) ? Config.Default.DefaultServerBranchName : item.ValueMember);
+                newList.Add(item);
             }
 
             if (!string.IsNullOrWhiteSpace(this.Settings.BranchName))
@@ -4166,7 +4045,7 @@ namespace ServerManagerTool
                 {
                     newList.Add(new Common.Model.ComboBoxItem
                     {
-                        DisplayMember = this.Settings.SOTF_Enabled ? GameData.FriendlyBranchSotFName(this.Settings.BranchName) : GameData.FriendlyBranchName(this.Settings.BranchName),
+                        DisplayMember = GameData.FriendlyBranchName(this.Settings.BranchName),
                         ValueMember = this.Settings.BranchName,
                     });
                 }
@@ -4179,22 +4058,10 @@ namespace ServerManagerTool
         public void RefreshBaseEventsList()
         {
             var newList = new ComboBoxItemList();
-
-            if (this.Settings.SOTF_Enabled)
+            foreach (var item in GameData.GetEvents())
             {
-                foreach (var item in GameData.GetEventsSotF())
-                {
-                    item.DisplayMember = GameData.FriendlyEventSotFName(string.IsNullOrWhiteSpace(item.ValueMember) ? string.Empty : item.ValueMember);
-                    newList.Add(item);
-                }
-            }
-            else
-            {
-                foreach (var item in GameData.GetEvents())
-                {
-                    item.DisplayMember = GameData.FriendlyEventName(string.IsNullOrWhiteSpace(item.ValueMember) ? string.Empty : item.ValueMember);
-                    newList.Add(item);
-                }
+                item.DisplayMember = GameData.FriendlyEventName(string.IsNullOrWhiteSpace(item.ValueMember) ? string.Empty : item.ValueMember);
+                newList.Add(item);
             }
 
             if (!string.IsNullOrWhiteSpace(this.Settings.EventName))
@@ -4203,7 +4070,7 @@ namespace ServerManagerTool
                 {
                     newList.Add(new Common.Model.ComboBoxItem
                     {
-                        DisplayMember = this.Settings.SOTF_Enabled ? GameData.FriendlyEventSotFName(this.Settings.EventName) : GameData.FriendlyEventName(this.Settings.EventName),
+                        DisplayMember = GameData.FriendlyEventName(this.Settings.EventName),
                         ValueMember = this.Settings.EventName,
                     });
                 }
@@ -4327,10 +4194,6 @@ namespace ServerManagerTool
                                 RefreshBaseDinoList();
                                 break;
 
-                            case ServerSettingsResetAction.PGMSection:
-                                this.Settings.ResetPGMSection();
-                                break;
-
                             case ServerSettingsResetAction.PlayerSettingsSection:
                                 this.Settings.ResetPlayerSettings();
                                 break;
@@ -4341,10 +4204,6 @@ namespace ServerManagerTool
 
                             case ServerSettingsResetAction.ServerDetailsSection:
                                 this.Settings.ResetServerDetailsSection();
-                                break;
-
-                            case ServerSettingsResetAction.SOTFSection:
-                                this.Settings.ResetSOTFSection();
                                 break;
 
                             case ServerSettingsResetAction.StructuresSection:
@@ -4482,29 +4341,6 @@ namespace ServerManagerTool
                             var server = parameter as Server;
                             if (server != null)
                             {
-                                if (server.Profile.EnableAutoShutdown1 || server.Profile.EnableAutoShutdown2)
-                                {
-                                    if (server.Profile.SOTF_Enabled)
-                                    {
-                                        MessageBox.Show(_globalizer.GetResourceString("ServerSettings_Save_AutoRestart_SotF_ErrorLabel"), _globalizer.GetResourceString("ServerSettings_Save_AutoRestart_SotF_ErrorTitle"), MessageBoxButton.OK, MessageBoxImage.Warning);
-                                        server.Profile.EnableAutoShutdown1 = false;
-                                        server.Profile.RestartAfterShutdown1 = true;
-                                        server.Profile.EnableAutoShutdown2 = false;
-                                        server.Profile.RestartAfterShutdown2 = true;
-                                        server.Profile.AutoRestartIfShutdown = false;
-                                    }
-                                }
-
-                                if (server.Profile.EnableAutoUpdate)
-                                {
-                                    if (server.Profile.SOTF_Enabled)
-                                    {
-                                        MessageBox.Show(_globalizer.GetResourceString("ServerSettings_Save_AutoUpdate_SotF_ErrorLabel"), _globalizer.GetResourceString("ServerSettings_Save_AutoUpdate_SotF_ErrorTitle"), MessageBoxButton.OK, MessageBoxImage.Warning);
-                                        server.Profile.EnableAutoUpdate = false;
-                                        server.Profile.AutoRestartIfShutdown = false;
-                                    }
-                                }
-
                                 server.Profile.Save(false, false, (p, m, n) => { OverlayMessage.Content = m; });
 
                                 RefreshBaseDinoList();

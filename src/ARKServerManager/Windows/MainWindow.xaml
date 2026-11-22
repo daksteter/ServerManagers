@@ -511,14 +511,6 @@
                                     <TextBlock.Style>
                                         <Style TargetType="{x:Type TextBlock}">
                                             <Setter Property="Foreground" Value="Black"/>
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding Profile.SOTF_Enabled}" Value="True">
-                                                    <Setter Property="Foreground" Value="Red"/>
-                                                </DataTrigger>
-                                                <DataTrigger Binding="{Binding Profile.PGM_Enabled}" Value="True">
-                                                    <Setter Property="Foreground" Value="#4E008B"/>
-                                                </DataTrigger>
-                                            </Style.Triggers>
                                         </Style>
                                     </TextBlock.Style>
                                 </TextBlock>

@@ -15,8 +15,6 @@ namespace ServerManagerTool.Lib
         public string ProfileName;
         public string InstallDirectory;
         public string AltSaveDirectoryName;
-        public bool PGM_Enabled;
-        public string PGM_Name;
         public string AdminPassword;
         public string ServerName;
         public IPAddress ServerIPAddress;
@@ -52,8 +50,6 @@ namespace ServerManagerTool.Lib
         public bool UpdateAfterShutdown2;
         public bool AutoRestartIfShutdown;
 
-        public bool SotFEnabled;
-
         public int MaxPlayerCount;
 
         public bool ServerUpdated;
@@ -68,8 +64,6 @@ namespace ServerManagerTool.Lib
                 ProfileName = profile.ProfileName,
                 InstallDirectory = profile.InstallDirectory,
                 AltSaveDirectoryName = profile.AltSaveDirectoryName,
-                PGM_Enabled = profile.PGM_Enabled,
-                PGM_Name = profile.PGM_Name,
                 AdminPassword = profile.AdminPassword,
                 ServerName = profile.ServerName,
                 ServerIPAddress = string.IsNullOrWhiteSpace(profile.ServerIP) ? IPAddress.Loopback : IPAddress.TryParse(profile.ServerIP.Trim(), out IPAddress ipAddress) ? ipAddress : IPAddress.Loopback,
@@ -89,8 +83,8 @@ namespace ServerManagerTool.Lib
                 MOTDInterval = Math.Max(1, Math.Min(int.MaxValue, profile.MOTDInterval.Value)),
                 ForceRespawnDinos = profile.ForceRespawnDinos,
 
-                AppId = profile.SOTF_Enabled ? Config.Default.AppId_SotF : Config.Default.AppId,
-                AppIdServer = profile.SOTF_Enabled ? Config.Default.AppIdServer_SotF : Config.Default.AppIdServer,
+                AppId = Config.Default.AppId,
+                AppIdServer = Config.Default.AppIdServer,
                 BranchName = profile.BranchName,
                 BranchPassword = profile.BranchPassword,
 
@@ -104,8 +98,6 @@ namespace ServerManagerTool.Lib
                 RestartAfterShutdown2 = profile.RestartAfterShutdown2,
                 UpdateAfterShutdown2 = profile.UpdateAfterShutdown2,
                 AutoRestartIfShutdown = profile.AutoRestartIfShutdown,
-
-                SotFEnabled = profile.SOTF_Enabled,
 
                 MaxPlayerCount = profile.MaxPlayers,
 

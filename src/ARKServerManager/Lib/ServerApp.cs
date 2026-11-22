@@ -129,7 +129,7 @@ namespace ServerManagerTool.Lib
 
         private void BackupServer(CancellationToken cancellationToken)
         {
-            if (_profile == null || _profile.SotFEnabled)
+            if (_profile == null)
             {
                 ExitCode = EXITCODE_BADPROFILE;
                 return;
@@ -560,8 +560,8 @@ namespace ServerManagerTool.Lib
                     catch { }
                 }
 
-                // check if we need to perform a world save (not required for SotF servers)
-                if (PerformWorldSave && !_profile.SotFEnabled)
+                // check if we need to perform a world save
+                if (PerformWorldSave)
                 {
                     try
                     {
@@ -1014,9 +1014,9 @@ namespace ServerManagerTool.Lib
 
                                         steamCmdArgs = string.Empty;
                                         if (Config.Default.SteamCmd_UseAnonymousCredentials)
-                                            steamCmdArgs = SteamUtils.BuildSteamCmdArguments(steamCmdRemoveQuit, Config.Default.SteamCmdInstallModArgsFormat, Config.Default.SteamCmd_AnonymousUsername, _profile.SotFEnabled ? Config.Default.AppId_SotF : Config.Default.AppId, modId);
+                                            steamCmdArgs = SteamUtils.BuildSteamCmdArguments(steamCmdRemoveQuit, Config.Default.SteamCmdInstallModArgsFormat, Config.Default.SteamCmd_AnonymousUsername, Config.Default.AppId, modId);
                                         else
-                                            steamCmdArgs = SteamUtils.BuildSteamCmdArguments(steamCmdRemoveQuit, Config.Default.SteamCmdInstallModArgsFormat, Config.Default.SteamCmd_Username, _profile.SotFEnabled ? Config.Default.AppId_SotF : Config.Default.AppId, modId);
+                                            steamCmdArgs = SteamUtils.BuildSteamCmdArguments(steamCmdRemoveQuit, Config.Default.SteamCmdInstallModArgsFormat, Config.Default.SteamCmd_Username, Config.Default.AppId, modId);
 
                                         var SteamCmdIgnoreExitStatusCodes = SteamUtils.GetExitStatusList(Config.Default.SteamCmdIgnoreExitStatusCodes);
 
@@ -1351,14 +1351,14 @@ namespace ServerManagerTool.Lib
 
                             LogProfileMessage("Updated server from cache. See patch notes.");
                             LogProfileMessage(Config.Default.AppPatchNotesUrl);
-                            LogProfileMessage(_profile.SotFEnabled ? Config.Default.AppPatchNotesUrlSotF : Config.Default.AppPatchNotesUrl);
+                            LogProfileMessage(Config.Default.AppPatchNotesUrl);
 
                             if (!string.IsNullOrWhiteSpace(Config.Default.Alert_ServerUpdate))
                                 alertMessage.AppendLine(Config.Default.Alert_ServerUpdate);
 
                             emailMessage.AppendLine();
                             emailMessage.AppendLine("Updated server from cache. See patch notes.");
-                            emailMessage.AppendLine(_profile.SotFEnabled ? Config.Default.AppPatchNotesUrlSotF : Config.Default.AppPatchNotesUrl);
+                            emailMessage.AppendLine(Config.Default.AppPatchNotesUrl);
 
                             _profile.ServerUpdated = true;
                         }
@@ -1921,8 +1921,8 @@ namespace ServerManagerTool.Lib
 
         public void CheckServerWorldFileExists(ServerProfileSnapshot profile)
         {
-            // do nothing if profile is null or SotF
-            if (profile == null || profile.SotFEnabled)
+            // do nothing if profile is null
+            if (profile == null)
                 return;
 
             var oldProfile = _profile;
@@ -2026,8 +2026,6 @@ namespace ServerManagerTool.Lib
                     comment.AppendLine($"Config Directory: {Config.Default.ConfigDirectory}");
                     comment.AppendLine($"Server Directory: {_profile.InstallDirectory}");
                     comment.AppendLine($"Profile Name: {_profile.ProfileName}");
-                    comment.AppendLine($"SotF Server: {_profile.SotFEnabled}");
-                    comment.AppendLine($"PGM Server: {_profile.PGM_Enabled}");
                     comment.AppendLine($"Process: {ServerProcess}");
 
                     ZipUtils.ZipFiles(backupFile, files, comment.ToString(), false);
@@ -2110,8 +2108,8 @@ namespace ServerManagerTool.Lib
 
         public void CreateServerBackupArchiveFile(StringBuilder emailMessage, ServerProfileSnapshot profile)
         {
-            // do nothing if profile is null or SotF
-            if (profile == null || profile.SotFEnabled)
+            // do nothing if profile is null
+            if (profile == null)
                 return;
 
             var oldProfile = _profile;
@@ -2136,7 +2134,7 @@ namespace ServerManagerTool.Lib
 
                             var worldFileName = Path.GetFileName(worldFile);
                             var backupFolder = GetServerBackupFolder(_profile);
-                            var mapName = ServerProfile.GetProfileMapFileName(_profile.ServerMap, _profile.PGM_Enabled, _profile.PGM_Name);
+                            var mapName = ServerProfile.GetProfileMapFileName(_profile.ServerMap);
                             var backupFileName = $"{mapName}_{_startTime:yyyyMMdd_HHmmss}{Config.Default.BackupExtension}";
                             var backupFile = IOUtils.NormalizePath(Path.Combine(backupFolder, backupFileName));
 
@@ -2156,8 +2154,6 @@ namespace ServerManagerTool.Lib
                             comment.AppendLine($"Config Directory: {Config.Default.ConfigDirectory}");
                             comment.AppendLine($"Server Directory: {_profile.InstallDirectory}");
                             comment.AppendLine($"Profile Name: {_profile.ProfileName}");
-                            comment.AppendLine($"SotF Server: {_profile.SotFEnabled}");
-                            comment.AppendLine($"PGM Server: {_profile.PGM_Enabled}");
                             comment.AppendLine($"Process: {ServerProcess}");
 
                             var saveFolderInfo = new DirectoryInfo(saveFolder);
@@ -2298,7 +2294,7 @@ namespace ServerManagerTool.Lib
                         var backupFolder = GetServerBackupFolder(_profile);
                         if (Directory.Exists(backupFolder))
                         {
-                            var mapName = ServerProfile.GetProfileMapFileName(_profile.ServerMap, _profile.PGM_Enabled, _profile.PGM_Name);
+                            var mapName = ServerProfile.GetProfileMapFileName(_profile.ServerMap);
                             var backupFileFilter = $"{mapName}_*{Config.Default.BackupExtension}";
                             var backupDateFilter = DateTime.Now.AddDays(-deleteInterval);
 
@@ -2691,7 +2687,7 @@ namespace ServerManagerTool.Lib
         private string GetServerWorldFile()
         {
             var profileSaveFolder = GetServerSaveFolder();
-            var mapName = ServerProfile.GetProfileMapFileName(_profile.ServerMap, _profile.PGM_Enabled, _profile.PGM_Name);
+            var mapName = ServerProfile.GetProfileMapFileName(_profile.ServerMap);
             return IOUtils.NormalizePath(Path.Combine(profileSaveFolder, $"{mapName}{Config.Default.MapExtension}"));
         }
 
@@ -3038,7 +3034,7 @@ namespace ServerManagerTool.Lib
         {
             _profile = profile;
 
-            if (_profile == null || _profile.SotFEnabled)
+            if (_profile == null)
                 return EXITCODE_NORMALEXIT;
 
             ExitCode = EXITCODE_NORMALEXIT;
@@ -3226,7 +3222,7 @@ namespace ServerManagerTool.Lib
         {
             _profile = profile;
 
-            if (_profile == null || _profile.SotFEnabled)
+            if (_profile == null)
                 return EXITCODE_NORMALEXIT;
 
             ExitCode = EXITCODE_NORMALEXIT;

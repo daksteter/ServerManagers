@@ -720,9 +720,6 @@ namespace ServerManagerTool
                     RCONHost = server.Runtime.ProfileSnapshot.ServerIPAddress.ToString(),
                     RCONPort = server.Runtime.ProfileSnapshot.RCONPort,
                     RCONPassword = server.Runtime.ProfileSnapshot.RCONPassword,
-
-                    PGM_Enabled = server.Profile.PGM_Enabled,
-                    PGM_Name = server.Profile.PGM_Name,
                 });
                 RCONWindows[server] = window;
             }

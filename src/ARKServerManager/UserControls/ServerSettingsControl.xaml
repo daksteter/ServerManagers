@@ -80,75 +80,6 @@
                     </Trigger>
                 </ControlTemplate.Triggers>
             </ControlTemplate>
-            <ControlTemplate x:Key="ExpanderTemplateSotF" TargetType="{x:Type Expander}">
-                <Border BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="3" SnapsToDevicePixels="true" Padding="1" Margin="0,0,0,3" BorderBrush="Black">
-                    <DockPanel Background="#FFEAE0E0">
-                        <ToggleButton x:Name="HeaderSite" ContentTemplate="{TemplateBinding HeaderTemplate}" ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}" Content="{TemplateBinding Header}" DockPanel.Dock="Top" Foreground="{TemplateBinding Foreground}" FontWeight="{TemplateBinding FontWeight}" FocusVisualStyle="{StaticResource ExpanderHeaderFocusVisual}" FontStyle="{TemplateBinding FontStyle}" FontStretch="{TemplateBinding FontStretch}" FontSize="{TemplateBinding FontSize}" FontFamily="{TemplateBinding FontFamily}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Margin="4,4,1,4" MinWidth="0" MinHeight="0" Padding="{TemplateBinding Padding}" Style="{StaticResource ExpanderDownHeaderStyle}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                        <ContentPresenter x:Name="ExpandSite" DockPanel.Dock="Bottom" Focusable="false" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="10,0,0,0"/>
-                    </DockPanel>
-                </Border>
-                <ControlTemplate.Triggers>
-                    <Trigger Property="IsExpanded" Value="true">
-                        <Setter Property="Visibility" TargetName="ExpandSite" Value="Visible"/>
-                    </Trigger>
-                    <Trigger Property="IsExpanded" Value="false">
-                        <Setter Property="Visibility" TargetName="ExpandSite" Value="Collapsed"/>
-                    </Trigger>
-                    <Trigger Property="ExpandDirection" Value="Right">
-                        <Setter Property="DockPanel.Dock" TargetName="ExpandSite" Value="Right"/>
-                        <Setter Property="DockPanel.Dock" TargetName="HeaderSite" Value="Left"/>
-                        <Setter Property="Style" TargetName="HeaderSite" Value="{StaticResource ExpanderRightHeaderStyle}"/>
-                    </Trigger>
-                    <Trigger Property="ExpandDirection" Value="Up">
-                        <Setter Property="DockPanel.Dock" TargetName="ExpandSite" Value="Top"/>
-                        <Setter Property="DockPanel.Dock" TargetName="HeaderSite" Value="Bottom"/>
-                        <Setter Property="Style" TargetName="HeaderSite" Value="{StaticResource ExpanderUpHeaderStyle}"/>
-                    </Trigger>
-                    <Trigger Property="ExpandDirection" Value="Left">
-                        <Setter Property="DockPanel.Dock" TargetName="ExpandSite" Value="Left"/>
-                        <Setter Property="DockPanel.Dock" TargetName="HeaderSite" Value="Right"/>
-                        <Setter Property="Style" TargetName="HeaderSite" Value="{StaticResource ExpanderLeftHeaderStyle}"/>
-                    </Trigger>
-                    <Trigger Property="IsEnabled" Value="false">
-                        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
-                    </Trigger>
-                </ControlTemplate.Triggers>
-            </ControlTemplate>
-            <ControlTemplate x:Key="ExpanderTemplatePGM" TargetType="{x:Type Expander}">
-                <Border BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="3" SnapsToDevicePixels="true" Padding="1" Margin="0,0,0,3" BorderBrush="Black">
-                    <DockPanel Background="#E8E0EA">
-                        <ToggleButton x:Name="HeaderSite" ContentTemplate="{TemplateBinding HeaderTemplate}" ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}" Content="{TemplateBinding Header}" DockPanel.Dock="Top" Foreground="{TemplateBinding Foreground}" FontWeight="{TemplateBinding FontWeight}" FocusVisualStyle="{StaticResource ExpanderHeaderFocusVisual}" FontStyle="{TemplateBinding FontStyle}" FontStretch="{TemplateBinding FontStretch}" FontSize="{TemplateBinding FontSize}" FontFamily="{TemplateBinding FontFamily}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Margin="4,4,1,4" MinWidth="0" MinHeight="0" Padding="{TemplateBinding Padding}" Style="{StaticResource ExpanderDownHeaderStyle}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                        <ContentPresenter x:Name="ExpandSite" DockPanel.Dock="Bottom" Focusable="false" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="10,0,0,0"/>
-                    </DockPanel>
-                </Border>
-                <ControlTemplate.Triggers>
-                    <Trigger Property="IsExpanded" Value="true">
-                        <Setter Property="Visibility" TargetName="ExpandSite" Value="Visible"/>
-                    </Trigger>
-                    <Trigger Property="IsExpanded" Value="false">
-                        <Setter Property="Visibility" TargetName="ExpandSite" Value="Collapsed"/>
-                    </Trigger>
-                    <Trigger Property="ExpandDirection" Value="Right">
-                        <Setter Property="DockPanel.Dock" TargetName="ExpandSite" Value="Right"/>
-                        <Setter Property="DockPanel.Dock" TargetName="HeaderSite" Value="Left"/>
-                        <Setter Property="Style" TargetName="HeaderSite" Value="{StaticResource ExpanderRightHeaderStyle}"/>
-                    </Trigger>
-                    <Trigger Property="ExpandDirection" Value="Up">
-                        <Setter Property="DockPanel.Dock" TargetName="ExpandSite" Value="Top"/>
-                        <Setter Property="DockPanel.Dock" TargetName="HeaderSite" Value="Bottom"/>
-                        <Setter Property="Style" TargetName="HeaderSite" Value="{StaticResource ExpanderUpHeaderStyle}"/>
-                    </Trigger>
-                    <Trigger Property="ExpandDirection" Value="Left">
-                        <Setter Property="DockPanel.Dock" TargetName="ExpandSite" Value="Left"/>
-                        <Setter Property="DockPanel.Dock" TargetName="HeaderSite" Value="Right"/>
-                        <Setter Property="Style" TargetName="HeaderSite" Value="{StaticResource ExpanderLeftHeaderStyle}"/>
-                    </Trigger>
-                    <Trigger Property="IsEnabled" Value="false">
-                        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
-                    </Trigger>
-                </ControlTemplate.Triggers>
-            </ControlTemplate>
-
             <DataTemplate x:Key="PlayerLevelItemTemplate">
                 <Border BorderBrush="Black" BorderThickness="1" Background="Beige">
                     <Grid>
@@ -554,14 +485,6 @@
                             <Expander.Style>
                                 <Style BasedOn="{StaticResource ExpanderStyle1}" TargetType="{x:Type Expander}">
                                     <Setter Property="Template" Value="{StaticResource ExpanderTemplateSE}"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=EnableSOTFCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplateSotF}"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ElementName=EnablePGMCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplatePGM}"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
                                 </Style>
                             </Expander.Style>
 
@@ -749,11 +672,6 @@
                                             <ComboBox.Style>
                                                 <Style BasedOn="{StaticResource {x:Type ComboBox}}" TargetType="{x:Type ComboBox}">
                                                     <Setter Property="IsEnabled" Value="True"/>
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding PGM_Enabled}" Value="True">
-                                                            <Setter Property="IsEnabled" Value="False"/>
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
                                                 </Style>
                                             </ComboBox.Style>
                                         </ComboBox>
@@ -800,9 +718,6 @@
                                                 <Style BasedOn="{StaticResource ButtonStyle1}" TargetType="{x:Type Button}">
                                                     <Setter Property="Visibility" Value="Visible"/>
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding ElementName=EnablePGMCheckbox, Path=IsChecked}" Value="True">
-                                                            <Setter Property="Visibility" Value="Hidden"/>
-                                                        </DataTrigger>
                                                         <DataTrigger Binding="{Binding DisplayModInformation, ElementName=SettingsControl}" Value="False">
                                                             <Setter Property="Visibility" Value="Hidden"/>
                                                         </DataTrigger>
@@ -1329,14 +1244,6 @@
                             <Expander.Style>
                                 <Style BasedOn="{StaticResource ExpanderStyle1}" TargetType="{x:Type Expander}">
                                     <Setter Property="Template" Value="{StaticResource ExpanderTemplateSE}"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=EnableSOTFCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplateSotF}"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ElementName=EnablePGMCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplatePGM}"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
                                 </Style>
                             </Expander.Style>
 
@@ -1374,7 +1281,7 @@
                                             </StackPanel>
 
                                             <cctl:CheckBoxAndTextBlock Grid.Row="1" Grid.Column="0" Margin="5,5,5,0" Name="EnableAutoShutdown1Checkbox" IsChecked="{Binding EnableAutoShutdown1, Mode=TwoWay}" Text="{DynamicResource ServerSettings_EnableAutoShutdownLabel}" VerticalAlignment="Bottom" ToolTip="{DynamicResource ServerSettings_EnableAutoShutdownTooltip}" Foreground="{DynamicResource UnSyncedSetting}"/>
-                                            <StackPanel Grid.Row="1" Grid.Column="1" Margin="5,5,5,0" Orientation="Horizontal" IsEnabled="{Binding ElementName=EnableSOTFCheckbox, Path=IsChecked, Converter={StaticResource InvertBooleanConverter}}" >
+                                            <StackPanel Grid.Row="1" Grid.Column="1" Margin="5,5,5,0" Orientation="Horizontal" >
                                                 <TextBox Margin="10,0,0,0" Width="60" Height="20" IsEnabled="{Binding EnableAutoShutdown1}" VerticalAlignment="Bottom" ToolTip="{DynamicResource ServerSettings_EnableAutoShutdownTooltip}">
                                                     <Validation.ErrorTemplate>
                                                         <ControlTemplate>
@@ -1428,7 +1335,7 @@
                                             </StackPanel>
 
                                             <cctl:CheckBoxAndTextBlock Grid.Row="2" Grid.Column="0" Margin="5,5,5,0" Name="EnableAutoShutdown2Checkbox" IsChecked="{Binding EnableAutoShutdown2, Mode=TwoWay}" Text="{DynamicResource ServerSettings_EnableAutoShutdownLabel}" VerticalAlignment="Bottom" ToolTip="{DynamicResource ServerSettings_EnableAutoShutdownTooltip}" Foreground="{DynamicResource UnSyncedSetting}"/>
-                                            <StackPanel Grid.Row="2" Grid.Column="1" Margin="5,5,5,0" Orientation="Horizontal" IsEnabled="{Binding ElementName=EnableSOTFCheckbox, Path=IsChecked, Converter={StaticResource InvertBooleanConverter}}" >
+                                            <StackPanel Grid.Row="2" Grid.Column="1" Margin="5,5,5,0" Orientation="Horizontal" >
                                                 <TextBox Margin="10,0,0,0" Width="60" Height="20" IsEnabled="{Binding EnableAutoShutdown2}" VerticalAlignment="Bottom" ToolTip="{DynamicResource ServerSettings_EnableAutoShutdownTooltip}">
                                                     <Validation.ErrorTemplate>
                                                         <ControlTemplate>
@@ -1492,11 +1399,11 @@
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
 
-                                            <cctl:CheckBoxAndTextBlock Grid.Row="0" Grid.Column="0" Margin="5,5,5,0" IsEnabled="{Binding ElementName=EnableSOTFCheckbox, Path=IsChecked, Converter={StaticResource InvertBooleanConverter}}" IsChecked="{Binding EnableAutoBackup, Mode=TwoWay}" VerticalAlignment="Center" Text="{DynamicResource ServerSettings_PeriodicBackupsLabel}" ToolTip="{DynamicResource ServerSettings_PeriodicBackupsTooltip}" HorizontalAlignment="Left"/>
-                                            <cctl:CheckBoxAndTextBlock Grid.Row="0" Grid.Column="1" Margin="10,5,5,0" IsEnabled="{Binding ElementName=EnableSOTFCheckbox, Path=IsChecked, Converter={StaticResource InvertBooleanConverter}}" IsChecked="{Binding EnableAutoBackup, Mode=TwoWay}" VerticalAlignment="Center" Text="Include Cluster Directory" ToolTip="{DynamicResource ServerSettings_PeriodicBackupsTooltip}" HorizontalAlignment="Left" Foreground="{DynamicResource UnSyncedSetting}"/>
+                                            <cctl:CheckBoxAndTextBlock Grid.Row="0" Grid.Column="0" Margin="5,5,5,0" IsChecked="{Binding EnableAutoBackup, Mode=TwoWay}" VerticalAlignment="Center" Text="{DynamicResource ServerSettings_PeriodicBackupsLabel}" ToolTip="{DynamicResource ServerSettings_PeriodicBackupsTooltip}" HorizontalAlignment="Left"/>
+                                            <cctl:CheckBoxAndTextBlock Grid.Row="0" Grid.Column="1" Margin="10,5,5,0" IsChecked="{Binding EnableAutoBackup, Mode=TwoWay}" VerticalAlignment="Center" Text="Include Cluster Directory" ToolTip="{DynamicResource ServerSettings_PeriodicBackupsTooltip}" HorizontalAlignment="Left" Foreground="{DynamicResource UnSyncedSetting}"/>
 
-                                            <cctl:CheckBoxAndTextBlock Grid.Row="1" Grid.Column="0" Margin="5,5,5,0" IsEnabled="{Binding ElementName=EnableSOTFCheckbox, Path=IsChecked, Converter={StaticResource InvertBooleanConverter}}" IsChecked="{Binding EnableAutoUpdate, Mode=TwoWay}" VerticalAlignment="Center" Text="{DynamicResource ServerSettings_PeriodicUpdatesLabel}" ToolTip="{DynamicResource ServerSettings_PeriodicUpdatesTooltip}" HorizontalAlignment="Left"/>
-                                            <cctl:CheckBoxAndTextBlock Grid.Row="1" Grid.Column="1" Margin="10,5,5,0" IsEnabled="{Binding ElementName=EnableSOTFCheckbox, Path=IsChecked, Converter={StaticResource InvertBooleanConverter}}" IsChecked="{Binding AutoRestartIfShutdown, Mode=TwoWay}" VerticalAlignment="Center" Text="{DynamicResource ServerSettings_RestartIfShutdownLabel}" ToolTip="{DynamicResource ServerSettings_RestartIfShutdownTooltip}" HorizontalAlignment="Left"/>
+                                            <cctl:CheckBoxAndTextBlock Grid.Row="1" Grid.Column="0" Margin="5,5,5,0" IsChecked="{Binding EnableAutoUpdate, Mode=TwoWay}" VerticalAlignment="Center" Text="{DynamicResource ServerSettings_PeriodicUpdatesLabel}" ToolTip="{DynamicResource ServerSettings_PeriodicUpdatesTooltip}" HorizontalAlignment="Left"/>
+                                            <cctl:CheckBoxAndTextBlock Grid.Row="1" Grid.Column="1" Margin="10,5,5,0" IsChecked="{Binding AutoRestartIfShutdown, Mode=TwoWay}" VerticalAlignment="Center" Text="{DynamicResource ServerSettings_RestartIfShutdownLabel}" ToolTip="{DynamicResource ServerSettings_RestartIfShutdownTooltip}" HorizontalAlignment="Left"/>
                                         </Grid>
                                     </StackPanel>
                                 </GroupBox>
@@ -1518,14 +1425,6 @@
                             <Expander.Style>
                                 <Style BasedOn="{StaticResource ExpanderStyle1}" TargetType="{x:Type Expander}">
                                     <Setter Property="Template" Value="{StaticResource ExpanderTemplateSE}"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=EnableSOTFCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplateSotF}"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ElementName=EnablePGMCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplatePGM}"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
                                 </Style>
                             </Expander.Style>
 
@@ -1592,14 +1491,6 @@
                             <Expander.Style>
                                 <Style BasedOn="{StaticResource ExpanderStyle1}" TargetType="{x:Type Expander}">
                                     <Setter Property="Template" Value="{StaticResource ExpanderTemplateSE}"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=EnableSOTFCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplateSotF}"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ElementName=EnablePGMCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplatePGM}"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
                                 </Style>
                             </Expander.Style>
 
@@ -1618,7 +1509,7 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <GroupBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" Header="{DynamicResource ServerSettings_BranchLabel}" DataContext="{Binding Runtime, ElementName=SettingsControl}" Visibility="{Binding Settings.SOTF_Enabled, ElementName=SettingsControl, Converter={StaticResource InvertBooleanToVisibilityConverter}}">
+                                <GroupBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" Header="{DynamicResource ServerSettings_BranchLabel}" DataContext="{Binding Runtime, ElementName=SettingsControl}">
                                     <GroupBox.Style>
                                         <Style BasedOn="{StaticResource GroupBoxStyle}" TargetType="{x:Type GroupBox}">
                                             <Style.Triggers>
@@ -1671,7 +1562,7 @@
                                     </Grid>
                                 </GroupBox>
 
-                                <GroupBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" Header="{DynamicResource ServerSettings_EventLabel}" DataContext="{Binding Runtime, ElementName=SettingsControl}" Visibility="{Binding Settings.SOTF_Enabled, ElementName=SettingsControl, Converter={StaticResource InvertBooleanToVisibilityConverter}}">
+                                <GroupBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" Header="{DynamicResource ServerSettings_EventLabel}" DataContext="{Binding Runtime, ElementName=SettingsControl}">
                                     <GroupBox.Style>
                                         <Style BasedOn="{StaticResource GroupBoxStyle}" TargetType="{x:Type GroupBox}">
                                             <Style.Triggers>
@@ -1791,14 +1682,6 @@
                             <Expander.Style>
                                 <Style BasedOn="{StaticResource ExpanderStyle1}" TargetType="{x:Type Expander}">
                                     <Setter Property="Template" Value="{StaticResource ExpanderTemplateSE}"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=EnableSOTFCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplateSotF}"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ElementName=EnablePGMCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplatePGM}"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
                                 </Style>
                             </Expander.Style>
 
@@ -2314,14 +2197,6 @@
                             <Expander.Style>
                                 <Style BasedOn="{StaticResource ExpanderStyle1}" TargetType="{x:Type Expander}">
                                     <Setter Property="Template" Value="{StaticResource ExpanderTemplateSE}"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=EnableSOTFCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplateSotF}"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ElementName=EnablePGMCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplatePGM}"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
                                 </Style>
                             </Expander.Style>
 
@@ -2361,14 +2236,6 @@
                             <Expander.Style>
                                 <Style BasedOn="{StaticResource ExpanderStyle1}" TargetType="{x:Type Expander}">
                                     <Setter Property="Template" Value="{StaticResource ExpanderTemplateSE}"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=EnableSOTFCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplateSotF}"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ElementName=EnablePGMCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplatePGM}"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
                                 </Style>
                             </Expander.Style>
 
@@ -2413,14 +2280,6 @@
                             <Expander.Style>
                                 <Style BasedOn="{StaticResource ExpanderStyle1}" TargetType="{x:Type Expander}">
                                     <Setter Property="Template" Value="{StaticResource ExpanderTemplateSE}"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=EnableSOTFCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplateSotF}"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ElementName=EnablePGMCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplatePGM}"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
                                 </Style>
                             </Expander.Style>
 
@@ -2526,14 +2385,6 @@
                             <Expander.Style>
                                 <Style BasedOn="{StaticResource ExpanderStyle1}" TargetType="{x:Type Expander}">
                                     <Setter Property="Template" Value="{StaticResource ExpanderTemplateSE}"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=EnableSOTFCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplateSotF}"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ElementName=EnablePGMCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplatePGM}"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
                                 </Style>
                             </Expander.Style>
 
@@ -3259,14 +3110,6 @@
                             <Expander.Style>
                                 <Style BasedOn="{StaticResource ExpanderStyle1}" TargetType="{x:Type Expander}">
                                     <Setter Property="Template" Value="{StaticResource ExpanderTemplateSE}"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=EnableSOTFCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplateSotF}"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ElementName=EnablePGMCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplatePGM}"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
                                 </Style>
                             </Expander.Style>
 
@@ -3451,14 +3294,6 @@
                             <Expander.Style>
                                 <Style BasedOn="{StaticResource ExpanderStyle1}" TargetType="{x:Type Expander}">
                                     <Setter Property="Template" Value="{StaticResource ExpanderTemplateSE}"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=EnableSOTFCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplateSotF}"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ElementName=EnablePGMCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplatePGM}"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
                                 </Style>
                             </Expander.Style>
 
@@ -3573,14 +3408,6 @@
                             <Expander.Style>
                                 <Style BasedOn="{StaticResource ExpanderStyle1}" TargetType="{x:Type Expander}">
                                     <Setter Property="Template" Value="{StaticResource ExpanderTemplateSE}"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=EnableSOTFCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplateSotF}"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ElementName=EnablePGMCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplatePGM}"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
                                 </Style>
                             </Expander.Style>
 
@@ -3942,14 +3769,6 @@
                             <Expander.Style>
                                 <Style BasedOn="{StaticResource ExpanderStyle1}" TargetType="{x:Type Expander}">
                                     <Setter Property="Template" Value="{StaticResource ExpanderTemplateSE}"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=EnableSOTFCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplateSotF}"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ElementName=EnablePGMCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplatePGM}"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
                                 </Style>
                             </Expander.Style>
 
@@ -4246,14 +4065,6 @@
                             <Expander.Style>
                                 <Style BasedOn="{StaticResource ExpanderStyle1}" TargetType="{x:Type Expander}">
                                     <Setter Property="Template" Value="{StaticResource ExpanderTemplateSE}"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=EnableSOTFCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplateSotF}"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ElementName=EnablePGMCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplatePGM}"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
                                 </Style>
                             </Expander.Style>
 
@@ -4405,14 +4216,6 @@
                             <Expander.Style>
                                 <Style BasedOn="{StaticResource ExpanderStyle1}" TargetType="{x:Type Expander}">
                                     <Setter Property="Template" Value="{StaticResource ExpanderTemplateSE}"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=EnableSOTFCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplateSotF}"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ElementName=EnablePGMCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplatePGM}"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
                                 </Style>
                             </Expander.Style>
 
@@ -4564,14 +4367,6 @@
                             <Expander.Style>
                                 <Style BasedOn="{StaticResource ExpanderStyle1}" TargetType="{x:Type Expander}">
                                     <Setter Property="Template" Value="{StaticResource ExpanderTemplateSE}"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=EnableSOTFCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplateSotF}"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ElementName=EnablePGMCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplatePGM}"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
                                 </Style>
                             </Expander.Style>
 
@@ -4728,14 +4523,6 @@
                             <Expander.Style>
                                 <Style BasedOn="{StaticResource ExpanderStyle1}" TargetType="{x:Type Expander}">
                                     <Setter Property="Template" Value="{StaticResource ExpanderTemplateSE}"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=EnableSOTFCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplateSotF}"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ElementName=EnablePGMCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplatePGM}"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
                                 </Style>
                             </Expander.Style>
 
@@ -4946,14 +4733,6 @@
                             <Expander.Style>
                                 <Style BasedOn="{StaticResource ExpanderStyle1}" TargetType="{x:Type Expander}">
                                     <Setter Property="Template" Value="{StaticResource ExpanderTemplateSE}"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=EnableSOTFCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplateSotF}"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ElementName=EnablePGMCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplatePGM}"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
                                 </Style>
                             </Expander.Style>
 
@@ -5186,14 +4965,6 @@
                             <Expander.Style>
                                 <Style BasedOn="{StaticResource ExpanderStyle1}" TargetType="{x:Type Expander}">
                                     <Setter Property="Template" Value="{StaticResource ExpanderTemplateSE}"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=EnableSOTFCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplateSotF}"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ElementName=EnablePGMCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplatePGM}"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
                                 </Style>
                             </Expander.Style>
 
@@ -5347,14 +5118,6 @@
                             <Expander.Style>
                                 <Style BasedOn="{StaticResource ExpanderStyle1}" TargetType="{x:Type Expander}">
                                     <Setter Property="Template" Value="{StaticResource ExpanderTemplateSE}"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=EnableSOTFCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplateSotF}"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ElementName=EnablePGMCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplatePGM}"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
                                 </Style>
                             </Expander.Style>
 
@@ -5591,14 +5354,6 @@
                             <Expander.Style>
                                 <Style BasedOn="{StaticResource ExpanderStyle1}" TargetType="{x:Type Expander}">
                                     <Setter Property="Template" Value="{StaticResource ExpanderTemplateSE}"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=EnableSOTFCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplateSotF}"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ElementName=EnablePGMCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplatePGM}"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
                                 </Style>
                             </Expander.Style>
 
@@ -6125,14 +5880,6 @@
                             <Expander.Style>
                                 <Style BasedOn="{StaticResource ExpanderStyle1}" TargetType="{x:Type Expander}">
                                     <Setter Property="Template" Value="{StaticResource ExpanderTemplateSE}"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=EnableSOTFCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplateSotF}"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ElementName=EnablePGMCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplatePGM}"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
                                 </Style>
                             </Expander.Style>
 
@@ -6261,14 +6008,6 @@
                             <Expander.Style>
                                 <Style BasedOn="{StaticResource ExpanderStyle1}" TargetType="{x:Type Expander}">
                                     <Setter Property="Template" Value="{StaticResource ExpanderTemplateSE}"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=EnableSOTFCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplateSotF}"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ElementName=EnablePGMCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplatePGM}"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
                                 </Style>
                             </Expander.Style>
 
@@ -6382,377 +6121,6 @@
                                 </GroupBox>
 
                                 <GridSplitter Grid.Row="3" Grid.Column="0" Height="5" ShowsPreview="True" HorizontalAlignment="Stretch" VerticalAlignment="Center" Opacity="0"/>
-                            </Grid>
-                        </Expander>
-
-                        <Expander Name="SectionPGM" IsExpanded="{Binding Config.SectionPGMIsExpanded, ElementName=SettingsControl, FallbackValue=True, Mode=TwoWay}" Visibility="{Binding Config.SectionPGMEnabled, ElementName=SettingsControl, Converter={StaticResource BooleanToVisibilityConverter}}">
-                            <Expander.Header>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{DynamicResource ServerSettings_PGMLabel}" Style="{StaticResource ExpanderHeaderTextStyle}"/>
-                                    <Button Margin="20,0,0,0" ToolTip="{DynamicResource ServerSettings_ResetSectionTooltip}" Style="{StaticResource ButtonStyle1}"
-                                            IsEnabled="{Binding ElementName=SectionPGM, Path=IsExpanded}"
-                                            Command="{Binding ResetActionCommand, ElementName=SettingsControl}" CommandParameter="{x:Static enum:ServerSettingsResetAction.PGMSection}">
-                                        <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Refresh.ico,Size=32}"/>
-                                    </Button>
-                                </StackPanel>
-                            </Expander.Header>
-
-                            <Expander.Style>
-                                <Style BasedOn="{StaticResource ExpanderStyle1}" TargetType="{x:Type Expander}">
-                                    <Setter Property="Template" Value="{StaticResource ExpanderTemplateSE}"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=EnableSOTFCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplateSotF}"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ElementName=EnablePGMCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplatePGM}"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Expander.Style>
-
-                            <Grid Margin="-8,0,2,0">
-                                <StackPanel>
-                                    <TextBlock Margin="5" Text="{DynamicResource ServerSettings_PGM_Warning1Label}" TextWrapping="Wrap" VerticalAlignment="Center" Foreground="Red"/>
-
-                                    <GroupBox Style="{StaticResource GroupBoxStyle}">
-                                        <GroupBox.Header>
-                                            <StackPanel Orientation="Horizontal">
-                                                <cctl:CheckBoxAndTextBlock Name="EnablePGMCheckbox" IsChecked="{Binding PGM_Enabled, Mode=TwoWay}" IsEnabled="{Binding ElementName=EnableSOTFCheckbox, Path=IsChecked, Converter={StaticResource InvertBooleanConverter}}" VerticalAlignment="Center" Text="{DynamicResource ServerSettings_PGM_EnableLabel}" ToolTip="{DynamicResource ServerSettings_PGM_EnableTooltip}" VerticalContentAlignment="Center" FontWeight="Bold"/>
-                                                <Button Click="PastePGMSettings_Click" Margin="20,0,0,0" IsEnabled="{Binding ElementName=EnablePGMCheckbox, Path=IsChecked}" ToolTip="{DynamicResource ServerSettings_PGM_PasteSettingsTooltip}" Style="{StaticResource ButtonStyle1}">
-                                                    <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Paste.ico,Size=32}"/>
-                                                </Button>
-                                                <Button Click="SavePGMSettings_Click" Margin="5,0,0,0" IsEnabled="{Binding ElementName=EnablePGMCheckbox, Path=IsChecked}" ToolTip="{DynamicResource ServerSettings_PGM_SaveSettingsTooltip}" Style="{StaticResource ButtonStyle1}">
-                                                    <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Save.ico,Size=32}"/>
-                                                </Button>
-                                                <Button Click="RandomPGMSettings_Click" Margin="20,0,0,0" Padding="3,0,3,0" IsEnabled="{Binding ElementName=EnablePGMCheckbox, Path=IsChecked}" Content="{DynamicResource ServerSettings_PGM_RandomSettingsLabel}" ToolTip="{DynamicResource ServerSettings_PGM_RandomSettingsTooltip}"/>
-                                            </StackPanel>
-                                        </GroupBox.Header>
-
-                                        <StackPanel IsEnabled="{Binding ElementName=EnablePGMCheckbox, Path=IsChecked}">
-                                            <Grid>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition/>
-                                                    <RowDefinition/>
-                                                </Grid.RowDefinitions>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition/>
-                                                    <ColumnDefinition/>
-                                                    <ColumnDefinition/>
-                                                    <ColumnDefinition/>
-                                                </Grid.ColumnDefinitions>
-
-                                                <Label   Grid.Row="0" Grid.Column="0" Content="{DynamicResource ServerSettings_PGM_NameLabel}" ToolTip="{DynamicResource ServerSettings_PGM_NameTooltip}" VerticalAlignment="Center"/>
-                                                <TextBox Grid.Row="0" Grid.Column="1" Margin="1,1,12,1" Text="{Binding PGM_Name}" HorizontalAlignment="Stretch" ToolTip="{DynamicResource ServerSettings_PGM_NameTooltip}"/>
-                                                <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Margin="5" Text="{DynamicResource ServerSettings_PGM_Warning2Label}" TextWrapping="Wrap" VerticalAlignment="Center" FontWeight="Bold"/>
-                                            </Grid>
-
-                                            <GroupBox Style="{StaticResource GroupBoxStyle}" Header="{DynamicResource ServerSettings_PGM_TerrianSettingsLabel}">
-                                                <Grid>
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition/>
-                                                        <RowDefinition/>
-                                                        <RowDefinition/>
-                                                        <RowDefinition/>
-                                                        <RowDefinition/>
-                                                        <RowDefinition/>
-                                                        <RowDefinition/>
-                                                        <RowDefinition/>
-                                                        <RowDefinition/>
-                                                        <RowDefinition/>
-                                                        <RowDefinition/>
-                                                    </Grid.RowDefinitions>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition/>
-                                                        <ColumnDefinition/>
-                                                    </Grid.ColumnDefinitions>
-
-                                                    <cctl:AnnotatedSlider Grid.Row="0" Grid.Column="0" Margin="1" Label="{DynamicResource ServerSettings_PGM_Terrain_MapSeedLabel}" Value="{Binding PGM_Terrain.MapSeed}" Suffix="" Minimum="1" Maximum="999" SmallChange="1" LargeChange="5" TickFrequency="50" LabelRelativeWidth="2*" SliderRelativeWidth="3*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Terrain_MapSeedTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="1" Grid.Column="0" Margin="1" Label="{DynamicResource ServerSettings_PGM_Terrain_TurbulencePowerLabel}" Value="{Binding PGM_Terrain.TurbulencePower}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="2*" SliderRelativeWidth="3*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Terrain_TurbulencePowerTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="2" Grid.Column="0" Margin="1" Label="{DynamicResource ServerSettings_PGM_Terrain_MountainsFrequencyLabel}" Value="{Binding PGM_Terrain.MountainsFrequency}" Suffix="" Minimum="0" Maximum="20" SmallChange="1" LargeChange="1" TickFrequency="1" LabelRelativeWidth="2*" SliderRelativeWidth="3*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Terrain_MountainsFrequencyTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="3" Grid.Column="0" Margin="1" Label="{DynamicResource ServerSettings_PGM_Terrain_MountainsSlopeLabel}" Value="{Binding PGM_Terrain.MountainsSlope}" Suffix="" Minimum="0" Maximum="2" SmallChange="1" LargeChange="1" TickFrequency="1" LabelRelativeWidth="2*" SliderRelativeWidth="3*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Terrain_MountainsSlopeTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="4" Grid.Column="0" Margin="1" Label="{DynamicResource ServerSettings_PGM_Terrain_MountainsHeightLabel}" Value="{Binding PGM_Terrain.MountainsHeight}" Suffix="" Minimum="0" Maximum="5" SmallChange="1" LargeChange="1" TickFrequency="1" LabelRelativeWidth="2*" SliderRelativeWidth="3*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Terrain_MountainsHeightTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="5" Grid.Column="0" Margin="1" Label="{DynamicResource ServerSettings_PGM_Terrain_ErosionStepsLabel}" Value="{Binding PGM_Terrain.ErosionSteps}" Suffix="" Minimum="1" Maximum="10" SmallChange="1" LargeChange="2" TickFrequency="2" LabelRelativeWidth="2*" SliderRelativeWidth="3*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Terrain_ErosionStepsTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="6" Grid.Column="0" Margin="1" Label="{DynamicResource ServerSettings_PGM_Terrain_ErosionStrengthLabel}" Value="{Binding PGM_Terrain.ErosionStrength}" Suffix="" Minimum="0.1" Maximum="1.0" SmallChange="0.1" LargeChange="0.2" TickFrequency="0.2" LabelRelativeWidth="2*" SliderRelativeWidth="3*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Terrain_ErosionStrengthTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="7" Grid.Column="0" Margin="1" Label="{DynamicResource ServerSettings_PGM_Terrain_DepositionStrengthLabel}" Value="{Binding PGM_Terrain.DepositionStrength}" Suffix="" Minimum="0.01" Maximum="1.0" SmallChange="0.01" LargeChange=".1" TickFrequency="1" LabelRelativeWidth="2*" SliderRelativeWidth="3*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Terrain_DepositionStrengthTooltip}"/>
-
-                                                    <cctl:AnnotatedSlider Grid.Row="0" Grid.Column="1" Margin="1" Label="{DynamicResource ServerSettings_PGM_Terrain_LandscapeRadiusLabel}" Value="{Binding PGM_Terrain.LandscapeRadius}" Suffix="" Minimum="0" Maximum="5" SmallChange="1" LargeChange="1" TickFrequency="1" LabelRelativeWidth="2*" SliderRelativeWidth="3*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Terrain_LandscapeRadiusTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="1" Grid.Column="1" Margin="1" Label="{DynamicResource ServerSettings_PGM_Terrain_ShoreSlopeLabel}" Value="{Binding PGM_Terrain.ShoreSlope}" Suffix="" Minimum="0" Maximum="2" SmallChange="1" LargeChange="1" TickFrequency="1" LabelRelativeWidth="2*" SliderRelativeWidth="3*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Terrain_ShoreSlopeTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="2" Grid.Column="1" Margin="1" Label="{DynamicResource ServerSettings_PGM_Terrain_ShoreLineEndLabel}" Value="{Binding PGM_Terrain.ShoreLineEnd}" Suffix="" Minimum="-1" Maximum="0" SmallChange="0.1" LargeChange="0.2" TickFrequency="1" LabelRelativeWidth="2*" SliderRelativeWidth="3*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Terrain_ShoreLineEndTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="3" Grid.Column="1" Margin="1" Label="{DynamicResource ServerSettings_PGM_Terrain_WaterFrequencyLabel}" Value="{Binding PGM_Terrain.WaterFrequency}" Suffix="" Minimum="0" Maximum="20" SmallChange="1" LargeChange="1" TickFrequency="1" LabelRelativeWidth="2*" SliderRelativeWidth="3*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Terrain_WaterFrequencyTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="4" Grid.Column="1" Margin="1" Label="{DynamicResource ServerSettings_PGM_Terrain_WaterLevelLabel}" Value="{Binding PGM_Terrain.WaterLevel}" Suffix="" Minimum="-1" Maximum="1" SmallChange="1" LargeChange="1" TickFrequency="1" LabelRelativeWidth="2*" SliderRelativeWidth="3*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Terrain_WaterLevelTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="5" Grid.Column="1" Margin="1" Label="{DynamicResource ServerSettings_PGM_Terrain_OceanFloorLevelLabel}" Value="{Binding PGM_Terrain.OceanFloorLevel}" Suffix="" Minimum="-1" Maximum="1" SmallChange="1" LargeChange="1" TickFrequency="1" LabelRelativeWidth="2*" SliderRelativeWidth="3*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Terrain_OceanFloorLevelTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="6" Grid.Column="1" Margin="1" Label="{DynamicResource ServerSettings_PGM_Terrain_TreesGroundSlopeAccuracyLabel}" Value="{Binding PGM_Terrain.TreesGroundSlopeAccuracy}" Suffix="" Minimum="0.1" Maximum="1.0" SmallChange="0.1" LargeChange="0.2" TickFrequency="0.2" LabelRelativeWidth="2*" SliderRelativeWidth="3*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Terrain_TreesGroundSlopeAccuracyTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="7" Grid.Column="1" Margin="1" Label="{DynamicResource ServerSettings_PGM_Terrain_MountainGeneralTreesPercentLabel}" Value="{Binding PGM_Terrain.MountainGeneralTreesPercent}" Suffix="" Minimum="0.1" Maximum="1.0" SmallChange="0.1" LargeChange="0.2" TickFrequency="0.2" LabelRelativeWidth="2*" SliderRelativeWidth="3*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Terrain_MountainGeneralTreesPercentTooltip}"/>
-
-                                                    <Grid                  Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2">
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition/>
-                                                            <ColumnDefinition/>
-                                                            <ColumnDefinition/>
-                                                            <ColumnDefinition/>
-                                                        </Grid.ColumnDefinitions>
-
-                                                        <Label                 Grid.Column="0" Content="{DynamicResource ServerSettings_PGM_Terrain_TerrainScaleMultiplierLabel}" ToolTip="{DynamicResource ServerSettings_PGM_Terrain_TerrainScaleMultiplierTooltip}" VerticalAlignment="Center"/>
-                                                        <cctl:AnnotatedSlider Grid.Column="1" Margin="1" Label="{DynamicResource ServerSettings_PGM_XLabel}" Value="{Binding PGM_Terrain.TerrainScaleMultiplier.X}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Terrain_TerrainScaleMultiplierTooltip}"/>
-                                                        <cctl:AnnotatedSlider Grid.Column="2" Margin="1" Label="{DynamicResource ServerSettings_PGM_YLabel}" Value="{Binding PGM_Terrain.TerrainScaleMultiplier.Y}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Terrain_TerrainScaleMultiplierTooltip}"/>
-                                                        <cctl:AnnotatedSlider Grid.Column="3" Margin="1" Label="{DynamicResource ServerSettings_PGM_ZLabel}" Value="{Binding PGM_Terrain.TerrainScaleMultiplier.Z}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Terrain_TerrainScaleMultiplierTooltip}"/>
-                                                    </Grid>
-                                                </Grid>
-                                            </GroupBox>
-
-                                            <GroupBox Style="{StaticResource GroupBoxStyle}" Header="{DynamicResource ServerSettings_PGM_BiomeSettingsLabel}">
-                                                <Grid>
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition/>
-                                                        <RowDefinition/>
-                                                        <RowDefinition/>
-                                                        <RowDefinition/>
-                                                        <RowDefinition/>
-                                                        <RowDefinition/>
-                                                        <RowDefinition/>
-                                                        <RowDefinition/>
-                                                        <RowDefinition/>
-                                                        <RowDefinition/>
-                                                        <RowDefinition/>
-                                                        <RowDefinition/>
-                                                        <RowDefinition/>
-                                                    </Grid.RowDefinitions>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition/>
-                                                        <ColumnDefinition/>
-                                                    </Grid.ColumnDefinitions>
-
-                                                    <cctl:AnnotatedSlider Grid.Row="0" Grid.Column="0" Margin="1" Label="{DynamicResource ServerSettings_PGM_Biome_MaxSpawnPointHeightLabel}" Value="{Binding PGM_Terrain.MaxSpawnPointHeight}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="2*" SliderRelativeWidth="3*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Biome_MaxSpawnPointHeightTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="1" Grid.Column="0" Margin="1" Label="{DynamicResource ServerSettings_PGM_Biome_IslandBorderCurveExponentLabel}" Value="{Binding PGM_Terrain.IslandBorderCurveExponent}" Suffix="" Minimum="0" Maximum="10" SmallChange="1" LargeChange="1" TickFrequency="1" LabelRelativeWidth="2*" SliderRelativeWidth="3*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Biome_IslandBorderCurveExponentTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="2" Grid.Column="0" Margin="1" Label="{DynamicResource ServerSettings_PGM_Biome_ShorelineStartOffsetLabel}" Value="{Binding PGM_Terrain.ShorelineStartOffset}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="2*" SliderRelativeWidth="3*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Biome_ShorelineStartOffsetTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="3" Grid.Column="0" Margin="1" Label="{DynamicResource ServerSettings_PGM_Biome_ShorelineThicknessLabel}" Value="{Binding PGM_Terrain.ShorelineThickness}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="2*" SliderRelativeWidth="3*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Biome_ShorelineThicknessTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="4" Grid.Column="0" Margin="1" Label="{DynamicResource ServerSettings_PGM_Biome_DeepWaterBiomesDepthLabel}" Value="{Binding PGM_Terrain.DeepWaterBiomesDepth}" Suffix="" Minimum="-1" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="2*" SliderRelativeWidth="3*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Biome_DeepWaterBiomesDepthTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="5" Grid.Column="0" Margin="1" Label="{DynamicResource ServerSettings_PGM_Biome_JungleBiomeStartLabel}" Value="{Binding PGM_Terrain.JungleBiomeStart}" Suffix="" Minimum="-1" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="2*" SliderRelativeWidth="3*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Biome_JungleBiomeStartTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="6" Grid.Column="0" Margin="1" Label="{DynamicResource ServerSettings_PGM_Biome_RedWoodBiomeSizeLabel}" Value="{Binding PGM_Terrain.RedWoodBiomeSize}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="2*" SliderRelativeWidth="3*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Biome_RedWoodBiomeSizeTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="7" Grid.Column="0" Margin="1" Label="{DynamicResource ServerSettings_PGM_Biome_MountainBiomeStartLabel}" Value="{Binding PGM_Terrain.MountainBiomeStart}" Suffix="" Minimum="-1" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="2*" SliderRelativeWidth="3*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Biome_MountainBiomeStartTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="8" Grid.Column="0" Margin="1" Label="{DynamicResource ServerSettings_PGM_Biome_SnowBiomeSizeLabel}" Value="{Binding PGM_Terrain.SnowBiomeSize}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="2*" SliderRelativeWidth="3*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Biome_SnowBiomeSizeTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="9" Grid.Column="0" Margin="1" Label="{DynamicResource ServerSettings_PGM_Biome_GrassDensityLabel}" Value="{Binding PGM_Terrain.GrassDensity}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="2*" SliderRelativeWidth="3*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Biome_GrassDensityTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="10" Grid.Column="0" Margin="1" Label="{DynamicResource ServerSettings_PGM_Biome_JungleGrassDensityLabel}" Value="{Binding PGM_Terrain.JungleGrassDensity}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="2*" SliderRelativeWidth="3*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Biome_JungleGrassDensityTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="11" Grid.Column="0" Margin="1" Label="{DynamicResource ServerSettings_PGM_Biome_RedwoodGrassDensityLabel}" Value="{Binding PGM_Terrain.RedwoodGrassDensity}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="2*" SliderRelativeWidth="3*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Biome_RedwoodGrassDensityTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="12" Grid.Column="0" Margin="1" Label="{DynamicResource ServerSettings_PGM_Biome_MountainGrassDensityLabel}" Value="{Binding PGM_Terrain.MountainGrassDensity}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="2*" SliderRelativeWidth="3*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Biome_MountainGrassDensityTooltip}"/>
-
-                                                    <cctl:AnnotatedSlider Grid.Row="0" Grid.Column="1" Margin="1" Label="{DynamicResource ServerSettings_PGM_Biome_SnowGrassDensityLabel}" Value="{Binding PGM_Terrain.SnowGrassDensity}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="2*" SliderRelativeWidth="3*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Biome_SnowGrassDensityTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="1" Grid.Column="1" Margin="1" Label="{DynamicResource ServerSettings_PGM_Biome_SnowMountainGrassDensityLabel}" Value="{Binding PGM_Terrain.SnowMountainGrassDensity}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="2*" SliderRelativeWidth="3*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Biome_SnowMountainGrassDensityTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="2" Grid.Column="1" Margin="1" Label="{DynamicResource ServerSettings_PGM_Biome_TreeDensityLabel}" Value="{Binding PGM_Terrain.TreeDensity}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="2*" SliderRelativeWidth="3*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Biome_TreeDensityTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="3" Grid.Column="1" Margin="1" Label="{DynamicResource ServerSettings_PGM_Biome_JungleTreeDensityLabel}" Value="{Binding PGM_Terrain.JungleTreeDensity}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="2*" SliderRelativeWidth="3*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Biome_JungleTreeDensityTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="4" Grid.Column="1" Margin="1" Label="{DynamicResource ServerSettings_PGM_Biome_RedWoodTreeDensityLabel}" Value="{Binding PGM_Terrain.RedWoodTreeDensity}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="2*" SliderRelativeWidth="3*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Biome_RedWoodTreeDensityTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="5" Grid.Column="1" Margin="1" Label="{DynamicResource ServerSettings_PGM_Biome_MountainsTreeDensityLabel}" Value="{Binding PGM_Terrain.MountainsTreeDensity}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="2*" SliderRelativeWidth="3*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Biome_MountainsTreeDensityTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="6" Grid.Column="1" Margin="1" Label="{DynamicResource ServerSettings_PGM_Biome_SnowTreeDensityLabel}" Value="{Binding PGM_Terrain.SnowTreeDensity}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="2*" SliderRelativeWidth="3*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Biome_SnowTreeDensityTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="7" Grid.Column="1" Margin="1" Label="{DynamicResource ServerSettings_PGM_Biome_SnowMountainsTreeDensityLabel}" Value="{Binding PGM_Terrain.SnowMountainsTreeDensity}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="2*" SliderRelativeWidth="3*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Biome_SnowMountainsTreeDensityTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="8" Grid.Column="1" Margin="1" Label="{DynamicResource ServerSettings_PGM_Biome_ShoreTreeDensityLabel}" Value="{Binding PGM_Terrain.ShoreTreeDensity}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="2*" SliderRelativeWidth="3*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Biome_ShoreTreeDensityTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="9" Grid.Column="1" Margin="1" Label="{DynamicResource ServerSettings_PGM_Biome_SnowShoreTreeDensityLabel}" Value="{Binding PGM_Terrain.SnowShoreTreeDensity}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="2*" SliderRelativeWidth="3*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Biome_SnowShoreTreeDensityTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="10" Grid.Column="1" Margin="1" Label="{DynamicResource ServerSettings_PGM_Biome_InlandWaterObjectsDensityLabel}" Value="{Binding PGM_Terrain.InlandWaterObjectsDensity}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="2*" SliderRelativeWidth="3*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Biome_InlandWaterObjectsDensityTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="11" Grid.Column="1" Margin="1" Label="{DynamicResource ServerSettings_PGM_Biome_UnderwaterObjectsDensityLabel}" Value="{Binding PGM_Terrain.UnderwaterObjectsDensity}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="2*" SliderRelativeWidth="3*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Biome_UnderwaterObjectsDensityTooltip}"/>
-                                                </Grid>
-                                            </GroupBox>
-
-                                            <GroupBox Style="{StaticResource GroupBoxStyle}" Header="{DynamicResource ServerSettings_PGM_MapSettingsLabel}">
-                                                <Grid>
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition/>
-                                                        <RowDefinition/>
-                                                        <RowDefinition/>
-                                                        <RowDefinition/>
-                                                        <RowDefinition/>
-                                                        <RowDefinition/>
-                                                        <RowDefinition/>
-                                                        <RowDefinition/>
-                                                        <RowDefinition/>
-                                                        <RowDefinition/>
-                                                        <RowDefinition/>
-                                                        <RowDefinition/>
-                                                        <RowDefinition/>
-                                                    </Grid.RowDefinitions>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition/>
-                                                        <ColumnDefinition/>
-                                                        <ColumnDefinition/>
-                                                        <ColumnDefinition/>
-                                                        <ColumnDefinition/>
-                                                        <ColumnDefinition/>
-                                                    </Grid.ColumnDefinitions>
-
-                                                    <Label                 Grid.Row="0" Grid.Column="0" Content="{DynamicResource ServerSettings_PGM_Map_SnowBiomeLocationLabel}" ToolTip="{DynamicResource ServerSettings_PGM_Map_SnowBiomeLocationTooltip}" VerticalAlignment="Center"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="0" Grid.Column="1" Margin="1" Label="{DynamicResource ServerSettings_PGM_XLabel}" Value="{Binding PGM_Terrain.SnowBiomeLocation.X}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_SnowBiomeLocationTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="0" Grid.Column="2" Margin="1" Label="{DynamicResource ServerSettings_PGM_YLabel}" Value="{Binding PGM_Terrain.SnowBiomeLocation.Y}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_SnowBiomeLocationTooltip}"/>
-                                                    <Label                 Grid.Row="0" Grid.Column="3" Content="{DynamicResource ServerSettings_PGM_Map_RedWoodForestBiomeLocationLabel}" ToolTip="{DynamicResource ServerSettings_PGM_Map_RedWoodForestBiomeLocationTooltip}" VerticalAlignment="Center"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="0" Grid.Column="4" Margin="1" Label="{DynamicResource ServerSettings_PGM_XLabel}" Value="{Binding PGM_Terrain.RedWoodForestBiomeLocation.X}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_RedWoodForestBiomeLocationTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="0" Grid.Column="5" Margin="1" Label="{DynamicResource ServerSettings_PGM_YLabel}" Value="{Binding PGM_Terrain.RedWoodForestBiomeLocation.Y}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_RedWoodForestBiomeLocationTooltip}"/>
-
-                                                    <Label                 Grid.Row="1" Grid.Column="0" Content="{DynamicResource ServerSettings_PGM_Map_NorthRegion1StartLabel}" ToolTip="{DynamicResource ServerSettings_PGM_Map_NorthRegion1StartTooltip}" VerticalAlignment="Center"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="1" Grid.Column="1" Margin="1" Label="{DynamicResource ServerSettings_PGM_XLabel}" Value="{Binding PGM_Terrain.NorthRegion1Start.X}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_NorthRegion1StartTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="1" Grid.Column="2" Margin="1" Label="{DynamicResource ServerSettings_PGM_YLabel}" Value="{Binding PGM_Terrain.NorthRegion1Start.Y}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_NorthRegion1StartTooltip}"/>
-                                                    <Label                 Grid.Row="1" Grid.Column="3" Content="{DynamicResource ServerSettings_PGM_Map_EastRegion1StartLabel}" ToolTip="{DynamicResource ServerSettings_PGM_Map_EastRegion1StartTooltip}" VerticalAlignment="Center"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="1" Grid.Column="4" Margin="1" Label="{DynamicResource ServerSettings_PGM_XLabel}" Value="{Binding PGM_Terrain.EastRegion1Start.X}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_EastRegion1StartTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="1" Grid.Column="5" Margin="1" Label="{DynamicResource ServerSettings_PGM_YLabel}" Value="{Binding PGM_Terrain.EastRegion1Start.Y}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_EastRegion1StartTooltip}"/>
-
-                                                    <Label                 Grid.Row="2" Grid.Column="0" Content="{DynamicResource ServerSettings_PGM_Map_NorthRegion1EndLabel}" ToolTip="{DynamicResource ServerSettings_PGM_Map_NorthRegion1EndTooltip}" VerticalAlignment="Center"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="2" Grid.Column="1" Margin="1" Label="{DynamicResource ServerSettings_PGM_XLabel}" Value="{Binding PGM_Terrain.NorthRegion1End.X}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_NorthRegion1EndTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="2" Grid.Column="2" Margin="1" Label="{DynamicResource ServerSettings_PGM_YLabel}" Value="{Binding PGM_Terrain.NorthRegion1End.Y}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_NorthRegion1EndTooltip}"/>
-                                                    <Label                 Grid.Row="2" Grid.Column="3" Content="{DynamicResource ServerSettings_PGM_Map_EastRegion1EndLabel}" ToolTip="{DynamicResource ServerSettings_PGM_Map_EastRegion1EndTooltip}" VerticalAlignment="Center"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="2" Grid.Column="4" Margin="1" Label="{DynamicResource ServerSettings_PGM_XLabel}" Value="{Binding PGM_Terrain.EastRegion1End.X}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_EastRegion1EndTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="2" Grid.Column="5" Margin="1" Label="{DynamicResource ServerSettings_PGM_YLabel}" Value="{Binding PGM_Terrain.EastRegion1End.Y}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_EastRegion1EndTooltip}"/>
-
-                                                    <Label                 Grid.Row="3" Grid.Column="0" Content="{DynamicResource ServerSettings_PGM_Map_NorthRegion2StartLabel}" ToolTip="{DynamicResource ServerSettings_PGM_Map_NorthRegion2StartTooltip}" VerticalAlignment="Center"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="3" Grid.Column="1" Margin="1" Label="{DynamicResource ServerSettings_PGM_XLabel}" Value="{Binding PGM_Terrain.NorthRegion2Start.X}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_NorthRegion2StartTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="3" Grid.Column="2" Margin="1" Label="{DynamicResource ServerSettings_PGM_YLabel}" Value="{Binding PGM_Terrain.NorthRegion2Start.Y}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_NorthRegion2StartTooltip}"/>
-                                                    <Label                 Grid.Row="3" Grid.Column="3" Content="{DynamicResource ServerSettings_PGM_Map_EastRegion2StartLabel}" ToolTip="{DynamicResource ServerSettings_PGM_Map_EastRegion2StartTooltip}" VerticalAlignment="Center"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="3" Grid.Column="4" Margin="1" Label="{DynamicResource ServerSettings_PGM_XLabel}" Value="{Binding PGM_Terrain.EastRegion2Start.X}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_EastRegion2StartTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="3" Grid.Column="5" Margin="1" Label="{DynamicResource ServerSettings_PGM_YLabel}" Value="{Binding PGM_Terrain.EastRegion2Start.Y}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_EastRegion2StartTooltip}"/>
-
-                                                    <Label                 Grid.Row="4" Grid.Column="0" Content="{DynamicResource ServerSettings_PGM_Map_NorthRegion2EndLabel}" ToolTip="{DynamicResource ServerSettings_PGM_Map_NorthRegion2EndTooltip}" VerticalAlignment="Center"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="4" Grid.Column="1" Margin="1" Label="{DynamicResource ServerSettings_PGM_XLabel}" Value="{Binding PGM_Terrain.NorthRegion2End.X}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_NorthRegion2EndTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="4" Grid.Column="2" Margin="1" Label="{DynamicResource ServerSettings_PGM_YLabel}" Value="{Binding PGM_Terrain.NorthRegion2End.Y}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_NorthRegion2EndTooltip}"/>
-                                                    <Label                 Grid.Row="4" Grid.Column="3" Content="{DynamicResource ServerSettings_PGM_Map_EastRegion2EndLabel}" ToolTip="{DynamicResource ServerSettings_PGM_Map_EastRegion2EndTooltip}" VerticalAlignment="Center"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="4" Grid.Column="4" Margin="1" Label="{DynamicResource ServerSettings_PGM_XLabel}" Value="{Binding PGM_Terrain.EastRegion2End.X}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_EastRegion2EndTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="4" Grid.Column="5" Margin="1" Label="{DynamicResource ServerSettings_PGM_YLabel}" Value="{Binding PGM_Terrain.EastRegion2End.Y}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_EastRegion2EndTooltip}"/>
-
-                                                    <Label                 Grid.Row="5" Grid.Column="0" Content="{DynamicResource ServerSettings_PGM_Map_NorthRegion3StartLabel}" ToolTip="{DynamicResource ServerSettings_PGM_Map_NorthRegion3StartTooltip}" VerticalAlignment="Center"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="5" Grid.Column="1" Margin="1" Label="{DynamicResource ServerSettings_PGM_XLabel}" Value="{Binding PGM_Terrain.NorthRegion3Start.X}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_NorthRegion3StartTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="5" Grid.Column="2" Margin="1" Label="{DynamicResource ServerSettings_PGM_YLabel}" Value="{Binding PGM_Terrain.NorthRegion3Start.Y}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_NorthRegion3StartTooltip}"/>
-                                                    <Label                 Grid.Row="5" Grid.Column="3" Content="{DynamicResource ServerSettings_PGM_Map_EastRegion3StartLabel}" ToolTip="{DynamicResource ServerSettings_PGM_Map_EastRegion3StartTooltip}" VerticalAlignment="Center"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="5" Grid.Column="4" Margin="1" Label="{DynamicResource ServerSettings_PGM_XLabel}" Value="{Binding PGM_Terrain.EastRegion3Start.X}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_EastRegion3StartTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="5" Grid.Column="5" Margin="1" Label="{DynamicResource ServerSettings_PGM_YLabel}" Value="{Binding PGM_Terrain.EastRegion3Start.Y}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_EastRegion3StartTooltip}"/>
-
-                                                    <Label                 Grid.Row="6" Grid.Column="0" Content="{DynamicResource ServerSettings_PGM_Map_NorthRegion3EndLabel}" ToolTip="{DynamicResource ServerSettings_PGM_Map_NorthRegion3EndTooltip}" VerticalAlignment="Center"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="6" Grid.Column="1" Margin="1" Label="{DynamicResource ServerSettings_PGM_XLabel}" Value="{Binding PGM_Terrain.NorthRegion3End.X}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_NorthRegion3EndTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="6" Grid.Column="2" Margin="1" Label="{DynamicResource ServerSettings_PGM_YLabel}" Value="{Binding PGM_Terrain.NorthRegion3End.Y}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_NorthRegion3EndTooltip}"/>
-                                                    <Label                 Grid.Row="6" Grid.Column="3" Content="{DynamicResource ServerSettings_PGM_Map_EastRegion3EndLabel}" ToolTip="{DynamicResource ServerSettings_PGM_Map_EastRegion3EndTooltip}" VerticalAlignment="Center"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="6" Grid.Column="4" Margin="1" Label="{DynamicResource ServerSettings_PGM_XLabel}" Value="{Binding PGM_Terrain.EastRegion3End.X}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_EastRegion3EndTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="6" Grid.Column="5" Margin="1" Label="{DynamicResource ServerSettings_PGM_YLabel}" Value="{Binding PGM_Terrain.EastRegion3End.Y}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_EastRegion3EndTooltip}"/>
-
-                                                    <Label                 Grid.Row="7" Grid.Column="0" Content="{DynamicResource ServerSettings_PGM_Map_SouthRegion1StartLabel}" ToolTip="{DynamicResource ServerSettings_PGM_Map_SouthRegion1StartTooltip}" VerticalAlignment="Center"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="7" Grid.Column="1" Margin="1" Label="{DynamicResource ServerSettings_PGM_XLabel}" Value="{Binding PGM_Terrain.SouthRegion1Start.X}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_SouthRegion1StartTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="7" Grid.Column="2" Margin="1" Label="{DynamicResource ServerSettings_PGM_YLabel}" Value="{Binding PGM_Terrain.SouthRegion1Start.Y}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_SouthRegion1StartTooltip}"/>
-                                                    <Label                 Grid.Row="7" Grid.Column="3" Content="{DynamicResource ServerSettings_PGM_Map_WestRegion1StartLabel}" ToolTip="{DynamicResource ServerSettings_PGM_Map_WestRegion1StartTooltip}" VerticalAlignment="Center"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="7" Grid.Column="4" Margin="1" Label="{DynamicResource ServerSettings_PGM_XLabel}" Value="{Binding PGM_Terrain.WestRegion1Start.X}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_WestRegion1StartTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="7" Grid.Column="5" Margin="1" Label="{DynamicResource ServerSettings_PGM_YLabel}" Value="{Binding PGM_Terrain.WestRegion1Start.Y}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_WestRegion1StartTooltip}"/>
-
-                                                    <Label                 Grid.Row="8" Grid.Column="0" Content="{DynamicResource ServerSettings_PGM_Map_SouthRegion1EndLabel}" ToolTip="{DynamicResource ServerSettings_PGM_Map_SouthRegion1EndTooltip}" VerticalAlignment="Center"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="8" Grid.Column="1" Margin="1" Label="{DynamicResource ServerSettings_PGM_XLabel}" Value="{Binding PGM_Terrain.SouthRegion1End.X}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_SouthRegion1EndTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="8" Grid.Column="2" Margin="1" Label="{DynamicResource ServerSettings_PGM_YLabel}" Value="{Binding PGM_Terrain.SouthRegion1End.Y}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_SouthRegion1EndTooltip}"/>
-                                                    <Label                 Grid.Row="8" Grid.Column="3" Content="{DynamicResource ServerSettings_PGM_Map_WestRegion1EndLabel}" ToolTip="{DynamicResource ServerSettings_PGM_Map_WestRegion1EndTooltip}" VerticalAlignment="Center"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="8" Grid.Column="4" Margin="1" Label="{DynamicResource ServerSettings_PGM_XLabel}" Value="{Binding PGM_Terrain.WestRegion1End.X}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_WestRegion1EndTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="8" Grid.Column="5" Margin="1" Label="{DynamicResource ServerSettings_PGM_YLabel}" Value="{Binding PGM_Terrain.WestRegion1End.Y}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_WestRegion1EndTooltip}"/>
-
-                                                    <Label                 Grid.Row="9" Grid.Column="0" Content="{DynamicResource ServerSettings_PGM_Map_SouthRegion2StartLabel}" ToolTip="{DynamicResource ServerSettings_PGM_Map_SouthRegion2StartTooltip}" VerticalAlignment="Center"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="9" Grid.Column="1" Margin="1" Label="{DynamicResource ServerSettings_PGM_XLabel}" Value="{Binding PGM_Terrain.SouthRegion2Start.X}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_SouthRegion2StartTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="9" Grid.Column="2" Margin="1" Label="{DynamicResource ServerSettings_PGM_YLabel}" Value="{Binding PGM_Terrain.SouthRegion2Start.Y}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_SouthRegion2StartTooltip}"/>
-                                                    <Label                 Grid.Row="9" Grid.Column="3" Content="{DynamicResource ServerSettings_PGM_Map_WestRegion2StartLabel}" ToolTip="{DynamicResource ServerSettings_PGM_Map_WestRegion2StartTooltip}" VerticalAlignment="Center"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="9" Grid.Column="4" Margin="1" Label="{DynamicResource ServerSettings_PGM_XLabel}" Value="{Binding PGM_Terrain.WestRegion2Start.X}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_WestRegion2StartTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="9" Grid.Column="5" Margin="1" Label="{DynamicResource ServerSettings_PGM_YLabel}" Value="{Binding PGM_Terrain.WestRegion2Start.Y}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_WestRegion2StartTooltip}"/>
-
-                                                    <Label                 Grid.Row="10" Grid.Column="0" Content="{DynamicResource ServerSettings_PGM_Map_SouthRegion2EndLabel}" ToolTip="{DynamicResource ServerSettings_PGM_Map_SouthRegion2EndTooltip}" VerticalAlignment="Center"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="10" Grid.Column="1" Margin="1" Label="{DynamicResource ServerSettings_PGM_XLabel}" Value="{Binding PGM_Terrain.SouthRegion2End.X}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_SouthRegion2EndTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="10" Grid.Column="2" Margin="1" Label="{DynamicResource ServerSettings_PGM_YLabel}" Value="{Binding PGM_Terrain.SouthRegion2End.Y}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_SouthRegion2EndTooltip}"/>
-                                                    <Label                 Grid.Row="10" Grid.Column="3" Content="{DynamicResource ServerSettings_PGM_Map_WestRegion2EndLabel}" ToolTip="{DynamicResource ServerSettings_PGM_Map_WestRegion2EndTooltip}" VerticalAlignment="Center"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="10" Grid.Column="4" Margin="1" Label="{DynamicResource ServerSettings_PGM_XLabel}" Value="{Binding PGM_Terrain.WestRegion2End.X}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_WestRegion2EndTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="10" Grid.Column="5" Margin="1" Label="{DynamicResource ServerSettings_PGM_YLabel}" Value="{Binding PGM_Terrain.WestRegion2End.Y}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_WestRegion2EndTooltip}"/>
-
-                                                    <Label                 Grid.Row="11" Grid.Column="0" Content="{DynamicResource ServerSettings_PGM_Map_SouthRegion3StartLabel}" ToolTip="{DynamicResource ServerSettings_PGM_Map_SouthRegion3StartTooltip}" VerticalAlignment="Center"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="11" Grid.Column="1" Margin="1" Label="{DynamicResource ServerSettings_PGM_XLabel}" Value="{Binding PGM_Terrain.SouthRegion3Start.X}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_SouthRegion3StartTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="11" Grid.Column="2" Margin="1" Label="{DynamicResource ServerSettings_PGM_YLabel}" Value="{Binding PGM_Terrain.SouthRegion3Start.Y}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_SouthRegion3StartTooltip}"/>
-                                                    <Label                 Grid.Row="11" Grid.Column="3" Content="{DynamicResource ServerSettings_PGM_Map_WestRegion3StartLabel}" ToolTip="{DynamicResource ServerSettings_PGM_Map_WestRegion3StartTooltip}" VerticalAlignment="Center"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="11" Grid.Column="4" Margin="1" Label="{DynamicResource ServerSettings_PGM_XLabel}" Value="{Binding PGM_Terrain.WestRegion3Start.X}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_WestRegion3StartTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="11" Grid.Column="5" Margin="1" Label="{DynamicResource ServerSettings_PGM_YLabel}" Value="{Binding PGM_Terrain.WestRegion3Start.Y}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_WestRegion3StartTooltip}"/>
-
-                                                    <Label                 Grid.Row="12" Grid.Column="0" Content="{DynamicResource ServerSettings_PGM_Map_SouthRegion3EndLabel}" ToolTip="{DynamicResource ServerSettings_PGM_Map_SouthRegion3EndTooltip}" VerticalAlignment="Center"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="12" Grid.Column="1" Margin="1" Label="{DynamicResource ServerSettings_PGM_XLabel}" Value="{Binding PGM_Terrain.SouthRegion3End.X}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_SouthRegion3EndTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="12" Grid.Column="2" Margin="1" Label="{DynamicResource ServerSettings_PGM_YLabel}" Value="{Binding PGM_Terrain.SouthRegion3End.Y}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_SouthRegion3EndTooltip}"/>
-                                                    <Label                 Grid.Row="12" Grid.Column="3" Content="{DynamicResource ServerSettings_PGM_Map_WestRegion3EndLabel}" ToolTip="{DynamicResource ServerSettings_PGM_Map_WestRegion3EndTooltip}" VerticalAlignment="Center"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="12" Grid.Column="4" Margin="1" Label="{DynamicResource ServerSettings_PGM_XLabel}" Value="{Binding PGM_Terrain.WestRegion3End.X}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_WestRegion3EndTooltip}"/>
-                                                    <cctl:AnnotatedSlider Grid.Row="12" Grid.Column="5" Margin="1" Label="{DynamicResource ServerSettings_PGM_YLabel}" Value="{Binding PGM_Terrain.WestRegion3End.Y}" Suffix="" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.1" TickFrequency="1" LabelRelativeWidth="20" SliderRelativeWidth="2*" ValueRelativeWidth="50" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_PGM_Map_WestRegion3EndTooltip}"/>
-                                                </Grid>
-                                            </GroupBox>
-                                        </StackPanel>
-                                    </GroupBox>
-
-                                </StackPanel>
-                            </Grid>
-                        </Expander>
-
-                        <Expander Name="SectionSOTF" IsExpanded="{Binding Config.SectionSOTFIsExpanded, ElementName=SettingsControl, FallbackValue=True, Mode=TwoWay}" Visibility="{Binding Config.SectionSOTFEnabled, ElementName=SettingsControl, Converter={StaticResource BooleanToVisibilityConverter}}">
-                            <Expander.Header>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{DynamicResource ServerSettings_SOTFLabel}" Style="{StaticResource ExpanderHeaderTextStyle}"/>
-                                    <Button Margin="20,0,0,0" ToolTip="{DynamicResource ServerSettings_ResetSectionTooltip}" Style="{StaticResource ButtonStyle1}"
-                                            IsEnabled="{Binding ElementName=SectionSOTF, Path=IsExpanded}"
-                                            Command="{Binding ResetActionCommand, ElementName=SettingsControl}" CommandParameter="{x:Static enum:ServerSettingsResetAction.SOTFSection}">
-                                        <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Refresh.ico,Size=32}"/>
-                                    </Button>
-                                </StackPanel>
-                            </Expander.Header>
-
-                            <Expander.Style>
-                                <Style BasedOn="{StaticResource ExpanderStyle1}" TargetType="{x:Type Expander}">
-                                    <Setter Property="Template" Value="{StaticResource ExpanderTemplateSE}"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=EnableSOTFCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplateSotF}"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ElementName=EnablePGMCheckbox, Path=IsChecked}" Value="True">
-                                            <Setter Property="Template" Value="{StaticResource ExpanderTemplatePGM}"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Expander.Style>
-
-                            <Grid Margin="-8,0,2,0">
-                                <GroupBox Style="{StaticResource GroupBoxStyle}">
-                                    <GroupBox.Header>
-                                        <StackPanel Orientation="Horizontal">
-                                            <cctl:CheckBoxAndTextBlock Name="EnableSOTFCheckbox" IsChecked="{Binding SOTF_Enabled, Mode=TwoWay, NotifyOnSourceUpdated=True}" IsEnabled="{Binding ElementName=EnablePGMCheckbox, Path=IsChecked, Converter={StaticResource InvertBooleanConverter}, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Text="{DynamicResource ServerSettings_EnableSOTFLabel}" ToolTip="{DynamicResource ServerSettings_EnableSOTFTooltip}" VerticalContentAlignment="Center" FontWeight="Bold" SourceUpdated="EnableSOTFCheckbox_SourceUpdated" />
-                                        </StackPanel>
-                                    </GroupBox.Header>
-
-                                    <Grid IsEnabled="{Binding ElementName=EnableSOTFCheckbox, Path=IsChecked}">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition/>
-                                            <RowDefinition/>
-                                            <RowDefinition/>
-                                            <RowDefinition/>
-                                            <RowDefinition/>
-                                            <RowDefinition/>
-                                            <RowDefinition/>
-                                            <RowDefinition/>
-                                            <RowDefinition/>
-                                            <RowDefinition/>
-                                            <RowDefinition/>
-                                            <RowDefinition/>
-                                            <RowDefinition/>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition/>
-                                            <ColumnDefinition/>
-                                            <ColumnDefinition/>
-                                        </Grid.ColumnDefinitions>
-
-                                        <cctl:CheckBoxAndTextBlock Grid.Row="0" Grid.Column="0" Margin="5,5,5,0" IsChecked="{Binding SOTF_OutputGameReport, Mode=TwoWay}" Text="{DynamicResource ServerSettings_EnableOutputGameReportLabel}" ToolTip="{DynamicResource ServerSettings_EnableOutputGameReportTooltip}" HorizontalAlignment="Left"/>
-                                        <cctl:CheckBoxAndTextBlock Grid.Row="1" Grid.Column="0" Margin="5,5,5,0" IsChecked="{Binding SOTF_GamePlayLogging, Mode=TwoWay}" Text="{DynamicResource ServerSettings_EnableGamePlayLoggingLabel}" ToolTip="{DynamicResource ServerSettings_EnableGamePlayLoggingTooltip}" HorizontalAlignment="Left"/>
-
-                                        <cctl:CheckBoxAndTextBlock Grid.Row="0" Grid.Column="1" Margin="5,5,5,0" IsChecked="{Binding SOTF_DisableDeathSPectator, Mode=TwoWay}" Text="{DynamicResource ServerSettings_DisableDeathSpectatorLabel}" ToolTip="{DynamicResource ServerSettings_DisableDeathSpectatorTooltip}" HorizontalAlignment="Left"/>
-                                        <cctl:CheckBoxAndTextBlock Grid.Row="1" Grid.Column="1" Margin="5,5,5,0" IsChecked="{Binding SOTF_OnlyAdminRejoinAsSpectator, Mode=TwoWay}" Text="{DynamicResource ServerSettings_OnlyAdminRejoinSpectatorLabel}"  ToolTip="{DynamicResource ServerSettings_OnlyAdminRejoinSpectatorTooltip}" HorizontalAlignment="Left"/>
-
-                                        <cctl:CheckBoxAndTextBlock Grid.Row="0" Grid.Column="2" Margin="5,5,5,0" IsChecked="{Binding SOTF_NoEvents, Mode=TwoWay}" Text="{DynamicResource ServerSettings_SOTFNoEventsLabel}" ToolTip="{DynamicResource ServerSettings_SOTFNoEventsTooltip}" HorizontalAlignment="Left"/>
-                                        <cctl:CheckBoxAndTextBlock Grid.Row="1" Grid.Column="2" Margin="5,5,5,0" IsChecked="{Binding SOTF_NoBosses, Mode=TwoWay}" Text="{DynamicResource ServerSettings_SOTFNoBossesLabel}" ToolTip="{DynamicResource ServerSettings_SOTFNoBossesTooltip}" HorizontalAlignment="Left"/>
-                                        <cctl:CheckBoxAndTextBlock Grid.Row="2" Grid.Column="2" Margin="5" IsChecked="{Binding SOTF_BothBosses, Mode=TwoWay}" Text="{DynamicResource ServerSettings_SOTFBothBossesLabel}" ToolTip="{DynamicResource ServerSettings_SOTFBothBossesTooltip}" HorizontalAlignment="Left"/>
-
-                                        <cctl:AnnotatedSlider Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="1" Label="{DynamicResource ServerSettings_MaxPlayersInTribeLabel}" Value="{Binding SOTF_MaxNumberOfPlayersInTribe}" Suffix="{DynamicResource SliderUnits_Players}" Minimum="1" Maximum="127" SmallChange="5" LargeChange="20" TickFrequency="10" ToolTip="{DynamicResource ServerSettings_MaxPlayersInTribeTooltip}"/>
-                                        <cctl:AnnotatedSlider Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" Margin="1" Label="{DynamicResource ServerSettings_TribesRequiredForGameLabel}" Value="{Binding SOTF_BattleNumOfTribesToStartGame}" Suffix="{DynamicResource SliderUnits_Tribes}" Minimum="1" Maximum="127" SmallChange="5" LargeChange="20" TickFrequency="10" ToolTip="{DynamicResource ServerSettings_TribesRequiredForGameTooltip}"/>
-                                        <cctl:AnnotatedSlider Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Margin="1" Label="{DynamicResource ServerSettings_RingOfDeathCollapseTimeLabel}" Value="{Binding SOTF_TimeToCollapseROD}" Suffix="{DynamicResource SliderUnits_Seconds}" Minimum="60" Maximum="86400" SmallChange="900" LargeChange="3600" TickFrequency="3600" ToolTip="{DynamicResource ServerSettings_RingOfDeathCollapseTimeTooltip}"/>
-                                        <cctl:AnnotatedSlider Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" Margin="1" Label="{DynamicResource ServerSettings_AutoStartDelayTimeLabel}" Value="{Binding SOTF_BattleAutoStartGameInterval}" Suffix="{DynamicResource SliderUnits_Seconds}" Minimum="5" Maximum="120" SmallChange="5" LargeChange="20" TickFrequency="10" ToolTip="{DynamicResource ServerSettings_AutoStartDelayTimeTooltip}"/>
-                                        <cctl:AnnotatedSlider Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" Margin="1" Label="{DynamicResource ServerSettings_AutoRestartDelayTimeLabel}" Value="{Binding SOTF_BattleAutoRestartGameInterval}" Suffix="{DynamicResource SliderUnits_Seconds}"  Minimum="5" Maximum="120" SmallChange="5" LargeChange="20" TickFrequency="10" ToolTip="{DynamicResource ServerSettings_AutoRestartDelayTimeTooltip}"/>
-                                        <cctl:AnnotatedSlider Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="3" Margin="1" Label="{DynamicResource ServerSettings_SuddenDeathTimeLabel}" Value="{Binding SOTF_BattleSuddenDeathInterval}" Suffix="{DynamicResource SliderUnits_Seconds}" Minimum="60" Maximum="3600" SmallChange="60" LargeChange="600" TickFrequency="300" ToolTip="{DynamicResource ServerSettings_SuddenDeathTimeTooltip}"/>
-                                        <cctl:AnnotatedSlider Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3" Margin="1" Label="{DynamicResource ServerSettings_SOTFEvoEventIntervalLabel}" Value="{Binding SOTF_EvoEventInterval}" Suffix="{DynamicResource SliderUnits_Multiplier}" Minimum="0.1" Maximum="10" SmallChange="0.1" LargeChange="1" TickFrequency="1" ToolTip="{DynamicResource ServerSettings_SOTFEvoEventIntervalTooltip}"/>
-                                        <cctl:AnnotatedSlider Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="3" Margin="1" Label="{DynamicResource ServerSettings_SOTFRingStartTimeLabel}" Value="{Binding SOTF_RingStartTime}" Suffix="{DynamicResource SliderUnits_Seconds}" Minimum="100" Maximum="10000" SmallChange="10" LargeChange="100" TickFrequency="100" ToolTip="{DynamicResource ServerSettings_SOTFRingStartTimeTooltip}"/>
-                                    </Grid>
-                                </GroupBox>
                             </Grid>
                         </Expander>
 

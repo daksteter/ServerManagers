@@ -111,8 +111,6 @@ namespace ServerManagerTool.Lib
             this.CustomGameSettings = new CustomList();
             this.CustomEngineSettings = new CustomList();
 
-            this.PGM_Terrain = new PGMTerrain();
-
             GetDefaultDirectories();
         }
 
@@ -3623,32 +3621,6 @@ namespace ServerManagerTool.Lib
         }
         #endregion
 
-        #region Procedurally Generated ARKS
-        public static readonly DependencyProperty PGM_EnabledProperty = DependencyProperty.Register(nameof(PGM_Enabled), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
-        [DataMember]
-        public bool PGM_Enabled
-        {
-            get { return (bool)GetValue(PGM_EnabledProperty); }
-            set { SetValue(PGM_EnabledProperty, value); }
-        }
-
-        public static readonly DependencyProperty PGM_NameProperty = DependencyProperty.Register(nameof(PGM_Name), typeof(string), typeof(ServerProfile), new PropertyMetadata(Config.Default.DefaultPGMapName));
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.PGM, "PGMapName", ConditionedOn = nameof(PGM_Enabled))]
-        public string PGM_Name
-        {
-            get { return (string)GetValue(PGM_NameProperty); }
-            set { SetValue(PGM_NameProperty, value); }
-        }
-
-        public static readonly DependencyProperty PGM_TerrainProperty = DependencyProperty.Register(nameof(PGM_Terrain), typeof(PGMTerrain), typeof(ServerProfile), new PropertyMetadata(null));
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.PGM, "PGTerrainPropertiesString", ConditionedOn = nameof(PGM_Enabled))]
-        public PGMTerrain PGM_Terrain
-        {
-            get { return (PGMTerrain)GetValue(PGM_TerrainProperty); }
-            set { SetValue(PGM_TerrainProperty, value); }
-        }
-        #endregion
-
         #region NPC Spawn Overrides
         public static readonly DependencyProperty ConfigAddNPCSpawnEntriesContainerProperty = DependencyProperty.Register(nameof(ConfigAddNPCSpawnEntriesContainer), typeof(NPCSpawnContainerList<NPCSpawnContainer>), typeof(ServerProfile), new PropertyMetadata(null));
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.MapSpawnerOverrides)]
@@ -3727,136 +3699,6 @@ namespace ServerManagerTool.Lib
         {
             get { return (PreventTransferOverrideList)GetValue(PreventTransferForClassNamesProperty); }
             set { SetValue(PreventTransferForClassNamesProperty, value); }
-        }
-        #endregion
-
-        #region Survival of the Fittest
-        public static readonly DependencyProperty SOTF_EnabledProperty = DependencyProperty.Register(nameof(SOTF_Enabled), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
-        [DataMember]
-        public bool SOTF_Enabled
-        {
-            get { return (bool)GetValue(SOTF_EnabledProperty); }
-            set { SetValue(SOTF_EnabledProperty, value); }
-        }
-
-        public static readonly DependencyProperty SOTF_DisableDeathSPectatorProperty = DependencyProperty.Register(nameof(SOTF_DisableDeathSPectator), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
-        [DataMember]
-        public bool SOTF_DisableDeathSPectator
-        {
-            get { return (bool)GetValue(SOTF_DisableDeathSPectatorProperty); }
-            set { SetValue(SOTF_DisableDeathSPectatorProperty, value); }
-        }
-
-        public static readonly DependencyProperty SOTF_OnlyAdminRejoinAsSpectatorProperty = DependencyProperty.Register(nameof(SOTF_OnlyAdminRejoinAsSpectator), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
-        [DataMember]
-        public bool SOTF_OnlyAdminRejoinAsSpectator
-        {
-            get { return (bool)GetValue(SOTF_OnlyAdminRejoinAsSpectatorProperty); }
-            set { SetValue(SOTF_OnlyAdminRejoinAsSpectatorProperty, value); }
-        }
-
-        public static readonly DependencyProperty SOTF_GamePlayLoggingProperty = DependencyProperty.Register(nameof(SOTF_GamePlayLogging), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
-        [DataMember]
-        public bool SOTF_GamePlayLogging
-        {
-            get { return (bool)GetValue(SOTF_GamePlayLoggingProperty); }
-            set { SetValue(SOTF_GamePlayLoggingProperty, value); }
-        }
-
-        public static readonly DependencyProperty SOTF_OutputGameReportProperty = DependencyProperty.Register(nameof(SOTF_OutputGameReport), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
-        [DataMember]
-        public bool SOTF_OutputGameReport
-        {
-            get { return (bool)GetValue(SOTF_OutputGameReportProperty); }
-            set { SetValue(SOTF_OutputGameReportProperty, value); }
-        }
-
-        public static readonly DependencyProperty SOTF_MaxNumberOfPlayersInTribeProperty = DependencyProperty.Register(nameof(SOTF_MaxNumberOfPlayersInTribe), typeof(int), typeof(ServerProfile), new PropertyMetadata(2));
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.SOTF, "MaxNumberOfPlayersInTribe", ConditionedOn = nameof(SOTF_Enabled))]
-        public int SOTF_MaxNumberOfPlayersInTribe
-        {
-            get { return (int)GetValue(SOTF_MaxNumberOfPlayersInTribeProperty); }
-            set { SetValue(SOTF_MaxNumberOfPlayersInTribeProperty, value); }
-        }
-
-        public static readonly DependencyProperty SOTF_BattleNumOfTribesToStartGameProperty = DependencyProperty.Register(nameof(SOTF_BattleNumOfTribesToStartGame), typeof(int), typeof(ServerProfile), new PropertyMetadata(15));
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.SOTF, "BattleNumOfTribesToStartGame", ConditionedOn = nameof(SOTF_Enabled))]
-        public int SOTF_BattleNumOfTribesToStartGame
-        {
-            get { return (int)GetValue(SOTF_BattleNumOfTribesToStartGameProperty); }
-            set { SetValue(SOTF_BattleNumOfTribesToStartGameProperty, value); }
-        }
-
-        public static readonly DependencyProperty SOTF_TimeToCollapseRODProperty = DependencyProperty.Register(nameof(SOTF_TimeToCollapseROD), typeof(int), typeof(ServerProfile), new PropertyMetadata(9000));
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.SOTF, "TimeToCollapseROD", ConditionedOn = nameof(SOTF_Enabled))]
-        public int SOTF_TimeToCollapseROD
-        {
-            get { return (int)GetValue(SOTF_TimeToCollapseRODProperty); }
-            set { SetValue(SOTF_TimeToCollapseRODProperty, value); }
-        }
-
-        public static readonly DependencyProperty SOTF_BattleAutoStartGameIntervalProperty = DependencyProperty.Register(nameof(SOTF_BattleAutoStartGameInterval), typeof(int), typeof(ServerProfile), new PropertyMetadata(60));
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.SOTF, "BattleAutoStartGameInterval", ConditionedOn = nameof(SOTF_Enabled))]
-        public int SOTF_BattleAutoStartGameInterval
-        {
-            get { return (int)GetValue(SOTF_BattleAutoStartGameIntervalProperty); }
-            set { SetValue(SOTF_BattleAutoStartGameIntervalProperty, value); }
-        }
-
-        public static readonly DependencyProperty SOTF_BattleAutoRestartGameIntervalProperty = DependencyProperty.Register(nameof(SOTF_BattleAutoRestartGameInterval), typeof(int), typeof(ServerProfile), new PropertyMetadata(45));
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.SOTF, "BattleAutoRestartGameInterval", ConditionedOn = nameof(SOTF_Enabled))]
-        public int SOTF_BattleAutoRestartGameInterval
-        {
-            get { return (int)GetValue(SOTF_BattleAutoRestartGameIntervalProperty); }
-            set { SetValue(SOTF_BattleAutoRestartGameIntervalProperty, value); }
-        }
-
-        public static readonly DependencyProperty SOTF_BattleSuddenDeathIntervalProperty = DependencyProperty.Register(nameof(SOTF_BattleSuddenDeathInterval), typeof(int), typeof(ServerProfile), new PropertyMetadata(300));
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.SOTF, "BattleSuddenDeathInterval", ConditionedOn = nameof(SOTF_Enabled))]
-        public int SOTF_BattleSuddenDeathInterval
-        {
-            get { return (int)GetValue(SOTF_BattleSuddenDeathIntervalProperty); }
-            set { SetValue(SOTF_BattleSuddenDeathIntervalProperty, value); }
-        }
-
-        public static readonly DependencyProperty SOTF_NoEventsProperty = DependencyProperty.Register(nameof(SOTF_NoEvents), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
-        [DataMember]
-        public bool SOTF_NoEvents
-        {
-            get { return (bool)GetValue(SOTF_NoEventsProperty); }
-            set { SetValue(SOTF_NoEventsProperty, value); }
-        }
-
-        public static readonly DependencyProperty SOTF_NoBossesProperty = DependencyProperty.Register(nameof(SOTF_NoBosses), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
-        [DataMember]
-        public bool SOTF_NoBosses
-        {
-            get { return (bool)GetValue(SOTF_NoBossesProperty); }
-            set { SetValue(SOTF_NoBossesProperty, value); }
-        }
-
-        public static readonly DependencyProperty SOTF_BothBossesProperty = DependencyProperty.Register(nameof(SOTF_BothBosses), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
-        [DataMember]
-        public bool SOTF_BothBosses
-        {
-            get { return (bool)GetValue(SOTF_BothBossesProperty); }
-            set { SetValue(SOTF_BothBossesProperty, value); }
-        }
-
-        public static readonly DependencyProperty SOTF_EvoEventIntervalProperty = DependencyProperty.Register(nameof(SOTF_EvoEventInterval), typeof(float), typeof(ServerProfile), new PropertyMetadata(1.0f));
-        [DataMember]
-        public float SOTF_EvoEventInterval
-        {
-            get { return (float)GetValue(SOTF_EvoEventIntervalProperty); }
-            set { SetValue(SOTF_EvoEventIntervalProperty, value); }
-        }
-
-        public static readonly DependencyProperty SOTF_RingStartTimeProperty = DependencyProperty.Register(nameof(SOTF_RingStartTime), typeof(float), typeof(ServerProfile), new PropertyMetadata(1000.0f));
-        [DataMember]
-        public float SOTF_RingStartTime
-        {
-            get { return (float)GetValue(SOTF_RingStartTimeProperty); }
-            set { SetValue(SOTF_RingStartTimeProperty, value); }
         }
         #endregion
 
@@ -3953,7 +3795,7 @@ namespace ServerManagerTool.Lib
 
             try
             {
-                var appIdServer = SOTF_Enabled ? Config.Default.AppIdServer_SotF : Config.Default.AppIdServer;
+                var appIdServer = Config.Default.AppIdServer;
                 var manifestFile = ModUtils.GetSteamManifestFile(InstallDirectory, appIdServer);
                 if (string.IsNullOrWhiteSpace(manifestFile) || !File.Exists(manifestFile))
                     return;
@@ -4065,16 +3907,6 @@ namespace ServerManagerTool.Lib
                 exclusions.Add(ServerProfileCategory.PreventTransferOverrides);
             }
 
-            if (!Config.Default.SectionPGMEnabled)
-            {
-                exclusions.Add(ServerProfileCategory.PGM);
-            }
-
-            if (!Config.Default.SectionSOTFEnabled)
-            {
-                exclusions.Add(ServerProfileCategory.SOTF);
-            }
-
             return exclusions;
         }
 
@@ -4176,12 +4008,6 @@ namespace ServerManagerTool.Lib
                 serverArgs.Append("?ClampItemStats=true");
             }
 
-            if (Config.Default.SectionSOTFEnabled && this.SOTF_Enabled)
-            {
-                serverArgs.Append("?EvoEventInterval=").Append(this.SOTF_EvoEventInterval);
-                serverArgs.Append("?RingStartTime=").Append(this.SOTF_RingStartTime);
-            }
-
             // Not passed any more because the ASA server doesn't know them (their names aren't in its binary):
             // ?EventColorsChanceOverride, ?NewYear1UTC, ?NewYear2UTC and -NewYearEvent, -UseBattlEye (BattlEye is on
             // unless -NoBattlEye), -noantispeedhack, -speedhackbias, -nocombineclientmoves, -nomansky, -nomemorybias,
@@ -4231,43 +4057,6 @@ namespace ServerManagerTool.Lib
             if (this.KickIdlePlayersPeriod.HasValue)
             {
                 serverArgs.Append(" -EnableIdlePlayerKick");
-            }
-
-            if (Config.Default.SectionSOTFEnabled && this.SOTF_Enabled)
-            {
-                if (this.SOTF_OutputGameReport)
-                {
-                    serverArgs.Append(" -OutputGameReport");
-                }
-
-                if (this.SOTF_GamePlayLogging)
-                {
-                    serverArgs.Append(" -gameplaylogging");
-                }
-
-                if (this.SOTF_DisableDeathSPectator)
-                {
-                    serverArgs.Append(" -DisableDeathSpectator");
-                }
-
-                if(this.SOTF_OnlyAdminRejoinAsSpectator)
-                {
-                    serverArgs.Append(" -OnlyAdminRejoinAsSpectator");
-                }
-
-                if (this.SOTF_NoEvents)
-                {
-                    serverArgs.Append(" -noevents");
-                }
-
-                if (this.SOTF_NoBosses)
-                {
-                    serverArgs.Append(" -nobosses");
-                }
-                else if (this.SOTF_BothBosses)
-                {
-                    serverArgs.Append(" -bothbosses");
-                }
             }
 
             if (!string.IsNullOrWhiteSpace(this.CrossArkClusterId))
@@ -4524,12 +4313,6 @@ namespace ServerManagerTool.Lib
 
             profile.CheckLauncherArgs();
 
-            if (profile.PGM_Enabled)
-                Config.Default.SectionPGMEnabled = true;
-
-            if (profile.SOTF_Enabled)
-                Config.Default.SectionSOTFEnabled = true;
-
             if (profile.PlayerLevels.Count == 0)
             {
                 profile.ResetLevelProgressionToOfficial(LevelProgression.Player);
@@ -4611,26 +4394,6 @@ namespace ServerManagerTool.Lib
                 return;
 
             progressCallback?.Invoke(0, _globalizer.GetResourceString("ProfileSave_Saving"));
-
-            if (SOTF_Enabled)
-            {
-                BranchName = string.Empty;
-                BranchPassword = string.Empty;
-                EventName = string.Empty;
-                EventColorsChanceOverride = 0;
-
-                // ensure that the auto settings are switched off for SotF servers
-                EnableAutoBackup = false;
-                EnableAutoShutdown1 = false;
-                RestartAfterShutdown1 = true;
-                EnableAutoShutdown2 = false;
-                RestartAfterShutdown2 = true;
-                EnableAutoUpdate = false;
-                AutoRestartIfShutdown = false;
-
-                // ensure the procedurally generated settings are switched off for SotF servers
-                PGM_Enabled = false;
-            }
 
             UpdateProfileToolTip();
             ClearSteamAppManifestBranch();
@@ -4718,16 +4481,6 @@ namespace ServerManagerTool.Lib
             {
                 progressCallback?.Invoke(0, _globalizer.GetResourceString("ProfileSave_ConstructingPreventTransferInformation"));
                 this.PreventTransferForClassNames.RenderToModel();
-            }
-
-            if (!Config.Default.SectionPGMEnabled)
-            {
-                PGM_Enabled = false;
-            }
-
-            if (!Config.Default.SectionSOTFEnabled)
-            {
-                SOTF_Enabled = false;
             }
 
             //
@@ -4990,7 +4743,7 @@ namespace ServerManagerTool.Lib
             validationMessage = string.Empty;
             StringBuilder result = new StringBuilder();
 
-            var appId = SOTF_Enabled ? Config.Default.AppId_SotF : Config.Default.AppId;
+            var appId = Config.Default.AppId;
 
             // checking the port values are within the valid range
             if (ServerPort < ushort.MinValue || ServerPort > ushort.MaxValue)
@@ -5342,53 +5095,6 @@ namespace ServerManagerTool.Lib
             list.Add(new Level { LevelIndex = 0, XPRequired = 1, EngramPoints = 0 });
 
             list.UpdateTotals();
-        }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Security", "SCS0005:Weak random number generator.", Justification = "<Pending>")]
-        public void RandomizePGMSettings()
-        {
-            var random = new Random(DateTime.Now.Millisecond);
-
-            this.PGM_Terrain.MapSeed = random.Next(1, 999);
-
-            this.PGM_Terrain.WaterFrequency = (float)Math.Round(random.NextDouble() * 5f, 5);
-            this.PGM_Terrain.MountainsFrequency = (float)Math.Round(random.NextDouble() * 10f, 5);
-            if (this.PGM_Terrain.MountainsFrequency < 3.0f)
-                this.PGM_Terrain.MountainsFrequency += 3.0f;
-
-            this.PGM_Terrain.MountainsSlope = (float)Math.Round(random.NextDouble() + 0.3f, 5);
-            if (this.PGM_Terrain.MountainsSlope < 0.5f)
-                this.PGM_Terrain.MountainsSlope += 0.5f;
-            this.PGM_Terrain.MountainsHeight = (float)Math.Round(random.NextDouble() + 0.3f, 5);
-            if (this.PGM_Terrain.MountainsHeight < 0.5f)
-                this.PGM_Terrain.MountainsHeight += 0.5f;
-
-            this.PGM_Terrain.SnowBiomeSize = (float)Math.Round(random.NextDouble(), 5);
-            this.PGM_Terrain.RedWoodBiomeSize = (float)Math.Round(random.NextDouble(), 5);
-            if (this.PGM_Terrain.RedWoodBiomeSize > 0.5f)
-                this.PGM_Terrain.RedWoodBiomeSize -= 0.5f;
-
-            this.PGM_Terrain.MountainBiomeStart = -(float)Math.Round(random.NextDouble(), 5);
-            this.PGM_Terrain.JungleBiomeStart = -(float)Math.Round(random.NextDouble(), 5);
-
-            this.PGM_Terrain.GrassDensity = (float)Math.Round(random.Next(80, 100) / 100.1f, 3);
-            this.PGM_Terrain.JungleGrassDensity = (float)Math.Round(random.Next(2, 9) / 100.1f, 3);
-            this.PGM_Terrain.MountainGrassDensity = (float)Math.Round(random.Next(3, 10) / 100.1f, 3);
-            this.PGM_Terrain.RedwoodGrassDensity = (float)Math.Round(random.Next(5, 15) / 100.1f, 3);
-            this.PGM_Terrain.SnowGrassDensity = (float)Math.Round(random.Next(10, 30) / 100.1f, 3);
-            this.PGM_Terrain.SnowMountainGrassDensity = (float)Math.Round(random.Next(10, 20) / 100.1f, 3);
-
-            this.PGM_Terrain.TreeDensity = (float)Math.Round(random.Next(11, 135) / 10000.1f, 3);
-            this.PGM_Terrain.JungleTreeDensity = (float)Math.Round(random.Next(48, 83) / 100.1f, 3);
-            this.PGM_Terrain.MountainsTreeDensity = (float)Math.Round(random.Next(9, 16) / 1000.1f, 3);
-            this.PGM_Terrain.RedWoodTreeDensity = (float)Math.Round(random.Next(23, 51) / 100.1f, 3);
-            this.PGM_Terrain.SnowTreeDensity = (float)Math.Round(random.Next(80, 100) / 100.1f, 3);
-            this.PGM_Terrain.SnowMountainsTreeDensity = (float)Math.Round(random.Next(9, 16) / 1000.1f, 3);
-            this.PGM_Terrain.ShoreTreeDensity = (float)Math.Round(random.Next(48, 83) / 1000.1f, 3);
-            this.PGM_Terrain.SnowShoreTreeDensity = (float)Math.Round(random.Next(14, 31) / 1000.1f, 3);
-
-            this.PGM_Terrain.InlandWaterObjectsDensity = (float)Math.Round(random.Next(36, 67) / 100.1f, 3);
-            this.PGM_Terrain.UnderwaterObjectsDensity = (float)Math.Round(random.Next(36, 67) / 100.1f, 3);
         }
 
         public void ResetLevelProgressionToOfficial(LevelProgression levelProgression)
@@ -5774,13 +5480,6 @@ namespace ServerManagerTool.Lib
             this.NPCSpawnSettings = new NPCSpawnSettingsList(this.ConfigAddNPCSpawnEntriesContainer, this.ConfigSubtractNPCSpawnEntriesContainer, this.ConfigOverrideNPCSpawnEntriesContainer);
         }
 
-        public void ResetPGMSection()
-        {
-            this.ClearValue(PGM_EnabledProperty);
-            this.ClearValue(PGM_NameProperty);
-            this.PGM_Terrain = new PGMTerrain();
-        }
-
         public void ResetPlayerSettings()
         {
             this.ClearValue(EnableFlyerCarryProperty);
@@ -5950,27 +5649,6 @@ namespace ServerManagerTool.Lib
             this.ClearNullableValue(NewYear2UTCProperty);
         }
 
-        public void ResetSOTFSection()
-        {
-            this.ClearValue(SOTF_EnabledProperty);
-            this.ClearValue(SOTF_DisableDeathSPectatorProperty);
-            this.ClearValue(SOTF_OnlyAdminRejoinAsSpectatorProperty);
-            this.ClearValue(SOTF_GamePlayLoggingProperty);
-            this.ClearValue(SOTF_OutputGameReportProperty);
-            this.ClearValue(SOTF_MaxNumberOfPlayersInTribeProperty);
-            this.ClearValue(SOTF_BattleNumOfTribesToStartGameProperty);
-            this.ClearValue(SOTF_TimeToCollapseRODProperty);
-            this.ClearValue(SOTF_BattleAutoStartGameIntervalProperty);
-            this.ClearValue(SOTF_BattleAutoRestartGameIntervalProperty);
-            this.ClearValue(SOTF_BattleSuddenDeathIntervalProperty);
-
-            this.ClearValue(SOTF_NoEventsProperty);
-            this.ClearValue(SOTF_NoBossesProperty);
-            this.ClearValue(SOTF_BothBossesProperty);
-            this.ClearValue(SOTF_EvoEventIntervalProperty);
-            this.ClearValue(SOTF_RingStartTimeProperty);
-        }
-
         public void ResetStackSizeOverridesSection()
         {
             this.ClearValue(ItemStackSizeMultiplierProperty);
@@ -6137,12 +5815,6 @@ namespace ServerManagerTool.Lib
                     break;
                 case ServerProfileCategory.PreventTransferOverrides:
                     SyncPreventTransferOverridesSection(sourceProfile);
-                    break;
-                case ServerProfileCategory.PGM:
-                    SyncPGMSection(sourceProfile);
-                    break;
-                case ServerProfileCategory.SOTF:
-                    SyncSOTFSection(sourceProfile);
                     break;
             }
         }
@@ -6557,14 +6229,6 @@ namespace ServerManagerTool.Lib
             this.NPCSpawnSettings.RenderToView();
         }
 
-        private void SyncPGMSection(ServerProfile sourceProfile)
-        {
-            this.SetValue(PGM_EnabledProperty, sourceProfile.PGM_Enabled);
-            this.SetValue(PGM_NameProperty, sourceProfile.PGM_Name);
-
-            this.PGM_Terrain.InitializeFromINIValue(sourceProfile.PGM_Terrain.ToINIValue());
-        }
-
         private void SyncPlayerSettingsSection(ServerProfile sourceProfile)
         {
             this.SetValue(EnableFlyerCarryProperty, sourceProfile.EnableFlyerCarry);
@@ -6753,27 +6417,6 @@ namespace ServerManagerTool.Lib
             SaveServerFileAdministrators();
             SaveServerFileExclusive();
             SaveServerFileWhitelisted();
-        }
-
-        private void SyncSOTFSection(ServerProfile sourceProfile)
-        {
-            this.SetValue(SOTF_EnabledProperty, sourceProfile.SOTF_Enabled);
-            this.SetValue(SOTF_DisableDeathSPectatorProperty, sourceProfile.SOTF_DisableDeathSPectator);
-            this.SetValue(SOTF_OnlyAdminRejoinAsSpectatorProperty, sourceProfile.SOTF_OnlyAdminRejoinAsSpectator);
-            this.SetValue(SOTF_GamePlayLoggingProperty, sourceProfile.SOTF_GamePlayLogging);
-            this.SetValue(SOTF_OutputGameReportProperty, sourceProfile.SOTF_OutputGameReport);
-            this.SetValue(SOTF_MaxNumberOfPlayersInTribeProperty, sourceProfile.SOTF_MaxNumberOfPlayersInTribe);
-            this.SetValue(SOTF_BattleNumOfTribesToStartGameProperty, sourceProfile.SOTF_BattleNumOfTribesToStartGame);
-            this.SetValue(SOTF_TimeToCollapseRODProperty, sourceProfile.SOTF_TimeToCollapseROD);
-            this.SetValue(SOTF_BattleAutoStartGameIntervalProperty, sourceProfile.SOTF_BattleAutoStartGameInterval);
-            this.SetValue(SOTF_BattleAutoRestartGameIntervalProperty, sourceProfile.SOTF_BattleAutoRestartGameInterval);
-            this.SetValue(SOTF_BattleSuddenDeathIntervalProperty, sourceProfile.SOTF_BattleSuddenDeathInterval);
-
-            this.SetValue(SOTF_NoEventsProperty, sourceProfile.SOTF_NoEvents);
-            this.SetValue(SOTF_NoBossesProperty, sourceProfile.SOTF_NoBosses);
-            this.SetValue(SOTF_BothBossesProperty, sourceProfile.SOTF_BothBosses);
-            this.SetValue(SOTF_EvoEventIntervalProperty, sourceProfile.SOTF_EvoEventInterval);
-            this.SetValue(SOTF_RingStartTimeProperty, sourceProfile.SOTF_RingStartTime);
         }
 
         private void SyncStackSizeOverridesSection(ServerProfile sourceProfile)
@@ -7067,44 +6710,14 @@ namespace ServerManagerTool.Lib
         #endregion
 
         #region Static Profile Methods
-        public static string GetProfileMapFileName(ServerProfile profile)
-        {
-            return GetProfileMapFileName(profile?.ServerMap, profile?.PGM_Enabled ?? false, profile?.PGM_Name);
-        }
+        /// <summary>The world save's file name without extension; the same as the map name.</summary>
+        public static string GetProfileMapFileName(ServerProfile profile) => GetProfileMapFileName(profile?.ServerMap);
 
-        public static string GetProfileMapFileName(string serverMap, bool pgmEnabled, string pgmName)
-        {
-            if (pgmEnabled)
-                return $"{pgmName ?? string.Empty}_V2";
+        public static string GetProfileMapFileName(string serverMap) => ModUtils.GetMapName(serverMap);
 
-            return ModUtils.GetMapName(serverMap);
-        }
+        public static string GetProfileMapModId(ServerProfile profile) => ModUtils.GetMapModId(profile?.ServerMap);
 
-        public static string GetProfileMapModId(ServerProfile profile)
-        {
-            return GetProfileMapModId(profile?.ServerMap, profile?.PGM_Enabled ?? false);
-        }
-
-        public static string GetProfileMapModId(string serverMap, bool pgmEnabled)
-        {
-            if (pgmEnabled)
-                return string.Empty;
-
-            return ModUtils.GetMapModId(serverMap);
-        }
-
-        public static string GetProfileMapName(ServerProfile profile)
-        {
-            return GetProfileMapName(profile?.ServerMap, profile?.PGM_Enabled ?? false);
-        }
-
-        public static string GetProfileMapName(string serverMap, bool pgmEnabled)
-        {
-            if (pgmEnabled)
-                return Config.Default.DefaultServerMap_PGM;
-
-            return ModUtils.GetMapName(serverMap);
-        }
+        public static string GetProfileMapName(ServerProfile profile) => ModUtils.GetMapName(profile?.ServerMap);
 
         public static string GetProfileSaveGamesPath(ServerProfile profile)
         {

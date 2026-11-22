@@ -164,12 +164,14 @@ Decision: **plain CurseForge IDs** (no CurseForge API for now).
 
 ### M4. Remove SOTF and PGM
 
-- [ ] `ServerProfile` SOTF region (~3700–3828), PGM region (~3593–3617) and their Save/Load/Reset/Sync code.
-- [ ] `Lib/Model/PGMTerrain.cs`, `GameData/PGM.gamedata`, SOTF/PGM branches in `GameData.cs` / `GameDataUtils.IsSotF`.
-- [ ] UI: SOTF/PGM expanders and every expander trigger in `ServerSettingsControl.xaml`; `GlobalSettingsControl`
-      section toggles; `ShutdownWindow` SOTF bits; `ServerProfileCategory` / `ServerSettingsResetAction` enum values.
-- [ ] Settings (`SectionSOTFEnabled`, `SectionPGMEnabled`, SOTF app IDs, PGM paths) and resource keys.
-- [ ] Note: loading a SOTF/PGM profile flips global section flags (`ServerProfile.cs` ~4554–4558).
+- [x] Removed (2,483 lines): `ServerProfile` SOTF and PGM regions with their arguments, load/save/reset/sync
+      code; `PGMTerrain`, `PGM.gamedata`; the SOTF variants of the map / total conversion / branch / event
+      lists (`GameData`, `IsSotF` in the game data model and files); the SOTF and PGM sections, their header
+      templates and every SOTF/PGM trigger in the settings screen, main window, shutdown window and styles;
+      the global "show SOTF / PGM section" options; the `ServerProfileCategory` / `ServerSettingsResetAction`
+      values; settings `AppId_SotF`, `AppIdServer_SotF`, `AppPatchNotesUrlSotF`, `DefaultServerMap_PGM`,
+      `SavedPGMRelativePath`, `DefaultPGMapName`, `Section{SOTF,PGM}Enabled`, `Section{SOTF,PGM}IsExpanded`.
+- [ ] Their resource strings remain in the language files (pruned with all unused keys at the end of M3).
 
 ### M5. Saves, backups and player data
 

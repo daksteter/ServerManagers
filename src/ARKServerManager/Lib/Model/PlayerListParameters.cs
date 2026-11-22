@@ -18,10 +18,6 @@ namespace ServerManagerTool.Lib
 
         public string AltSaveDirectoryName { get; set; }
 
-        public bool PGM_Enabled { get; set; }
-
-        public string PGM_Name { get; set; }
-
         public Server Server { get; set; }
 
         public string ServerMap { get; set; }

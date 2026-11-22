@@ -258,15 +258,11 @@ namespace ServerManagerTool.Utils
     [DataContract]
     public class GameMapDataItem : BaseDataItem
     {
-        [DataMember]
-        public bool IsSotF = false;
     }
 
     [DataContract]
     public class TotalConversionDataItem : BaseDataItem
     {
-        [DataMember]
-        public bool IsSotF = false;
     }
 
     [DataContract]
@@ -289,8 +285,6 @@ namespace ServerManagerTool.Utils
     public class BranchDataItem
     {
         [DataMember]
-        public bool IsSotF = false;
-        [DataMember]
         public string BranchName = string.Empty;
         [DataMember]
         public string Description = string.Empty;
@@ -301,8 +295,6 @@ namespace ServerManagerTool.Utils
     [DataContract]
     public class EventDataItem
     {
-        [DataMember]
-        public bool IsSotF = false;
         [DataMember]
         public string EventName = string.Empty;
         [DataMember]

@@ -44,10 +44,7 @@ namespace ServerManagerTool
             WindowUtils.RemoveDefaultResourceDictionary(this, Config.Default.DefaultGlobalizationFile);
 
             Server = server;
-            if (server?.Profile?.SOTF_Enabled ?? false)
-                BackupWorldFile = false;
-            else
-                BackupWorldFile = Config.Default.BackupWorldFile;
+            BackupWorldFile = Config.Default.BackupWorldFile;
             this.Title = string.Format(_globalizer.GetResourceString("ShutdownWindow_ProfileTitle"), server?.Profile?.ProfileName);
             this.CloseShutdownWindowWhenFinished = Config.Default.CloseShutdownWindowWhenFinished;
 

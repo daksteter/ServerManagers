@@ -62,8 +62,6 @@ namespace ServerManagerTool
                     RCONPassword = Password,
                     InstallDirectory = String.Empty,
                     AltSaveDirectoryName = String.Empty,
-                    PGM_Enabled = false,
-                    PGM_Name = string.Empty,
                     WindowTitle = String.Format(_globalizer.GetResourceString("OpenRCON_WindowTitle"), ServerIP, RCONPort),
                     WindowExtents = Rect.Empty
                 });

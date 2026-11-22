@@ -15,8 +15,6 @@
         StructuresSection,
         EngramsSection,
         CustomLevelsSection,
-        SOTFSection,
-        PGMSection,
         MapSpawnerOverridesSection,
         CraftingOverridesSection,
         SupplyCrateOverridesSection,

@@ -17,7 +17,7 @@ namespace ServerManagerTool.Lib
         {
             return new BranchSnapshot
             {
-                AppIdServer = profile.SOTF_Enabled ? Config.Default.AppIdServer_SotF : string.Empty,
+                AppIdServer = string.Empty,
                 BranchName = profile.BranchName,
                 BranchPassword = profile.BranchPassword
             };
