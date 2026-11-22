@@ -2,15 +2,66 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Interop;
 using System.Windows.Media;
 
 namespace ServerManagerTool.Common.Utils
 {
     public static class WindowUtils
     {
+        #region CanMinimize
+
+        /// <summary>
+        /// False hides a resizable window's minimize button (WPF only hides it with ResizeMode="NoResize"). For
+        /// windows without a taskbar button: minimized, they'd shrink to a corner of the desktop, and a minimized
+        /// dialog would leave its owner blocked with nothing to click. Set in XAML: cu:WindowUtils.CanMinimize="False".
+        /// </summary>
+        public static readonly DependencyProperty CanMinimizeProperty = DependencyProperty.RegisterAttached(
+            "CanMinimize", typeof(bool), typeof(WindowUtils), new PropertyMetadata(true, OnCanMinimizeChanged));
+
+        public static bool GetCanMinimize(Window window) => (bool)window.GetValue(CanMinimizeProperty);
+
+        public static void SetCanMinimize(Window window, bool value) => window.SetValue(CanMinimizeProperty, value);
+
+        private static void OnCanMinimizeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is not Window window)
+                return;
+
+            // XAML sets it before the window has a handle: apply it once the handle exists, before the window shows
+            if (new WindowInteropHelper(window).Handle == IntPtr.Zero)
+                window.SourceInitialized += (sender, _) => ApplyCanMinimize((Window)sender);
+            else
+                ApplyCanMinimize(window);
+        }
+
+        private static void ApplyCanMinimize(Window window)
+        {
+            var handle = new WindowInteropHelper(window).Handle;
+            if (handle == IntPtr.Zero)
+                return;
+
+            var style = GetWindowLong(handle, GWL_STYLE);
+            var newStyle = GetCanMinimize(window) ? style | WS_MINIMIZEBOX : style & ~WS_MINIMIZEBOX;
+            if (newStyle != style)
+                SetWindowLong(handle, GWL_STYLE, newStyle);
+        }
+
+        private const int GWL_STYLE = -16;
+        private const int WS_MINIMIZEBOX = 0x00020000;
+
+        [DllImport("user32.dll", EntryPoint = "GetWindowLongW")]
+        private static extern int GetWindowLong(IntPtr hWnd, int nIndex);
+
+        [DllImport("user32.dll", EntryPoint = "SetWindowLongW")]
+        private static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
+
+        #endregion
+
         public static void RemoveDefaultResourceDictionary(Window window, string defaultDictionary)
         {
             if (window == null)

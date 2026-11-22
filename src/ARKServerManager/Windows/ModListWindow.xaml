@@ -1,8 +1,9 @@
 <Window x:Class="ServerManagerTool.ModListWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:cu="clr-namespace:ServerManagerTool.Common.Utils;assembly=ServerManager.Common"
         xmlns:com="clr-namespace:ServerManagerTool.Common;assembly=ServerManager.Common"
-        MinWidth="520" MinHeight="300" Width="760" Height="460" ResizeMode="CanResize" WindowStyle="ToolWindow" WindowStartupLocation="CenterOwner" ShowInTaskbar="False"
+        MinWidth="520" MinHeight="300" Width="760" Height="460" ResizeMode="CanResize" WindowStartupLocation="CenterOwner" ShowInTaskbar="False" cu:WindowUtils.CanMinimize="False"
         Icon="../Art/favicon.ico"
         FocusManager.FocusedElement="{Binding ElementName=NewModIdsTextBox}"
         Name="ModListUI">

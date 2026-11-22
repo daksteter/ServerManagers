@@ -1,8 +1,9 @@
 ﻿<Window x:Class="ServerManagerTool.PluginsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:cu="clr-namespace:ServerManagerTool.Common.Utils;assembly=ServerManager.Common"
         xmlns:com="clr-namespace:ServerManagerTool.Common;assembly=ServerManager.Common"
-        MinWidth="640" MinHeight="480" Width="640" Height="480" ResizeMode="CanResize" WindowStyle="ToolWindow" WindowStartupLocation="CenterOwner" ShowInTaskbar="False"
+        MinWidth="640" MinHeight="480" Width="640" Height="480" ResizeMode="CanResize" WindowStartupLocation="CenterOwner" ShowInTaskbar="False" cu:WindowUtils.CanMinimize="False"
         Icon="../Art/favicon.ico" Title="{DynamicResource PluginsWindow_Title}">
     <Window.Resources>
         <ResourceDictionary>

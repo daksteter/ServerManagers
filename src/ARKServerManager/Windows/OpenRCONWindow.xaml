@@ -4,7 +4,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Width="350" SizeToContent="Height" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" HorizontalAlignment="Left" VerticalAlignment="Top" ResizeMode="NoResize" WindowStyle="ToolWindow"
+        Width="350" SizeToContent="Height" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" HorizontalAlignment="Left" VerticalAlignment="Top" ResizeMode="NoResize"
         Icon="../Art/favicon.ico" Title="{DynamicResource OpenRCON_Title}"
         FocusManager.FocusedElement="{Binding ElementName=ServerIPTextBox}">
     <Window.Resources>

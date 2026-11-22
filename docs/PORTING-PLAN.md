@@ -561,6 +561,12 @@ What's left before a public release (not planned soon). The repo is on a private
       is an X instead of a delete icon. Unused images (Collapse, Expand, FolderDelete, NoAvatar) dropped. The Donate
       and Discord buttons, hidden since their links were blanked, removed with their settings and texts. The Discord
       plugin's window icon (upstream's black wrench) is now the app icon, which was already original (M8).
+- [x] **Window title bars:** 19 windows (Settings, Find, Restore, mod list, game data, plugins, the Discord
+      plugin's two and other dialogs) used `WindowStyle="ToolWindow"`, whose small close button Windows 11 draws
+      against the window's edge. They now have the normal title bar, like the RCON window and Server Monitor, with
+      the app icon. Resizable ones get maximize; the 14 without a taskbar button can't be minimized
+      (`WindowUtils.CanMinimize="False"` clears `WS_MINIMIZEBOX`; Windows then shows that button greyed), since a
+      minimized dialog would sit in a corner of the desktop with its owner blocked.
 - [ ] **Updates after release:** there's no self-updater. Users update by extracting the new zip over the old
       folder: settings live outside it, and scheduled tasks (which store the exe's path) and the `Plugins` folder
       need the same folder. In-app updates can't work while the repo is private (downloads would need a token).

@@ -6,7 +6,7 @@
         xmlns:com="clr-namespace:ServerManagerTool.Common;assembly=ServerManager.Common"
         xmlns:en="clr-namespace:ServerManagerTool.Enums"
         xmlns:rcon="clr-namespace:ServerManagerTool.Lib.ViewModel.RCON"
-        MinWidth="300" MinHeight="200" Width="300" Height="500" ResizeMode="CanResizeWithGrip" WindowStyle="ToolWindow" 
+        MinWidth="300" MinHeight="200" Width="300" Height="500" ResizeMode="CanResizeWithGrip"
         SizeChanged="Window_SizeChanged" LocationChanged="Window_LocationChanged"
         Icon="../Art/favicon.ico" Title="{Binding PlayerListParameters.WindowTitle}"
         FocusManager.FocusedElement="{Binding ElementName=PlayerListFilterStringTextBox}"

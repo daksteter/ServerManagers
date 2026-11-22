@@ -1,13 +1,63 @@
 ﻿using ServerManagerTool.Plugin.Common;
+using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Interop;
 using System.Windows.Media;
 
 namespace ServerManagerTool.Plugin.Discord
 {
     public static class WindowUtils
     {
+        #region CanMinimize
+
+        /// <summary>
+        /// False hides a resizable window's minimize button (WPF only hides it with ResizeMode="NoResize"), for
+        /// dialogs without a taskbar button. The same as the app's WindowUtils.CanMinimize: the plugin doesn't
+        /// reference the app's libraries.
+        /// </summary>
+        public static readonly DependencyProperty CanMinimizeProperty = DependencyProperty.RegisterAttached(
+            "CanMinimize", typeof(bool), typeof(WindowUtils), new PropertyMetadata(true, OnCanMinimizeChanged));
+
+        public static bool GetCanMinimize(Window window) => (bool)window.GetValue(CanMinimizeProperty);
+
+        public static void SetCanMinimize(Window window, bool value) => window.SetValue(CanMinimizeProperty, value);
+
+        private static void OnCanMinimizeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is not Window window)
+                return;
+
+            if (new WindowInteropHelper(window).Handle == System.IntPtr.Zero)
+                window.SourceInitialized += (sender, _) => ApplyCanMinimize((Window)sender);
+            else
+                ApplyCanMinimize(window);
+        }
+
+        private static void ApplyCanMinimize(Window window)
+        {
+            var handle = new WindowInteropHelper(window).Handle;
+            if (handle == System.IntPtr.Zero)
+                return;
+
+            var style = GetWindowLong(handle, GWL_STYLE);
+            var newStyle = GetCanMinimize(window) ? style | WS_MINIMIZEBOX : style & ~WS_MINIMIZEBOX;
+            if (newStyle != style)
+                SetWindowLong(handle, GWL_STYLE, newStyle);
+        }
+
+        private const int GWL_STYLE = -16;
+        private const int WS_MINIMIZEBOX = 0x00020000;
+
+        [DllImport("user32.dll", EntryPoint = "GetWindowLongW")]
+        private static extern int GetWindowLong(System.IntPtr hWnd, int nIndex);
+
+        [DllImport("user32.dll", EntryPoint = "SetWindowLongW")]
+        private static extern int SetWindowLong(System.IntPtr hWnd, int nIndex, int dwNewLong);
+
+        #endregion
+
         public static void UpdateResourceDictionary(Window window, string languageCode)
         {
             var assembly = typeof(ResourceUtils).Assembly;

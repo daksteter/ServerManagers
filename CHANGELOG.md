@@ -64,6 +64,9 @@ First release for ARK: Survival Ascended (ASA). Servers for ARK: Survival Evolve
   names, so they don't collide with an installed ARK Server Manager.
 - **New icons throughout,** from Microsoft's Fluent UI System Icons: the Windows 11 style, sharp at any display
   scaling. Icons on disabled buttons fade, and the main window's header icons are light on its dark background.
+- **Every window has the normal Windows title bar.** Settings, Find, Restore, the mod list and the other dialogs
+  had a small tool-window title bar, whose close button Windows 11 draws against the window's edge. Resizable
+  windows can now be maximized; dialogs without a taskbar button can't be minimized, so they can't get lost.
 - **Runs on .NET 11** (was .NET Framework 4.6.2), with up-to-date libraries. Needs the .NET 11 Desktop Runtime.
 - **Server status from RCON and the server log.** ASA servers don't answer Steam server queries.
   - "Running / Available" means the server has finished starting and is accepting players. Whether it can be

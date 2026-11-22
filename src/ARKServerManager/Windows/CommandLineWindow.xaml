@@ -1,7 +1,8 @@
 ﻿<Window x:Class="ServerManagerTool.CommandLineWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        MinWidth="500" MinHeight="200" Width="500" Height="200" WindowStyle="ToolWindow" WindowStartupLocation="CenterOwner" ShowInTaskbar="False" ResizeMode="CanResize"
+        xmlns:cu="clr-namespace:ServerManagerTool.Common.Utils;assembly=ServerManager.Common"
+        MinWidth="500" MinHeight="200" Width="500" Height="200" WindowStartupLocation="CenterOwner" ShowInTaskbar="False" cu:WindowUtils.CanMinimize="False" ResizeMode="CanResize"
         Icon="../Art/favicon.ico" Title="{DynamicResource CommandLine_Title}"
         FocusManager.FocusedElement="{Binding ElementName=ClipboardButton}">
     <Window.Resources>

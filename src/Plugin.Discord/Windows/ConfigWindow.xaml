@@ -1,10 +1,11 @@
 ﻿<Window x:Class="ServerManagerTool.Plugin.Discord.Windows.ConfigWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:cu="clr-namespace:ServerManagerTool.Plugin.Discord"
         xmlns:pc="clr-namespace:ServerManagerTool.Plugin.Common;assembly=ServerManager.Plugin.Common"
         Name="ConfigUI" Title="{DynamicResource ConfigWindow_Title}"
         Icon="/ServerManager.Plugin.Discord;component/Art/favicon.ico"
-        Width="640" Height="480" MinWidth="640" MinHeight="480" ResizeMode="CanResizeWithGrip" WindowStyle="ToolWindow" WindowStartupLocation="CenterOwner" ShowInTaskbar="False" Closing="ConfigWindow_Closing">
+        Width="640" Height="480" MinWidth="640" MinHeight="480" ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterOwner" ShowInTaskbar="False" cu:WindowUtils.CanMinimize="False" Closing="ConfigWindow_Closing">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
