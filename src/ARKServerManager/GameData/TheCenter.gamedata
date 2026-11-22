@@ -176,17 +176,17 @@
   "SupplyCrates": [
     {
       "ClassName": "SupplyCrate_Cave_QualityTier3_TheCenter_C",
-      "Description": "Cave Quality Tier3 The Center",
+      "Description": "Cave Loot Crate (Yellow)",
       "Mod": "TheCenter"
     },
     {
       "ClassName": "SupplyCrate_Level60_Double_TheCenter_C",
-      "Description": "Level60 Double The Center",
+      "Description": "Red Beacon (Double items)",
       "Mod": "TheCenter"
     },
     {
       "ClassName": "SupplyCrate_Level60_TheCenter_C",
-      "Description": "Level60 The Center",
+      "Description": "Red Beacon",
       "Mod": "TheCenter"
     }
   ]

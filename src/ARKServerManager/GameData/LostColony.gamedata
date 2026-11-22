@@ -681,11 +681,83 @@
   ],
   "Engrams": [
     {
+      "Level": 75,
+      "Points": 20,
+      "IsTekGram": false,
+      "ClassName": "EngramEntry_LostColony_Bloodforge_C",
+      "Description": "Bloodforge",
+      "Mod": "LostColony"
+    },
+    {
+      "Level": 75,
+      "Points": 20,
+      "IsTekGram": false,
+      "ClassName": "EngramEntry_LostColony_CryoHospital_C",
+      "Description": "Cryo Hospital",
+      "Mod": "LostColony"
+    },
+    {
+      "Level": 58,
+      "Points": 18,
+      "IsTekGram": false,
+      "ClassName": "EngramEntry_LostColony_FabCrossbow_C",
+      "Description": "Fabricated Crossbow",
+      "Mod": "LostColony"
+    },
+    {
+      "Level": 51,
+      "Points": 22,
+      "IsTekGram": false,
+      "ClassName": "EngramEntry_LostColony_HoloDecoy_C",
+      "Description": "Holo-Decoy Grenade",
+      "Mod": "LostColony"
+    },
+    {
       "Level": 48,
       "Points": 10,
       "IsTekGram": false,
       "ClassName": "EngramEntry_LostColony_Lights_C",
       "Description": "Lost Colony Lights",
+      "Mod": "LostColony"
+    },
+    {
+      "Level": 60,
+      "Points": 20,
+      "IsTekGram": false,
+      "ClassName": "EngramEntry_LostColony_MedicalStand_C",
+      "Description": "Medical Stand",
+      "Mod": "LostColony"
+    },
+    {
+      "Level": 58,
+      "Points": 40,
+      "IsTekGram": false,
+      "ClassName": "EngramEntry_LostColony_Saddle_AngelFox_C",
+      "Description": "Saddle - Solwyn",
+      "Mod": "LostColony"
+    },
+    {
+      "Level": 65,
+      "Points": 40,
+      "IsTekGram": false,
+      "ClassName": "EngramEntry_LostColony_Saddle_DevilFox_C",
+      "Description": "Saddle - Malwyn",
+      "Mod": "LostColony"
+    },
+    {
+      "Level": 85,
+      "Points": 40,
+      "IsTekGram": false,
+      "ClassName": "EngramEntry_LostColony_Saddle_SnowDragon_C",
+      "Description": "Saddle - Aureliax",
+      "Mod": "LostColony"
+    },
+    {
+      "Level": 74,
+      "Points": 40,
+      "IsTekGram": false,
+      "ClassName": "EngramEntry_LostColony_Saddle_SnowMonster_C",
+      "Description": "Saddle - Ossidon",
       "Mod": "LostColony"
     },
     {
@@ -702,6 +774,14 @@
       "IsTekGram": true,
       "ClassName": "EngramEntry_LostColony_TekBunker_C",
       "Description": "Tek Bunker",
+      "Mod": "LostColony"
+    },
+    {
+      "Level": 64,
+      "Points": 21,
+      "IsTekGram": false,
+      "ClassName": "EngramEntry_LostColony_Warbench_C",
+      "Description": "Warbench",
       "Mod": "LostColony"
     }
   ],
@@ -1207,67 +1287,67 @@
   "SupplyCrates": [
     {
       "ClassName": "SupplyCrate_BossLott_BossBat_C",
-      "Description": "Boss Lott Boss Bat",
+      "Description": "Boss Loot - Gigadesmodus",
       "Mod": "LostColony"
     },
     {
       "ClassName": "SupplyCrate_BossLott_BossBat_Alpha_C",
-      "Description": "Boss Lott Boss Bat Alpha",
+      "Description": "Boss Loot - Gigadesmodus (Alpha)",
       "Mod": "LostColony"
     },
     {
       "ClassName": "SupplyCrate_BossLott_BossBat_Beta_C",
-      "Description": "Boss Lott Boss Bat Beta",
+      "Description": "Boss Loot - Gigadesmodus (Beta)",
       "Mod": "LostColony"
     },
     {
       "ClassName": "SupplyCrate_BossLott_BossBat_Gamma_C",
-      "Description": "Boss Lott Boss Bat Gamma",
+      "Description": "Boss Loot - Gigadesmodus (Gamma)",
       "Mod": "LostColony"
     },
     {
       "ClassName": "SupplyCrate_Horde_Taming_Base_C",
-      "Description": "Horde Taming Base",
+      "Description": "Taming Horde (base class)",
       "Mod": "LostColony"
     },
     {
       "ClassName": "SupplyCrate_Horde_Taming_SnowDragon_C",
-      "Description": "Horde Taming Snow Dragon",
+      "Description": "Taming Horde (Aureliax)",
       "Mod": "LostColony"
     },
     {
       "ClassName": "SupplyCrate_LostLootChest_BASE_C",
-      "Description": "Lost Loot Chest BASE",
+      "Description": "Lost Loot Chest (base class)",
       "Mod": "LostColony"
     },
     {
       "ClassName": "SupplyCrate_LostLootChest_Cave_T1_C",
-      "Description": "Lost Loot Chest Cave T1",
+      "Description": "Cave Drop (Blue)",
       "Mod": "LostColony"
     },
     {
       "ClassName": "SupplyCrate_LostLootChest_Cave_T2_C",
-      "Description": "Lost Loot Chest Cave T2",
+      "Description": "Cave Drop (Yellow)",
       "Mod": "LostColony"
     },
     {
       "ClassName": "SupplyCrate_LostLootChest_Cave_T3_C",
-      "Description": "Lost Loot Chest Cave T3",
+      "Description": "Cave Drop (Red)",
       "Mod": "LostColony"
     },
     {
       "ClassName": "SupplyCrate_LostLootChest_T1_C",
-      "Description": "Lost Loot Chest T1",
+      "Description": "Lost Loot Chest (tier 1)",
       "Mod": "LostColony"
     },
     {
       "ClassName": "SupplyCrate_LostLootChest_T2_C",
-      "Description": "Lost Loot Chest T2",
+      "Description": "Lost Loot Chest (tier 2)",
       "Mod": "LostColony"
     },
     {
       "ClassName": "SupplyCrate_LostLootChest_T3_C",
-      "Description": "Lost Loot Chest T3",
+      "Description": "Lost Loot Chest (tier 3)",
       "Mod": "LostColony"
     }
   ],

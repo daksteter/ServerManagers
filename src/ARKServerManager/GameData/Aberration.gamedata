@@ -1618,7 +1618,7 @@
     },
     {
       "ClassName": "SupplyCrate_Cave_Aberration_BASE_C",
-      "Description": "Cave Aberration BASE",
+      "Description": "Cave Beacon (base class)",
       "Mod": "Aberration"
     }
   ],

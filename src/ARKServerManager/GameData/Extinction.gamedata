@@ -1138,27 +1138,27 @@
     },
     {
       "ClassName": "SupplyCrate_Base_Horde_C",
-      "Description": "Base Horde",
+      "Description": "Orbital Supply Drop (base class)",
       "Mod": "Extinction"
     },
     {
       "ClassName": "SupplyCrate_Base_Horde_Easy_C",
-      "Description": "Base Horde Easy",
+      "Description": "Orbital Supply Drop (Blue)",
       "Mod": "Extinction"
     },
     {
       "ClassName": "SupplyCrate_Base_Horde_Hard_C",
-      "Description": "Base Horde Hard",
+      "Description": "Orbital Supply Drop (Red)",
       "Mod": "Extinction"
     },
     {
       "ClassName": "SupplyCrate_Base_Horde_Legendary_C",
-      "Description": "Base Horde Legendary",
+      "Description": "Orbital Supply Drop (Purple)",
       "Mod": "Extinction"
     },
     {
       "ClassName": "SupplyCrate_Base_Horde_Medium_C",
-      "Description": "Base Horde Medium",
+      "Description": "Orbital Supply Drop (Yellow)",
       "Mod": "Extinction"
     },
     {

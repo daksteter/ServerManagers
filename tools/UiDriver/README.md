@@ -57,3 +57,6 @@ $d = 'tools\UiDriver\bin\Release\net11.0-windows\UiDriver.exe'
   shown in them; reading a closed combo box's selection opens its list for a moment.
 - A query that matches several elements is refused with the list (add `#n`), except that visible and actionable
   elements win over hidden ones and plain text.
+- Clicking a button that closes a Windows message box (the app's Yes / No confirmations) reports "Operation timed
+  out", but the click goes through: check the result instead.
+- `find` shortens long values; `get` prints the whole value.

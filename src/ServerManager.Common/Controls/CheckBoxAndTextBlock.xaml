@@ -13,7 +13,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <CheckBox x:Name="CheckBox" Grid.Column="0" Margin="0,0,0,0" IsChecked="{Binding IsChecked, ElementName=Control, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center"/>
+        <CheckBox x:Name="CheckBox" AutomationProperties.Name="{Binding Text, ElementName=Control}" Grid.Column="0" Margin="0,0,0,0" IsChecked="{Binding IsChecked, ElementName=Control, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center"/>
         <TextBlock x:Name="Label" Grid.Column="1" Margin="5,0,0,0" Text="{Binding Text, ElementName=Control, Mode=TwoWay}" VerticalAlignment="Center" MouseLeftButtonDown="Label_MouseLeftButtonDown"/>
     </Grid>
 </UserControl>

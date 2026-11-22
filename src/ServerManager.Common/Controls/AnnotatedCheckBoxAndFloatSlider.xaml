@@ -280,8 +280,8 @@
         </Grid.ColumnDefinitions>
         
         <Label Grid.Column="0" Content="{Binding Label}" VerticalContentAlignment="Center"/>
-        <CheckBox x:Name="CheckBox" Grid.Column="1" Margin="2,0,2,0" IsChecked="{Binding Value.HasValue}" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
-        <Slider x:Name="Slider" Grid.Column="2" Margin="0,0,5,0" IsEnabled="{Binding ElementName=CheckBox, Path=IsChecked, FallbackValue=False}"
+        <CheckBox x:Name="CheckBox" AutomationProperties.Name="{Binding Label}" Grid.Column="1" Margin="2,0,2,0" IsChecked="{Binding Value.HasValue}" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+        <Slider x:Name="Slider" AutomationProperties.Name="{Binding Label}" Grid.Column="2" Margin="0,0,5,0" IsEnabled="{Binding ElementName=CheckBox, Path=IsChecked, FallbackValue=False}"
                 Value="{Binding Value.Value, Mode=OneWay}"
                 Minimum="{Binding Minimum}" 
                 Maximum="{Binding Maximum}" 

@@ -232,7 +232,7 @@
 
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Label Content="{Binding Profile.ProfileName}"/>
+                                    <Label><TextBlock Text="{Binding Profile.ProfileName}" TextTrimming="CharacterEllipsis"/></Label>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                             <DataGridTemplateColumn.CellStyle>
@@ -249,7 +249,7 @@
 
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Label Content="{Binding Profile.ServerName}"/>
+                                    <Label><TextBlock Text="{Binding Profile.ServerName}" TextTrimming="CharacterEllipsis"/></Label>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                             <DataGridTemplateColumn.CellStyle>
@@ -266,7 +266,7 @@
 
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Label Content="{Binding Profile.ServerMap, Converter={StaticResource MapNameValueConverter}}"/>
+                                    <Label><TextBlock Text="{Binding Profile.ServerMap, Converter={StaticResource MapNameValueConverter}}" TextTrimming="CharacterEllipsis"/></Label>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                             <DataGridTemplateColumn.CellStyle>

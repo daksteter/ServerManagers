@@ -53,7 +53,8 @@ First release for ARK: Survival Ascended (ASA). Servers for ARK: Survival Evolve
 - **Accessibility.** Screen readers can now reach:
   - every button, named from its text or tooltip;
   - the "+" (new profile) button and the profile settings;
-  - combo box items and profile tabs, read out by their text.
+  - combo box items and profile tabs, read out by their text;
+  - the settings page's check boxes and sliders, named after their labels.
 
   New tooltips on the Server Monitor's Stop and Update menus and on the folder pickers in Settings.
 
@@ -113,6 +114,8 @@ First release for ARK: Survival Ascended (ASA). Servers for ARK: Survival Evolve
   would be applied to the restored world the next time it was opened, corrupting it.
 - **Profile sync copied the cluster directory override even with cluster sync turned off.**
 - **The server-started alert showed the query port instead of the game port.**
+- **The Server Monitor showed ASA map names without their underscore** ("TheIslandWP"). It now shows the map's
+  name ("The Island"), and underscores in profile and server names show too.
 - **Stopping a server without a countdown didn't save the world.** The Stop buttons (in the profile, the Server
   Monitor and the shutdown window), the Server Monitor's Stop menu and the Discord bot's `stop` now save first:
   over RCON (`saveworld`, then `doexit`) when RCON is on, otherwise with Ctrl+C in the server's console, which ASA
@@ -126,9 +129,10 @@ First release for ARK: Survival Ascended (ASA). Servers for ARK: Survival Evolve
 
 ### Known limitations
 
-- 332 newer ASA engrams (mostly Bob's Tall Tales and Lost Colony items) aren't in the engram list yet. They can
-  still be overridden by class name.
-- Names of the new map spawners, supply crates and drop inventories are derived from their class names.
+- Some ASA engrams aren't in the engram list: content-pack items, cosmetic unlocks and skins, and 49 others the ARK
+  wiki has no unlock level or engram points for (such as Lost Colony armour and new Tek items). They can still be
+  overridden by class name.
+- Names of the new map spawners and drop inventories are derived from their class names.
 - New and changed texts are in English only; other languages fall back to English for them.
 - Changing firewall rules and scheduled tasks needs the app to run as administrator.
 

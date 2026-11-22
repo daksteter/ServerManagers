@@ -318,12 +318,31 @@ Decision: **plain CurseForge IDs** (no CurseForge API for now).
       label); Primitive Plus, Crystal Isles, Genesis 2, Lost Island, Fjordur and PGM removed.
 - [x] Resource keys: 758 class-name strings for classes no longer in the game data pruned in all languages.
 - [x] `GameDataApplication` filter (`"ark"`) still fits (ASA is "ark" too); the GameData window's forum link went in M8.
-- [ ] 332 new ASA engrams aren't listed (no reliable level / points: mostly Bob's Tall Tales pack items, Lost
-      Colony gear and skins). They can still be overridden by class name in the engram grid.
-- [ ] Names for the new spawners, supply crates and drop inventories are derived from class names (e.g.
-      "Lost Loot Chest Cave T1"); improve when better data turns up.
+- [x] Engrams left out of the first pass (332, no unique wiki match): 13 added where the wiki's Craftables table
+      has both level and points and the class is certain, matched through the item blueprint paths on the wiki
+      (the saddles' code names: AngelFox = Solwyn, DevilFox = Malwyn, SnowDragon = Aureliax, SnowMonster = Ossidon)
+      or the structure's folder and name: the Grand Tortugar, Gargantar and Umbra saddles (`Base`); Bloodforge, Cryo
+      Hospital, Fabricated Crossbow, Holo-Decoy Grenade, Medical Stand, Warbench and the four saddles
+      (`LostColony`). The wiki has no `engramClassname` values and no blueprint paths for most new ASA items, so
+      the rest stay out: 109 premium cosmetic unlocks (`Packs/AAA`), 144 content-pack items (Steampunk, Wasteland,
+      Frontier, Tides of Fortune), 17 skins and ghillie sets, and 49 engrams with no level / points on the wiki
+      (Lost Colony armour, Tek items, new structure pieces; `ClipboardHammer` is probably the Template Hammer, and
+      `LostColony_BunkerModule` isn't the Tek Bunker, which is listed). They can still be added by class name in the
+      engram grid. Reading the values from the server's paks would need its property mappings.
+- [x] Supply crate names: 73 of the 77 new crates renamed in the style of the existing ones. Beacons get their
+      colour from the level (Island scale 25 / 35 / 45 / 60 = Blue / Purple / Yellow / Red, desert scale 30 / 45 /
+      55 / 70; "Desert" for Astraeos's Scorched Earth crates, "Level 90 Beacon" where there's no known colour), cave
+      crates by tier as before, and the wiki's names where it has them (Orbital Supply Drop Blue / Yellow / Red /
+      Purple for the horde crates, Blue / Yellow / Red Cave Drop, Dragon Hoard, Treasure Chest). Parent classes say
+      "(base class)"; the test crate `BuriedTreasureBase_Test` removed. Map spawners ("Bison") and drop inventories
+      ("Drop Inventory - Carnivore Huge Acro") keep the names derived from their class names; the wiki has nothing
+      better.
 - [x] **Test:** creature, engram, item, crate and spawner lists show ASA content with the new mod colours; the
       app starts without game-data errors.
+- [x] Server Monitor's Map column showed `TheIslandWP`: a `Label` reads "_" as an access-key marker, and the
+      converter (`MapNameValueConverter`) only knew translated names. It now uses `GameData.FriendlyMapNameForClass`
+      like the profile's map box ("The Island"), and the profile, server and map cells are `TextBlock`s, so
+      underscores in names show and long names end in "…".
 
 ### M7. Settings review (`ServerProfile.cs`, 451 properties / 305 INI keys)
 
@@ -356,8 +375,15 @@ The Island, Scorched Earth, The Center, Aberration, Extinction, Astraeos, Ragnar
 - [x] Fix: profile sync copied `ClusterDirOverride` even with cluster sync off (duplicate line outside the `if`).
 - [x] Profile sync and section resets include the new settings; removed settings are gone from both.
 - Note: new strings are en-US only (other languages fall back to English).
-- [ ] **Test:** settings page shows the new groups and options; changing a setting writes it to the INI / command
-      line, and resetting the section removes it again.
+- [x] **Test:** settings page shows the new groups and options; changing a setting writes it to the INI / command
+      line, and resetting the section removes it again. Checked with UiDriver on the test copy: "No wild babies"
+      (launch option), the cosmetic whitelist URL (GameUserSettings) and "Disable photo mode" (Game.ini) were written
+      on Save (`-NoWildBabies` in `RunServer.cmd` and the Show Command window, `CosmeticWhitelistOverride="…"` quoted
+      like `BanListURL`, `bDisablePhotoMode=True`), and all three were gone after resetting Administration and Rules
+      and saving again.
+- [x] Found on the way: the settings page's check boxes and sliders had no accessible name (their label is a
+      separate element), so screen readers read "check box". `CheckBoxAndTextBlock` and the `Annotated*Slider`
+      controls (`ServerManager.Common\Controls`) now name them after their label.
 
 ### M8. Links, text and branding
 
@@ -511,8 +537,12 @@ What's left before a public release (not planned soon). The repo is on a private
       optionally, one-click updates, either a small updater (download, check the SHA-256, extract over the folder
       keeping `Plugins`, restart) or Velopack (MIT; but it replaces its install folder on every update, so plugins
       would have to move out of the app folder first, and scheduled tasks be recreated once).
-- [ ] **README:** describe the app properly for people finding the repo: what it does in more depth, screenshots,
-      a setup walkthrough.
+- [x] **README:** describe the app properly for people finding the repo: what it does in more depth, screenshots,
+      a setup walkthrough. Rewritten with grouped features, three screenshots in `docs/images` (main window, Dino
+      Settings, Server Monitor; taken on the UiDriver test copy with demo profiles, an example IP from the
+      documentation range and example install paths), a setup walkthrough (first start, profile, install, settings,
+      ports, automation, Discord bot), day-to-day use, where things are kept and troubleshooting. The screenshots
+      show uninstalled servers; ones of running servers could replace them later.
 - [x] **Self-updater** removed (see Phase 4).
 - [x] **Release build:** `tools\Release\Build-Release.ps1` publishes a clean Release build in its own folder
       (`--artifacts-path`, so a copy of the app running from `bin\Release` doesn't get in the way), adds README,

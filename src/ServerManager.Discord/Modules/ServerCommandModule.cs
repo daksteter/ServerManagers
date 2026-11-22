@@ -163,7 +163,7 @@ namespace ServerManagerTool.DiscordBot.Modules
         }
 
         [Command("stop", RunMode = RunMode.Async)]
-        [Summary("Forcibly stops the server")]
+        [Summary("Stops the server now, without a countdown (saves the world first)")]
         [Remarks("stop profileId|alias")]
         [RequireBotPermission(ChannelPermission.ViewChannel | ChannelPermission.SendMessages)]
         public async Task StopServerAsync(string profileIdOrAlias)

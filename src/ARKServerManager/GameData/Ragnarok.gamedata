@@ -204,17 +204,17 @@
     },
     {
       "ClassName": "SupplyCrate_Cave_QualityTier3_Ragnarok_C",
-      "Description": "Cave Quality Tier3 Ragnarok",
+      "Description": "Cave Loot Crate (Yellow)",
       "Mod": "Ragnarok"
     },
     {
       "ClassName": "SupplyCrate_Cave_QualityTier4_Ragnarok_C",
-      "Description": "Cave Quality Tier4 Ragnarok",
+      "Description": "Cave Loot Crate (Red)",
       "Mod": "Ragnarok"
     },
     {
       "ClassName": "SupplyCrate_Chest_Treasure_JacksonL_C",
-      "Description": "Chest Treasure Jackson L",
+      "Description": "Treasure Chest",
       "Mod": "Ragnarok"
     }
   ],

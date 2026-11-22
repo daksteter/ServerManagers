@@ -2,7 +2,6 @@
 using System;
 using System.Globalization;
 using System.Windows.Data;
-using WPFSharp.Globalizer;
 
 namespace ServerManagerTool.Lib.ViewModel
 {
@@ -16,21 +15,18 @@ namespace ServerManagerTool.Lib.ViewModel
                 if (valueString == null)
                     return string.Empty;
 
-                var name = GlobalizedApplication.Instance.GetResourceString($"Map_{valueString}");
+                // a translated name, else the map's name in the game data ("TheIsland_WP" -> "The Island"), as in the
+                // profile's map box; for a mod map path, the same for its last part
+                var name = GameData.FriendlyMapNameForClass(valueString, true);
                 if (!string.IsNullOrWhiteSpace(name))
                     return name;
 
                 var mapName = ServerProfile.GetMapName(valueString);
-
-                // check if the name is stored in the globalization file
-                name = GlobalizedApplication.Instance.GetResourceString($"Map_{mapName}");
+                name = GameData.FriendlyMapNameForClass(mapName, true);
                 if (!string.IsNullOrWhiteSpace(name))
                     return name;
 
-                if (!string.IsNullOrWhiteSpace(mapName))
-                    return mapName;
-
-                return valueString;
+                return string.IsNullOrWhiteSpace(mapName) ? valueString : mapName;
             }
             catch
             {

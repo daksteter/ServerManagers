@@ -545,87 +545,82 @@
     },
     {
       "ClassName": "SupplyCrate_Bottle_BASE_C",
-      "Description": "Bottle BASE",
+      "Description": "Bottle (base class)",
       "Mod": "BobsTallTales"
     },
     {
       "ClassName": "SupplyCrate_BuriedTreasureBase_C",
-      "Description": "Buried Treasure Base",
+      "Description": "Buried Treasure (base class)",
       "Mod": "BobsTallTales"
     },
     {
       "ClassName": "SupplyCrate_BuriedTreasureBase_Apprentice_C",
-      "Description": "Buried Treasure Base Apprentice",
+      "Description": "Buried Treasure (Apprentice)",
       "Mod": "BobsTallTales"
     },
     {
       "ClassName": "SupplyCrate_BuriedTreasureBase_Ascendant_C",
-      "Description": "Buried Treasure Base Ascendant",
+      "Description": "Buried Treasure (Ascendant)",
       "Mod": "BobsTallTales"
     },
     {
       "ClassName": "SupplyCrate_BuriedTreasureBase_Bloodhound_Doggo_C",
-      "Description": "Buried Treasure Base Bloodhound Doggo",
+      "Description": "Buried Treasure (Bloodhound)",
       "Mod": "BobsTallTales"
     },
     {
       "ClassName": "SupplyCrate_BuriedTreasureBase_Journeyman_C",
-      "Description": "Buried Treasure Base Journeyman",
+      "Description": "Buried Treasure (Journeyman)",
       "Mod": "BobsTallTales"
     },
     {
       "ClassName": "SupplyCrate_BuriedTreasureBase_Mastercraft_C",
-      "Description": "Buried Treasure Base Mastercraft",
+      "Description": "Buried Treasure (Mastercraft)",
       "Mod": "BobsTallTales"
     },
     {
       "ClassName": "SupplyCrate_BuriedTreasureBase_Primitive_C",
-      "Description": "Buried Treasure Base Primitive",
+      "Description": "Buried Treasure (Primitive)",
       "Mod": "BobsTallTales"
     },
     {
       "ClassName": "SupplyCrate_BuriedTreasureBase_Ramshackle_C",
-      "Description": "Buried Treasure Base Ramshackle",
-      "Mod": "BobsTallTales"
-    },
-    {
-      "ClassName": "SupplyCrate_BuriedTreasureBase_Test_C",
-      "Description": "Buried Treasure Base Test",
+      "Description": "Buried Treasure (Ramshackle)",
       "Mod": "BobsTallTales"
     },
     {
       "ClassName": "SupplyCrate_BuriedTreasurePirate_Apprentice_C",
-      "Description": "Buried Treasure Pirate Apprentice",
+      "Description": "Pirate Buried Treasure (Apprentice)",
       "Mod": "BobsTallTales"
     },
     {
       "ClassName": "SupplyCrate_BuriedTreasurePirate_Ascendant_C",
-      "Description": "Buried Treasure Pirate Ascendant",
+      "Description": "Pirate Buried Treasure (Ascendant)",
       "Mod": "BobsTallTales"
     },
     {
       "ClassName": "SupplyCrate_BuriedTreasurePirate_BASE_C",
-      "Description": "Buried Treasure Pirate BASE",
+      "Description": "Pirate Buried Treasure (base class)",
       "Mod": "BobsTallTales"
     },
     {
       "ClassName": "SupplyCrate_BuriedTreasurePirate_Journeyman_C",
-      "Description": "Buried Treasure Pirate Journeyman",
+      "Description": "Pirate Buried Treasure (Journeyman)",
       "Mod": "BobsTallTales"
     },
     {
       "ClassName": "SupplyCrate_BuriedTreasurePirate_Mastercraft_C",
-      "Description": "Buried Treasure Pirate Mastercraft",
+      "Description": "Pirate Buried Treasure (Mastercraft)",
       "Mod": "BobsTallTales"
     },
     {
       "ClassName": "SupplyCrate_BuriedTreasurePirate_Primitive_C",
-      "Description": "Buried Treasure Pirate Primitive",
+      "Description": "Pirate Buried Treasure (Primitive)",
       "Mod": "BobsTallTales"
     },
     {
       "ClassName": "SupplyCrate_BuriedTreasurePirate_Ramshackle_C",
-      "Description": "Buried Treasure Pirate Ramshackle",
+      "Description": "Pirate Buried Treasure (Ramshackle)",
       "Mod": "BobsTallTales"
     }
   ],

@@ -807,117 +807,117 @@
   "SupplyCrates": [
     {
       "ClassName": "SupplyCrate_Base_Horde_Astraeos_C",
-      "Description": "Base Horde Astraeos",
+      "Description": "Orbital Supply Drop (base class)",
       "Mod": "Astraeos"
     },
     {
       "ClassName": "SupplyCrate_Base_Horde_Easy_Astraeos_C",
-      "Description": "Base Horde Easy Astraeos",
+      "Description": "Orbital Supply Drop (Blue)",
       "Mod": "Astraeos"
     },
     {
       "ClassName": "SupplyCrate_Base_Horde_Hard_Astraeos_C",
-      "Description": "Base Horde Hard Astraeos",
+      "Description": "Orbital Supply Drop (Red)",
       "Mod": "Astraeos"
     },
     {
       "ClassName": "SupplyCrate_Base_Horde_Legendary_Astraeos_C",
-      "Description": "Base Horde Legendary Astraeos",
+      "Description": "Orbital Supply Drop (Purple)",
       "Mod": "Astraeos"
     },
     {
       "ClassName": "SupplyCrate_Base_Horde_Medium_Astraeos_C",
-      "Description": "Base Horde Medium Astraeos",
+      "Description": "Orbital Supply Drop (Yellow)",
       "Mod": "Astraeos"
     },
     {
       "ClassName": "SupplyCrate_Horde_MeteorBase_Astraeos_C",
-      "Description": "Horde Meteor Base Astraeos",
+      "Description": "Horde Meteor Base",
       "Mod": "Astraeos"
     },
     {
       "ClassName": "SupplyCrate_Level25_Astraeos_C",
-      "Description": "Level25 Astraeos",
+      "Description": "Blue Beacon",
       "Mod": "Astraeos"
     },
     {
       "ClassName": "SupplyCrate_Level25_Double_Astraeos_C",
-      "Description": "Level25 Double Astraeos",
+      "Description": "Blue Beacon (Double items)",
       "Mod": "Astraeos"
     },
     {
       "ClassName": "SupplyCrate_Level30_Double_ScorchedEarth_Astraeos_C",
-      "Description": "Level30 Double Scorched Earth Astraeos",
+      "Description": "Desert Blue Beacon (Double items)",
       "Mod": "Astraeos"
     },
     {
       "ClassName": "SupplyCrate_Level30_ScorchedEarth_Astraeos_C",
-      "Description": "Level30 Scorched Earth Astraeos",
+      "Description": "Desert Blue Beacon",
       "Mod": "Astraeos"
     },
     {
       "ClassName": "SupplyCrate_Level35_Astraeos_C",
-      "Description": "Level35 Astraeos",
+      "Description": "Purple Beacon",
       "Mod": "Astraeos"
     },
     {
       "ClassName": "SupplyCrate_Level35_Double_Astraeos_C",
-      "Description": "Level35 Double Astraeos",
+      "Description": "Purple Beacon (Double items)",
       "Mod": "Astraeos"
     },
     {
       "ClassName": "SupplyCrate_Level45_Astraeos_C",
-      "Description": "Level45 Astraeos",
+      "Description": "Yellow Beacon",
       "Mod": "Astraeos"
     },
     {
       "ClassName": "SupplyCrate_Level45_Double_Astraeos_C",
-      "Description": "Level45 Double Astraeos",
+      "Description": "Yellow Beacon (Double items)",
       "Mod": "Astraeos"
     },
     {
       "ClassName": "SupplyCrate_Level45_Double_ScorchedEarth_Astraeos_C",
-      "Description": "Level45 Double Scorched Earth Astraeos",
+      "Description": "Desert Purple Beacon (Double items)",
       "Mod": "Astraeos"
     },
     {
       "ClassName": "SupplyCrate_Level45_ScorchedEarth_Astraeos_C",
-      "Description": "Level45 Scorched Earth Astraeos",
+      "Description": "Desert Purple Beacon",
       "Mod": "Astraeos"
     },
     {
       "ClassName": "SupplyCrate_Level55_Double_ScorchedEarth_Astraeos_C",
-      "Description": "Level55 Double Scorched Earth Astraeos",
+      "Description": "Desert Yellow Beacon (Double items)",
       "Mod": "Astraeos"
     },
     {
       "ClassName": "SupplyCrate_Level55_ScorchedEarth_Astraeos_C",
-      "Description": "Level55 Scorched Earth Astraeos",
+      "Description": "Desert Yellow Beacon",
       "Mod": "Astraeos"
     },
     {
       "ClassName": "SupplyCrate_Level60_Astraeos_C",
-      "Description": "Level60 Astraeos",
+      "Description": "Red Beacon",
       "Mod": "Astraeos"
     },
     {
       "ClassName": "SupplyCrate_Level60_Double_Astraeos_C",
-      "Description": "Level60 Double Astraeos",
+      "Description": "Red Beacon (Double items)",
       "Mod": "Astraeos"
     },
     {
       "ClassName": "SupplyCrate_Level70_Double_ScorchedEarth_Astraeos_C",
-      "Description": "Level70 Double Scorched Earth Astraeos",
+      "Description": "Desert Red Beacon (Double items)",
       "Mod": "Astraeos"
     },
     {
       "ClassName": "SupplyCrate_Level70_ScorchedEarth_Astraeos_C",
-      "Description": "Level70 Scorched Earth Astraeos",
+      "Description": "Desert Red Beacon",
       "Mod": "Astraeos"
     },
     {
       "ClassName": "SupplyCrate_Level90_Astraeos_C",
-      "Description": "Level90 Astraeos",
+      "Description": "Level 90 Beacon",
       "Mod": "Astraeos"
     }
   ],

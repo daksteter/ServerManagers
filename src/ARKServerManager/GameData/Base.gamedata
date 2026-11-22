@@ -5446,6 +5446,30 @@
       "ClassName": "EngramEntry_Saddle_YiLing_C",
       "Description": "Yi Ling Saddle",
       "Mod": "ArkPrime"
+    },
+    {
+      "Level": 43,
+      "Points": 18,
+      "IsTekGram": false,
+      "ClassName": "EngramEntry_Saddle_GrandTortugar_C",
+      "Description": "Saddle - Grand Tortugar",
+      "Mod": "ArkPrime"
+    },
+    {
+      "Level": 52,
+      "Points": 16,
+      "IsTekGram": false,
+      "ClassName": "EngramEntry_Dragontopia_Saddle_Gargantar_C",
+      "Description": "Saddle - Gargantar",
+      "Mod": "ArkPrime"
+    },
+    {
+      "Level": 65,
+      "Points": 18,
+      "IsTekGram": false,
+      "ClassName": "EngramEntry_Dragontopia_Saddle_Umbra_C",
+      "Description": "Saddle - Umbra",
+      "Mod": "ArkPrime"
     }
   ],
   "Items": [
@@ -14983,47 +15007,47 @@
     },
     {
       "ClassName": "SupplyCrate_BossLoot_Alpha_C",
-      "Description": "Boss Loot Alpha",
+      "Description": "Boss Loot (Alpha)",
       "Mod": "ArkPrime"
     },
     {
       "ClassName": "SupplyCrate_BossLoot_Beta_C",
-      "Description": "Boss Loot Beta",
+      "Description": "Boss Loot (Beta)",
       "Mod": "ArkPrime"
     },
     {
       "ClassName": "SupplyCrate_BossLoot_Gamma_C",
-      "Description": "Boss Loot Gamma",
+      "Description": "Boss Loot (Gamma)",
       "Mod": "ArkPrime"
     },
     {
       "ClassName": "SupplyCrate_BuriedTreasure_ShoulderDragon_C",
-      "Description": "Buried Treasure Shoulder Dragon",
+      "Description": "Dragon Hoard",
       "Mod": "ArkPrime"
     },
     {
       "ClassName": "SupplyCrate_Cave_BASE_C",
-      "Description": "Cave BASE",
+      "Description": "Cave Loot Crate (base class)",
       "Mod": "ArkPrime"
     },
     {
       "ClassName": "SupplyCrate_Cave_QualityTier4_LostIsland_C",
-      "Description": "Cave Quality Tier4 Lost Island",
+      "Description": "Cave Loot Crate (Red, Lost Island)",
       "Mod": "ArkPrime"
     },
     {
       "ClassName": "SupplyCrate_Level45_LostIsland_C",
-      "Description": "Level45 Lost Island",
+      "Description": "Yellow Beacon (Lost Island)",
       "Mod": "ArkPrime"
     },
     {
       "ClassName": "SupplyCrate_Level60_LostIsland_C",
-      "Description": "Level60 Lost Island",
+      "Description": "Red Beacon (Lost Island)",
       "Mod": "ArkPrime"
     },
     {
       "ClassName": "SupplyCrate_OceanDrop_Fjordor_C",
-      "Description": "Ocean Drop Fjordor",
+      "Description": "Ocean Drop (Fjordur)",
       "Mod": "ArkPrime"
     }
   ],
