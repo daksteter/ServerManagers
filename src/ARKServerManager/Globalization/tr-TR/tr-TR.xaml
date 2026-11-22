@@ -1466,14 +1466,6 @@ Wildcard tarafından belgelenmemiştir.</sys:String>
     <sys:String x:Key="ServerSettings_NonPermanentDiseasesLabel">Kalıcı Olmayan Hastalıklar</sys:String>
     <sys:String x:Key="ServerSettings_NonPermanentDiseasesTooltip">Etkinleştirilirse, hastalıklar kalıcı olmaz (yeniden doğarsanız hastalıkları kaybedersiniz).</sys:String>
 
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScaleLabel">NPC Ağ Durağı Aralık Ölçeğini Geçersiz Kıl</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScaleTooltip">Etkinleştirilirse, NPC ağ durağı ölçeği ayarlarını geçersiz kılabilirsiniz.</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePlayerCountStartLabel">Çevrimiçi Oyuncu Sayısı Başlangıcı</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePlayerCountStartTooltip">Ağ durağı ölçeği etkin olduğunda minimum çevrimiçi oyuncu sayısı.</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePlayerCountEndLabel">Çevrimiçi Oyuncu Sayısı Sonu</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePlayerCountEndTooltip">Maksimum ölçeğe ulaşıldığında çevrimiçi oyuncu sayısı.</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePercentEndLabel">Ölçek Maksimumu</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePercentEndTooltip">Çevrimiçi oyuncu sayısı son değere ulaştığında sunucu tarafından kullanılan maksimum ölçek yüzdesini belirler.</sys:String>
 
     <sys:String x:Key="ServerSettings_OxygenSwimSpeedStatMultiplierLabel">Oksijen Yüzme Hızı Beceri Çarpanı</sys:String>
     <sys:String x:Key="ServerSettings_OxygenSwimSpeedStatMultiplierTooltip">Oksijene harcanan seviye tarafından çarpılan yüzme hızını belirler.</sys:String>
@@ -1544,9 +1536,6 @@ Wildcard tarafından belgelenmemiştir.</sys:String>
     <sys:String x:Key="ServerSettings_Ragnarok_VolcanoIntensityLabel">Volkan Şiddeti</sys:String>
     <sys:String x:Key="ServerSettings_Ragnarok_VolcanoIntensityTooltip">Düşük bir değer, volkanın patlamasının daha şiddetli olacağı anlamına gelir. Önerilen 1.0'da bırakılması, minimum değer 0.25'tir ve çoklu oyuncu oyunları için 0.5'in altına düşmemelidir. Çok yüksek sayılar neredeyse volkandan fırlatılan ateş topu taşlarını devre dışı bırakır.</sys:String>
 
-    <sys:String x:Key="ServerSettings_FjordurLabel">Fjordur Ayarlarını Etkinleştir</sys:String>
-    <sys:String x:Key="ServerSettings_UseFjordurTraversalBuffLabel">Fjordur Biyom Teleportunu Etkinleştir</sys:String>
-    <sys:String x:Key="ServerSettings_UseFjordurTraversalBuffTooltip">Etkinleştirilirse, Fjordur haritasında biyom teleportuna izin verir.</sys:String>
 
     <sys:String x:Key="ServerSettings_ItemStatClampsLabel">Eşya İstatistik Sınırları</sys:String>
     <sys:String x:Key="ServerSettings_ItemStatClampsNoteLabel">UYARI: Bu, mevcut eşyaların istatistiklerini kalıcı olarak değiştirir, bu nedenle sıkıntı yaşamamak için mevcut kaydınızı yedeklediğinizden emin olun.</sys:String>
@@ -1724,8 +1713,6 @@ Wildcard tarafından belgelenmemiştir.</sys:String>
     <sys:String x:Key="ServerSettings_DisableDinoRidingTooltip">Etkinleştirildiğinde, tüm evcilleştirilmiş dinozorlar üzerinde binilemez hale gelir.</sys:String>
     <sys:String x:Key="ServerSettings_DisableDinoTamingLabel">Dinozor Evcilleştirmeyi Devre Dışı Bırak</sys:String>
     <sys:String x:Key="ServerSettings_DisableDinoTamingTooltip">Etkinleştirildiğinde, tüm yabani dinozorlar evcilleştirilemez hale gelir.</sys:String>
-    <sys:String x:Key="ServerSettings_DisableDinoBreedingLabel">Dinozor Üretmeyi Devre Dışı Bırak</sys:String>
-    <sys:String x:Key="ServerSettings_DisableDinoBreedingTooltip">Etkinleştirildiğinde, evcilleştirilmiş yaratıkların çiftleştirilmesini önler.</sys:String>
     <sys:String x:Key="ServerSettings_EnableForceCanRideFliersLabel">Uçan Binmeyi Değiştirme</sys:String>
     <sys:String x:Key="ServerSettings_EnableForceCanRideFliersTooltip">Etkinleştirildiğinde, harita üzerinde uçanların binilip binilemeyeceğini değiştirmenize izin verir; aksi takdirde harita ayarlarını kullanmak için varsayılan değere döner.</sys:String>
     <sys:String x:Key="ServerSettings_ForceCanRideFliersLabel">Uçan Binmeyi Etkinleştir</sys:String>
@@ -1963,8 +1950,6 @@ Wildcard tarafından belgelenmemiştir.</sys:String>
     <sys:String x:Key="ServerSettings_StructurePickupTimeAfterPlacementTooltip">Yerleştirme sonrası hızlı toplama süresini saniye cinsinden belirtir.</sys:String>
     <sys:String x:Key="ServerSettings_StructurePickupHoldDurationLabel">Yapı Toplama Tutma Süresi</sys:String>
     <sys:String x:Key="ServerSettings_StructurePickupHoldDurationTooltip">Hızlı toplama tutma süresini belirtir, 0 kullanarak devre dışı bırakabilir ve anlık toplamaya sahip olabilirsiniz.</sys:String>
-    <sys:String x:Key="ServerSettings_AllowIntegratedSPlusStructuresLabel">Entegre Yapılar Plus'a İzin Ver</sys:String>
-    <sys:String x:Key="ServerSettings_AllowIntegratedSPlusStructuresTooltip">Etkinleştirilirse, tüm yeni S+ yapılarını ekler; aksi takdirde yeni S+ yapılarını devre dışı bırakır (genellikle S+ mod sürümünü kullanmaya devam etmek isteyen resmi olmayan sunucular için kullanılır).</sys:String>
     <sys:String x:Key="ServerSettings_IgnoreStructuresPreventionVolumesLabel">Özel Alanlarda İnşa Etmeyi Devre Dışı Bırak</sys:String>
     <sys:String x:Key="ServerSettings_IgnoreStructuresPreventionVolumesTooltip">Etkinleştirilirse, normalde izin verilmeyen alanlarda inşa etmeye izin verir, bazı haritaların Obeliskler çevresi, Aberration Portalı ve Genesis: Bölüm 1'deki Görev Hacimleri gibi. Not: Genesis: Bölüm 1'de bu ayar varsayılan olarak etkindir ve devre dışı bırakmak için özel olarak bGenesisUseStructuresPreventionVolumes adında bir ayar vardır.</sys:String>
     <sys:String x:Key="ServerSettings_GenesisUseStructuresPreventionVolumesLabel">Görev Alanlarında İnşa Etmeyi Devre Dışı Bırak</sys:String>

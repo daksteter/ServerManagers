@@ -17,7 +17,7 @@ Turning Bletch1971's ARK Server Manager (ARK: Survival Evolved, "ASE") into a ma
 |---|---|---|
 | 1. Detach from upstream services, rebrand | Done | `5e2a0e75`, `995c49d1` |
 | 2. .NET Framework 4.6.2 → .NET 11, latest packages | Done | `e52b007f`, `6c59861b`, `c80cb7ba`, `f273acaf` |
-| 3. ASA support | **Next** — milestones below | |
+| 3. ASA support | In progress: M1–M5 and M7 done, M6 maps only, M8 next | `d554cb0a` plan; `dc58a01b`, `eedbd86a` M1; `0c1aef4d` maps; `ea7753e0`, `d91502ba` M3; `a6d0e38e` M2; `f4e015a2` M5; `d8450b5e` M4; `9609a942`; M7 |
 | 4. Cleanup / tech debt | Ongoing | |
 
 What phases 1–2 changed is in the commit messages. Highlights that affect later work:
@@ -49,9 +49,10 @@ What phases 1–2 changed is in the commit messages. Highlights that affect late
 | SOTF and PGM do not exist; maps use `_WP` names (`TheIsland_WP`, `ScorchedEarth_WP`, …) | Confirmed | — |
 | Windows only (Linux needs Proton) | Confirmed | ARK wiki |
 
-**Verify on a real ASA server before relying on it:** `ListPlayers` output with players connected (empty
-server replies `No Players Connected`), which INI settings ASE had that ASA ignores,
-`AllowedCheaterSteamIDs.txt` naming. (Verified: there is no `version.txt`.)
+**Verified on the test server:** there is no `version.txt`; `ListPlayers` replies `No Players Connected` when empty
+and the player count went to 1 when a player joined; which INI settings ASE had that ASA ignores (M7).
+**Still to verify:** the admin whitelist file is `AllowedCheaterAccountIDs.txt` in ASA (wiki; the name isn't a
+literal in the server binary, so it can't be confirmed there) — the app still writes `AllowedCheaterSteamIDs.txt` (M8).
 
 ---
 
@@ -85,9 +86,11 @@ Ordered so each milestone leaves the app runnable. Tick boxes as commits land.
         `-d3d10`, `-sm4`, `-lowmemory`, `-NoHangDetection`, `-StasisKeepControllers`, `-UseItemDupeCheck`,
         cluster options, `-servergamelog*`, `-exclusivejoin`, `-NoDinos`, `-imprintlimit`, `-culture`, etc.
         Re-run the check after big server updates (scratchpad script `exe_options.py`; could become a test).
-  - [x] Their profile properties still exist (old profiles load); delete them in the Phase 4 cleanup.
-  - [ ] Options in the binary that the app doesn't offer yet: `-passivemods`, `-NoWildBabies`,
-        `-GBUsageToForceRestart`, `-BattlEyeServerRecheck`, `-AlwaysTickDedicatedSkeletalMeshes` (M7).
+  - [x] Their profile properties, reset/sync lines and hidden controls were deleted in M3 (old profiles still
+        load; unknown keys are ignored).
+  - [x] Options in the binary that the app didn't offer: `-passivemods`, `-NoWildBabies`,
+        `-GBUsageToForceRestart`, `-AlwaysTickDedicatedSkeletalMeshes` added in M7. `-BattlEyeServerRecheck`
+        not added (undocumented).
   - [ ] `AdditionalArgs` are glued on raw — enforce "`?ServerAdminPassword` last" if it ever goes on the command line.
 - [x] Ports: ASA binds no peer port (verified with netstat: only the game port, UDP 27015 and RCON), so the
       peer port is hidden and no longer gets a firewall rule. The server **does** open UDP 27015 (Steam)
@@ -100,20 +103,20 @@ Ordered so each milestone leaves the app runnable. Tick boxes as commits land.
       options): starts and is joinable as before; the app shows version 98.9 from the exe.
 - [x] Startup alert text used `{port}` = query port → now the game port.
 - [x] Install via SteamCMD `app_update 2430930` works (anonymous login, ~11.5 GB): test server at
-      `Q:\asmdata\Servers\Server1`.
+      `Q:\asmdata\Servers\Server1` (later deleted; the test server is now `Server2`).
 - [x] ASA has **no `version.txt`**. The server exe's version resource has an `ArkVersion` entry (`98.9`),
       plus `ProductVersion` `5.8.3-841389+++ARK1+Rel-1.97`. `ServerApp.GetServerVersion(installDirectory)`
       reads `ArkVersion` via `GetFileVersionInfo`/`VerQueryValue` (`VersionUtils.GetVersionResourceString`;
       .NET's `FileVersionInfo` returns nothing for this exe). Used for the installed and cached versions, and
       when a profile is loaded, so the version shows before the server has ever run. Update detection was
-      already based on file times, not the version. `Config.VersionFile` is now unused (Phase 4).
+      already based on file times, not the version. `Config.VersionFile` was removed in M3.
 - [x] Branch handling: nothing ASA-specific (Steam beta branches and passwords work the same way).
 - [x] **Test:** installed a fresh ASA server through the app (`Q:\asmdata\Servers\Server2`) and started it:
       `RunServer.cmd` is correct, the server starts in ~1 minute (game port 7777/UDP, RCON 32330/TCP),
       session name and RCON settings come through from `GameUserSettings.ini`, and the app detects the
       process. Status stayed "Initializing" until M2 (A2S).
-- [ ] Note: a new profile defaults to the next free `ServerN` folder and must be installed before Start
-      is enabled (upstream behaviour); pointing it at an existing install also works.
+- Note: a new profile defaults to the next free `ServerN` folder and must be installed before Start
+  is enabled (upstream behaviour); pointing it at an existing install also works.
 
 ### M2. Server status and players via RCON
 
@@ -131,15 +134,16 @@ online check, and the Discord `info` command. Replace with process state + RCON.
 - [x] `ServerRuntime.RegisterForUpdates` no longer needs a query port or the machine's public IP.
 - [x] `ServerApp.StopServer` online-player check → RCON (`ListPlayers`); no RCON → count down in full.
 - [x] `DiscordBotHelper` `info` command → the app's own status (players via RCON).
-- [x] `ServerRCON` `listplayers` regex accepts alphanumeric (EOS) IDs. Verify with a player connected.
+- [x] `ServerRCON` `listplayers` regex accepts alphanumeric (EOS) IDs.
 - [x] RCON password no longer written to the profile debug log.
 - [ ] RCON currently comes from `QueryMaster.Server.GetControl` (which also opens an A2S socket).
       Consider a small standalone Source-RCON client and retiring most of QueryMaster.
 - [ ] Without RCON there is no player count — make that clear in the UI (or default RCON on for new profiles).
 - [x] **Test:** with the test server running, the app reports Running / Available, 0 players, within one
       poll of starting, over a single RCON connection that stays open.
-- [ ] **Test:** player count and RCON player list change when a player joins; stop with countdown skips
-      the countdown on an empty server.
+- [x] **Test:** the player count went to 1 when a player joined; stop with countdown works.
+- [ ] **Test:** the RCON window's player list with a player connected (EOS ID parsing); stop skips the
+      countdown on an empty server.
 
 ### M3. Mods: Steam Workshop → CurseForge
 
@@ -167,7 +171,7 @@ Decision: **plain CurseForge IDs** (no CurseForge API for now).
       names; it goes with the `ArkData` replacement (M5).
 - [ ] `ModDetailsWindow` replacement: a simple CurseForge ID list editor. Optional: names via the CurseForge
       API (needs an API key — decision below). For now mods are typed into the Mod IDs box.
-- [ ] Optional: `-passivemods=` support.
+- [x] Optional: `-passivemods=` support (M7: "Passive mod IDs" below Mod IDs).
 - [ ] Game data files still contain `TotalConversions` / `OfficialMods` arrays (ignored now; M6 replaces the data).
 
 ### M4. Remove SOTF and PGM
@@ -179,7 +183,8 @@ Decision: **plain CurseForge IDs** (no CurseForge API for now).
       the global "show SOTF / PGM section" options; the `ServerProfileCategory` / `ServerSettingsResetAction`
       values; settings `AppId_SotF`, `AppIdServer_SotF`, `AppPatchNotesUrlSotF`, `DefaultServerMap_PGM`,
       `SavedPGMRelativePath`, `DefaultPGMapName`, `Section{SOTF,PGM}Enabled`, `Section{SOTF,PGM}IsExpanded`.
-- [ ] Their resource strings remain in the language files (pruned with all unused keys at the end of M3).
+- [x] Their resource strings were pruned at the end of M3. Left on purpose: `Mod_PGM` and the `*_PGM_C`
+      spawn-entry names, which are game class names looked up from game data (they go with M6).
 
 ### M5. Saves, backups and player data
 
@@ -221,13 +226,37 @@ Decision: **plain CurseForge IDs** (no CurseForge API for now).
 
 ### M7. Settings review (`ServerProfile.cs`, 451 properties / 305 INI keys)
 
-- [ ] Remove clearly ASE-only settings: Extinction event, Genesis/Gen2, Hexagons, Ragnarok section,
-      Fjordur, Crystal Isles, cryopod nerf (verify), command-line-only ASE flags, `BanListURL` default
-      (`arkdedicated.com`).
-- [ ] Add ASA-only settings worth exposing (`-ServerPlatform`, `-passivemods`, `-DisableCustomCosmetics`,
-      `-GBUsageToForceRestart`, ASA-era INI keys — research list).
-- [ ] Fix: `ClusterDirOverride` is synced unconditionally in profile sync (~6429, duplicate line outside the `if`).
-- [ ] Profile sync (`ProfileSyncWindow`, `SyncSettings` ~6287–7066) — trim sections for removed features.
+Method: every INI key and launch option the manager writes was checked against the ASA server binary (key names
+appear as UTF-16 `GConfig` lookups or ASCII reflection names) and against the ARK wiki's server configuration page,
+whose raw wikitext marks each option `inASA` / `inASE`. Map-specific keys read by map blueprints can't be found in the
+exe (the content paks are compressed), so the maps the server ships with were read from the pak directory indexes:
+The Island, Scorched Earth, The Center, Aberration, Extinction, Astraeos, Ragnarok, Valguero, Lost Colony, Genesis
+(no Fjordur, Crystal Isles, Lost Island or Genesis 2).
+
+- [x] Removed (not in the ASA binary, not listed for ASA): Fjordur traversal buff (+ its "Fjordur settings" group),
+      `AllowIntegratedSPlusStructures`, NPC network stasis range scaling (override + 3 keys), `bDisableDinoBreeding`.
+- [x] Kept, contrary to the first plan: Extinction event, Genesis, Hexagons, Ragnarok, cryopod nerf — their maps ship
+      with ASA and the binary still reads the keys. Genesis 2 world buffs etc. are still read by the binary; kept.
+- [x] `BanListURL` default → ASA's official list `https://cdn2.arkdedicated.com/asa/BanList.txt` (from the binary).
+- [x] Added ASA-only settings (wiki `inASA = Yes`, `inASE = No`), all written only when changed from the server
+      default (`WriteIfNotValue`), or nullable (checkbox + slider) where the default isn't known:
+  - Launch options (Administration > Server options): `-NoWildBabies`, `-disabledinonetrangescaling`,
+    `-DisableCustomCosmetics`, `-DoCustomCosmeticValidation`, `-AlwaysTickDedicatedSkeletalMeshes`,
+    `-GBUsageToForceRestart=` (nullable); `-passivemods=` (Maps and mods, below Mod IDs).
+  - GameUserSettings: `CosmeticWhitelistOverride`, `AdminListURL` (Server options); cryopods (fridge on saddles,
+    enemy check, fridge requirement), Cryo Hospital (4), outposts (3 nullable + sigil multiplier), implant respawn
+    cooldown, PvP mounted weapons, max train cars, Wandering King Titan spawn time (Rules); soft tame limit (3),
+    Cosmo ammo (2), Armadoggo / Veilwyn cooldowns, burrow decay, Gacha caves (Dinos); bunkers (10), Bloodforge (3)
+    (Structures).
+  - Game.ini: photo mode (2), tribe tower bonus, Valguero memorial names (Rules); `bAllowSpeedLeveling` (Dinos);
+    Tek wireless crafting (5), generator limits (2, nullable) (Structures).
+  - Not added: vendor/debug options (`-EnableSteelShield`, `-NitradoQueryPort`, `-NoAI`, `-NoDinosExcept*`, thread
+    flags), `UseCharacterTracker` (undocumented), `CheatTeleportLocations` (list editor needed).
+- [x] Fix: profile sync copied `ClusterDirOverride` even with cluster sync off (duplicate line outside the `if`).
+- [x] Profile sync and section resets include the new settings; removed settings are gone from both.
+- Note: new strings are en-US only (other languages fall back to English).
+- [ ] **Test:** settings page shows the new groups and options; changing a setting writes it to the INI / command
+      line, and resetting the section removes it again.
 
 ### M8. Links, text and branding
 
@@ -245,7 +274,8 @@ Decision: **plain CurseForge IDs** (no CurseForge API for now).
 - [ ] `WebClient` / `HttpWebRequest` (SYSLIB0014, ~30 sites) → shared `HttpClient`.
 - [ ] WFO2000 analyzer warnings (82): command getters that create a new instance on every call.
 - [ ] SYSLIB0051 legacy serialization constructors on 3 exception types; CA2200 rethrows in ArkData.
-- [ ] Dead code: external status API path, `ClustersDir` setting, `SteamServerDetail*` models,
+- [x] Dead code removed: the external status API path (M2), the `ClustersDir` setting (M3).
+- [ ] Dead code left: `SteamServerDetail*` models,
       `SteamUtils.GetSteamProcess`, `LoadOnlinePlayers*`.
 - [ ] Self-updater (`ServerManager.Updater`): disabled; its single-exe swap logic doesn't fit .NET's
       multi-file output. Remove it, or rework if a release channel is ever wanted.

@@ -67,6 +67,12 @@ namespace ServerManagerTool.Lib
             this.ClearNullableValue(OverrideMaxExperiencePointsPlayerProperty);
             this.ClearNullableValue(OverrideMaxExperiencePointsDinoProperty);
             this.ClearNullableValue(ImprintlimitProperty);
+            this.ClearNullableValue(GBUsageToForceRestartProperty);
+            this.ClearNullableValue(MaxActiveOutpostsProperty);
+            this.ClearNullableValue(MaxActiveResourceCachesProperty);
+            this.ClearNullableValue(MaxActiveCityOutpostsProperty);
+            this.ClearNullableValue(LimitGeneratorsNumProperty);
+            this.ClearNullableValue(LimitGeneratorsRangeProperty);
 
             // initialise the complex properties
             this.DinoSpawnWeightMultipliers = new AggregateIniValueList<DinoSpawn>(nameof(DinoSpawnWeightMultipliers), GameData.GetDinoSpawns);
@@ -296,7 +302,7 @@ namespace ServerManagerTool.Lib
             set { SetValue(EnableBanListURLProperty, value); }
         }
 
-        public static readonly DependencyProperty BanListURLProperty = DependencyProperty.Register(nameof(BanListURL), typeof(string), typeof(ServerProfile), new PropertyMetadata("http://arkdedicated.com/banlist.txt"));
+        public static readonly DependencyProperty BanListURLProperty = DependencyProperty.Register(nameof(BanListURL), typeof(string), typeof(ServerProfile), new PropertyMetadata("https://cdn2.arkdedicated.com/asa/BanList.txt"));
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Administration, ConditionedOn = nameof(EnableBanListURL), QuotedString = QuotedStringType.True)]
         public string BanListURL
         {
@@ -401,6 +407,14 @@ namespace ServerManagerTool.Lib
         {
             get { return (string)GetValue(ServerModIdsProperty); }
             set { SetValue(ServerModIdsProperty, value); }
+        }
+
+        public static readonly DependencyProperty PassiveModIdsProperty = DependencyProperty.Register(nameof(PassiveModIds), typeof(string), typeof(ServerProfile), new PropertyMetadata(string.Empty));
+        [DataMember]
+        public string PassiveModIds
+        {
+            get { return (string)GetValue(PassiveModIdsProperty); }
+            set { SetValue(PassiveModIdsProperty, value); }
         }
 
         public static readonly DependencyProperty EnableExtinctionEventProperty = DependencyProperty.Register(nameof(EnableExtinctionEvent), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
@@ -817,6 +831,70 @@ namespace ServerManagerTool.Lib
         {
             get { return (bool)GetValue(UseItemDupeCheckProperty); }
             set { SetValue(UseItemDupeCheckProperty, value); }
+        }
+
+        public static readonly DependencyProperty NoWildBabiesProperty = DependencyProperty.Register(nameof(NoWildBabies), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
+        [DataMember]
+        public bool NoWildBabies
+        {
+            get { return (bool)GetValue(NoWildBabiesProperty); }
+            set { SetValue(NoWildBabiesProperty, value); }
+        }
+
+        public static readonly DependencyProperty DisableDinoNetRangeScalingProperty = DependencyProperty.Register(nameof(DisableDinoNetRangeScaling), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
+        [DataMember]
+        public bool DisableDinoNetRangeScaling
+        {
+            get { return (bool)GetValue(DisableDinoNetRangeScalingProperty); }
+            set { SetValue(DisableDinoNetRangeScalingProperty, value); }
+        }
+
+        public static readonly DependencyProperty DisableCustomCosmeticsProperty = DependencyProperty.Register(nameof(DisableCustomCosmetics), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
+        [DataMember]
+        public bool DisableCustomCosmetics
+        {
+            get { return (bool)GetValue(DisableCustomCosmeticsProperty); }
+            set { SetValue(DisableCustomCosmeticsProperty, value); }
+        }
+
+        public static readonly DependencyProperty DoCustomCosmeticValidationProperty = DependencyProperty.Register(nameof(DoCustomCosmeticValidation), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
+        [DataMember]
+        public bool DoCustomCosmeticValidation
+        {
+            get { return (bool)GetValue(DoCustomCosmeticValidationProperty); }
+            set { SetValue(DoCustomCosmeticValidationProperty, value); }
+        }
+
+        public static readonly DependencyProperty AlwaysTickDedicatedSkeletalMeshesProperty = DependencyProperty.Register(nameof(AlwaysTickDedicatedSkeletalMeshes), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
+        [DataMember]
+        public bool AlwaysTickDedicatedSkeletalMeshes
+        {
+            get { return (bool)GetValue(AlwaysTickDedicatedSkeletalMeshesProperty); }
+            set { SetValue(AlwaysTickDedicatedSkeletalMeshesProperty, value); }
+        }
+
+        public static readonly DependencyProperty GBUsageToForceRestartProperty = DependencyProperty.Register(nameof(GBUsageToForceRestart), typeof(NullableValue<int>), typeof(ServerProfile), new PropertyMetadata(new NullableValue<int>(false, 35)));
+        [DataMember]
+        public NullableValue<int> GBUsageToForceRestart
+        {
+            get { return (NullableValue<int>)GetValue(GBUsageToForceRestartProperty); }
+            set { SetValue(GBUsageToForceRestartProperty, value); }
+        }
+
+        public static readonly DependencyProperty CosmeticWhitelistOverrideProperty = DependencyProperty.Register(nameof(CosmeticWhitelistOverride), typeof(string), typeof(ServerProfile), new PropertyMetadata(string.Empty));
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Administration, WriteIfNotValue = "", QuotedString = QuotedStringType.True)]
+        public string CosmeticWhitelistOverride
+        {
+            get { return (string)GetValue(CosmeticWhitelistOverrideProperty); }
+            set { SetValue(CosmeticWhitelistOverrideProperty, value); }
+        }
+
+        public static readonly DependencyProperty AdminListURLProperty = DependencyProperty.Register(nameof(AdminListURL), typeof(string), typeof(ServerProfile), new PropertyMetadata(string.Empty));
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Administration, WriteIfNotValue = "", QuotedString = QuotedStringType.True)]
+        public string AdminListURL
+        {
+            get { return (string)GetValue(AdminListURLProperty); }
+            set { SetValue(AdminListURLProperty, value); }
         }
 
         public static readonly DependencyProperty ProcessPriorityProperty = DependencyProperty.Register(nameof(ProcessPriority), typeof(string), typeof(ServerProfile), new PropertyMetadata("normal"));
@@ -1628,37 +1706,6 @@ namespace ServerManagerTool.Lib
             set { SetValue(NonPermanentDiseasesProperty, value); }
         }
 
-        public static readonly DependencyProperty OverrideNPCNetworkStasisRangeScaleProperty = DependencyProperty.Register(nameof(OverrideNPCNetworkStasisRangeScale), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
-        public bool OverrideNPCNetworkStasisRangeScale
-        {
-            get { return (bool)GetValue(OverrideNPCNetworkStasisRangeScaleProperty); }
-            set { SetValue(OverrideNPCNetworkStasisRangeScaleProperty, value); }
-        }
-
-        public static readonly DependencyProperty NPCNetworkStasisRangeScalePlayerCountStartProperty = DependencyProperty.Register(nameof(NPCNetworkStasisRangeScalePlayerCountStart), typeof(int), typeof(ServerProfile), new PropertyMetadata(70));
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, ConditionedOn = nameof(OverrideNPCNetworkStasisRangeScale))]
-        public int NPCNetworkStasisRangeScalePlayerCountStart
-        {
-            get { return (int)GetValue(NPCNetworkStasisRangeScalePlayerCountStartProperty); }
-            set { SetValue(NPCNetworkStasisRangeScalePlayerCountStartProperty, value); }
-        }
-
-        public static readonly DependencyProperty NPCNetworkStasisRangeScalePlayerCountEndProperty = DependencyProperty.Register(nameof(NPCNetworkStasisRangeScalePlayerCountEnd), typeof(int), typeof(ServerProfile), new PropertyMetadata(120));
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, ConditionedOn = nameof(OverrideNPCNetworkStasisRangeScale))]
-        public int NPCNetworkStasisRangeScalePlayerCountEnd
-        {
-            get { return (int)GetValue(NPCNetworkStasisRangeScalePlayerCountEndProperty); }
-            set { SetValue(NPCNetworkStasisRangeScalePlayerCountEndProperty, value); }
-        }
-
-        public static readonly DependencyProperty NPCNetworkStasisRangeScalePercentEndProperty = DependencyProperty.Register(nameof(NPCNetworkStasisRangeScalePercentEnd), typeof(float), typeof(ServerProfile), new PropertyMetadata(0.5f));
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, ConditionedOn = nameof(OverrideNPCNetworkStasisRangeScale))]
-        public float NPCNetworkStasisRangeScalePercentEnd
-        {
-            get { return (float)GetValue(NPCNetworkStasisRangeScalePercentEndProperty); }
-            set { SetValue(NPCNetworkStasisRangeScalePercentEndProperty, value); }
-        }
-
         public static readonly DependencyProperty UseCorpseLocatorProperty = DependencyProperty.Register(nameof(UseCorpseLocator), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "bUseCorpseLocator")]
         public bool UseCorpseLocator
@@ -1819,6 +1866,158 @@ namespace ServerManagerTool.Lib
             set { SetValue(CryopodNerfIncomingDamageMultiplierPercentProperty, value); }
         }
 
+        public static readonly DependencyProperty AllowCryoFridgeOnSaddleProperty = DependencyProperty.Register(nameof(AllowCryoFridgeOnSaddle), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, WriteIfNotValue = false)]
+        public bool AllowCryoFridgeOnSaddle
+        {
+            get { return (bool)GetValue(AllowCryoFridgeOnSaddleProperty); }
+            set { SetValue(AllowCryoFridgeOnSaddleProperty, value); }
+        }
+
+        public static readonly DependencyProperty DisableCryopodEnemyCheckProperty = DependencyProperty.Register(nameof(DisableCryopodEnemyCheck), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, WriteIfNotValue = false)]
+        public bool DisableCryopodEnemyCheck
+        {
+            get { return (bool)GetValue(DisableCryopodEnemyCheckProperty); }
+            set { SetValue(DisableCryopodEnemyCheckProperty, value); }
+        }
+
+        public static readonly DependencyProperty DisableCryopodFridgeRequirementProperty = DependencyProperty.Register(nameof(DisableCryopodFridgeRequirement), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, WriteIfNotValue = false)]
+        public bool DisableCryopodFridgeRequirement
+        {
+            get { return (bool)GetValue(DisableCryopodFridgeRequirementProperty); }
+            set { SetValue(DisableCryopodFridgeRequirementProperty, value); }
+        }
+
+        public static readonly DependencyProperty CryoHospitalHoursToRegenHPProperty = DependencyProperty.Register(nameof(CryoHospitalHoursToRegenHP), typeof(float), typeof(ServerProfile), new PropertyMetadata(1.0f));
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, WriteIfNotValue = 1.0f)]
+        public float CryoHospitalHoursToRegenHP
+        {
+            get { return (float)GetValue(CryoHospitalHoursToRegenHPProperty); }
+            set { SetValue(CryoHospitalHoursToRegenHPProperty, value); }
+        }
+
+        public static readonly DependencyProperty CryoHospitalHoursToRegenFoodProperty = DependencyProperty.Register(nameof(CryoHospitalHoursToRegenFood), typeof(float), typeof(ServerProfile), new PropertyMetadata(24.0f));
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, WriteIfNotValue = 24.0f)]
+        public float CryoHospitalHoursToRegenFood
+        {
+            get { return (float)GetValue(CryoHospitalHoursToRegenFoodProperty); }
+            set { SetValue(CryoHospitalHoursToRegenFoodProperty, value); }
+        }
+
+        public static readonly DependencyProperty CryoHospitalHoursToDrainTorporProperty = DependencyProperty.Register(nameof(CryoHospitalHoursToDrainTorpor), typeof(float), typeof(ServerProfile), new PropertyMetadata(1.0f));
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, WriteIfNotValue = 1.0f)]
+        public float CryoHospitalHoursToDrainTorpor
+        {
+            get { return (float)GetValue(CryoHospitalHoursToDrainTorporProperty); }
+            set { SetValue(CryoHospitalHoursToDrainTorporProperty, value); }
+        }
+
+        public static readonly DependencyProperty CryoHospitalMatingCooldownReductionProperty = DependencyProperty.Register(nameof(CryoHospitalMatingCooldownReduction), typeof(float), typeof(ServerProfile), new PropertyMetadata(2.0f));
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, WriteIfNotValue = 2.0f)]
+        public float CryoHospitalMatingCooldownReduction
+        {
+            get { return (float)GetValue(CryoHospitalMatingCooldownReductionProperty); }
+            set { SetValue(CryoHospitalMatingCooldownReductionProperty, value); }
+        }
+
+        public static readonly DependencyProperty MaxActiveOutpostsProperty = DependencyProperty.Register(nameof(MaxActiveOutposts), typeof(NullableValue<int>), typeof(ServerProfile), new PropertyMetadata(new NullableValue<int>(false, 5)));
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules)]
+        public NullableValue<int> MaxActiveOutposts
+        {
+            get { return (NullableValue<int>)GetValue(MaxActiveOutpostsProperty); }
+            set { SetValue(MaxActiveOutpostsProperty, value); }
+        }
+
+        public static readonly DependencyProperty MaxActiveResourceCachesProperty = DependencyProperty.Register(nameof(MaxActiveResourceCaches), typeof(NullableValue<int>), typeof(ServerProfile), new PropertyMetadata(new NullableValue<int>(false, 5)));
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules)]
+        public NullableValue<int> MaxActiveResourceCaches
+        {
+            get { return (NullableValue<int>)GetValue(MaxActiveResourceCachesProperty); }
+            set { SetValue(MaxActiveResourceCachesProperty, value); }
+        }
+
+        public static readonly DependencyProperty MaxActiveCityOutpostsProperty = DependencyProperty.Register(nameof(MaxActiveCityOutposts), typeof(NullableValue<int>), typeof(ServerProfile), new PropertyMetadata(new NullableValue<int>(false, 5)));
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules)]
+        public NullableValue<int> MaxActiveCityOutposts
+        {
+            get { return (NullableValue<int>)GetValue(MaxActiveCityOutpostsProperty); }
+            set { SetValue(MaxActiveCityOutpostsProperty, value); }
+        }
+
+        public static readonly DependencyProperty OutpostSigilRewardMultiplierProperty = DependencyProperty.Register(nameof(OutpostSigilRewardMultiplier), typeof(float), typeof(ServerProfile), new PropertyMetadata(1.0f));
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, WriteIfNotValue = 1.0f)]
+        public float OutpostSigilRewardMultiplier
+        {
+            get { return (float)GetValue(OutpostSigilRewardMultiplierProperty); }
+            set { SetValue(OutpostSigilRewardMultiplierProperty, value); }
+        }
+
+        public static readonly DependencyProperty DisablePhotoModeProperty = DependencyProperty.Register(nameof(DisablePhotoMode), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "bDisablePhotoMode", WriteIfNotValue = false)]
+        public bool DisablePhotoMode
+        {
+            get { return (bool)GetValue(DisablePhotoModeProperty); }
+            set { SetValue(DisablePhotoModeProperty, value); }
+        }
+
+        public static readonly DependencyProperty PhotoModeRangeLimitProperty = DependencyProperty.Register(nameof(PhotoModeRangeLimit), typeof(int), typeof(ServerProfile), new PropertyMetadata(3000));
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, WriteIfNotValue = 3000)]
+        public int PhotoModeRangeLimit
+        {
+            get { return (int)GetValue(PhotoModeRangeLimitProperty); }
+            set { SetValue(PhotoModeRangeLimitProperty, value); }
+        }
+
+        public static readonly DependencyProperty IgnorePVPMountedWeaponryRestrictionsProperty = DependencyProperty.Register(nameof(IgnorePVPMountedWeaponryRestrictions), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, WriteIfNotValue = false)]
+        public bool IgnorePVPMountedWeaponryRestrictions
+        {
+            get { return (bool)GetValue(IgnorePVPMountedWeaponryRestrictionsProperty); }
+            set { SetValue(IgnorePVPMountedWeaponryRestrictionsProperty, value); }
+        }
+
+        public static readonly DependencyProperty ImplantSuicideCDProperty = DependencyProperty.Register(nameof(ImplantSuicideCD), typeof(float), typeof(ServerProfile), new PropertyMetadata(28800.0f));
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, WriteIfNotValue = 28800.0f)]
+        public float ImplantSuicideCD
+        {
+            get { return (float)GetValue(ImplantSuicideCDProperty); }
+            set { SetValue(ImplantSuicideCDProperty, value); }
+        }
+
+        public static readonly DependencyProperty TribeTowerBonusMultiplierProperty = DependencyProperty.Register(nameof(TribeTowerBonusMultiplier), typeof(float), typeof(ServerProfile), new PropertyMetadata(2.0f));
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, WriteIfNotValue = 2.0f)]
+        public float TribeTowerBonusMultiplier
+        {
+            get { return (float)GetValue(TribeTowerBonusMultiplierProperty); }
+            set { SetValue(TribeTowerBonusMultiplierProperty, value); }
+        }
+
+        public static readonly DependencyProperty MaxTrainCarsProperty = DependencyProperty.Register(nameof(MaxTrainCars), typeof(int), typeof(ServerProfile), new PropertyMetadata(8));
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, WriteIfNotValue = 8)]
+        public int MaxTrainCars
+        {
+            get { return (int)GetValue(MaxTrainCarsProperty); }
+            set { SetValue(MaxTrainCarsProperty, value); }
+        }
+
+        public static readonly DependencyProperty WorldBossKingKaijuSpawnTimeProperty = DependencyProperty.Register(nameof(WorldBossKingKaijuSpawnTime), typeof(string), typeof(ServerProfile), new PropertyMetadata("19:00:00"));
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, WriteIfNotValue = "19:00:00")]
+        public string WorldBossKingKaijuSpawnTime
+        {
+            get { return (string)GetValue(WorldBossKingKaijuSpawnTimeProperty); }
+            set { SetValue(WorldBossKingKaijuSpawnTimeProperty, value); }
+        }
+
+        public static readonly DependencyProperty ValgueroMemorialEntriesProperty = DependencyProperty.Register(nameof(ValgueroMemorialEntries), typeof(string), typeof(ServerProfile), new PropertyMetadata(string.Empty));
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, WriteIfNotValue = "")]
+        public string ValgueroMemorialEntries
+        {
+            get { return (string)GetValue(ValgueroMemorialEntriesProperty); }
+            set { SetValue(ValgueroMemorialEntriesProperty, value); }
+        }
+
         public static readonly DependencyProperty DisableGenesisMissionsProperty = DependencyProperty.Register(nameof(DisableGenesisMissions), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Rules, "bDisableGenesisMissions")]
         public bool DisableGenesisMissions
@@ -1968,21 +2167,6 @@ namespace ServerManagerTool.Lib
         {
             get { return (float)GetValue(Ragnarok_VolcanoIntensityProperty); }
             set { SetValue(Ragnarok_VolcanoIntensityProperty, value); }
-        }
-
-        public static readonly DependencyProperty Fjordur_EnableSettingsProperty = DependencyProperty.Register(nameof(Fjordur_EnableSettings), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
-        public bool Fjordur_EnableSettings
-        {
-            get { return (bool)GetValue(Fjordur_EnableSettingsProperty); }
-            set { SetValue(Fjordur_EnableSettingsProperty, value); }
-        }
-
-        public static readonly DependencyProperty UseFjordurTraversalBuffProperty = DependencyProperty.Register(nameof(UseFjordurTraversalBuff), typeof(bool), typeof(ServerProfile), new PropertyMetadata(true));
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Rules, ConditionedOn = nameof(Fjordur_EnableSettings))]
-        public bool UseFjordurTraversalBuff
-        {
-            get { return (bool)GetValue(UseFjordurTraversalBuffProperty); }
-            set { SetValue(UseFjordurTraversalBuffProperty, value); }
         }
 
 
@@ -2387,6 +2571,86 @@ namespace ServerManagerTool.Lib
             set { SetValue(AllowFlyerSpeedLevelingProperty, value); }
         }
 
+        public static readonly DependencyProperty AllowSpeedLevelingProperty = DependencyProperty.Register(nameof(AllowSpeedLeveling), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "bAllowSpeedLeveling", WriteIfNotValue = false)]
+        public bool AllowSpeedLeveling
+        {
+            get { return (bool)GetValue(AllowSpeedLevelingProperty); }
+            set { SetValue(AllowSpeedLevelingProperty, value); }
+        }
+
+        public static readonly DependencyProperty DisableBurrowDecayTimersProperty = DependencyProperty.Register(nameof(DisableBurrowDecayTimers), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, WriteIfNotValue = false)]
+        public bool DisableBurrowDecayTimers
+        {
+            get { return (bool)GetValue(DisableBurrowDecayTimersProperty); }
+            set { SetValue(DisableBurrowDecayTimersProperty, value); }
+        }
+
+        public static readonly DependencyProperty ForceGachaUnhappyInCavesProperty = DependencyProperty.Register(nameof(ForceGachaUnhappyInCaves), typeof(bool), typeof(ServerProfile), new PropertyMetadata(true));
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, WriteIfNotValue = true)]
+        public bool ForceGachaUnhappyInCaves
+        {
+            get { return (bool)GetValue(ForceGachaUnhappyInCavesProperty); }
+            set { SetValue(ForceGachaUnhappyInCavesProperty, value); }
+        }
+
+        public static readonly DependencyProperty DestroyTamesOverTheSoftTameLimitProperty = DependencyProperty.Register(nameof(DestroyTamesOverTheSoftTameLimit), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, WriteIfNotValue = false)]
+        public bool DestroyTamesOverTheSoftTameLimit
+        {
+            get { return (bool)GetValue(DestroyTamesOverTheSoftTameLimitProperty); }
+            set { SetValue(DestroyTamesOverTheSoftTameLimitProperty, value); }
+        }
+
+        public static readonly DependencyProperty MaxTamedDinos_SoftTameLimitProperty = DependencyProperty.Register(nameof(MaxTamedDinos_SoftTameLimit), typeof(int), typeof(ServerProfile), new PropertyMetadata(5000));
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, WriteIfNotValue = 5000)]
+        public int MaxTamedDinos_SoftTameLimit
+        {
+            get { return (int)GetValue(MaxTamedDinos_SoftTameLimitProperty); }
+            set { SetValue(MaxTamedDinos_SoftTameLimitProperty, value); }
+        }
+
+        public static readonly DependencyProperty MaxTamedDinos_SoftTameLimit_CountdownForDeletionDurationProperty = DependencyProperty.Register(nameof(MaxTamedDinos_SoftTameLimit_CountdownForDeletionDuration), typeof(int), typeof(ServerProfile), new PropertyMetadata(604800));
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, WriteIfNotValue = 604800)]
+        public int MaxTamedDinos_SoftTameLimit_CountdownForDeletionDuration
+        {
+            get { return (int)GetValue(MaxTamedDinos_SoftTameLimit_CountdownForDeletionDurationProperty); }
+            set { SetValue(MaxTamedDinos_SoftTameLimit_CountdownForDeletionDurationProperty, value); }
+        }
+
+        public static readonly DependencyProperty CosmoWeaponAmmoReloadAmountProperty = DependencyProperty.Register(nameof(CosmoWeaponAmmoReloadAmount), typeof(float), typeof(ServerProfile), new PropertyMetadata(1.0f));
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, WriteIfNotValue = 1.0f)]
+        public float CosmoWeaponAmmoReloadAmount
+        {
+            get { return (float)GetValue(CosmoWeaponAmmoReloadAmountProperty); }
+            set { SetValue(CosmoWeaponAmmoReloadAmountProperty, value); }
+        }
+
+        public static readonly DependencyProperty MaxCosmoWeaponAmmoProperty = DependencyProperty.Register(nameof(MaxCosmoWeaponAmmo), typeof(float), typeof(ServerProfile), new PropertyMetadata(-1.0f));
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, WriteIfNotValue = -1.0f)]
+        public float MaxCosmoWeaponAmmo
+        {
+            get { return (float)GetValue(MaxCosmoWeaponAmmoProperty); }
+            set { SetValue(MaxCosmoWeaponAmmoProperty, value); }
+        }
+
+        public static readonly DependencyProperty ArmadoggoDeathCooldownProperty = DependencyProperty.Register(nameof(ArmadoggoDeathCooldown), typeof(float), typeof(ServerProfile), new PropertyMetadata(3600.0f));
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, WriteIfNotValue = 3600.0f)]
+        public float ArmadoggoDeathCooldown
+        {
+            get { return (float)GetValue(ArmadoggoDeathCooldownProperty); }
+            set { SetValue(ArmadoggoDeathCooldownProperty, value); }
+        }
+
+        public static readonly DependencyProperty YoungIceFoxDeathCooldownProperty = DependencyProperty.Register(nameof(YoungIceFoxDeathCooldown), typeof(float), typeof(ServerProfile), new PropertyMetadata(3600.0f));
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, WriteIfNotValue = 3600.0f)]
+        public float YoungIceFoxDeathCooldown
+        {
+            get { return (float)GetValue(YoungIceFoxDeathCooldownProperty); }
+            set { SetValue(YoungIceFoxDeathCooldownProperty, value); }
+        }
+
         public static readonly DependencyProperty PreventMateBoostProperty = DependencyProperty.Register(nameof(PreventMateBoost), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
         [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Dinos, ConditionedOn = nameof(PreventMateBoost))]
         public bool PreventMateBoost
@@ -2465,14 +2729,6 @@ namespace ServerManagerTool.Lib
         {
             get { return (bool)GetValue(DisableDinoTamingProperty); }
             set { SetValue(DisableDinoTamingProperty, value); }
-        }
-
-        public static readonly DependencyProperty DisableDinoBreedingProperty = DependencyProperty.Register(nameof(DisableDinoBreeding), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
-        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Dinos, "bDisableDinoBreeding", ConditionedOn = nameof(DisableDinoBreeding))]
-        public bool DisableDinoBreeding
-        {
-            get { return (bool)GetValue(DisableDinoBreedingProperty); }
-            set { SetValue(DisableDinoBreedingProperty, value); }
         }
 
         public static readonly DependencyProperty MaxTamedDinosProperty = DependencyProperty.Register(nameof(MaxTamedDinos), typeof(int), typeof(ServerProfile), new PropertyMetadata(5000));
@@ -3276,20 +3532,172 @@ namespace ServerManagerTool.Lib
             set { SetValue(StructurePickupHoldDurationProperty, value); }
         }
 
-        public static readonly DependencyProperty AllowIntegratedSPlusStructuresProperty = DependencyProperty.Register(nameof(AllowIntegratedSPlusStructures), typeof(bool), typeof(ServerProfile), new PropertyMetadata(true));
-        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures)]
-        public bool AllowIntegratedSPlusStructures
-        {
-            get { return (bool)GetValue(AllowIntegratedSPlusStructuresProperty); }
-            set { SetValue(AllowIntegratedSPlusStructuresProperty, value); }
-        }
-
         public static readonly DependencyProperty IgnoreStructuresPreventionVolumesProperty = DependencyProperty.Register(nameof(IgnoreStructuresPreventionVolumes), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
         [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures, "bIgnoreStructuresPreventionVolumes")]
         public bool IgnoreStructuresPreventionVolumes
         {
             get { return (bool)GetValue(IgnoreStructuresPreventionVolumesProperty); }
             set { SetValue(IgnoreStructuresPreventionVolumesProperty, value); }
+        }
+
+        public static readonly DependencyProperty LimitBunkersPerTribeProperty = DependencyProperty.Register(nameof(LimitBunkersPerTribe), typeof(bool), typeof(ServerProfile), new PropertyMetadata(true));
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, WriteIfNotValue = true)]
+        public bool LimitBunkersPerTribe
+        {
+            get { return (bool)GetValue(LimitBunkersPerTribeProperty); }
+            set { SetValue(LimitBunkersPerTribeProperty, value); }
+        }
+
+        public static readonly DependencyProperty AllowBunkersInPreventionZonesProperty = DependencyProperty.Register(nameof(AllowBunkersInPreventionZones), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, WriteIfNotValue = false)]
+        public bool AllowBunkersInPreventionZones
+        {
+            get { return (bool)GetValue(AllowBunkersInPreventionZonesProperty); }
+            set { SetValue(AllowBunkersInPreventionZonesProperty, value); }
+        }
+
+        public static readonly DependencyProperty AllowBunkerModulesInPreventionZonesProperty = DependencyProperty.Register(nameof(AllowBunkerModulesInPreventionZones), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, WriteIfNotValue = false)]
+        public bool AllowBunkerModulesInPreventionZones
+        {
+            get { return (bool)GetValue(AllowBunkerModulesInPreventionZonesProperty); }
+            set { SetValue(AllowBunkerModulesInPreventionZonesProperty, value); }
+        }
+
+        public static readonly DependencyProperty AllowBunkerModulesAboveGroundProperty = DependencyProperty.Register(nameof(AllowBunkerModulesAboveGround), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, WriteIfNotValue = false)]
+        public bool AllowBunkerModulesAboveGround
+        {
+            get { return (bool)GetValue(AllowBunkerModulesAboveGroundProperty); }
+            set { SetValue(AllowBunkerModulesAboveGroundProperty, value); }
+        }
+
+        public static readonly DependencyProperty AllowRidingDinosInsideBunkersProperty = DependencyProperty.Register(nameof(AllowRidingDinosInsideBunkers), typeof(bool), typeof(ServerProfile), new PropertyMetadata(true));
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, WriteIfNotValue = true)]
+        public bool AllowRidingDinosInsideBunkers
+        {
+            get { return (bool)GetValue(AllowRidingDinosInsideBunkersProperty); }
+            set { SetValue(AllowRidingDinosInsideBunkersProperty, value); }
+        }
+
+        public static readonly DependencyProperty AllowDinoAIInsideBunkersProperty = DependencyProperty.Register(nameof(AllowDinoAIInsideBunkers), typeof(bool), typeof(ServerProfile), new PropertyMetadata(true));
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, WriteIfNotValue = true)]
+        public bool AllowDinoAIInsideBunkers
+        {
+            get { return (bool)GetValue(AllowDinoAIInsideBunkersProperty); }
+            set { SetValue(AllowDinoAIInsideBunkersProperty, value); }
+        }
+
+        public static readonly DependencyProperty LimitBunkersPerTribeNumProperty = DependencyProperty.Register(nameof(LimitBunkersPerTribeNum), typeof(int), typeof(ServerProfile), new PropertyMetadata(3));
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, WriteIfNotValue = 3)]
+        public int LimitBunkersPerTribeNum
+        {
+            get { return (int)GetValue(LimitBunkersPerTribeNumProperty); }
+            set { SetValue(LimitBunkersPerTribeNumProperty, value); }
+        }
+
+        public static readonly DependencyProperty MinDistanceBetweenBunkersProperty = DependencyProperty.Register(nameof(MinDistanceBetweenBunkers), typeof(float), typeof(ServerProfile), new PropertyMetadata(3000.0f));
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, WriteIfNotValue = 3000.0f)]
+        public float MinDistanceBetweenBunkers
+        {
+            get { return (float)GetValue(MinDistanceBetweenBunkersProperty); }
+            set { SetValue(MinDistanceBetweenBunkersProperty, value); }
+        }
+
+        public static readonly DependencyProperty EnemyAccessBunkerHPThresholdProperty = DependencyProperty.Register(nameof(EnemyAccessBunkerHPThreshold), typeof(float), typeof(ServerProfile), new PropertyMetadata(0.25f));
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, WriteIfNotValue = 0.25f)]
+        public float EnemyAccessBunkerHPThreshold
+        {
+            get { return (float)GetValue(EnemyAccessBunkerHPThresholdProperty); }
+            set { SetValue(EnemyAccessBunkerHPThresholdProperty, value); }
+        }
+
+        public static readonly DependencyProperty BunkerUnderHPThresholdDmgMultiplierProperty = DependencyProperty.Register(nameof(BunkerUnderHPThresholdDmgMultiplier), typeof(float), typeof(ServerProfile), new PropertyMetadata(0.05f));
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, WriteIfNotValue = 0.05f)]
+        public float BunkerUnderHPThresholdDmgMultiplier
+        {
+            get { return (float)GetValue(BunkerUnderHPThresholdDmgMultiplierProperty); }
+            set { SetValue(BunkerUnderHPThresholdDmgMultiplierProperty, value); }
+        }
+
+        public static readonly DependencyProperty BloodforgeReinforceExtraDurabilityProperty = DependencyProperty.Register(nameof(BloodforgeReinforceExtraDurability), typeof(float), typeof(ServerProfile), new PropertyMetadata(0.3f));
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, WriteIfNotValue = 0.3f)]
+        public float BloodforgeReinforceExtraDurability
+        {
+            get { return (float)GetValue(BloodforgeReinforceExtraDurabilityProperty); }
+            set { SetValue(BloodforgeReinforceExtraDurabilityProperty, value); }
+        }
+
+        public static readonly DependencyProperty BloodforgeReinforceResourceCostMultiplierProperty = DependencyProperty.Register(nameof(BloodforgeReinforceResourceCostMultiplier), typeof(float), typeof(ServerProfile), new PropertyMetadata(3.0f));
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, WriteIfNotValue = 3.0f)]
+        public float BloodforgeReinforceResourceCostMultiplier
+        {
+            get { return (float)GetValue(BloodforgeReinforceResourceCostMultiplierProperty); }
+            set { SetValue(BloodforgeReinforceResourceCostMultiplierProperty, value); }
+        }
+
+        public static readonly DependencyProperty BloodforgeReinforceSpeedMultiplierProperty = DependencyProperty.Register(nameof(BloodforgeReinforceSpeedMultiplier), typeof(float), typeof(ServerProfile), new PropertyMetadata(0.1f));
+        [IniFileEntry(IniFiles.GameUserSettings, IniSections.GUS_ServerSettings, ServerProfileCategory.Structures, WriteIfNotValue = 0.1f)]
+        public float BloodforgeReinforceSpeedMultiplier
+        {
+            get { return (float)GetValue(BloodforgeReinforceSpeedMultiplierProperty); }
+            set { SetValue(BloodforgeReinforceSpeedMultiplierProperty, value); }
+        }
+
+        public static readonly DependencyProperty DisableWirelessCraftingProperty = DependencyProperty.Register(nameof(DisableWirelessCrafting), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures, "bDisableWirelessCrafting", WriteIfNotValue = false)]
+        public bool DisableWirelessCrafting
+        {
+            get { return (bool)GetValue(DisableWirelessCraftingProperty); }
+            set { SetValue(DisableWirelessCraftingProperty, value); }
+        }
+
+        public static readonly DependencyProperty DisableWirelessCraftingForPlayersProperty = DependencyProperty.Register(nameof(DisableWirelessCraftingForPlayers), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures, "bDisableWirelessCraftingForPlayers", WriteIfNotValue = false)]
+        public bool DisableWirelessCraftingForPlayers
+        {
+            get { return (bool)GetValue(DisableWirelessCraftingForPlayersProperty); }
+            set { SetValue(DisableWirelessCraftingForPlayersProperty, value); }
+        }
+
+        public static readonly DependencyProperty DisableWirelessCraftingForDinosProperty = DependencyProperty.Register(nameof(DisableWirelessCraftingForDinos), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures, "bDisableWirelessCraftingForDinos", WriteIfNotValue = false)]
+        public bool DisableWirelessCraftingForDinos
+        {
+            get { return (bool)GetValue(DisableWirelessCraftingForDinosProperty); }
+            set { SetValue(DisableWirelessCraftingForDinosProperty, value); }
+        }
+
+        public static readonly DependencyProperty DisableWirelessCraftingForStructuresProperty = DependencyProperty.Register(nameof(DisableWirelessCraftingForStructures), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures, "bDisableWirelessCraftingForStructures", WriteIfNotValue = false)]
+        public bool DisableWirelessCraftingForStructures
+        {
+            get { return (bool)GetValue(DisableWirelessCraftingForStructuresProperty); }
+            set { SetValue(DisableWirelessCraftingForStructuresProperty, value); }
+        }
+
+        public static readonly DependencyProperty WirelessCraftingRangeOverrideProperty = DependencyProperty.Register(nameof(WirelessCraftingRangeOverride), typeof(int), typeof(ServerProfile), new PropertyMetadata(3000));
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures, WriteIfNotValue = 3000)]
+        public int WirelessCraftingRangeOverride
+        {
+            get { return (int)GetValue(WirelessCraftingRangeOverrideProperty); }
+            set { SetValue(WirelessCraftingRangeOverrideProperty, value); }
+        }
+
+        public static readonly DependencyProperty LimitGeneratorsNumProperty = DependencyProperty.Register(nameof(LimitGeneratorsNum), typeof(NullableValue<int>), typeof(ServerProfile), new PropertyMetadata(new NullableValue<int>(false, 3)));
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures)]
+        public NullableValue<int> LimitGeneratorsNum
+        {
+            get { return (NullableValue<int>)GetValue(LimitGeneratorsNumProperty); }
+            set { SetValue(LimitGeneratorsNumProperty, value); }
+        }
+
+        public static readonly DependencyProperty LimitGeneratorsRangeProperty = DependencyProperty.Register(nameof(LimitGeneratorsRange), typeof(NullableValue<int>), typeof(ServerProfile), new PropertyMetadata(new NullableValue<int>(false, 15000)));
+        [IniFileEntry(IniFiles.Game, IniSections.Game_ShooterGameMode, ServerProfileCategory.Structures)]
+        public NullableValue<int> LimitGeneratorsRange
+        {
+            get { return (NullableValue<int>)GetValue(LimitGeneratorsRangeProperty); }
+            set { SetValue(LimitGeneratorsRangeProperty, value); }
         }
 
         public static readonly DependencyProperty GenesisUseStructuresPreventionVolumesProperty = DependencyProperty.Register(nameof(GenesisUseStructuresPreventionVolumes), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
@@ -3876,6 +4284,13 @@ namespace ServerManagerTool.Lib
                 serverArgs.Append($" -mods={modIds}");
             }
 
+            // mods whose data is loaded but whose content is disabled (the server downloads these as well)
+            var passiveModIds = string.Join(",", (this.PassiveModIds ?? string.Empty).Split(new[] { ',', ';', ' ' }, StringSplitOptions.RemoveEmptyEntries));
+            if (!string.IsNullOrWhiteSpace(passiveModIds))
+            {
+                serverArgs.Append($" -passivemods={passiveModIds}");
+            }
+
             if (!string.IsNullOrWhiteSpace(this.EventName))
             {
                 serverArgs.Append($" -ActiveEvent={this.EventName}");
@@ -4014,6 +4429,36 @@ namespace ServerManagerTool.Lib
             if (this.DisableRailgunPVP)
             {
                 serverArgs.Append(" -DisableRailgunPVP");
+            }
+
+            if (this.NoWildBabies)
+            {
+                serverArgs.Append(" -NoWildBabies");
+            }
+
+            if (this.DisableDinoNetRangeScaling)
+            {
+                serverArgs.Append(" -disabledinonetrangescaling");
+            }
+
+            if (this.DisableCustomCosmetics)
+            {
+                serverArgs.Append(" -DisableCustomCosmetics");
+            }
+
+            if (this.DoCustomCosmeticValidation)
+            {
+                serverArgs.Append(" -DoCustomCosmeticValidation");
+            }
+
+            if (this.AlwaysTickDedicatedSkeletalMeshes)
+            {
+                serverArgs.Append(" -AlwaysTickDedicatedSkeletalMeshes");
+            }
+
+            if (this.GBUsageToForceRestart.HasValue)
+            {
+                serverArgs.Append($" -GBUsageToForceRestart={this.GBUsageToForceRestart.Value}");
             }
 
             serverArgs.Append(' ');
@@ -5008,6 +5453,15 @@ namespace ServerManagerTool.Lib
             this.ClearValue(AltSaveDirectoryNameProperty);
             this.ClearValue(CrossArkClusterIdProperty);
             this.ClearValue(ClusterDirOverrideProperty);
+
+            this.ClearValue(NoWildBabiesProperty);
+            this.ClearValue(DisableDinoNetRangeScalingProperty);
+            this.ClearValue(DisableCustomCosmeticsProperty);
+            this.ClearValue(DoCustomCosmeticValidationProperty);
+            this.ClearValue(AlwaysTickDedicatedSkeletalMeshesProperty);
+            this.ClearNullableValue(GBUsageToForceRestartProperty);
+            this.ClearValue(CosmeticWhitelistOverrideProperty);
+            this.ClearValue(AdminListURLProperty);
         }
 
         public void ResetServerBadWordFilterOptions()
@@ -5061,6 +5515,7 @@ namespace ServerManagerTool.Lib
 
             this.ClearValue(ServerMapProperty);
             this.ClearValue(ServerModIdsProperty);
+            this.ClearValue(PassiveModIdsProperty);
 
             this.ClearValue(EnableExtinctionEventProperty);
             this.ClearValue(ExtinctionEventTimeIntervalProperty);
@@ -5155,7 +5610,6 @@ namespace ServerManagerTool.Lib
 
             this.ClearValue(DisableDinoRidingProperty);
             this.ClearValue(DisableDinoTamingProperty);
-            this.ClearValue(DisableDinoBreedingProperty);
             this.ClearValue(MaxTamedDinosProperty);
             this.ClearValue(MaxPersonalTamedDinosProperty);
             this.ClearValue(PersonalTamedDinosSaddleStructureCostProperty);
@@ -5202,6 +5656,17 @@ namespace ServerManagerTool.Lib
 
             this.DinoSettings = new DinoSettingsList(this.DinoSpawnWeightMultipliers, this.PreventDinoTameClassNames, this.PreventBreedingForClassNames, this.NPCReplacements, this.TamedDinoClassDamageMultipliers, this.TamedDinoClassResistanceMultipliers, this.DinoClassDamageMultipliers, this.DinoClassResistanceMultipliers);
             this.DinoSettings.RenderToView();
+
+            this.ClearValue(AllowSpeedLevelingProperty);
+            this.ClearValue(DisableBurrowDecayTimersProperty);
+            this.ClearValue(ForceGachaUnhappyInCavesProperty);
+            this.ClearValue(DestroyTamesOverTheSoftTameLimitProperty);
+            this.ClearValue(MaxTamedDinos_SoftTameLimitProperty);
+            this.ClearValue(MaxTamedDinos_SoftTameLimit_CountdownForDeletionDurationProperty);
+            this.ClearValue(CosmoWeaponAmmoReloadAmountProperty);
+            this.ClearValue(MaxCosmoWeaponAmmoProperty);
+            this.ClearValue(ArmadoggoDeathCooldownProperty);
+            this.ClearValue(YoungIceFoxDeathCooldownProperty);
         }
 
         public void ResetDiscordBotSection()
@@ -5391,10 +5856,6 @@ namespace ServerManagerTool.Lib
             this.ClearValue(EnableDiseasesProperty);
             this.ClearValue(NonPermanentDiseasesProperty);
 
-            this.ClearValue(OverrideNPCNetworkStasisRangeScaleProperty);
-            this.ClearValue(NPCNetworkStasisRangeScalePlayerCountStartProperty);
-            this.ClearValue(NPCNetworkStasisRangeScalePlayerCountEndProperty);
-            this.ClearValue(NPCNetworkStasisRangeScalePercentEndProperty);
 
             this.ClearValue(UseCorpseLocatorProperty);
             this.ClearValue(PreventSpawnAnimationsProperty);
@@ -5440,8 +5901,6 @@ namespace ServerManagerTool.Lib
             this.ClearValue(Ragnarok_VolcanoIntervalProperty);
             this.ClearValue(Ragnarok_VolcanoIntensityProperty);
 
-            this.ClearValue(Fjordur_EnableSettingsProperty);
-            this.ClearValue(UseFjordurTraversalBuffProperty);
 
             this.ClearNullableValue(ItemStatClamps_GenericQualityProperty);
             this.ClearNullableValue(ItemStatClamps_ArmorProperty);
@@ -5451,6 +5910,26 @@ namespace ServerManagerTool.Lib
             this.ClearNullableValue(ItemStatClamps_HypothermalInsulationProperty);
             this.ClearNullableValue(ItemStatClamps_WeightProperty);
             this.ClearNullableValue(ItemStatClamps_HyperthermalInsulationProperty);
+
+            this.ClearValue(AllowCryoFridgeOnSaddleProperty);
+            this.ClearValue(DisableCryopodEnemyCheckProperty);
+            this.ClearValue(DisableCryopodFridgeRequirementProperty);
+            this.ClearValue(CryoHospitalHoursToRegenHPProperty);
+            this.ClearValue(CryoHospitalHoursToRegenFoodProperty);
+            this.ClearValue(CryoHospitalHoursToDrainTorporProperty);
+            this.ClearValue(CryoHospitalMatingCooldownReductionProperty);
+            this.ClearNullableValue(MaxActiveOutpostsProperty);
+            this.ClearNullableValue(MaxActiveResourceCachesProperty);
+            this.ClearNullableValue(MaxActiveCityOutpostsProperty);
+            this.ClearValue(OutpostSigilRewardMultiplierProperty);
+            this.ClearValue(DisablePhotoModeProperty);
+            this.ClearValue(PhotoModeRangeLimitProperty);
+            this.ClearValue(IgnorePVPMountedWeaponryRestrictionsProperty);
+            this.ClearValue(ImplantSuicideCDProperty);
+            this.ClearValue(TribeTowerBonusMultiplierProperty);
+            this.ClearValue(MaxTrainCarsProperty);
+            this.ClearValue(WorldBossKingKaijuSpawnTimeProperty);
+            this.ClearValue(ValgueroMemorialEntriesProperty);
         }
 
         public void ResetServerDetailsSection()
@@ -5503,9 +5982,29 @@ namespace ServerManagerTool.Lib
             this.ClearValue(AlwaysAllowStructurePickupProperty);
             this.ClearValue(StructurePickupTimeAfterPlacementProperty);
             this.ClearValue(StructurePickupHoldDurationProperty);
-            this.ClearValue(AllowIntegratedSPlusStructuresProperty);
             this.ClearValue(IgnoreStructuresPreventionVolumesProperty);
             this.ClearValue(GenesisUseStructuresPreventionVolumesProperty);
+
+            this.ClearValue(LimitBunkersPerTribeProperty);
+            this.ClearValue(AllowBunkersInPreventionZonesProperty);
+            this.ClearValue(AllowBunkerModulesInPreventionZonesProperty);
+            this.ClearValue(AllowBunkerModulesAboveGroundProperty);
+            this.ClearValue(AllowRidingDinosInsideBunkersProperty);
+            this.ClearValue(AllowDinoAIInsideBunkersProperty);
+            this.ClearValue(LimitBunkersPerTribeNumProperty);
+            this.ClearValue(MinDistanceBetweenBunkersProperty);
+            this.ClearValue(EnemyAccessBunkerHPThresholdProperty);
+            this.ClearValue(BunkerUnderHPThresholdDmgMultiplierProperty);
+            this.ClearValue(BloodforgeReinforceExtraDurabilityProperty);
+            this.ClearValue(BloodforgeReinforceResourceCostMultiplierProperty);
+            this.ClearValue(BloodforgeReinforceSpeedMultiplierProperty);
+            this.ClearValue(DisableWirelessCraftingProperty);
+            this.ClearValue(DisableWirelessCraftingForPlayersProperty);
+            this.ClearValue(DisableWirelessCraftingForDinosProperty);
+            this.ClearValue(DisableWirelessCraftingForStructuresProperty);
+            this.ClearValue(WirelessCraftingRangeOverrideProperty);
+            this.ClearNullableValue(LimitGeneratorsNumProperty);
+            this.ClearNullableValue(LimitGeneratorsRangeProperty);
         }
 
         public void ResetSupplyCrateOverridesSection()
@@ -5636,6 +6135,7 @@ namespace ServerManagerTool.Lib
             if (Config.Default.ProfileSyncServerModIdsEnabled)
             {
                 this.SetValue(ServerModIdsProperty, sourceProfile.ServerModIds);
+                this.SetValue(PassiveModIdsProperty, sourceProfile.PassiveModIds);
             }
 
             this.SetValue(AutoSavePeriodMinutesProperty, sourceProfile.AutoSavePeriodMinutes);
@@ -5680,7 +6180,6 @@ namespace ServerManagerTool.Lib
                 this.SetValue(CrossArkClusterIdProperty, sourceProfile.CrossArkClusterId);
                 this.SetValue(ClusterDirOverrideProperty, sourceProfile.ClusterDirOverride);
             }
-            this.SetValue(ClusterDirOverrideProperty, sourceProfile.ClusterDirOverride);
             this.SetValue(UseItemDupeCheckProperty, sourceProfile.UseItemDupeCheck);
 
             // server filter options
@@ -5712,6 +6211,15 @@ namespace ServerManagerTool.Lib
 
             this.SetValue(UseStoreProperty, sourceProfile.UseStore);
             this.SetValue(BackupTransferPlayerDatasProperty, sourceProfile.BackupTransferPlayerDatas);
+
+            this.SetValue(NoWildBabiesProperty, sourceProfile.NoWildBabies);
+            this.SetValue(DisableDinoNetRangeScalingProperty, sourceProfile.DisableDinoNetRangeScaling);
+            this.SetValue(DisableCustomCosmeticsProperty, sourceProfile.DisableCustomCosmetics);
+            this.SetValue(DoCustomCosmeticValidationProperty, sourceProfile.DoCustomCosmeticValidation);
+            this.SetValue(AlwaysTickDedicatedSkeletalMeshesProperty, sourceProfile.AlwaysTickDedicatedSkeletalMeshes);
+            this.SetNullableValue(GBUsageToForceRestartProperty, sourceProfile.GBUsageToForceRestart);
+            this.SetValue(CosmeticWhitelistOverrideProperty, sourceProfile.CosmeticWhitelistOverride);
+            this.SetValue(AdminListURLProperty, sourceProfile.AdminListURL);
         }
 
         private void SyncAutomaticManagement(ServerProfile sourceProfile)
@@ -5829,7 +6337,6 @@ namespace ServerManagerTool.Lib
 
             this.SetValue(DisableDinoRidingProperty, sourceProfile.DisableDinoRiding);
             this.SetValue(DisableDinoTamingProperty, sourceProfile.DisableDinoTaming);
-            this.SetValue(DisableDinoBreedingProperty, sourceProfile.DisableDinoBreeding);
             this.SetValue(MaxTamedDinosProperty, sourceProfile.MaxTamedDinos);
             this.SetValue(MaxPersonalTamedDinosProperty, sourceProfile.MaxPersonalTamedDinos);
             this.SetValue(PersonalTamedDinosSaddleStructureCostProperty, sourceProfile.PersonalTamedDinosSaddleStructureCost);
@@ -5918,6 +6425,17 @@ namespace ServerManagerTool.Lib
 
             this.DinoSettings = new DinoSettingsList(this.DinoSpawnWeightMultipliers, this.PreventDinoTameClassNames, this.PreventBreedingForClassNames, this.NPCReplacements, this.TamedDinoClassDamageMultipliers, this.TamedDinoClassResistanceMultipliers, this.DinoClassDamageMultipliers, this.DinoClassResistanceMultipliers);
             this.DinoSettings.RenderToView();
+
+            this.SetValue(AllowSpeedLevelingProperty, sourceProfile.AllowSpeedLeveling);
+            this.SetValue(DisableBurrowDecayTimersProperty, sourceProfile.DisableBurrowDecayTimers);
+            this.SetValue(ForceGachaUnhappyInCavesProperty, sourceProfile.ForceGachaUnhappyInCaves);
+            this.SetValue(DestroyTamesOverTheSoftTameLimitProperty, sourceProfile.DestroyTamesOverTheSoftTameLimit);
+            this.SetValue(MaxTamedDinos_SoftTameLimitProperty, sourceProfile.MaxTamedDinos_SoftTameLimit);
+            this.SetValue(MaxTamedDinos_SoftTameLimit_CountdownForDeletionDurationProperty, sourceProfile.MaxTamedDinos_SoftTameLimit_CountdownForDeletionDuration);
+            this.SetValue(CosmoWeaponAmmoReloadAmountProperty, sourceProfile.CosmoWeaponAmmoReloadAmount);
+            this.SetValue(MaxCosmoWeaponAmmoProperty, sourceProfile.MaxCosmoWeaponAmmo);
+            this.SetValue(ArmadoggoDeathCooldownProperty, sourceProfile.ArmadoggoDeathCooldown);
+            this.SetValue(YoungIceFoxDeathCooldownProperty, sourceProfile.YoungIceFoxDeathCooldown);
         }
 
         private void SyncDiscordBot(ServerProfile sourceProfile)
@@ -6131,10 +6649,6 @@ namespace ServerManagerTool.Lib
             this.SetValue(EnableDiseasesProperty, sourceProfile.EnableDiseases);
             this.SetValue(NonPermanentDiseasesProperty, sourceProfile.NonPermanentDiseases);
 
-            this.SetValue(OverrideNPCNetworkStasisRangeScaleProperty, sourceProfile.OverrideNPCNetworkStasisRangeScale);
-            this.SetValue(NPCNetworkStasisRangeScalePlayerCountStartProperty, sourceProfile.NPCNetworkStasisRangeScalePlayerCountStart);
-            this.SetValue(NPCNetworkStasisRangeScalePlayerCountEndProperty, sourceProfile.NPCNetworkStasisRangeScalePlayerCountEnd);
-            this.SetValue(NPCNetworkStasisRangeScalePercentEndProperty, sourceProfile.NPCNetworkStasisRangeScalePercentEnd);
 
             this.SetValue(UseCorpseLocatorProperty, sourceProfile.UseCorpseLocator);
             this.SetValue(PreventSpawnAnimationsProperty, sourceProfile.PreventSpawnAnimations);
@@ -6180,8 +6694,6 @@ namespace ServerManagerTool.Lib
             this.SetValue(Ragnarok_VolcanoIntervalProperty, sourceProfile.Ragnarok_VolcanoInterval);
             this.SetValue(Ragnarok_VolcanoIntensityProperty, sourceProfile.Ragnarok_VolcanoIntensity);
 
-            this.SetValue(Fjordur_EnableSettingsProperty, sourceProfile.Fjordur_EnableSettings);
-            this.SetValue(UseFjordurTraversalBuffProperty, sourceProfile.UseFjordurTraversalBuff);
 
             this.SetNullableValue(ItemStatClamps_GenericQualityProperty, sourceProfile.ItemStatClamps_GenericQuality);
             this.SetNullableValue(ItemStatClamps_ArmorProperty, sourceProfile.ItemStatClamps_Armor);
@@ -6191,6 +6703,26 @@ namespace ServerManagerTool.Lib
             this.SetNullableValue(ItemStatClamps_HypothermalInsulationProperty, sourceProfile.ItemStatClamps_HypothermalInsulation);
             this.SetNullableValue(ItemStatClamps_WeightProperty, sourceProfile.ItemStatClamps_Weight);
             this.SetNullableValue(ItemStatClamps_HyperthermalInsulationProperty, sourceProfile.ItemStatClamps_HyperthermalInsulation);
+
+            this.SetValue(AllowCryoFridgeOnSaddleProperty, sourceProfile.AllowCryoFridgeOnSaddle);
+            this.SetValue(DisableCryopodEnemyCheckProperty, sourceProfile.DisableCryopodEnemyCheck);
+            this.SetValue(DisableCryopodFridgeRequirementProperty, sourceProfile.DisableCryopodFridgeRequirement);
+            this.SetValue(CryoHospitalHoursToRegenHPProperty, sourceProfile.CryoHospitalHoursToRegenHP);
+            this.SetValue(CryoHospitalHoursToRegenFoodProperty, sourceProfile.CryoHospitalHoursToRegenFood);
+            this.SetValue(CryoHospitalHoursToDrainTorporProperty, sourceProfile.CryoHospitalHoursToDrainTorpor);
+            this.SetValue(CryoHospitalMatingCooldownReductionProperty, sourceProfile.CryoHospitalMatingCooldownReduction);
+            this.SetNullableValue(MaxActiveOutpostsProperty, sourceProfile.MaxActiveOutposts);
+            this.SetNullableValue(MaxActiveResourceCachesProperty, sourceProfile.MaxActiveResourceCaches);
+            this.SetNullableValue(MaxActiveCityOutpostsProperty, sourceProfile.MaxActiveCityOutposts);
+            this.SetValue(OutpostSigilRewardMultiplierProperty, sourceProfile.OutpostSigilRewardMultiplier);
+            this.SetValue(DisablePhotoModeProperty, sourceProfile.DisablePhotoMode);
+            this.SetValue(PhotoModeRangeLimitProperty, sourceProfile.PhotoModeRangeLimit);
+            this.SetValue(IgnorePVPMountedWeaponryRestrictionsProperty, sourceProfile.IgnorePVPMountedWeaponryRestrictions);
+            this.SetValue(ImplantSuicideCDProperty, sourceProfile.ImplantSuicideCD);
+            this.SetValue(TribeTowerBonusMultiplierProperty, sourceProfile.TribeTowerBonusMultiplier);
+            this.SetValue(MaxTrainCarsProperty, sourceProfile.MaxTrainCars);
+            this.SetValue(WorldBossKingKaijuSpawnTimeProperty, sourceProfile.WorldBossKingKaijuSpawnTime);
+            this.SetValue(ValgueroMemorialEntriesProperty, sourceProfile.ValgueroMemorialEntries);
         }
 
         private void SyncServerDetails(ServerProfile sourceProfile)
@@ -6259,9 +6791,29 @@ namespace ServerManagerTool.Lib
             this.SetValue(AlwaysAllowStructurePickupProperty, sourceProfile.AlwaysAllowStructurePickup);
             this.SetValue(StructurePickupTimeAfterPlacementProperty, sourceProfile.StructurePickupTimeAfterPlacement);
             this.SetValue(StructurePickupHoldDurationProperty, sourceProfile.StructurePickupHoldDuration);
-            this.SetValue(AllowIntegratedSPlusStructuresProperty, sourceProfile.AllowIntegratedSPlusStructures);
             this.SetValue(IgnoreStructuresPreventionVolumesProperty, sourceProfile.IgnoreStructuresPreventionVolumes);
             this.SetValue(GenesisUseStructuresPreventionVolumesProperty, sourceProfile.GenesisUseStructuresPreventionVolumes);
+
+            this.SetValue(LimitBunkersPerTribeProperty, sourceProfile.LimitBunkersPerTribe);
+            this.SetValue(AllowBunkersInPreventionZonesProperty, sourceProfile.AllowBunkersInPreventionZones);
+            this.SetValue(AllowBunkerModulesInPreventionZonesProperty, sourceProfile.AllowBunkerModulesInPreventionZones);
+            this.SetValue(AllowBunkerModulesAboveGroundProperty, sourceProfile.AllowBunkerModulesAboveGround);
+            this.SetValue(AllowRidingDinosInsideBunkersProperty, sourceProfile.AllowRidingDinosInsideBunkers);
+            this.SetValue(AllowDinoAIInsideBunkersProperty, sourceProfile.AllowDinoAIInsideBunkers);
+            this.SetValue(LimitBunkersPerTribeNumProperty, sourceProfile.LimitBunkersPerTribeNum);
+            this.SetValue(MinDistanceBetweenBunkersProperty, sourceProfile.MinDistanceBetweenBunkers);
+            this.SetValue(EnemyAccessBunkerHPThresholdProperty, sourceProfile.EnemyAccessBunkerHPThreshold);
+            this.SetValue(BunkerUnderHPThresholdDmgMultiplierProperty, sourceProfile.BunkerUnderHPThresholdDmgMultiplier);
+            this.SetValue(BloodforgeReinforceExtraDurabilityProperty, sourceProfile.BloodforgeReinforceExtraDurability);
+            this.SetValue(BloodforgeReinforceResourceCostMultiplierProperty, sourceProfile.BloodforgeReinforceResourceCostMultiplier);
+            this.SetValue(BloodforgeReinforceSpeedMultiplierProperty, sourceProfile.BloodforgeReinforceSpeedMultiplier);
+            this.SetValue(DisableWirelessCraftingProperty, sourceProfile.DisableWirelessCrafting);
+            this.SetValue(DisableWirelessCraftingForPlayersProperty, sourceProfile.DisableWirelessCraftingForPlayers);
+            this.SetValue(DisableWirelessCraftingForDinosProperty, sourceProfile.DisableWirelessCraftingForDinos);
+            this.SetValue(DisableWirelessCraftingForStructuresProperty, sourceProfile.DisableWirelessCraftingForStructures);
+            this.SetValue(WirelessCraftingRangeOverrideProperty, sourceProfile.WirelessCraftingRangeOverride);
+            this.SetNullableValue(LimitGeneratorsNumProperty, sourceProfile.LimitGeneratorsNum);
+            this.SetNullableValue(LimitGeneratorsRangeProperty, sourceProfile.LimitGeneratorsRange);
         }
 
         private void SyncSupplyCrateOverridesSection(ServerProfile sourceProfile)

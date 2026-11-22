@@ -1428,14 +1428,6 @@
     <sys:String x:Key="ServerSettings_NonPermanentDiseasesLabel">非永久性疾病</sys:String>
     <sys:String x:Key="ServerSettings_NonPermanentDiseasesTooltip">如果启用，将使疾病不是永久性的（玩家重生后，疾病将消除）.</sys:String>
 
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScaleLabel">覆盖NPC网络停滞范围比例</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScaleTooltip">如果启用，您可以覆盖NPC网络静态范围缩放设置。</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePlayerCountStartLabel">在线玩家计数开始</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePlayerCountStartTooltip">启用状态量表时的最小在线玩家数。</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePlayerCountEndLabel">在线玩家计数结束</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePlayerCountEndTooltip">达到最大比例时的最大在线玩家数。</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePercentEndLabel">最大比例</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePercentEndTooltip">达到在线玩家计数结束值时，服务器使用的最大比例百分比。</sys:String>
 
     <sys:String x:Key="ServerSettings_OxygenSwimSpeedStatMultiplierLabel">氧气游泳速度统计倍数</sys:String>
     <sys:String x:Key="ServerSettings_OxygenSwimSpeedStatMultiplierTooltip">调整潜水时移速消耗氧气的倍数。</sys:String>
@@ -1508,9 +1500,6 @@
     <sys:String x:Key="ServerSettings_Ragnarok_VolcanoIntensityLabel">火山强度</sys:String>
     <sys:String x:Key="ServerSettings_Ragnarok_VolcanoIntensityTooltip">数值越低，火山爆发的强度就越大。建议留到1.0，最小值是0.25，对于多人游戏，不应该低于0.5。非常高的数字基本上会使火山中甩出的火焰石块失效。</sys:String>
 	
-	<sys:String x:Key="ServerSettings_FjordurLabel">维京岛Fjordur</sys:String>
-    <sys:String x:Key="ServerSettings_UseFjordurTraversalBuffLabel">启用维京生物群落的传送装置</sys:String>
-    <sys:String x:Key="ServerSettings_UseFjordurTraversalBuffTooltip">如果启用，将允许在维京地图上进行生物群落传送。</sys:String>
 
     <sys:String x:Key="ServerSettings_ItemStatClampsLabel">物品品质设置</sys:String>
     <sys:String x:Key="ServerSettings_ItemStatClampsNoteLabel">注意：这将永久改变现有物品的品质.</sys:String>
@@ -1690,8 +1679,6 @@
     <sys:String x:Key="ServerSettings_DisableDinoRidingTooltip">如果启用，所有被驯服的恐龙不能被骑。</sys:String>
     <sys:String x:Key="ServerSettings_DisableDinoTamingLabel">禁止恐龙驯服</sys:String>
     <sys:String x:Key="ServerSettings_DisableDinoTamingTooltip">如果启用，所有的野生恐龙将无法被驯服。</sys:String>
-	<sys:String x:Key="ServerSettings_DisableDinoBreedingLabel">禁用恐龙繁殖</sys:String>
-    <sys:String x:Key="ServerSettings_DisableDinoBreedingTooltip">如果启用，则阻止繁殖驯服动物.</sys:String>
     <sys:String x:Key="ServerSettings_EnableForceCanRideFliersLabel">更改飞行生物乘坐</sys:String>
     <sys:String x:Key="ServerSettings_EnableForceCanRideFliersTooltip">如果启用，将允许您更改是否可以在地图上骑乘飞行生物； 否则将默认使用地图设置。</sys:String>
     <sys:String x:Key="ServerSettings_ForceCanRideFliersLabel">启用飞行生物乘坐</sys:String>
@@ -1926,8 +1913,6 @@
     <sys:String x:Key="ServerSettings_StructurePickupTimeAfterPlacementTooltip">设置放置后快速拾取可用的时间（以秒为单位）。</sys:String>
     <sys:String x:Key="ServerSettings_StructurePickupHoldDurationLabel">建筑拾取保持时间</sys:String>
     <sys:String x:Key="ServerSettings_StructurePickupHoldDurationTooltip">设置快速拾取建筑需要的持续时间，使用0禁用并立即拾取。</sys:String>
-    <sys:String x:Key="ServerSettings_AllowIntegratedSPlusStructuresLabel">允许集成官方S+</sys:String>
-    <sys:String x:Key="ServerSettings_AllowIntegratedSPlusStructuresTooltip">如果启用，将添加所有官方的S +建筑； 否则，将禁用所有新的S +建筑（主要用于让希望继续使用S + mod版本的非官方人员继续使用该建筑，而无需大量额外的重复建筑物）。</sys:String>
 	 <sys:String x:Key="ServerSettings_IgnoreStructuresPreventionVolumesLabel">禁用特殊区域的建筑</sys:String>
     <sys:String x:Key="ServerSettings_IgnoreStructuresPreventionVolumesTooltip">如果启用，在通常不允许的地方建造区域，例如一些地图的方尖碑周围、偏离门户和《创世纪：第1部分》中的任务卷区域。注意：在Genesis：第1部分中，此设置默认启用，并且有一个名为bGenesisUseStructuresPrevisionVolumes的特殊设置可以禁用它.</sys:String>
     <sys:String x:Key="ServerSettings_GenesisUseStructuresPreventionVolumesLabel">在任务区域禁用建筑物</sys:String>

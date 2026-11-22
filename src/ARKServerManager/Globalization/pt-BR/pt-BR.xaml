@@ -1448,14 +1448,6 @@ Undocumented bye wildcard.</sys:String>
     <sys:String x:Key="ServerSettings_NonPermanentDiseasesLabel">Doenças não permanentes</sys:String>
     <sys:String x:Key="ServerSettings_NonPermanentDiseasesTooltip">Se habilitado, fará com que as doenças não sejam permanentes (você irá perdê-las se você respawna).</sys:String>
 
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScaleLabel">Ultrapassar escala de alcance de estase de rede NPC</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScaleTooltip">Se ativado, você pode substituir as configurações de escala do intervalo de estatísticas da rede NPC.</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePlayerCountStartLabel">Início da Contagem de Jogadores On-line</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePlayerCountStartTooltip">O número mínimo de jogadores online quando a escala de estatísticas é ativada.</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePlayerCountEndLabel">Fim da contagem do player on-line</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePlayerCountEndTooltip">O número máximo de jogadores online quando a escala máxima é atingida.</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePercentEndLabel">Máximo de escala</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePercentEndTooltip">A porcentagem de escala máxima usada pelo servidor, quando o valor final da contagem de jogadores online é atingido.</sys:String>
 
     <sys:String x:Key="ServerSettings_OxygenSwimSpeedStatMultiplierLabel">Multiplicador do status de velocidade de natação do oxigênio</sys:String>
     <sys:String x:Key="ServerSettings_OxygenSwimSpeedStatMultiplierTooltip">Especifica o multiplicador de como a velocidade de natação é multiplicada pelo nível gasto em oxigênio.</sys:String>
@@ -1526,9 +1518,6 @@ Undocumented bye wildcard.</sys:String>
     <sys:String x:Key="ServerSettings_Ragnarok_VolcanoIntensityLabel">Intensidade do vulcão</sys:String>
     <sys:String x:Key="ServerSettings_Ragnarok_VolcanoIntensityTooltip">Quanto mais baixo for o valor, mais intensa será a erupção do vulcânica. Recomendado deixar 1,0, o valor mínimo é 0,25, e para jogos multiplayer, não deve ir abaixo de 0,5. Números muito altos irão basicamente desativar as rochas em chamas atiradas para fora do vulcão.</sys:String>
 	
-    <sys:String x:Key="ServerSettings_FjordurLabel">Ativar configurações Fjordur</sys:String>
-    <sys:String x:Key="ServerSettings_UseFjordurTraversalBuffLabel">Ativar Teleporte do Bioma Fjordur</sys:String>
-    <sys:String x:Key="ServerSettings_UseFjordurTraversalBuffTooltip">Se ativado, permitirá o teleporte para bioma do mapa Fjordur.</sys:String>
 	
 	<sys:String x:Key="ServerSettings_ItemStatClampsLabel">Item Stat Clamps</sys:String>
     <sys:String x:Key="ServerSettings_ItemStatClampsNoteLabel">AVISO: Isso mudará permanentemente as estatísticas de qualquer item existente, portanto, certifique-se de fazer backup de seu salvamento atual antes de modificar e brincar com os valores de fixo.</sys:String>
@@ -1707,8 +1696,6 @@ enquanto definir um valor muito alto, como 100,0, significa que os jogadores sob
     <sys:String x:Key="ServerSettings_DisableDinoRidingTooltip">Se ativado, todos os dinos domados não poderão ser usados.</sys:String>
     <sys:String x:Key="ServerSettings_DisableDinoTamingLabel">Desativar Domesticação de Dino</sys:String>
     <sys:String x:Key="ServerSettings_DisableDinoTamingTooltip">Se ativado, todos os dinossauros selvagens não poderão ser domados.</sys:String>
-    <sys:String x:Key="ServerSettings_DisableDinoBreedingLabel">Desativar Breeding Dino</sys:String>
-    <sys:String x:Key="ServerSettings_DisableDinoBreedingTooltip">Se ativado, impede a criação de dinos domesticados.</sys:String>
 	<sys:String x:Key="ServerSettings_EnableForceCanRideFliersLabel">Alterar Flyer</sys:String>
     <sys:String x:Key="ServerSettings_EnableForceCanRideFliersTooltip">Se ativado, permitirá que você altere os flyer para ser montados no mapa ou não; caso contrário, o padrão será usar as configurações do mapa.</sys:String>
     <sys:String x:Key="ServerSettings_ForceCanRideFliersLabel">Ativar Flyer</sys:String>
@@ -1942,8 +1929,6 @@ A fim de restaurar as torretas desligadas, você deve pegar qualquer uma que ult
     <sys:String x:Key="ServerSettings_StructurePickupTimeAfterPlacementTooltip">Especifica a quantidade de tempo em segundos após o veiculação da estrutura em que a coleta rápida está disponível.</sys:String>
     <sys:String x:Key="ServerSettings_StructurePickupHoldDurationLabel">Duração do Pickup na estrutura</sys:String>
     <sys:String x:Key="ServerSettings_StructurePickupHoldDurationTooltip">Especifica a quantidade de tempo da duração da espera de coleta rápida, use 0 para desativar e fazer a coleta instantânea.</sys:String>
-    <sys:String x:Key="ServerSettings_AllowIntegratedSPlusStructuresLabel">Permitir Structures Plus</sys:String>
-    <sys:String x:Key="ServerSettings_AllowIntegratedSPlusStructuresTooltip">Se ativado, adicionará todas as novas estruturas S + caso contrário, desabilita todas as novas estruturas S + (destinadas principalmente a permitir que funcionários não oficiais que desejam continuar usando a versão mod S + continuem usando isso sem uma tonelada de estruturas duplicadas extras).</sys:String>
     <sys:String x:Key="ServerSettings_IgnoreStructuresPreventionVolumesLabel">Desativar construção em áreas especiais</sys:String>
     <sys:String x:Key="ServerSettings_IgnoreStructuresPreventionVolumesTooltip" xml:space="preserve">Se habilitado, poderá construir em áreas onde normalmente não é permitido, como ao redor dos Obeliscos de alguns mapas, no Portal de Aberration e nas áreas de Missão em Gênesis 1.
 Nota: No Gênesis 1 esta configuração está habilitada por padrão e há uma configuração ad hoc chamada bGenesisUseStructuresPreventionVolumes para desativá-lo.</sys:String>

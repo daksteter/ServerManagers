@@ -1426,14 +1426,6 @@
     <sys:String x:Key="ServerSettings_NonPermanentDiseasesLabel">Непостоянные болезни</sys:String>
     <sys:String x:Key="ServerSettings_NonPermanentDiseasesTooltip">Если включено, это сделает болезни не постоянными (они пропадут при смерти).</sys:String>
 
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScaleLabel">Определить NPC заморозку при онлайне</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScaleTooltip">Если включено, вы можете переопределить настройки радиуса заморозки NPC от игроков.</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePlayerCountStartLabel">Минимальное кол-во игроков для включения</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePlayerCountStartTooltip">Минимальное кол-во онлайн-игроков при включенной шкале статуса.</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePlayerCountEndLabel">Максимальное кол-во игроков для выключения</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePlayerCountEndTooltip">Максимальное кол-во онлайн-игроков при включенной шкале статуса.</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePercentEndLabel">Максимальный процент</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePercentEndTooltip">Максимальный процент масштабирования, используемый сервером при достижении конечного значения счетчика онлайн-игроков.</sys:String>
 
     <sys:String x:Key="ServerSettings_OxygenSwimSpeedStatMultiplierLabel">Расход кислорода</sys:String>
     <sys:String x:Key="ServerSettings_OxygenSwimSpeedStatMultiplierTooltip">Установить множитель, как скорость плавания влияет на трату кислорода.</sys:String>
@@ -1504,9 +1496,6 @@
     <sys:String x:Key="ServerSettings_Ragnarok_VolcanoIntensityLabel">Вулкан Интенсивность</sys:String>
     <sys:String x:Key="ServerSettings_Ragnarok_VolcanoIntensityTooltip">Чем ниже значение, тем интенсивнее будет извержение вулкана. Рекомендуется оставить 1,0, минимальное значение 0,25, а для многопользовательских игр оно не должно опускаться ниже 0,5. Очень высокие числа в основном отключат пылающие камни, выброшенные из вулкана.</sys:String>
 
-    <sys:String x:Key="ServerSettings_FjordurLabel">Включить настройки Fjordur</sys:String>
-    <sys:String x:Key="ServerSettings_UseFjordurTraversalBuffLabel">Включить Fjordur биом телепорта</sys:String>
-    <sys:String x:Key="ServerSettings_UseFjordurTraversalBuffTooltip">Если включено, позволит телепортироваться в биом на карте Фьордура</sys:String>
 
     <sys:String x:Key="ServerSettings_ItemStatClampsLabel">Item Stat Clamps</sys:String>
     <sys:String x:Key="ServerSettings_ItemStatClampsNoteLabel">ПРЕДУПРЕЖДЕНИЕ: это навсегда изменит статистику любых существующих элементов, поэтому обязательно сделайте резервную копию вашего текущего сохранения, прежде чем изменять и играть с ограничивающими значениями.</sys:String>
@@ -1684,8 +1673,6 @@
     <sys:String x:Key="ServerSettings_DisableDinoRidingTooltip">Если включено, то запрещено ездить на прирученных динозаврах.</sys:String>
     <sys:String x:Key="ServerSettings_DisableDinoTamingLabel">Выкл приручение дино</sys:String>
     <sys:String x:Key="ServerSettings_DisableDinoTamingTooltip">Если включено, то все дикие динозавры не смогут быть приручены.</sys:String>
-    <sys:String x:Key="ServerSettings_DisableDinoBreedingLabel">Отключить разведение динозавров</sys:String>
-    <sys:String x:Key="ServerSettings_DisableDinoBreedingTooltip">Если включено, предотвращает разведение прирученных животных.</sys:String>
     <sys:String x:Key="ServerSettings_EnableForceCanRideFliersLabel">Изменить езду на летающих дино</sys:String>
     <sys:String x:Key="ServerSettings_EnableForceCanRideFliersTooltip">Если включено, то позволит вам изменить, можно ли летать на карте. В противном случае по умолчанию будут использоваться настройки карты.</sys:String>
     <sys:String x:Key="ServerSettings_ForceCanRideFliersLabel">Вкл езду на летающих дино</sys:String>
@@ -1917,8 +1904,6 @@
     <sys:String x:Key="ServerSettings_StructurePickupTimeAfterPlacementTooltip">Определяет время в секундах после размещения, в течение которого доступен быстрый подбор.</sys:String>
     <sys:String x:Key="ServerSettings_StructurePickupHoldDurationLabel">Время удержания для подбора структуры:</sys:String>
     <sys:String x:Key="ServerSettings_StructurePickupHoldDurationTooltip">Определяет количество времени для удержания при подборе. Используйте 0, чтобы включить мгновенный подбор.</sys:String>
-    <sys:String x:Key="ServerSettings_AllowIntegratedSPlusStructuresLabel">Разрешить интегрированные Structures Plus</sys:String>
-    <sys:String x:Key="ServerSettings_AllowIntegratedSPlusStructuresTooltip">Если включено, добавит все новые структуры S+, в противном случае отключаются все новые структуры S+ (предназначенные главным образом для того, чтобы позволить неофициальным серверам, которые хотят продолжать использовать версию S+ mod, продолжать использовать это без тонны дополнительных дублирующих структур).</sys:String>
     <sys:String x:Key="ServerSettings_IgnoreStructuresPreventionVolumesLabel">Отключить строительство в особых зонах</sys:String>
     <sys:String x:Key="ServerSettings_IgnoreStructuresPreventionVolumesTooltip">Если этот параметр включен, создаются области там, где обычно это запрещено, например, вокруг обелисков на некоторых картах, на портале аберраций и в областях миссий в Genesis: Part 1. Примечание: в Genesis: Part 1 эти настройки включены по умолчанию, и есть специальные настройки под названием bGenesisUseStructuresPreventionVolumes, чтобы отключить его.</sys:String>
     <sys:String x:Key="ServerSettings_GenesisUseStructuresPreventionVolumesLabel">Откл. строительство в зонах миссий (Genesis)</sys:String>

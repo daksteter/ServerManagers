@@ -693,6 +693,25 @@
                                                 </Binding>
                                             </TextBox.Text>
                                         </TextBox>
+
+                                        <Label   Grid.Row="3" Grid.Column="0" Content="{DynamicResource ServerSettings_PassiveModIdsLabel}" Grid.ColumnSpan="2" ToolTip="{DynamicResource ServerSettings_PassiveModIdsTooltip}" VerticalAlignment="Center"/>
+                                        <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="6" Margin="1" ToolTip="{DynamicResource ServerSettings_PassiveModIdsTooltip}">
+                                            <Validation.ErrorTemplate>
+                                                <ControlTemplate>
+                                                    <StackPanel>
+                                                        <AdornedElementPlaceholder x:Name="textBox"/>
+                                                        <TextBlock Text="{Binding [0].ErrorContent}" Background="Red" Foreground="White"/>
+                                                    </StackPanel>
+                                                </ControlTemplate>
+                                            </Validation.ErrorTemplate>
+                                            <TextBox.Text>
+                                                <Binding Path="PassiveModIds">
+                                                    <Binding.ValidationRules>
+                                                        <cvr:IdListValidationRule ValidatesOnTargetUpdated="true" />
+                                                    </Binding.ValidationRules>
+                                                </Binding>
+                                            </TextBox.Text>
+                                        </TextBox>
                                     </Grid>
                                 </GroupBox>
 
@@ -899,6 +918,12 @@
                                             <RowDefinition/>
                                             <RowDefinition/>
                                             <RowDefinition/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="1*"/>
@@ -984,6 +1009,18 @@
                                             <cctl:CheckBoxAndTextBlock Margin="0,0,15,0" VerticalAlignment="Center" IsChecked="{Binding ServerPlatformXbox, Mode=TwoWay}" Text="{DynamicResource ServerSettings_ServerPlatformXboxLabel}"/>
                                             <cctl:CheckBoxAndTextBlock Margin="0,0,15,0" VerticalAlignment="Center" IsChecked="{Binding ServerPlatformPlayStation, Mode=TwoWay}" Text="{DynamicResource ServerSettings_ServerPlatformPlayStationLabel}"/>
                                         </WrapPanel>
+
+                                        <!-- ASA-only launch options and settings -->
+                                        <cctl:CheckBoxAndTextBlock Grid.Row="24" Grid.Column="0" Grid.ColumnSpan="2" Margin="5,5,5,0" VerticalAlignment="Center" HorizontalAlignment="Left" IsChecked="{Binding NoWildBabies, Mode=TwoWay}" Text="{DynamicResource ServerSettings_NoWildBabiesLabel}" ToolTip="{DynamicResource ServerSettings_NoWildBabiesTooltip}"/>
+                                        <cctl:CheckBoxAndTextBlock Grid.Row="24" Grid.Column="2" Grid.ColumnSpan="2" Margin="5,5,5,0" VerticalAlignment="Center" HorizontalAlignment="Left" IsChecked="{Binding DisableDinoNetRangeScaling, Mode=TwoWay}" Text="{DynamicResource ServerSettings_DisableDinoNetRangeScalingLabel}" ToolTip="{DynamicResource ServerSettings_DisableDinoNetRangeScalingTooltip}"/>
+                                        <cctl:CheckBoxAndTextBlock Grid.Row="25" Grid.Column="0" Grid.ColumnSpan="2" Margin="5,5,5,0" VerticalAlignment="Center" HorizontalAlignment="Left" IsChecked="{Binding DisableCustomCosmetics, Mode=TwoWay}" Text="{DynamicResource ServerSettings_DisableCustomCosmeticsLabel}" ToolTip="{DynamicResource ServerSettings_DisableCustomCosmeticsTooltip}"/>
+                                        <cctl:CheckBoxAndTextBlock Grid.Row="25" Grid.Column="2" Grid.ColumnSpan="2" Margin="5,5,5,0" VerticalAlignment="Center" HorizontalAlignment="Left" IsChecked="{Binding DoCustomCosmeticValidation, Mode=TwoWay}" Text="{DynamicResource ServerSettings_DoCustomCosmeticValidationLabel}" ToolTip="{DynamicResource ServerSettings_DoCustomCosmeticValidationTooltip}"/>
+                                        <cctl:CheckBoxAndTextBlock Grid.Row="26" Grid.Column="0" Grid.ColumnSpan="4" Margin="5,5,5,0" VerticalAlignment="Center" HorizontalAlignment="Left" IsChecked="{Binding AlwaysTickDedicatedSkeletalMeshes, Mode=TwoWay}" Text="{DynamicResource ServerSettings_AlwaysTickDedicatedSkeletalMeshesLabel}" ToolTip="{DynamicResource ServerSettings_AlwaysTickDedicatedSkeletalMeshesTooltip}"/>
+                                        <cctl:AnnotatedCheckBoxAndIntegerSlider Grid.Row="27" Grid.Column="0" Grid.ColumnSpan="4" Margin="1" Label="{DynamicResource ServerSettings_GBUsageToForceRestartLabel}" Value="{Binding GBUsageToForceRestart}" Suffix="{DynamicResource ServerSettings_GBUsageToForceRestartUnits}" Minimum="0" Maximum="256" SmallChange="1" LargeChange="8" TickFrequency="8" VerticalAlignment="Center" ToolTip="{DynamicResource ServerSettings_GBUsageToForceRestartTooltip}"/>
+                                        <Label Grid.Row="28" Grid.Column="0" Margin="20,0,5,0" Content="{DynamicResource ServerSettings_CosmeticWhitelistOverrideLabel}" ToolTip="{DynamicResource ServerSettings_CosmeticWhitelistOverrideTooltip}" VerticalAlignment="Center"/>
+                                        <TextBox Grid.Row="28" Grid.Column="1" Grid.ColumnSpan="3" Margin="1" Text="{Binding CosmeticWhitelistOverride}" ToolTip="{DynamicResource ServerSettings_CosmeticWhitelistOverrideTooltip}" VerticalContentAlignment="Center"/>
+                                        <Label Grid.Row="29" Grid.Column="0" Margin="20,0,5,0" Content="{DynamicResource ServerSettings_AdminListURLLabel}" ToolTip="{DynamicResource ServerSettings_AdminListURLTooltip}" VerticalAlignment="Center"/>
+                                        <TextBox Grid.Row="29" Grid.Column="1" Grid.ColumnSpan="3" Margin="1" Text="{Binding AdminListURL}" ToolTip="{DynamicResource ServerSettings_AdminListURLTooltip}" VerticalContentAlignment="Center"/>
                                     </Grid>
                                 </GroupBox>
 
@@ -1828,24 +1865,6 @@
                                         </Grid>
                                     </GroupBox>
 
-                                    <GroupBox Style="{StaticResource GroupBoxStyle}">
-                                        <GroupBox.Header>
-                                            <cctl:CheckBoxAndTextBlock Name="OverrideNPCNetworkStasisRangeScaleCheckbox" IsChecked="{Binding OverrideNPCNetworkStasisRangeScale, Mode=TwoWay}" Text="{DynamicResource ServerSettings_NPCNetworkStasisRangeScaleLabel}" ToolTip="{DynamicResource ServerSettings_NPCNetworkStasisRangeScaleTooltip}" />
-                                        </GroupBox.Header>
-
-                                        <Grid IsEnabled="{Binding ElementName=OverrideNPCNetworkStasisRangeScaleCheckbox, Path=IsChecked}">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="Auto"/>
-                                                <RowDefinition Height="Auto"/>
-                                                <RowDefinition Height="Auto"/>
-                                            </Grid.RowDefinitions>
-
-                                            <cctl:AnnotatedSlider Grid.Row="0" Margin="1" Label="{DynamicResource ServerSettings_NPCNetworkStasisRangeScalePlayerCountStartLabel}" Value="{Binding NPCNetworkStasisRangeScalePlayerCountStart}" Suffix="{DynamicResource SliderUnits_Players}" VerticalAlignment="Center" Minimum="1" Maximum="200" LargeChange="10" SmallChange="5" TickFrequency="10" ToolTip="{DynamicResource ServerSettings_NPCNetworkStasisRangeScalePlayerCountStartTooltip}"/>
-                                            <cctl:AnnotatedSlider Grid.Row="1" Margin="1" Label="{DynamicResource ServerSettings_NPCNetworkStasisRangeScalePlayerCountEndLabel}" Value="{Binding NPCNetworkStasisRangeScalePlayerCountEnd}" Suffix="{DynamicResource SliderUnits_Players}" VerticalAlignment="Center" Minimum="1" Maximum="200" LargeChange="10" SmallChange="5" TickFrequency="10" ToolTip="{DynamicResource ServerSettings_NPCNetworkStasisRangeScalePlayerCountEndTooltip}"/>
-                                            <cctl:AnnotatedSlider Grid.Row="2" Margin="1" Label="{DynamicResource ServerSettings_NPCNetworkStasisRangeScalePercentEndLabel}" Value="{Binding NPCNetworkStasisRangeScalePercentEnd}" Suffix="{DynamicResource SliderUnits_Percentage}" VerticalAlignment="Center" Minimum="0.1" Maximum="1.0" LargeChange="0.1" SmallChange="0.1" TickFrequency="0.1" ToolTip="{DynamicResource ServerSettings_NPCNetworkStasisRangeScalePercentEndTooltip}"/>
-                                        </Grid>
-                                    </GroupBox>
-
                                     <cctl:AnnotatedSlider Margin="1" Label="{DynamicResource ServerSettings_OxygenSwimSpeedStatMultiplierLabel}" Value="{Binding OxygenSwimSpeedStatMultiplier}" Suffix="{DynamicResource SliderUnits_Multiplier}" Minimum="0" Maximum="10" SmallChange="0.1" LargeChange="1" TickFrequency="1"  ToolTip="{DynamicResource ServerSettings_OxygenSwimSpeedStatMultiplierTooltip}" />
                                     <cctl:AnnotatedSlider Margin="1" Label="{DynamicResource ServerSettings_UseCorpseLifeSpanMultiplierLabel}" Value="{Binding UseCorpseLifeSpanMultiplier}" Suffix="{DynamicResource SliderUnits_Multiplier}" Minimum="0" Maximum="10" SmallChange="0.1" LargeChange="1" TickFrequency="1"  ToolTip="{DynamicResource ServerSettings_UseCorpseLifeSpanMultiplierTooltip}" />
                                     <cctl:AnnotatedSlider Margin="1" Label="{DynamicResource ServerSettings_MinimumTimeBetweenInventoryRetrievalLabel}" Value="{Binding MinimumTimeBetweenInventoryRetrieval}" Suffix="{DynamicResource SliderUnits_Seconds}" Minimum="0" Maximum="86400" SmallChange="900" LargeChange="3600" TickFrequency="3600" ToolTip="{DynamicResource ServerSettings_MinimumTimeBetweenInventoryRetrievalTooltip}"/>
@@ -1873,6 +1892,82 @@
                                             <cctl:AnnotatedSlider Grid.Row="2" Margin="5,5,5,0" IsEnabled="{Binding EnableCryopodNerf}" Label="{DynamicResource ServerSettings_CryopodNerfIncomingDamageMultPercentLabel}" Value="{Binding CryopodNerfIncomingDamageMultiplierPercent}" Suffix="{Binding CryopodNerfIncomingDamageMultiplierPercent, Converter={StaticResource FloatToPercentageConverter}}" Minimum="0" Maximum="1" SmallChange="0.05" LargeChange="0.1" TickFrequency="0.1" ToolTip="{DynamicResource ServerSettings_CryopodNerfIncomingDamageMultPercentTooltip}"/>
                                         </Grid>
                                     </GroupBox>
+
+                                    <GroupBox Header="{DynamicResource ServerSettings_CryopodsLabel}" Style="{StaticResource GroupBoxStyle}">
+                                        <StackPanel>
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <cctl:CheckBoxAndTextBlock Grid.Row="0" Grid.Column="0" Margin="5,5,5,0" HorizontalAlignment="Left" IsChecked="{Binding AllowCryoFridgeOnSaddle, Mode=TwoWay}" Text="{DynamicResource ServerSettings_AllowCryoFridgeOnSaddleLabel}" ToolTip="{DynamicResource ServerSettings_AllowCryoFridgeOnSaddleTooltip}"/>
+                                                <cctl:CheckBoxAndTextBlock Grid.Row="0" Grid.Column="1" Margin="5,5,5,0" HorizontalAlignment="Left" IsChecked="{Binding DisableCryopodEnemyCheck, Mode=TwoWay}" Text="{DynamicResource ServerSettings_DisableCryopodEnemyCheckLabel}" ToolTip="{DynamicResource ServerSettings_DisableCryopodEnemyCheckTooltip}"/>
+                                                <cctl:CheckBoxAndTextBlock Grid.Row="0" Grid.Column="2" Margin="5,5,5,0" HorizontalAlignment="Left" IsChecked="{Binding DisableCryopodFridgeRequirement, Mode=TwoWay}" Text="{DynamicResource ServerSettings_DisableCryopodFridgeRequirementLabel}" ToolTip="{DynamicResource ServerSettings_DisableCryopodFridgeRequirementTooltip}"/>
+                                            </Grid>
+                                        </StackPanel>
+                                    </GroupBox>
+
+                                    <GroupBox Header="{DynamicResource ServerSettings_CryoHospitalLabel}" Style="{StaticResource GroupBoxStyle}">
+                                        <StackPanel>
+                                            <cctl:AnnotatedSlider Margin="1" Label="{DynamicResource ServerSettings_CryoHospitalHoursToRegenHPLabel}" Value="{Binding CryoHospitalHoursToRegenHP}" Suffix="{DynamicResource SliderUnits_Hours}" Minimum="0" Maximum="48" SmallChange="0.5" LargeChange="1" TickFrequency="1" ToolTip="{DynamicResource ServerSettings_CryoHospitalHoursToRegenHPTooltip}"/>
+                                            <cctl:AnnotatedSlider Margin="1" Label="{DynamicResource ServerSettings_CryoHospitalHoursToRegenFoodLabel}" Value="{Binding CryoHospitalHoursToRegenFood}" Suffix="{DynamicResource SliderUnits_Hours}" Minimum="0" Maximum="168" SmallChange="1" LargeChange="6" TickFrequency="6" ToolTip="{DynamicResource ServerSettings_CryoHospitalHoursToRegenFoodTooltip}"/>
+                                            <cctl:AnnotatedSlider Margin="1" Label="{DynamicResource ServerSettings_CryoHospitalHoursToDrainTorporLabel}" Value="{Binding CryoHospitalHoursToDrainTorpor}" Suffix="{DynamicResource SliderUnits_Hours}" Minimum="0" Maximum="48" SmallChange="0.5" LargeChange="1" TickFrequency="1" ToolTip="{DynamicResource ServerSettings_CryoHospitalHoursToDrainTorporTooltip}"/>
+                                            <cctl:AnnotatedSlider Margin="1" Label="{DynamicResource ServerSettings_CryoHospitalMatingCooldownReductionLabel}" Value="{Binding CryoHospitalMatingCooldownReduction}" Suffix="{DynamicResource SliderUnits_Multiplier}" Minimum="0" Maximum="10" SmallChange="0.1" LargeChange="1" TickFrequency="1" ToolTip="{DynamicResource ServerSettings_CryoHospitalMatingCooldownReductionTooltip}"/>
+                                        </StackPanel>
+                                    </GroupBox>
+
+                                    <GroupBox Header="{DynamicResource ServerSettings_OutpostsLabel}" Style="{StaticResource GroupBoxStyle}">
+                                        <StackPanel>
+                                            <cctl:AnnotatedCheckBoxAndIntegerSlider Margin="1" Label="{DynamicResource ServerSettings_MaxActiveOutpostsLabel}" Value="{Binding MaxActiveOutposts}" Minimum="0" Maximum="100" SmallChange="1" LargeChange="5" TickFrequency="5" VerticalAlignment="Center" ToolTip="{DynamicResource ServerSettings_MaxActiveOutpostsTooltip}"/>
+                                            <cctl:AnnotatedCheckBoxAndIntegerSlider Margin="1" Label="{DynamicResource ServerSettings_MaxActiveResourceCachesLabel}" Value="{Binding MaxActiveResourceCaches}" Minimum="0" Maximum="100" SmallChange="1" LargeChange="5" TickFrequency="5" VerticalAlignment="Center" ToolTip="{DynamicResource ServerSettings_MaxActiveResourceCachesTooltip}"/>
+                                            <cctl:AnnotatedCheckBoxAndIntegerSlider Margin="1" Label="{DynamicResource ServerSettings_MaxActiveCityOutpostsLabel}" Value="{Binding MaxActiveCityOutposts}" Minimum="0" Maximum="100" SmallChange="1" LargeChange="5" TickFrequency="5" VerticalAlignment="Center" ToolTip="{DynamicResource ServerSettings_MaxActiveCityOutpostsTooltip}"/>
+                                            <cctl:AnnotatedSlider Margin="1" Label="{DynamicResource ServerSettings_OutpostSigilRewardMultiplierLabel}" Value="{Binding OutpostSigilRewardMultiplier}" Suffix="{DynamicResource SliderUnits_Multiplier}" Minimum="0" Maximum="10" SmallChange="0.1" LargeChange="1" TickFrequency="1" ToolTip="{DynamicResource ServerSettings_OutpostSigilRewardMultiplierTooltip}"/>
+                                        </StackPanel>
+                                    </GroupBox>
+
+                                    <GroupBox Header="{DynamicResource ServerSettings_PhotoModeLabel}" Style="{StaticResource GroupBoxStyle}">
+                                        <StackPanel>
+                                            <cctl:CheckBoxAndTextBlock Margin="5,5,5,0" HorizontalAlignment="Left" IsChecked="{Binding DisablePhotoMode, Mode=TwoWay}" Text="{DynamicResource ServerSettings_DisablePhotoModeLabel}" ToolTip="{DynamicResource ServerSettings_DisablePhotoModeTooltip}"/>
+                                            <cctl:AnnotatedSlider Margin="1" Label="{DynamicResource ServerSettings_PhotoModeRangeLimitLabel}" Value="{Binding PhotoModeRangeLimit}" Suffix="{DynamicResource SliderUnits_Units}" Minimum="0" Maximum="50000" SmallChange="100" LargeChange="1000" TickFrequency="1000" ToolTip="{DynamicResource ServerSettings_PhotoModeRangeLimitTooltip}"/>
+                                        </StackPanel>
+                                    </GroupBox>
+
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <cctl:CheckBoxAndTextBlock Grid.Row="0" Grid.Column="0" Margin="5,5,5,0" HorizontalAlignment="Left" IsChecked="{Binding IgnorePVPMountedWeaponryRestrictions, Mode=TwoWay}" Text="{DynamicResource ServerSettings_IgnorePVPMountedWeaponryRestrictionsLabel}" ToolTip="{DynamicResource ServerSettings_IgnorePVPMountedWeaponryRestrictionsTooltip}"/>
+                                    </Grid>
+                                    <cctl:AnnotatedSlider Margin="1" Label="{DynamicResource ServerSettings_ImplantSuicideCDLabel}" Value="{Binding ImplantSuicideCD}" Suffix="{DynamicResource SliderUnits_Seconds}" Minimum="0" Maximum="172800" SmallChange="60" LargeChange="3600" TickFrequency="3600" ToolTip="{DynamicResource ServerSettings_ImplantSuicideCDTooltip}"/>
+                                    <cctl:AnnotatedSlider Margin="1" Label="{DynamicResource ServerSettings_TribeTowerBonusMultiplierLabel}" Value="{Binding TribeTowerBonusMultiplier}" Suffix="{DynamicResource SliderUnits_Multiplier}" Minimum="0" Maximum="10" SmallChange="0.1" LargeChange="1" TickFrequency="1" ToolTip="{DynamicResource ServerSettings_TribeTowerBonusMultiplierTooltip}"/>
+                                    <cctl:AnnotatedSlider Margin="1" Label="{DynamicResource ServerSettings_MaxTrainCarsLabel}" Value="{Binding MaxTrainCars}" Minimum="0" Maximum="50" SmallChange="1" LargeChange="5" TickFrequency="1" ToolTip="{DynamicResource ServerSettings_MaxTrainCarsTooltip}"/>
+                                    <Grid Margin="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" MinWidth="250"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0" Content="{DynamicResource ServerSettings_WorldBossKingKaijuSpawnTimeLabel}" ToolTip="{DynamicResource ServerSettings_WorldBossKingKaijuSpawnTimeTooltip}" VerticalAlignment="Center"/>
+                                        <TextBox Grid.Column="1" Margin="1" Text="{Binding WorldBossKingKaijuSpawnTime}" ToolTip="{DynamicResource ServerSettings_WorldBossKingKaijuSpawnTimeTooltip}" VerticalContentAlignment="Center"/>
+                                    </Grid>
+                                    <Grid Margin="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" MinWidth="250"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0" Content="{DynamicResource ServerSettings_ValgueroMemorialEntriesLabel}" ToolTip="{DynamicResource ServerSettings_ValgueroMemorialEntriesTooltip}" VerticalAlignment="Center"/>
+                                        <TextBox Grid.Column="1" Margin="1" Text="{Binding ValgueroMemorialEntries}" ToolTip="{DynamicResource ServerSettings_ValgueroMemorialEntriesTooltip}" VerticalContentAlignment="Center"/>
+                                    </Grid>
 
                                     <GroupBox Header="{DynamicResource Mod_Genesis}" Style="{StaticResource GroupBoxStyle}">
                                         <Grid>
@@ -1985,28 +2080,6 @@
                                                     Value="{Binding Ragnarok_VolcanoIntensity, Converter={cc:FloatRangeValueConverter 0.25, 10.0}}" 
                                                     Suffix="{DynamicResource SliderUnits_Multiplier}"  
                                                     ToolTip="{DynamicResource ServerSettings_Ragnarok_VolcanoIntensityTooltip}"/>
-                                        </Grid>
-                                    </GroupBox>
-
-                                    <GroupBox Style="{StaticResource GroupBoxStyle}">
-                                        <GroupBox.Header>
-                                            <cctl:CheckBoxAndTextBlock IsChecked="{Binding Fjordur_EnableSettings, Mode=TwoWay}" Text="{DynamicResource ServerSettings_FjordurLabel}" />
-                                        </GroupBox.Header>
-
-                                        <Grid IsEnabled="{Binding Fjordur_EnableSettings}">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition/>
-                                            </Grid.RowDefinitions>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
-
-                                            <cctl:CheckBoxAndTextBlock Grid.Row="0" Grid.Column="0" Margin="5,5,5,0" HorizontalAlignment="Left" 
-                                                      IsChecked="{Binding UseFjordurTraversalBuff, Mode=TwoWay}" 
-                                                      Text="{DynamicResource ServerSettings_UseFjordurTraversalBuffLabel}" 
-                                                      ToolTip="{DynamicResource ServerSettings_UseFjordurTraversalBuffTooltip}"/>
                                         </Grid>
                                     </GroupBox>
 
@@ -2307,10 +2380,32 @@
                                         <cctl:CheckBoxAndTextBlock Grid.Row="2" Grid.Column="1" Margin="5" Text="{DynamicResource ServerSettings_DisableDinoDecayPvPLabel}" IsChecked="{Binding DisableDinoDecayPvP, Mode=TwoWay}" ToolTip="{DynamicResource ServerSettings_DisableDinoDecayPvPTooltip}" HorizontalAlignment="Left"/>
                                         <cctl:CheckBoxAndTextBlock Grid.Row="2" Grid.Column="2" Margin="5" Text="{DynamicResource ServerSettings_AutoDestroyDecayedDinosLabel}" IsChecked="{Binding AutoDestroyDecayedDinos, Mode=TwoWay}" ToolTip="{DynamicResource ServerSettings_AutoDestroyDecayedDinosTooltip}" HorizontalAlignment="Left"/>
 
+                                        <cctl:CheckBoxAndTextBlock Grid.Row="3" Grid.Column="1" Margin="5" IsChecked="{Binding AllowSpeedLeveling, Mode=TwoWay}" Text="{DynamicResource ServerSettings_AllowSpeedLevelingLabel}" ToolTip="{DynamicResource ServerSettings_AllowSpeedLevelingTooltip}"/>
+                                        <cctl:CheckBoxAndTextBlock Grid.Row="3" Grid.Column="2" Margin="5" IsChecked="{Binding DisableBurrowDecayTimers, Mode=TwoWay}" Text="{DynamicResource ServerSettings_DisableBurrowDecayTimersLabel}" ToolTip="{DynamicResource ServerSettings_DisableBurrowDecayTimersTooltip}"/>
+                                        <cctl:CheckBoxAndTextBlock Grid.Row="4" Grid.Column="0" Margin="5" IsChecked="{Binding ForceGachaUnhappyInCaves, Mode=TwoWay}" Text="{DynamicResource ServerSettings_ForceGachaUnhappyInCavesLabel}" ToolTip="{DynamicResource ServerSettings_ForceGachaUnhappyInCavesTooltip}"/>
                                         <cctl:CheckBoxAndTextBlock Grid.Row="3" Grid.Column="0" Margin="5" Text="{DynamicResource ServerSettings_UseDinoLevelUpAnimationsLabel}" IsChecked="{Binding UseDinoLevelUpAnimations, Mode=TwoWay}" ToolTip="{DynamicResource ServerSettings_UseDinoLevelUpAnimationsTooltip}" HorizontalAlignment="Left"/>
                                     </Grid>
 
                                     <cctl:AnnotatedSlider Margin="0,1,22,1" Label="{DynamicResource ServerSettings_DinoDecayPeriodLabel}" Value="{Binding PvEDinoDecayPeriodMultiplier}" Suffix="{DynamicResource SliderUnits_Multiplier}" Minimum="0" Maximum="10" SmallChange="0.1" LargeChange="1" TickFrequency="1" ToolTip="{DynamicResource ServerSettings_DinoDecayPeriodTooltip}"/>
+
+                                    <GroupBox Style="{StaticResource GroupBoxStyle}">
+                                        <GroupBox.Header>
+                                            <cctl:CheckBoxAndTextBlock IsChecked="{Binding DestroyTamesOverTheSoftTameLimit, Mode=TwoWay}" Text="{DynamicResource ServerSettings_DestroyTamesOverTheSoftTameLimitLabel}" ToolTip="{DynamicResource ServerSettings_DestroyTamesOverTheSoftTameLimitTooltip}"/>
+                                        </GroupBox.Header>
+                                        <StackPanel IsEnabled="{Binding DestroyTamesOverTheSoftTameLimit}">
+                                            <cctl:AnnotatedSlider Margin="1" Label="{DynamicResource ServerSettings_MaxTamedDinos_SoftTameLimitLabel}" Value="{Binding MaxTamedDinos_SoftTameLimit}" Suffix="{DynamicResource SliderUnits_Dinos}" Minimum="0" Maximum="20000" SmallChange="100" LargeChange="500" TickFrequency="500" ToolTip="{DynamicResource ServerSettings_MaxTamedDinos_SoftTameLimitTooltip}"/>
+                                            <cctl:AnnotatedSlider Margin="1" Label="{DynamicResource ServerSettings_MaxTamedDinos_SoftTameLimit_CountdownForDeletionDurationLabel}" Value="{Binding MaxTamedDinos_SoftTameLimit_CountdownForDeletionDuration}" Suffix="{DynamicResource SliderUnits_Seconds}" Minimum="3600" Maximum="2592000" SmallChange="3600" LargeChange="86400" TickFrequency="86400" ToolTip="{DynamicResource ServerSettings_MaxTamedDinos_SoftTameLimit_CountdownForDeletionDurationTooltip}"/>
+                                        </StackPanel>
+                                    </GroupBox>
+
+                                    <GroupBox Header="{DynamicResource ServerSettings_CosmoAndCompanionsLabel}" Style="{StaticResource GroupBoxStyle}">
+                                        <StackPanel>
+                                            <cctl:AnnotatedSlider Margin="1" Label="{DynamicResource ServerSettings_CosmoWeaponAmmoReloadAmountLabel}" Value="{Binding CosmoWeaponAmmoReloadAmount}" Minimum="0" Maximum="100" SmallChange="1" LargeChange="5" TickFrequency="5" ToolTip="{DynamicResource ServerSettings_CosmoWeaponAmmoReloadAmountTooltip}"/>
+                                            <cctl:AnnotatedSlider Margin="1" Label="{DynamicResource ServerSettings_MaxCosmoWeaponAmmoLabel}" Value="{Binding MaxCosmoWeaponAmmo}" Minimum="-1" Maximum="1000" SmallChange="1" LargeChange="10" TickFrequency="10" ToolTip="{DynamicResource ServerSettings_MaxCosmoWeaponAmmoTooltip}"/>
+                                            <cctl:AnnotatedSlider Margin="1" Label="{DynamicResource ServerSettings_ArmadoggoDeathCooldownLabel}" Value="{Binding ArmadoggoDeathCooldown}" Suffix="{DynamicResource SliderUnits_Seconds}" Minimum="1" Maximum="86400" SmallChange="60" LargeChange="600" TickFrequency="600" ToolTip="{DynamicResource ServerSettings_ArmadoggoDeathCooldownTooltip}"/>
+                                            <cctl:AnnotatedSlider Margin="1" Label="{DynamicResource ServerSettings_YoungIceFoxDeathCooldownLabel}" Value="{Binding YoungIceFoxDeathCooldown}" Suffix="{DynamicResource SliderUnits_Seconds}" Minimum="1" Maximum="86400" SmallChange="60" LargeChange="600" TickFrequency="600" ToolTip="{DynamicResource ServerSettings_YoungIceFoxDeathCooldownTooltip}"/>
+                                        </StackPanel>
+                                    </GroupBox>
 
                                     <Grid>
                                         <Grid.RowDefinitions>
@@ -2325,7 +2420,6 @@
 
                                         <cctl:CheckBoxAndTextBlock Grid.Row="0" Grid.Column="0" Margin="5" Text="{DynamicResource ServerSettings_DisableDinoRidingLabel}" IsChecked="{Binding DisableDinoRiding, Mode=TwoWay}" ToolTip="{DynamicResource ServerSettings_DisableDinoRidingTooltip}" HorizontalAlignment="Left"/>
                                         <cctl:CheckBoxAndTextBlock Grid.Row="0" Grid.Column="1" Margin="5" Text="{DynamicResource ServerSettings_DisableDinoTamingLabel}" IsChecked="{Binding DisableDinoTaming, Mode=TwoWay}" ToolTip="{DynamicResource ServerSettings_DisableDinoTamingTooltip}" HorizontalAlignment="Left"/>
-                                        <cctl:CheckBoxAndTextBlock Grid.Row="0" Grid.Column="2" Margin="5" Text="{DynamicResource ServerSettings_DisableDinoBreedingLabel}" IsChecked="{Binding DisableDinoBreeding, Mode=TwoWay}" ToolTip="{DynamicResource ServerSettings_DisableDinoBreedingTooltip}" HorizontalAlignment="Left"/>
                                     </Grid>
 
                                     <GroupBox Style="{StaticResource GroupBoxStyle}">
@@ -3231,8 +3325,71 @@
                                         </StackPanel>
                                     </GroupBox>
 
-                                    <cctl:CheckBoxAndTextBlock Margin="5" IsChecked="{Binding AllowIntegratedSPlusStructures, Mode=TwoWay}" Text="{DynamicResource ServerSettings_AllowIntegratedSPlusStructuresLabel}" ToolTip="{DynamicResource ServerSettings_AllowIntegratedSPlusStructuresTooltip}" HorizontalAlignment="Left"/>
                                     <cctl:CheckBoxAndTextBlock Margin="5" IsChecked="{Binding IgnoreStructuresPreventionVolumes, Mode=TwoWay}" Text="{DynamicResource ServerSettings_IgnoreStructuresPreventionVolumesLabel}" ToolTip="{DynamicResource ServerSettings_IgnoreStructuresPreventionVolumesTooltip}" HorizontalAlignment="Left"/>
+
+                                    <GroupBox Header="{DynamicResource ServerSettings_BunkersLabel}" Style="{StaticResource GroupBoxStyle}">
+                                        <StackPanel>
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <cctl:CheckBoxAndTextBlock Grid.Row="0" Grid.Column="0" Margin="5,5,5,0" HorizontalAlignment="Left" IsChecked="{Binding LimitBunkersPerTribe, Mode=TwoWay}" Text="{DynamicResource ServerSettings_LimitBunkersPerTribeLabel}" ToolTip="{DynamicResource ServerSettings_LimitBunkersPerTribeTooltip}"/>
+                                                <cctl:CheckBoxAndTextBlock Grid.Row="0" Grid.Column="1" Margin="5,5,5,0" HorizontalAlignment="Left" IsChecked="{Binding AllowBunkersInPreventionZones, Mode=TwoWay}" Text="{DynamicResource ServerSettings_AllowBunkersInPreventionZonesLabel}" ToolTip="{DynamicResource ServerSettings_AllowBunkersInPreventionZonesTooltip}"/>
+                                                <cctl:CheckBoxAndTextBlock Grid.Row="0" Grid.Column="2" Margin="5,5,5,0" HorizontalAlignment="Left" IsChecked="{Binding AllowBunkerModulesInPreventionZones, Mode=TwoWay}" Text="{DynamicResource ServerSettings_AllowBunkerModulesInPreventionZonesLabel}" ToolTip="{DynamicResource ServerSettings_AllowBunkerModulesInPreventionZonesTooltip}"/>
+                                                <cctl:CheckBoxAndTextBlock Grid.Row="1" Grid.Column="0" Margin="5,5,5,0" HorizontalAlignment="Left" IsChecked="{Binding AllowBunkerModulesAboveGround, Mode=TwoWay}" Text="{DynamicResource ServerSettings_AllowBunkerModulesAboveGroundLabel}" ToolTip="{DynamicResource ServerSettings_AllowBunkerModulesAboveGroundTooltip}"/>
+                                                <cctl:CheckBoxAndTextBlock Grid.Row="1" Grid.Column="1" Margin="5,5,5,0" HorizontalAlignment="Left" IsChecked="{Binding AllowRidingDinosInsideBunkers, Mode=TwoWay}" Text="{DynamicResource ServerSettings_AllowRidingDinosInsideBunkersLabel}" ToolTip="{DynamicResource ServerSettings_AllowRidingDinosInsideBunkersTooltip}"/>
+                                                <cctl:CheckBoxAndTextBlock Grid.Row="1" Grid.Column="2" Margin="5,5,5,0" HorizontalAlignment="Left" IsChecked="{Binding AllowDinoAIInsideBunkers, Mode=TwoWay}" Text="{DynamicResource ServerSettings_AllowDinoAIInsideBunkersLabel}" ToolTip="{DynamicResource ServerSettings_AllowDinoAIInsideBunkersTooltip}"/>
+                                            </Grid>
+                                            <cctl:AnnotatedSlider Margin="1" IsEnabled="{Binding LimitBunkersPerTribe}" Label="{DynamicResource ServerSettings_LimitBunkersPerTribeNumLabel}" Value="{Binding LimitBunkersPerTribeNum}" Minimum="1" Maximum="50" SmallChange="1" LargeChange="5" TickFrequency="1" ToolTip="{DynamicResource ServerSettings_LimitBunkersPerTribeNumTooltip}"/>
+                                            <cctl:AnnotatedSlider Margin="1" Label="{DynamicResource ServerSettings_MinDistanceBetweenBunkersLabel}" Value="{Binding MinDistanceBetweenBunkers}" Suffix="{DynamicResource SliderUnits_Units}" Minimum="0" Maximum="30000" SmallChange="100" LargeChange="1000" TickFrequency="1000" ToolTip="{DynamicResource ServerSettings_MinDistanceBetweenBunkersTooltip}"/>
+                                            <cctl:AnnotatedSlider Margin="1" Label="{DynamicResource ServerSettings_EnemyAccessBunkerHPThresholdLabel}" Value="{Binding EnemyAccessBunkerHPThreshold}" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.05" TickFrequency="0.05" ToolTip="{DynamicResource ServerSettings_EnemyAccessBunkerHPThresholdTooltip}"/>
+                                            <cctl:AnnotatedSlider Margin="1" Label="{DynamicResource ServerSettings_BunkerUnderHPThresholdDmgMultiplierLabel}" Value="{Binding BunkerUnderHPThresholdDmgMultiplier}" Suffix="{DynamicResource SliderUnits_Multiplier}" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.05" TickFrequency="0.05" ToolTip="{DynamicResource ServerSettings_BunkerUnderHPThresholdDmgMultiplierTooltip}"/>
+                                        </StackPanel>
+                                    </GroupBox>
+
+                                    <GroupBox Header="{DynamicResource ServerSettings_BloodforgeLabel}" Style="{StaticResource GroupBoxStyle}">
+                                        <StackPanel>
+                                            <cctl:AnnotatedSlider Margin="1" Label="{DynamicResource ServerSettings_BloodforgeReinforceExtraDurabilityLabel}" Value="{Binding BloodforgeReinforceExtraDurability}" Minimum="0" Maximum="5" SmallChange="0.05" LargeChange="0.5" TickFrequency="0.5" ToolTip="{DynamicResource ServerSettings_BloodforgeReinforceExtraDurabilityTooltip}"/>
+                                            <cctl:AnnotatedSlider Margin="1" Label="{DynamicResource ServerSettings_BloodforgeReinforceResourceCostMultiplierLabel}" Value="{Binding BloodforgeReinforceResourceCostMultiplier}" Suffix="{DynamicResource SliderUnits_Multiplier}" Minimum="0" Maximum="10" SmallChange="0.1" LargeChange="1" TickFrequency="1" ToolTip="{DynamicResource ServerSettings_BloodforgeReinforceResourceCostMultiplierTooltip}"/>
+                                            <cctl:AnnotatedSlider Margin="1" Label="{DynamicResource ServerSettings_BloodforgeReinforceSpeedMultiplierLabel}" Value="{Binding BloodforgeReinforceSpeedMultiplier}" Suffix="{DynamicResource SliderUnits_Multiplier}" Minimum="0" Maximum="10" SmallChange="0.05" LargeChange="0.5" TickFrequency="0.5" ToolTip="{DynamicResource ServerSettings_BloodforgeReinforceSpeedMultiplierTooltip}"/>
+                                        </StackPanel>
+                                    </GroupBox>
+
+                                    <GroupBox Header="{DynamicResource ServerSettings_WirelessCraftingLabel}" Style="{StaticResource GroupBoxStyle}">
+                                        <StackPanel>
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <cctl:CheckBoxAndTextBlock Grid.Row="0" Grid.Column="0" Margin="5,5,5,0" HorizontalAlignment="Left" IsChecked="{Binding DisableWirelessCrafting, Mode=TwoWay}" Text="{DynamicResource ServerSettings_DisableWirelessCraftingLabel}" ToolTip="{DynamicResource ServerSettings_DisableWirelessCraftingTooltip}"/>
+                                                <cctl:CheckBoxAndTextBlock Grid.Row="0" Grid.Column="1" Margin="5,5,5,0" HorizontalAlignment="Left" IsEnabled="{Binding DisableWirelessCrafting, Converter={StaticResource InvertBooleanConverter}}" IsChecked="{Binding DisableWirelessCraftingForPlayers, Mode=TwoWay}" Text="{DynamicResource ServerSettings_DisableWirelessCraftingForPlayersLabel}" ToolTip="{DynamicResource ServerSettings_DisableWirelessCraftingForPlayersTooltip}"/>
+                                                <cctl:CheckBoxAndTextBlock Grid.Row="0" Grid.Column="2" Margin="5,5,5,0" HorizontalAlignment="Left" IsEnabled="{Binding DisableWirelessCrafting, Converter={StaticResource InvertBooleanConverter}}" IsChecked="{Binding DisableWirelessCraftingForDinos, Mode=TwoWay}" Text="{DynamicResource ServerSettings_DisableWirelessCraftingForDinosLabel}" ToolTip="{DynamicResource ServerSettings_DisableWirelessCraftingForDinosTooltip}"/>
+                                                <cctl:CheckBoxAndTextBlock Grid.Row="1" Grid.Column="0" Margin="5,5,5,0" HorizontalAlignment="Left" IsEnabled="{Binding DisableWirelessCrafting, Converter={StaticResource InvertBooleanConverter}}" IsChecked="{Binding DisableWirelessCraftingForStructures, Mode=TwoWay}" Text="{DynamicResource ServerSettings_DisableWirelessCraftingForStructuresLabel}" ToolTip="{DynamicResource ServerSettings_DisableWirelessCraftingForStructuresTooltip}"/>
+                                            </Grid>
+                                            <cctl:AnnotatedSlider Margin="1" Label="{DynamicResource ServerSettings_WirelessCraftingRangeOverrideLabel}" Value="{Binding WirelessCraftingRangeOverride}" Suffix="{DynamicResource SliderUnits_Units}" Minimum="0" Maximum="50000" SmallChange="100" LargeChange="1000" TickFrequency="1000" ToolTip="{DynamicResource ServerSettings_WirelessCraftingRangeOverrideTooltip}"/>
+                                        </StackPanel>
+                                    </GroupBox>
+
+                                    <GroupBox Header="{DynamicResource ServerSettings_GeneratorsLabel}" Style="{StaticResource GroupBoxStyle}">
+                                        <StackPanel>
+                                            <cctl:AnnotatedCheckBoxAndIntegerSlider Margin="1" Label="{DynamicResource ServerSettings_LimitGeneratorsNumLabel}" Value="{Binding LimitGeneratorsNum}" Minimum="0" Maximum="100" SmallChange="1" LargeChange="5" TickFrequency="5" VerticalAlignment="Center" ToolTip="{DynamicResource ServerSettings_LimitGeneratorsNumTooltip}"/>
+                                            <cctl:AnnotatedCheckBoxAndIntegerSlider Margin="1" Label="{DynamicResource ServerSettings_LimitGeneratorsRangeLabel}" Value="{Binding LimitGeneratorsRange}" Suffix="{DynamicResource SliderUnits_Units}" Minimum="0" Maximum="100000" SmallChange="500" LargeChange="5000" TickFrequency="5000" VerticalAlignment="Center" ToolTip="{DynamicResource ServerSettings_LimitGeneratorsRangeTooltip}"/>
+                                        </StackPanel>
+                                    </GroupBox>
 
                                     <GroupBox Header="{DynamicResource Mod_Genesis}" Style="{StaticResource GroupBoxStyle}">
                                         <Grid>

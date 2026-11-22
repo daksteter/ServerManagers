@@ -1370,14 +1370,6 @@
     <sys:String x:Key="ServerSettings_NonPermanentDiseasesLabel">Maladies non permanentes</sys:String>
     <sys:String x:Key="ServerSettings_NonPermanentDiseasesTooltip">Si activé, rendra les maladies non permanentes (vous les perdrez si vous réapparaissez).</sys:String>
 
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScaleLabel">Remplacer l'échelle de plage du réseau stase NPC</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScaleTooltip">Si cette option est activée, vous pouvez remplacer les paramètres de l'échelle de portée statis du réseau NPC.</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePlayerCountStartLabel">Début du nombre de joueurs en ligne</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePlayerCountStartTooltip">Le nombre minimum de joueurs en ligne lorsque l'échelle statis est activée.</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePlayerCountEndLabel">Nombre de joueurs en ligne</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePlayerCountEndTooltip">Le nombre maximum de joueurs en ligne lorsque le maximum d'échelle est atteint.</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePercentEndLabel">Échelle maximale</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePercentEndTooltip">Le pourcentage d'échelle maximum utilisé par le serveur, lorsque la valeur finale du nombre de joueurs en ligne est atteinte.</sys:String>
 
     <sys:String x:Key="ServerSettings_OxygenSwimSpeedStatMultiplierLabel">Multiplicateur de consommation d'oxygène</sys:String>
     <sys:String x:Key="ServerSettings_OxygenSwimSpeedStatMultiplierTooltip">spécifie le multiplicateur pour la vitesse de nage est multiplié par le niveau dépensé en oxygène.</sys:String>
@@ -1444,9 +1436,6 @@
     <sys:String x:Key="ServerSettings_Ragnarok_VolcanoIntensityLabel">Intensité du volcan</sys:String>
     <sys:String x:Key="ServerSettings_Ragnarok_VolcanoIntensityTooltip">Plus la valeur est faible, plus l'éruption du volcan sera intense. Recommandé de partir à 1,0, la valeur minimale est de 0,25, et pour les jeux multijoueurs, il ne devrait pas être inférieur à 0,5. Des nombres très élevés désactiveront essentiellement les rochers enflammés jetés du volcan.</sys:String>
 
-    <sys:String x:Key="ServerSettings_FjordurLabel">Activer les paramètres Fjordur</sys:String>
-    <sys:String x:Key="ServerSettings_UseFjordurTraversalBuffLabel">Activer la téléportation du biome fjordur</sys:String>
-    <sys:String x:Key="ServerSettings_UseFjordurTraversalBuffTooltip">S'il est activé, permettra la téléportation de biome sur la carte fjordur.</sys:String>
 
     <sys:String x:Key="ServerSettings_ItemStatClampsLabel">Vérouillage des stat d'item</sys:String>
     <sys:String x:Key="ServerSettings_ItemStatClampsNoteLabel">AVERTISSEMENT: Cela modifiera définitivement les statistiques de tous les éléments existants, assurez-vous de sauvegarder votre sauvegarde actuelle avant de modifier et de jouer avec les valeurs de vérouillage.</sys:String>
@@ -1846,8 +1835,6 @@
     <sys:String x:Key="ServerSettings_StructurePickupTimeAfterPlacementTooltip">Spécifie la durée en secondes après le placement pour récupérerla structure.</sys:String>
     <sys:String x:Key="ServerSettings_StructurePickupHoldDurationLabel">Durée de rétention de la structure</sys:String>
     <sys:String x:Key="ServerSettings_StructurePickupHoldDurationTooltip">Spécifie la durée de maintien de récupération rapide, utilisez 0 pour désactiver et avoir une récupération instantané.</sys:String>
-    <sys:String x:Key="ServerSettings_AllowIntegratedSPlusStructuresLabel">Autoriser Intégration de Structures Plus</sys:String>
-    <sys:String x:Key="ServerSettings_AllowIntegratedSPlusStructuresTooltip">Si activé, ajoutera toutes les nouvelles structures S +; sinon, désactive toutes les nouvelles structures S + (destinées principalement à permettre aux non-officiels qui souhaitent continuer à utiliser la version mod S + de continuer à l'utiliser sans une tonne de structures en double supplémentaires).</sys:String>
     <sys:String x:Key="ServerSettings_GenesisUseStructuresPreventionVolumesLabel">Désactiver la construction dans les zones de mission (Genesis)</sys:String>
     <sys:String x:Key="ServerSettings_GenesisUseStructuresPreventionVolumesTooltip">Si activé, désactivera la construction dans les zones de mission.</sys:String>
     <!--#endregion-->

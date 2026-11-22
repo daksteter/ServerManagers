@@ -1152,14 +1152,6 @@
     <sys:String x:Key="ServerSettings_NonPermanentDiseasesLabel">Enfermedades no permanentes</sys:String>
     <sys:String x:Key="ServerSettings_NonPermanentDiseasesTooltip">Si es activado, hará que las enfermedades no sean permanentes (perderás la enfermedad si reapareces).</sys:String>
 
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScaleLabel">Forzado de escala de rango de estasis de red de NPC</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScaleTooltip">Si es activado, puedes forzar los ajustes de escala del rango de estasis de la red de NPC.</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePlayerCountStartLabel">Inicio de conteo de jugadores en línea</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePlayerCountStartTooltip">El número mínimo de jugadores en línea para habilitar la escala de estasis.</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePlayerCountEndLabel">Final de conteo de jugadores en línea</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePlayerCountEndTooltip">El número máximo de jugadores en línea cuando se alcance la escala máxima.</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePercentEndLabel">Escala máxima</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePercentEndTooltip">El porcentage de escala máxima usado por el servidor cuando se alcance el valor de Final de conteo de jugadores en línea.</sys:String>
 
     <sys:String x:Key="ServerSettings_OxygenSwimSpeedStatMultiplierLabel">Multiplicador de velocidad de nado por oxígeno</sys:String>
     <sys:String x:Key="ServerSettings_OxygenSwimSpeedStatMultiplierTooltip">Especifica el multiplicador de cómo la velocidad de nado se multiplica por el nivel de oxígeno gastado.</sys:String>
@@ -1573,8 +1565,6 @@
     <sys:String x:Key="ServerSettings_StructurePickupTimeAfterPlacementTooltip">Especifica el tiempo en segundos en el que la recogida rápida está disponible tras la colocación de una estructura.</sys:String>
     <sys:String x:Key="ServerSettings_StructurePickupHoldDurationLabel">Duración dStructure Pickup Hold Duration</sys:String>
     <sys:String x:Key="ServerSettings_StructurePickupHoldDurationTooltip">Especifica el tiempo que hay que mantener para la recogida rápida, usa 0 para desactivarlo y recoger instantáneamente.</sys:String>
-    <sys:String x:Key="ServerSettings_AllowIntegratedSPlusStructuresLabel">Permitir Structures Plus integrado</sys:String>
-    <sys:String x:Key="ServerSettings_AllowIntegratedSPlusStructuresTooltip">Si es activado, añadirá todas las estructuras S+ nuevas, de lo contrario desactivará todas las estructuras S+ (destinado principalmente para permitir a los servidores no oficiales que quieran seguir usando la versión del mod S+ sin un montón de estructuras extra duplicadas).</sys:String>
     <sys:String x:Key="ServerSettings_GenesisUseStructuresPreventionVolumesLabel">Desactivar construcción en áreas de misión</sys:String>
     <sys:String x:Key="ServerSettings_GenesisUseStructuresPreventionVolumesTooltip">Si es activado, desactivará la construcción el las áreas de misión de Génesis.</sys:String>
     <!--#endregion-->

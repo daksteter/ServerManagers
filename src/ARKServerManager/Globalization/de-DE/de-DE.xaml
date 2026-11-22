@@ -1272,14 +1272,6 @@
     <sys:String x:Key="ServerSettings_NonPermanentDiseasesLabel">Keine dauerhaften Krankheiten</sys:String>
     <sys:String x:Key="ServerSettings_NonPermanentDiseasesTooltip">Wenn aktiviert, werden Krankheiten nicht dauerhaft (Du verlieren sie, wenn Du stirbst).</sys:String>
 
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScaleLabel">Überschreibe NPC Netzwerk Bereich Statistikskala</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScaleTooltip">Wenn aktiviert, können Sie die Skaleneinstellungen für die NPC Netzwerkstatistik überschreiben.</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePlayerCountStartLabel">Start bei Anzahl Online Spieler</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePlayerCountStartTooltip">Die Mindestanzahl von Online Spielern, wenn die Statistikskala aktiviert ist.</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePlayerCountEndLabel">Stopp bei Anzahl Online Spieler</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePlayerCountEndTooltip">Die maximale Anzahl von Online-Spielern, wenn das Skalenmaximum erreicht ist.</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePercentEndLabel">Maximum skalieren</sys:String>
-    <sys:String x:Key="ServerSettings_NPCNetworkStasisRangeScalePercentEndTooltip">Der maximale Skalierungsprozentsatz, der vom Server verwendet wird, wenn der Endwert für die Anzahl der Online Spieler erreicht ist.</sys:String>
 
     <sys:String x:Key="ServerSettings_OxygenSwimSpeedStatMultiplierLabel">Sauerstoff Schwimmgeschw. Multiplikator</sys:String>
     <sys:String x:Key="ServerSettings_OxygenSwimSpeedStatMultiplierTooltip">Gibt den Multiplikator für die Schwimmgeschwindigkeit mit dem Sauerstoffgehalt an.</sys:String>
@@ -1732,8 +1724,6 @@
     <sys:String x:Key="ServerSettings_StructurePickupTimeAfterPlacementTooltip">Gibt an, wie lange in Sekunden nach der Platzierung eine Schnellaufnahme möglich ist.</sys:String>
     <sys:String x:Key="ServerSettings_StructurePickupHoldDurationLabel">Dauer für Schnellaufnahme halten</sys:String>
     <sys:String x:Key="ServerSettings_StructurePickupHoldDurationTooltip">Gibt die Dauer für das Füllen des Feldes Schnellaufnahme an. Verwende 0, um es zu deaktivieren und sofort durchzuführen.</sys:String>
-    <sys:String x:Key="ServerSettings_AllowIntegratedSPlusStructuresLabel">Erlaube integrierte Strukturen Plus</sys:String>
-    <sys:String x:Key="ServerSettings_AllowIntegratedSPlusStructuresTooltip">Wenn aktiviert, werden alle neuen S+ Strukturen hinzugefügt. Andernfalls werden alle neuen S+ Strukturen deaktiviert (hauptsächlich für inoffizielle Server, die weiterhin die S+ Mod-Version verwenden möchten, um diese ohne eine Menge zusätzlicher doppelter Strukturen zu verwenden).</sys:String>
     <sys:String x:Key="ServerSettings_GenesisUseStructuresPreventionVolumesLabel">Bauen in Missionsgebieten deaktivieren</sys:String>
     <sys:String x:Key="ServerSettings_GenesisUseStructuresPreventionVolumesTooltip">Wenn aktiviert, wird das Bauen in Missionsgebieten auf der Genesis-Karte deaktiviert.</sys:String>
     <!--#endregion-->
