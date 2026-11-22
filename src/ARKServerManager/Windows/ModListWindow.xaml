@@ -75,9 +75,14 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Width="Auto" MinWidth="120" Binding="{Binding Version, Mode=OneWay}">
+                <DataGridTextColumn Width="Auto" MinWidth="120" Binding="{Binding FileName, Mode=OneWay}">
                     <DataGridTextColumn.Header>
-                        <TextBlock Text="{DynamicResource ModList_VersionColumnLabel}"/>
+                        <TextBlock Text="{DynamicResource ModList_FileColumnLabel}"/>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTextColumn Width="Auto" MinWidth="80" Binding="{Binding FileDate, Mode=OneWay}">
+                    <DataGridTextColumn.Header>
+                        <TextBlock Text="{DynamicResource ModList_FileDateColumnLabel}"/>
                     </DataGridTextColumn.Header>
                 </DataGridTextColumn>
                 <DataGridTemplateColumn Width="30" CanUserResize="False">

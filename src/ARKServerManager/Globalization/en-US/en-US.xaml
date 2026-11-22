@@ -174,13 +174,14 @@
     <sys:String x:Key="ModList_IndexColumnLabel">#</sys:String>
     <sys:String x:Key="ModList_ModIdColumnLabel">Mod ID</sys:String>
     <sys:String x:Key="ModList_NameColumnLabel">Name</sys:String>
-    <sys:String x:Key="ModList_VersionColumnLabel">Installed version</sys:String>
+    <sys:String x:Key="ModList_FileColumnLabel">Installed file</sys:String>
+    <sys:String x:Key="ModList_FileDateColumnLabel">File date</sys:String>
     <sys:String x:Key="ModList_NotDownloadedLabel">(not downloaded by the server yet)</sys:String>
     <sys:String x:Key="ModList_OpenModTooltip">Open the mod's CurseForge page.</sys:String>
     <sys:String x:Key="ModList_MoveUpTooltip">Move up</sys:String>
     <sys:String x:Key="ModList_MoveDownTooltip">Move down</sys:String>
     <sys:String x:Key="ModList_RemoveTooltip">Remove from the list</sys:String>
-    <sys:String x:Key="ModList_NoteLabel">Mods are passed to the server in this order (load order). Names and versions come from the server's own mod library, so a new mod's name shows once the server has downloaded it (at its next start).</sys:String>
+    <sys:String x:Key="ModList_NoteLabel">Mods are passed to the server in this order (load order). Names and installed files come from the server's own mod library, so a new mod's name shows once the server has downloaded it (at its next start).</sys:String>
     <sys:String x:Key="ModList_OkButtonLabel">OK</sys:String>
     <sys:String x:Key="ModList_CancelButtonLabel">Cancel</sys:String>
     <sys:String x:Key="ModList_InvalidIdsTitle">Mod IDs</sys:String>

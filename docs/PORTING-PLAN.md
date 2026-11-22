@@ -17,7 +17,7 @@ Turning Bletch1971's ARK Server Manager (ARK: Survival Evolved, "ASE") into a ma
 |---|---|---|
 | 1. Detach from upstream services, rebrand | Done | `5e2a0e75`, `995c49d1` |
 | 2. .NET Framework 4.6.2 → .NET 11, latest packages | Done | `e52b007f`, `6c59861b`, `c80cb7ba`, `f273acaf` |
-| 3. ASA support | M1–M8 done (M6: game data rebuilt; some engram data still missing) | `d554cb0a` plan; `dc58a01b`, `eedbd86a` M1; `0c1aef4d` maps; `ea7753e0`, `d91502ba` M3; `a6d0e38e` M2; `f4e015a2` M5; `d8450b5e` M4; `9609a942`; `9670bc09` M7; `6eb52bed` M8; `8ba195d7` M6; `c4dde3e0` player list; mod editor |
+| 3. ASA support | M1–M8 done (M6: game data rebuilt; some engram data still missing) | `d554cb0a` plan; `dc58a01b`, `eedbd86a` M1; `0c1aef4d` maps; `ea7753e0`, `d91502ba` M3; `a6d0e38e` M2; `f4e015a2` M5; `d8450b5e` M4; `9609a942`; `9670bc09` M7; `6eb52bed` M8; `8ba195d7` M6; `c4dde3e0` player list; `0312f808` mod editor |
 | 4. Cleanup / tech debt | Ongoing | |
 
 What phases 1–2 changed is in the commit messages. Highlights that affect later work:
@@ -174,16 +174,17 @@ Decision: **plain CurseForge IDs** (no CurseForge API for now).
       Mod IDs and next to Passive mod IDs. Add (IDs separated by commas / spaces, or `curseforge.com/projects/<id>`
       links), remove, move up / down (the order is the load order), open the mod's CurseForge page
       (`curseforge.com/projects/<id>` redirects to it); OK writes the list back to the box.
-      - Names and installed versions come from the server's own mod library
-        (`ShooterGame\Binaries\Win64\ShooterGame\ModsUserData\83374\local\user_info.json`, `installedMods`:
-        CurseForge `details` + `installedFile` records), so no CurseForge API key is needed; a mod's name shows
-        once the server has downloaded it. Only `installedMods` is read (the file also holds the server's
-        CurseForge sign-in token). Older servers' `ModsUserData\83374\library.json` is read too.
-      - The record layout follows the CurseForge SDK docs; the test server has no mods yet, so the reader was
-        checked against a sample file in that layout.
+      - Names, installed files and file dates come from the server's own mod library
+        (`ShooterGame\Binaries\Win64\ShooterGame\ModsUserData\83374\library.json`, `installedMods`: CurseForge
+        `details` + `installedFile` records, property names in odd case such as `iD`, `uRL`, `filename`; dates
+        as `2026.11.20-07.02.47`), so no CurseForge API key is needed; a mod's name shows once the server has
+        downloaded it. `local\user_info.json` only lists the installed mod IDs (with load order, enabled state and
+        the server's CurseForge sign-in token); only its `installedMods` is read, as a fallback.
+      - The mods are downloaded to `ShooterGame\Binaries\Win64\ShooterGame\Mods\83374\<modId>_<fileId>\`.
 - [x] **Test:** edit the list (add, remove, reorder, OK / Cancel).
-- [ ] **Test:** add a mod, start the server, then check that the editor shows its name and version (and confirm
-      the `user_info.json` layout; the test server hasn't downloaded a mod yet).
+- [x] **Test:** with a mod the server has downloaded (JVH Landscaping), the editor shows its name. The reader
+      was fixed against the test server's real `library.json` (the first version read only `user_info.json`,
+      which has no names).
 - [x] Optional: `-passivemods=` support (M7: "Passive mod IDs" below Mod IDs).
 - [x] Game data files no longer contain `TotalConversions` / `OfficialMods` arrays (M6).
 

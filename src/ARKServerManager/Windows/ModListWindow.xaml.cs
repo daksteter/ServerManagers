@@ -91,7 +91,8 @@ namespace ServerManagerTool
                 ModId = modId,
                 Name = installed?.Name,
                 DisplayName = installed?.Name ?? _globalizer.GetResourceString("ModList_NotDownloadedLabel"),
-                Version = installed?.Version,
+                FileName = installed?.FileName,
+                FileDate = installed?.FileDate?.ToShortDateString(),
                 Url = installed?.WebsiteUrl ?? CurseForgeModLibrary.GetProjectUrl(modId),
             };
         }

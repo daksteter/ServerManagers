@@ -21,7 +21,15 @@ namespace ServerManagerTool.Lib.ViewModel
 
         public string DisplayName { get; init; }
 
-        public string Version { get; init; }
+        /// <summary>
+        /// The installed file, which usually carries the mod's version.
+        /// </summary>
+        public string FileName { get; init; }
+
+        /// <summary>
+        /// When the installed file was published on CurseForge (date only).
+        /// </summary>
+        public string FileDate { get; init; }
 
         public string Url { get; init; }
 
