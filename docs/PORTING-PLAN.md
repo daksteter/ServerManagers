@@ -574,6 +574,17 @@ What's left before a public release (not planned soon). The repo is on a private
       optionally, one-click updates, either a small updater (download, check the SHA-256, extract over the folder
       keeping `Plugins`, restart) or Velopack (MIT; but it replaces its install folder on every update, so plugins
       would have to move out of the app folder first, and scheduled tasks be recreated once).
+      The release workflow (below) gives an update check what it needs: a GitHub release per version, tagged
+      `v<version>`, with `JVH-Ark-Ascended-Server-Manager-<version>.zip` and its `.sha256`. The zip has a top
+      folder named after the version, so an updater (or the README's "extract over the old folder") must copy that
+      folder's contents.
+- [ ] **GitHub Actions** (written, not yet run on GitHub): `build.yml` builds and tests every push to `main` and
+      every pull request (Markdown-only changes skipped; a newer push cancels a running build). `release.yml` runs
+      on a `v*` tag: checks the tag against `<Version>` and that CHANGELOG.md has the version's section, tests,
+      runs `Build-Release.ps1`, writes the `.sha256` and publishes the release with `gh release create` (no
+      third-party actions). Run by hand, it's a trial build that keeps the zip as a workflow artifact for 7 days.
+      `global.json` pins SDK 11.0.100 (latest feature band allowed). Check: the first Build run after pushing, and
+      a trial Release run. A private repo has 2,000 free Actions minutes a month; Windows minutes count double.
 - [x] **README:** describe the app properly for people finding the repo: what it does in more depth, screenshots,
       a setup walkthrough. Rewritten with grouped features, three screenshots in `docs/images` (main window, Dino
       Settings, Server Monitor; taken on the UiDriver test copy with demo profiles, an example IP from the
@@ -599,7 +610,12 @@ What's left before a public release (not planned soon). The repo is on a private
 
 ## Manual test checklist (run after each milestone)
 
-- [ ] App starts (admin prompt, first-run data folder on a clean settings folder), main window shows.
+- [x] App starts (admin prompt, first-run data folder on a clean settings folder), main window shows. First run
+      tested on the test copy with no data folder set (November 2026): the Data Folder Selection window offered the
+      app's drive, Ok asked for confirmation and closed the app as it says; on the next start it created the
+      folder (Profiles, Logs, SteamCMD), downloaded and installed SteamCMD (the `HttpClient` download), and
+      showed the main window. The admin prompt is in daily use. The suggested folder name is now `asadata`
+      (it was the original's `asmdata`, which an installed ARK Server Manager may already use).
 - [ ] Profiles: "+" adds, "x" deletes with confirmation, switching tabs keeps each tab's state.
 - [ ] Folder pickers (install dir, backup dir), Help and other links open in the browser.
 - [ ] Install/update server via SteamCMD; start, stop (with countdown), restart.

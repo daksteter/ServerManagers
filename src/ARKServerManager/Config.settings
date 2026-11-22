@@ -609,7 +609,7 @@
       <Value Profile="(Default)">50</Value>
     </Setting>
     <Setting Name="DefaultDataDirectoryName" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">asmdata</Value>
+      <Value Profile="(Default)">asadata</Value>
     </Setting>
     <Setting Name="DiscordBotEnabled" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>

@@ -103,9 +103,9 @@ shortcuts point at the app's location, and later versions are installed by extra
 When the app starts it offers to restart as administrator. Say yes if you want it to open the server's ports in
 Windows Firewall and to create scheduled tasks; you can turn the prompt off in Settings.
 
-On the first start it asks for a **data folder**. Profiles, SteamCMD, logs and, by default, the servers and
-backups go there. It isn't the server's install folder: each server can be installed wherever you choose. Pick a
-drive with room for the servers.
+On the first start it asks for a **data folder** (suggested name: `asadata`). Profiles, SteamCMD, logs and, by
+default, the servers and backups go there. It isn't the server's install folder: each server can be installed
+wherever you choose. Pick a drive with room for the servers.
 
 ### 3. Add a profile and install the server
 
@@ -226,6 +226,25 @@ It makes a clean build in its own folder, adds this README, the changelog and th
 that no settings backup, updater or debug symbols got in, and writes
 `artifacts\JVH-Ark-Ascended-Server-Manager-<version>.zip`. The version must stay above 1.0, or the app won't
 carry users' settings over from earlier builds.
+
+### Publishing a release
+
+GitHub Actions builds every push to `main` and runs the tests (`.github/workflows/build.yml`). Releases are
+published from a version tag (`.github/workflows/release.yml`):
+
+1. Set the new `<Version>` in `src\Directory.Build.props`, and turn `## [Unreleased]` in the changelog into
+   `## [1.2.0] - <date>`.
+2. Commit, then tag the commit and push both:
+
+   ```powershell
+   git tag v1.2.0
+   git push origin main v1.2.0
+   ```
+
+The workflow checks that the tag matches `<Version>` and that the changelog has that version's section, runs the
+tests, builds the zip with `Build-Release.ps1`, and publishes a GitHub release with the zip, its `.sha256` file and
+the changelog section as release notes. Running it by hand (Actions, Release, Run workflow) makes a trial build:
+the zip is kept as a workflow artifact for a week, and nothing is released.
 
 - `docs/PORTING-PLAN.md` explains what was changed for ASA and why.
 - `tools/UiDriver` can drive the app's UI from a shell for testing.

@@ -1,0 +1,93 @@
+# Publishes a release when a version tag is pushed (git tag v1.2.0; git push origin v1.2.0):
+#   - the tag must match <Version> in src/Directory.Build.props, and CHANGELOG.md must have a "## [1.2.0]" section;
+#   - runs the unit tests, builds the zip with tools/Release/Build-Release.ps1 and writes its SHA-256;
+#   - creates the GitHub release with the zip, the .sha256 file and that changelog section as its notes.
+# Run it by hand (Actions > Release > Run workflow) for a trial: the same build, with the zip kept as a workflow
+# artifact instead of being released.
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-dotnet@v6
+        with:
+          global-json-file: global.json
+
+      - name: Check the version and get the release notes
+        id: version
+        shell: pwsh
+        run: |
+          [xml]$props = Get-Content -Raw src/Directory.Build.props
+          $version = $props.SelectSingleNode('/Project/PropertyGroup/Version').InnerText.Trim()
+          $isTag = $env:GITHUB_REF_TYPE -eq 'tag'
+          if ($isTag -and $env:GITHUB_REF_NAME -ne "v$version") {
+            throw "The tag $env:GITHUB_REF_NAME doesn't match <Version>$version</Version> in src/Directory.Build.props."
+          }
+
+          # this version's section of CHANGELOG.md, up to the next "## [" heading
+          $changelog = Get-Content -Raw CHANGELOG.md
+          $section = [regex]::Match($changelog, "(?ms)^## \[$([regex]::Escape($version))\][^\r\n]*\r?\n(.*?)(?=^## \[|\z)")
+          if ($section.Success) {
+            $notes = $section.Groups[1].Value.Trim()
+          } elseif ($isTag) {
+            throw "CHANGELOG.md has no '## [$version]' section; turn [Unreleased] into it first."
+          } else {
+            $notes = "Trial build of $version."
+          }
+          # outside the working tree: Build-Release.ps1 refuses to build with untracked files
+          Set-Content (Join-Path $env:RUNNER_TEMP 'release-notes.md') $notes -Encoding utf8
+          "version=$version" >> $env:GITHUB_OUTPUT
+
+      - name: Test
+        run: dotnet test src/Server-Managers.slnx -c Release
+
+      - name: Build the release zip
+        shell: pwsh
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          tools/Release/Build-Release.ps1 -Version $env:VERSION
+          $zip = Get-Item "artifacts/JVH-Ark-Ascended-Server-Manager-$env:VERSION.zip"
+          $hash = (Get-FileHash -Algorithm SHA256 $zip).Hash.ToLowerInvariant()
+          # the format sha256sum -c reads
+          Set-Content "$($zip.FullName).sha256" "$hash  $($zip.Name)" -Encoding ascii
+
+      - name: Keep the zip (trial run)
+        if: github.ref_type != 'tag'
+        uses: actions/upload-artifact@v7
+        with:
+          name: JVH-Ark-Ascended-Server-Manager-${{ steps.version.outputs.version }}
+          path: |
+            artifacts/*.zip
+            artifacts/*.zip.sha256
+          retention-days: 7
+
+      - name: Publish the GitHub release
+        if: github.ref_type == 'tag'
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          $zip = "artifacts/JVH-Ark-Ascended-Server-Manager-$env:VERSION.zip"
+          gh release create $env:GITHUB_REF_NAME $zip "$zip.sha256" `
+            --verify-tag `
+            --title "JVH Ark Ascended Server Manager $env:VERSION" `
+            --notes-file (Join-Path $env:RUNNER_TEMP 'release-notes.md')
+          if ($LASTEXITCODE -ne 0) { throw "gh release create failed (exit code $LASTEXITCODE)." }

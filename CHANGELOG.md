@@ -60,8 +60,9 @@ First release for ARK: Survival Ascended (ASA). Servers for ARK: Survival Evolve
 
 ### Changed
 
-- **New name and icon:** JVH Ark Ascended Server Manager. Scheduled tasks and firewall rules use their own
-  names, so they don't collide with an installed ARK Server Manager.
+- **New name and icon:** JVH Ark Ascended Server Manager. Scheduled tasks, firewall rules and the suggested data
+  folder (`asadata`, was `asmdata`) use their own names, so they don't collide with an installed ARK Server
+  Manager.
 - **New icons throughout,** from Microsoft's Fluent UI System Icons: the Windows 11 style, sharp at any display
   scaling. Icons on disabled buttons fade, and the main window's header icons are light on its dark background.
 - **Every window has the normal Windows title bar.** Settings, Find, Restore, the mod list and the other dialogs
@@ -162,7 +163,9 @@ First release for ARK: Survival Ascended (ASA). Servers for ARK: Survival Evolve
 - Unit tests for the RCON client, the accessible names, the manifest reader, the server's command line, the save
   folders, zip extraction and the Discord plugin's webhook messages. They need no network, server or fixed
   folders: `dotnet test src\Server-Managers.slnx`.
-- The solution file is `src\Server-Managers.slnx` (the newer format).
+- The solution file is `src\Server-Managers.slnx` (the newer format); `global.json` pins the .NET 11 SDK.
+- GitHub Actions: every push to `main` is built and tested; pushing a version tag (`v1.2.0`) publishes a GitHub
+  release with the zip, its SHA-256 and the changelog section as notes.
 - Web requests use one shared `HttpClient` instead of the obsolete `WebClient`; the analyzer and obsolete-API
   warnings are cleared, and leftover dead code (Steam server-detail models, a Steam process lookup) is gone.
 - `docs/PORTING-PLAN.md`: what was changed for ASA and why, with the facts it relies on.
