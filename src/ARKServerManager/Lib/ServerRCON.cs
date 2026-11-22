@@ -52,7 +52,7 @@ namespace ServerManagerTool.Lib
         private readonly List<CommandListener> _commandListeners = new List<CommandListener>();
 
         private readonly RCONParameters _rconParameters;
-        private QueryMaster.Rcon _console;
+        private RconClient _console;
         private int _maxCommandRetries = 3;
 
         private readonly ConcurrentDictionary<string, PlayerInfo> _players = new ConcurrentDictionary<string, PlayerInfo>(StringComparer.OrdinalIgnoreCase);
@@ -88,6 +88,10 @@ namespace ServerManagerTool.Lib
 
             await _commandProcessor.DisposeAsync();
             await _outputProcessor.DisposeAsync();
+
+            // no command runs once the command queue has stopped
+            _console?.Dispose();
+            _console = null;
 
             for (int index = _commandListeners.Count - 1; index >= 0; index--)
             {
@@ -169,9 +173,8 @@ namespace ServerManagerTool.Lib
             }
 
             var endpoint = new IPEndPoint(_rconParameters.RCONHostIP, _rconParameters.RCONPort);
-            var server = QueryMaster.ServerQuery.GetServerInstance(QueryMaster.EngineType.Source, endpoint);
-            _console = server.GetControl(_rconParameters.RCONPassword);
-            return _console != null;
+            _console = RconClient.Connect(endpoint, _rconParameters.RCONPassword);
+            return true;
         }
 
         public IDisposable RegisterCommandListener(Action<ConsoleCommand> callback)
@@ -446,7 +449,7 @@ namespace ServerManagerTool.Lib
 
             while (retries < _maxCommandRetries)
             {
-                if (_console != null)
+                if (_console != null && _console.IsConnected)
                 {
                     try
                     {
@@ -461,21 +464,28 @@ namespace ServerManagerTool.Lib
                     Task.Delay(RETRY_DELAY).Wait();
                 }
 
+                retries++;
+
                 try
                 {
                     Reconnect();
+                }
+                catch (RconAuthenticationException ex)
+                {
+                    // retrying won't help
+                    lastException = ex;
+                    break;
                 }
                 catch (Exception ex)
                 {
                     lastException = ex;
                 }
-
-                retries++;
             }
 
+            var message = $"Command failed to send after {retries} attempts. Last exception: {lastException?.Message}";
             _maxCommandRetries = 10;
-            _errorLogger.Error($"Failed to connect to RCON at {_rconParameters.RCONHostIP}:{_rconParameters.RCONPort}. {lastException.Message}");
-            throw new Exception($"Command failed to send after {_maxCommandRetries} attempts.  Last exception: {lastException.Message}", lastException);
+            _errorLogger.Error($"Failed to connect to RCON at {_rconParameters.RCONHostIP}:{_rconParameters.RCONPort}. {lastException?.Message}");
+            throw new Exception(message, lastException);
         }
         #endregion
 

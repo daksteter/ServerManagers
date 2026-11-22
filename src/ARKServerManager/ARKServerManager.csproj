@@ -54,7 +54,6 @@
     <ProjectReference Include="..\ARKServerManager.Common\ARKServerManager.Common.csproj" />
     <ProjectReference Include="..\NeXtVdf\NeXt.Vdf.csproj" />
     <ProjectReference Include="..\Plugin.Common\Plugin.Common.csproj" />
-    <ProjectReference Include="..\QueryMaster\QueryMaster.csproj" />
     <ProjectReference Include="..\ServerManager.Common\ServerManager.Common.csproj" />
     <ProjectReference Include="..\ServerManager.Discord\ServerManager.Discord.csproj" />
     <ProjectReference Include="..\ServerManager.Updater\ServerManager.Updater.csproj" />

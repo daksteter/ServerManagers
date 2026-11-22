@@ -1,9 +1,0 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <!-- Pure networking code: no Windows dependency. -->
-    <TargetFramework>net11.0</TargetFramework>
-  </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="ProDotNetZip" Version="1.20.0" />
-  </ItemGroup>
-</Project>

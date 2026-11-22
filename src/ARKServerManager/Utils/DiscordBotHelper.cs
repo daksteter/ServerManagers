@@ -1,5 +1,4 @@
-﻿using QueryMaster;
-using ServerManagerTool.Common.Enums;
+﻿using ServerManagerTool.Common.Enums;
 using ServerManagerTool.Common.Extensions;
 using ServerManagerTool.Common.Utils;
 using ServerManagerTool.DiscordBot.Enums;

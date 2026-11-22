@@ -1,4 +1,5 @@
-﻿﻿using System;
+﻿using ServerManagerTool.Common.Lib;
+using System;
 using System.Net;
 using System.Threading.Tasks;
 
@@ -20,8 +21,8 @@ namespace ServerManagerTool.Lib
         public string ProfileId;
 
         // State kept between status polls; only touched on the status watcher's queue.
-        internal QueryMaster.Server RconServer;
-        internal QueryMaster.Rcon Rcon;
+        internal RconClient Rcon;
+        internal bool RconPasswordRejected;
         internal int LogProcessId;
         internal bool LogStartupComplete;
         internal Version LogVersion;

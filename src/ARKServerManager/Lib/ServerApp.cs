@@ -43,6 +43,7 @@ namespace ServerManagerTool.Lib
 
         private const int DELAY_RCONCONNECTION = 1000; // 1 seconds
         private const int DELAY_RCONRETRY = 10000; // 10 seconds
+        private const int RCON_TIMEOUT = 30000; // 30 seconds
 
         private const int DIRECTORIES_PER_LINE = 200;
 
@@ -95,7 +96,7 @@ namespace ServerManagerTool.Lib
         private Logger _loggerProfile;
 
         private ServerProfileSnapshot _profile = null;
-        private QueryMaster.Rcon _rconConsole = null;
+        private RconClient _rconConsole = null;
         private bool _serverRunning = false;
 
         public bool AllMessagesShowShutdownReason { get; set; } = Config.Default.ServerShutdown_AllMessagesShowReason;
@@ -2092,7 +2093,11 @@ namespace ServerManagerTool.Lib
                     if (token.IsCancellationRequested)
                         break;
 
-                    SetupRconConsole();
+                    if (!SetupRconConsole())
+                    {
+                        // the server rejected the password: retrying won't help
+                        break;
+                    }
 
                     LogProfileMessage($"RCON> {command}");
 
@@ -2205,46 +2210,36 @@ namespace ServerManagerTool.Lib
             }
         }
 
-        private void SetupRconConsole()
+        /// <returns>false if the server rejected the RCON password (retrying won't help).</returns>
+        private bool SetupRconConsole()
         {
             CloseRconConsole();
 
             if (_profile == null || !_profile.RCONEnabled)
-                return;
+                return true;
 
             try
             {
                 LogProfileMessage("");
-                LogProfileMessage($"Creating RCON connection to server ({_profile.ServerIPAddress}:{_profile.RCONPort}).", false);
-
-                var endPoint = new IPEndPoint(_profile.ServerIPAddress, _profile.RCONPort);
-                var server = QueryMaster.ServerQuery.GetServerInstance(QueryMaster.EngineType.Source, endPoint, sendTimeOut: 30000, receiveTimeOut: 30000);
-                if (server == null)
-                {
-                    LogProfileDebug($"FAILED: {nameof(SetupRconConsole)} - ServerQuery could not be created.", false);
-                    return;
-                }
-
-                LogProfileDebug($"SUCCESS: {nameof(SetupRconConsole)} - ServerQuery was created.", false);
-
-                Task.Delay(DELAY_RCONCONNECTION).Wait();
-
                 LogProfileMessage($"Opening RCON connection to server ({_profile.ServerIPAddress}:{_profile.RCONPort}).", false);
 
-                _rconConsole = server.GetControl(_profile.RCONPassword);
-                if (_rconConsole == null)
-                {
-                    LogProfileDebug($"FAILED: {nameof(SetupRconConsole)} - RconConsole could not be created.", false);
-                    return;
-                }
+                var endPoint = new IPEndPoint(_profile.ServerIPAddress, _profile.RCONPort);
+                _rconConsole = RconClient.Connect(endPoint, _profile.RCONPassword, RCON_TIMEOUT);
 
-                LogProfileDebug($"SUCCESS: {nameof(SetupRconConsole)} - RconConsole was created.", false);
+                LogProfileDebug($"SUCCESS: {nameof(SetupRconConsole)} - RCON connection opened.", false);
+            }
+            catch (RconAuthenticationException ex)
+            {
+                LogProfileError($"{ex.Message} Check the profile's admin password.", false);
+                return false;
             }
             catch (Exception ex)
             {
                 LogProfileDebug($"ERROR: {nameof(SetupRconConsole)}\r\n{ex.Message}", false);
                 LogProfileDebug($"ERROR: {nameof(SetupRconConsole)}\r\n{ex.StackTrace}", false);
             }
+
+            return true;
         }
 
         public int PerformProfileBackup(ServerProfileSnapshot profile, CancellationToken cancellationToken)

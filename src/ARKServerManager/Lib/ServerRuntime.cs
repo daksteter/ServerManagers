@@ -36,7 +36,7 @@ namespace ServerManagerTool.Lib
         private Process serverProcess;
         private IAsyncDisposable updateRegistration;
         private System.Timers.Timer motdIntervalTimer = new System.Timers.Timer(3600000);
-        private QueryMaster.Rcon _rconConsole = null;
+        private RconClient _rconConsole = null;
 
         #region Properties
 
@@ -817,31 +817,31 @@ namespace ServerManagerTool.Lib
             }
         }
 
-        private void SetupRconConsole()
+        /// <returns>false if the server rejected the RCON password (retrying won't help).</returns>
+        private bool SetupRconConsole()
         {
             CloseRconConsole();
 
             if (this.ProfileSnapshot == null || !this.ProfileSnapshot.RCONEnabled)
-                return;
+                return true;
 
             try
             {
                 var endPoint = new IPEndPoint(this.ProfileSnapshot.ServerIPAddress, this.ProfileSnapshot.RCONPort);
-                var server = QueryMaster.ServerQuery.GetServerInstance(QueryMaster.EngineType.Source, endPoint, sendTimeOut: 10000, receiveTimeOut: 10000);
-
-                if (server == null)
-                {
-                    return;
-                }
-
-                Task.Delay(1000).Wait();
-
-                _rconConsole = server.GetControl(this.ProfileSnapshot.RCONPassword);
+                _rconConsole = RconClient.Connect(endPoint, this.ProfileSnapshot.RCONPassword);
+            }
+            catch (RconAuthenticationException ex)
+            {
+                _logger.Warn($"{nameof(SetupRconConsole)} - {ex.Message}");
+                _rconConsole = null;
+                return false;
             }
             catch (Exception)
             {
                 _rconConsole = null;
             }
+
+            return true;
         }
 
         private async Task<bool> SendCommandAsync(string command, bool retryIfFailed)
@@ -857,8 +857,9 @@ namespace ServerManagerTool.Lib
 
             while (retries < maxRetries && rconRetries < RCON_MAXRETRIES)
             {
-                SetupRconConsole();
-    
+                if (!SetupRconConsole())
+                    break;
+
                 if (_rconConsole == null)
                 {
                     rconRetries++;

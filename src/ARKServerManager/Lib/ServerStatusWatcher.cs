@@ -1,6 +1,6 @@
-﻿﻿using NLog;
-using QueryMaster;
+﻿using NLog;
 using ServerManagerTool.Common.Enums;
+using ServerManagerTool.Common.Lib;
 using ServerManagerTool.Common.Utils;
 using ServerManagerTool.Enums;
 using System;
@@ -260,15 +260,24 @@ namespace ServerManagerTool.Lib
 
             try
             {
-                if (registration.Rcon == null)
+                if (registration.Rcon == null || !registration.Rcon.IsConnected)
                 {
-                    registration.RconServer = ServerQuery.GetServerInstance(EngineType.Source, registration.RconEndpoint, sendTimeOut: RCON_TIMEOUT, receiveTimeOut: RCON_TIMEOUT);
-                    registration.Rcon = registration.RconServer.GetControl(registration.RconPassword ?? string.Empty);
+                    CloseRcon(registration);
+                    registration.Rcon = RconClient.Connect(registration.RconEndpoint, registration.RconPassword ?? string.Empty, RCON_TIMEOUT);
+                    registration.RconPasswordRejected = false;
                 }
 
-                // A failed login leaves the connection closed, so this throws for a wrong password as well.
                 playerCount = RconPlayerList.CountPlayers(registration.Rcon.SendCommand(RconPlayerList.Command));
                 return true;
+            }
+            catch (RconAuthenticationException ex)
+            {
+                // the server is up, but without the right password there is no player count
+                if (!registration.RconPasswordRejected)
+                    Logger.Warn($"{nameof(TryGetRconPlayerCount)} - {ex.Message} Check the profile's admin password.");
+                registration.RconPasswordRejected = true;
+                CloseRcon(registration);
+                return false;
             }
             catch (Exception ex)
             {
@@ -283,15 +292,13 @@ namespace ServerManagerTool.Lib
         {
             try
             {
-                // Disposing the server also disposes its RCON connection.
-                registration.RconServer?.Dispose();
+                registration.Rcon?.Dispose();
             }
             catch (Exception)
             {
                 // Nothing useful to do if the connection is already broken.
             }
 
-            registration.RconServer = null;
             registration.Rcon = null;
         }
 
