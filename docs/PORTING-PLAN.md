@@ -17,7 +17,7 @@ Turning Bletch1971's ARK Server Manager (ARK: Survival Evolved, "ASE") into a ma
 |---|---|---|
 | 1. Detach from upstream services, rebrand | Done | `5e2a0e75`, `995c49d1` |
 | 2. .NET Framework 4.6.2 → .NET 11, latest packages | Done | `e52b007f`, `6c59861b`, `c80cb7ba`, `f273acaf` |
-| 3. ASA support | M1–M8 done (M6: game data rebuilt; some engram data still missing) | `d554cb0a` plan; `dc58a01b`, `eedbd86a` M1; `0c1aef4d` maps; `ea7753e0`, `d91502ba` M3; `a6d0e38e` M2; `f4e015a2` M5; `d8450b5e` M4; `9609a942`; `9670bc09` M7; `6eb52bed` M8; M6 |
+| 3. ASA support | M1–M8 done (M6: game data rebuilt; some engram data still missing) | `d554cb0a` plan; `dc58a01b`, `eedbd86a` M1; `0c1aef4d` maps; `ea7753e0`, `d91502ba` M3; `a6d0e38e` M2; `f4e015a2` M5; `d8450b5e` M4; `9609a942`; `9670bc09` M7; `6eb52bed` M8; `8ba195d7` M6; player list |
 | 4. Cleanup / tech debt | Ongoing | |
 
 What phases 1–2 changed is in the commit messages. Highlights that affect later work:
@@ -44,6 +44,7 @@ What phases 1–2 changed is in the commit messages. Highlights that affect late
 | Server log (`ShooterGame\Saved\Logs\ShooterGame.log`) has `ARK Version: 98.9` near the top and `Server has completed startup and is now advertising for join` when ready | Verified live (ARK 98.9) | test server |
 | Saves: per-map subfolder under `ShooterGame\Saved\SavedArks\<Map>\` (also with `AltSaveDirectoryName`) | Confirmed | ARK wiki |
 | `.ark` world saves are **SQLite**; `.arkprofile` / `.arktribe` use a new UE5 layout | Confirmed by multiple parsers | AsaSavegameToolkit, arkparse, ark-sa-save-tools |
+| Profiles: `MyData` → `PlayerDataID`, `UniqueID` (EOS), `PlayerName`, `MyPlayerCharacterConfig.PlayerCharacterName`, `TribeID`; level = 1 + `CharacterStatusComponent_ExtraCharacterLevel`. Tribes: `TribeData` → `TribeName`, `TribeID`, `OwnerPlayerDataId` (UInt32), `MembersPlayerDataID`, `NumTribeDinos`. With `-usestore` both live in the world save's `GameModeCustomBytes` | Verified (test server profile, toolkit samples) | AsaSavegameToolkit |
 | Player IDs are EOS IDs (hex), not SteamID64 | Verified live: 32 hex digits, e.g. `0002b0e8…6db0.arkprofile` | test server |
 | Save folder `SavedArks\TheIsland_WP\` holds `TheIsland_WP.ark`, `<EOS id>.arkprofile`, the server's own timestamped backups `TheIsland_WP_21.11.2026_23.28.20.arkrbf` and `TheIsland_WP_AntiCorruptionBackup.bak` | Verified live | test server |
 | SOTF and PGM do not exist; maps use `_WP` names (`TheIsland_WP`, `ScorchedEarth_WP`, …) | Confirmed | — |
@@ -167,8 +168,8 @@ Decision: **plain CurseForge IDs** (no CurseForge API for now).
 - [x] Also removed the ASE-only launch options hidden in M1 (properties, reset/sync, controls) and the peer port.
 - [x] Removed 22 app settings nothing referenced any more (Workshop/mod options, the Steam-query status URL and
       delay, `VersionFile`, and eight that were already unused upstream).
-- [ ] The Steam Web API key setting stays for now: the hidden player list (`ArkData`) still uses it for Steam
-      names; it goes with the `ArkData` replacement (M5).
+- [x] The Steam Web API key is gone (with the `ArkData` replacement, M5): the setting and its global settings row,
+      upstream's built-in key (`DefaultSteamAPIKey` in App.config), `SteamUtils.GetSteamUserDetails` and its models.
 - [ ] `ModDetailsWindow` replacement: a simple CurseForge ID list editor. Optional: names via the CurseForge
       API (needs an API key — decision below). For now mods are typed into the Mod IDs box.
 - [x] Optional: `-passivemods=` support (M7: "Passive mod IDs" below Mod IDs).
@@ -204,13 +205,30 @@ Decision: **plain CurseForge IDs** (no CurseForge API for now).
 - [x] **Test:** manual backup with the server running: it saved first, then wrote a zip with the world save
       and player file (CRCs OK, SQLite `integrity_check` = ok, no temp copies left). The restore window
       (server stopped) lists the world save, the zip and the `.arkrbf` backups. Restore itself not run yet.
-- [x] Decision: **hide the player list for now.** Hidden: Player List button (server settings), Server Monitor
-      player-list button when RCON is off, RCON "View Profile" / "View Tribe"; the RCON window's save-file
-      player enrichment (`ServerRCON.UpdatePlayerDetailsAsync`) is switched off.
-- [ ] Later: replace `ArkData` (ASE binary format + Steam name lookups) with **AsaSavegameToolkit**
-      (NuGet, MIT, .NET 8+, reads `.ark` / `.arkprofile` / `.arktribe`). Steam name lookups
-      (`DataContainerAsync.LoadSteamAsync`, cheater/whitelist lists) won't work with EOS IDs.
-- [ ] Delete unused `ArkData/SSQLib` (~1,000 lines).
+- [x] The player list was hidden at first (ASE-only `ArkData`), then brought back on **AsaSavegameToolkit 1.0.2**
+      (NuGet, MIT): `ArkData` keeps its `DataContainer` / `PlayerData` / `TribeData` API but reads the ASA
+      `.arkprofile` / `.arktribe` files with the toolkit (the old byte-search parser, the Steam lookups and
+      `SSQLib` are deleted).
+      - Player: EOS ID (= file name), platform name (as saved at the last login), character name, level,
+        in-game player ID, tribe. Tribe: ID, name, owner, member IDs, tamed creature count.
+      - Files are read with full sharing (never block the server) and cached until they change, so the
+        5-second refresh only re-reads what the server wrote since. A profile that can't be parsed shows as
+        "< corrupted profile >".
+      - `-usestore` servers keep profiles and tribes in the world save (`custom` table, `GameModeCustomBytes`):
+        read from a temp copy of the `.ark`, only after the server has saved again.
+      - Back: Player List button (server settings), Server Monitor player-list button when RCON is off,
+        RCON "View Profile" / "View Tribe", and the RCON window's offline players from the save files (online
+        players without a profile yet — joined since the last save — are no longer dropped).
+      - Checked against the test server's profile and the toolkit's sample profiles / tribes / `-usestore`
+        save (levels, tribe and owner links, embedded data), then live with a tribe on the test server.
+- [x] Admin / exclusive-join / whitelist lists: names come from the players' profile files (`<id>.arkprofile`)
+      instead of the Steam Web API (which doesn't know EOS IDs); IDs without a profile show `<not available>`
+      (also on `-usestore` servers, whose profiles have no files).
+- [x] Only the Windows builds of the toolkit's native SQLite library are copied to the output (~30 MB saved).
+- [x] **Test:** Player List window (server settings, and Server Monitor with RCON off), profile window
+      (explorer link), the RCON window's offline players (shown with Players → Filter → Show Offline; the
+      default filter is online only) and "View Profile", admin names in Server Files.
+- [x] **Test:** with a tribe created on the test server: tribe window (name, owner, members).
 
 ### M6. Maps and game data
 
@@ -313,10 +331,11 @@ The Island, Scorched Earth, The Center, Aberration, Extinction, Astraeos, Ragnar
 
 - [ ] `WebClient` / `HttpWebRequest` (SYSLIB0014, ~30 sites) → shared `HttpClient`.
 - [ ] WFO2000 analyzer warnings (82): command getters that create a new instance on every call.
-- [ ] SYSLIB0051 legacy serialization constructors on 3 exception types; CA2200 rethrows in ArkData.
+- [ ] SYSLIB0051 legacy serialization constructors on 3 exception types.
 - [x] Dead code removed: the external status API path (M2), the `ClustersDir` setting (M3).
-- [ ] Dead code left: `SteamServerDetail*` models,
-      `SteamUtils.GetSteamProcess`, `LoadOnlinePlayers*`.
+- [x] `ArkData` rewritten on AsaSavegameToolkit: its A2S client (`SSQLib`), `LoadOnlinePlayers*` and Steam lookups
+      are gone.
+- [ ] Dead code left: `SteamServerDetail*` models, `SteamUtils.GetSteamProcess`.
 - [ ] Self-updater (`ServerManager.Updater`): disabled; its single-exe swap logic doesn't fit .NET's
       multi-file output. Remove it, or rework if a release channel is ever wanted.
 - [ ] `.azure/` and `.github/` CI configs are upstream's (Azure DevOps, Inno Setup installer that still
@@ -347,8 +366,7 @@ The Island, Scorched Earth, The Center, Aberration, Extinction, Astraeos, Ragnar
 
 1. **CurseForge API key** — show mod names/update info in the UI (needs a free key from CurseForge),
    or keep mods as a plain ID list? Recommendation: plain IDs first, API later.
-2. **Player list** — adopt AsaSavegameToolkit now, or hide the player/tribe windows until later?
-   Recommendation: hide first (M5), integrate the toolkit as a separate step.
+2. ~~**Player list**~~ — decided: hidden in M5, then brought back on AsaSavegameToolkit.
 3. **Game data source** for ASA creatures/engrams/items (M6).
 4. **Keep or drop** the Discord bot, Discord plugin and plugin system.
 5. **License / permission** from the original author before sharing builds.
@@ -361,5 +379,6 @@ The Island, Scorched Earth, The Center, Aberration, Extinction, Astraeos, Ragnar
 - Max players: [Steam discussion](https://steamcommunity.com/app/2399830/discussions/0/3881599433115394720),
   [wikily.gg ASA dedicated server guide](https://wikily.gg/ark-survival-ascended/dedicated-server)
 - Query port / EOS: [Steam discussion](https://steamcommunity.com/app/2399830/discussions/0/4343238874469046643)
-- Save format: [AsaSavegameToolkit (NuGet)](https://www.nuget.org/packages/AsaSavegameToolkit),
+- Save format: [AsaSavegameToolkit (NuGet)](https://www.nuget.org/packages/AsaSavegameToolkit)
+  ([source](https://github.com/flintthatchwood/AsaSavegameToolkit)),
   [arkparser (PyPI)](https://pypi.org/project/arkparser/), [ark-sa-save-tools](https://github.com/Kakoen/ark-sa-save-tools)

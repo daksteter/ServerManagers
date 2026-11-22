@@ -465,11 +465,8 @@
     <sys:String x:Key="GlobalSettings_ManagePublicIPLabel">自动管理公共IP</sys:String>
 	<sys:String x:Key="GlobalSettings_DataDirectoryLabel">数据目录:</sys:String>
     <sys:String x:Key="GlobalSettings_BackupDirectoryLabel">备份目录：</sys:String>
-    <sys:String x:Key="GlobalSettings_SteamAPIKeyLabel">Steam WebApi 密钥:</sys:String>
     <sys:String x:Key="GlobalSettings_SetLocationButtonLabel">设置位置...</sys:String>
     <sys:String x:Key="GlobalSettings_ClearButtonLabel">清除</sys:String>
-    <sys:String x:Key="GlobalSettings_SteamAPIKeyButtonLabel">获取 WebApi 密钥...</sys:String>
-    <sys:String x:Key="GlobalSettings_SteamAPIKeyHelpButtonLabel">帮助...</sys:String>
     
     <sys:String x:Key="GlobalSettings_LanguageSelectionLabel">语言</sys:String>
     

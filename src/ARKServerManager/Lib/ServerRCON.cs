@@ -23,7 +23,6 @@ namespace ServerManagerTool.Lib
 {
     public class ServerRcon : DependencyObject, IAsyncDisposable
     {
-        private const int STEAM_UPDATE_INTERVAL = 60;
         private const int PLAYER_LIST_INTERVAL = 5000;
         private const int GET_CHAT_INTERVAL = 1000;
         private const string NoResponseMatch = "Server received, But no response!!";
@@ -56,7 +55,7 @@ namespace ServerManagerTool.Lib
         private QueryMaster.Rcon _console;
         private int _maxCommandRetries = 3;
 
-        private readonly ConcurrentDictionary<string, PlayerInfo> _players = new ConcurrentDictionary<string, PlayerInfo>();
+        private readonly ConcurrentDictionary<string, PlayerInfo> _players = new ConcurrentDictionary<string, PlayerInfo>(StringComparer.OrdinalIgnoreCase);
         private readonly object _updatePlayerCollectionLock = new object();
         private CancellationTokenSource _cancellationTokenSource = null;
 
@@ -505,13 +504,9 @@ namespace ServerManagerTool.Lib
             }
         }
 
-        // Off until ASA save files are supported: ArkData only understands the ASE binary format, and its
-        // Steam name lookup doesn't apply to ASA's Epic player IDs. Online players still come from RCON.
-        private const bool PlayerDetailsFromSaveFilesEnabled = false;
-
         private async Task UpdatePlayerDetailsAsync(CancellationToken token)
         {
-            if (_disposed || !PlayerDetailsFromSaveFilesEnabled)
+            if (_disposed)
                 return;
 
             if (string.IsNullOrWhiteSpace(_rconParameters.InstallDirectory))
@@ -522,9 +517,14 @@ namespace ServerManagerTool.Lib
             try
             {
                 var savedPath = ServerProfile.GetProfileSavePath(_rconParameters.InstallDirectory, _rconParameters.AltSaveDirectoryName, _rconParameters.ServerMap);
+                var worldSaveFile = _rconParameters.UseStore ? ServerProfile.GetProfileWorldSaveFile(savedPath, _rconParameters.ServerMap) : null;
 
                 // load the player data from the files.
-                dataContainer = await DataContainer.CreateAsync(savedPath, savedPath);
+                dataContainer = await DataContainer.CreateAsync(savedPath, worldSaveFile, token);
+            }
+            catch (OperationCanceledException)
+            {
+                return;
             }
             catch (Exception ex)
             {
@@ -535,40 +535,29 @@ namespace ServerManagerTool.Lib
             if (token.IsCancellationRequested)
                 return;
 
-            await Task.Run(() =>
-            {
-                // update the player data with the latest update value from the players collection
-                foreach (var playerData in dataContainer.Players)
-                {
-                    var id = playerData.PlayerId;
-                    if (string.IsNullOrWhiteSpace(id))
-                        continue;
+            var adminIds = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            var whitelistIds = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
-                    _players.TryGetValue(id, out PlayerInfo player);
-                    player?.UpdatePlatformData(playerData);
-                }
-            }, token);
-
-            try
+            // the lists belong to the profile (a DependencyObject), so read them on the UI thread
+            await TaskUtils.RunOnUIThreadAsync(() =>
             {
-                // load the player data from steam
-                await dataContainer.LoadSteamAsync(SteamUtils.SteamWebApiKey, STEAM_UPDATE_INTERVAL);
-            }
-            catch (Exception ex)
-            {
-                _errorLogger.Error($"{nameof(UpdatePlayerDetailsAsync)} - Error: LoadSteamAsync. {ex.Message}\r\n{ex.StackTrace}");
-            }
+                var profile = _rconParameters?.Server?.Profile;
+                adminIds.UnionWith(profile?.ServerFilesAdmins?.Select(u => u.PlayerId).Where(id => !string.IsNullOrWhiteSpace(id)) ?? Enumerable.Empty<string>());
+                whitelistIds.UnionWith(profile?.ServerFilesWhitelisted?.Select(u => u.PlayerId).Where(id => !string.IsNullOrWhiteSpace(id)) ?? Enumerable.Empty<string>());
+            });
 
             if (token.IsCancellationRequested)
                 return;
 
-            foreach (var playerData in dataContainer.Players)
+            await Task.Run(() =>
             {
-                if (token.IsCancellationRequested)
-                    return;
+                var profileIds = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
-                await Task.Run(async () =>
+                foreach (var playerData in dataContainer.Players)
                 {
+                    if (token.IsCancellationRequested)
+                        return;
+
                     var id = playerData.PlayerId;
                     if (string.IsNullOrWhiteSpace(id))
                     {
@@ -576,18 +565,17 @@ namespace ServerManagerTool.Lib
                         if (string.IsNullOrWhiteSpace(id))
                         {
                             _debugLogger.Debug($"{nameof(UpdatePlayerDetailsAsync)} - Error: corrupted profile.\r\n{playerData.Filename}.");
+                            continue;
                         }
-                        else
-                        {
-                            var invalidPlayer = new PlayerInfo()
-                            {
-                                PlayerId = id,
-                                PlayerName = "< corrupted profile >",
-                                IsValid = false,
-                            };
 
-                            _players.AddOrUpdate(id, invalidPlayer, (k, v) => { v.PlayerName = "< corrupted profile >"; v.IsValid = false; return v; });
-                        }
+                        var invalidPlayer = new PlayerInfo()
+                        {
+                            PlayerId = id,
+                            PlayerName = "< corrupted profile >",
+                            IsValid = false,
+                        };
+
+                        _players.AddOrUpdate(id, invalidPlayer, (k, v) => { v.PlayerName = "< corrupted profile >"; v.IsValid = false; return v; });
                     }
                     else
                     {
@@ -598,31 +586,26 @@ namespace ServerManagerTool.Lib
                             IsValid = true,
                         };
 
-                        _players.AddOrUpdate(id, validPlayer, (k, v) => { v.PlayerName = playerData.PlayerName; v.IsValid = true; return v; });
+                        // keep the name listplayers gave if the profile has none
+                        _players.AddOrUpdate(id, validPlayer, (k, v) => { if (!string.IsNullOrWhiteSpace(playerData.PlayerName)) v.PlayerName = playerData.PlayerName; v.IsValid = true; return v; });
                     }
+
+                    profileIds.Add(id);
 
                     if (_players.TryGetValue(id, out PlayerInfo player) && player != null)
                     {
                         player.UpdateData(playerData);
-
-                        await TaskUtils.RunOnUIThreadAsync(() =>
-                        {
-                            player.IsAdmin = _rconParameters?.Server?.Profile?.ServerFilesAdmins?.Any(u => u.PlayerId.Equals(player.PlayerId, StringComparison.OrdinalIgnoreCase)) ?? false;
-                            player.IsWhitelisted = _rconParameters?.Server?.Profile?.ServerFilesWhitelisted?.Any(u => u.PlayerId.Equals(player.PlayerId, StringComparison.OrdinalIgnoreCase)) ?? false;
-                        });
+                        player.IsAdmin = adminIds.Contains(player.PlayerId);
+                        player.IsWhitelisted = whitelistIds.Contains(player.PlayerId);
                     }
-                }, token);
-            }
+                }
 
-            if (token.IsCancellationRequested)
-                return;
-
-            // remove any players that do not have a player file.
-            var droppedPlayers = _players.Values.Where(p => dataContainer.Players.FirstOrDefault(pd => pd.PlayerId.Equals(p.PlayerId, StringComparison.OrdinalIgnoreCase)) == null).ToArray();
-            foreach (var droppedPlayer in droppedPlayers)
-            {
-                _players.TryRemove(droppedPlayer.PlayerId, out PlayerInfo player);
-            }
+                // remove offline players that no longer have a profile; a player who just joined has none until the next save
+                foreach (var droppedPlayer in _players.Values.Where(p => !p.IsOnline && !profileIds.Contains(p.PlayerId)).ToArray())
+                {
+                    _players.TryRemove(droppedPlayer.PlayerId, out _);
+                }
+            });
         }
 
         private void UpdatePlayerCollection()

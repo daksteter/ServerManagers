@@ -459,11 +459,8 @@ Caso contrário, o desligamento aguardará até que o temporizador do período d
 	<sys:String x:Key="GlobalSettings_ManagePublicIPLabel">Gerenciar IP público automaticamente</sys:String>
     <sys:String x:Key="GlobalSettings_DataDirectoryLabel">Diretório de dados:</sys:String>
     <sys:String x:Key="GlobalSettings_BackupDirectoryLabel">Diretório de Backup:</sys:String>
-    <sys:String x:Key="GlobalSettings_SteamAPIKeyLabel">Steam WebApi Key:</sys:String>
     <sys:String x:Key="GlobalSettings_SetLocationButtonLabel">...</sys:String>
     <sys:String x:Key="GlobalSettings_ClearButtonLabel">Limpar</sys:String>
-    <sys:String x:Key="GlobalSettings_SteamAPIKeyButtonLabel">Obter chave WebApi Key...</sys:String>
-    <sys:String x:Key="GlobalSettings_SteamAPIKeyHelpButtonLabel">Ajuda...</sys:String>
 	
     <sys:String x:Key="GlobalSettings_LanguageSelectionLabel">Linguagem</sys:String>
 	

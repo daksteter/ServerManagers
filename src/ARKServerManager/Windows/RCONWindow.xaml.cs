@@ -714,6 +714,7 @@ namespace ServerManagerTool
                     ServerMap = ServerProfile.GetProfileMapName(server?.Profile),
                     InstallDirectory = server.Runtime.ProfileSnapshot.InstallDirectory,
                     AltSaveDirectoryName = server.Runtime.ProfileSnapshot.AltSaveDirectoryName,
+                    UseStore = server.Profile.UseStore,
                     ProfileId = server.Runtime.ProfileSnapshot.ProfileId,
                     ProfileName = server.Runtime.ProfileSnapshot.ProfileName,
                     MaxPlayers = server.Runtime.MaxPlayers,

@@ -6,6 +6,7 @@ using ServerManagerTool.Enums;
 using ServerManagerTool.Lib.ViewModel.RCON;
 using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -17,7 +18,6 @@ namespace ServerManagerTool.Lib
     public class ServerPlayers : DependencyObject
     {
         private const int PLAYER_LIST_INTERVAL = 5000;
-        private const int STEAM_UPDATE_INTERVAL = 60;
 
         public event EventHandler PlayersCollectionUpdated;
 
@@ -25,7 +25,7 @@ namespace ServerManagerTool.Lib
         public static readonly DependencyProperty CountPlayersProperty = DependencyProperty.Register(nameof(CountPlayers), typeof(int), typeof(ServerPlayers), new PropertyMetadata(0));
         public static readonly DependencyProperty CountInvalidPlayersProperty = DependencyProperty.Register(nameof(CountInvalidPlayers), typeof(int), typeof(ServerPlayers), new PropertyMetadata(0));
 
-        private readonly ConcurrentDictionary<string, PlayerInfo> _players = new ConcurrentDictionary<string, PlayerInfo>();
+        private readonly ConcurrentDictionary<string, PlayerInfo> _players = new ConcurrentDictionary<string, PlayerInfo>(StringComparer.OrdinalIgnoreCase);
         private readonly object _updatePlayerCollectionLock = new object();
         private CancellationTokenSource _cancellationTokenSource = null;
         private PlayerListParameters _playerListParameters;
@@ -125,110 +125,102 @@ namespace ServerManagerTool.Lib
 
         private async Task UpdatePlayerDetailsAsync(CancellationToken token)
         {
-            if (!string.IsNullOrWhiteSpace(_playerListParameters.InstallDirectory))
+            if (string.IsNullOrWhiteSpace(_playerListParameters.InstallDirectory))
+                return;
+
+            var savedPath = ServerProfile.GetProfileSavePath(_playerListParameters.InstallDirectory, _playerListParameters.AltSaveDirectoryName, _playerListParameters.ServerMap);
+            var worldSaveFile = _playerListParameters.UseStore ? ServerProfile.GetProfileWorldSaveFile(savedPath, _playerListParameters.ServerMap) : null;
+            DataContainer dataContainer = null;
+
+            try
             {
-                var savedPath = ServerProfile.GetProfileSavePath(_playerListParameters.InstallDirectory, _playerListParameters.AltSaveDirectoryName, _playerListParameters.ServerMap);
-                DataContainer dataContainer = null;
-                DateTime lastSteamUpdateUtc = DateTime.MinValue;
+                // load the player data from the files.
+                dataContainer = await DataContainer.CreateAsync(savedPath, worldSaveFile, token);
+            }
+            catch (OperationCanceledException)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                _errorLogger?.Error($"{nameof(UpdatePlayerDetailsAsync)} - Error: CreateAsync. {ex.Message}\r\n{ex.StackTrace}");
+                return;
+            }
 
-                try
-                {
-                    // load the player data from the files.
-                    dataContainer = await DataContainer.CreateAsync(savedPath, savedPath);
-                }
-                catch (Exception ex)
-                {
-                    _errorLogger?.Error($"{nameof(UpdatePlayerDetailsAsync)} - Error: CreateAsync. {ex.Message}\r\n{ex.StackTrace}");
-                    return;
-                }
+            token.ThrowIfCancellationRequested();
 
-                token.ThrowIfCancellationRequested();
-                await Task.Run(() =>
-                {
-                    // update the player data with the latest steam update value from the players collection
-                    foreach (var playerData in dataContainer.Players)
-                    {
-                        var id = playerData.PlayerId;
-                        if (string.IsNullOrWhiteSpace(id))
-                            continue;
+            var (adminIds, whitelistIds) = await GetAdminAndWhitelistIdsAsync();
 
-                        _players.TryGetValue(id, out PlayerInfo player);
-                        player?.UpdatePlatformData(playerData);
-                    }
-                }, token);
-
-                try
-                {
-                    // load the player data from steam
-                    lastSteamUpdateUtc = await dataContainer.LoadSteamAsync(SteamUtils.SteamWebApiKey, STEAM_UPDATE_INTERVAL);
-                }
-                catch (Exception ex)
-                {
-                    _errorLogger?.Error($"{nameof(UpdatePlayerDetailsAsync)} - Error: LoadSteamAsync. {ex.Message}\r\n{ex.StackTrace}");
-                }
-
-                token.ThrowIfCancellationRequested();
-
-                var totalPlayers = dataContainer.Players.Count;
+            await Task.Run(() =>
+            {
                 foreach (var playerData in dataContainer.Players)
                 {
                     token.ThrowIfCancellationRequested();
-                    await Task.Run(async () =>
+
+                    var id = playerData.PlayerId;
+                    if (!string.IsNullOrWhiteSpace(id))
                     {
-                        var id = playerData.PlayerId;
+                        var validPlayer = new PlayerInfo()
+                        {
+                            PlayerId = playerData.PlayerId,
+                            PlayerName = playerData.PlayerName,
+                            IsValid = true,
+                        };
+
+                        _players.AddOrUpdate(id, validPlayer, (k, v) => { v.PlayerName = playerData.PlayerName; v.IsValid = true; return v; });
+                    }
+                    else
+                    {
+                        id = Path.GetFileNameWithoutExtension(playerData.Filename);
                         if (!string.IsNullOrWhiteSpace(id))
                         {
-                            var validPlayer = new PlayerInfo()
+                            var invalidPlayer = new PlayerInfo()
                             {
-                                PlayerId = playerData.PlayerId,
-                                PlayerName = playerData.PlayerName,
-                                IsValid = true,
+                                PlayerId = id,
+                                PlayerName = "< corrupted profile >",
+                                IsValid = false,
                             };
 
-                            _players.AddOrUpdate(id, validPlayer, (k, v) => { v.PlayerName = playerData.PlayerName; v.IsValid = true; return v; });
+                            _players.AddOrUpdate(id, invalidPlayer, (k, v) => { v.PlayerName = "< corrupted profile >"; v.IsValid = false; return v; });
                         }
                         else
                         {
-                            id = Path.GetFileNameWithoutExtension(playerData.Filename);
-                            if (!string.IsNullOrWhiteSpace(id))
-                            {
-                                var invalidPlayer = new PlayerInfo()
-                                {
-                                    PlayerId = id,
-                                    PlayerName = "< corrupted profile >",
-                                    IsValid = false,
-                                };
-
-                                _players.AddOrUpdate(id, invalidPlayer, (k, v) => { v.PlayerName = "< corrupted profile >"; v.IsValid = false; return v; });
-                            }
-                            else
-                            {
-                                _debugLogger?.Debug($"{nameof(UpdatePlayerDetailsAsync)} - Error: corrupted profile.\r\n{playerData.Filename}.");
-                            }
+                            _debugLogger?.Debug($"{nameof(UpdatePlayerDetailsAsync)} - Error: corrupted profile.\r\n{playerData.Filename}.");
+                            continue;
                         }
+                    }
 
-                        if (_players.TryGetValue(id, out PlayerInfo player) && player != null)
-                        {
-                            player.UpdateData(playerData);
-
-                            await TaskUtils.RunOnUIThreadAsync(() =>
-                            {
-                                player.IsAdmin = _playerListParameters?.Server?.Profile?.ServerFilesAdmins?.Any(u => u.PlayerId.Equals(player.PlayerId, StringComparison.OrdinalIgnoreCase)) ?? false;
-                                player.IsWhitelisted = _playerListParameters?.Server?.Profile?.ServerFilesWhitelisted?.Any(u => u.PlayerId.Equals(player.PlayerId, StringComparison.OrdinalIgnoreCase)) ?? false;
-                            });
-                        }
-                    }, token);
+                    if (_players.TryGetValue(id, out PlayerInfo player) && player != null)
+                    {
+                        player.UpdateData(playerData);
+                        player.IsAdmin = adminIds.Contains(player.PlayerId);
+                        player.IsWhitelisted = whitelistIds.Contains(player.PlayerId);
+                    }
                 }
 
-                token.ThrowIfCancellationRequested();
-
-                // remove any players that do not have a player file.
-                var droppedPlayers = _players.Values.Where(p => dataContainer.Players.FirstOrDefault(pd => pd.PlayerId.Equals(p.PlayerId, StringComparison.OrdinalIgnoreCase)) == null).ToArray();
-                foreach (var droppedPlayer in droppedPlayers)
+                // remove any players that no longer have a profile.
+                var profileIds = new HashSet<string>(dataContainer.Players.Select(pd => string.IsNullOrWhiteSpace(pd.PlayerId) ? Path.GetFileNameWithoutExtension(pd.Filename) : pd.PlayerId).Where(id => !string.IsNullOrWhiteSpace(id)), StringComparer.OrdinalIgnoreCase);
+                foreach (var droppedPlayer in _players.Values.Where(p => !profileIds.Contains(p.PlayerId)).ToArray())
                 {
-                    _players.TryRemove(droppedPlayer.PlayerId, out PlayerInfo player);
+                    _players.TryRemove(droppedPlayer.PlayerId, out _);
                 }
-            }
+            }, token);
+        }
+
+        private async Task<(HashSet<string> AdminIds, HashSet<string> WhitelistIds)> GetAdminAndWhitelistIdsAsync()
+        {
+            var adminIds = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            var whitelistIds = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+            // the lists belong to the profile (a DependencyObject), so read them on the UI thread
+            await TaskUtils.RunOnUIThreadAsync(() =>
+            {
+                var profile = _playerListParameters?.Server?.Profile;
+                adminIds.UnionWith(profile?.ServerFilesAdmins?.Select(u => u.PlayerId).Where(id => !string.IsNullOrWhiteSpace(id)) ?? Enumerable.Empty<string>());
+                whitelistIds.UnionWith(profile?.ServerFilesWhitelisted?.Select(u => u.PlayerId).Where(id => !string.IsNullOrWhiteSpace(id)) ?? Enumerable.Empty<string>());
+            });
+
+            return (adminIds, whitelistIds);
         }
 
         private void UpdatePlayerCollection()

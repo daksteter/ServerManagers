@@ -61,6 +61,14 @@
     <ProjectReference Include="..\WPFSharp.Globalizer\WPFSharp.Globalizer.csproj" />
   </ItemGroup>
 
+  <!-- Windows-only app: copy only the Windows builds of package native libraries (SQLite ships ~20 platforms, ~30 MB). -->
+  <Target Name="KeepWindowsRuntimeAssetsOnly" AfterTargets="ResolvePackageAssets">
+    <ItemGroup>
+      <_NonWindowsRuntimeAssets Include="@(RuntimeTargetsCopyLocalItems)" Condition="!$([System.String]::Copy('%(RuntimeTargetsCopyLocalItems.RuntimeIdentifier)').StartsWith('win'))" />
+      <RuntimeTargetsCopyLocalItems Remove="@(_NonWindowsRuntimeAssets)" />
+    </ItemGroup>
+  </Target>
+
   <!-- The app loads every *.gamedata file in its GameData folder, so files removed from the project must not linger in the output. -->
   <Target Name="RemoveStaleGameData" AfterTargets="Build">
     <ItemGroup>

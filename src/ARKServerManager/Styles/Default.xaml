@@ -240,30 +240,6 @@
         </Style.Triggers>
     </Style>
     
-    <Style x:Key="CommunityBanned" TargetType="{x:Type Label}">
-        <Style.Triggers>
-            <DataTrigger Binding="{Binding PlayerData.CommunityBanned}" Value="False">
-                <Setter Property="Foreground" Value="Black"/>
-            </DataTrigger>
-            <DataTrigger Binding="{Binding PlayerData.CommunityBanned}" Value="True">
-                <Setter Property="Foreground" Value="Red"/>
-                <Setter Property="FontWeight" Value="Bold"/>
-            </DataTrigger>
-        </Style.Triggers>
-    </Style>
-    
-    <Style x:Key="VACBanned" TargetType="{x:Type Label}">
-        <Style.Triggers>
-            <DataTrigger Binding="{Binding PlayerData.VACBanned}" Value="False">
-                <Setter Property="Foreground" Value="Black"/>
-            </DataTrigger>
-            <DataTrigger Binding="{Binding PlayerData.VACBanned}" Value="True">
-                <Setter Property="Foreground" Value="Red"/>
-                <Setter Property="FontWeight" Value="Bold"/>
-            </DataTrigger>
-        </Style.Triggers>
-    </Style>
-    
     <Style x:Key="Banned" TargetType="{x:Type Label}">
         <Style.Triggers>
             <DataTrigger Binding="{Binding Player.IsBanned}" Value="False">
@@ -717,16 +693,6 @@
     <ContentControl x:Key="ClearButtonContent">
         <StackPanel Orientation="Horizontal">
             <Label Content="{DynamicResource GlobalSettings_ClearButtonLabel}" VerticalAlignment="Center" Margin="0,-2,0,-2"/>
-        </StackPanel>
-    </ContentControl>
-    <ContentControl x:Key="SteamAPIKeyButtonContent">
-        <StackPanel Orientation="Horizontal">
-            <Label Content="{DynamicResource GlobalSettings_SteamAPIKeyButtonLabel}" VerticalAlignment="Center" Margin="0,-2,0,-2"/>
-        </StackPanel>
-    </ContentControl>
-    <ContentControl x:Key="SteamAPIKeyHelpButtonContent">
-        <StackPanel Orientation="Horizontal">
-            <Label Content="{DynamicResource GlobalSettings_SteamAPIKeyHelpButtonLabel}" VerticalAlignment="Center" Margin="0,-2,0,-2"/>
         </StackPanel>
     </ContentControl>
     <ContentControl x:Key="CacheDirectoryButtonContent">

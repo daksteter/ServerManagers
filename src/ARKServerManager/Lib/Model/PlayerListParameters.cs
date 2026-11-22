@@ -22,6 +22,11 @@ namespace ServerManagerTool.Lib
 
         public string ServerMap { get; set; }
 
+        /// <summary>
+        /// The server is started with -usestore, so profiles and tribes are also kept in the world save.
+        /// </summary>
+        public bool UseStore { get; set; }
+
         public Rect WindowExtents { get; set; }
 
         public string WindowTitle { get; set; }

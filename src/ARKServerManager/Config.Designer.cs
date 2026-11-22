@@ -1169,15 +1169,6 @@ namespace ServerManagerTool {
             }
         }
 
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://steamcommunity.com/dev/apikey")]
-        public string SteamAPIKeyUrl {
-            get {
-                return ((string)(this["SteamAPIKeyUrl"]));
-            }
-        }
-        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
@@ -1290,15 +1281,6 @@ namespace ServerManagerTool {
             }
             set {
                 this["AutoUpdate_RetryOnFail"] = value;
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://steamcommunity.com/dev")]
-        public string SteamWebAPIKeyHelpUrl {
-            get {
-                return ((string)(this["SteamWebAPIKeyHelpUrl"]));
             }
         }
         

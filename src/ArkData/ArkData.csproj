@@ -1,5 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <!-- Reads ASA's .arkprofile / .arktribe files and the world save (SQLite). -->
+    <PackageReference Include="AsaSavegameToolkit" Version="1.0.2" />
   </ItemGroup>
 </Project>

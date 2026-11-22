@@ -837,7 +837,6 @@ namespace ServerManagerTool
                 comment.AppendLine($"SteamCmd_UseAnonymousCredentials: {Config.Default.SteamCmd_UseAnonymousCredentials}");
                 comment.AppendLine($"SteamCmd_Username Set: {!string.IsNullOrWhiteSpace(Config.Default.SteamCmd_Username)}");
                 comment.AppendLine($"SteamCmd_Password Set: {!string.IsNullOrWhiteSpace(Config.Default.SteamCmd_Password)}");
-                comment.AppendLine($"SteamAPIKey: {!string.IsNullOrWhiteSpace(CommonConfig.Default.SteamAPIKey)}");
                 comment.AppendLine($"SteamCmdIgnoreExitStatusCodes: {!string.IsNullOrWhiteSpace(Config.Default.SteamCmdIgnoreExitStatusCodes)}");
 
                 comment.AppendLine($"SectionCraftingOverridesEnabled: {Config.Default.SectionCraftingOverridesEnabled}");
@@ -2550,11 +2549,9 @@ namespace ServerManagerTool
                 {
                     Settings.DestroyServerFilesWatcher();
 
-                    var steamIdsString = window.Users;
-                    var steamIds = steamIdsString.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-                    var steamUsers = SteamUtils.GetSteamUserDetails(steamIds.ToList());
-                    var steamUserList = PlayerUserList.GetList(steamUsers, steamIds);
-                    Settings.ServerFilesAdmins.AddRange(steamUserList);
+                    var playerIds = window.Users.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+                    var playerList = PlayerUserList.GetList(Settings.GetPlayerNames(playerIds), playerIds);
+                    Settings.ServerFilesAdmins.AddRange(playerList);
 
                     Settings.SaveServerFileAdministrators();
                 }
@@ -2582,11 +2579,9 @@ namespace ServerManagerTool
                 {
                     Settings.DestroyServerFilesWatcher();
 
-                    var steamIdsString = window.Users;
-                    var steamIds = steamIdsString.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-                    var steamUsers = SteamUtils.GetSteamUserDetails(steamIds.ToList());
-                    var steamUserList = PlayerUserList.GetList(steamUsers, steamIds);
-                    Settings.ServerFilesExclusive.AddRange(steamUserList);
+                    var playerIds = window.Users.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+                    var playerList = PlayerUserList.GetList(Settings.GetPlayerNames(playerIds), playerIds);
+                    Settings.ServerFilesExclusive.AddRange(playerList);
 
                     Settings.SaveServerFileExclusive();
                 }
@@ -2614,11 +2609,9 @@ namespace ServerManagerTool
                 {
                     Settings.DestroyServerFilesWatcher();
 
-                    var steamIdsString = window.Users;
-                    var steamIds = steamIdsString.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-                    var steamUsers = SteamUtils.GetSteamUserDetails(steamIds.ToList());
-                    var steamUserList = PlayerUserList.GetList(steamUsers, steamIds);
-                    Settings.ServerFilesWhitelisted.AddRange(steamUserList);
+                    var playerIds = window.Users.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+                    var playerList = PlayerUserList.GetList(Settings.GetPlayerNames(playerIds), playerIds);
+                    Settings.ServerFilesWhitelisted.AddRange(playerList);
 
                     Settings.SaveServerFileWhitelisted();
                 }

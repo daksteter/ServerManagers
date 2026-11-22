@@ -119,17 +119,6 @@ namespace ServerManagerTool.Lib.ViewModel.RCON
             this.LastUpdated = playerData?.FileUpdated ?? DateTime.MinValue;
         }
 
-        public void UpdatePlatformData(PlayerData playerData)
-        {
-            if (playerData == null)
-                return;
-
-            if (PlayerData?.PlayerName != null)
-                playerData.PlayerName = PlayerData.PlayerName;
-            playerData.LastPlatformUpdateUtc = PlayerData?.LastPlatformUpdateUtc ?? DateTime.MinValue;
-            playerData.NoUpdateCount = PlayerData?.NoUpdateCount ?? 0;
-        }
-
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
 

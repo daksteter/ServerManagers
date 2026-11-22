@@ -127,7 +127,6 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
@@ -223,12 +222,6 @@
                                 </Style>
                             </Button.Style>
                         </Button>
-
-                        <Label    Grid.Row="5" Grid.Column="0" Margin="1" Content="{DynamicResource GlobalSettings_SteamAPIKeyLabel}" VerticalAlignment="Center"/>
-                        <TextBox  Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="4" Margin="1" Name="HideSteamAPIKeyTextBox" Text="{DynamicResource ServerSettings_HidePasswordText}" ToolTip="{DynamicResource ServerSettings_HidePasswordTooltip}" GotFocus="HiddenField_GotFocus" Style="{StaticResource HiddenTextBoxStyle}"/>
-                        <TextBox  Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="4" Margin="1" Name="SteamAPIKeyTextBox" Text="{Binding CommonConfig.SteamAPIKey, Mode=TwoWay}" LostFocus="HiddenField_LostFocus" VerticalContentAlignment="Center" Visibility="Collapsed"/>
-                        <Button   Grid.Row="5" Grid.Column="6" Margin="1" Content="{DynamicResource SteamAPIKeyButtonContent}" Click="ApplySteamAPIKey_Click"/>
-                        <Button   Grid.Row="5" Grid.Column="7" Margin="1" Content="{DynamicResource SteamAPIKeyHelpButtonContent}" Click="SteamAPIKeyHelp_Click" HorizontalAlignment="Left"/>
                     </Grid>
                 </GroupBox>
 

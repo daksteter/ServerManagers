@@ -456,11 +456,8 @@
     <sys:String x:Key="GlobalSettings_ManagePublicIPLabel">Gérer automatiquement l'IP Public</sys:String>
     <sys:String x:Key="GlobalSettings_DataDirectoryLabel">Répertoire de données:</sys:String>
     <sys:String x:Key="GlobalSettings_BackupDirectoryLabel">Répertoire de sauvegarde:</sys:String>
-    <sys:String x:Key="GlobalSettings_SteamAPIKeyLabel">Clé WebApi Steam:</sys:String>
     <sys:String x:Key="GlobalSettings_SetLocationButtonLabel">...</sys:String>
     <sys:String x:Key="GlobalSettings_ClearButtonLabel">Effacer</sys:String>
-    <sys:String x:Key="GlobalSettings_SteamAPIKeyButtonLabel">Obtenir la clé Web Api...</sys:String>
-    <sys:String x:Key="GlobalSettings_SteamAPIKeyHelpButtonLabel">Aide...</sys:String>
 
     <sys:String x:Key="GlobalSettings_LanguageSelectionLabel">Langue</sys:String>
 

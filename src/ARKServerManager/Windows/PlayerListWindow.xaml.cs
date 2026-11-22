@@ -285,6 +285,7 @@ namespace ServerManagerTool
                     ServerMap = ServerProfile.GetProfileMapName(server?.Profile),
                     InstallDirectory = server.Runtime.ProfileSnapshot.InstallDirectory,
                     AltSaveDirectoryName = server.Runtime.ProfileSnapshot.AltSaveDirectoryName,
+                    UseStore = server.Profile.UseStore,
                     ProfileName = server.Runtime.ProfileSnapshot.ProfileName,
                     ProfileId = server.Runtime.ProfileSnapshot.ProfileId,
                 });

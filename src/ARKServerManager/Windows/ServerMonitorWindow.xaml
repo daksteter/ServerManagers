@@ -546,9 +546,8 @@
                                         <Button.Style>
                                             <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
                                                 <Style.Triggers>
-                                                    <!-- Without RCON this opened the save-file player list, which doesn't support ASA yet. -->
                                                     <DataTrigger Binding="{Binding Profile.RCONEnabled}" Value="False">
-                                                        <Setter Property="Visibility" Value="Hidden" />
+                                                        <Setter Property="ToolTip" Value="{DynamicResource ServerMonitor_PlayerListButtonTooltip}" />
                                                     </DataTrigger>
                                                     <DataTrigger Binding="{Binding Profile.RCONEnabled}" Value="True">
                                                         <Setter Property="ToolTip" Value="{DynamicResource ServerMonitor_RCONButtonTooltip}" />

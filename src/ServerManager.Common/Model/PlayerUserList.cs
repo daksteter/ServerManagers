@@ -18,44 +18,33 @@ namespace ServerManagerTool.Common.Model
                 if (string.IsNullOrWhiteSpace(item?.PlayerId))
                     continue;
 
-                if (!this.Any(i => i.PlayerId.Equals(item.PlayerId)))
+                if (!this.Any(i => i.PlayerId.Equals(item.PlayerId, System.StringComparison.OrdinalIgnoreCase)))
                     this.Add(item);
             }
         }
 
-        public static PlayerUserList GetList(SteamUserDetailResponse response, IEnumerable<string> ids)
+        /// <param name="playerNames">Player names by player ID; IDs without a name are shown as not available.</param>
+        /// <param name="ids">The player IDs (blank entries are skipped).</param>
+        public static PlayerUserList GetList(IReadOnlyDictionary<string, string> playerNames, IEnumerable<string> ids)
         {
-            if (ids is null)
-                return new PlayerUserList();
-
             var result = new PlayerUserList();
+            if (ids is null)
+                return result;
+
             foreach (var id in ids)
             {
+                var playerId = id?.Trim();
+                if (string.IsNullOrWhiteSpace(playerId))
+                    continue;
+
+                string playerName = null;
+                playerNames?.TryGetValue(playerId, out playerName);
+
                 result.Add(new PlayerUserItem()
                 {
-                    PlayerId = id,
-                    PlayerName = "<not available>",
+                    PlayerId = playerId,
+                    PlayerName = string.IsNullOrWhiteSpace(playerName) ? "<not available>" : playerName,
                 });
-            }
-
-            if (response?.players != null)
-            {
-                foreach (var detail in response.players)
-                {
-                    var item = result.FirstOrDefault(i => i.PlayerId == detail.steamid);
-                    if (item is null)
-                        continue;
-
-                    item.PlayerId = detail.steamid;
-                    item.PlayerName = detail.personaname ?? string.Empty;
-                }
-            }
-
-            // remove all NULL records.
-            for(int index = result.Count - 1; index >= 0; index--)
-            {
-                if (result[index] == null)
-                    result.RemoveAt(index);
             }
 
             return result;

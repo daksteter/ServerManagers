@@ -412,8 +412,7 @@
                             </Style>
                         </Button.Style>
                     </Button>
-                    <!-- Hidden: the player list reads ASE save files; ASA saves (SQLite/UE5) aren't supported yet. -->
-                    <Button Grid.Row="4" Grid.Column="4" Margin="2" Visibility="Collapsed" DataContext="{Binding Profile}" Content="{StaticResource PlayerListButtonContent}" ToolTip="{DynamicResource ServerSettings_PlayerListButtonTooltip}" Click="OpenPlayerList_Click">
+                    <Button Grid.Row="4" Grid.Column="4" Margin="2" DataContext="{Binding Profile}" Content="{StaticResource PlayerListButtonContent}" ToolTip="{DynamicResource ServerSettings_PlayerListButtonTooltip}" Click="OpenPlayerList_Click">
                         <Button.Style>
                             <Style BasedOn="{StaticResource {x:Type Button}}" TargetType="{x:Type Button}">
                                 <Setter Property="Visibility" Value="Visible"/>

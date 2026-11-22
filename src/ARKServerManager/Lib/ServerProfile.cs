@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32.TaskScheduler;
+﻿using ArkData;
+using Microsoft.Win32.TaskScheduler;
 using Newtonsoft.Json;
 using NeXt.Vdf;
 using ServerManagerTool.Common.Enums;
@@ -6937,10 +6938,10 @@ namespace ServerManagerTool.Lib
                 var list2 = this.ServerFilesExclusive ?? new PlayerUserList();
                 var list3 = this.ServerFilesWhitelisted ?? new PlayerUserList();
 
-                var allSteamIds = new List<string>();
-                string[] adminSteamIds = null;
-                string[] exclusiveSteamIds = null;
-                string[] whitelistSteamIds = null;
+                var allPlayerIds = new List<string>();
+                string[] adminPlayerIds = null;
+                string[] exclusivePlayerIds = null;
+                string[] whitelistPlayerIds = null;
 
                 if (adminFile)
                 {
@@ -6962,8 +6963,8 @@ namespace ServerManagerTool.Lib
 
                     if (File.Exists(file))
                     {
-                        adminSteamIds = File.ReadAllLines(file);
-                        allSteamIds.AddRange(adminSteamIds);
+                        adminPlayerIds = File.ReadAllLines(file);
+                        allPlayerIds.AddRange(adminPlayerIds);
                     }
                 }
 
@@ -6972,8 +6973,8 @@ namespace ServerManagerTool.Lib
                     var file = Path.Combine(InstallDirectory, Config.Default.ServerBinaryRelativePath, Config.Default.ServerExclusiveFile);
                     if (File.Exists(file))
                     {
-                        exclusiveSteamIds = File.ReadAllLines(file);
-                        allSteamIds.AddRange(exclusiveSteamIds);
+                        exclusivePlayerIds = File.ReadAllLines(file);
+                        allPlayerIds.AddRange(exclusivePlayerIds);
                     }
                 }
 
@@ -6982,30 +6983,27 @@ namespace ServerManagerTool.Lib
                     var file = Path.Combine(InstallDirectory, Config.Default.ServerBinaryRelativePath, Config.Default.ServerWhitelistFile);
                     if (File.Exists(file))
                     {
-                        whitelistSteamIds = File.ReadAllLines(file);
-                        allSteamIds.AddRange(whitelistSteamIds);
+                        whitelistPlayerIds = File.ReadAllLines(file);
+                        allPlayerIds.AddRange(whitelistPlayerIds);
                     }
                 }
 
-                // remove all duplicates
-                allSteamIds = allSteamIds.Distinct().ToList();
+                // the players' names, from their profile files
+                var playerNames = GetPlayerNames(allPlayerIds);
 
-                // fetch the details of all steam users in the list
-                var steamUsers = SteamUtils.GetSteamUserDetails(allSteamIds);
-
-                if (adminFile && adminSteamIds != null)
+                if (adminFile && adminPlayerIds != null)
                 {
-                    list1 = PlayerUserList.GetList(steamUsers, adminSteamIds);
+                    list1 = PlayerUserList.GetList(playerNames, adminPlayerIds);
                 }
 
-                if (exclusiveFile && exclusiveSteamIds != null)
+                if (exclusiveFile && exclusivePlayerIds != null)
                 {
-                    list2 = PlayerUserList.GetList(steamUsers, exclusiveSteamIds);
+                    list2 = PlayerUserList.GetList(playerNames, exclusivePlayerIds);
                 }
 
-                if (whitelistFile && whitelistSteamIds != null)
+                if (whitelistFile && whitelistPlayerIds != null)
                 {
-                    list3 = PlayerUserList.GetList(steamUsers, whitelistSteamIds);
+                    list3 = PlayerUserList.GetList(playerNames, whitelistPlayerIds);
                 }
 
                 this.ServerFilesAdmins = list1;
@@ -7016,6 +7014,33 @@ namespace ServerManagerTool.Lib
             {
                 MessageBox.Show(ex.Message, _globalizer.GetResourceString("ServerSettings_ServerFilesLoadErrorTitle"), MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        /// <summary>
+        /// The names of the given players (by player ID), read from their profile files in the map's save folder. Players
+        /// without a profile file (never joined, or profiles kept in the world save with -usestore) are left out.
+        /// </summary>
+        public Dictionary<string, string> GetPlayerNames(IEnumerable<string> playerIds)
+        {
+            var names = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            if (string.IsNullOrWhiteSpace(InstallDirectory))
+                return names;
+
+            var saveFolder = GetProfileSavePath(this);
+            if (!Directory.Exists(saveFolder))
+                return names;
+
+            foreach (var playerId in playerIds?.Select(id => id?.Trim()).Distinct(StringComparer.OrdinalIgnoreCase) ?? Enumerable.Empty<string>())
+            {
+                if (string.IsNullOrWhiteSpace(playerId) || playerId.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
+                    continue;
+
+                var player = DataContainer.ReadPlayer(Path.Combine(saveFolder, $"{playerId}{Config.Default.PlayerFileExtension}"));
+                if (!string.IsNullOrWhiteSpace(player?.PlayerName))
+                    names[playerId] = player.PlayerName;
+            }
+
+            return names;
         }
 
         public void SaveServerFileAdministrators()
@@ -7107,6 +7132,14 @@ namespace ServerManagerTool.Lib
                 : Path.Combine(installDirectory ?? string.Empty, Config.Default.SavedRelativePath, altSaveDirectoryName);
 
             return Path.Combine(savedArksFolder, GetMapName(serverMap));
+        }
+
+        /// <summary>
+        /// The world save (&lt;map&gt;.ark) in a map's save folder.
+        /// </summary>
+        public static string GetProfileWorldSaveFile(string saveFolder, string serverMap)
+        {
+            return Path.Combine(saveFolder ?? string.Empty, $"{GetMapName(serverMap)}{Config.Default.MapExtension}");
         }
 
         /// <summary>

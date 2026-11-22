@@ -457,11 +457,8 @@
     <sys:String x:Key="GlobalSettings_ManagePublicIPLabel">Автоматическое управление общедоступным IP-адресом</sys:String>
     <sys:String x:Key="GlobalSettings_DataDirectoryLabel">Каталог Данных:</sys:String>
     <sys:String x:Key="GlobalSettings_BackupDirectoryLabel">Каталог Бекапов:</sys:String>
-    <sys:String x:Key="GlobalSettings_SteamAPIKeyLabel">Steam WebApi Key:</sys:String>
     <sys:String x:Key="GlobalSettings_SetLocationButtonLabel">...</sys:String>
     <sys:String x:Key="GlobalSettings_ClearButtonLabel">Очистить</sys:String>
-    <sys:String x:Key="GlobalSettings_SteamAPIKeyButtonLabel">Получить WebApi Ключ...</sys:String>
-    <sys:String x:Key="GlobalSettings_SteamAPIKeyHelpButtonLabel">Помощь...</sys:String>
     
     <sys:String x:Key="GlobalSettings_LanguageSelectionLabel">Языки</sys:String>
 

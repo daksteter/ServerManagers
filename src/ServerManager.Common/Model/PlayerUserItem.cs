@@ -23,20 +23,6 @@ namespace ServerManagerTool.Common.Model
             set { SetValue(PlayerNameProperty, value); }
         }
 
-        public static PlayerUserItem GetItem(SteamUserDetail detail)
-        {
-            if (string.IsNullOrWhiteSpace(detail.steamid))
-                return null;
-
-            var result = new PlayerUserItem
-            {
-                PlayerId = detail.steamid,
-                PlayerName = detail.personaname ?? string.Empty,
-            };
-
-            return result;
-        }
-
         public override string ToString()
         {
             return $"{PlayerId} - {PlayerName}";

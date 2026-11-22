@@ -53,9 +53,10 @@ namespace ServerManagerTool
 
         public TribeData TribeData => Player?.PlayerData?.Tribe;
 
-        public String CreatedDate => TribeData?.FileCreated.ToString("G");
+        public String CreatedDate => TribeData?.FileCreated?.ToString("G");
 
-        public String TribeLink => String.IsNullOrWhiteSpace(ServerFolder) || TribeData == null ? null : $"/select, {Path.Combine(ServerFolder, $"{TribeData.Id}{Config.Default.TribeFileExtension}")}";
+        // tribes kept in the world save (-usestore) have no file to show
+        public String TribeLink => String.IsNullOrWhiteSpace(TribeData?.File) ? null : $"/select,\"{TribeData.File}\"";
 
         public String TribeOwner => TribeData != null && TribeData.Owner != null ? $"{TribeData.Owner.CharacterName} ({TribeData.Owner.PlayerName})" : null;
 
@@ -68,7 +69,7 @@ namespace ServerManagerTool
                 ICollection<PlayerInfo> players = new List<PlayerInfo>();
                 foreach (var tribePlayer in TribeData.Players)
                 {
-                    var player = Players.FirstOrDefault(p => p.PlayerId.ToString() == tribePlayer.PlayerId);
+                    var player = Players.FirstOrDefault(p => String.Equals(p.PlayerId, tribePlayer.PlayerId, StringComparison.OrdinalIgnoreCase));
                     if (player != null)
                         players.Add(player);
                 }
@@ -76,7 +77,7 @@ namespace ServerManagerTool
             }
         }
 
-        public String UpdatedDate => TribeData?.FileUpdated.ToString("G");
+        public String UpdatedDate => TribeData?.FileUpdated?.ToString("G");
 
         public String WindowTitle => String.Format(_globalizer.GetResourceString("Profile_WindowTitle_Tribe"), Player.TribeName);
 

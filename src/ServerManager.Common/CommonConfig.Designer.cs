@@ -70,36 +70,6 @@ namespace ServerManagerTool.Common {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string DefaultSteamAPIKey {
-            get {
-                return ((string)(this["DefaultSteamAPIKey"]));
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string SteamAPIKey {
-            get {
-                return ((string)(this["SteamAPIKey"]));
-            }
-            set {
-                this["SteamAPIKey"] = value;
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://steamcommunity.com/dev/apikey")]
-        public string SteamAPIKeyUrl {
-            get {
-                return ((string)(this["SteamAPIKeyUrl"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("+login {0} {1} +quit")]
         public string SteamCmdAuthenticateArgs {
             get {

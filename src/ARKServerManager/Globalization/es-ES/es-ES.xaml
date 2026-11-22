@@ -359,11 +359,8 @@
     <sys:String x:Key="GlobalSettings_ManageFirewallLabel">Gestionar automáticamente los ajustes del cortafuegos</sys:String>
     <sys:String x:Key="GlobalSettings_DataDirectoryLabel">Directorio de datos:</sys:String>
     <sys:String x:Key="GlobalSettings_BackupDirectoryLabel">Directorio de respaldo:</sys:String>
-    <sys:String x:Key="GlobalSettings_SteamAPIKeyLabel">Key de Steam WebApi:</sys:String>
     <sys:String x:Key="GlobalSettings_SetLocationButtonLabel">...</sys:String>
     <sys:String x:Key="GlobalSettings_ClearButtonLabel">Limpiar</sys:String>
-    <sys:String x:Key="GlobalSettings_SteamAPIKeyButtonLabel">Obtener key WebApi...</sys:String>
-    <sys:String x:Key="GlobalSettings_SteamAPIKeyHelpButtonLabel">Ayuda...</sys:String>
     
     <sys:String x:Key="GlobalSettings_LanguageSelectionLabel">Idioma</sys:String>
     

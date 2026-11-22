@@ -17,72 +17,6 @@ namespace ServerManagerTool.Common.Utils
 
         private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
-        public static SteamUserDetailResponse GetSteamUserDetails(List<string> steamIdList)
-        {
-            const int MAX_IDS = 100;
-
-            SteamUserDetailResponse response = null;
-            if (string.IsNullOrWhiteSpace(SteamWebApiKey))
-                return response;
-
-            try
-            {
-                if (steamIdList.Count == 0)
-                    return new SteamUserDetailResponse();
-
-                steamIdList = steamIdList.Distinct().ToList();
-                steamIdList = steamIdList.Where(i => long.TryParse(i, out long id)).ToList();
-
-                if (steamIdList.Count == 0)
-                    return new SteamUserDetailResponse();
-
-                int remainder;
-                var totalRequests = Math.DivRem(steamIdList.Count, MAX_IDS, out remainder);
-                if (remainder > 0)
-                    totalRequests++;
-
-                var requestIndex = 0;
-                while (requestIndex < totalRequests)
-                {
-                    var count = 0;
-                    var postData = "";
-                    var delimiter = "";
-                    for (var index = requestIndex * MAX_IDS; count < MAX_IDS && index < steamIdList.Count; index++)
-                    {
-                        postData += $"{delimiter}{steamIdList[index]}";
-                        delimiter = ",";
-                        count++;
-                    }
-
-                    var httpRequest = WebRequest.Create($"https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v2/?key={SteamWebApiKey}&format=json&steamids={postData}");
-                    httpRequest.Timeout = 30000;
-                    var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
-                    var responseString = new StreamReader(httpResponse.GetResponseStream()).ReadToEnd();
-
-                    var result = JsonUtils.Deserialize<SteamUserDetailResult>(responseString);
-                    if (result != null && result.response != null)
-                    {
-                        if (response == null)
-                            response = result.response;
-                        else
-                        {
-                            response.players.AddRange(result.response.players);
-                        }
-                    }
-
-                    requestIndex++;
-                }
-
-                return response ?? new SteamUserDetailResponse();
-            }
-            catch (Exception ex)
-            {
-                _logger.Error($"{nameof(GetSteamUserDetails)}. {ex.Message}\r\n{ex.StackTrace}");
-                Debug.WriteLine($"ERROR: {nameof(GetSteamUserDetails)}\r\n{ex.Message}");
-                return null;
-            }
-        }
-
         public static SteamCmdAppManifest ReadSteamCmdAppManifestFile(string file)
         {
             if (string.IsNullOrWhiteSpace(file) || !File.Exists(file))
@@ -92,16 +26,6 @@ namespace ServerManagerTool.Common.Utils
             var vdf = vdfSerializer.Deserialize();
 
             return SteamCmdManifestDetailsResult.Deserialize(vdf);
-        }
-
-        public static string SteamWebApiKey
-        {
-            get
-            {
-                if (!string.IsNullOrWhiteSpace(CommonConfig.Default.SteamAPIKey))
-                    return CommonConfig.Default.SteamAPIKey;
-                return CommonConfig.Default.DefaultSteamAPIKey;
-            }
         }
 
         public static Process GetSteamProcess()

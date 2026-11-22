@@ -455,11 +455,8 @@
     <sys:String x:Key="GlobalSettings_ManagePublicIPLabel">Genel IP'yi Otomatik Olarak Yönet</sys:String>
     <sys:String x:Key="GlobalSettings_DataDirectoryLabel">Veri Dizini:</sys:String>
     <sys:String x:Key="GlobalSettings_BackupDirectoryLabel">Yedekleme Dizini:</sys:String>
-    <sys:String x:Key="GlobalSettings_SteamAPIKeyLabel">Steam WebApi Anahtarı:</sys:String>
     <sys:String x:Key="GlobalSettings_SetLocationButtonLabel">...</sys:String>
     <sys:String x:Key="GlobalSettings_ClearButtonLabel">Temizle</sys:String>
-    <sys:String x:Key="GlobalSettings_SteamAPIKeyButtonLabel">WebApi Anahtarı Al...</sys:String>
-    <sys:String x:Key="GlobalSettings_SteamAPIKeyHelpButtonLabel">Yardım...</sys:String>
 
     <sys:String x:Key="GlobalSettings_LanguageSelectionLabel">Dil</sys:String>
 

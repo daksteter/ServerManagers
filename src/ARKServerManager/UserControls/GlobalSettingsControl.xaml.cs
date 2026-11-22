@@ -153,11 +153,6 @@ namespace ServerManagerTool
             return AppUtils.GetDeployedVersion(Assembly.GetExecutingAssembly());
         }
 
-        private void ApplySteamAPIKey_Click(object sender, RoutedEventArgs e)
-        {
-            ProcessUtils.OpenWithShell(Config.Default.SteamAPIKeyUrl);
-        }
-
         private async void SendTestEmail_Click(object sender, RoutedEventArgs e)
         {
             var cursor = this.Cursor;
@@ -319,11 +314,6 @@ namespace ServerManagerTool
             Config.Default.AutoUpdate_CacheDir = IOUtils.NormalizeFolder(dialog.FileName);
         }
 
-        private void SteamAPIKeyHelp_Click(object sender, RoutedEventArgs e)
-        {
-            ProcessUtils.OpenWithShell(Config.Default.SteamWebAPIKeyHelpUrl);
-        }
-
         private async void SteamCMDAuthenticate_Click(object sender, RoutedEventArgs e)
         {
             var cursor = this.Cursor;
@@ -420,8 +410,6 @@ namespace ServerManagerTool
                 TextBox textBox = null;
                 if (Equals(hideTextBox, HideSteamPasswordTextBox))
                     textBox = SteamPasswordTextBox;
-                if (Equals(hideTextBox, HideSteamAPIKeyTextBox))
-                    textBox = SteamAPIKeyTextBox;
                 if (Equals(hideTextBox, HideEmailPasswordTextBox))
                     textBox = EmailPasswordTextBox;
                 if (Equals(hideTextBox, HideDiscordBotTokenTextBox))
@@ -447,8 +435,6 @@ namespace ServerManagerTool
                 TextBox hideTextBox = null;
                 if (textBox == SteamPasswordTextBox)
                     hideTextBox = HideSteamPasswordTextBox;
-                if (textBox == SteamAPIKeyTextBox)
-                    hideTextBox = HideSteamAPIKeyTextBox;
                 if (textBox == EmailPasswordTextBox)
                     hideTextBox = HideEmailPasswordTextBox;
                 if (textBox == DiscordBotTokenTextBox)

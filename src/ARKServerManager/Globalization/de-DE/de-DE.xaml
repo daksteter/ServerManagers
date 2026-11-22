@@ -403,11 +403,8 @@
     <sys:String x:Key="GlobalSettings_ManagePublicIPLabel">Öffentliche IP automatisch verwalten</sys:String>
     <sys:String x:Key="GlobalSettings_DataDirectoryLabel">Datenverzeichnis:</sys:String>
     <sys:String x:Key="GlobalSettings_BackupDirectoryLabel">Sicherungsverzeichnis:</sys:String>
-    <sys:String x:Key="GlobalSettings_SteamAPIKeyLabel">Steam WebApi Schlüssel:</sys:String>
     <sys:String x:Key="GlobalSettings_SetLocationButtonLabel">...</sys:String>
     <sys:String x:Key="GlobalSettings_ClearButtonLabel">Leeren</sys:String>
-    <sys:String x:Key="GlobalSettings_SteamAPIKeyButtonLabel">Hole WebApi Schlüssel...</sys:String>
-    <sys:String x:Key="GlobalSettings_SteamAPIKeyHelpButtonLabel">Hilfe...</sys:String>
     
     <sys:String x:Key="GlobalSettings_LanguageSelectionLabel">Sprache</sys:String>
     
