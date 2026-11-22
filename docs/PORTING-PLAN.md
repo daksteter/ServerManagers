@@ -402,6 +402,15 @@ The Island, Scorched Earth, The Center, Aberration, Extinction, Astraeos, Ragnar
       (`QueryMaster.UnitTests`, which queried real IPs, went with QueryMaster; `RconClientUnitTest` is
       self-contained). Make the rest self-contained or delete them; add tests for argument building and path logic.
 - [ ] Consider .slnx, nullable reference types, and splitting `ServerProfile.cs` (7k lines) / `ServerSettingsControl` (11k lines).
+- [x] UI self-testing: `tools\UiDriver` (FlaUI 5.0.0, UIA3; outside the solution) drives the app from a shell, one
+      command per run (launch, windows, tree, find, click, set, get, select, tap, screenshot, close), through
+      automation patterns rather than the real mouse. `Deploy-TestApp.ps1` sets up an isolated, non-elevated copy
+      in `bin\UiTest` with its own settings and data folder (a normal process can't drive the elevated app, and
+      the app reads its settings backup `userconfig.json` from its install folder, so a plain copy would use the
+      real data folder). Checked on the main and Settings windows.
+- [ ] Accessibility gaps found with it (screen readers hit them too): the "+" (new profile) button sits in the tab
+      control's template, which UI Automation doesn't expose (only `tap --mouse` reaches it); combo box items are
+      named `ServerManagerTool.Common.Model.ComboBoxItem` (no `ToString()` on the item class).
 
 ---
 

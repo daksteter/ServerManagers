@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Command-line UI Automation driver for self-testing the app; see README.md. Not part of the solution build. -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net11.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <!-- for System.Drawing (screenshots) -->
+    <UseWindowsForms>true</UseWindowsForms>
+    <AssemblyName>UiDriver</AssemblyName>
+    <RootNamespace>UiDriver</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FlaUI.UIA3" Version="5.0.0" />
+  </ItemGroup>
+</Project>
