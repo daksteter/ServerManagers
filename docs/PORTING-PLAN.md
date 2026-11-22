@@ -578,7 +578,8 @@ What's left before a public release (not planned soon). The repo is on a private
       `v<version>`, with `JVH-Ark-Ascended-Server-Manager-<version>.zip` and its `.sha256`. The zip has a top
       folder named after the version, so an updater (or the README's "extract over the old folder") must copy that
       folder's contents.
-- [ ] **GitHub Actions** (written, not yet run on GitHub): `build.yml` builds and tests every push to `main` and
+- [x] **GitHub Actions** (both run on GitHub in November 2026: the first Build passed, and a trial Release run
+      built the zip): `build.yml` builds and tests every push to `main` and
       every pull request (Markdown-only changes skipped; a newer push cancels a running build). `release.yml` runs
       on a `v*` tag: checks the tag against `<Version>` and that CHANGELOG.md has the version's section, tests,
       runs `Build-Release.ps1`, writes the `.sha256` and publishes the release with `gh release create` (no
