@@ -16,6 +16,7 @@ namespace ServerManagerTool.Lib
         public const string MOD_UNKNOWN = "Unknown";
 
         public const string RCONINPUTMODE_COMMAND = "Command";
+        public const string RCONINPUTMODE_GLOBAL = "Global";
 
         public static event EventHandler GameDataLoaded;
 

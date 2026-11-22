@@ -36,6 +36,19 @@ namespace ServerManagerTool.Lib
         public const string RCON_COMMAND_BANPLAYER = "BanPlayer";
         public const string RCON_COMMAND_UNBANPLAYER = "UnbanPlayer";
 
+        /// <summary>
+        /// The RCON command that sends a message in the given message mode (the RCON mode settings: "Global" is
+        /// <c>serverchat</c>, the default, since <c>broadcast</c> doesn't reliably reach players on ASA; "Broadcast"
+        /// is <c>broadcast</c>).
+        /// </summary>
+        public static string GetMessageCommand(string mode)
+        {
+            if (string.IsNullOrWhiteSpace(mode) || mode.Equals(GameData.RCONINPUTMODE_GLOBAL, StringComparison.OrdinalIgnoreCase))
+                return RCON_COMMAND_SERVERCHAT;
+
+            return mode.Trim().ToLower();
+        }
+
         public event EventHandler PlayersCollectionUpdated;
 
         public static readonly DependencyProperty StatusProperty = DependencyProperty.Register(nameof(Status), typeof(ConsoleStatus), typeof(ServerRcon), new PropertyMetadata(ConsoleStatus.Disconnected));

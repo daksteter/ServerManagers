@@ -717,7 +717,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="RCON_MessageCommand" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Broadcast</Value>
+      <Value Profile="(Default)">Global</Value>
     </Setting>
     <Setting Name="DiscordBotAllServersKeyword" Type="System.String" Scope="User">
       <Value Profile="(Default)">all</Value>
@@ -726,7 +726,7 @@
       <Value Profile="(Default)">SaveGames</Value>
     </Setting>
     <Setting Name="RCON_BackupMessageCommand" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">Global</Value>
     </Setting>
     <Setting Name="AutoBackup_IncludeSaveGamesFolder" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>

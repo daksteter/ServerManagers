@@ -442,7 +442,7 @@ namespace ServerManagerTool
                     execute: (_) =>
                     {
                         var message = _globalizer.GetResourceString("RCON_SaveWorldLabel");
-                        this.ServerRCON.IssueCommand($"{Config.Default.RCON_MessageCommand.ToLower()} {message}");
+                        this.ServerRCON.IssueCommand($"{ServerRcon.GetMessageCommand(Config.Default.RCON_MessageCommand)} {message}");
 
                         this.ServerRCON.IssueCommand(Config.Default.ServerSaveCommand);
                     },
@@ -459,7 +459,7 @@ namespace ServerManagerTool
                     execute: (_) =>
                     {
                         var message = _globalizer.GetResourceString("RCON_DestroyWildDinosLabel");
-                        this.ServerRCON.IssueCommand($"{Config.Default.RCON_MessageCommand.ToLower()} {message}");
+                        this.ServerRCON.IssueCommand($"{ServerRcon.GetMessageCommand(Config.Default.RCON_MessageCommand)} {message}");
 
                         this.ServerRCON.IssueCommand(ServerRcon.RCON_COMMAND_WILDDINOWIPE);
                     },
@@ -856,7 +856,7 @@ namespace ServerManagerTool
                             this.ServerRCON.IssueCommand(commandText);
                             break;
 
-                        case "Global":
+                        case GameData.RCONINPUTMODE_GLOBAL:
                             if (string.IsNullOrWhiteSpace(Config.Default.RCON_AdminName))
                             {
                                 this.ServerRCON.IssueCommand($"{ServerRcon.RCON_COMMAND_SERVERCHAT} {commandText}");

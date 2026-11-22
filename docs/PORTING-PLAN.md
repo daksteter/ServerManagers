@@ -17,7 +17,7 @@ Turning Bletch1971's ARK Server Manager (ARK: Survival Evolved, "ASE") into a ma
 |---|---|---|
 | 1. Detach from upstream services, rebrand | Done | `5e2a0e75`, `995c49d1` |
 | 2. .NET Framework 4.6.2 → .NET 11, latest packages | Done | `e52b007f`, `6c59861b`, `c80cb7ba`, `f273acaf` |
-| 3. ASA support | M1–M8 done (M6: game data rebuilt; some engram data still missing) | `d554cb0a` plan; `dc58a01b`, `eedbd86a` M1; `0c1aef4d` maps; `ea7753e0`, `d91502ba` M3; `a6d0e38e` M2; `f4e015a2` M5; `d8450b5e` M4; `9609a942`; `9670bc09` M7; `6eb52bed` M8; `8ba195d7` M6; `c4dde3e0` player list; `0312f808`, `d08517cd` mod editor; RCON client |
+| 3. ASA support | M1–M8 done (M6: game data rebuilt; some engram data still missing) | `d554cb0a` plan; `dc58a01b`, `eedbd86a` M1; `0c1aef4d` maps; `ea7753e0`, `d91502ba` M3; `a6d0e38e` M2; `f4e015a2` M5; `d8450b5e` M4; `9609a942`; `9670bc09` M7; `6eb52bed` M8; `8ba195d7` M6; `c4dde3e0` player list; `0312f808`, `d08517cd` mod editor; `96da4227` RCON client; message mode |
 | 4. Cleanup / tech debt | Ongoing | |
 
 What phases 1–2 changed is in the commit messages. Highlights that affect later work:
@@ -46,6 +46,7 @@ What phases 1–2 changed is in the commit messages. Highlights that affect late
 | `.ark` world saves are **SQLite**; `.arkprofile` / `.arktribe` use a new UE5 layout | Confirmed by multiple parsers | AsaSavegameToolkit, arkparse, ark-sa-save-tools |
 | Profiles: `MyData` → `PlayerDataID`, `UniqueID` (EOS), `PlayerName`, `MyPlayerCharacterConfig.PlayerCharacterName`, `TribeID`; level = 1 + `CharacterStatusComponent_ExtraCharacterLevel`. Tribes: `TribeData` → `TribeName`, `TribeID`, `OwnerPlayerDataId` (UInt32), `MembersPlayerDataID`, `NumTribeDinos`. With `-usestore` both live in the world save's `GameModeCustomBytes` | Verified (test server profile, toolkit samples) | AsaSavegameToolkit |
 | RCON (Source protocol): one reply per command (no output → `Server received, But no response!!`); wrong password → auth reply ID -1, then the connection is closed; two packets in one write, or an empty response packet, make the server stop answering on that connection | Verified live (probe against the test server) | test server |
+| RCON `broadcast` doesn't reliably reach players (the on-screen message sometimes never shows); `serverchat` does | Seen by the user with another RCON client; no ASA-specific report found | user |
 | Player IDs are EOS IDs (hex), not SteamID64 | Verified live: 32 hex digits, e.g. `0002b0e8…6db0.arkprofile` | test server |
 | Save folder `SavedArks\TheIsland_WP\` holds `TheIsland_WP.ark`, `<EOS id>.arkprofile`, the server's own timestamped backups `TheIsland_WP_21.11.2026_23.28.20.arkrbf` and `TheIsland_WP_AntiCorruptionBackup.bak` | Verified live | test server |
 | SOTF and PGM do not exist; maps use `_WP` names (`TheIsland_WP`, `ScorchedEarth_WP`, …) | Confirmed | — |
@@ -154,6 +155,14 @@ online check, and the Discord `info` command. Replace with process state + RCON.
         fragments, a reply over two packets, timeout, several threads). Also checked against the test server.
 - [x] **Test:** status and player count, RCON window (commands, chat, player list, kick), broadcast and MOTD,
       stop with countdown and save, all over the new client.
+- [x] Messages default to server chat: the shutdown / update countdown, backup world-save, repeating MOTD and
+      RCON window Save World / Destroy Wild Dinos messages go out as `serverchat` (the "Global" mode) instead
+      of `broadcast`, which doesn't reliably reach players on ASA. Broadcast stays selectable in Settings (both
+      RCON mode boxes; the tooltip recommends Global). One mapping (`ServerRcon.GetMessageCommand`) for every
+      sender: the repeating MOTD and the RCON window buttons used to send the mode name itself
+      (`global <message>`, not a command) in Global mode.
+- [x] **Test:** stop with countdown (messages show in chat), the repeating MOTD (MOTD interval on), RCON window
+      Save World.
 - [ ] Without RCON there is no player count — make that clear in the UI (or default RCON on for new profiles).
 - [x] **Test:** with the test server running, the app reports Running / Available, 0 players, within one
       poll of starting, over a single RCON connection that stays open.

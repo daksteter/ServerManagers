@@ -1802,18 +1802,6 @@ namespace ServerManagerTool.Lib
 
         public static string GetProfileServerBinaryDir(ServerProfileSnapshot profile) => Path.Combine(profile.InstallDirectory, Config.Default.ServerBinaryRelativePath);
 
-        private static string GetRconMessageCommand(string commandValue)
-        {
-            switch (commandValue.ToLower())
-            {
-                case "global":
-                    return ServerRcon.RCON_COMMAND_SERVERCHAT;
-
-                default:
-                    return commandValue.ToLower();
-            }
-        }
-
         public static string GetServerBackupFolder(ServerProfile profile)
         {
             if (string.IsNullOrWhiteSpace(Config.Default.BackupPath))
@@ -2143,7 +2131,7 @@ namespace ServerManagerTool.Lib
             if (string.IsNullOrWhiteSpace(message))
                 return false;
 
-            var sent = SendCommand($"{GetRconMessageCommand(mode)} {message}", token);
+            var sent = SendCommand($"{ServerRcon.GetMessageCommand(mode)} {message}", token);
 
             if (sent)
             {

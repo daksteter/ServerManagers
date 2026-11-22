@@ -890,7 +890,7 @@ namespace ServerManagerTool.Lib
             if (string.IsNullOrWhiteSpace(message))
                 return false;
 
-            var sent = await SendCommandAsync($"{Config.Default.RCON_MessageCommand.ToLower()} {message}", false);
+            var sent = await SendCommandAsync($"{ServerRcon.GetMessageCommand(Config.Default.RCON_MessageCommand)} {message}", false);
 
             if (sent)
             {
