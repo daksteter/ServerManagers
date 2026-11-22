@@ -479,6 +479,33 @@ The Island, Scorched Earth, The Center, Aberration, Extinction, Astraeos, Ragnar
 
 ---
 
+## Release checklist
+
+What's left before a public release. The repo is pushed to a private GitHub repo (`origin`, branch `asa`);
+Bletch's repo is `upstream`.
+
+- [ ] **Permission from Bletch**, then a license. ARK Server Manager has no license file; README's License
+      section says "not decided".
+- [ ] **Icons:** the app icon is new; find out where the other icons in `src\ARKServerManager\Art` (carried over
+      from ARK Server Manager) come from, or replace them.
+- [ ] **README:** describe the app properly for people finding the repo: what it does in more depth, screenshots,
+      a setup walkthrough.
+- [ ] **Self-updater:** remove `ServerManager.Updater` from the app. It's disabled, but `ServerManagerUpdater.exe`
+      still lands in the build output.
+- [ ] **Release build:** a script (or workflow) that makes a clean Release build and zips it with README,
+      CHANGELOG and THIRD-PARTY-NOTICES, without `userconfig.json` / `commonconfig.json` (a copy of the app that
+      has run writes them into its folder) or the updater. Set a version: every AssemblyInfo is still 1.0.
+      Replace upstream's `.azure` pipelines, Inno Setup script and `.github/workflows/msbuild.yml`.
+- [ ] **Manual test checklist** below, especially scheduled tasks (need admin), "Create shortcut" and the
+      Discord bot.
+- [ ] **CHANGELOG:** turn [Unreleased] into the first version, with its date.
+- [x] Third-party licenses: Windows API Code Pack and NeXt.Vdf replaced, WPFSharp.Globalizer from its NuGet
+      package, full license texts in THIRD-PARTY-NOTICES.md.
+- [x] Conan Exiles leftovers removed: the projects in `6c59861b`; its installer script and an
+      `InternalsVisibleTo` entry later.
+
+---
+
 ## Manual test checklist (run after each milestone)
 
 - [ ] App starts (admin prompt, first-run data folder on a clean settings folder), main window shows.
