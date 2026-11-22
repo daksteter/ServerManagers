@@ -43,6 +43,12 @@ namespace ServerManagerTool.Common.Model
             set { SetValue(GroupMemberProperty, value); }
         }
 
+        /// <summary>
+        /// The text shown. WPF uses it as the item's name for screen readers and UI Automation, and for
+        /// finding an item by typing its first letters.
+        /// </summary>
+        public override string ToString() => string.IsNullOrEmpty(DisplayMember) ? ValueMember : DisplayMember;
+
         public ComboBoxItem Duplicate()
         {
             return new ComboBoxItem

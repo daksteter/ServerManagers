@@ -408,9 +408,16 @@ The Island, Scorched Earth, The Center, Aberration, Extinction, Astraeos, Ragnar
       in `bin\UiTest` with its own settings and data folder (a normal process can't drive the elevated app, and
       the app reads its settings backup `userconfig.json` from its install folder, so a plain copy would use the
       real data folder). Checked on the main and Settings windows.
-- [ ] Accessibility gaps found with it (screen readers hit them too): the "+" (new profile) button sits in the tab
-      control's template, which UI Automation doesn't expose (only `tap --mouse` reaches it); combo box items are
-      named `ServerManagerTool.Common.Model.ComboBoxItem` (no `ToString()` on the item class).
+- [x] Accessibility gaps found with it (screen readers hit them too), fixed:
+      - The "+" (new profile) button sat in the tab control's template, which WPF's tab control doesn't expose to
+        UI Automation. The main window now uses `AccessibleTabControl` (`ServerManager.Common\Controls`), whose
+        automation peer also lists the template's buttons; the button is named "New profile". Layout unchanged.
+      - Combo box items read `ServerManagerTool.Common.Model.ComboBoxItem` and profile tabs
+        `ServerManagerTool.Lib.Server` (WPF names data items by `ToString()`): `ComboBoxItem` (both copies, app
+        and Discord plugin) now returns its display text, `Server` its profile name.
+      - Checked with UiDriver: "New profile" found by name and clicked (a profile was added), combo items read
+        "Normal" / "Minimized" / "Maximized", the tab reads the profile name.
+- [ ] Icon-only buttons (main window header, profile toolbar) have only a tooltip, no automation name.
 
 ---
 

@@ -9,6 +9,7 @@
         xmlns:ce="clr-namespace:ServerManagerTool.Common.Enums;assembly=ServerManager.Common"
         xmlns:cvr="clr-namespace:ServerManagerTool.Common.ValidationRules;assembly=ServerManager.Common"
         xmlns:com="clr-namespace:ServerManagerTool.Common;assembly=ServerManager.Common"
+        xmlns:cctl="clr-namespace:ServerManagerTool.Common.Controls;assembly=ServerManager.Common"
         xmlns:enum="clr-namespace:ServerManagerTool.Enums"
         xmlns:botenum="clr-namespace:ServerManagerTool.DiscordBot.Enums;assembly=ServerManager.Discord"
         MinWidth="900" MinHeight="600" Width="1100" Height="900" Left="50" Top="50" WindowState="Normal"
@@ -370,11 +371,12 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <TabControl Name="Tabs" Grid.Row="0" Margin="0" ItemsSource="{Binding ServerManager.Servers}">
+                <!-- AccessibleTabControl: makes the "+" button in the template visible to screen readers and UI tests -->
+                <cctl:AccessibleTabControl Name="Tabs" Grid.Row="0" Margin="0" ItemsSource="{Binding ServerManager.Servers}">
                     <TabControl.Template>
                         <ControlTemplate TargetType="{x:Type TabControl}">
                             <DockPanel Margin="2,2,2,0" KeyboardNavigation.TabNavigation="Local">
-                                <Button DockPanel.Dock="Right" VerticalAlignment="Bottom" Margin="4,0,0,0" Cursor="Hand" Click="Servers_AddNew" ToolTip="{DynamicResource MainWindow_NewProfileTooltip}">
+                                <Button DockPanel.Dock="Right" VerticalAlignment="Bottom" Margin="4,0,0,0" Cursor="Hand" Click="Servers_AddNew" ToolTip="{DynamicResource MainWindow_NewProfileTooltip}" AutomationProperties.Name="{DynamicResource MainWindow_NewProfileButtonName}">
                                     <Button.Template>
                                         <ControlTemplate TargetType="{x:Type Button}">
                                             <Border BorderBrush="#8C8E94" BorderThickness="1,1,1,0" Padding="3,0">
@@ -521,7 +523,7 @@
                             </StackPanel>
                         </DataTemplate>
                     </TabControl.ItemTemplate>
-                </TabControl>
+                </cctl:AccessibleTabControl>
                 <Border Grid.Row="1" BorderBrush="#8C8E94" BorderThickness="0,1,0,0">
                     <ItemsControl ItemsSource="{Binding ServerManager.Servers}" Focusable="False">
                         <ItemsControl.ItemsPanel>

@@ -36,6 +36,11 @@ namespace ServerManagerTool.Lib
             InitializeFromProfile(profile);
         }
 
+        /// <summary>
+        /// The profile name: WPF uses it as the profile tab's name for screen readers and UI Automation.
+        /// </summary>
+        public override string ToString() => Profile?.ProfileName ?? string.Empty;
+
         public void Dispose()
         {
             this.Profile.DestroyServerFilesWatcher();
