@@ -692,6 +692,9 @@
                                                 </Binding>
                                             </TextBox.Text>
                                         </TextBox>
+                                        <Button Grid.Row="2" Grid.Column="7" Width="22" Height="22" Margin="5,1,0,0" HorizontalAlignment="Left" Style="{StaticResource ButtonStyle1}" ToolTip="{DynamicResource ServerSettings_EditModListTooltip}" Click="EditModList_Click">
+                                            <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Edit.ico,Size=32}"/>
+                                        </Button>
 
                                         <Label   Grid.Row="3" Grid.Column="0" Content="{DynamicResource ServerSettings_PassiveModIdsLabel}" Grid.ColumnSpan="2" ToolTip="{DynamicResource ServerSettings_PassiveModIdsTooltip}" VerticalAlignment="Center"/>
                                         <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="6" Margin="1" ToolTip="{DynamicResource ServerSettings_PassiveModIdsTooltip}">
@@ -711,6 +714,9 @@
                                                 </Binding>
                                             </TextBox.Text>
                                         </TextBox>
+                                        <Button Grid.Row="3" Grid.Column="7" Width="22" Height="22" Margin="5,1,0,0" HorizontalAlignment="Left" Style="{StaticResource ButtonStyle1}" ToolTip="{DynamicResource ServerSettings_EditPassiveModListTooltip}" Click="EditPassiveModList_Click">
+                                            <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Edit.ico,Size=32}"/>
+                                        </Button>
                                     </Grid>
                                 </GroupBox>
 

@@ -1,0 +1,138 @@
+<Window x:Class="ServerManagerTool.ModListWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:com="clr-namespace:ServerManagerTool.Common;assembly=ServerManager.Common"
+        MinWidth="520" MinHeight="300" Width="760" Height="460" ResizeMode="CanResize" WindowStyle="ToolWindow" WindowStartupLocation="CenterOwner" ShowInTaskbar="False"
+        Icon="../Art/favicon.ico"
+        FocusManager.FocusedElement="{Binding ElementName=NewModIdsTextBox}"
+        Name="ModListUI">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Globalization\en-US\en-US.xaml"/>
+                <ResourceDictionary Source="..\Styles\Default.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Background="{StaticResource BeigeGradient}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <DockPanel Grid.Row="0" Margin="5,5,5,0" LastChildFill="True">
+            <TextBlock DockPanel.Dock="Left" Margin="0,0,5,0" Text="{DynamicResource ModList_AddLabel}" VerticalAlignment="Center"/>
+            <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" Margin="20,0,0,0">
+                <TextBlock Text="{DynamicResource ModList_CountLabel}" VerticalAlignment="Center"/>
+                <TextBlock Margin="5,0,0,0" Text="{Binding Mods.Count}" VerticalAlignment="Center"/>
+            </StackPanel>
+            <Button DockPanel.Dock="Right" Margin="5,0,0,0" MinWidth="75" Content="{DynamicResource ModList_AddButtonLabel}" ToolTip="{DynamicResource ModList_AddTooltip}" IsDefault="True" Click="AddMods_Click"/>
+            <TextBox x:Name="NewModIdsTextBox" Text="{Binding NewModIds, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ToolTip="{DynamicResource ModList_AddTooltip}" VerticalContentAlignment="Center" Padding="2"/>
+        </DockPanel>
+
+        <DataGrid Grid.Row="1" Name="ModsGrid" ItemsSource="{Binding Mods}" Margin="5" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserSortColumns="False" RowHeaderWidth="0" SelectionMode="Single" IsReadOnly="True">
+            <DataGrid.HorizontalGridLinesBrush>
+                <SolidColorBrush Color="#FFB4B4B4"/>
+            </DataGrid.HorizontalGridLinesBrush>
+            <DataGrid.VerticalGridLinesBrush>
+                <SolidColorBrush Color="#FFB4B4B4"/>
+            </DataGrid.VerticalGridLinesBrush>
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="Auto" MinWidth="30" Binding="{Binding Index, Mode=OneWay}">
+                    <DataGridTextColumn.Header>
+                        <TextBlock Text="{DynamicResource ModList_IndexColumnLabel}"/>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTemplateColumn Width="Auto" MinWidth="90">
+                    <DataGridTemplateColumn.Header>
+                        <TextBlock Text="{DynamicResource ModList_ModIdColumnLabel}"/>
+                    </DataGridTemplateColumn.Header>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock ToolTip="{DynamicResource ModList_OpenModTooltip}">
+                                <Hyperlink NavigateUri="{Binding Url}" RequestNavigate="Mod_RequestNavigate">
+                                    <Run Text="{Binding ModId, Mode=OneWay}"/>
+                                </Hyperlink>
+                            </TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Width="1*" Binding="{Binding DisplayName, Mode=OneWay}">
+                    <DataGridTextColumn.Header>
+                        <TextBlock Text="{DynamicResource ModList_NameColumnLabel}"/>
+                    </DataGridTextColumn.Header>
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsInstalled}" Value="False">
+                                    <Setter Property="Foreground" Value="Gray"/>
+                                    <Setter Property="FontStyle" Value="Italic"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Width="Auto" MinWidth="120" Binding="{Binding Version, Mode=OneWay}">
+                    <DataGridTextColumn.Header>
+                        <TextBlock Text="{DynamicResource ModList_VersionColumnLabel}"/>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTemplateColumn Width="30" CanUserResize="False">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Width="22" Height="22" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" Click="MoveModUp_Click" ToolTip="{DynamicResource ModList_MoveUpTooltip}">
+                                <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Up.ico,Size=32}"/>
+                                <Button.Style>
+                                    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsFirst}" Value="True">
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="30" CanUserResize="False">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Width="22" Height="22" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" Click="MoveModDown_Click" ToolTip="{DynamicResource ModList_MoveDownTooltip}">
+                                <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Down.ico,Size=32}"/>
+                                <Button.Style>
+                                    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsLast}" Value="True">
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="30" CanUserResize="False">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Width="22" Height="22" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" Click="RemoveMod_Click" ToolTip="{DynamicResource ModList_RemoveTooltip}">
+                                <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Delete.ico,Size=32}"/>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <TextBlock Grid.Row="2" Margin="5,0,5,0" Text="{DynamicResource ModList_NoteLabel}" TextWrapping="Wrap" Foreground="SteelBlue"/>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
+            <Button MinWidth="75" Margin="0,0,5,0" Content="{DynamicResource ModList_OkButtonLabel}" Click="Ok_Click"/>
+            <Button MinWidth="75" Content="{DynamicResource ModList_CancelButtonLabel}" IsCancel="True"/>
+        </StackPanel>
+    </Grid>
+</Window>

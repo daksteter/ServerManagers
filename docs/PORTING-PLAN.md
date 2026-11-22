@@ -17,7 +17,7 @@ Turning Bletch1971's ARK Server Manager (ARK: Survival Evolved, "ASE") into a ma
 |---|---|---|
 | 1. Detach from upstream services, rebrand | Done | `5e2a0e75`, `995c49d1` |
 | 2. .NET Framework 4.6.2 → .NET 11, latest packages | Done | `e52b007f`, `6c59861b`, `c80cb7ba`, `f273acaf` |
-| 3. ASA support | M1–M8 done (M6: game data rebuilt; some engram data still missing) | `d554cb0a` plan; `dc58a01b`, `eedbd86a` M1; `0c1aef4d` maps; `ea7753e0`, `d91502ba` M3; `a6d0e38e` M2; `f4e015a2` M5; `d8450b5e` M4; `9609a942`; `9670bc09` M7; `6eb52bed` M8; `8ba195d7` M6; player list |
+| 3. ASA support | M1–M8 done (M6: game data rebuilt; some engram data still missing) | `d554cb0a` plan; `dc58a01b`, `eedbd86a` M1; `0c1aef4d` maps; `ea7753e0`, `d91502ba` M3; `a6d0e38e` M2; `f4e015a2` M5; `d8450b5e` M4; `9609a942`; `9670bc09` M7; `6eb52bed` M8; `8ba195d7` M6; `c4dde3e0` player list; mod editor |
 | 4. Cleanup / tech debt | Ongoing | |
 
 What phases 1–2 changed is in the commit messages. Highlights that affect later work:
@@ -170,10 +170,22 @@ Decision: **plain CurseForge IDs** (no CurseForge API for now).
       delay, `VersionFile`, and eight that were already unused upstream).
 - [x] The Steam Web API key is gone (with the `ArkData` replacement, M5): the setting and its global settings row,
       upstream's built-in key (`DefaultSteamAPIKey` in App.config), `SteamUtils.GetSteamUserDetails` and its models.
-- [ ] `ModDetailsWindow` replacement: a simple CurseForge ID list editor. Optional: names via the CurseForge
-      API (needs an API key — decision below). For now mods are typed into the Mod IDs box.
+- [x] `ModDetailsWindow` replacement: a mod list editor (`ModListWindow`), opened from the edit button next to
+      Mod IDs and next to Passive mod IDs. Add (IDs separated by commas / spaces, or `curseforge.com/projects/<id>`
+      links), remove, move up / down (the order is the load order), open the mod's CurseForge page
+      (`curseforge.com/projects/<id>` redirects to it); OK writes the list back to the box.
+      - Names and installed versions come from the server's own mod library
+        (`ShooterGame\Binaries\Win64\ShooterGame\ModsUserData\83374\local\user_info.json`, `installedMods`:
+        CurseForge `details` + `installedFile` records), so no CurseForge API key is needed; a mod's name shows
+        once the server has downloaded it. Only `installedMods` is read (the file also holds the server's
+        CurseForge sign-in token). Older servers' `ModsUserData\83374\library.json` is read too.
+      - The record layout follows the CurseForge SDK docs; the test server has no mods yet, so the reader was
+        checked against a sample file in that layout.
+- [x] **Test:** edit the list (add, remove, reorder, OK / Cancel).
+- [ ] **Test:** add a mod, start the server, then check that the editor shows its name and version (and confirm
+      the `user_info.json` layout; the test server hasn't downloaded a mod yet).
 - [x] Optional: `-passivemods=` support (M7: "Passive mod IDs" below Mod IDs).
-- [ ] Game data files still contain `TotalConversions` / `OfficialMods` arrays (ignored now; M6 replaces the data).
+- [x] Game data files no longer contain `TotalConversions` / `OfficialMods` arrays (M6).
 
 ### M4. Remove SOTF and PGM
 
@@ -364,8 +376,8 @@ The Island, Scorched Earth, The Center, Aberration, Extinction, Astraeos, Ragnar
 
 ## Decisions needed
 
-1. **CurseForge API key** — show mod names/update info in the UI (needs a free key from CurseForge),
-   or keep mods as a plain ID list? Recommendation: plain IDs first, API later.
+1. **CurseForge API key** — names of downloaded mods now come from the server's own mod library, so a key
+   would only add names of mods the server hasn't downloaded yet, and update info. Not needed for now.
 2. ~~**Player list**~~ — decided: hidden in M5, then brought back on AsaSavegameToolkit.
 3. **Game data source** for ASA creatures/engrams/items (M6).
 4. **Keep or drop** the Discord bot, Discord plugin and plugin system.

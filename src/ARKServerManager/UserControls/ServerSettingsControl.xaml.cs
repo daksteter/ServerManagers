@@ -2535,7 +2535,34 @@ namespace ServerManagerTool
         }
         #endregion
 
-        #region Server Files 
+        #region Mods
+        private void EditModList_Click(object sender, RoutedEventArgs e)
+        {
+            var modIds = EditModList(_globalizer.GetResourceString("ModList_Title_Mods"), Settings.ServerModIds);
+            if (modIds != null)
+                Settings.ServerModIds = modIds;
+        }
+
+        private void EditPassiveModList_Click(object sender, RoutedEventArgs e)
+        {
+            var modIds = EditModList(_globalizer.GetResourceString("ModList_Title_PassiveMods"), Settings.PassiveModIds);
+            if (modIds != null)
+                Settings.PassiveModIds = modIds;
+        }
+
+        /// <returns>The edited list, or null if the editor was cancelled.</returns>
+        private string EditModList(string titleFormat, string modIds)
+        {
+            var window = new ModListWindow(string.Format(titleFormat, Settings.ProfileName), modIds, Settings.InstallDirectory)
+            {
+                Owner = Window.GetWindow(this),
+            };
+
+            return window.ShowDialog() == true ? window.ModIds : null;
+        }
+        #endregion
+
+        #region Server Files
         private void AddAdminPlayer_Click(object sender, RoutedEventArgs e)
         {
             var window = new AddUserWindow();
