@@ -656,6 +656,22 @@ namespace ServerManagerTool.Lib
                 process.EnableRaisingEvents = true;
                 process.Exited += handler;
 
+                // Stop (no countdown): the same as the Stop buttons, which save the world first
+                if (ServerProcess == ServerProcessType.Stop)
+                {
+                    if (ServerProcessStopper.Stop(process, _profile, message => LogProfileMessage(message)))
+                    {
+                        LogProfileMessage("Stopped server successfully.");
+                        LogProfileMessage("");
+                        ExitCode = EXITCODE_NORMALEXIT;
+                        return;
+                    }
+
+                    LogProfileError("Stopping server timed out.");
+                    ExitCode = EXITCODE_SHUTDOWN_TIMEOUT;
+                    return;
+                }
+
                 // Method 1 - Shutdown Command
                 if (ServerProcess != ServerProcessType.Stop)
                 {
@@ -712,7 +728,8 @@ namespace ServerManagerTool.Lib
 
                 ProcessUtils.SendStopAsync(process).Wait();
 
-                if (ts.Task.Result)
+                // (not ts.Task.Result: that would wait for as long as the server keeps running)
+                if (process.HasExited)
                 {
                     LogProfileMessage("Stopped server successfully.");
                     LogProfileMessage("");
@@ -731,7 +748,7 @@ namespace ServerManagerTool.Lib
                     ts.Task.Wait(60000);   // 1 minute
                 }
 
-                if (ts.Task.Result)
+                if (process.HasExited)
                 {
                     LogProfileMessage("Killed server successfully.");
                     LogProfileMessage("");

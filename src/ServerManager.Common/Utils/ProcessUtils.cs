@@ -37,12 +37,26 @@ namespace ServerManagerTool.Common.Utils
         [DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
         private static extern bool FreeConsole();
 
-        [DllImport("kernel32.dll")]
+        [DllImport("kernel32.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         private static extern bool GenerateConsoleCtrlEvent(CtrlTypes dwCtrlEvent, uint dwProcessGroupId);
 
-        [DllImport("kernel32.dll")]
+        [DllImport("kernel32.dll", SetLastError = true)]
         static extern bool SetConsoleCtrlHandler(ConsoleCtrlDelegate HandlerRoutine, bool Add);
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        private static extern IntPtr GetStdHandle(int nStdHandle);
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        private static extern bool SetStdHandle(int nStdHandle, IntPtr hHandle);
+
+        private static readonly int[] StdHandles = { -10, -11, -12 }; // input, output, error
+
+        // a process can be attached to one console at a time
+        private static readonly object ConsoleLock = new object();
+
+        // how long Ctrl+C stays ignored here after sending it, so that it can't reach this process
+        private const int CtrlCGraceMilliseconds = 5000;
 
         [DllImport("user32.dll")]
         private static extern int ShowWindow(IntPtr hWnd, int nCmdShow);
@@ -95,71 +109,86 @@ namespace ServerManagerTool.Common.Utils
             return null;
         }
 
-        public static async Task SendStopAsync(Process process)
+        /// <summary>
+        /// Sends Ctrl+C to a process's console, as pressing Ctrl+C in its window does, and waits up to 10 seconds for
+        /// it to exit. Kills the process if Ctrl+C can't be sent.
+        /// </summary>
+        public static Task SendStopAsync(Process process)
         {
-            if (process == null)
-                return;
+            if (process != null && !SendCtrlC(process, 10000, out _) && !process.HasExited)
+                process.Kill();
 
-            var ts = new TaskCompletionSource<bool>();
-            EventHandler handler = (s, e) => ts.TrySetResult(true);
+            return Task.CompletedTask;
+        }
 
-            try
+        /// <summary>
+        /// Sends Ctrl+C to a process's console, as pressing Ctrl+C in its window does (the window needn't be visible),
+        /// and waits up to <paramref name="waitMilliseconds"/> for the process to exit.
+        /// </summary>
+        /// <param name="error">The Windows error when Ctrl+C couldn't be sent, such as when the process has no console.</param>
+        /// <returns>Whether Ctrl+C was sent; check <see cref="Process.HasExited"/> for whether the process exited.</returns>
+        public static bool SendCtrlC(Process process, int waitMilliseconds, out int error)
+        {
+            ArgumentNullException.ThrowIfNull(process);
+            error = 0;
+
+            var started = Stopwatch.StartNew();
+            lock (ConsoleLock)
             {
-                process.Exited += handler;
+                // AttachConsole points the standard handles at the console, and FreeConsole leaves them pointing at
+                // closed handles, which would make the next Process.Start fail ("The handle is invalid")
+                var stdHandles = StdHandles.Select(GetStdHandle).ToArray();
 
-                //This does not require the console window to be visible.
-                var result = AttachConsole((uint)process.Id);
-                if (result)
+                if (!AttachConsole((uint)process.Id))
                 {
-                    // Disable Ctrl-C handling for our program
-                    result = SetConsoleCtrlHandler(null, true);
-                    if (result)
+                    error = Marshal.GetLastWin32Error();
+                    return false;
+                }
+
+                var attached = true;
+                try
+                {
+                    // ignore the Ctrl+C here: this process shares the console for a moment
+                    if (!SetConsoleCtrlHandler(null, true))
                     {
-                        result = GenerateConsoleCtrlEvent(CtrlTypes.CTRL_C_EVENT, 0);
-                        if (result)
-                        {
-                            FreeConsole();
-
-                            // Must wait here. If we don't and re-enable Ctrl-C
-                            // handling below too fast, we might terminate ourselves.
-                            try
-                            {
-                                ts.Task.Wait(10000);
-                                result = true;
-                            }
-                            catch (Exception)
-                            {
-                                result = false;
-                            }
-
-                            //Re-enable Ctrl-C handling or any subsequently started
-                            //programs will inherit the disabled state.
-                            SetConsoleCtrlHandler(null, false);
-                        }
-                        else
-                        {
-                            //Re-enable Ctrl-C handling or any subsequently started
-                            //programs will inherit the disabled state.
-                            SetConsoleCtrlHandler(null, false);
-
-                            FreeConsole();
-                        }
+                        error = Marshal.GetLastWin32Error();
+                        return false;
                     }
-                    else
+
+                    try
                     {
+                        if (!GenerateConsoleCtrlEvent(CtrlTypes.CTRL_C_EVENT, 0))
+                        {
+                            error = Marshal.GetLastWin32Error();
+                            return false;
+                        }
+
                         FreeConsole();
+                        attached = false;
+
+                        // handling Ctrl+C again too soon could let it end this process
+                        process.WaitForExit(Math.Min(waitMilliseconds, CtrlCGraceMilliseconds));
+                    }
+                    finally
+                    {
+                        // or programs started from here would inherit the ignored Ctrl+C
+                        SetConsoleCtrlHandler(null, false);
                     }
                 }
-                
-                if (!result && !process.HasExited)
+                finally
                 {
-                    process.Kill();
+                    if (attached)
+                        FreeConsole();
+
+                    for (var i = 0; i < StdHandles.Length; i++)
+                        SetStdHandle(StdHandles[i], stdHandles[i]);
                 }
             }
-            finally
-            {
-                process.Exited -= handler;
-            }
+
+            var remaining = waitMilliseconds - (int)started.ElapsedMilliseconds;
+            if (remaining > 0)
+                process.WaitForExit(remaining);
+            return true;
         }
 
         public static Task<bool> RunProcessAsync(string file, string arguments, string verb, string workingDirectory, string username, SecureString password, List<int> SteamCmdIgnoreExitStatusCodes, DataReceivedEventHandler outputHandler, CancellationToken cancellationToken, ProcessWindowStyle windowStyle = ProcessWindowStyle.Normal)

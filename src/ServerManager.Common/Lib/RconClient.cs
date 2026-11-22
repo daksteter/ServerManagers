@@ -64,6 +64,16 @@ namespace ServerManagerTool.Common.Lib
         public bool IsConnected => _client?.Connected ?? false;
 
         /// <summary>
+        /// How long <see cref="SendCommand"/> waits for a reply, in milliseconds (the connect timeout to start with).
+        /// Raise it for commands the server answers only when done, such as saveworld.
+        /// </summary>
+        public int ReplyTimeout
+        {
+            get { lock (_lock) return _client?.ReceiveTimeout ?? 0; }
+            set { lock (_lock) { if (_client != null) _client.ReceiveTimeout = value; } }
+        }
+
+        /// <summary>
         /// Opens a connection and logs in.
         /// </summary>
         /// <exception cref="RconAuthenticationException">The password was not accepted.</exception>

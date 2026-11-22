@@ -49,6 +49,7 @@ What phases 1–2 changed is in the commit messages. Highlights that affect late
 | RCON `broadcast` doesn't reliably reach players (the on-screen message sometimes never shows); `serverchat` does | Seen by the user with another RCON client; no ASA-specific report found | user |
 | Player IDs are EOS IDs (hex), not SteamID64 | Verified live: 32 hex digits, e.g. `0002b0e8…6db0.arkprofile` | test server |
 | Save folder `SavedArks\TheIsland_WP\` holds `TheIsland_WP.ark`, `<EOS id>.arkprofile`, the server's own timestamped backups `TheIsland_WP_21.11.2026_23.28.20.arkrbf` and `TheIsland_WP_AntiCorruptionBackup.bak` | Verified live | test server |
+| Ctrl+C in the server console makes ASA save and exit cleanly (`Closing by request`, then `Log file closed` in its log); a killed server just stops, unsaved, with no closing lines. Whether `saveworld` answers only once the save is done is assumed (commands run on the game thread), not measured on a large world | Seen in the test server's logs and save files (a manual Ctrl+C at 23:29 saved; the app's plain Stop at 22:48 did not) | test server |
 | SOTF and PGM do not exist; maps use `_WP` names (`TheIsland_WP`, `ScorchedEarth_WP`, …) | Confirmed | — |
 | Windows only (Linux needs Proton) | Confirmed | ARK wiki |
 
@@ -458,6 +459,23 @@ The Island, Scorched Earth, The Center, Aberration, Extinction, Astraeos, Ragnar
       Checked with UiDriver on the test copy: switching to German retitles Settings and translates the main window,
       the untranslated "New profile" stays English, the language names relist in German, and switching back
       works.
+
+- [x] Stopping without a countdown saved nothing: the Stop buttons (`ServerRuntime.StopAsync`) sent Ctrl+C and
+      killed the server if that couldn't be sent, and the Server Monitor's Stop menu and Discord's `stop`
+      (`ServerApp`, process type Stop) skipped the world save and `doexit`. On the test server the 22:48 Stop left no
+      save and no closing lines in the server log. Both now use `ServerProcessStopper`: RCON `saveworld` (waiting up
+      to 2 minutes for the reply, through the new `RconClient.ReplyTimeout`), then `doexit`, a minute to exit; else
+      Ctrl+C and a minute; else kill. Each step goes to `ServerManager_ServerStatus.log` (the `ServerRuntime` logger)
+      or the profile's shutdown log. The status shows Stopped only once the process has exited.
+      - `ProcessUtils.SendCtrlC`, from the old `SendStopAsync`: Ctrl+C sends are serialized (one console at a
+        time), it reports the Windows error when Ctrl+C can't be sent, and it restores the standard handles.
+        `AttachConsole` / `FreeConsole` left them pointing at closed handles, so the next `Process.Start` without
+        the shell (SteamCMD with its output captured, as in Update after Stop) failed with "The handle is invalid".
+      - `ServerApp`'s Ctrl+C and kill steps waited on `ts.Task.Result`, which blocks for as long as the server keeps
+        running; they now check `HasExited`.
+      - Checked against a stand-in server (RCON with a slow `saveworld`, Ctrl+C handling) driven by a console-less
+        program, like the app: RCON stop in 2.3 s, Ctrl+C stop without RCON and with a wrong RCON password, kill
+        after 60 s when Ctrl+C is ignored, and starting processes afterwards. Not yet on a real ASA server.
 
 ---
 

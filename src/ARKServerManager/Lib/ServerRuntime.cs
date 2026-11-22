@@ -531,38 +531,47 @@ namespace ServerManagerTool.Lib
             return TaskUtils.FinishedTask;            
         }
 
+        /// <summary>
+        /// Stops the server without a countdown, saving the world first (see <see cref="ServerProcessStopper"/>).
+        /// </summary>
         public async Task StopAsync()
         {
-            switch(this.Status)
-            {
-                case ServerStatus.Running:
-                case ServerStatus.Initializing:
-                    try
-                    {
-                        if (this.serverProcess != null)
-                        {
-                            UpdateServerStatus(ServerStatus.Stopping, AvailabilityStatus.Unavailable, true);
+            if (this.Status != ServerStatus.Running && this.Status != ServerStatus.Initializing)
+                return;
 
-                            await ProcessUtils.SendStopAsync(this.serverProcess)
-                                .ContinueWith(async t1 =>
-                                {
-                                    if (this.serverProcess.HasExited)
-                                    {
-                                        await TaskUtils.RunOnUIThreadAsync(() => CheckServerWorldFileExists());
-                                    }
-                                })
-                                .ContinueWith(async t2 =>
-                                {
-                                    await TaskUtils.RunOnUIThreadAsync(() => UpdateServerStatus(ServerStatus.Stopped, AvailabilityStatus.Unavailable, false));
-                                });
-                        }
-                    }
-                    catch(InvalidOperationException)
-                    {
-                        UpdateServerStatus(ServerStatus.Unknown, AvailabilityStatus.Unavailable, false);
-                    }
-                    break;
-            }            
+            var process = this.serverProcess;
+            var profile = this.ProfileSnapshot;
+            if (process == null || profile == null)
+                return;
+
+            UpdateServerStatus(ServerStatus.Stopping, AvailabilityStatus.Unavailable, true);
+
+            bool exited;
+            try
+            {
+                _logger.Info($"Stopping {profile.ProfileName} (PID {process.Id}).");
+                exited = await Task.Run(() => ServerProcessStopper.Stop(process, profile, message => _logger.Info($"{profile.ProfileName}: {message}")));
+            }
+            catch (InvalidOperationException ex)
+            {
+                _logger.Warn($"{nameof(StopAsync)} - {profile.ProfileName}: {ex.Message}");
+                exited = false;
+            }
+
+            await TaskUtils.RunOnUIThreadAsync(() =>
+            {
+                if (exited)
+                {
+                    CheckServerWorldFileExists();
+                    UpdateServerStatus(ServerStatus.Stopped, AvailabilityStatus.Unavailable, false);
+                }
+                else
+                {
+                    // still running, or unknown: the status watcher reports which on its next check
+                    _logger.Error($"{profile.ProfileName}: the server didn't stop.");
+                    UpdateServerStatus(ServerStatus.Unknown, AvailabilityStatus.Unknown, false);
+                }
+            });
         }
 
         public async Task<bool> UpgradeAsync(CancellationToken cancellationToken, bool updateServer, BranchSnapshot branch, bool validate, ProgressDelegate progressCallback)

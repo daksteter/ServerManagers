@@ -414,7 +414,7 @@
     <sys:String x:Key="ServerMonitor_PlayerListButtonTooltip">Open the Player List window.</sys:String>
     <sys:String x:Key="ServerMonitor_RCONButtonTooltip">Open the RCON window.</sys:String>
     <sys:String x:Key="ServerMonitor_StartServerTooltip">Start the server.</sys:String>
-    <sys:String x:Key="ServerMonitor_StopServerTooltip">Stop the server.</sys:String>
+    <sys:String x:Key="ServerMonitor_StopServerTooltip">Save the world and stop the server.</sys:String>
     <sys:String x:Key="ServerMonitor_InstallServerTooltip">Install the server.</sys:String>
     <sys:String x:Key="ServerMonitor_UpgradeServerTooltip">Update/Verify the server.</sys:String>
 
@@ -468,7 +468,7 @@
     <sys:String x:Key="ShutdownWindow_CancelShutdownButtonLabel">Cancel Shutdown</sys:String>
     <sys:String x:Key="ShutdownWindow_CancelShutdownButtonTooltip">Cancel the server shutdown.</sys:String>
     <sys:String x:Key="ShutdownWindow_StopButtonLabel">Stop</sys:String>
-    <sys:String x:Key="ShutdownWindow_StopButtonTooltip">Stop the server immediately, without a countdown.</sys:String>
+    <sys:String x:Key="ShutdownWindow_StopButtonTooltip">Save the world and stop the server, without a countdown.</sys:String>
     <sys:String x:Key="ShutdownWindow_CloseButtonLabel">Close</sys:String>
     <sys:String x:Key="ShutdownWindow_CloseButtonTooltip">Close the window and cancel the server shutdown.</sys:String>
     <!--#endregion-->
@@ -951,7 +951,7 @@
     <sys:String x:Key="ServerSettings_SaveButtonLabel">Save</sys:String>
     <sys:String x:Key="ServerSettings_SaveButtonTooltip">Save the current profile and write the .INI files for the server.</sys:String>
     <sys:String x:Key="ServerSettings_StopButtonLabel">Stop</sys:String>
-    <sys:String x:Key="ServerSettings_StopButtonTooltip">Stop the server.</sys:String>
+    <sys:String x:Key="ServerSettings_StopButtonTooltip">Save the world and stop the server.</sys:String>
     <sys:String x:Key="ServerSettings_StartButtonLabel">Start</sys:String>
     <sys:String x:Key="ServerSettings_StartButtonTooltip">Start the server.</sys:String>
     <sys:String x:Key="ServerSettings_RCONButtonLabel">RCON</sys:String>

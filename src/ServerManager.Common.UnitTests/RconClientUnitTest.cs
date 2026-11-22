@@ -81,6 +81,20 @@ namespace ServerManager.Common.Tests
         }
 
         [TestMethod]
+        public void ReplyTimeout_Raised_WaitsForASlowReply()
+        {
+            using var server = new FakeRconServer();
+            using var rcon = RconClient.Connect(server.EndPoint, Password, 500);
+
+            Assert.AreEqual(500, rcon.ReplyTimeout);
+            rcon.ReplyTimeout = 5000;
+
+            Assert.AreEqual(5000, rcon.ReplyTimeout);
+            Assert.AreEqual("World Saved \n", rcon.SendCommand("saveworld"));
+            Assert.AreEqual("No Players Connected \n", rcon.SendCommand("listplayers"));
+        }
+
+        [TestMethod]
         public void SendCommand_FromSeveralThreads_SendsOneCommandAtATime()
         {
             using var server = new FakeRconServer { ReplyDelay = 20 };
@@ -180,6 +194,11 @@ namespace ServerManager.Common.Tests
                             await WriteAsync(stream, Packet(id, 0, "first part, ").Concat(Packet(id, 0, "second part")).ToArray());
                             break;
                         case "silent":
+                            break;
+                        case "saveworld":
+                            // ASA answers once the save is done
+                            await Task.Delay(1500);
+                            await WriteAsync(stream, Packet(id, 0, "World Saved \n "));
                             break;
                         default:
                             await WriteAsync(stream, Packet(id, 0, "Server received, But no response!! \n "));

@@ -111,6 +111,14 @@ First release for ARK: Survival Ascended (ASA). Servers for ARK: Survival Evolve
   would be applied to the restored world the next time it was opened, corrupting it.
 - **Profile sync copied the cluster directory override even with cluster sync turned off.**
 - **The server-started alert showed the query port instead of the game port.**
+- **Stopping a server without a countdown didn't save the world.** The Stop buttons (in the profile, the Server
+  Monitor and the shutdown window), the Server Monitor's Stop menu and the Discord bot's `stop` now save first:
+  over RCON (`saveworld`, then `doexit`) when RCON is on, otherwise with Ctrl+C in the server's console, which ASA
+  answers by saving. A server that still hasn't exited a minute later is killed, unsaved. Each step is logged in
+  `ServerManager_ServerStatus.log`.
+- **A stopped server could show as Stopped while it was still shutting down,** and a shutdown could wait forever for
+  a server that didn't exit.
+- **Updating a server right after stopping it could fail with "The handle is invalid".**
 - **Going back to the public branch rewrote SteamCMD's app manifest as UTF-16.** It's now written as UTF-8, as
   SteamCMD writes it.
 
