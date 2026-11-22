@@ -1,0 +1,1091 @@
+{
+  "Application": "ark",
+  "Version": "2.0.0",
+  "Created": "2026-11-21T00:00:00.0000000Z",
+  "Creatures": [
+    {
+      "NameTag": "",
+      "IsSpawnable": true,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Kraken_Character_BP_C",
+      "Description": "Abyssalus",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Kraken_Character_BP_Alpha_C",
+      "Description": "Abyssalus (Alpha)",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Kraken_Character_BP_Beta_C",
+      "Description": "Abyssalus (Beta)",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Kraken_Character_BP_Gamma_C",
+      "Description": "Abyssalus (Gamma)",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": true,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "KrakenTentacle_Character_BP_C",
+      "Description": "Abyssalus Tentacle",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "KrakenTentacle_Character_BP_Alpha_C",
+      "Description": "Abyssalus Tentacle (Alpha)",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "KrakenTentacle_Character_BP_Beta_C",
+      "Description": "Abyssalus Tentacle (Beta)",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "KrakenTentacle_Character_BP_Gamma_C",
+      "Description": "Abyssalus Tentacle (Gamma)",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "AstralArgent_Character_BP_C",
+      "Description": "Astral Argentavis",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "AstralCarno_Character_BP_C",
+      "Description": "Astral Carnotaurus",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "AstralDeinosuchusASA_Character_BP_C",
+      "Description": "Astral Deinosuchus",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "AstralDirewolf_Character_BP_C",
+      "Description": "Astral Direwolf",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "AstralMammoth_Character_BP_C",
+      "Description": "Astral Mammoth",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "AstralMegalodon_Character_BP_C",
+      "Description": "Astral Megalodon",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Astral_Mosa_Character_BP_C",
+      "Description": "Astral Mosasaur",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "AstralScorpionKing_Character_BP_C",
+      "Description": "Astral Pulmonoscorpius Monarch",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "AstralRaptor_Character_BP_C",
+      "Description": "Astral Raptor",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "AstralRockDrake_Character_BP_C",
+      "Description": "Astral Rock Drake",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "AstralRex_Character_BP_C",
+      "Description": "Astral T-Rex",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Astral_Tusoteuthis_Character_BP_C",
+      "Description": "Astral Tusoteuthis",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": true,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Coloss_Character_BP_Big_C",
+      "Description": "Colossus",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "MegaRex_Character_BP_Lightning_C",
+      "Description": "Enraged Lightning Rex",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "MegaTrike_Character_BP_Lightning_C",
+      "Description": "Enraged Lightning Triceratops",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Daeodon_Character_BP_Fire_C",
+      "Description": "Erymanthian &amp; Kalydonios",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": true,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Hydra_Character_BP_Boss_C",
+      "Description": "Hydraskos",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Hydra_Character_BP_Boss_Hard_C",
+      "Description": "Hydraskos (Alpha)",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Hydra_Character_BP_Boss_Medium_C",
+      "Description": "Hydraskos (Beta)",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Hydra_Character_BP_Boss_Easy_C",
+      "Description": "Hydraskos (Gamma)",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Kirayli_Character_BP_C",
+      "Description": "Kirayli",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "BrigShipPlayerFollowingBP_Kraken_C",
+      "Description": "Kraken Brigantine",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "BrigShipPlayerFollowingBP_Kraken_Alpha_C",
+      "Description": "Kraken Brigantine (Alpha)",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "BrigShipPlayerFollowingBP_Kraken_Beta_C",
+      "Description": "Kraken Brigantine (Beta)",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "BrigShipPlayerFollowingBP_Kraken_Gamma_C",
+      "Description": "Kraken Brigantine (Gamma)",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "SloopShipPlayerFollowingBP_Kraken_C",
+      "Description": "Kraken Sloop",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "SloopShipPlayerFollowingBP_Kraken_Alpha_C",
+      "Description": "Kraken Sloop (Alpha)",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "SloopShipPlayerFollowingBP_Kraken_Beta_C",
+      "Description": "Kraken Sloop (Beta)",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "SloopShipPlayerFollowingBP_Kraken_Gamma_C",
+      "Description": "Kraken Sloop (Gamma)",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Arthro_Character_BP_Lightning_C",
+      "Description": "Lightning Arthropluera",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Carno_Character_BP_Lightning_C",
+      "Description": "Lightning Carnotaurus",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Chalico_Character_BP_Lightning_C",
+      "Description": "Lightning Chalicotherium",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Dilo_Character_BP_Lightning_C",
+      "Description": "Lightning Dilophosaur",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Dimorph_Character_BP_Lightning_C",
+      "Description": "Lightning Dimorphodon",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Wyvern_Character_BP_Fire_Lightning_C",
+      "Description": "Lightning Fire Wyvern",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Gigant_Character_BP_Lightning_C",
+      "Description": "Lightning Giganotosaurus",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Rex_Character_BP_Lightning_C",
+      "Description": "Lightning Infused Rex",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Paracer_Character_BP_Lightning_C",
+      "Description": "Lightning Paraceratherium",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Ptero_Character_BP_Lightning_C",
+      "Description": "Lightning Pteranodon",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Raptor_Character_BP_Lightning_C",
+      "Description": "Lightning Raptor",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Xenomorph_Character_BP_Male_Tamed_Lightning_C",
+      "Description": "Lightning Reaper King",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "RockDrake_Character_BP_Lightning_C",
+      "Description": "Lightning Rock Drake",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Spino_Character_BP_Lightning_C",
+      "Description": "Lightning Spino",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Stego_Character_BP_Lightning_C",
+      "Description": "Lightning Stegosaurus",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "MinotaurTempleBoss_Character_BP_C",
+      "Description": "Minotarchos",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": true,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "CaveMinotaur_Character_BP_New_C",
+      "Description": "Minotaur",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": true,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Boss_Gorgon_Character_BP_Base_C",
+      "Description": "Natrix",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Boss_Gorgon_Character_BP_Alpha_C",
+      "Description": "Natrix (Alpha)",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Boss_Gorgon_Character_BP_Beta_C",
+      "Description": "Natrix (Beta)",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Boss_Gorgon_Character_BP_Gamma_C",
+      "Description": "Natrix (Gamma)",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "ScorpionKing_Character_BP_C",
+      "Description": "Pulmonoscorpius Monarch",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "RhynioDrone_Character_BP_C",
+      "Description": "Rhyniognatha Drone",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Kraken_Character_BP_AboveWater_C",
+      "Description": "Shallocis",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Kraken_Character_BP_AboveWater_Alpha_C",
+      "Description": "Shallocis (Alpha)",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Kraken_Character_BP_AboveWater_Beta_C",
+      "Description": "Shallocis (Beta)",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Kraken_Character_BP_AboveWater_Gamma_C",
+      "Description": "Shallocis (Gamma)",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": true,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "KrakenTentacle_Character_BP_AboveWater_C",
+      "Description": "Shallocis Tentacle",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "KrakenTentacle_Character_BP_AboveWater_Alpha_C",
+      "Description": "Shallocis Tentacle (Alpha)",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "KrakenTentacle_Character_BP_AboveWater_Beta_C",
+      "Description": "Shallocis Tentacle (Beta)",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "KrakenTentacle_Character_BP_AboveWater_Gamma_C",
+      "Description": "Shallocis Tentacle (Gamma)",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Skeleton_Character_BP_WithCrossbow_C",
+      "Description": "Skeleton",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Skeleton_Character_BP_WithBola_C",
+      "Description": "Skeleton Snarer",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Skeleton_Character_BP_Fighter_C",
+      "Description": "Skeleton Warden",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "KingKaiju_Character_BP_WorldBoss_Astraeos_C",
+      "Description": "Thanatos",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": true,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Boss_Cyclops_Character_BP_Base_C",
+      "Description": "Thodes",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Boss_Cyclops_Character_BP_Hard_C",
+      "Description": "Thodes (Alpha)",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Boss_Cyclops_Character_BP_Medium_C",
+      "Description": "Thodes (Beta)",
+      "Mod": "Astraeos"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Boss_Cyclops_Character_BP_Easy_C",
+      "Description": "Thodes (Gamma)",
+      "Mod": "Astraeos"
+    }
+  ],
+  "Items": [
+    {
+      "Category": "Resources",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemResource_ApexDrop_AstralSoul_C",
+      "Description": "Astral Soul",
+      "Mod": "Astraeos"
+    }
+  ],
+  "MapSpawners": [
+    {
+      "ClassName": "DinoSpawnEntriesBeach_Helianthos_C",
+      "Description": "Beach Helianthos",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Boaratos_C",
+      "Description": "Boaratos",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Cats_C",
+      "Description": "Cats",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_DeepWater_Ast_C",
+      "Description": "Deep Water Ast",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_DucksSalmon_C",
+      "Description": "Ducks Salmon",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_GrandTortugar_C",
+      "Description": "Grand Tortugar",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoSpawnEntriesGrassland_Astraeos_C",
+      "Description": "Grassland Astraeos",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoSpawnEntriesGrassland_Helianthos_C",
+      "Description": "Grassland Helianthos",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Kirayli_C",
+      "Description": "Kirayli",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoSpawnEntriesMinotaur_C",
+      "Description": "Minotaur",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoSpawnEntriesMountain_Helianthos_C",
+      "Description": "Mountain Helianthos",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Ocean_Generic_Ast_C",
+      "Description": "Ocean Generic Ast",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Ocean_Shasta_C",
+      "Description": "Ocean Shasta",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_OvisAndHorses_C",
+      "Description": "Ovis And Horses",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_RhynioDrone_C",
+      "Description": "Rhynio Drone",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_ScorpionKing_C",
+      "Description": "Scorpion King",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Skeletons_C",
+      "Description": "Skeletons",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoSpawnEntriesSnow_Astraeos_C",
+      "Description": "Snow Astraeos",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoSpawnEntriesSwampCave_Generic_AST_C",
+      "Description": "Swamp Cave Generic AST",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_ThylaHuntingGround_C",
+      "Description": "Thyla Hunting Ground",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_VolcanoCave_C",
+      "Description": "Volcano Cave",
+      "Mod": "Astraeos"
+    }
+  ],
+  "SupplyCrates": [
+    {
+      "ClassName": "SupplyCrate_Base_Horde_Astraeos_C",
+      "Description": "Base Horde Astraeos",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "SupplyCrate_Base_Horde_Easy_Astraeos_C",
+      "Description": "Base Horde Easy Astraeos",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "SupplyCrate_Base_Horde_Hard_Astraeos_C",
+      "Description": "Base Horde Hard Astraeos",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "SupplyCrate_Base_Horde_Legendary_Astraeos_C",
+      "Description": "Base Horde Legendary Astraeos",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "SupplyCrate_Base_Horde_Medium_Astraeos_C",
+      "Description": "Base Horde Medium Astraeos",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "SupplyCrate_Horde_MeteorBase_Astraeos_C",
+      "Description": "Horde Meteor Base Astraeos",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "SupplyCrate_Level25_Astraeos_C",
+      "Description": "Level25 Astraeos",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "SupplyCrate_Level25_Double_Astraeos_C",
+      "Description": "Level25 Double Astraeos",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "SupplyCrate_Level30_Double_ScorchedEarth_Astraeos_C",
+      "Description": "Level30 Double Scorched Earth Astraeos",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "SupplyCrate_Level30_ScorchedEarth_Astraeos_C",
+      "Description": "Level30 Scorched Earth Astraeos",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "SupplyCrate_Level35_Astraeos_C",
+      "Description": "Level35 Astraeos",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "SupplyCrate_Level35_Double_Astraeos_C",
+      "Description": "Level35 Double Astraeos",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "SupplyCrate_Level45_Astraeos_C",
+      "Description": "Level45 Astraeos",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "SupplyCrate_Level45_Double_Astraeos_C",
+      "Description": "Level45 Double Astraeos",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "SupplyCrate_Level45_Double_ScorchedEarth_Astraeos_C",
+      "Description": "Level45 Double Scorched Earth Astraeos",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "SupplyCrate_Level45_ScorchedEarth_Astraeos_C",
+      "Description": "Level45 Scorched Earth Astraeos",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "SupplyCrate_Level55_Double_ScorchedEarth_Astraeos_C",
+      "Description": "Level55 Double Scorched Earth Astraeos",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "SupplyCrate_Level55_ScorchedEarth_Astraeos_C",
+      "Description": "Level55 Scorched Earth Astraeos",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "SupplyCrate_Level60_Astraeos_C",
+      "Description": "Level60 Astraeos",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "SupplyCrate_Level60_Double_Astraeos_C",
+      "Description": "Level60 Double Astraeos",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "SupplyCrate_Level70_Double_ScorchedEarth_Astraeos_C",
+      "Description": "Level70 Double Scorched Earth Astraeos",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "SupplyCrate_Level70_ScorchedEarth_Astraeos_C",
+      "Description": "Level70 Scorched Earth Astraeos",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "SupplyCrate_Level90_Astraeos_C",
+      "Description": "Level90 Astraeos",
+      "Mod": "Astraeos"
+    }
+  ],
+  "Inventories": [
+    {
+      "ClassName": "DinoDropInventoryComponent_BossCyclops_Easy_C",
+      "Description": "Drop Inventory - Boss Cyclops Easy",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_BossCyclops_Hard_C",
+      "Description": "Drop Inventory - Boss Cyclops Hard",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_BossCyclops_Medium_C",
+      "Description": "Drop Inventory - Boss Cyclops Medium",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_BossGorgon_Beta_C",
+      "Description": "Drop Inventory - Boss Gorgon Beta",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_BossGorgon_Gamma_C",
+      "Description": "Drop Inventory - Boss Gorgon Gamma",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_BossHydra_Easy_C",
+      "Description": "Drop Inventory - Boss Hydra Easy",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_BossHydra_Hard_C",
+      "Description": "Drop Inventory - Boss Hydra Hard",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_BossHydra_Medium_C",
+      "Description": "Drop Inventory - Boss Hydra Medium",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Carnivore_AstralDeinosuchus_C",
+      "Description": "Drop Inventory - Carnivore Astral Deinosuchus",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Carnivore_AstralMammoth_C",
+      "Description": "Drop Inventory - Carnivore Astral Mammoth",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Carnivore_AstralMegalodon_C",
+      "Description": "Drop Inventory - Carnivore Astral Megalodon",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Carnivore_AstralMosa_C",
+      "Description": "Drop Inventory - Carnivore Astral Mosa",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Carnivore_AstralRaptor_C",
+      "Description": "Drop Inventory - Carnivore Astral Raptor",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Carnivore_AstralRex_C",
+      "Description": "Drop Inventory - Carnivore Astral Rex",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Carnivore_AstralRockdrake_C",
+      "Description": "Drop Inventory - Carnivore Astral Rockdrake",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Carnivore_AstralScorpionKing_C",
+      "Description": "Drop Inventory - Carnivore Astral Scorpion King",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Carnivore_AstralTusoteuthis_C",
+      "Description": "Drop Inventory - Carnivore Astral Tusoteuthis",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Carnivore_Minotaur_C",
+      "Description": "Drop Inventory - Carnivore Minotaur",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Carnivore_ScorpionKing_C",
+      "Description": "Drop Inventory - Carnivore Scorpion King",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_ColossBoss_C",
+      "Description": "Drop Inventory - Coloss Boss",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Erymanthian_C",
+      "Description": "Drop Inventory - Erymanthian",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Gorgon_Alpha_C",
+      "Description": "Drop Inventory - Gorgon Alpha",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Kalydonios_C",
+      "Description": "Drop Inventory - Kalydonios",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Kraken_AboveWater_Easy_C",
+      "Description": "Drop Inventory - Kraken Above Water Easy",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Kraken_AboveWater_Hard_C",
+      "Description": "Drop Inventory - Kraken Above Water Hard",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Kraken_AboveWater_Medium_C",
+      "Description": "Drop Inventory - Kraken Above Water Medium",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Kraken_Easy_C",
+      "Description": "Drop Inventory - Kraken Easy",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Kraken_Hard_C",
+      "Description": "Drop Inventory - Kraken Hard",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Kraken_Medium_C",
+      "Description": "Drop Inventory - Kraken Medium",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Mega_AstralArgent_C",
+      "Description": "Drop Inventory - Mega Astral Argent",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Mega_AstralCarno_C",
+      "Description": "Drop Inventory - Mega Astral Carno",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Mega_AstralDirewolf_C",
+      "Description": "Drop Inventory - Mega Astral Direwolf",
+      "Mod": "Astraeos"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_MinotaurBoss_C",
+      "Description": "Drop Inventory - Minotaur Boss",
+      "Mod": "Astraeos"
+    }
+  ]
+}

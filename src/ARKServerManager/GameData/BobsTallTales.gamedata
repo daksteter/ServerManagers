@@ -1,0 +1,644 @@
+{
+  "Application": "ark",
+  "Version": "2.0.0",
+  "Created": "2026-11-21T00:00:00.0000000Z",
+  "Creatures": [
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "MegaPalaeoctopus_Character_BP_C",
+      "Description": "Alpha Palaeoctopus",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "NameTag": "Doggo",
+      "IsSpawnable": true,
+      "IsTameable": "True",
+      "IsBreedingable": "True",
+      "ClassName": "Doggo_Character_BP_C",
+      "Description": "Armadoggo",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "NameTag": "JumpingSpider",
+      "IsSpawnable": true,
+      "IsTameable": "True",
+      "IsBreedingable": "True",
+      "ClassName": "JumpingSpider_Character_BP_C",
+      "Description": "Cosmo",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "True",
+      "IsBreedingable": "False",
+      "ClassName": "Angler_Character_BP_ShipSkills_GhostFish_C",
+      "Description": "Ghost Anglerfish (Summon Ghost Fish Skill)",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "NameTag": "Oasisaur",
+      "IsSpawnable": true,
+      "IsTameable": "True",
+      "IsBreedingable": "False",
+      "ClassName": "Oasisaur_Character_BP_C",
+      "Description": "Oasisaur",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "NameTag": "Paleoctopus",
+      "IsSpawnable": true,
+      "IsTameable": "True",
+      "IsBreedingable": "True",
+      "ClassName": "Palaeoctopus_Character_BP_C",
+      "Description": "Palaeoctopus",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "NameTag": "Parrot",
+      "IsSpawnable": true,
+      "IsTameable": "True",
+      "IsBreedingable": "True",
+      "ClassName": "Parrot_Character_BP_C",
+      "Description": "Parrot",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": true,
+      "IsTameable": "True",
+      "IsBreedingable": "True",
+      "ClassName": "Axolotl_Character_BP_C",
+      "Description": "Tidepup",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Ghost_Axolotl_Small_Character_BP_C",
+      "Description": "Tidepup Ghost",
+      "Mod": "BobsTallTales"
+    }
+  ],
+  "Engrams": [
+    {
+      "Level": 26,
+      "Points": 5,
+      "IsTekGram": false,
+      "ClassName": "EngramEntry_Fishtank_ToF_C",
+      "Description": "Aquarium",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Level": 60,
+      "Points": 10,
+      "IsTekGram": false,
+      "ClassName": "EngramEntry_ReverseVacuumCompartment_C",
+      "Description": "Aquatic Compartment",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Level": 33,
+      "Points": 12,
+      "IsTekGram": false,
+      "ClassName": "EngramEntry_Frontier_OilLamp_C",
+      "Description": "Frontier Lamp",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Level": 34,
+      "Points": 6,
+      "IsTekGram": false,
+      "ClassName": "EngramEntry_Grapeshot_ToF_C",
+      "Description": "Grapeshot",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Level": 34,
+      "Points": 15,
+      "IsTekGram": false,
+      "ClassName": "EngramEntry_HandCannon_ToF_C",
+      "Description": "Hand Cannon",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Level": 36,
+      "Points": 16,
+      "IsTekGram": false,
+      "ClassName": "EngramEntry_Saddle_Axolotl_C",
+      "Description": "Tidepup Saddle",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Level": 48,
+      "Points": 10,
+      "IsTekGram": false,
+      "ClassName": "EngramEntry_Wasteland_Lights_C",
+      "Description": "Wasteland Lights",
+      "Mod": "BobsTallTales"
+    }
+  ],
+  "Items": [
+    {
+      "Category": "Structures",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructure_Fishtank_ToF_C",
+      "Description": "Aquarium",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Saddles",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemArmor_DinoCompanionSaddle_Doggo_C",
+      "Description": "Armadoggo Armor",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Structures",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructure_StorageBox_Barrel_C",
+      "Description": "Barrel Storage",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Tools",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructure_BioGrinder_C",
+      "Description": "Bio-Grinder",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Structures",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructure_AntiFlyerTurret_C",
+      "Description": "Bladewasp Hive",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Armor",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemSkin_AccessoryCharacter_Karl_C",
+      "Description": "Bob Accessory Skin",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Vehicles",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemShip_Craft_Brig_C",
+      "Description": "Brigantine",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Structures",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructure_SteampunkClock_C",
+      "Description": "Clockface",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Structures",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructure_Coffin_C",
+      "Description": "Coffin",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Armor",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemArmor_DinoCompanion_Gear_ExtraArmor_C",
+      "Description": "Companion Extra Armor",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Ammunition",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemAmmo_CannonBall_ToF_Corrosive_C",
+      "Description": "Corrosive Ship Cannonball",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Resources",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemResource_Gasoline_Super_C",
+      "Description": "Element-Imbued Gasoline",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Structures",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructure_EmbryoIncubator_C",
+      "Description": "Embryo Incubator",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Weapons",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItem_AntifireGrenade_C",
+      "Description": "Extinguisher Grenade",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Structures",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructure_FancyChair_C",
+      "Description": "Fancy Armchair",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Skins",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemSkin_FancyPirate_Boots_C",
+      "Description": "Fancy Pirate Boots Skin",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Skins",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemSkin_FancyPirate_Gloves_C",
+      "Description": "Fancy Pirate Gloves Skin",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Skins",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemSkin_FancyPirate_Hat_C",
+      "Description": "Fancy Pirate Hat Skin",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Skins",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemSkin_FancyPirate_Pants_C",
+      "Description": "Fancy Pirate Pants Skin",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Skins",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemSkin_FancyPirate_Shirt_C",
+      "Description": "Fancy Pirate Shirt Skin",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Structures",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructure_OilLamp_C",
+      "Description": "Frontier Lamp",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Skins",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructureSkin_Tileset_Frontier_C",
+      "Description": "Frontier Structures Skin",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Vehicles",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemShip_Craft_Galleon_C",
+      "Description": "Galleon",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Tools",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItem_WeaponGeneScanner_C",
+      "Description": "Gene Scanner",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Structures",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructure_GeneInfuser_C",
+      "Description": "Gene Storage",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Weapons",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItem_WeaponGooGun_C",
+      "Description": "Goo Gun",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Ammunition",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemAmmo_Grapeshot_ToF_C",
+      "Description": "Grapeshot",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Weapons",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItem_WeaponHandCannon_ToF_C",
+      "Description": "Hand Cannon",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Misc",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItem_TreasureMap_DinoCompanion_Doggo_C",
+      "Description": "Hex-infected Junk",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Ammunition",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemAmmo_CannonBall_ToF_Incendiary_C",
+      "Description": "Incendiary Ship Cannonball",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Structures",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructure_IndustrialPreservinBin_C",
+      "Description": "Industrial Preserving Bin",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Structures",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructure_LibraryStorage_C",
+      "Description": "Library Storage",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Structures",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructure_LinkedStorage_C",
+      "Description": "Linked Storage Box",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Structures",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructure_ChemBench_Tek_C",
+      "Description": "Makeshift Megalab",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Misc",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItem_ChargeBattery_Mini_C",
+      "Description": "Mini Charge Battery",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Eggs",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemConsumable_UnderwaterEgg_Paleoctopus_C",
+      "Description": "Palaeoctopus Egg",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Saddles",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemArmor_PalaeoctopusSaddle_C",
+      "Description": "Palaeoctopus Saddle",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Eggs",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemConsumable_Egg_Parrot_C",
+      "Description": "Parrot Egg",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Ammunition",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemAmmo_CannonBall_ToF_Reinforced_C",
+      "Description": "Reinforced Ship Cannonball",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Structures",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructure_Shipyard_Large_C",
+      "Description": "Shipyard",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Structures",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructure_ShootableBottle_C",
+      "Description": "Shootable Bottle",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Vehicles",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemShip_Craft_Sloop_C",
+      "Description": "Sloop",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Skins",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructureSkin_ToF_Tileset_C",
+      "Description": "Spanish Colonial Structures Skin",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Structures",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructure_SpotLight_C",
+      "Description": "Spotlight",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Structures",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructure_SteamForge_C",
+      "Description": "Steam Forge",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Structures",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructure_SteamLights_C",
+      "Description": "Steam Lights &amp; Lamps",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Skins",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructureSkin_Tileset_Steampunk_C",
+      "Description": "Steampunk Structures Skin",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Misc",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItem_Stopwatch_C",
+      "Description": "Stopwatch",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Structures",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructure_TeslaCoil_C",
+      "Description": "Tesla Coil",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Saddles",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemArmor_AxolotlSaddle_C",
+      "Description": "Tidepup Saddle",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Structures",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructure_TinkeringDesk_C",
+      "Description": "Tinkering Desk",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Misc",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItem_TreasureMap_WildSupplyDrop_C",
+      "Description": "Treasure Map",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Structures",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructure_TribeTower_C",
+      "Description": "Tribe Tower",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Structures",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructure_WastelandLights_C",
+      "Description": "Wasteland Lights",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Skins",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructureSkin_Tileset_Wasteland_C",
+      "Description": "Wasteland Structures Skin",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "Category": "Vehicles",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItem_DinoSpawner_Zeppelin_C",
+      "Description": "Zeppelin",
+      "Mod": "BobsTallTales"
+    }
+  ],
+  "SupplyCrates": [
+    {
+      "ClassName": "SupplyCrate_Bottle_C",
+      "Description": "Bottle",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "ClassName": "SupplyCrate_Bottle_BASE_C",
+      "Description": "Bottle BASE",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "ClassName": "SupplyCrate_BuriedTreasureBase_C",
+      "Description": "Buried Treasure Base",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "ClassName": "SupplyCrate_BuriedTreasureBase_Apprentice_C",
+      "Description": "Buried Treasure Base Apprentice",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "ClassName": "SupplyCrate_BuriedTreasureBase_Ascendant_C",
+      "Description": "Buried Treasure Base Ascendant",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "ClassName": "SupplyCrate_BuriedTreasureBase_Bloodhound_Doggo_C",
+      "Description": "Buried Treasure Base Bloodhound Doggo",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "ClassName": "SupplyCrate_BuriedTreasureBase_Journeyman_C",
+      "Description": "Buried Treasure Base Journeyman",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "ClassName": "SupplyCrate_BuriedTreasureBase_Mastercraft_C",
+      "Description": "Buried Treasure Base Mastercraft",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "ClassName": "SupplyCrate_BuriedTreasureBase_Primitive_C",
+      "Description": "Buried Treasure Base Primitive",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "ClassName": "SupplyCrate_BuriedTreasureBase_Ramshackle_C",
+      "Description": "Buried Treasure Base Ramshackle",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "ClassName": "SupplyCrate_BuriedTreasureBase_Test_C",
+      "Description": "Buried Treasure Base Test",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "ClassName": "SupplyCrate_BuriedTreasurePirate_Apprentice_C",
+      "Description": "Buried Treasure Pirate Apprentice",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "ClassName": "SupplyCrate_BuriedTreasurePirate_Ascendant_C",
+      "Description": "Buried Treasure Pirate Ascendant",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "ClassName": "SupplyCrate_BuriedTreasurePirate_BASE_C",
+      "Description": "Buried Treasure Pirate BASE",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "ClassName": "SupplyCrate_BuriedTreasurePirate_Journeyman_C",
+      "Description": "Buried Treasure Pirate Journeyman",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "ClassName": "SupplyCrate_BuriedTreasurePirate_Mastercraft_C",
+      "Description": "Buried Treasure Pirate Mastercraft",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "ClassName": "SupplyCrate_BuriedTreasurePirate_Primitive_C",
+      "Description": "Buried Treasure Pirate Primitive",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "ClassName": "SupplyCrate_BuriedTreasurePirate_Ramshackle_C",
+      "Description": "Buried Treasure Pirate Ramshackle",
+      "Mod": "BobsTallTales"
+    }
+  ],
+  "Inventories": [
+    {
+      "ClassName": "DinoDropInventoryComponent_Carnivore_Palaeoctopus_C",
+      "Description": "Drop Inventory - Carnivore Palaeoctopus",
+      "Mod": "BobsTallTales"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Carnivore_Palaeoctopus_Mega_C",
+      "Description": "Drop Inventory - Carnivore Palaeoctopus Mega",
+      "Mod": "BobsTallTales"
+    }
+  ]
+}

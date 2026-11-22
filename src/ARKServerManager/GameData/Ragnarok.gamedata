@@ -1,7 +1,7 @@
 {
   "Application": "ark",
-  "Version": "1.1.0",
-  "Created": "2020-05-20T00:00:00.0000000Z",
+  "Version": "2.0.0",
+  "Created": "2026-11-21T00:00:00.0000000Z",
   "Creatures": [
     {
       "NameTag": "Griffin",
@@ -19,15 +19,6 @@
       "IsBreedingable": "False",
       "ClassName": "Polar_Bear_C",
       "Description": "Polar Bear",
-      "Mod": "Ragnarok"
-    },
-    {
-      "NameTag": "Ice Wyvern",
-      "IsSpawnable": true,
-      "IsTameable": "ByBreeding",
-      "IsBreedingable": "True",
-      "ClassName": "Ragnarok_Wyvern_Override_Ice_C",
-      "Description": "Ice Wyvern",
       "Mod": "Ragnarok"
     },
     {
@@ -55,60 +46,6 @@
       "IsBreedingable": "False",
       "ClassName": "LavaGolem_Character_BP_C",
       "Description": "Lava Golem",
-      "Mod": "Ragnarok"
-    },
-    {
-      "NameTag": null,
-      "IsSpawnable": false,
-      "IsTameable": "False",
-      "IsBreedingable": "False",
-      "ClassName": "Dragon_Character_BP_Boss_Easy_Ragnarok_C",
-      "Description": "Dragon (Easy Variant)",
-      "Mod": "Ragnarok"
-    },
-    {
-      "NameTag": null,
-      "IsSpawnable": false,
-      "IsTameable": "False",
-      "IsBreedingable": "False",
-      "ClassName": "Dragon_Character_BP_Boss_Medium_Ragnarok_C",
-      "Description": "Dragon (Medium Variant)",
-      "Mod": "Ragnarok"
-    },
-    {
-      "NameTag": null,
-      "IsSpawnable": false,
-      "IsTameable": "False",
-      "IsBreedingable": "False",
-      "ClassName": "Dragon_Character_BP_Boss_Hard_Ragnarok_C",
-      "Description": "Dragon (Hard Variant)",
-      "Mod": "Ragnarok"
-    },
-    {
-      "NameTag": null,
-      "IsSpawnable": false,
-      "IsTameable": "False",
-      "IsBreedingable": "False",
-      "ClassName": "Manticore_Character_BP_Easy_Ragnarok_C",
-      "Description": "Manticore (Easy Variant)",
-      "Mod": "Ragnarok"
-    },
-    {
-      "NameTag": null,
-      "IsSpawnable": false,
-      "IsTameable": "False",
-      "IsBreedingable": "False",
-      "ClassName": "Manticore_Character_BP_Medium_Ragnarok_C",
-      "Description": "Manticore (Medium Variant)",
-      "Mod": "Ragnarok"
-    },
-    {
-      "NameTag": null,
-      "IsSpawnable": false,
-      "IsTameable": "False",
-      "IsBreedingable": "False",
-      "ClassName": "Manticore_Character_BP_Hard_Ragnarok_C",
-      "Description": "Manticore (Hard Variant)",
       "Mod": "Ragnarok"
     }
   ],
@@ -237,17 +174,22 @@
       "ClassName": "DinoSpawnEntries_Ragnarok_SnowPlains_C",
       "Description": "SnowPlains",
       "Mod": "Ragnarok"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Lobster_C",
+      "Description": "Lobster",
+      "Mod": "Ragnarok"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Ragnarok_Bison_C",
+      "Description": "Ragnarok Bison",
+      "Mod": "Ragnarok"
     }
   ],
   "SupplyCrates": [
     {
       "ClassName": "SupplyCreate_OceanInstant_High_C",
       "Description": "Deep Sea Loot Crate",
-      "Mod": "Ragnarok"
-    },
-    {
-      "ClassName": "SupplyCrate_Chest_Treasure_JacksonL_C_C",
-      "Description": "Treasure Chest",
       "Mod": "Ragnarok"
     },
     {
@@ -259,37 +201,27 @@
       "ClassName": "SupplyCrateBaseBP_Instantaneous_DenLogs_Child2_C",
       "Description": "Beaver Den",
       "Mod": "Ragnarok"
+    },
+    {
+      "ClassName": "SupplyCrate_Cave_QualityTier3_Ragnarok_C",
+      "Description": "Cave Quality Tier3 Ragnarok",
+      "Mod": "Ragnarok"
+    },
+    {
+      "ClassName": "SupplyCrate_Cave_QualityTier4_Ragnarok_C",
+      "Description": "Cave Quality Tier4 Ragnarok",
+      "Mod": "Ragnarok"
+    },
+    {
+      "ClassName": "SupplyCrate_Chest_Treasure_JacksonL_C",
+      "Description": "Chest Treasure Jackson L",
+      "Mod": "Ragnarok"
     }
   ],
   "Inventories": [
     {
-      "ClassName": "DinoDropInventoryComponent_BossDragon_Easy_Ragnarok_C",
-      "Description": "Boss Inventory - Dragon (Easy)",
-      "Mod": "Ragnarok"
-    },
-    {
-      "ClassName": "DinoDropInventoryComponent_BossDragon_Medium_Ragnarok_C",
-      "Description": "Boss Inventory - Dragon (Medium)",
-      "Mod": "Ragnarok"
-    },
-    {
-      "ClassName": "DinoDropInventoryComponent_BossDragon_Hard_Ragnarok_C",
-      "Description": "Boss Inventory - Dragon (Hard)",
-      "Mod": "Ragnarok"
-    },
-    {
-      "ClassName": "DinoDropInventoryComponent_BossManticore_Easy_Ragnarok_C",
-      "Description": "Boss Inventory - Manticore (Easy)",
-      "Mod": "Ragnarok"
-    },
-    {
-      "ClassName": "DinoDropInventoryComponent_BossManticore_Medium_Ragnarok_C",
-      "Description": "Boss Inventory - Manticore (Medium)",
-      "Mod": "Ragnarok"
-    },
-    {
-      "ClassName": "DinoDropInventoryComponent_BossManticore_Hard_Ragnarok_C",
-      "Description": "Boss Inventory - Manticore (Hard)",
+      "ClassName": "DinoDropInventoryComponent_LavaGolem_jackson_C",
+      "Description": "Drop Inventory - Lava Golem jackson",
       "Mod": "Ragnarok"
     }
   ],

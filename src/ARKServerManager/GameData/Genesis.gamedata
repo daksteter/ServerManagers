@@ -1,6 +1,914 @@
 {
   "Application": "ark",
-  "Version": "1.1.0",
-  "Created": "2020-02-25T00:00:00.0000000Z",
-  "GameMaps": []
+  "Version": "2.0.0",
+  "Created": "2026-11-21T00:00:00.0000000Z",
+  "GameMaps": [],
+  "Creatures": [
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Ghost_BogSpider_Character_BP_C",
+      "Description": "Bloodstalker Ghost",
+      "Mod": "Genesis"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": true,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Pirate_Character_BP_Base_C",
+      "Description": "Pirate",
+      "Mod": "Genesis"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Pirate_Character_BP_MiniBoss_Captain_C",
+      "Description": "Pirate Captain",
+      "Mod": "Genesis"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Dodo_Character_BP_Gen_Outpost_Market_C",
+      "Description": "Pirate Dodo",
+      "Mod": "Genesis"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Pirate_Character_BP_Longneck_C",
+      "Description": "Pirate Lookout",
+      "Mod": "Genesis"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Monkey_Character_BP_Gen_Outpost_Market_C",
+      "Description": "Pirate Mesopithecus",
+      "Mod": "Genesis"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Pegomastax_Character_BP_PirateMiniBoss_C",
+      "Description": "Pirate Pegomastax",
+      "Mod": "Genesis"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Pirate_Character_BP_Pistol_C",
+      "Description": "Pirate Pistoleer",
+      "Mod": "Genesis"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Pirate_Character_BP_MiniBoss_Sibling_C",
+      "Description": "Pirate Sibling",
+      "Mod": "Genesis"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Pirate_Character_BP_SwordAndShield_C",
+      "Description": "Pirate Swashbuckler",
+      "Mod": "Genesis"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Pirate_Character_BP_MiniBoss_Sweeper_C",
+      "Description": "Pirate Sweeper",
+      "Mod": "Genesis"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Pirate_Character_BP_MiniBoss_Sibling_Shotgun_C",
+      "Description": "Pirate Trapshooter",
+      "Mod": "Genesis"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Pirate_Character_BP_BolaAndClub_C",
+      "Description": "Pirate Wrangler",
+      "Mod": "Genesis"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Bog_Acrocanthosaurus_Character_BP_C",
+      "Description": "X-Acrocanthosaurus",
+      "Mod": "Genesis"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Volcano_Concavenator_Character_BP_C",
+      "Description": "X-Concavenator",
+      "Mod": "Genesis"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Snow_Cryolophosaurus_Character_BP_C",
+      "Description": "X-Cryolophosaurus",
+      "Mod": "Genesis"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Bog_Deinosuchus_Character_BP_C",
+      "Description": "X-Deinosuchus",
+      "Mod": "Genesis"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Ocean_Helicoprion_Character_BP_C",
+      "Description": "X-Helicoprion",
+      "Mod": "Genesis"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Ocean_Xiphactinus_Character_BP_C",
+      "Description": "X-Xiphactinus",
+      "Mod": "Genesis"
+    }
+  ],
+  "Engrams": [
+    {
+      "Level": 29,
+      "Points": 24,
+      "IsTekGram": false,
+      "ClassName": "EngramEntry_AmmoBox_C",
+      "Description": "Ammo Box",
+      "Mod": "Genesis"
+    },
+    {
+      "Level": 0,
+      "Points": 0,
+      "IsTekGram": true,
+      "ClassName": "EngramEntry_TekSpaceWhaleSaddle_C",
+      "Description": "Astrocetus Tek Saddle",
+      "Mod": "Genesis"
+    },
+    {
+      "Level": 120,
+      "Points": 60,
+      "IsTekGram": false,
+      "ClassName": "EngramEntry_SpaceDolphin_Saddle_C",
+      "Description": "Astrodelphis Starwing Saddle",
+      "Mod": "Genesis"
+    },
+    {
+      "Level": 8,
+      "Points": 10,
+      "IsTekGram": false,
+      "ClassName": "EngramEntry_Canoe_C",
+      "Description": "Canoe",
+      "Mod": "Genesis"
+    },
+    {
+      "Level": 0,
+      "Points": 0,
+      "IsTekGram": false,
+      "ClassName": "EngramEntry_CruiseMissile_C",
+      "Description": "Cruise Missile",
+      "Mod": "Genesis"
+    },
+    {
+      "Level": 89,
+      "Points": 55,
+      "IsTekGram": false,
+      "ClassName": "EngramEntry_EggIncubator_C",
+      "Description": "Egg Incubator",
+      "Mod": "Genesis"
+    },
+    {
+      "Level": 6,
+      "Points": 4,
+      "IsTekGram": false,
+      "ClassName": "EngramEntry_FishingNet_C",
+      "Description": "Fish Net",
+      "Mod": "Genesis"
+    },
+    {
+      "Level": 35,
+      "Points": 18,
+      "IsTekGram": false,
+      "ClassName": "EngramEntry_Boulder_Fire_C",
+      "Description": "Jar of Pitch",
+      "Mod": "Genesis"
+    },
+    {
+      "Level": 23,
+      "Points": 8,
+      "IsTekGram": false,
+      "ClassName": "EngramEntry_LoadoutMannequin_C",
+      "Description": "Loadout Mannequin",
+      "Mod": "Genesis"
+    },
+    {
+      "Level": 19,
+      "Points": 24,
+      "IsTekGram": false,
+      "ClassName": "EngramEntry_Milkglider_Saddle_C",
+      "Description": "Maewing Saddle",
+      "Mod": "Genesis"
+    },
+    {
+      "Level": 95,
+      "Points": 35,
+      "IsTekGram": false,
+      "ClassName": "EngramEntry_CherufeSaddle_C",
+      "Description": "Magmasaur Saddle",
+      "Mod": "Genesis"
+    },
+    {
+      "Level": 45,
+      "Points": 35,
+      "IsTekGram": false,
+      "ClassName": "EngramEntry_GiantTurtleSaddle_C",
+      "Description": "Megachelon Platform Saddle",
+      "Mod": "Genesis"
+    },
+    {
+      "Level": 53,
+      "Points": 50,
+      "IsTekGram": false,
+      "ClassName": "EngramEntry_OceanPlatformMetal_C",
+      "Description": "Metal Ocean Platform",
+      "Mod": "Genesis"
+    },
+    {
+      "Level": 94,
+      "Points": 35,
+      "IsTekGram": false,
+      "ClassName": "EngramEntry_Minigun_C",
+      "Description": "Minigun",
+      "Mod": "Genesis"
+    },
+    {
+      "Level": 80,
+      "Points": 35,
+      "IsTekGram": false,
+      "ClassName": "EngramEntry_MiningDrill_C",
+      "Description": "Mining Drill",
+      "Mod": "Genesis"
+    },
+    {
+      "Level": 43,
+      "Points": 12,
+      "IsTekGram": false,
+      "ClassName": "EngramEntry_NetGun_Ammo_C",
+      "Description": "Net Projectile",
+      "Mod": "Genesis"
+    },
+    {
+      "Level": 12,
+      "Points": 6,
+      "IsTekGram": false,
+      "ClassName": "EngramEntry_PressurePlate_C",
+      "Description": "Pressure Plate",
+      "Mod": "Genesis"
+    },
+    {
+      "Level": 116,
+      "Points": 53,
+      "IsTekGram": true,
+      "ClassName": "EngramEntry_TekBow_C",
+      "Description": "Tek Bow",
+      "Mod": "Genesis"
+    },
+    {
+      "Level": 101,
+      "Points": 6,
+      "IsTekGram": true,
+      "ClassName": "EngramEntry_TekCanteen_C",
+      "Description": "Tek Canteen",
+      "Mod": "Genesis"
+    },
+    {
+      "Level": 0,
+      "Points": 0,
+      "IsTekGram": true,
+      "ClassName": "EngramEntry_TekClaws_C",
+      "Description": "Tek Claws",
+      "Mod": "Genesis"
+    },
+    {
+      "Level": 104,
+      "Points": 32,
+      "IsTekGram": true,
+      "ClassName": "EngramEntry_TekCropPlot_C",
+      "Description": "Tek Crop Plot",
+      "Mod": "Genesis"
+    },
+    {
+      "Level": 0,
+      "Points": 0,
+      "IsTekGram": true,
+      "ClassName": "EngramEntry_TekGrenadeLauncher_C",
+      "Description": "Tek Grenade Launcher",
+      "Mod": "Genesis"
+    },
+    {
+      "Level": 112,
+      "Points": 45,
+      "IsTekGram": true,
+      "ClassName": "EngramEntry_TekHoverSail_C",
+      "Description": "Tek Hoversail",
+      "Mod": "Genesis"
+    },
+    {
+      "Level": 70,
+      "Points": 30,
+      "IsTekGram": true,
+      "ClassName": "EngramEntry_JumpPad_C",
+      "Description": "Tek Jump Pad",
+      "Mod": "Genesis"
+    },
+    {
+      "Level": 118,
+      "Points": 55,
+      "IsTekGram": true,
+      "ClassName": "EngramEntry_TekPistol_C",
+      "Description": "Tek Phase Pistol",
+      "Mod": "Genesis"
+    },
+    {
+      "Level": 0,
+      "Points": 0,
+      "IsTekGram": true,
+      "ClassName": "EngramEntry_TekAlarm_C",
+      "Description": "Tek Sensor",
+      "Mod": "Genesis"
+    },
+    {
+      "Level": 0,
+      "Points": 0,
+      "IsTekGram": false,
+      "ClassName": "EngramEntry_ShoulderCannon_C",
+      "Description": "Tek Shoulder Cannon",
+      "Mod": "Genesis"
+    },
+    {
+      "Level": 108,
+      "Points": 60,
+      "IsTekGram": true,
+      "ClassName": "EngramEntry_TekSecuirtyConsole_C",
+      "Description": "Tek Surveillance Console",
+      "Mod": "Genesis"
+    },
+    {
+      "Level": 0,
+      "Points": 0,
+      "IsTekGram": true,
+      "ClassName": "EngramEntry_TekExosuit_C",
+      "Description": "Unassembled Exo-Mek",
+      "Mod": "Genesis"
+    },
+    {
+      "Level": 0,
+      "Points": 0,
+      "IsTekGram": false,
+      "ClassName": "EngramEntry_HoverSkiff_C",
+      "Description": "Unassembled TEK Hover Skiff",
+      "Mod": "Genesis"
+    },
+    {
+      "Level": 25,
+      "Points": 24,
+      "IsTekGram": false,
+      "ClassName": "EngramEntry_OceanPlatformWood_C",
+      "Description": "Wood Ocean Platform",
+      "Mod": "Genesis"
+    }
+  ],
+  "Items": [
+    {
+      "Category": "Misc",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemSkin_TrikeSkullHelmet_Retrieve_C",
+      "Description": "Alpha X-Triceratops Skull",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Resources",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemResource_Ambergris_C",
+      "Description": "Ambergris",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Structures",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructure_AmmoContainer_C",
+      "Description": "Ammo Box",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Saddles",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemArmor_SpaceWhaleSaddle_Tek_C",
+      "Description": "Astrocetus Tek Saddle",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Saddles",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemArmor_SpaceDolphinSaddle_Tek_C",
+      "Description": "Astrodelphis Starwing Saddle",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Eggs",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemConsumable_Egg_MilkGlider_XSmall_C",
+      "Description": "Basic Maewing Egg",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Eggs",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemConsumable_Egg_BogSpider_C",
+      "Description": "Bloodstalker Egg",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Vehicles",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemCanoe_C",
+      "Description": "Canoe",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Weapons",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItem_WeaponTekCruiseMissile_C",
+      "Description": "Cruise Missile",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Structures",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructure_EggIncubator_C",
+      "Description": "Egg Incubator",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Eggs",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemConsumable_Egg_MilkGlider_XLarge_C",
+      "Description": "Exceptional Maewing Egg",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Eggs",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemConsumable_Egg_MilkGlider_Special_C",
+      "Description": "Extraordinary Maewing Egg",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Armor",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemArmor_TekBoots_Gen2_C",
+      "Description": "Federation Exo Boots",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Armor",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemArmor_TekShirt_Gen2_C",
+      "Description": "Federation Exo Chestpiece",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Armor",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemArmor_TekHelmet_Gen2_C",
+      "Description": "Federation Exo Gauntlets",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Armor",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemArmor_Tekgloves_Gen2_C",
+      "Description": "Federation Exo Gloves",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Armor",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemArmor_TekPants_Gen2_C",
+      "Description": "Federation Exo Leggings",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Tools",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItem_WeaponFishingNet_C",
+      "Description": "Fish Net",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Weapons",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItem_WeaponSpear_Flame_Gauntlet_C",
+      "Description": "Flaming Spear",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Resources",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemResource_GoldenNugget_C",
+      "Description": "Golden Nugget",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Misc",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemResource_RetrieveMegTooth_C",
+      "Description": "Golden Striped Megalodon Tooth",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Resources",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemResource_HighQualityPollen_C",
+      "Description": "High Quality Pollen",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Ammunition",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemAmmo_Boulder_Fire_C",
+      "Description": "Jar of Pitch",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Structures",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructure_LoadoutDummy_C",
+      "Description": "Loadout Mannequin",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Saddles",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemArmor_MilkGliderSaddle_C",
+      "Description": "Maewing Saddle",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Eggs",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemConsumable_Egg_Cherufe_C",
+      "Description": "Magmasaur Egg",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Saddles",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemArmor_CherufeSaddle_C",
+      "Description": "Magmasaur Saddle",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Skins",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemSkin_MasterControllerHelmet_C",
+      "Description": "Master Controller Helmet Skin",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Misc",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemTrophy_MasterController_C",
+      "Description": "Master Controller Trophy",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Eggs",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemConsumable_Egg_GiantTurtle_C",
+      "Description": "Megachelon Egg",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Saddles",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemArmor_GiantTurtleSaddle_C",
+      "Description": "Megachelon Platform Saddle",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Structures",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructure_Metal_OceanPlatform_C",
+      "Description": "Metal Ocean Platform",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Weapons",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItem_WeaponMinigun_C",
+      "Description": "Minigun",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Tools",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItem_WeaponMiningDrill_C",
+      "Description": "Mining Drill",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Structures",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructure_Flag_EelBoss_C",
+      "Description": "Moeder Flag",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Misc",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemTrophy_EelBoss_C",
+      "Description": "Moeder Trophy",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Resources",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemConsumable_Mutagel_C",
+      "Description": "Mutagel",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Resources",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemConsumable_Mutagen_C",
+      "Description": "Mutagen",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Saddles",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemArmor_ForLFL_C",
+      "Description": "Natural Armor",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Ammunition",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemAmmo_ArrowNet_C",
+      "Description": "Net Projectile",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Structures",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructure_PressurePlate_C",
+      "Description": "Pressure Plate",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Misc",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemResource_RetrieveReaperGland_C",
+      "Description": "Reaper King Pheromone Gland",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Eggs",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemConsumable_Egg_MilkGlider_Medium_C",
+      "Description": "Regular Maewing Egg",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Structures",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructure_Flag_RockwellGen2_C",
+      "Description": "Rockwell Final Form Flag",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Trophies",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemTrophy_RockwellGen2_C",
+      "Description": "Rockwell Final Form Trophy",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Resources",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemResource_TurtleShell_C",
+      "Description": "Shell Fragment",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Misc",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemArmor_TekStriderOnesidedShield_C",
+      "Description": "Shield Projector Rig",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Eggs",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemConsumable_Egg_MilkGlider_Small_C",
+      "Description": "Simple Maewing Egg",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Eggs",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemConsumable_Egg_MilkGlider_Large_C",
+      "Description": "Superior Maewing Egg",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Weapons",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItem_WeaponTekBow_C",
+      "Description": "Tek Bow",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Tools",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemConsumable_TekCanteenCraftable_C",
+      "Description": "Tek Canteen",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Weapons",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItem_WeaponTekClaws_C",
+      "Description": "Tek Claws",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Farming",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructure_CropPlot_Tek_C",
+      "Description": "Tek Crop Plot",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Weapons",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItem_WeaponTekGrenadeLauncher_C",
+      "Description": "Tek Grenade Launcher",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Vehicles",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItem_Spawner_HoverSail_Main_C",
+      "Description": "Tek Hoversail",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Misc",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructure_TekJumpPad_C",
+      "Description": "Tek Jump Pad",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Weapons",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItem_WeaponTekPistol_C",
+      "Description": "Tek Phase Pistol",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Structures",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructure_SecurityCamera_C",
+      "Description": "Tek Remote Camera",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Structures",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructure_TekAlarm_C",
+      "Description": "Tek Sensor",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Weapons",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemArmor_ShoulderCannon_C",
+      "Description": "Tek Shoulder Cannon",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Misc",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructure_TekSecurityConsole_C",
+      "Description": "Tek Surveillance Console",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Misc",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemConsumable_Lootcrate_lvl1_C",
+      "Description": "Tier 1 Lootcrate",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Misc",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemConsumable_Lootcrate_lvl2_C",
+      "Description": "Tier 2 Lootcrate",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Misc",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemConsumable_Lootcrate_lvl3_C",
+      "Description": "Tier 3 Lootcrate",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Weapons",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItem_Spawner_Exosuit_C",
+      "Description": "Unassembled Exo-Mek",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Vehicles",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItem_Spawner_HoverSkiff_C",
+      "Description": "Unassembled TEK Hover Skiff",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Structures",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructure_Flag_VRBoss_C",
+      "Description": "VR Boss Flag",
+      "Mod": "Genesis"
+    },
+    {
+      "Category": "Structures",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructure_Wood_OceanPlatform_C",
+      "Description": "Wood Ocean Platform",
+      "Mod": "Genesis"
+    }
+  ],
+  "Inventories": [
+    {
+      "ClassName": "DinoDropInventoryComponent_Carnivore_Medium_LionfishLion_C",
+      "Description": "Drop Inventory - Carnivore Medium Lionfish Lion",
+      "Mod": "Genesis"
+    }
+  ]
 }

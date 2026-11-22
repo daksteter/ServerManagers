@@ -1,7 +1,7 @@
 {
   "Application": "ark",
-  "Version": "1.0.1",
-  "Created": "2020-04-21T00:00:00.0000000Z",
+  "Version": "2.0.0",
+  "Created": "2026-11-21T00:00:00.0000000Z",
   "Creatures": [
     {
       "NameTag": "Achatina",
@@ -412,7 +412,6 @@
       "NameTag": "CaveWolf",
       "IsSpawnable": true,
       "IsTameable": "True",
-      "IsBreedingable": "True",
       "IsBreedingable": "False",
       "ClassName": "CaveWolf_Character_BP_C",
       "Description": "Ravager",
@@ -886,14 +885,6 @@
     },
     {
       "Level": 20,
-      "Points": 16,
-      "IsTekGram": false,
-      "ClassName": "EngramEntry_WoodElevator_Switch_C",
-      "Description": "Wood Elevator Top Switch",
-      "Mod": "Aberration"
-    },
-    {
-      "Level": 20,
       "Points": 4,
       "IsTekGram": false,
       "ClassName": "EngramEntry_WoodElevator_Track_C",
@@ -1142,27 +1133,6 @@
       "Mod": "Aberration"
     },
     {
-      "Category": "Kibble",
-      "IsHarvestable": false,
-      "ClassName": "PrimalItemConsumable_Kibble_LanternBirdEgg_C",
-      "Description": "Kibble (Featherlight Egg)",
-      "Mod": "Aberration"
-    },
-    {
-      "Category": "Kibble",
-      "IsHarvestable": false,
-      "ClassName": "PrimalItemConsumable_Kibble_LanternLizardEgg_C",
-      "Description": "Kibble (Glowtail Egg)",
-      "Mod": "Aberration"
-    },
-    {
-      "Category": "Kibble",
-      "IsHarvestable": false,
-      "ClassName": "PrimalItemConsumable_Kibble_RockDrakeEgg_C",
-      "Description": "Kibble (Rock Drake Egg)",
-      "Mod": "Aberration"
-    },
-    {
       "Category": "Consumables",
       "IsHarvestable": true,
       "ClassName": "PrimalItemConsumable_Mushroom_Aquatic_C",
@@ -1205,91 +1175,91 @@
       "Mod": "Aberration"
     },
     {
-      "Category": "Resource",
+      "Category": "Resources",
       "IsHarvestable": true,
       "ClassName": "PrimalItemResource_ApexDrop_Basilisk_C",
       "Description": "Basilisk Scale",
       "Mod": "Aberration"
     },
     {
-      "Category": "Resource",
+      "Category": "Resources",
       "IsHarvestable": true,
       "ClassName": "PrimalItemResource_ApexDrop_Basilisk_Alpha_C",
       "Description": "Alpha Basilisk Fang",
       "Mod": "Aberration"
     },
     {
-      "Category": "Resource",
+      "Category": "Resources",
       "IsHarvestable": true,
       "ClassName": "PrimalItemResource_ApexDrop_CrabClaw_C",
       "Description": "Alpha Karkinos Claw",
       "Mod": "Aberration"
     },
     {
-      "Category": "Resource",
+      "Category": "Resources",
       "IsHarvestable": true,
       "ClassName": "PrimalItemResource_ApexDrop_ReaperBarb_C",
       "Description": "Alpha Reaper King Barb",
       "Mod": "Aberration"
     },
     {
-      "Category": "Resource",
+      "Category": "Resources",
       "IsHarvestable": true,
       "ClassName": "PrimalItemResource_ApexDrop_RockDrake_C",
       "Description": "Rock Drake Feather",
       "Mod": "Aberration"
     },
     {
-      "Category": "Resource",
+      "Category": "Resources",
       "IsHarvestable": true,
       "ClassName": "PrimalItemResource_CommonMushroom_C",
       "Description": "Aggeravic Mushroom",
       "Mod": "Aberration"
     },
     {
-      "Category": "Resource",
+      "Category": "Resources",
       "IsHarvestable": true,
       "ClassName": "PrimalItemResource_ElementOre_C",
       "Description": "Element Ore",
       "Mod": "Aberration"
     },
     {
-      "Category": "Resource",
+      "Category": "Resources",
       "IsHarvestable": true,
       "ClassName": "PrimalItemResource_FungalWood_C",
       "Description": "Fungal Wood",
       "Mod": "Aberration"
     },
     {
-      "Category": "Resource",
+      "Category": "Resources",
       "IsHarvestable": true,
       "ClassName": "PrimalItemResource_Gas_C",
       "Description": "Congealed Gas Ball",
       "Mod": "Aberration"
     },
     {
-      "Category": "Resource",
+      "Category": "Resources",
       "IsHarvestable": true,
       "ClassName": "PrimalItemResource_Gem_BioLum_C",
       "Description": "Blue Gem",
       "Mod": "Aberration"
     },
     {
-      "Category": "Resource",
+      "Category": "Resources",
       "IsHarvestable": true,
       "ClassName": "PrimalItemResource_Gem_Element_C",
       "Description": "Red Gem",
       "Mod": "Aberration"
     },
     {
-      "Category": "Resource",
+      "Category": "Resources",
       "IsHarvestable": true,
       "ClassName": "PrimalItemResource_Gem_Fertile_C",
       "Description": "Green Gem",
       "Mod": "Aberration"
     },
     {
-      "Category": "Resource",
+      "Category": "Resources",
       "IsHarvestable": true,
       "ClassName": "PrimalItemResource_XenomorphPheromoneGland_C",
       "Description": "Reaper Pheromone Gland",
@@ -1387,21 +1357,21 @@
       "Mod": "Aberration"
     },
     {
-      "Category": "Trophy",
+      "Category": "Trophies",
       "IsHarvestable": false,
       "ClassName": "PrimalItemTrophy_Rockwell_C",
       "Description": "Rockwell Trophy (Gamma)",
       "Mod": "Aberration"
     },
     {
-      "Category": "Trophy",
+      "Category": "Trophies",
       "IsHarvestable": false,
       "ClassName": "PrimalItemTrophy_Rockwell_Beta_C",
       "Description": "Rockwell Trophy (Beta)",
       "Mod": "Aberration"
     },
     {
-      "Category": "Trophy",
+      "Category": "Trophies",
       "IsHarvestable": false,
       "ClassName": "PrimalItemTrophy_Rockwell_Beta_Alpha_C",
       "Description": "Rockwell Trophy (Alpha)",
@@ -1645,7 +1615,69 @@
       "ClassName": "ArtifactCrate_4_AB_C",
       "Description": "Artifact Container Lost",
       "Mod": "Aberration"
+    },
+    {
+      "ClassName": "SupplyCrate_Cave_Aberration_BASE_C",
+      "Description": "Cave Aberration BASE",
+      "Mod": "Aberration"
     }
   ],
-  "GameMaps": []
+  "GameMaps": [],
+  "Inventories": [
+    {
+      "ClassName": "DinoDropInventoryComponent_Carnivore_Large_Basilisk_C",
+      "Description": "Drop Inventory - Carnivore Large Basilisk",
+      "Mod": "Aberration"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Carnivore_Large_Basilisk_Alpha_C",
+      "Description": "Drop Inventory - Carnivore Large Basilisk Alpha",
+      "Mod": "Aberration"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Carnivore_Large_Crab_Alpha_C",
+      "Description": "Drop Inventory - Carnivore Large Crab Alpha",
+      "Mod": "Aberration"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Carnivore_Large_Reaper_Alpha_C",
+      "Description": "Drop Inventory - Carnivore Large Reaper Alpha",
+      "Mod": "Aberration"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Carnivore_Large_RockDrake_C",
+      "Description": "Drop Inventory - Carnivore Large Rock Drake",
+      "Mod": "Aberration"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Carnivore_ReaperQueen_C",
+      "Description": "Drop Inventory - Carnivore Reaper Queen",
+      "Mod": "Aberration"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Carnivore_Seeker_C",
+      "Description": "Drop Inventory - Carnivore Seeker",
+      "Mod": "Aberration"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Carnivore_Small_Chupa_C",
+      "Description": "Drop Inventory - Carnivore Small Chupa",
+      "Mod": "Aberration"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Rockwell_Easy_C",
+      "Description": "Drop Inventory - Rockwell Easy",
+      "Mod": "Aberration"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Rockwell_Hard_C",
+      "Description": "Drop Inventory - Rockwell Hard",
+      "Mod": "Aberration"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Rockwell_Medium_C",
+      "Description": "Drop Inventory - Rockwell Medium",
+      "Mod": "Aberration"
+    }
+  ]
 }

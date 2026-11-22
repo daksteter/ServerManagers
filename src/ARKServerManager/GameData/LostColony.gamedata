@@ -1,0 +1,1366 @@
+{
+  "Application": "ark",
+  "Version": "2.0.0",
+  "Created": "2026-11-21T00:00:00.0000000Z",
+  "Creatures": [
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "MegaZombie_Character_BP_Hulking_C",
+      "Description": "Alpha Hulking Revenant",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "MegaSnowMonster_Character_BP_C",
+      "Description": "Alpha Ossidon",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "SnowDragon",
+      "IsSpawnable": true,
+      "IsTameable": "True",
+      "IsBreedingable": "True",
+      "ClassName": "SnowDragon_Character_BP_C",
+      "Description": "Aureliax",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Zombie_Character_BP_Bloated_C",
+      "Description": "Bloated Revenant",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "BossBat",
+      "IsSpawnable": true,
+      "IsTameable": "False",
+      "IsBreedingable": "True",
+      "ClassName": "BossBat_Character_BP_C",
+      "Description": "Gigadesmodus",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "LostCharge",
+      "IsSpawnable": true,
+      "IsTameable": "True",
+      "IsBreedingable": "True",
+      "ClassName": "LostCharge_LanternPet_Char_BP_C",
+      "Description": "Gloon",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "True",
+      "IsBreedingable": "False",
+      "ClassName": "HelperWisp_Character_BP_C",
+      "Description": "Helper Wisp (Wisp of Industry Skill)",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Zombie_Character_BP_Hulking_C",
+      "Description": "Hulking Revenant",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Carno_Character_BP_Thrall_C",
+      "Description": "Lost Carnotaurus",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Ceratosaurus_Character_BP_Thrall_C",
+      "Description": "Lost Ceratosaurus",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Cryolophosaurus_Character_BP_Thrall_C",
+      "Description": "Lost Cryolophosaurus",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Desmodus_Character_BP_Thrall_C",
+      "Description": "Lost Desmodus",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Direbear_Character_BP_Thrall_C",
+      "Description": "Lost Dire Bear",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": true,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "BossBat_Character_BP_LostKing_C",
+      "Description": "Lost King",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "DevilFox_Character_BP_Thrall_C",
+      "Description": "Lost Malwyn",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Megatherium_Character_BP_Thrall_C",
+      "Description": "Lost Megatherium",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "SnowMonster_Character_BP_Thrall_C",
+      "Description": "Lost Ossidon",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Scorpion_Character_BP_Thrall_C",
+      "Description": "Lost Pulmonoscorpius",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": true,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "LostQueen_Character_BP_C",
+      "Description": "Lost Queen",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "LostQueen_Character_BP_Alpha_C",
+      "Description": "Lost Queen (Alpha)",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "LostQueen_Character_BP_Beta_C",
+      "Description": "Lost Queen (Beta)",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "LostQueen_Character_BP_Gamma_C",
+      "Description": "Lost Queen (Gamma)",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Raptor_Character_BP_Thrall_C",
+      "Description": "Lost Raptor",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Rex_Character_BP_Thrall_C",
+      "Description": "Lost Rex",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Saber_Character_BP_Thrall_C",
+      "Description": "Lost Sabertooth",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Spino_Character_BP_Thrall_C",
+      "Description": "Lost Spino",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Therizino_Character_BP_Thrall_C",
+      "Description": "Lost Therizinosaur",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Thylacoleo_Character_BP_Thrall_C",
+      "Description": "Lost Thylacoleo",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Rhino_Character_BP_Thrall_C",
+      "Description": "Lost Woolly Rhino",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Yutyrannus_Character_BP_Thrall_C",
+      "Description": "Lost Yutyrannus",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "DevilFox",
+      "IsSpawnable": true,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "DevilFox_Character_BP_C",
+      "Description": "Malwyn",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": true,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Neophyte_Character_BP_C",
+      "Description": "Neophyte",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "SnowMonster",
+      "IsSpawnable": true,
+      "IsTameable": "True",
+      "IsBreedingable": "True",
+      "ClassName": "SnowMonster_Character_BP_C",
+      "Description": "Ossidon",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Zombie_Character_BP_Skinny_C",
+      "Description": "Revenant",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Sauropod_Character_BP_Corrupt_Zombie_C",
+      "Description": "Revenant Brontosaurus",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Carno_Character_BP_Child_Corrupt_Zombie_C",
+      "Description": "Revenant Carnotaurus",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Dilo_Character_BP_Corrupt_Zombie_C",
+      "Description": "Revenant Dilophosaur",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Dimorph_Character_BP_Corrupted_Zombie_C",
+      "Description": "Revenant Dimorphodon",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Direwolf_Character_BP_Corrupted_Zombie_C",
+      "Description": "Revenant Direwolf",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Iguanodon_Character_BP_Corrupted_Zombie_C",
+      "Description": "Revenant Iguanodon",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "DevilFox_Character_BP_Corrupt_Zombie_C",
+      "Description": "Revenant Malwyn",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Mammoth_Character_BP_Corrupted_Zombie_C",
+      "Description": "Revenant Mammoth",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "SnowMonster_Character_BP_Corrupt_Zombie_C",
+      "Description": "Revenant Ossidon",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Para_Character_BP_Corrupted_Zombie_C",
+      "Description": "Revenant Parasaur",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Ptero_Character_BP_Corrupted_Zombie_C",
+      "Description": "Revenant Pteranodon",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Raptor_Character_BP_Corrupted_Zombie_C",
+      "Description": "Revenant Raptor",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Saber_Character_BP_Corrupted_Zombie_C",
+      "Description": "Revenant Sabertooth",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Spino_Character_BP_Corrupted_Zombie_C",
+      "Description": "Revenant Spino",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Stego_Character_BP_Corrupted_Zombie_C",
+      "Description": "Revenant Stegosaurus",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Therizino_Character_BP_Corrupted_Zombie_C",
+      "Description": "Revenant Therizinosaur",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Troodon_Character_BP_Corrupted_Zombie_C",
+      "Description": "Revenant Troodon",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "YoungIceFox_Character_BP_Corrupted_Zombie_C",
+      "Description": "Revenant Veilwyn",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Yutyrannus_Character_BP_Corrupted_Zombie_C",
+      "Description": "Revenant Yutyrannus",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "AngelFox",
+      "IsSpawnable": true,
+      "IsTameable": "False",
+      "IsBreedingable": "True",
+      "ClassName": "AngelFox_Character_BP_C",
+      "Description": "Solwyn",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Direwolf_Character_BP_SpiritBeasts_C",
+      "Description": "Spirit Direwolf (Spirit Beasts Skill)",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Rex_Character_BP_Corrupt_Zombie_Boss_C",
+      "Description": "Succumbed Revenant Rex",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": true,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Thrall_Character_BP_Base_C",
+      "Description": "Thrall",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Thrall_Character_BP_Tamer_C",
+      "Description": "Thrall Archer",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Thrall_Character_BP_MiniBoss_Tamer_C",
+      "Description": "Thrall Bounty Hunter",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Thrall_Character_BP_MiniBoss_Training_C",
+      "Description": "Thrall Cavalry Commander",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Thrall_Character_BP_WithSniperRifle_C",
+      "Description": "Thrall Deadeye",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Thrall_Character_BP_WithRocketLauncher_C",
+      "Description": "Thrall Demolisher",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Thrall_Character_BP_Cultist_C",
+      "Description": "Thrall Enforcer",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Thrall_Character_BP_MiniBoss_Industrial_C",
+      "Description": "Thrall Forgemaster",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Thrall_Character_BP_SoldierWithPistol_C",
+      "Description": "Thrall Gunslinger",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Thrall_Character_BP_WithFlamethrower_C",
+      "Description": "Thrall Herald",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Thrall_Character_BP_Soldier_C",
+      "Description": "Thrall Marauder",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Thrall_Character_BP_MiniBoss_Ranged_C",
+      "Description": "Thrall Marksman",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Thrall_Character_BP_WithCrossbow_C",
+      "Description": "Thrall Piercer",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Thrall_Character_BP_WithShotgun_C",
+      "Description": "Thrall Scattershot",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Thrall_Character_BP_WithBola_C",
+      "Description": "Thrall Snarer",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Thrall_Character_BP_WithWhip_C",
+      "Description": "Thrall Subjugator",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Thrall_Character_BP_Fighter_C",
+      "Description": "Thrall Warden",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "YoungIceFox",
+      "IsSpawnable": true,
+      "IsTameable": "True",
+      "IsBreedingable": "True",
+      "ClassName": "YoungIceFox_DinoCompanion_Character_BP_C",
+      "Description": "Veilwyn",
+      "Mod": "LostColony"
+    },
+    {
+      "NameTag": "",
+      "IsSpawnable": false,
+      "IsTameable": "False",
+      "IsBreedingable": "False",
+      "ClassName": "Ghost_YoungIceFox_DinoCompanion_Character_BP_C",
+      "Description": "Veilwyn Ghost",
+      "Mod": "LostColony"
+    }
+  ],
+  "Engrams": [
+    {
+      "Level": 48,
+      "Points": 10,
+      "IsTekGram": false,
+      "ClassName": "EngramEntry_LostColony_Lights_C",
+      "Description": "Lost Colony Lights",
+      "Mod": "LostColony"
+    },
+    {
+      "Level": 60,
+      "Points": 20,
+      "IsTekGram": false,
+      "ClassName": "EngramEntry_LostColony_ShoulderPetDisplayStand_C",
+      "Description": "Pet Display",
+      "Mod": "LostColony"
+    },
+    {
+      "Level": 80,
+      "Points": 60,
+      "IsTekGram": true,
+      "ClassName": "EngramEntry_LostColony_TekBunker_C",
+      "Description": "Tek Bunker",
+      "Mod": "LostColony"
+    }
+  ],
+  "Items": [
+    {
+      "Category": "Eggs",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemConsumable_Egg_SnowDragon_C",
+      "Description": "Aureliax Egg",
+      "Mod": "LostColony"
+    },
+    {
+      "Category": "Saddles",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemArmor_SnowDragonSaddle_C",
+      "Description": "Aureliax Saddle",
+      "Mod": "LostColony"
+    },
+    {
+      "Category": "Misc",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItem_CorruptedVulpite_C",
+      "Description": "Corrupted Vulpite",
+      "Mod": "LostColony"
+    },
+    {
+      "Category": "Weapons",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItem_WeaponCrossbow_Fab_C",
+      "Description": "Fabricated Crossbow",
+      "Mod": "LostColony"
+    },
+    {
+      "Category": "Eggs",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemConsumable_Egg_BossBat_C",
+      "Description": "Gigadesmodus Egg Sac",
+      "Mod": "LostColony"
+    },
+    {
+      "Category": "Saddles",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemArmor_BossBatSaddle_Platform_C",
+      "Description": "Gigadesmodus Platform Saddle",
+      "Mod": "LostColony"
+    },
+    {
+      "Category": "Saddles",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemArmor_BossBatSaddle_C",
+      "Description": "Gigadesmodus Saddle",
+      "Mod": "LostColony"
+    },
+    {
+      "Category": "Eggs",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemConsumable_Egg_LostChargePet_C",
+      "Description": "Gloon Egg",
+      "Mod": "LostColony"
+    },
+    {
+      "Category": "Misc",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemResource_LostColony_AberrantSigil_Greater_C",
+      "Description": "Greater Aberrant Sigil",
+      "Mod": "LostColony"
+    },
+    {
+      "Category": "Misc",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemResource_LostColony_CrimsonSigil_Greater_C",
+      "Description": "Greater Crimson Sigil",
+      "Mod": "LostColony"
+    },
+    {
+      "Category": "Skins",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemSkin_Thrall_T0_Boots_C",
+      "Description": "Lost Boots Skin",
+      "Mod": "LostColony"
+    },
+    {
+      "Category": "Skins",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemSkin_ThrallSaddle_Ceratosaurus_C",
+      "Description": "Lost Ceratosaurus Saddle Skin",
+      "Mod": "LostColony"
+    },
+    {
+      "Category": "Structures",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructure_LC_Lights_C",
+      "Description": "Lost Colony Lights",
+      "Mod": "LostColony"
+    },
+    {
+      "Category": "Skins",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructureSkin_Tileset_LC_C",
+      "Description": "Lost Colony Structures Skin",
+      "Mod": "LostColony"
+    },
+    {
+      "Category": "Skins",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemSkin_ThrallSaddle_Desmodus_C",
+      "Description": "Lost Desmodus Saddle Skin",
+      "Mod": "LostColony"
+    },
+    {
+      "Category": "Armor",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemArmor_Glider_Thrall_C",
+      "Description": "Lost Glider Suit",
+      "Mod": "LostColony"
+    },
+    {
+      "Category": "Skins",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemSkin_Thrall_T0_Gloves_C",
+      "Description": "Lost Gloves Skin",
+      "Mod": "LostColony"
+    },
+    {
+      "Category": "Skins",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemSkin_Thrall_T0_Hat_C",
+      "Description": "Lost Helmet Skin",
+      "Mod": "LostColony"
+    },
+    {
+      "Category": "Skins",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemSkin_Thrall_T0_Pants_C",
+      "Description": "Lost Pants Skin",
+      "Mod": "LostColony"
+    },
+    {
+      "Category": "Skins",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemSkin_Thrall_T0_Shirt_Poncho_C",
+      "Description": "Lost Poncho Skin",
+      "Mod": "LostColony"
+    },
+    {
+      "Category": "Skins",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemSkin_Thrall_T0_Shirt_C",
+      "Description": "Lost Shirt Skin",
+      "Mod": "LostColony"
+    },
+    {
+      "Category": "Skins",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemSkin_ThrallTekSword_C",
+      "Description": "Lost Tek Sword Skin",
+      "Mod": "LostColony"
+    },
+    {
+      "Category": "Saddles",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemArmor_DevilFoxSaddle_C",
+      "Description": "Malwyn Saddle",
+      "Mod": "LostColony"
+    },
+    {
+      "Category": "Misc",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemResource_LostColony_AberrantSigil_Minor_C",
+      "Description": "Minor Aberrant Sigil",
+      "Mod": "LostColony"
+    },
+    {
+      "Category": "Misc",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemResource_LostColony_CrimsonSigil_Minor_C",
+      "Description": "Minor Crimson Sigil",
+      "Mod": "LostColony"
+    },
+    {
+      "Category": "Resources",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemResource_ApexDrop_Neophyte_C",
+      "Description": "Neophyte Horns",
+      "Mod": "LostColony"
+    },
+    {
+      "Category": "Saddles",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemArmor_SnowMonsterSaddle_C",
+      "Description": "Ossidon Saddle",
+      "Mod": "LostColony"
+    },
+    {
+      "Category": "Structures",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructure_LostColony_ShoulderPetDisplayStand_C",
+      "Description": "Pet Display",
+      "Mod": "LostColony"
+    },
+    {
+      "Category": "Misc",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemResource_LostColony_AberrantSigil_Prime_C",
+      "Description": "Prime Aberrant Sigil",
+      "Mod": "LostColony"
+    },
+    {
+      "Category": "Misc",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemResource_LostColony_CrimsonSigil_Prime_C",
+      "Description": "Prime Crimson Sigil",
+      "Mod": "LostColony"
+    },
+    {
+      "Category": "Misc",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItem_PristineVulpite_C",
+      "Description": "Pristine Vulpite",
+      "Mod": "LostColony"
+    },
+    {
+      "Category": "Resources",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemResource_LostColony_RedElement_C",
+      "Description": "Red Element",
+      "Mod": "LostColony"
+    },
+    {
+      "Category": "Resources",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemResource_LostColony_RedElementShard_C",
+      "Description": "Red Element Shard",
+      "Mod": "LostColony"
+    },
+    {
+      "Category": "Saddles",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemArmor_AngelFoxSaddle_C",
+      "Description": "Solwyn Saddle",
+      "Mod": "LostColony"
+    },
+    {
+      "Category": "Misc",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItemStructure_LostColony_TekBunker_C",
+      "Description": "Tek Bunker",
+      "Mod": "LostColony"
+    }
+  ],
+  "MapSpawners": [
+    {
+      "ClassName": "DinoSpawnEntries_AngelFox_ONLY_LC_C",
+      "Description": "Angel Fox ONLY LC",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Beavers_LC_C",
+      "Description": "Beavers LC",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_BloodWater_LC_C",
+      "Description": "Blood Water LC",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Caldera_LC_C",
+      "Description": "Caldera LC",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_CastleWater_LC_C",
+      "Description": "Castle Water LC",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Cave1_Generic_LC_C",
+      "Description": "Cave1 Generic LC",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_City_Caldera_1_C",
+      "Description": "City Caldera 1",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_City_Caldera_2_C",
+      "Description": "City Caldera 2",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_City_Interior_C",
+      "Description": "City Interior",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_City_Perimeter_C",
+      "Description": "City Perimeter",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Dark_Forest_1_C",
+      "Description": "Dark Forest 1",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Dark_Forest_2_C",
+      "Description": "Dark Forest 2",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Dark_Mountain_C",
+      "Description": "Dark Mountain",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Desmodus_LC_C",
+      "Description": "Desmodus LC",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_ElderClaw_LC_C",
+      "Description": "Elder Claw LC",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Glacier_LC_C",
+      "Description": "Glacier LC",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Hotsprings_G_LC_C",
+      "Description": "Hotsprings G LC",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Hotsprings_LC_C",
+      "Description": "Hotsprings LC",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Hotsprings_Outer_C",
+      "Description": "Hotsprings Outer",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Hotsprings_Water_1_C",
+      "Description": "Hotsprings Water 1",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Hotsprings_Water_2_C",
+      "Description": "Hotsprings Water 2",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Hotsprings_Water_Cold_C",
+      "Description": "Hotsprings Water Cold",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Lake_1_LC_C",
+      "Description": "Lake 1 LC",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Mountain_LC_C",
+      "Description": "Mountain LC",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Patrols_GroupLargeA_C",
+      "Description": "Patrols Group Large A",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Patrols_GroupMediumA_C",
+      "Description": "Patrols Group Medium A",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Patrols_GroupSmallA_C",
+      "Description": "Patrols Group Small A",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_SnowDragon_C",
+      "Description": "Snow Dragon",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Tundra_1_C",
+      "Description": "Tundra 1",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Tundra_2_C",
+      "Description": "Tundra 2",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Tundra_Bowl_C",
+      "Description": "Tundra Bowl",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Tundra_MegaRaptor_C",
+      "Description": "Tundra Mega Raptor",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Tundra_Megalania_C",
+      "Description": "Tundra Megalania",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Tundra_Ossidon_C",
+      "Description": "Tundra Ossidon",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Tundra_Ridge_C",
+      "Description": "Tundra Ridge",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Tundra_Sauropod_C",
+      "Description": "Tundra Sauropod",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Tundra_TREX_C",
+      "Description": "Tundra TREX",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_TW_Forest_1_C",
+      "Description": "TW Forest 1",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_TW_Forest_2_C",
+      "Description": "TW Forest 2",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_TW_Forest_Open_C",
+      "Description": "TW Forest Open",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_TW_Mountain_C",
+      "Description": "TW Mountain",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Valley_Canyon_LC_C",
+      "Description": "Valley Canyon LC",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Valley_LC_C",
+      "Description": "Valley LC",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_ValleySnow_LC_C",
+      "Description": "Valley Snow LC",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_ValleySnow_LC_Easy_C",
+      "Description": "Valley Snow LC Easy",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Water_LC_C",
+      "Description": "Water LC",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Water_River_LC_C",
+      "Description": "Water River LC",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Water_Shallow_LC_C",
+      "Description": "Water Shallow LC",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Zombie_Generic_C",
+      "Description": "Zombie Generic",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoSpawnEntries_Zombie_Generic_Reapers_C",
+      "Description": "Zombie Generic Reapers",
+      "Mod": "LostColony"
+    }
+  ],
+  "SupplyCrates": [
+    {
+      "ClassName": "SupplyCrate_BossLott_BossBat_C",
+      "Description": "Boss Lott Boss Bat",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "SupplyCrate_BossLott_BossBat_Alpha_C",
+      "Description": "Boss Lott Boss Bat Alpha",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "SupplyCrate_BossLott_BossBat_Beta_C",
+      "Description": "Boss Lott Boss Bat Beta",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "SupplyCrate_BossLott_BossBat_Gamma_C",
+      "Description": "Boss Lott Boss Bat Gamma",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "SupplyCrate_Horde_Taming_Base_C",
+      "Description": "Horde Taming Base",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "SupplyCrate_Horde_Taming_SnowDragon_C",
+      "Description": "Horde Taming Snow Dragon",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "SupplyCrate_LostLootChest_BASE_C",
+      "Description": "Lost Loot Chest BASE",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "SupplyCrate_LostLootChest_Cave_T1_C",
+      "Description": "Lost Loot Chest Cave T1",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "SupplyCrate_LostLootChest_Cave_T2_C",
+      "Description": "Lost Loot Chest Cave T2",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "SupplyCrate_LostLootChest_Cave_T3_C",
+      "Description": "Lost Loot Chest Cave T3",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "SupplyCrate_LostLootChest_T1_C",
+      "Description": "Lost Loot Chest T1",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "SupplyCrate_LostLootChest_T2_C",
+      "Description": "Lost Loot Chest T2",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "SupplyCrate_LostLootChest_T3_C",
+      "Description": "Lost Loot Chest T3",
+      "Mod": "LostColony"
+    }
+  ],
+  "Inventories": [
+    {
+      "ClassName": "DinoDropInventoryComponent_BossLostQueen_C",
+      "Description": "Drop Inventory - Boss Lost Queen",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_BossLostQueen_Alpha_C",
+      "Description": "Drop Inventory - Boss Lost Queen Alpha",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_BossLostQueen_Beta_C",
+      "Description": "Drop Inventory - Boss Lost Queen Beta",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Carnivore_Apex_Neophyte_C",
+      "Description": "Drop Inventory - Carnivore Apex Neophyte",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Carnivore_Apex_Zombie_C",
+      "Description": "Drop Inventory - Carnivore Apex Zombie",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Carnivore_Mega_SnowMonster_C",
+      "Description": "Drop Inventory - Carnivore Mega Snow Monster",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Thrall_Base_C",
+      "Description": "Drop Inventory - Thrall Base",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Thrall_Cultist_C",
+      "Description": "Drop Inventory - Thrall Cultist",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Thrall_Fighter_C",
+      "Description": "Drop Inventory - Thrall Fighter",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Thrall_Soldier_C",
+      "Description": "Drop Inventory - Thrall Soldier",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Thrall_Soldier_WithBola_C",
+      "Description": "Drop Inventory - Thrall Soldier With Bola",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Thrall_Soldier_WithCrossbow_C",
+      "Description": "Drop Inventory - Thrall Soldier With Crossbow",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Thrall_SoldierWithFlamethrower_C",
+      "Description": "Drop Inventory - Thrall Soldier With Flamethrower",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Thrall_Soldier_WithRocketLauncher_C",
+      "Description": "Drop Inventory - Thrall Soldier With Rocket Launcher",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Thrall_Soldier_WithShotgun_C",
+      "Description": "Drop Inventory - Thrall Soldier With Shotgun",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Thrall_Soldier_WithSniperRifle_C",
+      "Description": "Drop Inventory - Thrall Soldier With Sniper Rifle",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Thrall_SoldierWithSpear_C",
+      "Description": "Drop Inventory - Thrall Soldier With Spear",
+      "Mod": "LostColony"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Thrall_Tamer_C",
+      "Description": "Drop Inventory - Thrall Tamer",
+      "Mod": "LostColony"
+    }
+  ]
+}

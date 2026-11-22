@@ -1,7 +1,7 @@
 {
   "Application": "ark",
-  "Version": "1.0.0",
-  "Created": "2018-04-21T11:00:00.0000000Z",
+  "Version": "2.0.0",
+  "Created": "2026-11-21T00:00:00.0000000Z",
   "Creatures": [
     {
       "NameTag": "Camelsaurus",
@@ -211,22 +211,6 @@
       "Mod": "ScorchedEarth"
     },
     {
-      "Level": 34,
-      "Points": 15,
-      "IsTekGram": false,
-      "ClassName": "EngramEntry_AdobeCeilingWithDoorWay_Giant_C",
-      "Description": "Giant Adobe Hatchframe",
-      "Mod": "ScorchedEarth"
-    },
-    {
-      "Level": 16,
-      "Points": 8,
-      "IsTekGram": false,
-      "ClassName": "EngramEntry_AdobeCeilingWithTrapdoor_C",
-      "Description": "Adobe Hatchframe",
-      "Mod": "ScorchedEarth"
-    },
-    {
       "Level": 15,
       "Points": 4,
       "IsTekGram": false,
@@ -307,22 +291,6 @@
       "Mod": "ScorchedEarth"
     },
     {
-      "Level": 16,
-      "Points": 3,
-      "IsTekGram": false,
-      "ClassName": "EngramEntry_AdobeRamp_C",
-      "Description": "Adobe Ramp",
-      "Mod": "ScorchedEarth"
-    },
-    {
-      "Level": 18,
-      "Points": 5,
-      "IsTekGram": false,
-      "ClassName": "EngramEntry_AdobeRoof_C",
-      "Description": "Adobe Roof Sloped",
-      "Mod": "ScorchedEarth"
-    },
-    {
       "Level": 18,
       "Points": 3,
       "IsTekGram": false,
@@ -331,59 +299,11 @@
       "Mod": "ScorchedEarth"
     },
     {
-      "Level": 18,
-      "Points": 3,
-      "IsTekGram": false,
-      "ClassName": "EngramEntry_AdobeSlopedWall_Right_C",
-      "Description": "Adobe Wall Sloped Right",
-      "Mod": "ScorchedEarth"
-    },
-    {
-      "Level": 17,
-      "Points": 15,
-      "IsTekGram": false,
-      "ClassName": "EngramEntry_AdobeStairs_C",
-      "Description": "Adobe Staircase",
-      "Mod": "ScorchedEarth"
-    },
-    {
-      "Level": 16,
-      "Points": 6,
-      "IsTekGram": false,
-      "ClassName": "EngramEntry_AdobeTrapdoor_C",
-      "Description": "Adobe Trapdoor",
-      "Mod": "ScorchedEarth"
-    },
-    {
       "Level": 15,
       "Points": 7,
       "IsTekGram": false,
       "ClassName": "EngramEntry_AdobeWall_C",
       "Description": "Adobe Wall",
-      "Mod": "ScorchedEarth"
-    },
-    {
-      "Level": 15,
-      "Points": 6,
-      "IsTekGram": false,
-      "ClassName": "EngramEntry_AdobeWallWithDoor_C",
-      "Description": "Adobe Doorframe",
-      "Mod": "ScorchedEarth"
-    },
-    {
-      "Level": 20,
-      "Points": 8,
-      "IsTekGram": false,
-      "ClassName": "EngramEntry_AdobeWallWithWindow_C",
-      "Description": "Adobe Windowframe",
-      "Mod": "ScorchedEarth"
-    },
-    {
-      "Level": 20,
-      "Points": 6,
-      "IsTekGram": false,
-      "ClassName": "EngramEntry_AdobeWindow_C",
-      "Description": "Adobe Window",
       "Mod": "ScorchedEarth"
     },
     {
@@ -816,41 +736,6 @@
       "Mod": "ScorchedEarth"
     },
     {
-      "Category": "Consumables",
-      "IsHarvestable": false,
-      "ClassName": "PrimalItemConsumable_Kibble_Camelsaurus_C",
-      "Description": "Kibble (Camelsaurus Egg)",
-      "Mod": "ScorchedEarth"
-    },
-    {
-      "Category": "Consumables",
-      "IsHarvestable": false,
-      "ClassName": "PrimalItemConsumable_Kibble_Mantis_C",
-      "Description": "Kibble (Mantis Egg)",
-      "Mod": "ScorchedEarth"
-    },
-    {
-      "Category": "Consumables",
-      "IsHarvestable": false,
-      "ClassName": "PrimalItemConsumable_Kibble_Moth_C",
-      "Description": "Kibble (Moth Egg)",
-      "Mod": "ScorchedEarth"
-    },
-    {
-      "Category": "Consumables",
-      "IsHarvestable": false,
-      "ClassName": "PrimalItemConsumable_Kibble_SpineyLizard_C",
-      "Description": "Kibble (Thorny Dragon Egg)",
-      "Mod": "ScorchedEarth"
-    },
-    {
-      "Category": "Consumables",
-      "IsHarvestable": false,
-      "ClassName": "PrimalItemConsumable_Kibble_Vulture_C",
-      "Description": "Kibble (Vulture Egg)",
-      "Mod": "ScorchedEarth"
-    },
-    {
       "Category": "Seeds",
       "IsHarvestable": true,
       "ClassName": "PrimalItemConsumable_Seed_PlantSpeciesY_C",
@@ -972,20 +857,6 @@
     {
       "Category": "Structures",
       "IsHarvestable": false,
-      "ClassName": "PrimalItemStructure_AdobeCeilingWithDoorWay_Giant_C",
-      "Description": "Giant Adobe Hatchframe",
-      "Mod": "ScorchedEarth"
-    },
-    {
-      "Category": "Structures",
-      "IsHarvestable": false,
-      "ClassName": "PrimalItemStructure_AdobeCeilingWithTrapdoor_C",
-      "Description": "Adobe Hatchframe",
-      "Mod": "ScorchedEarth"
-    },
-    {
-      "Category": "Structures",
-      "IsHarvestable": false,
       "ClassName": "PrimalItemStructure_AdobeDoor_C",
       "Description": "Adobe Door",
       "Mod": "ScorchedEarth"
@@ -1056,29 +927,8 @@
     {
       "Category": "Structures",
       "IsHarvestable": false,
-      "ClassName": "PrimalItemStructure_AdobeRamp_C",
-      "Description": "Adobe Ramp",
-      "Mod": "ScorchedEarth"
-    },
-    {
-      "Category": "Structures",
-      "IsHarvestable": false,
       "ClassName": "PrimalItemStructure_AdobeRoof_C",
       "Description": "Sloped Adobe Roof",
-      "Mod": "ScorchedEarth"
-    },
-    {
-      "Category": "Structures",
-      "IsHarvestable": false,
-      "ClassName": "PrimalItemStructure_AdobeStaircase_C",
-      "Description": "Adobe Staircase",
-      "Mod": "ScorchedEarth"
-    },
-    {
-      "Category": "Structures",
-      "IsHarvestable": false,
-      "ClassName": "PrimalItemStructure_AdobeTrapdoor_C",
-      "Description": "Adobe Trapdoor",
       "Mod": "ScorchedEarth"
     },
     {
@@ -1093,34 +943,6 @@
       "IsHarvestable": false,
       "ClassName": "PrimalItemStructure_AdobeWall_Sloped_Left_C",
       "Description": "Sloped Adobe Wall Left",
-      "Mod": "ScorchedEarth"
-    },
-    {
-      "Category": "Structures",
-      "IsHarvestable": false,
-      "ClassName": "PrimalItemStructure_AdobeWall_Sloped_Right_C",
-      "Description": "Sloped Adobe Wall Right",
-      "Mod": "ScorchedEarth"
-    },
-    {
-      "Category": "Structures",
-      "IsHarvestable": false,
-      "ClassName": "PrimalItemStructure_AdobeWallWithDoor_C",
-      "Description": "Adobe Doorframe",
-      "Mod": "ScorchedEarth"
-    },
-    {
-      "Category": "Structures",
-      "IsHarvestable": false,
-      "ClassName": "PrimalItemStructure_AdobeWallWithWindow_C",
-      "Description": "Adobe Windowframe",
-      "Mod": "ScorchedEarth"
-    },
-    {
-      "Category": "Structures",
-      "IsHarvestable": false,
-      "ClassName": "PrimalItemStructure_AdobeWindow_C",
-      "Description": "Adobe Window",
       "Mod": "ScorchedEarth"
     },
     {
@@ -1180,54 +1002,56 @@
       "Mod": "ScorchedEarth"
     },
     {
-      "Category": "Trophy",
+      "Category": "Trophies",
       "IsHarvestable": false,
       "ClassName": "PrimalItemTrophy_AlphaWorm_C",
       "Description": "Alpha Deathworm Trophy",
       "Mod": "ScorchedEarth"
     },
     {
-      "Category": "Trophy",
+      "Category": "Trophies",
       "IsHarvestable": false,
       "ClassName": "PrimalItemTrophy_AlphaWyvern_C",
       "Description": "Alpha Wyvern Trophy",
       "Mod": "ScorchedEarth"
     },
     {
-      "Category": "Trophy",
+      "Category": "Trophies",
       "IsHarvestable": false,
       "ClassName": "PrimalItemTrophy_Manticore_C",
       "Description": "Manticore Trophy",
       "Mod": "ScorchedEarth"
     },
     {
-      "Category": "Trophy",
+      "Category": "Trophies",
       "IsHarvestable": false,
       "ClassName": "PrimalItemTrophy_Manticore_Alpha_C",
       "Description": "Manticore Trophy (Alpha)",
       "Mod": "ScorchedEarth"
     },
     {
-      "Category": "Trophy",
+      "Category": "Trophies",
       "IsHarvestable": false,
       "ClassName": "PrimalItemTrophy_Manticore_Beta_C",
       "Description": "Manticore Trophy (Beta)",
       "Mod": "ScorchedEarth"
     },
     {
-      "Category": "Trophy",
+      "Category": "Trophies",
       "IsHarvestable": false,
       "ClassName": "PrimalItemTrophy_Manticore_Gamma_C",
       "Description": "Manticore Trophy (Gamma)",
       "Mod": "ScorchedEarth"
+    },
+    {
+      "Category": "Tools",
+      "IsHarvestable": false,
+      "ClassName": "PrimalItem_WeaponElectronicBinoculars_C",
+      "Description": "Electronic Binoculars (Survival Evolved)",
+      "Mod": "ScorchedEarth"
     }
   ],
   "MapSpawners": [
-    {
-      "ClassName": "SE_DinoSpawnEntries_DeathWorm_C",
-      "Description": "DeathWorm",
-      "Mod": "ScorchedEarth"
-    },
     {
       "ClassName": "SE_DinoSpawnEntries_RexSolo_C",
       "Description": "RexSolo",
@@ -1415,6 +1239,16 @@
     {
       "ClassName": "DinoDropInventoryComponent_BossManticore_Hard_C",
       "Description": "Boss Inventory - Manticore (Hard)",
+      "Mod": "ScorchedEarth"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Carnivore_Deathworm_C",
+      "Description": "Drop Inventory - Carnivore Deathworm",
+      "Mod": "ScorchedEarth"
+    },
+    {
+      "ClassName": "DinoDropInventoryComponent_Carnivore_DeathwormAlpha_C",
+      "Description": "Drop Inventory - Carnivore Deathworm Alpha",
       "Mod": "ScorchedEarth"
     }
   ],

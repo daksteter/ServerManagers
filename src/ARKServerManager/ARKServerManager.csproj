@@ -60,4 +60,13 @@
     <ProjectReference Include="..\ServerManager.Updater\ServerManager.Updater.csproj" />
     <ProjectReference Include="..\WPFSharp.Globalizer\WPFSharp.Globalizer.csproj" />
   </ItemGroup>
+
+  <!-- The app loads every *.gamedata file in its GameData folder, so files removed from the project must not linger in the output. -->
+  <Target Name="RemoveStaleGameData" AfterTargets="Build">
+    <ItemGroup>
+      <_OutputGameData Include="$(OutDir)GameData\*.gamedata" />
+      <_StaleGameData Include="@(_OutputGameData)" Condition="!Exists('$(MSBuildProjectDirectory)\GameData\%(Filename)%(Extension)')" />
+    </ItemGroup>
+    <Delete Files="@(_StaleGameData)" />
+  </Target>
 </Project>

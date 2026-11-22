@@ -17,7 +17,7 @@ Turning Bletch1971's ARK Server Manager (ARK: Survival Evolved, "ASE") into a ma
 |---|---|---|
 | 1. Detach from upstream services, rebrand | Done | `5e2a0e75`, `995c49d1` |
 | 2. .NET Framework 4.6.2 → .NET 11, latest packages | Done | `e52b007f`, `6c59861b`, `c80cb7ba`, `f273acaf` |
-| 3. ASA support | In progress: M1–M5, M7 and M8 done; M6 has the map list only | `d554cb0a` plan; `dc58a01b`, `eedbd86a` M1; `0c1aef4d` maps; `ea7753e0`, `d91502ba` M3; `a6d0e38e` M2; `f4e015a2` M5; `d8450b5e` M4; `9609a942`; `9670bc09` M7; M8 (next commit) |
+| 3. ASA support | M1–M8 done (M6: game data rebuilt; some engram data still missing) | `d554cb0a` plan; `dc58a01b`, `eedbd86a` M1; `0c1aef4d` maps; `ea7753e0`, `d91502ba` M3; `a6d0e38e` M2; `f4e015a2` M5; `d8450b5e` M4; `9609a942`; `9670bc09` M7; `6eb52bed` M8; M6 |
 | 4. Cleanup / tech debt | Ongoing | |
 
 What phases 1–2 changed is in the commit messages. Highlights that affect later work:
@@ -218,11 +218,35 @@ Decision: **plain CurseForge IDs** (no CurseForge API for now).
       `TheIsland_WP`, `ScorchedEarth_WP`, `TheCenter_WP`, `Aberration_WP`, `Extinction_WP`, `Ragnarok_WP`,
       `Valguero_WP`, `LostColony_WP`, `Genesis_WP`, `Astraeos_WP` (in `SurvivalEvolved.gamedata`; ASE map
       entries removed from the other files). Mod maps can still be typed into the editable map box.
-- [ ] `GameData/*.gamedata` (14 files, ~22k lines of ASE creatures/engrams/items/crates/maps) must be
-      rebuilt for ASA. Decide the source (manual, community data, or extracted from the server).
-      Start with maps only; ship ASE content files disabled until replaced.
-- [ ] Resource keys: map names, ~2,300 class-name keys × 9 languages.
-- [ ] `GameDataApplication` filter (`"ark"`), the GameData window and its forum link.
+- [x] Game data rebuilt for ASA (`GameData/*.gamedata`, version 2.0.0) from three sources: the installed server's
+      pak directory index (which classes exist — 207,568 asset paths, read from the `.utoc` files), the existing
+      ASE data (names, engram levels/points, tameability for classes that carried over) and the ARK wiki's Cargo
+      tables `Items`, `Creatures`, `Entities`, `Craftables` plus its Creature IDs and Engram class names pages
+      (names, categories, tameability, engram levels/points for new content). Scripts in the scratchpad:
+      `utoc_index.py`, `asa_gamedata.py`.
+  - Kept: every ASE class that exists in ASA (310 creatures, 481 engrams, 986 items, 203 spawners, 101 crates,
+    27 drop inventories). Dropped: classes ASA doesn't have (Primitive Plus entirely; ASE structure engrams
+    replaced by the integrated S+ ones; a few map-specific creatures, spawners and inventories).
+  - Added: 253 creatures (wiki entries marked as in ASA whose class exists on the server), 593 items (wiki items
+    whose class exists), 71 engrams (only where the wiki gives level and points for a unique match), 151 map
+    spawners, 77 supply crates and 151 drop inventories (names derived from the class names).
+  - New creature name tags come from the wiki's Creature IDs page for base creatures (it agrees with the ASE data
+    for 131 of 137 base creatures); variants get none, so their spawn-weight cells stay hidden.
+  - Files: `SurvivalEvolved.gamedata` → `Base.gamedata`; new `LostColony`, `Astraeos`, `BobsTallTales`;
+    removed `PrimitivePlus`, `CrystalIsles`, `Fjordur`, `Genesis2`, `LostIsland`; `OfficialMods` /
+    `TotalConversions` arrays removed. Item categories normalised (e.g. `Resource` → `Resources`).
+  - The build now deletes `.gamedata` files from the output that are no longer in the project (the app loads
+    every file in the folder, so stale ones would come back).
+- [x] Mod groups: labels and row colours for Lost Colony, Astraeos, Bob's Tall Tales (and the missing Valguero
+      label); Primitive Plus, Crystal Isles, Genesis 2, Lost Island, Fjordur and PGM removed.
+- [x] Resource keys: 758 class-name strings for classes no longer in the game data pruned in all languages.
+- [x] `GameDataApplication` filter (`"ark"`) still fits (ASA is "ark" too); the GameData window's forum link went in M8.
+- [ ] 332 new ASA engrams aren't listed (no reliable level / points: mostly Bob's Tall Tales pack items, Lost
+      Colony gear and skins). They can still be overridden by class name in the engram grid.
+- [ ] Names for the new spawners, supply crates and drop inventories are derived from class names (e.g.
+      "Lost Loot Chest Cave T1"); improve when better data turns up.
+- [x] **Test:** creature, engram, item, crate and spawner lists show ASA content with the new mod colours; the
+      app starts without game-data errors.
 
 ### M7. Settings review (`ServerProfile.cs`, 451 properties / 305 INI keys)
 
