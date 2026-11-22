@@ -954,6 +954,7 @@
     <sys:String x:Key="ServerSettings_PlayerListButtonTooltip">Open the Player List window.</sys:String>
     <sys:String x:Key="ServerSettings_UpgradeButtonLabel">Upgrade / Verify</sys:String>
     <sys:String x:Key="ServerSettings_UpgradeButtonTooltip">Upgrade to the latest version of the server that is currently available to download. If there is no update then it will verify your server files</sys:String>
+    <sys:String x:Key="ServerSettings_UpgradeButtonDisabledTooltip">Upgrade or verify the server files. Available when the server is stopped.</sys:String>
     <sys:String x:Key="ServerSettings_InstallButtonLabel">Install</sys:String>
     <sys:String x:Key="ServerSettings_InstallButtonTooltip">Install the latest version of the server.</sys:String>
     <sys:String x:Key="ServerSettings_CancelUpgradeButtonLabel">Cancel</sys:String>

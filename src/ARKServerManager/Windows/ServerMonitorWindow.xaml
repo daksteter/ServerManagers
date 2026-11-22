@@ -463,9 +463,10 @@
                         <DataGridTemplateColumn Width="30" CanUserResize="False">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Width="22" Height="22" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" Click="UpdateServer_Click">
+                                    <Button Width="22" Height="22" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" Click="UpdateServer_Click" ToolTipService.ShowOnDisabled="True">
                                         <Button.Style>
                                             <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+                                                <Setter Property="ToolTip" Value="{DynamicResource ServerSettings_UpgradeButtonDisabledTooltip}"/>
                                                 <Style.Triggers>
                                                     <DataTrigger Binding="{Binding Runtime.Status}" Value="{x:Null}">
                                                         <Setter Property="Visibility" Value="Hidden"/>

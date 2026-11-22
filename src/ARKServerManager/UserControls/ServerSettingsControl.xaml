@@ -208,9 +208,10 @@
                             </Button>
                         </Grid>
                     </Border>
-                    <Button Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" Margin="2" DataContext="{Binding Runtime}" Click="Upgrade_Click">
+                    <Button Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" Margin="2" DataContext="{Binding Runtime}" Click="Upgrade_Click" ToolTipService.ShowOnDisabled="True">
                         <Button.Style>
                             <Style BasedOn="{StaticResource {x:Type Button}}" TargetType="{x:Type Button}">
+                                <Setter Property="ToolTip" Value="{DynamicResource ServerSettings_UpgradeButtonDisabledTooltip}"/>
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding Status}" Value="{x:Null}">
                                         <Setter Property="Content" Value="{StaticResource UpgradeButtonContent}"/>
