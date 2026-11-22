@@ -4052,9 +4052,14 @@ namespace ServerManagerTool.Lib
             }
         }
 
-        internal static ServerProfile FromDefaults()
+        /// <param name="otherProfiles">The profiles already in the app; the new profile gets ports and an install
+        /// folder none of them uses.</param>
+        internal static ServerProfile FromDefaults(IEnumerable<ServerProfile> otherProfiles = null)
         {
             var settings = new ServerProfile();
+            // before the server files are read and watched, as they're in the install folder
+            if (otherProfiles != null)
+                settings.AvoidConflicts(otherProfiles);
             settings.DinoSpawnWeightMultipliers.Reset();
             settings.TamedDinoClassResistanceMultipliers.Reset();
             settings.TamedDinoClassDamageMultipliers.Reset();
@@ -4076,7 +4081,48 @@ namespace ServerManagerTool.Lib
             return settings;
         }
 
-        private void GetDefaultDirectories()
+        /// <summary>
+        /// Moves a new profile off the ports and install folder of the other profiles, so a second server can run
+        /// next to the first without changing anything. Each port goes up to the next one no other profile uses,
+        /// in any role (7777, 7778, ...); the install folder becomes the next ServerN folder that neither exists
+        /// nor belongs to another profile.
+        /// </summary>
+        private void AvoidConflicts(IEnumerable<ServerProfile> otherProfiles)
+        {
+            var others = otherProfiles.Where(p => p != null && p != this).ToList();
+
+            var usedPorts = others.SelectMany(p => new[] { p.ServerPort, p.QueryPort, p.RCONPort }).ToHashSet();
+            ServerPort = NextFreePort(ServerPort, usedPorts);
+            QueryPort = NextFreePort(QueryPort, usedPorts);
+            RCONPort = NextFreePort(RCONPort, usedPorts);
+
+            var usedDirectories = others.Select(p => p.InstallDirectory)
+                                        .Where(d => !string.IsNullOrWhiteSpace(d))
+                                        .Select(ComparablePath)
+                                        .ToHashSet(StringComparer.OrdinalIgnoreCase);
+            if (!string.IsNullOrWhiteSpace(InstallDirectory) && usedDirectories.Contains(ComparablePath(InstallDirectory)))
+            {
+                InstallDirectory = string.Empty;
+                GetDefaultDirectories(usedDirectories);
+            }
+        }
+
+        /// <summary>The port, or the next one up that isn't in <paramref name="usedPorts"/>; it's then added to them.</summary>
+        private static int NextFreePort(int port, HashSet<int> usedPorts)
+        {
+            while (usedPorts.Contains(port) && port < System.Net.IPEndPoint.MaxPort)
+                port++;
+            usedPorts.Add(port);
+            return port;
+        }
+
+        // full path without a trailing separator (compare ignoring case)
+        private static string ComparablePath(string path) =>
+            Path.GetFullPath(path).TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
+
+        /// <param name="usedDirectories">Install folders of other profiles (<see cref="ComparablePath"/>), skipped
+        /// like existing folders.</param>
+        private void GetDefaultDirectories(ISet<string> usedDirectories = null)
         {
             if (!string.IsNullOrWhiteSpace(InstallDirectory))
                 return;
@@ -4093,10 +4139,10 @@ namespace ServerManagerTool.Lib
                 // get the test profile directory
                 var profileDirectory = Path.Combine(installDirectory, profileFolder);
 
-                // check if the profile directory exists
-                if (!Directory.Exists(profileDirectory))
+                // check if the profile directory exists or another profile uses it
+                if (!Directory.Exists(profileDirectory) && !(usedDirectories?.Contains(ComparablePath(profileDirectory)) ?? false))
                 {
-                    // profile directory does not exist, assign the test profile directory to the profile
+                    // profile directory is free, assign the test profile directory to the profile
                     InstallDirectory = profileDirectory;
                     break;
                 }

@@ -77,7 +77,8 @@ internal static class Program
         UiDriver <command> [arguments] [options]
 
         Process
-          launch <exe> [-- app arguments]   start the app (as this user, not elevated) and remember it
+          launch <exe> [-- app arguments]   start the app (as this user, not elevated) and remember it; with
+                                            -w, wait for that window (keeping the focus away until it's open)
           attach <pid>                      remember an already running process
           kill                              end the remembered process
           windows                           list its top-level windows (dialogs included)
@@ -139,11 +140,18 @@ internal static class Program
         var windows = WaitFor(options.Timeout, () =>
         {
             KeepFocus(process.Id, previousForeground);
-            return process.HasExited ? null : GetWindows(app, automation) is { Length: > 0 } w ? w : null;
+            if (process.HasExited)
+                return null;
+            // with -w, startup lasts until that window is open: it can come long after a first window (the app's
+            // SteamCMD install on a new data folder) and take the focus when it does
+            return options.Window == null
+                ? GetWindows(app, automation) is { Length: > 0 } w ? w : null
+                : TryChooseWindow(options, app, automation) is { } window ? [window] : null;
         });
         if (windows == null)
         {
-            Console.WriteLine(process.HasExited ? $"The process exited (code {process.ExitCode})." : "No window yet.");
+            Console.WriteLine(process.HasExited ? $"The process exited (code {process.ExitCode})."
+                : options.Window == null ? "No window yet." : $"No window \"{options.Window}\" yet.");
             return process.HasExited ? 1 : 0;
         }
 

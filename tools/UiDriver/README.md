@@ -29,13 +29,17 @@ focus, so `launch` gives it back to the window that had it (keys typed into a ga
 otherwise land in the test copy). The app's own windows opened later don't take it, but the Windows file and
 folder dialogs (Open, Save, Select Folder) do: don't open them while someone else is using the machine.
 
+On a new data folder the app installs SteamCMD before its main window opens, which can take a minute, and the
+main window takes the focus when it does. So launch with `-w` and the main window's title: `launch` then keeps
+the focus away until that window is open (`-t` sets how long it waits).
+
 ## Use
 
 ```powershell
 dotnet build tools\UiDriver -c Release
 $d = 'tools\UiDriver\bin\Release\net11.0-windows\UiDriver.exe'
 
-& $d launch 'src\ARKServerManager\bin\UiTest\app\JVH Ark Ascended Server Manager.exe'
+& $d launch 'src\ARKServerManager\bin\UiTest\app\JVH Ark Ascended Server Manager.exe' -w 'JVH Ark' -t 180
 & $d windows                                         # dialogs included; -w picks one by title
 & $d click 'help=Open Global Settings'               # icon buttons go by their tooltip
 & $d get 'name=Minimize To Tray' -w Settings         # a check box: toggle state

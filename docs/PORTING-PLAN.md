@@ -617,7 +617,14 @@ What's left before a public release (not planned soon). The repo is on a private
       folder (Profiles, Logs, SteamCMD), downloaded and installed SteamCMD (the `HttpClient` download), and
       showed the main window. The admin prompt is in daily use. The suggested folder name is now `asadata`
       (it was the original's `asmdata`, which an installed ARK Server Manager may already use).
-- [ ] Profiles: "+" adds, "x" deletes with confirmation, switching tabs keeps each tab's state.
+- [x] Profiles: "+" adds, "x" deletes with confirmation, switching tabs keeps each tab's state. Tested on the test
+      copy (November 2026): "+" added two profiles and the tab name follows the Profile box; a changed server
+      name and game port stayed with their tab when switching (section open/closed states are app-wide by
+      design); "x" asks first, No keeps the profile, Yes removes the tab and only that profile's file; the saved
+      profile came back unchanged after a restart. All new profiles got ports 7777 / 27015 / 32330 and, until
+      one was installed, the same install folder; now each takes the next ports and `ServerN` folder no other
+      profile uses (checked on the test copy: three new profiles got 7777-7779, 27015-27017, 32330-32332 and
+      Server1-3).
 - [ ] Folder pickers (install dir, backup dir), Help and other links open in the browser.
 - [ ] Install/update server via SteamCMD; start, stop (with countdown), restart.
 - [ ] Status and player count update; RCON window connects, auto-scrolls, kick/ban work.

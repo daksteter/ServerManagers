@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
+using System.Linq;
 using System.Windows;
 
 namespace ServerManagerTool.Lib
@@ -60,7 +61,7 @@ namespace ServerManagerTool.Lib
       
         public int AddNew()
         {
-            var server = Server.FromDefaults();
+            var server = Server.FromDefaults(this.Servers.Select(s => s?.Profile));
             if (server == null)
                 return this.Servers.Count - 1;
 

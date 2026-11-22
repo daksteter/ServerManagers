@@ -1,5 +1,6 @@
 ﻿using ServerManagerTool.Common.Lib;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -81,9 +82,10 @@ namespace ServerManagerTool.Lib
             return new Server(loadedProfile);
         }
 
-        public static Server FromDefaults()
+        /// <param name="otherProfiles">The profiles already in the app, whose ports and install folders the new one avoids.</param>
+        public static Server FromDefaults(IEnumerable<ServerProfile> otherProfiles = null)
         {
-            var loadedProfile = ServerProfile.FromDefaults();
+            var loadedProfile = ServerProfile.FromDefaults(otherProfiles);
             if (loadedProfile == null)
                 return null;
             return new Server(loadedProfile);

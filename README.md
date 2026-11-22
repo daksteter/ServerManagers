@@ -144,6 +144,9 @@ ready for players, and the player count shows next to **Players**.
 | Query port | 27015 | UDP | Not needed: ASA servers are listed through Epic Online Services |
 | RCON port | 32330 | TCP | No: the app uses it on the same machine |
 
+Each new profile gets the next ports no other profile uses (7778, 27016 and 32331 for the second one), so
+several servers can run side by side. Forward each server's game port.
+
 With **Manage firewall settings automatically** on (in Settings) and the app running as administrator, the app
 opens the ports in Windows Firewall itself. Players find the server in the game's unofficial server list by its
 name.

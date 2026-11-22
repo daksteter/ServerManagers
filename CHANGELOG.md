@@ -73,6 +73,9 @@ First release for ARK: Survival Ascended (ASA). Servers for ARK: Survival Evolve
   - "Running / Available" means the server has finished starting and is accepting players. Whether it can be
     reached from the internet is no longer checked.
   - The player count comes from RCON.
+- **New profiles get their own ports.** Each port is the next one no other profile uses (game port 7777, 7778,
+  and so on; the same for the Steam and RCON ports), so a second server can run next to the first without
+  changing anything.
 - **RCON is on by default for new profiles.** The player count, shutdown messages and the world save before a
   stop all need it. New profiles get a generated admin password.
 - **A dash and an explanatory tooltip instead of "0"** when the player count can't be read (RCON off, no reply
@@ -120,6 +123,8 @@ First release for ARK: Survival Ascended (ASA). Servers for ARK: Survival Evolve
   RCON window's Save World and Destroy Wild Dinos messages were sent as an invalid command.
 - **Restoring a world save now removes the old save's leftover SQLite journal** (left by a crash). Otherwise it
   would be applied to the restored world the next time it was opened, corrupting it.
+- **New profiles added before any of them was installed all got the same install folder** (`Servers\Server1`).
+  Each now gets the next folder that neither exists nor belongs to another profile.
 - **Profile sync copied the cluster directory override even with cluster sync turned off.**
 - **The server-started alert showed the query port instead of the game port.**
 - **The Server Monitor showed ASA map names without their underscore** ("TheIslandWP"). It now shows the map's
@@ -161,7 +166,7 @@ First release for ARK: Survival Ascended (ASA). Servers for ARK: Survival Evolve
   release, instead of a modified copy of its source. The changes the app relied on (English under other languages,
   resource strings, style loading, the language list) are now in the app.
 - Unit tests for the RCON client, the accessible names, the manifest reader, the server's command line, the save
-  folders, zip extraction and the Discord plugin's webhook messages. They need no network, server or fixed
+  folders, new profiles' ports and install folders, zip extraction and the Discord plugin's webhook messages. They need no network, server or fixed
   folders: `dotnet test src\Server-Managers.slnx`.
 - The solution file is `src\Server-Managers.slnx` (the newer format); `global.json` pins the .NET 11 SDK.
 - GitHub Actions: every push to `main` is built and tested; pushing a version tag (`v1.2.0`) publishes a GitHub

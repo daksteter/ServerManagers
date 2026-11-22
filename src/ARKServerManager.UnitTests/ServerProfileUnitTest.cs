@@ -193,5 +193,68 @@ namespace ServerManagerTool.UnitTests
         }
 
         #endregion
+
+        #region New profiles
+
+        [TestMethod]
+        public void FromDefaults_NoOtherProfiles_StandardPorts()
+        {
+            var profile = ServerProfile.FromDefaults([]);
+
+            Assert.AreEqual(7777, profile.ServerPort);
+            Assert.AreEqual(27015, profile.QueryPort);
+            Assert.AreEqual(32330, profile.RCONPort);
+        }
+
+        [TestMethod]
+        public void FromDefaults_NextToAnotherProfile_NextPortsAndServerFolder()
+        {
+            var first = ServerProfile.FromDefaults();
+
+            var second = ServerProfile.FromDefaults([first]);
+
+            Assert.AreEqual(7778, second.ServerPort);
+            Assert.AreEqual(27016, second.QueryPort);
+            Assert.AreEqual(32331, second.RCONPort);
+            // the first profile's folder isn't installed yet, so it doesn't exist: only the profile reserves it
+            Assert.AreNotEqual(first.InstallDirectory, second.InstallDirectory, ignoreCase: true);
+            Assert.AreEqual(Path.GetDirectoryName(first.InstallDirectory), Path.GetDirectoryName(second.InstallDirectory));
+        }
+
+        [TestMethod]
+        public void FromDefaults_PortsUsedInAnyRole_AreSkipped()
+        {
+            var a = ServerProfile.FromDefaults();
+            var b = ServerProfile.FromDefaults();
+            // a: 7777 / 27015 / 32330; b takes the next game port as its query port and the next RCON port as its game port
+            b.ServerPort = 32331;
+            b.QueryPort = 7778;
+            b.RCONPort = 32332;
+
+            var profile = ServerProfile.FromDefaults([a, b, null]);
+
+            Assert.AreEqual(7779, profile.ServerPort);
+            Assert.AreEqual(27016, profile.QueryPort);
+            Assert.AreEqual(32333, profile.RCONPort);
+        }
+
+        [TestMethod]
+        public void FromDefaults_FreeDefaultPorts_AreKept()
+        {
+            var other = ServerProfile.FromDefaults();
+            other.ServerPort = 7800;
+            other.QueryPort = 27100;
+            other.RCONPort = 32400;
+            other.InstallDirectory = @"C:\ASA\Elsewhere";
+
+            var profile = ServerProfile.FromDefaults([other]);
+
+            Assert.AreEqual(7777, profile.ServerPort);
+            Assert.AreEqual(27015, profile.QueryPort);
+            Assert.AreEqual(32330, profile.RCONPort);
+            Assert.AreEqual(ServerProfile.FromDefaults().InstallDirectory, profile.InstallDirectory);
+        }
+
+        #endregion
     }
 }
