@@ -646,19 +646,15 @@ namespace ServerManagerTool
             }
         }
 
+        // kick, ban and unban need only the player ID (online players have it from the server's player list, offline
+        // ones from their save file)
         public ICommand KickPlayerProfileCommand
         {
             get
             {
                 return field ??= new RelayCommand<PlayerInfo>(
-                    execute: (player) =>
-                    {
-                        if (player.PlayerData != null)
-                        {
-                            this.ServerRCON.IssueCommand($"{ServerRcon.RCON_COMMAND_KICKPLAYER} {player.PlayerId.ToString()}");
-                        }
-                    },
-                    canExecute: (player) => player != null
+                    execute: (player) => this.ServerRCON.IssueCommand($"{ServerRcon.RCON_COMMAND_KICKPLAYER} {player.PlayerId}"),
+                    canExecute: (player) => !string.IsNullOrWhiteSpace(player?.PlayerId)
                 );
             }
         }
@@ -668,14 +664,8 @@ namespace ServerManagerTool
             get
             {
                 return field ??= new RelayCommand<PlayerInfo>(
-                    execute: (player) =>
-                    {
-                        if (player.PlayerData != null)
-                        {
-                            this.ServerRCON.IssueCommand($"{ServerRcon.RCON_COMMAND_BANPLAYER} {player.PlayerId.ToString()}");
-                        }
-                    },
-                    canExecute: (player) => player != null
+                    execute: (player) => this.ServerRCON.IssueCommand($"{ServerRcon.RCON_COMMAND_BANPLAYER} {player.PlayerId}"),
+                    canExecute: (player) => !string.IsNullOrWhiteSpace(player?.PlayerId)
                 );
             }
         }
@@ -685,14 +675,8 @@ namespace ServerManagerTool
             get
             {
                 return field ??= new RelayCommand<PlayerInfo>(
-                    execute: (player) =>
-                    {
-                        if (player.PlayerData != null)
-                        {
-                            this.ServerRCON.IssueCommand($"{ServerRcon.RCON_COMMAND_UNBANPLAYER} {player.PlayerId.ToString()}");
-                        }
-                    },
-                    canExecute: (player) => player != null
+                    execute: (player) => this.ServerRCON.IssueCommand($"{ServerRcon.RCON_COMMAND_UNBANPLAYER} {player.PlayerId}"),
+                    canExecute: (player) => !string.IsNullOrWhiteSpace(player?.PlayerId)
                 );
             }
         }

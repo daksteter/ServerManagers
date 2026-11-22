@@ -625,9 +625,19 @@ What's left before a public release (not planned soon). The repo is on a private
       one was installed, the same install folder; now each takes the next ports and `ServerN` folder no other
       profile uses (checked on the test copy: three new profiles got 7777-7779, 27015-27017, 32330-32332 and
       Server1-3).
-- [ ] Folder pickers (install dir, backup dir), Help and other links open in the browser.
-- [ ] Install/update server via SteamCMD; start, stop (with countdown), restart.
-- [ ] Status and player count update; RCON window connects, auto-scrolls, kick/ban work.
+- [x] Folder pickers (install dir, backup dir), Help and other links open in the browser. Tested in the real app
+      (November 2026): **Set Location...** and the backup folder button open the folder picker (the dialogs
+      built into .NET), Help and the patch notes button open the ARK wiki.
+- [x] Install/update server via SteamCMD; start, stop (with countdown), restart. Install, start and stop with a
+      countdown in M2; in November 2026 the profile's Update button (SteamCMD, server back up a minute later),
+      a restart with a 1-minute countdown, and a restart with "Update server after shutdown" (stop, SteamCMD,
+      start) all worked, checked in the status and SteamCMD logs. Found on the way: the shutdown window's Stop
+      button ignored the update and restart options (it just stopped the server); it's now unavailable while
+      they're ticked.
+- [x] Status and player count update; RCON window connects, auto-scrolls, kick/ban work. Tested in game
+      (November 2026): the player count follows joins and leaves, chat scrolls, Kick disconnects, and Ban /
+      Unban work online and offline (the server answers "Banned" / "Unbanned"; a banned player can't join).
+      Found on the way: Ban Player and Unban Player were bound to commands that don't exist and did nothing.
 - [x] Backup and restore a world save.
 - [ ] Scheduled tasks (auto-start, auto-update, auto-backup, auto-shutdown) are created and actually run
       (they must point at the `.exe`, not the `.dll`).

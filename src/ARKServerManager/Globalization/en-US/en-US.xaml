@@ -469,6 +469,7 @@
     <sys:String x:Key="ShutdownWindow_CancelShutdownButtonTooltip">Cancel the server shutdown.</sys:String>
     <sys:String x:Key="ShutdownWindow_StopButtonLabel">Stop</sys:String>
     <sys:String x:Key="ShutdownWindow_StopButtonTooltip">Save the world and stop the server, without a countdown.</sys:String>
+    <sys:String x:Key="ShutdownWindow_StopButtonOptionsTooltip">Stop doesn't update or restart the server. To do that without a countdown, set Countdown Length to 0 and click Restart (or Shutdown).</sys:String>
     <sys:String x:Key="ShutdownWindow_CloseButtonLabel">Close</sys:String>
     <sys:String x:Key="ShutdownWindow_CloseButtonTooltip">Close the window and cancel the server shutdown.</sys:String>
     <!--#endregion-->

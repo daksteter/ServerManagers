@@ -160,7 +160,8 @@
                     </Style>
                 </Button.Style>
             </Button>
-            <Button Grid.Row="0" Grid.Column="3" Margin="5,0,0,0" Padding="5" VerticalAlignment="Center" Click="Stop_Click">
+            <!-- Stop doesn't update or restart: unavailable while those are ticked, so they can't be skipped unnoticed -->
+            <Button Grid.Row="0" Grid.Column="3" Margin="5,0,0,0" Padding="5" VerticalAlignment="Center" Click="Stop_Click" ToolTipService.ShowOnDisabled="True">
                 <Button.Style>
                     <Style BasedOn="{StaticResource {x:Type Button}}" TargetType="{x:Type Button}">
                         <Setter Property="IsEnabled" Value="False" />
@@ -171,9 +172,17 @@
                                 <MultiDataTrigger.Conditions>
                                     <Condition Binding="{Binding Server.Runtime.Status}" Value="{x:Static ce:ServerStatus.Running}" />
                                     <Condition Binding="{Binding ShutdownStarted}" Value="False" />
+                                    <Condition Binding="{Binding UpdateServer}" Value="False" />
+                                    <Condition Binding="{Binding RestartServer}" Value="False" />
                                 </MultiDataTrigger.Conditions>
                                 <Setter Property="IsEnabled" Value="True"/>
                             </MultiDataTrigger>
+                            <DataTrigger Binding="{Binding UpdateServer}" Value="True">
+                                <Setter Property="ToolTip" Value="{DynamicResource ShutdownWindow_StopButtonOptionsTooltip}" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding RestartServer}" Value="True">
+                                <Setter Property="ToolTip" Value="{DynamicResource ShutdownWindow_StopButtonOptionsTooltip}" />
+                            </DataTrigger>
                         </Style.Triggers>
                     </Style>
                 </Button.Style>
