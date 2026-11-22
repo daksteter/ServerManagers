@@ -244,24 +244,6 @@ namespace ServerManagerTool {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string LatestASMVersionUrl {
-            get {
-                return ((string)(this["LatestASMVersionUrl"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("720")]
-        public int UpdateCheckTime {
-            get {
-                return ((int)(this["UpdateCheckTime"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("ShooterGame\\Saved\\SavedArks")]
         public string SavedFilesRelativePath {
             get {
@@ -986,33 +968,6 @@ namespace ServerManagerTool {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string LatestASMBetaVersionUrl {
-            get {
-                return ((string)(this["LatestASMBetaVersionUrl"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string LatestASMBetaDownloadUrl {
-            get {
-                return ((string)(this["LatestASMBetaDownloadUrl"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string LatestASMDownloadUrl {
-            get {
-                return ((string)(this["LatestASMDownloadUrl"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string LatestASMPatchNotesUrl {
             get {
                 return ((string)(this["LatestASMPatchNotesUrl"]));
@@ -1533,24 +1488,6 @@ namespace ServerManagerTool {
         public string MapExtension {
             get {
                 return ((string)(this["MapExtension"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("ASM_")]
-        public string UpdaterPrefix {
-            get {
-                return ((string)(this["UpdaterPrefix"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("ServerManagerUpdater.exe")]
-        public string UpdaterFile {
-            get {
-                return ((string)(this["UpdaterFile"]));
             }
         }
         

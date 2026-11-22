@@ -15,8 +15,6 @@ using System.Runtime.InteropServices;
 
 [assembly: Guid("679fe859-9a82-4ffb-a758-c1e8df915f58")]
 
-[assembly: AssemblyVersion("1.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
 
 [assembly: InternalsVisibleTo("JVH Ark Ascended Server Manager")]
 [assembly: InternalsVisibleTo("ServerManager")]

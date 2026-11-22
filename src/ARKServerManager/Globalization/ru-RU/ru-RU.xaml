@@ -765,7 +765,6 @@
     <sys:String x:Key="MainWindow_OpenHelpTooltip">Открыть Помощь</sys:String>
     <sys:String x:Key="MainWindow_OpenServerMonitorTooltip">Открыть Сервер Монитор</sys:String>
     <sys:String x:Key="MainWindow_JoinDiscordTooltip">Присоединяйтесь к серверу Discord</sys:String>
-    <sys:String x:Key="MainWindow_UpdateToLabelFormat">Обновить до {0} сейчас!</sys:String>
     <sys:String x:Key="MainWindow_TaskStatusLabel">Статус задач</sys:String>
     <sys:String x:Key="MainWindow_TaskAdminErrorTitle">Требуется разрешение администратора</sys:String>
     <sys:String x:Key="MainWindow_TaskAdminErrorLabel">Эта функция не может быть выполнена, так как она требует права администратора.</sys:String>
@@ -803,11 +802,6 @@
     <sys:String x:Key="MainWindow_ProfileDelete_Label">Вы действительно хотите удалить этот профиль?\r\n\r\nПримечание: Это удалит только профиль, а не каталог установки, сохранит игру или файлы настроек, содержащиеся в нем.</sys:String>
     <sys:String x:Key="MainWindow_Donate_Title">Сделать пожертвование?</sys:String>
     <sys:String x:Key="MainWindow_Donate_Label">JVH Ark Ascended Server Manager - это проект с открытым исходным кодом, предоставляемый совершенно бесплатно. Вы можете пожертвовать, если хотите; Однако вы не обязаны. Если вы хотите пожертвовать, ваш браузер откроется на веб-сайте PayPal, где вы можете пожертвовать сколько вам не жалко :) Вы хотите пожертвовать сейчас?</sys:String>
-    <sys:String x:Key="MainWindow_Upgrade_Title">Доступно Обновление</sys:String>
-    <sys:String x:Key="MainWindow_Upgrade_Label">Версия {0} доступна. Для обновления, приложение должно быть закрыто. Закрыть и обновить сейчас?</sys:String>
-    <sys:String x:Key="MainWindow_OverlayMessage_UpgradeLabel">Запуск Обновления...</sys:String>
-    <sys:String x:Key="MainWindow_Upgrade_FailedTitle">Ошибка Обновления!</sys:String>
-    <sys:String x:Key="MainWindow_Upgrade_FailedLabel">Не удалось запустить процесс обновления. Сообщите об этом.\r\nException: {0}\r\nStacktrace: {1}</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_Title">Переустановить SteamCMD</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_Label">Если запустить, SteamCMD будет удален, включая все загрузки кэша Модов.\r\nВы уверены, что хотите переустановить SteamCMD?</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_FailedTitle">Ошибка переустановки SteamCMD</sys:String>
@@ -820,11 +814,6 @@
     <sys:String x:Key="MainWindow_ServerStatus_StartServerActionLabel">Вы собираетесь запустить сервер, хотите продолжить?</sys:String>
     <sys:String x:Key="MainWindow_ServerStatus_ShutdownServerActionTitle">Подтверждение остановки сервера</sys:String>
     <sys:String x:Key="MainWindow_ServerStatus_ShutdownServerActionLabel">Вы собираетесь остановить сервер, хотите продолжить?</sys:String>
-
-    <sys:String x:Key="Updater_ProgressMessage_DownloadLabel">Загрузка последней версии файла ...</sys:String>
-    <sys:String x:Key="Updater_ProgressMessage_PrepareLabel">Подготовка загруженного файла ...</sys:String>
-    <sys:String x:Key="Updater_ProgressMessage_ExtractLabel">Извлечение последней версии в промежуточную область ...</sys:String>
-    <sys:String x:Key="Updater_ProgressMessage_UpgradeLabel">Запуск обновления ...</sys:String>
     <!--#endregion-->
 
     <!--#region General strings -->

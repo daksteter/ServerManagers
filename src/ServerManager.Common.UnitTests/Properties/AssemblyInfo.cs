@@ -15,5 +15,3 @@ using System.Runtime.InteropServices;
 [assembly: Guid("a8fc1221-f1c0-4aad-8b46-2a0b0b349399")]
 
 // exclude from semantic versioning
-[assembly: AssemblyVersion("1.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]

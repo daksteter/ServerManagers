@@ -395,10 +395,12 @@ The Island, Scorched Earth, The Center, Aberration, Extinction, Astraeos, Ragnar
 - [x] `ArkData` rewritten on AsaSavegameToolkit: its A2S client (`SSQLib`), `LoadOnlinePlayers*` and Steam lookups
       are gone.
 - [ ] Dead code left: `SteamServerDetail*` models, `SteamUtils.GetSteamProcess`.
-- [ ] Self-updater (`ServerManager.Updater`): disabled; its single-exe swap logic doesn't fit .NET's
-      multi-file output. Remove it, or rework if a release channel is ever wanted.
-- [ ] `.azure/` and `.github/` CI configs are upstream's (Azure DevOps, Inno Setup installer that still
-      builds `ARK Server Manager.exe`) — delete or replace.
+- [x] Self-updater removed: the `ServerManager.Updater` project, the Upgrade buttons in the main window and Server
+      Monitor, the version check that showed them (it polled an empty URL every 12 hours), its settings
+      (`LatestASM*Url`, `UpdaterFile`, `UpdaterPrefix`, `UpdateCheckTime`) and its texts in every language.
+- [x] Upstream's `.azure/` pipelines, Inno Setup script and `.github/workflows/msbuild.yml` deleted; the GitHub
+      workflow would have run (and failed) on every push to the new repo. Releases are built with
+      `tools\Release\Build-Release.ps1`.
 - [ ] Unit tests: `ZipUtilsUnitTest` needs `D:\_smtest`, `DiscordPluginUnitTest` touches plugin config
       (`QueryMaster.UnitTests`, which queried real IPs, went with QueryMaster; `RconClientUnitTest` is
       self-contained). Make the rest self-contained or delete them; add tests for argument building and path logic.
@@ -481,8 +483,8 @@ The Island, Scorched Earth, The Center, Aberration, Extinction, Astraeos, Ragnar
 
 ## Release checklist
 
-What's left before a public release. The repo is pushed to a private GitHub repo (`origin`, branch `asa`);
-Bletch's repo is `upstream`.
+What's left before a public release (not planned soon). The repo is on a private GitHub repo (`origin`, branch
+`main`); Bletch's repo is `upstream`.
 
 - [ ] **Permission from Bletch**, then a license. ARK Server Manager has no license file; README's License
       section says "not decided".
@@ -490,12 +492,13 @@ Bletch's repo is `upstream`.
       from ARK Server Manager) come from, or replace them.
 - [ ] **README:** describe the app properly for people finding the repo: what it does in more depth, screenshots,
       a setup walkthrough.
-- [ ] **Self-updater:** remove `ServerManager.Updater` from the app. It's disabled, but `ServerManagerUpdater.exe`
-      still lands in the build output.
-- [ ] **Release build:** a script (or workflow) that makes a clean Release build and zips it with README,
-      CHANGELOG and THIRD-PARTY-NOTICES, without `userconfig.json` / `commonconfig.json` (a copy of the app that
-      has run writes them into its folder) or the updater. Set a version: every AssemblyInfo is still 1.0.
-      Replace upstream's `.azure` pipelines, Inno Setup script and `.github/workflows/msbuild.yml`.
+- [x] **Self-updater** removed (see Phase 4).
+- [x] **Release build:** `tools\Release\Build-Release.ps1` publishes a clean Release build in its own folder
+      (`--artifacts-path`, so a copy of the app running from `bin\Release` doesn't get in the way), adds README,
+      CHANGELOG and THIRD-PARTY-NOTICES, refuses settings backups, the updater and `.pdb` files, checks the
+      stamped version, and zips it into `artifacts\` with its SHA-256. The version is one `<Version>` in
+      `src\Directory.Build.props` (1.1.0; the AssemblyInfo files no longer set one). It must stay above 1.0: user
+      settings live in a folder per version, and `Config.Upgrade()` only copies them from a lower one.
 - [ ] **Manual test checklist** below, especially scheduled tasks (need admin), "Create shortcut" and the
       Discord bot.
 - [ ] **CHANGELOG:** turn [Unreleased] into the first version, with its date.

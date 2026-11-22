@@ -27,7 +27,6 @@ namespace ServerManagerTool
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
         private readonly GlobalizedApplication _globalizer = GlobalizedApplication.Instance;
-        private readonly ActionQueue versionChecker;
         private readonly ActionQueue scheduledTaskChecker;
         private readonly ActionQueue discordBotChecker;
 
@@ -46,8 +45,6 @@ namespace ServerManagerTool
         public static readonly DependencyProperty DiscordBotStateProperty = DependencyProperty.Register(nameof(DiscordBotState), typeof(DiscordBot.Enums.BotState), typeof(MainWindow), new PropertyMetadata(DiscordBot.Enums.BotState.Unknown));
         public static readonly DependencyProperty DiscordBotStateStringProperty = DependencyProperty.Register(nameof(DiscordBotStateString), typeof(string), typeof(MainWindow), new PropertyMetadata(string.Empty));
         public static readonly DependencyProperty IsIpValidProperty = DependencyProperty.Register(nameof(IsIpValid), typeof(bool), typeof(MainWindow), new PropertyMetadata(false));
-        public static readonly DependencyProperty LatestServerManagerVersionProperty = DependencyProperty.Register(nameof(LatestServerManagerVersion), typeof(Version), typeof(MainWindow), new PropertyMetadata(new Version()));
-        public static readonly DependencyProperty NewServerManagerAvailableProperty = DependencyProperty.Register(nameof(NewServerManagerAvailable), typeof(bool), typeof(MainWindow), new PropertyMetadata(false));
 
         public MainWindow()
         {
@@ -61,7 +58,6 @@ namespace ServerManagerTool
             this.ServerManager = ServerManager.Instance;
 
             this.DataContext = this;
-            this.versionChecker = new ActionQueue();
             this.scheduledTaskChecker = new ActionQueue();
             this.discordBotChecker = new ActionQueue();
 
@@ -176,18 +172,6 @@ namespace ServerManagerTool
             set { SetValue(IsIpValidProperty, value); }
         }
 
-        public Version LatestServerManagerVersion
-        {
-            get { return (Version)GetValue(LatestServerManagerVersionProperty); }
-            set { SetValue(LatestServerManagerVersionProperty, value); }
-        }
-
-        public bool NewServerManagerAvailable
-        {
-            get { return (bool)GetValue(NewServerManagerAvailableProperty); }
-            set { SetValue(NewServerManagerAvailableProperty, value); }
-        }
-
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             // hide link buttons that have no destination configured.
@@ -219,7 +203,6 @@ namespace ServerManagerTool
                     Tabs.SelectedIndex = 0;
                 }).DoNotWait();
 
-            this.versionChecker.PostAction(CheckForUpdates).DoNotWait();
             this.scheduledTaskChecker.PostAction(CheckForScheduledTasks).DoNotWait();
             this.discordBotChecker.PostAction(CheckForDiscordBot).DoNotWait();
         }
@@ -281,7 +264,6 @@ namespace ServerManagerTool
             RCONWindow.CloseAllWindows();
             PlayerListWindow.CloseAllWindows();
             ServerMonitorWindow.CloseAllWindows();
-            this.versionChecker.DisposeAsync().DoNotWait();
         }
 
         private void ResourceDictionaryChangedEvent(object source, ResourceDictionaryChangedEventArgs e)
@@ -291,7 +273,6 @@ namespace ServerManagerTool
             else
                 this.Title = _globalizer.GetResourceString("MainWindow_Title");
 
-            this.versionChecker.PostAction(CheckForUpdates).DoNotWait();
             this.scheduledTaskChecker.PostAction(CheckForScheduledTasks).DoNotWait();
             this.discordBotChecker.PostAction(CheckForDiscordBot).DoNotWait();
         }
@@ -451,76 +432,6 @@ namespace ServerManagerTool
                 {
                     if (window != null)
                         window.CloseWindow();
-                }
-            }
-        }
-
-        private async void Upgrade_Click(object sender, RoutedEventArgs e)
-        {
-            var result = MessageBox.Show(String.Format(_globalizer.GetResourceString("MainWindow_Upgrade_Label"), this.LatestServerManagerVersion), _globalizer.GetResourceString("MainWindow_Upgrade_Title"), MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if(result == MessageBoxResult.Yes)
-            {
-                try
-                {
-                    OverlayMessage.Content = _globalizer.GetResourceString("MainWindow_OverlayMessage_UpgradeLabel");
-                    OverlayGrid.Visibility = Visibility.Visible;
-
-                    await Task.Delay(500);
-
-                    var process = Process.GetCurrentProcess();
-                    if (process == null || process.HasExited)
-                        throw new Exception("Application process could not be found or does not exist.");
-
-                    var assemblyLocation = Assembly.GetEntryAssembly().Location;
-                    var updaterFile = Path.Combine(Path.GetDirectoryName(assemblyLocation), Config.Default.UpdaterFile);
-                    var newUpdaterFile = Path.Combine(Path.GetDirectoryName(assemblyLocation), $"New{Config.Default.UpdaterFile}");
-
-                    // check if there is a new version of the updater file
-                    if (File.Exists(newUpdaterFile))
-                    {
-                        // file exists, overwrite the file, so that we use the new updater instead
-                        try
-                        {
-                            File.Copy(newUpdaterFile, updaterFile, true);
-                            await Task.Delay(1000);
-                            File.Delete(newUpdaterFile);
-                        }
-                        catch (Exception ex)
-                        {
-                            // if error, then do nothing
-                            Logger.Debug($"An error occurred trying to update the server manager updater. {ex.Message}");
-                        }
-                    }
-
-                    if (!File.Exists(updaterFile))
-                        throw new FileNotFoundException("The updater application could not be found or does not exist.");
-
-                    var arguments = new string[]
-                        {
-                            process.Id.ToString().AsQuoted(),
-                            App.Instance.BetaVersion ? Config.Default.LatestASMBetaDownloadUrl.AsQuoted() : Config.Default.LatestASMDownloadUrl.AsQuoted(),
-                            Config.Default.UpdaterPrefix.AsQuoted(),
-                        };
-
-                    ProcessStartInfo info = new ProcessStartInfo()
-                    {
-                        FileName = updaterFile.AsQuoted(),
-                        Arguments = string.Join(" ", arguments),
-                        UseShellExecute = true,
-                        CreateNoWindow = true,
-                    };
-
-                    var updaterProcess = Process.Start(info);
-                    if (updaterProcess == null)
-                        throw new Exception("Could not restart application.");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(String.Format(_globalizer.GetResourceString("MainWindow_Upgrade_FailedLabel"), ex.Message, ex.StackTrace), _globalizer.GetResourceString("MainWindow_Upgrade_FailedTitle"), MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                finally
-                {
-                    OverlayGrid.Visibility = Visibility.Collapsed;
                 }
             }
         }
@@ -698,33 +609,6 @@ namespace ServerManagerTool
                     canExecute: (server) => server != null && server.Profile != null && server.Runtime != null
                 );
             }
-        }
-
-        private async Task CheckForUpdates()
-        {
-            string url = App.Instance.BetaVersion ? Config.Default.LatestASMBetaVersionUrl : Config.Default.LatestASMVersionUrl;
-            var newVersion = await NetworkUtils.GetLatestServerManagerVersion(url);
-
-            TaskUtils.RunOnUIThreadAsync(() =>
-            {
-                try
-                {
-                    var appVersion = new Version();
-                    Version.TryParse(App.Instance.Version, out appVersion);
-
-                    this.LatestServerManagerVersion = newVersion;
-                    this.NewServerManagerAvailable = appVersion < newVersion;
-
-                    Logger.Info($"{nameof(CheckForUpdates)} performed");
-                }
-                catch (Exception)
-                {
-                    // Ignore.
-                }
-            }).DoNotWait();
-
-            await Task.Delay(Config.Default.UpdateCheckTime * 60 * 1000);
-            this.versionChecker.PostAction(CheckForUpdates).DoNotWait();
         }
 
         private async Task CheckForScheduledTasks()

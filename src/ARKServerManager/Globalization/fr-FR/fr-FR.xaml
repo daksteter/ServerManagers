@@ -745,7 +745,6 @@
     <sys:String x:Key="MainWindow_OpenHelpTooltip">Ouvrir l'aide</sys:String>
     <sys:String x:Key="MainWindow_OpenServerMonitorTooltip">Ouvrir Moniteur de serveur</sys:String>
     <sys:String x:Key="MainWindow_JoinDiscordTooltip">Rejoidre le serveur Discord</sys:String>
-    <sys:String x:Key="MainWindow_UpdateToLabelFormat">Mettre à niveau vers {0} now!</sys:String>
     <sys:String x:Key="MainWindow_TaskStatusLabel">Statut des tâches</sys:String>
     <sys:String x:Key="MainWindow_TaskAdminErrorTitle">Requiert l'autorisation d'administrations</sys:String>
     <sys:String x:Key="MainWindow_TaskAdminErrorLabel">Cette fonction ne peut pas être effectuée car elle nécessite des autorisations d'administration.</sys:String>
@@ -783,11 +782,6 @@
     <sys:String x:Key="MainWindow_ProfileDelete_Label">Êtes-vous sûr de vouloir supprimer ce profil??\r\n\r\nNOTE: Cela supprimera uniquement le profil, pas le répertoire d'installation, sauvegardera les jeux ou les fichiers de paramètres qui y sont contenus.</sys:String>
     <sys:String x:Key="MainWindow_Donate_Title">Faire un don?</sys:String>
     <sys:String x:Key="MainWindow_Donate_Label">JVH Ark Ascended Server Manager est un projet open-source, entièrement gratuit. Vous pouvez toujours faire un don si vous le souhaitez; Cependant, vous n'êtes pas obligé. Si vous souhaitez faire un don, votre navigateur s'ouvrira sur le site Web de PayPal où vous pouvez donner aussi peu ou autant que vous le souhaitez. Aimeriez-vous faire un don maintenant?</sys:String>
-    <sys:String x:Key="MainWindow_Upgrade_Title">Mise à jour disponible</sys:String>
-    <sys:String x:Key="MainWindow_Upgrade_Label">Version {0} est maintenant disponible. Pour mettre à niveau l'application doit fermer. Fermer et mettre à jour maintenant?</sys:String>
-    <sys:String x:Key="MainWindow_OverlayMessage_UpgradeLabel">Démarrage de la Mise à jour...</sys:String>
-    <sys:String x:Key="MainWindow_Upgrade_FailedTitle">Échec Mise à jour!</sys:String>
-    <sys:String x:Key="MainWindow_Upgrade_FailedLabel">Impossible d'exécuter le processus de mise à jour. S'il vous plaît signaler ceci.\r\nException: {0}\r\nStacktrace: {1}</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_Title">Réinstaller SteamCMD</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_Label">Si vous continuez, l'intégralité du dossier SteamCMD sera supprimé, y compris tous les téléchargements de cache mod..\r\nÊtes-vous sûr de vouloir réinstaller SteamCMD??</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_FailedTitle">Erreur lors de la réinstallation de SteamCMD</sys:String>
@@ -800,11 +794,6 @@
     <sys:String x:Key="MainWindow_ServerStatus_StartServerActionLabel">Vous êtes sur le point de démarrer le serveur, voulez-vous continuer?</sys:String>
     <sys:String x:Key="MainWindow_ServerStatus_ShutdownServerActionTitle">Confirmer l'arrêt du serveur</sys:String>
     <sys:String x:Key="MainWindow_ServerStatus_ShutdownServerActionLabel">Vous êtes sur le point d'arrêter le serveur, voulez-vous continuer?</sys:String>
-
-    <sys:String x:Key="Updater_ProgressMessage_DownloadLabel">Téléchargement de la dernière version du fichier...</sys:String>
-    <sys:String x:Key="Updater_ProgressMessage_PrepareLabel">Préparation du fichier téléchargé...</sys:String>
-    <sys:String x:Key="Updater_ProgressMessage_ExtractLabel">Extraction de la dernière version vers la zone de transfert...</sys:String>
-    <sys:String x:Key="Updater_ProgressMessage_UpgradeLabel">Démarrage de la mise à jour...</sys:String>
     <!--#endregion-->
 
     <!--#region General strings -->

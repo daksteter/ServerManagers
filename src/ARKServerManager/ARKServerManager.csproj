@@ -55,7 +55,6 @@
     <ProjectReference Include="..\Plugin.Common\Plugin.Common.csproj" />
     <ProjectReference Include="..\ServerManager.Common\ServerManager.Common.csproj" />
     <ProjectReference Include="..\ServerManager.Discord\ServerManager.Discord.csproj" />
-    <ProjectReference Include="..\ServerManager.Updater\ServerManager.Updater.csproj" />
   </ItemGroup>
 
   <!-- Windows-only app: copy only the Windows builds of package native libraries (SQLite ships ~20 platforms, ~30 MB). -->

@@ -769,7 +769,6 @@
     <sys:String x:Key="MainWindow_OpenHelpTooltip">打开帮助</sys:String>
     <sys:String x:Key="MainWindow_OpenServerMonitorTooltip">打开服务器监控器</sys:String>
 	<sys:String x:Key="MainWindow_JoinDiscordTooltip">加入不和谐Discord服务器</sys:String>
-    <sys:String x:Key="MainWindow_UpdateToLabelFormat">升级到 {0} 最新版!</sys:String>
     <sys:String x:Key="MainWindow_TaskStatusLabel">任务状态</sys:String>
     <sys:String x:Key="MainWindow_TaskAdminErrorTitle">需要管理权限</sys:String>
     <sys:String x:Key="MainWindow_TaskAdminErrorLabel">无法执行此功能，因为它需要管理权限。</sys:String>
@@ -807,11 +806,6 @@
     <sys:String x:Key="MainWindow_ProfileDelete_Label">确实要删除此配置文件吗?\r\n\r\nNOTE: 这将只删除配置文件，而不是安装目录，保存游戏或设置文件中包含的文件.</sys:String>
     <sys:String x:Key="MainWindow_Donate_Title">捐助?</sys:String>
     <sys:String x:Key="MainWindow_Donate_Label">方舟服务器管理器是一个开源项目，完全免费提供。你仍然可以捐赠，如果你愿意想捐赠，您的浏览器将打开贝宝的网站为我们捐款，你可以捐多少随你喜欢。你现在愿意捐赠吗?</sys:String>
-    <sys:String x:Key="MainWindow_Upgrade_Title">可升级</sys:String>
-    <sys:String x:Key="MainWindow_Upgrade_Label">版本 {0} 现在可用。要升级应用程序必须关闭。现在关闭和升级?"</sys:String>
-	<sys:String x:Key="MainWindow_OverlayMessage_UpgradeLabel">正在开始更新...</sys:String>
-    <sys:String x:Key="MainWindow_Upgrade_FailedTitle">升级失败!</sys:String>
-    <sys:String x:Key="MainWindow_Upgrade_FailedLabel">无法运行更新过程。请报告.\r\n例外: {0}\r\n叠加跟踪: {1}</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_Title">重新安装 SteamCMD</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_Label">如果你进行重新安装，整个SteamCMD文件夹将被删除，包括所有的MOD下载缓存.\r\n你确定你想重新安装 SteamCMD?</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_FailedTitle">重新安装 SteamCMD 错误</sys:String>
@@ -821,11 +815,6 @@
     <sys:String x:Key="MainWindow_ServerStatus_StartServerActionLabel">您即将启动服务器，你想继续吗？</sys:String>
     <sys:String x:Key="MainWindow_ServerStatus_ShutdownServerActionTitle">关闭服务器确认</sys:String>
     <sys:String x:Key="MainWindow_ServerStatus_ShutdownServerActionLabel">你即将关闭服务器，你想继续吗？</sys:String>
-
-    <sys:String x:Key="Updater_ProgressMessage_DownloadLabel">下载最新版本的文件...</sys:String>
-    <sys:String x:Key="Updater_ProgressMessage_PrepareLabel">准备下载的文件...</sys:String>
-    <sys:String x:Key="Updater_ProgressMessage_ExtractLabel">将最新版本提取到临时区域...</sys:String>
-    <sys:String x:Key="Updater_ProgressMessage_UpgradeLabel">开始升级...</sys:String>
     <!--#endregion-->
 
     <!--#region 通用菜单字符串 -->

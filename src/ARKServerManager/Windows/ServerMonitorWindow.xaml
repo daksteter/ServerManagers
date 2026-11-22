@@ -126,21 +126,6 @@
                     <TextBlock Margin="5,5,5,0" Text="{Binding ServerManager.Servers.Count}" VerticalAlignment="Center" />
                 </StackPanel>
 
-                <Button Grid.Row="0" Grid.Column="11" Height="22" Margin="5,5,5,0" Background="#00AA00" Foreground="White" Padding="1" BorderThickness="1" BorderBrush="White" ContentStringFormat="{DynamicResource MainWindow_UpdateToLabelFormat}" Content="{Binding LatestServerManagerVersion}" Click="UpgradeApplication_Click" VerticalAlignment="Center" >
-                    <Button.Style>
-                        <Style TargetType="{x:Type Button}">
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding ShowUpdateButton}" Value="True">
-                                    <Setter Property="Visibility" Value="Visible"/>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding ShowUpdateButton}" Value="False">
-                                    <Setter Property="Visibility" Value="Collapsed"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-                </Button>
-
                 <Button x:Name="PatchNotesButton" Grid.Row="0" Grid.Column="12" Width="22" Height="22" Margin="5,5,5,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="PatchNotes_Click" ToolTip="{DynamicResource ServerSettings_PatchNotesTooltip}">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">

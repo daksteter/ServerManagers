@@ -793,7 +793,6 @@
     <sys:String x:Key="MainWindow_OpenHelpTooltip">Yardımı Aç</sys:String>
     <sys:String x:Key="MainWindow_OpenServerMonitorTooltip">Sunucu İzleyiciyi Aç</sys:String>
     <sys:String x:Key="MainWindow_JoinDiscordTooltip">Discord Sunucusuna Katılın</sys:String>
-    <sys:String x:Key="MainWindow_UpdateToLabelFormat">{0} sürümüne şimdi güncelle!</sys:String>
     <sys:String x:Key="MainWindow_TaskStatusLabel">Görev Durumu</sys:String>
     <sys:String x:Key="MainWindow_TaskAdminErrorTitle">Yönetici İzinleri Gerekiyor</sys:String>
     <sys:String x:Key="MainWindow_TaskAdminErrorLabel">Bu işlem yönetici izinleri gerektirdiği için gerçekleştirilemez.</sys:String>
@@ -829,11 +828,6 @@
     <sys:String x:Key="MainWindow_ProfileDelete_Label">Bu profili silmek istediğinizden emin misiniz?\r\n\r\nNOT: Bu sadece profili siler, yükleme dizinini, kayıt oyunlarını veya içeren ayar dosyalarını silmez.</sys:String>
     <sys:String x:Key="MainWindow_Donate_Title">Bağış Yapmak İster misiniz?</sys:String>
     <sys:String x:Key="MainWindow_Donate_Label">Bu sunucu yöneticisi tamamen ücretsiz olarak sunulmaktadır. Bağış yapmak isterseniz yapabilirsiniz, ancak bağlı değilsinizdir. Bağış yapmak isterseniz tarayıcınız PayPal'ın web sitesine yönlendirecek ve ne kadar bağış yapmak isterseniz o kadarını yapabileceksiniz. Şimdi bağış yapmak ister misiniz?</sys:String>
-    <sys:String x:Key="MainWindow_Upgrade_Title">Güncelleme Mevcut</sys:String>
-    <sys:String x:Key="MainWindow_Upgrade_Label">Şu an için {0} sürümü mevcut. Uygulamayı güncellemek için kapatılması gerekmektedir. Kapat ve şimdi güncelleme yapmak istiyor musunuz?</sys:String>
-    <sys:String x:Key="MainWindow_OverlayMessage_UpgradeLabel">Güncellemeyi Başlatılıyor...</sys:String>
-    <sys:String x:Key="MainWindow_Upgrade_FailedTitle">Güncelleme Başarısız!</sys:String>
-    <sys:String x:Key="MainWindow_Upgrade_FailedLabel">Güncelleme işlemi çalıştırılamıyor. Lütfen bunu bildirin.\r\nHata: {0}\r\nYığın izi: {1}</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_Title">SteamCMD Yeniden Yükle</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_Label">Devam ederseniz, tüm SteamCMD klasörü, mod önbellek indirmeleri dahil olmak üzere kaldırılacaktır.\r\nSteamCMD'yi yeniden yüklemek istediğinizden emin misiniz?</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_FailedTitle">SteamCMD Yeniden Yükleme Hatası</sys:String>
@@ -844,10 +838,6 @@
     <sys:String x:Key="MainWindow_ServerStatus_StartServerActionLabel">Sunucuyu başlatmaya hazırsınız, devam etmek ister misiniz?</sys:String>
     <sys:String x:Key="MainWindow_ServerStatus_ShutdownServerActionTitle">Sunucuyu Kapatma Onayı</sys:String>
     <sys:String x:Key="MainWindow_ServerStatus_ShutdownServerActionLabel">Sunucuyu kapatmaya hazırsınız, devam etmek ister misiniz?</sys:String>
-    <sys:String x:Key="Updater_ProgressMessage_DownloadLabel">Son sürüm dosyası indiriliyor...</sys:String>
-    <sys:String x:Key="Updater_ProgressMessage_PrepareLabel">İndirilen dosya hazırlanıyor...</sys:String>
-    <sys:String x:Key="Updater_ProgressMessage_ExtractLabel">Son sürüm, hazır alanına çıkarılıyor...</sys:String>
-    <sys:String x:Key="Updater_ProgressMessage_UpgradeLabel">Güncellemeye başlanıyor...</sys:String>
     <!--#endregion-->
 
     <!--#region General strings -->

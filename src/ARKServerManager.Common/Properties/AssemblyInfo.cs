@@ -15,5 +15,3 @@ using System.Runtime.InteropServices;
 [assembly: Guid("dd0a2401-99b8-4de1-b8ed-9b075172f8af")]
 
 // include semantic versioning - ARKServerManager
-[assembly: AssemblyVersion("1.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]

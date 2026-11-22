@@ -671,7 +671,6 @@
     <sys:String x:Key="MainWindow_OpenPluginsTooltip">Plugins öffnen</sys:String>
     <sys:String x:Key="MainWindow_OpenHelpTooltip">Öffne die Hilfe</sys:String>
     <sys:String x:Key="MainWindow_OpenServerMonitorTooltip">Öffne den Server Monitor</sys:String>
-    <sys:String x:Key="MainWindow_UpdateToLabelFormat">Aktualisieren Sie jetzt auf {0}!</sys:String>
     <sys:String x:Key="MainWindow_TaskStatusLabel">Aufgabenstatus</sys:String>
     <sys:String x:Key="MainWindow_TaskAdminErrorTitle">Erfordert Administrationsrechte</sys:String>
     <sys:String x:Key="MainWindow_TaskAdminErrorLabel">Diese Funktion kann nicht ausgeführt werden, da Administratorrechte erforderlich sind.</sys:String>
@@ -709,11 +708,6 @@
     <sys:String x:Key="MainWindow_ProfileDelete_Label">Möchtest Du dieses Profil wirklich löschen?\r\n\r\nHINWEIS: Hiermit wird nur das Profil gelöscht, nicht das Installationsverzeichnis, und die darin enthaltenen Spiele oder Einstellungsdateien werden gespeichert.</sys:String>
     <sys:String x:Key="MainWindow_Donate_Title">Spenden?</sys:String>
     <sys:String x:Key="MainWindow_Donate_Label">Dieser Server Manager wird völlig kostenlos zur Verfügung gestellt. Du kannst trotzdem spenden, wenn Du möchtest ist jedoch nicht verpflichtet. Wenn Du spenden möchtest, wird Dein Browser auf der PayPal Website geöffnet, auf der Du so wenig oder so viel spenden kannst, wie Du möchtest. Möchten Du jetzt spenden?</sys:String>
-    <sys:String x:Key="MainWindow_Upgrade_Title">Upgrade verfügbar</sys:String>
-    <sys:String x:Key="MainWindow_Upgrade_Label">Version {0} ist jetzt verfügbar. Zum Aktualisieren muss die Anwendung geschlossen werden. Jetzt schließen und aktualisieren?</sys:String>
-    <sys:String x:Key="MainWindow_OverlayMessage_UpgradeLabel">Starte Aktualisierung...</sys:String>
-    <sys:String x:Key="MainWindow_Upgrade_FailedTitle">Aktualisierung fehlgeschlagen!</sys:String>
-    <sys:String x:Key="MainWindow_Upgrade_FailedLabel">Der Aktualisierungsprozess kann nicht ausgeführt werden. Bitte melden Sie dies.\r\nException: {0}\r\nStacktrace: {1}</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_Title">Installiere SteamCMD neu</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_Label">Wenn Du fortfährst, wird der gesamte SteamCMD Ordner einschließlich aller Mod Cache Downloads entfernt.\r\nBist Du sicher, dass Du SteamCMD neu installieren möchtest?</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_FailedTitle">Fehler bei SteamCMD Reinstallation</sys:String>
@@ -726,10 +720,6 @@
     <sys:String x:Key="MainWindow_ServerStatus_StartServerActionLabel">Du bist im Begriff, den Server zu starten. Möchtest Du fortfahren?</sys:String>
     <sys:String x:Key="MainWindow_ServerStatus_ShutdownServerActionTitle">Bestätigung Server Herunterfahren</sys:String>
     <sys:String x:Key="MainWindow_ServerStatus_ShutdownServerActionLabel">Du bist dabei, den Server herunterzufahren. Möchtes Du fortfahren?</sys:String>
-    <sys:String x:Key="Updater_ProgressMessage_DownloadLabel">Herunterladen der neuesten Versionsdatei...</sys:String>
-    <sys:String x:Key="Updater_ProgressMessage_PrepareLabel">Vorbereiten der heruntergeladenen Datei...</sys:String>
-    <sys:String x:Key="Updater_ProgressMessage_ExtractLabel">Extrahieren der neuesten Version in den Staging Bereich...</sys:String>
-    <sys:String x:Key="Updater_ProgressMessage_UpgradeLabel">Starte Aktualisierung...</sys:String>
     <!--#endregion-->
 
     <!--#region General Menu strings -->

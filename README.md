@@ -50,9 +50,20 @@ You need the .NET 11 SDK on Windows.
 dotnet build src\ARKServerManager -c Release
 ```
 
-The app is built to `src\ARKServerManager\bin\Release\net11.0-windows`. When packaging a release, start from a
-clean build: a copy of the app that has been run writes its settings backups (`userconfig.json`,
-`commonconfig.json`) into that folder, and they must not be shipped.
+The app is built to `src\ARKServerManager\bin\Release\net11.0-windows`. Don't zip that folder for others: a copy
+of the app that has been run writes its settings backups (`userconfig.json`, `commonconfig.json`) into it.
+
+To make a release zip, commit your changes and run:
+
+```powershell
+tools\Release\Build-Release.ps1                  # version from src\Directory.Build.props
+tools\Release\Build-Release.ps1 -Version 1.2.0
+```
+
+It makes a clean build in its own folder, adds this README, the changelog and the third-party notices, checks
+that no settings backup, updater or debug symbols got in, and writes
+`artifacts\JVH-Ark-Ascended-Server-Manager-<version>.zip`. The version must stay above 1.0, or the app won't
+carry users' settings over from earlier builds.
 
 - `docs/PORTING-PLAN.md` explains what was changed for ASA and why.
 - `tools/UiDriver` can drive the app's UI from a shell for testing.

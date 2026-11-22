@@ -769,7 +769,6 @@ Caso contrário, o desligamento aguardará até que o temporizador do período d
     <sys:String x:Key="MainWindow_OpenHelpTooltip">Abra a Ajuda</sys:String>
 	<sys:String x:Key="MainWindow_OpenServerMonitorTooltip">Abrir Monitor de servidor</sys:String>
     <sys:String x:Key="MainWindow_JoinDiscordTooltip">Junte-se ao Discord</sys:String>
-    <sys:String x:Key="MainWindow_UpdateToLabelFormat">Atualize para {0} agora!</sys:String>
     <sys:String x:Key="MainWindow_TaskStatusLabel">Status da Tarefa</sys:String>
     <sys:String x:Key="MainWindow_TaskAdminErrorTitle">Requer permissões de administração</sys:String>
     <sys:String x:Key="MainWindow_TaskAdminErrorLabel">Esta função não pode ser executada, pois requer permissões de administração.</sys:String>
@@ -808,11 +807,6 @@ Caso contrário, o desligamento aguardará até que o temporizador do período d
     <sys:String x:Key="MainWindow_Donate_Title">Faça uma doação?</sys:String>
     <sys:String x:Key="MainWindow_Donate_Label" xml:space="preserve">O JVH Ark Ascended Server Manager é um projeto de código aberto, totalmente gratuito. Você ainda pode doar se quiser; no entanto você não tem nenhuma obrigação.
 Se você deseja doar, seu navegador será aberto ao site do PayPal, onde você poderá doar o mínimo ou o quanto quiser. Gostaria de doar agora?</sys:String>
-    <sys:String x:Key="MainWindow_Upgrade_Title">Atualização disponível</sys:String>
-    <sys:String x:Key="MainWindow_Upgrade_Label">A versão {0} está agora disponível. Para atualizar o aplicativo deve fechar. Fechar e atualizar agora?</sys:String>
-    <sys:String x:Key="MainWindow_OverlayMessage_UpgradeLabel">Iniciando a atualização ...</sys:String>
-    <sys:String x:Key="MainWindow_Upgrade_FailedTitle">Atualização falhou!</sys:String>
-    <sys:String x:Key="MainWindow_Upgrade_FailedLabel">Não é possível executar o processo de atualização. Por favor, relate isso.\R\nException: {0}\r\nStacktrace: {1}</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_Title">Reinstale o SteamCMD</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_Label">Se você prosseguir, toda a pasta do SteamCMD será removida, incluindo todos os downloads de cache mod.\R\n Tem certeza de que deseja reinstalar o SteamCMD?</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_FailedTitle">Reinstale o erro do SteamCMD</sys:String>
@@ -825,11 +819,6 @@ Se você deseja doar, seu navegador será aberto ao site do PayPal, onde você p
     <sys:String x:Key="MainWindow_ServerStatus_StartServerActionLabel">Você está prestes a iniciar o servidor, deseja continuar?</sys:String>
     <sys:String x:Key="MainWindow_ServerStatus_ShutdownServerActionTitle">Confirmação do servidor de desligamento</sys:String>
     <sys:String x:Key="MainWindow_ServerStatus_ShutdownServerActionLabel">Você está prestes a desligar o servidor, quer continuar?</sys:String>
-
-    <sys:String x:Key="Updater_ProgressMessage_DownloadLabel">Baixando o último arquivo da versão ...</sys:String>
-    <sys:String x:Key="Updater_ProgressMessage_PrepareLabel">Preparando o arquivo baixado ...</sys:String>
-    <sys:String x:Key="Updater_ProgressMessage_ExtractLabel">Extraindo a versão mais recente para a área de teste...</sys:String>
-    <sys:String x:Key="Updater_ProgressMessage_UpgradeLabel">Começando a atualização ...</sys:String>
     <!--#endregion-->
 
     <!--#region General strings -->

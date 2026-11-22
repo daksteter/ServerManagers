@@ -587,7 +587,6 @@
     <sys:String x:Key="MainWindow_OpenPluginsTooltip">Abrir Plugins</sys:String>
     <sys:String x:Key="MainWindow_OpenHelpTooltip">Abrir Ayuda</sys:String>
     <sys:String x:Key="MainWindow_OpenServerMonitorTooltip">Abrir Monitor de servidor</sys:String>
-    <sys:String x:Key="MainWindow_UpdateToLabelFormat">¡Actualizar a {0} ahora!</sys:String>
     <sys:String x:Key="MainWindow_TaskStatusLabel">Estado de la tarea</sys:String>
     <sys:String x:Key="MainWindow_TaskAdminErrorTitle">Requiere permisos de administración</sys:String>
     <sys:String x:Key="MainWindow_TaskAdminErrorLabel">Esta función no se puede ejecutar porque requiere permisos de administración.</sys:String>
@@ -619,11 +618,6 @@
     <sys:String x:Key="MainWindow_ProfileDelete_Label">¿Estás seguro que quieres eliminar este perfil?\r\n\r\nNOTA: Esto sólo eliminará el perfil, no el directorio de instalación, archivos de guardado o de ajustes que contenga.</sys:String>
     <sys:String x:Key="MainWindow_Donate_Title">¿Haces una donación?</sys:String>
     <sys:String x:Key="MainWindow_Donate_Label">Este gestor de servidores se ofrece completamente gratis. Pero puedes hacer una donación siempre que lo desees, sin ninguna obligación. Si deseas hacer una donación, tu navegador abrirá el sitio de Paypal donde podrás donar lo poco o mucho que quieras. ¿Te gustaría donar ahora?</sys:String>
-    <sys:String x:Key="MainWindow_Upgrade_Title">Actualización disponible</sys:String>
-    <sys:String x:Key="MainWindow_Upgrade_Label">La versión {0} ya está disponible. Para actualizar la aplicación debe cerrarse. ¿Cerrar y actualizar ahora?</sys:String>
-    <sys:String x:Key="MainWindow_OverlayMessage_UpgradeLabel">Iniciando actualización...</sys:String>
-    <sys:String x:Key="MainWindow_Upgrade_FailedTitle">¡Actualización fallida!</sys:String>
-    <sys:String x:Key="MainWindow_Upgrade_FailedLabel">No se ha podido ejecutar el proceso de actualización. Por favor reporta esto.\r\nException: {0}\r\nStacktrace: {1}</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_Title">Reinstalar SteamCMD</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_Label">Si continúas, la carpeta SteamCMD al completo será eliminada, incluyendo toda la caché de mods descargados.\r\n¿Estás seguro de que quieres reinstalar SteamCMD?</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_FailedTitle">Error al reinstalar SteamCMD</sys:String>
@@ -633,11 +627,6 @@
     <sys:String x:Key="MainWindow_ServerStatus_StartServerActionLabel">Vas a iniciar el servidor, ¿quieres continuar?</sys:String>
     <sys:String x:Key="MainWindow_ServerStatus_ShutdownServerActionTitle">Confirmación de apagado del servidor</sys:String>
     <sys:String x:Key="MainWindow_ServerStatus_ShutdownServerActionLabel">Vas a apagar el servidor, ¿quieres continuar?</sys:String>
-
-    <sys:String x:Key="Updater_ProgressMessage_DownloadLabel">Descargando la última versión del archivo...</sys:String>
-    <sys:String x:Key="Updater_ProgressMessage_PrepareLabel">Preparando el archivo descargado...</sys:String>
-    <sys:String x:Key="Updater_ProgressMessage_ExtractLabel">Extrayendo la última versión al área de preparación...</sys:String>
-    <sys:String x:Key="Updater_ProgressMessage_UpgradeLabel">Iniciando actualización...</sys:String>
     <!--#endregion-->
 
     <!--#region General Menu strings -->

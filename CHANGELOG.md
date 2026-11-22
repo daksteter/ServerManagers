@@ -134,6 +134,9 @@ First release for ARK: Survival Ascended (ASA). Servers for ARK: Survival Evolve
 
 - `tools/UiDriver`: a command-line UI Automation driver (FlaUI) and a script that sets up an isolated test copy
   of the app, for checking the UI from a shell.
+- `tools/Release/Build-Release.ps1` builds a release zip: a clean build with the README, changelog and notices,
+  checked for settings backups and leftovers. The version is set once, in `src/Directory.Build.props`.
+- The self-updater project and upstream's Azure DevOps, Inno Setup and GitHub build files are gone.
 - Two libraries whose licenses conflict with a release were replaced: the Windows API Code Pack (file and folder
   pickers now use the dialogs built into .NET) and NeXt.Vdf (GPL; SteamCMD's manifest is now read and written by
   the app's own code).

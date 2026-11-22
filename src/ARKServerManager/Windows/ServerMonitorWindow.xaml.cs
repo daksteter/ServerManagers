@@ -75,15 +75,12 @@ namespace ServerManagerTool.Windows
 
         private readonly GlobalizedApplication _globalizer = GlobalizedApplication.Instance;
         private CancellationTokenSource _upgradeCancellationSource = null;
-        private ActionQueue _versionChecker;
         private ActionQueue _canExecuteChecker;
         private readonly Dictionary<string, CommandType> _currentProfileCommands = new Dictionary<string, CommandType>();
 
         private bool HasRunningCommands => _currentProfileCommands.Count > 0;
 
         public static readonly DependencyProperty ServerManagerProperty = DependencyProperty.Register(nameof(ServerManager), typeof(ServerManager), typeof(ServerMonitorWindow), new PropertyMetadata(null));
-        public static readonly DependencyProperty LatestServerManagerVersionProperty = DependencyProperty.Register(nameof(LatestServerManagerVersion), typeof(Version), typeof(ServerMonitorWindow), new PropertyMetadata(new Version()));
-        public static readonly DependencyProperty ShowUpdateButtonProperty = DependencyProperty.Register(nameof(ShowUpdateButton), typeof(bool), typeof(ServerMonitorWindow), new PropertyMetadata(false));
         public static readonly DependencyProperty IsStandAloneWindowProperty = DependencyProperty.Register(nameof(IsStandAloneWindow), typeof(bool), typeof(ServerMonitorWindow), new PropertyMetadata(false));
         public static readonly DependencyProperty CancellationTokenSourceProperty = DependencyProperty.Register(nameof(CancellationTokenSource), typeof(CancellationTokenSource), typeof(ServerMonitorWindow));
         public static readonly DependencyProperty ProcessServersSequentiallyProperty = DependencyProperty.Register(nameof(ProcessServersSequentially), typeof(bool), typeof(ServerMonitorWindow), new PropertyMetadata(false));
@@ -121,18 +118,6 @@ namespace ServerManagerTool.Windows
         {
             get { return (ServerManager)GetValue(ServerManagerProperty); }
             set { SetValue(ServerManagerProperty, value); }
-        }
-
-        public Version LatestServerManagerVersion
-        {
-            get { return (Version)GetValue(LatestServerManagerVersionProperty); }
-            set { SetValue(LatestServerManagerVersionProperty, value); }
-        }
-
-        public bool ShowUpdateButton
-        {
-            get { return (bool)GetValue(ShowUpdateButtonProperty); }
-            set { SetValue(ShowUpdateButtonProperty, value); }
         }
 
         public bool IsStandAloneWindow
@@ -196,12 +181,6 @@ namespace ServerManagerTool.Windows
                 }).DoNotWait();
             }
 
-            if (IsStandAloneWindow)
-            {
-                _versionChecker = new ActionQueue();
-                _versionChecker.PostAction(CheckForUpdates).DoNotWait();
-            }
-
             _canExecuteChecker = new ActionQueue();
             _canExecuteChecker.PostAction(RaiseCanExecuteChanged).DoNotWait();
         }
@@ -258,7 +237,6 @@ namespace ServerManagerTool.Windows
 
             Windows.Remove(this);
 
-            _versionChecker?.DisposeAsync().DoNotWait();
             _canExecuteChecker?.DisposeAsync().DoNotWait();
 
             base.OnClosing(e);
@@ -434,76 +412,6 @@ namespace ServerManagerTool.Windows
             }
         }
 
-        private async void UpgradeApplication_Click(object sender, RoutedEventArgs e)
-        {
-            var result = MessageBox.Show(String.Format(_globalizer.GetResourceString("MainWindow_Upgrade_Label"), this.LatestServerManagerVersion), _globalizer.GetResourceString("MainWindow_Upgrade_Title"), MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (result == MessageBoxResult.Yes)
-            {
-                try
-                {
-                    OverlayMessage.Content = _globalizer.GetResourceString("MainWindow_OverlayMessage_UpgradeLabel");
-                    OverlayGrid.Visibility = Visibility.Visible;
-
-                    await Task.Delay(500);
-
-                    var process = Process.GetCurrentProcess();
-                    if (process == null || process.HasExited)
-                        throw new Exception("Application process could not be found or does not exist.");
-
-                    var assemblyLocation = Assembly.GetEntryAssembly().Location;
-                    var updaterFile = Path.Combine(Path.GetDirectoryName(assemblyLocation), Config.Default.UpdaterFile);
-                    var newUpdaterFile = Path.Combine(Path.GetDirectoryName(assemblyLocation), $"New{Config.Default.UpdaterFile}");
-
-                    // check if there is a new version of the updater file
-                    if (System.IO.File.Exists(newUpdaterFile))
-                    {
-                        // file exists, rename the file, so that we use the new updater instead
-                        try
-                        {
-                            System.IO.File.Copy(newUpdaterFile, updaterFile, true);
-                            await Task.Delay(1000);
-                            System.IO.File.Delete(newUpdaterFile);
-                        }
-                        catch (Exception ex)
-                        {
-                            // if error, then do nothing
-                            Logger.Debug($"An error occurred trying to update the server manager updater. {ex.Message}");
-                        }
-                    }
-
-                    if (!System.IO.File.Exists(updaterFile))
-                        throw new FileNotFoundException("The updater application could not be found or does not exist.");
-
-                    var arguments = new string[]
-                        {
-                            process.Id.ToString().AsQuoted(),
-                            App.Instance.BetaVersion ? Config.Default.LatestASMBetaDownloadUrl.AsQuoted() : Config.Default.LatestASMDownloadUrl.AsQuoted(),
-                            Config.Default.UpdaterPrefix.AsQuoted(),
-                        };
-
-                    ProcessStartInfo info = new ProcessStartInfo()
-                    {
-                        FileName = updaterFile.AsQuoted(),
-                        Arguments = string.Join(" ", arguments),
-                        UseShellExecute = true,
-                        CreateNoWindow = true,
-                    };
-
-                    var updaterProcess = Process.Start(info);
-                    if (updaterProcess == null)
-                        throw new Exception("Could not restart application.");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(String.Format(_globalizer.GetResourceString("MainWindow_Upgrade_FailedLabel"), ex.Message, ex.StackTrace), _globalizer.GetResourceString("MainWindow_Upgrade_FailedTitle"), MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                finally
-                {
-                    OverlayGrid.Visibility = Visibility.Collapsed;
-                }
-            }
-        }
-
         public void AddCriticalBlockContent(string message)
         {
             TaskUtils.RunOnUIThreadAsync(() =>
@@ -555,33 +463,6 @@ namespace ServerManagerTool.Windows
         public void ClearBlockContents()
         {
             ConsoleContent.Blocks.Clear();
-        }
-
-        private async Task CheckForUpdates()
-        {
-            string url = App.Instance.BetaVersion ? Config.Default.LatestASMBetaVersionUrl : Config.Default.LatestASMVersionUrl;
-            var newVersion = await NetworkUtils.GetLatestServerManagerVersion(url);
-
-            TaskUtils.RunOnUIThreadAsync(() =>
-            {
-                try
-                {
-                    var appVersion = new Version();
-                    Version.TryParse(App.Instance.Version, out appVersion);
-
-                    this.LatestServerManagerVersion = newVersion;
-                    this.ShowUpdateButton = appVersion < newVersion;
-
-                    Logger.Info($"{nameof(CheckForUpdates)} performed.");
-                }
-                catch (Exception)
-                {
-                    // Ignore.
-                }
-            }).DoNotWait();
-
-            await Task.Delay(Config.Default.UpdateCheckTime * 60 * 1000);
-            _versionChecker?.PostAction(CheckForUpdates).DoNotWait();
         }
 
         public static void CloseAllWindows()

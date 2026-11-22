@@ -6,6 +6,15 @@
   </PropertyGroup>
 
   <!--
+    The version of every assembly; tools\Release\Build-Release.ps1 can override it (-Version). Keep it above 1.0,
+    the version of the builds before it was set here: the app's settings live in a folder per version, and
+    Config.Upgrade() only carries them over from a lower version.
+  -->
+  <PropertyGroup>
+    <Version>1.1.0</Version>
+  </PropertyGroup>
+
+  <!--
     Each project keeps its hand-written Properties\AssemblyInfo.cs, so turn off only the attributes it
     already defines. The SDK still generates [TargetFramework] and [SupportedOSPlatform("windows")]; without
     the latter the platform analyzer (CA1416) treats every Windows-only API call as a cross-platform risk.
@@ -17,9 +26,8 @@
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
     <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
-    <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
-    <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
-    <GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
+    <!-- no commit hash in the informational version -->
+    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">

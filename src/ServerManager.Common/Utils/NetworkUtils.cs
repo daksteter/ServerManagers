@@ -33,27 +33,6 @@ namespace ServerManagerTool.Common.Utils
             return adapters;
         }
 
-        public static async Task<Version> GetLatestServerManagerVersion(string url)
-        {
-            // no update channel configured - report "no newer version" without hitting the network.
-            if (string.IsNullOrWhiteSpace(url))
-                return new Version();
-
-            using (var webClient = new WebClient())
-            {
-                try
-                {
-                    string latestVersion = await webClient.DownloadStringTaskAsync(url);
-                    return Version.Parse(latestVersion);
-                }
-                catch (Exception ex)
-                {
-                    _logger.Error($"{nameof(GetLatestServerManagerVersion)} - Exception checking for Server Manager version. {ex.Message}");
-                    return new Version();
-                }
-            }
-        }
-
         public static NetworkAdapterEntry GetPreferredIP(IEnumerable<NetworkAdapterEntry> adapters)
         {
             //
