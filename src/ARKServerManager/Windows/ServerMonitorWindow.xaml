@@ -90,7 +90,7 @@
                     <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Restart.ico,Size=32}"/>
                 </Button>
 
-                <controls:DropDownButton Grid.Row="0" Grid.Column="5" Width="35" Height="22" Margin="0,5,5,0" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <controls:DropDownButton Grid.Row="0" Grid.Column="5" Width="35" Height="22" Margin="0,5,5,0" HorizontalAlignment="Left" VerticalAlignment="Center" ToolTip="{DynamicResource ServerMonitor_StopServersMenuTooltip}">
                     <ContentControl ContentTemplate="{StaticResource StopButtonContent}" />
                     
                     <controls:DropDownButton.Menu>
@@ -101,7 +101,7 @@
                     </controls:DropDownButton.Menu>
                 </controls:DropDownButton>
 
-                <controls:DropDownButton Grid.Row="0" Grid.Column="6" Width="35" Height="22" Margin="0,5,5,0" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <controls:DropDownButton Grid.Row="0" Grid.Column="6" Width="35" Height="22" Margin="0,5,5,0" HorizontalAlignment="Left" VerticalAlignment="Center" ToolTip="{DynamicResource ServerMonitor_UpdateServersMenuTooltip}">
                     <ContentControl ContentTemplate="{StaticResource UpdateButtonContent}" />
 
                     <controls:DropDownButton.Menu>

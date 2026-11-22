@@ -417,7 +417,17 @@ The Island, Scorched Earth, The Center, Aberration, Extinction, Astraeos, Ragnar
         and Discord plugin) now returns its display text, `Server` its profile name.
       - Checked with UiDriver: "New profile" found by name and clicked (a profile was added), combo items read
         "Normal" / "Minimized" / "Maximized", the tab reads the profile name.
-- [ ] Icon-only buttons (main window header, profile toolbar) have only a tooltip, no automation name.
+- [x] Buttons without an accessible name: WPF names a button only by string content, so icon buttons and
+      icon-plus-text buttons had none. `AutomationNames` (`ServerManager.Common\Lib`, registered at startup) binds
+      each such button's name to the text shown in it, else its tooltip (so it follows Start / Stop and language
+      changes); names set in XAML win. Hooked on `SizeChanged`: WPF raises `Loaded` only where an element has its
+      own handler, so a class handler on it misses most buttons. Tooltips added where a button had neither text
+      nor tooltip (Server Monitor Stop / Update split buttons, the two "..." folder pickers in Settings).
+      `AutomationNamesUnitTest` covers the cases.
+- [x] The profile view was invisible to UI Automation: the main window hosts the views in an `ItemsControl`,
+      whose items WPF shows as empty data items. `ViewHostItemsControl` exposes the visible view instead (the
+      main window went from 15 to 77 buttons in the tree). Checked with UiDriver on the main window, Settings
+      and Server Monitor: every button has a name except the scroll bars' arrow buttons.
 
 ---
 

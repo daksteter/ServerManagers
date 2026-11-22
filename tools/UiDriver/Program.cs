@@ -128,20 +128,37 @@ internal static class Program
         foreach (var argument in options.AppArguments)
             startInfo.ArgumentList.Add(argument);
 
+        // a started app takes the keyboard focus, so keys typed elsewhere meanwhile would land in it
+        var previousForeground = GetForegroundWindow();
         var process = Process.Start(startInfo) ?? throw new InvalidOperationException("The process didn't start.");
         File.WriteAllText(PidFile, process.Id.ToString());
         Console.WriteLine($"Started {Path.GetFileName(exe)}, PID {process.Id}.");
 
         using var automation = new UIA3Automation();
         using var app = Application.Attach(process.Id);
-        var windows = WaitFor(options.Timeout, () => process.HasExited ? null : GetWindows(app, automation) is { Length: > 0 } w ? w : null);
+        var windows = WaitFor(options.Timeout, () =>
+        {
+            KeepFocus(process.Id, previousForeground);
+            return process.HasExited ? null : GetWindows(app, automation) is { Length: > 0 } w ? w : null;
+        });
         if (windows == null)
         {
             Console.WriteLine(process.HasExited ? $"The process exited (code {process.ExitCode})." : "No window yet.");
             return process.HasExited ? 1 : 0;
         }
 
-        PrintWindows(windows);
+        // startup can show several windows in turn (a splash, then the main window); keep the focus where it was
+        // until the app has stopped taking it for a while
+        var stopwatch = Stopwatch.StartNew();
+        var lastTaken = stopwatch.Elapsed;
+        while (!process.HasExited && stopwatch.Elapsed - lastTaken < TimeSpan.FromSeconds(8) && stopwatch.Elapsed < options.Timeout)
+        {
+            if (KeepFocus(process.Id, previousForeground))
+                lastTaken = stopwatch.Elapsed;
+            Thread.Sleep(200);
+        }
+
+        PrintWindows(GetWindows(app, automation));
         return 0;
     }
 
@@ -664,15 +681,33 @@ internal static class Program
                 if (result != null)
                     return result;
             }
-            catch (COMException)
+            catch (Exception ex) when (ex is COMException or FlaUI.Core.Exceptions.ElementNotAvailableException)
             {
-                // the UI is changing under us; try again
+                // the UI is changing under us (an element went away mid-search); try again
             }
 
             if (stopwatch.Elapsed >= timeout)
                 return null;
             Thread.Sleep(250);
         }
+    }
+
+    /// <summary>
+    /// Gives the keyboard focus back to <paramref name="previousForeground"/> if the process has taken it.
+    /// </summary>
+    /// <returns>true if it had.</returns>
+    private static bool KeepFocus(int processId, IntPtr previousForeground)
+    {
+        var foreground = GetForegroundWindow();
+        if (previousForeground == IntPtr.Zero || foreground == IntPtr.Zero || foreground == previousForeground)
+            return false;
+
+        GetWindowThreadProcessId(foreground, out var foregroundProcessId);
+        if (foregroundProcessId != processId)
+            return false;
+
+        SetForegroundWindow(previousForeground);
+        return true;
     }
 
     private static void PrintWindows(Window[] windows)

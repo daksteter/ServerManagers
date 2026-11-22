@@ -525,7 +525,8 @@
                     </TabControl.ItemTemplate>
                 </cctl:AccessibleTabControl>
                 <Border Grid.Row="1" BorderBrush="#8C8E94" BorderThickness="0,1,0,0">
-                    <ItemsControl ItemsSource="{Binding ServerManager.Servers}" Focusable="False">
+                    <!-- ViewHostItemsControl: screen readers and UI tests see the profile view, not an empty item -->
+                    <cctl:ViewHostItemsControl ItemsSource="{Binding ServerManager.Servers}" Focusable="False">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <Grid/>
@@ -543,7 +544,7 @@
                                 </local:ServerSettingsControl>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
-                    </ItemsControl>
+                    </cctl:ViewHostItemsControl>
                 </Border>
                 </Grid>
             </Grid>

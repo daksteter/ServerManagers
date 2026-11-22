@@ -402,6 +402,8 @@
     <sys:String x:Key="ServerMonitor_StopServersButtonLabel">Stop Selected Servers</sys:String>
     <sys:String x:Key="ServerMonitor_RestartServersButtonTooltip">Restart the selected servers.</sys:String>
     <sys:String x:Key="ServerMonitor_UpdateServersButtonLabel">Update/Verify Selected Servers</sys:String>
+    <sys:String x:Key="ServerMonitor_StopServersMenuTooltip">Shut down or stop the selected servers.</sys:String>
+    <sys:String x:Key="ServerMonitor_UpdateServersMenuTooltip">Update or verify the selected servers.</sys:String>
     <sys:String x:Key="ServerMonitor_BackupServersButtonTooltip">Backup the selected servers.</sys:String>
     <sys:String x:Key="ServerMonitor_CancelServersButtonTooltip">Cancel processing the selected servers.</sys:String>
     <sys:String x:Key="ServerMonitor_ProcessServersSequentiallyLabel">Process Servers Sequentially</sys:String>

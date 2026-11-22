@@ -344,6 +344,9 @@ namespace ServerManagerTool
 
             AppDomain.CurrentDomain.UnhandledException += ErrorHandling.CurrentDomain_UnhandledException;
 
+            // accessible names for icon buttons, from their tooltips (before any window opens)
+            Common.Lib.AutomationNames.Register();
+
             ReconfigureLogging();
 
             _globalizer = GlobalizedApplication.Instance;

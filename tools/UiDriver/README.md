@@ -24,7 +24,9 @@ that sets the data folder and turns off the "run as administrator" and "already 
 and show the administrator prompt; answering Yes gives an elevated copy working on the real profiles.
 
 Without admin rights the copy can't change firewall rules or scheduled tasks; everything else works. Its windows
-appear on the desktop while it runs; leave its dialogs to the driver.
+appear on the desktop while it runs; leave its dialogs to the driver. A newly started app takes the keyboard
+focus, so `launch` gives it back to the window that had it (keys typed into a game or editor meanwhile would
+otherwise land in the test copy); windows the app opens later don't take it.
 
 ## Use
 
