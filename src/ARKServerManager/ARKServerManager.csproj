@@ -40,7 +40,6 @@
 
   <ItemGroup>
     <PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="2.0.1" />
-    <PackageReference Include="Microsoft-WindowsAPICodePack-Shell" Version="1.1.5" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.161" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
     <PackageReference Include="NLog" Version="6.2.2" />
@@ -52,7 +51,6 @@
   <ItemGroup>
     <ProjectReference Include="..\ArkData\ArkData.csproj" />
     <ProjectReference Include="..\ARKServerManager.Common\ARKServerManager.Common.csproj" />
-    <ProjectReference Include="..\NeXtVdf\NeXt.Vdf.csproj" />
     <ProjectReference Include="..\Plugin.Common\Plugin.Common.csproj" />
     <ProjectReference Include="..\ServerManager.Common\ServerManager.Common.csproj" />
     <ProjectReference Include="..\ServerManager.Discord\ServerManager.Discord.csproj" />

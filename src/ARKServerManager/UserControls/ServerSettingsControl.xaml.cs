@@ -1,4 +1,4 @@
-﻿using Microsoft.WindowsAPICodePack.Dialogs;
+﻿using Microsoft.Win32;
 using ServerManagerTool.Common;
 using ServerManagerTool.Common.Controls;
 using ServerManagerTool.Common.Enums;
@@ -979,9 +979,8 @@ namespace ServerManagerTool
 
         private void SelectInstallDirectory_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new CommonOpenFileDialog
+            var dialog = new OpenFolderDialog
             {
-                IsFolderPicker = true,
                 Title = _globalizer.GetResourceString("ServerSettings_InstallServer_Title")
             };
             if (!string.IsNullOrWhiteSpace(Settings.InstallDirectory))
@@ -990,11 +989,11 @@ namespace ServerManagerTool
             }
 
             var result = dialog.ShowDialog(Window.GetWindow(this));
-            if (result == CommonFileDialogResult.Ok)
+            if (result == true)
             {
                 Settings.ServerMap = string.Empty;
 
-                Settings.ChangeInstallationFolder(dialog.FileName, reloadConfigFiles: true);
+                Settings.ChangeInstallationFolder(dialog.FolderName, reloadConfigFiles: true);
             }
         }
 
@@ -1005,16 +1004,16 @@ namespace ServerManagerTool
                 Directory.CreateDirectory(Config.Default.ConfigDirectory);
             }
 
-            var dialog = new CommonOpenFileDialog
+            var dialog = new OpenFileDialog
             {
-                EnsureFileExists = true,
+                CheckFileExists = true,
                 InitialDirectory = Config.Default.ConfigDirectory,
                 Multiselect = false,
                 Title = _globalizer.GetResourceString("ServerSettings_LoadConfig_Title")
             };
-            dialog.Filters.Add(new CommonFileDialogFilter("Profile", Config.Default.LoadProfileExtensionList));
+            dialog.Filter = FileDialogUtils.Filter("Profile", Config.Default.LoadProfileExtensionList);
 
-            if (dialog.ShowDialog(Window.GetWindow(this)) == CommonFileDialogResult.Ok)
+            if (dialog.ShowDialog(Window.GetWindow(this)) == true)
             {
                 try
                 {
@@ -1537,14 +1536,14 @@ namespace ServerManagerTool
         private async void ExportCustomEngrams_Click(object sender, RoutedEventArgs e)
         {
             // ask user for a filename to save the engram data to
-            var dialog = new CommonSaveFileDialog
+            var dialog = new SaveFileDialog
             {
                 Title = GlobalizedApplication.Instance.GetResourceString("ServerSettings_EngramsOverride_ExportDialogTitle"),
-                DefaultExtension = GlobalizedApplication.Instance.GetResourceString("ServerSettings_EngramsOverride_ExportDefaultExtension")
+                DefaultExt = GlobalizedApplication.Instance.GetResourceString("ServerSettings_EngramsOverride_ExportDefaultExtension")
             };
-            dialog.Filters.Add(new CommonFileDialogFilter(GlobalizedApplication.Instance.GetResourceString("ServerSettings_EngramsOverride_ExportFilterLabel"), GlobalizedApplication.Instance.GetResourceString("ServerSettings_EngramsOverride_ExportFilterExtension")));
+            dialog.Filter = FileDialogUtils.Filter(GlobalizedApplication.Instance.GetResourceString("ServerSettings_EngramsOverride_ExportFilterLabel"), GlobalizedApplication.Instance.GetResourceString("ServerSettings_EngramsOverride_ExportFilterExtension"));
 
-            if (dialog == null || dialog.ShowDialog(Window.GetWindow(this)) != CommonFileDialogResult.Ok)
+            if (dialog == null || dialog.ShowDialog(Window.GetWindow(this)) != true)
                 return;
 
             var cursor = this.Cursor;
@@ -1583,14 +1582,14 @@ namespace ServerManagerTool
         private async void ImportCustomEngrams_Click(object sender, RoutedEventArgs e)
         {
             // ask user for a filename to load the engram data from
-            var dialog = new CommonOpenFileDialog
+            var dialog = new OpenFileDialog
             {
                 Title = GlobalizedApplication.Instance.GetResourceString("ServerSettings_EngramsOverride_ImportDialogTitle"),
-                DefaultExtension = GlobalizedApplication.Instance.GetResourceString("ServerSettings_EngramsOverride_ImportDefaultExtension")
+                DefaultExt = GlobalizedApplication.Instance.GetResourceString("ServerSettings_EngramsOverride_ImportDefaultExtension")
             };
-            dialog.Filters.Add(new CommonFileDialogFilter(GlobalizedApplication.Instance.GetResourceString("ServerSettings_EngramsOverride_ImportFilterLabel"), GlobalizedApplication.Instance.GetResourceString("ServerSettings_EngramsOverride_ImportFilterExtension")));
+            dialog.Filter = FileDialogUtils.Filter(GlobalizedApplication.Instance.GetResourceString("ServerSettings_EngramsOverride_ImportFilterLabel"), GlobalizedApplication.Instance.GetResourceString("ServerSettings_EngramsOverride_ImportFilterExtension"));
 
-            if (dialog == null || dialog.ShowDialog(Window.GetWindow(this)) != CommonFileDialogResult.Ok)
+            if (dialog == null || dialog.ShowDialog(Window.GetWindow(this)) != true)
                 return;
 
             // confirm with user which option to use - Overwrite, Merge or Cancel
@@ -1883,14 +1882,14 @@ namespace ServerManagerTool
 
         private void ImportCustomGameUserSettingSections_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new CommonOpenFileDialog();
-            dialog.EnsureFileExists = true;
+            var dialog = new OpenFileDialog();
+            dialog.CheckFileExists = true;
             dialog.Multiselect = false;
             dialog.Title = _globalizer.GetResourceString("ServerSettings_LoadCustomConfig_Title");
-            dialog.Filters.Add(new CommonFileDialogFilter("Ini Files", "*.ini"));
+            dialog.Filter = FileDialogUtils.Filter("Ini Files", "*.ini");
             dialog.InitialDirectory = Settings.InstallDirectory;
             var result = dialog.ShowDialog(Window.GetWindow(this));
-            if (result == CommonFileDialogResult.Ok)
+            if (result == true)
             {
                 try
                 {
@@ -2044,14 +2043,14 @@ namespace ServerManagerTool
 
         private void ImportCustomGameSettingSections_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new CommonOpenFileDialog();
-            dialog.EnsureFileExists = true;
+            var dialog = new OpenFileDialog();
+            dialog.CheckFileExists = true;
             dialog.Multiselect = false;
             dialog.Title = _globalizer.GetResourceString("ServerSettings_LoadCustomConfig_Title");
-            dialog.Filters.Add(new CommonFileDialogFilter("Ini Files", "*.ini"));
+            dialog.Filter = FileDialogUtils.Filter("Ini Files", "*.ini");
             dialog.InitialDirectory = Settings.InstallDirectory;
             var result = dialog.ShowDialog(Window.GetWindow(this));
-            if (result == CommonFileDialogResult.Ok)
+            if (result == true)
             {
                 try
                 {
@@ -2205,14 +2204,14 @@ namespace ServerManagerTool
 
         private void ImportCustomEngineSettingSections_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new CommonOpenFileDialog();
-            dialog.EnsureFileExists = true;
+            var dialog = new OpenFileDialog();
+            dialog.CheckFileExists = true;
             dialog.Multiselect = false;
             dialog.Title = _globalizer.GetResourceString("ServerSettings_LoadCustomConfig_Title");
-            dialog.Filters.Add(new CommonFileDialogFilter("Ini Files", "*.ini"));
+            dialog.Filter = FileDialogUtils.Filter("Ini Files", "*.ini");
             dialog.InitialDirectory = Settings.InstallDirectory;
             var result = dialog.ShowDialog(Window.GetWindow(this));
-            if (result == CommonFileDialogResult.Ok)
+            if (result == true)
             {
                 try
                 {
@@ -2337,26 +2336,26 @@ namespace ServerManagerTool
         #endregion
 
         #region Custom Levels 
-        private CommonFileDialog GetCustomLevelCommonFileDialog(ServerSettingsCustomLevelsAction action)
+        private FileDialog GetCustomLevelFileDialog(ServerSettingsCustomLevelsAction action)
         {
-            CommonFileDialog dialog = null;
+            FileDialog dialog = null;
 
             switch (action)
             {
                 case ServerSettingsCustomLevelsAction.ExportDinoLevels:
                 case ServerSettingsCustomLevelsAction.ExportPlayerLevels:
-                    dialog = new CommonSaveFileDialog();
+                    dialog = new SaveFileDialog();
                     dialog.Title = GlobalizedApplication.Instance.GetResourceString("ServerSettings_CustomLevel_ExportDialogTitle");
-                    dialog.DefaultExtension = GlobalizedApplication.Instance.GetResourceString("ServerSettings_CustomLevel_ExportDefaultExtension");
-                    dialog.Filters.Add(new CommonFileDialogFilter(GlobalizedApplication.Instance.GetResourceString("ServerSettings_CustomLevel_ExportFilterLabel"), GlobalizedApplication.Instance.GetResourceString("ServerSettings_CustomLevel_ExportFilterExtension")));
+                    dialog.DefaultExt = GlobalizedApplication.Instance.GetResourceString("ServerSettings_CustomLevel_ExportDefaultExtension");
+                    dialog.Filter = FileDialogUtils.Filter(GlobalizedApplication.Instance.GetResourceString("ServerSettings_CustomLevel_ExportFilterLabel"), GlobalizedApplication.Instance.GetResourceString("ServerSettings_CustomLevel_ExportFilterExtension"));
                     break;
 
                 case ServerSettingsCustomLevelsAction.ImportDinoLevels:
                 case ServerSettingsCustomLevelsAction.ImportPlayerLevels:
-                    dialog = new CommonOpenFileDialog();
+                    dialog = new OpenFileDialog();
                     dialog.Title = GlobalizedApplication.Instance.GetResourceString("ServerSettings_CustomLevel_ImportDialogTitle");
-                    dialog.DefaultExtension = GlobalizedApplication.Instance.GetResourceString("ServerSettings_CustomLevel_ImportDefaultExtension");
-                    dialog.Filters.Add(new CommonFileDialogFilter(GlobalizedApplication.Instance.GetResourceString("ServerSettings_CustomLevel_ImportFilterLabel"), GlobalizedApplication.Instance.GetResourceString("ServerSettings_CustomLevel_ImportFilterExtension")));
+                    dialog.DefaultExt = GlobalizedApplication.Instance.GetResourceString("ServerSettings_CustomLevel_ImportDefaultExtension");
+                    dialog.Filter = FileDialogUtils.Filter(GlobalizedApplication.Instance.GetResourceString("ServerSettings_CustomLevel_ImportFilterLabel"), GlobalizedApplication.Instance.GetResourceString("ServerSettings_CustomLevel_ImportFilterExtension"));
                     break;
             }
 
@@ -2374,9 +2373,9 @@ namespace ServerManagerTool
 
                         try
                         {
-                            var dialog = GetCustomLevelCommonFileDialog(action);
+                            var dialog = GetCustomLevelFileDialog(action);
                             var dialogValue = string.Empty;
-                            if (dialog != null && dialog.ShowDialog(Window.GetWindow(this)) == CommonFileDialogResult.Ok)
+                            if (dialog != null && dialog.ShowDialog(Window.GetWindow(this)) == true)
                                 dialogValue = dialog.FileName;
 
                             switch (action)

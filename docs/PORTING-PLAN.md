@@ -428,6 +428,20 @@ The Island, Scorched Earth, The Center, Aberration, Extinction, Astraeos, Ragnar
       whose items WPF shows as empty data items. `ViewHostItemsControl` exposes the visible view instead (the
       main window went from 15 to 77 buttons in the tree). Checked with UiDriver on the main window, Settings
       and Server Monitor: every button has a name except the scroll bars' arrow buttons.
+- [x] Libraries whose licenses conflict with a release, replaced:
+      - Windows API Code Pack (Microsoft's own terms, which exclude combining it with copyleft code and ask for an
+        indemnity): it was only used for file and folder pickers (14 dialogs in four files), now .NET's
+        `Microsoft.Win32` `OpenFileDialog` / `SaveFileDialog` / `OpenFolderDialog`. Filters go through
+        `FileDialogUtils.Filter`, which turns the old "label + `*.a,*.b`" pairs into Win32 filter strings.
+      - NeXt.Vdf (GPL-3.0, built from source): only used to remove the beta key from SteamCMD's
+        `appmanifest_<appid>.acf` on profile save, when the branch is cleared. Replaced by `VdfFile` / `VdfNode`
+        (`ServerManager.Common\Lib`), a KeyValues text reader and writer that refuses what it doesn't understand
+        (such as `[$WIN32]` conditions) instead of dropping it on save. It writes UTF-8 without a BOM as SteamCMD
+        does; NeXt.Vdf wrote the manifest back as UTF-16. Its output matches the real ASA manifest byte for byte.
+        The unused manifest reader (`SteamUtils.ReadSteamCmdAppManifestFile`, `SteamCmdAppManifest*` models) went
+        with it. `VdfFileUnitTest` covers both.
+      - Left: WPFSharp.Globalizer (custom license; forbids publicly releasing builds compiled from a public copy of
+        its source, which is how this repo builds it). See THIRD-PARTY-NOTICES.md.
 
 ---
 

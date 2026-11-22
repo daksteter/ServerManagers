@@ -1,4 +1,4 @@
-﻿using Microsoft.WindowsAPICodePack.Dialogs;
+﻿using Microsoft.Win32;
 using ServerManagerTool.Common.Utils;
 using ServerManagerTool.Plugin.Common;
 using System;
@@ -38,11 +38,11 @@ namespace ServerManagerTool
 
         private void AddPlugin_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new CommonOpenFileDialog();
+            var dialog = new OpenFileDialog();
             dialog.Title = GlobalizedApplication.Instance.GetResourceString("PluginsWindow_AddDialogTitle");
-            dialog.DefaultExtension = GlobalizedApplication.Instance.GetResourceString("PluginsWindow_PluginDefaultExtension");
-            dialog.Filters.Add(new CommonFileDialogFilter(GlobalizedApplication.Instance.GetResourceString("PluginsWindow_AddFilterLabel"), GlobalizedApplication.Instance.GetResourceString("PluginsWindow_AddFilterExtension")));
-            if (dialog == null || dialog.ShowDialog(this) != CommonFileDialogResult.Ok)
+            dialog.DefaultExt = GlobalizedApplication.Instance.GetResourceString("PluginsWindow_PluginDefaultExtension");
+            dialog.Filter = FileDialogUtils.Filter(GlobalizedApplication.Instance.GetResourceString("PluginsWindow_AddFilterLabel"), GlobalizedApplication.Instance.GetResourceString("PluginsWindow_AddFilterExtension"));
+            if (dialog == null || dialog.ShowDialog(this) != true)
                 return;
 
             try

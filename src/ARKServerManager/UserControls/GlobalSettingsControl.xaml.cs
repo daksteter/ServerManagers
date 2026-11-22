@@ -1,4 +1,4 @@
-﻿using Microsoft.WindowsAPICodePack.Dialogs;
+﻿using Microsoft.Win32;
 using NLog;
 using ServerManagerTool.Common;
 using ServerManagerTool.Common.Lib;
@@ -196,21 +196,20 @@ namespace ServerManagerTool
             var optionResult = MessageBox.Show(_globalizer.GetResourceString("GlobalSettings_DataDirectoryChange_ConfirmLabel"), _globalizer.GetResourceString("GlobalSettings_DataDirectoryChange_ConfirmTitle"), MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (optionResult == MessageBoxResult.Yes)
             {
-                var dialog = new CommonOpenFileDialog();
-                dialog.IsFolderPicker = true;
+                var dialog = new OpenFolderDialog();
                 dialog.Title = _globalizer.GetResourceString("Application_DataDirectoryTitle");
                 dialog.InitialDirectory = Config.Default.DataDir;
                 var result = dialog.ShowDialog(Window.GetWindow(this));
 
-                if (result != CommonFileDialogResult.Ok)
+                if (result != true)
                     return;
 
-                if (string.Equals(dialog.FileName, Config.Default.DataDir, StringComparison.OrdinalIgnoreCase))
+                if (string.Equals(dialog.FolderName, Config.Default.DataDir, StringComparison.OrdinalIgnoreCase))
                     return;
 
                 try
                 {
-                    var newDataDirectory = IOUtils.NormalizeFolder(dialog.FileName);
+                    var newDataDirectory = IOUtils.NormalizeFolder(dialog.FolderName);
 
                     // Set up the destination directories
                     string newConfigDirectory = Path.Combine(newDataDirectory, Config.Default.ProfilesDir);
@@ -277,19 +276,18 @@ namespace ServerManagerTool
 
         private void SetBackupDir_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new CommonOpenFileDialog();
-            dialog.IsFolderPicker = true;
+            var dialog = new OpenFolderDialog();
             dialog.Title = _globalizer.GetResourceString("GlobalSettings_DataDirectoryTitle");
             dialog.InitialDirectory = Config.Default.BackupPath;
             var result = dialog.ShowDialog(Window.GetWindow(this));
 
-            if (result != CommonFileDialogResult.Ok)
+            if (result != true)
                 return;
 
-            if (string.Equals(dialog.FileName, Config.Default.BackupPath, StringComparison.OrdinalIgnoreCase))
+            if (string.Equals(dialog.FolderName, Config.Default.BackupPath, StringComparison.OrdinalIgnoreCase))
                 return;
 
-            Config.Default.BackupPath = IOUtils.NormalizeFolder(dialog.FileName);
+            Config.Default.BackupPath = IOUtils.NormalizeFolder(dialog.FolderName);
         }
 
         private void ClearBackupDir_Click(object sender, RoutedEventArgs e)
@@ -299,19 +297,18 @@ namespace ServerManagerTool
 
         private void SetCacheDir_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new CommonOpenFileDialog();
-            dialog.IsFolderPicker = true;
+            var dialog = new OpenFolderDialog();
             dialog.Title = _globalizer.GetResourceString("GlobalSettings_CacheDirectoryTitle");
             dialog.InitialDirectory = Config.Default.DataDir;
             var result = dialog.ShowDialog(Window.GetWindow(this));
 
-            if (result != CommonFileDialogResult.Ok)
+            if (result != true)
                 return;
 
-            if (string.Equals(dialog.FileName, Config.Default.AutoUpdate_CacheDir, StringComparison.OrdinalIgnoreCase))
+            if (string.Equals(dialog.FolderName, Config.Default.AutoUpdate_CacheDir, StringComparison.OrdinalIgnoreCase))
                 return;
 
-            Config.Default.AutoUpdate_CacheDir = IOUtils.NormalizeFolder(dialog.FileName);
+            Config.Default.AutoUpdate_CacheDir = IOUtils.NormalizeFolder(dialog.FolderName);
         }
 
         private async void SteamCMDAuthenticate_Click(object sender, RoutedEventArgs e)

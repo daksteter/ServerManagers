@@ -1,7 +1,6 @@
 ﻿using ArkData;
 using Microsoft.Win32.TaskScheduler;
 using Newtonsoft.Json;
-using NeXt.Vdf;
 using ServerManagerTool.Common.Enums;
 using ServerManagerTool.Common.Interfaces;
 using ServerManagerTool.Common.JsonConverters;
@@ -4045,22 +4044,7 @@ namespace ServerManagerTool.Lib
             {
                 var appIdServer = Config.Default.AppIdServer;
                 var manifestFile = IOUtils.NormalizePath(Path.Combine(InstallDirectory, Config.Default.SteamManifestFolderRelativePath, string.Format(Config.Default.AppSteamManifestFile, appIdServer)));
-                if (string.IsNullOrWhiteSpace(manifestFile) || !File.Exists(manifestFile))
-                    return;
-
-                // load the manifest files
-                var vdfDeserializer = VdfDeserializer.FromFile(manifestFile);
-                var vdf = vdfDeserializer.Deserialize();
-
-                // clear any of th beta keys values
-                var updated = SteamCmdManifestDetailsResult.ClearUserConfigBetaKeys(vdf);
-
-                if (updated)
-                {
-                    // save the manifest file
-                    var vdfSerializer = new VdfSerializer(vdf);
-                    vdfSerializer.Serialize(manifestFile);
-                }
+                SteamUtils.ClearAppManifestBetaKeys(manifestFile);
             }
             catch (Exception ex)
             {

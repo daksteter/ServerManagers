@@ -26,7 +26,8 @@ and show the administrator prompt; answering Yes gives an elevated copy working 
 Without admin rights the copy can't change firewall rules or scheduled tasks; everything else works. Its windows
 appear on the desktop while it runs; leave its dialogs to the driver. A newly started app takes the keyboard
 focus, so `launch` gives it back to the window that had it (keys typed into a game or editor meanwhile would
-otherwise land in the test copy); windows the app opens later don't take it.
+otherwise land in the test copy). The app's own windows opened later don't take it, but the Windows file and
+folder dialogs (Open, Save, Select Folder) do: don't open them while someone else is using the machine.
 
 ## Use
 

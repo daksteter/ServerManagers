@@ -1,6 +1,5 @@
-﻿using NeXt.Vdf;
-using NLog;
-using ServerManagerTool.Common.Model;
+﻿using NLog;
+using ServerManagerTool.Common.Lib;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -17,15 +16,27 @@ namespace ServerManagerTool.Common.Utils
 
         private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
-        public static SteamCmdAppManifest ReadSteamCmdAppManifestFile(string file)
+        /// <summary>
+        /// Removes the beta branch recorded in the UserConfig section of a SteamCMD app manifest
+        /// (appmanifest_&lt;appid&gt;.acf), so that SteamCMD goes back to the public branch. Returns whether the file
+        /// was changed.
+        /// </summary>
+        public static bool ClearAppManifestBetaKeys(string manifestFile)
         {
-            if (string.IsNullOrWhiteSpace(file) || !File.Exists(file))
-                return null;
+            if (string.IsNullOrWhiteSpace(manifestFile) || !File.Exists(manifestFile))
+                return false;
 
-            var vdfSerializer = VdfDeserializer.FromFile(file);
-            var vdf = vdfSerializer.Deserialize();
+            var manifest = VdfFile.Load(manifestFile);
+            var userConfig = manifest["UserConfig"];
+            if (userConfig == null || !userConfig.IsSection)
+                return false;
 
-            return SteamCmdManifestDetailsResult.Deserialize(vdf);
+            var removed = userConfig.Children.RemoveAll(key => string.Equals(key.Key, "betakey", StringComparison.OrdinalIgnoreCase));
+            if (removed == 0)
+                return false;
+
+            VdfFile.Save(manifest, manifestFile);
+            return true;
         }
 
         public static Process GetSteamProcess()

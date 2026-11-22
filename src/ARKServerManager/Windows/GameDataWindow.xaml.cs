@@ -1,4 +1,4 @@
-﻿using Microsoft.WindowsAPICodePack.Dialogs;
+﻿using Microsoft.Win32;
 using ServerManagerTool.Common.Utils;
 using ServerManagerTool.Lib;
 using ServerManagerTool.Lib.ViewModel;
@@ -53,11 +53,11 @@ namespace ServerManagerTool
 
         private void AddGameData_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new CommonOpenFileDialog();
+            var dialog = new OpenFileDialog();
             dialog.Title = GlobalizedApplication.Instance.GetResourceString("GameDataWindow_AddDialogTitle");
-            dialog.DefaultExtension = GlobalizedApplication.Instance.GetResourceString("GameDataWindow_GameDataDefaultExtension");
-            dialog.Filters.Add(new CommonFileDialogFilter(GlobalizedApplication.Instance.GetResourceString("GameDataWindow_AddFilterLabel"), GlobalizedApplication.Instance.GetResourceString("GameDataWindow_AddFilterExtension")));
-            if (dialog == null || dialog.ShowDialog(this) != CommonFileDialogResult.Ok)
+            dialog.DefaultExt = GlobalizedApplication.Instance.GetResourceString("GameDataWindow_GameDataDefaultExtension");
+            dialog.Filter = FileDialogUtils.Filter(GlobalizedApplication.Instance.GetResourceString("GameDataWindow_AddFilterLabel"), GlobalizedApplication.Instance.GetResourceString("GameDataWindow_AddFilterExtension"));
+            if (dialog == null || dialog.ShowDialog(this) != true)
                 return;
 
             try

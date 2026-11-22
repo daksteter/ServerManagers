@@ -13,11 +13,9 @@ The app itself is a fork of [ARK Server Manager](https://github.com/Bletch1971/S
 | AsaSavegameToolkit | 1.0.2 | MIT | Flint Thatchwood | https://github.com/flintthatchwood/AsaSavegameToolkit |
 | Discord.Net | 3.20.2 | MIT | Discord.Net Contributors | https://github.com/discord-net/Discord.Net |
 | Hardcodet.NotifyIcon.Wpf | 2.0.1 | MIT | Copyright (c) 2009 - 2019 Philipp Sumi, 2019 - 2024 Philipp Sumi, Robin Krom, Jan Karger | https://github.com/hardcodet/wpf-notifyicon |
-| Microsoft-WindowsAPICodePack-Core / -Shell | 1.1.5 | Microsoft Windows API Code Pack license | Microsoft Corporation; fork maintained by rpastric, contre, dahall | https://github.com/contre/Windows-API-Code-Pack-1.1 |
 | Microsoft.Data.Sqlite | 10.0.2 | MIT | © Microsoft Corporation | https://github.com/dotnet/efcore |
 | Microsoft.Extensions.Configuration, .DependencyInjection, .Logging | 10.0.2 / 11.0.0 | MIT | © Microsoft Corporation | https://github.com/dotnet/runtime |
 | Microsoft.Xaml.Behaviors.Wpf | 1.1.161 | MIT | © Microsoft Corporation | https://github.com/microsoft/XamlBehaviorsWpf |
-| NeXt.Vdf | 2015 source | GPL-3.0-or-later | Copyright (c) Mirco Gericke 2015 | https://github.com/louispires/NeXt.Vdf |
 | Newtonsoft.Json | 13.0.4 | MIT | Copyright © James Newton-King 2008 | https://github.com/JamesNK/Newtonsoft.Json |
 | NLog | 6.2.2 | BSD-3-Clause | Copyright (c) 2004-2026 NLog Project - https://nlog-project.org/ | https://github.com/NLog/NLog |
 | ProDotNetZip | 1.20.0 | Ms-PL, with BSD, Apache and zlib parts | Copyright (c) 2006 - 2011 Dino Chiesa; Dino Chiesa and Microsoft Corporation; Rene Mihula | https://github.com/mihula/ProDotNetZip |
@@ -216,12 +214,6 @@ Code is provided under MIT licence:
 	SOFTWARE.
 ```
 
-### Microsoft Windows API Code Pack
-
-Applies to Microsoft-WindowsAPICodePack-Core and -Shell: the Microsoft Software License Terms for the Microsoft
-Windows API Code Pack for Microsoft .NET Framework, published with the fork at
-https://github.com/contre/Windows-API-Code-Pack-1.1/blob/main/LICENSE.
-
 ### WPFSharp.Globalizer
 
 ```text
@@ -265,8 +257,3 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ```
-
-### GNU General Public License v3.0
-
-Applies to NeXt.Vdf: Copyright (c) Mirco Gericke 2015, licensed under the GNU General Public License, version 3 or
-(at your option) any later version. The full text is at https://www.gnu.org/licenses/gpl-3.0.html.
