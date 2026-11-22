@@ -254,7 +254,15 @@ Decision: **plain CurseForge IDs** (no CurseForge API for now).
       itself (4 were kept on the test server).
 - [x] **Test:** manual backup with the server running: it saved first, then wrote a zip with the world save
       and player file (CRCs OK, SQLite `integrity_check` = ok, no temp copies left). The restore window
-      (server stopped) lists the world save, the zip and the `.arkrbf` backups. Restore itself not run yet.
+      (server stopped) lists the world save, the zip and the `.arkrbf` backups.
+- [x] Restore deletes the world save's SQLite side files (`-journal`, `-wal`, `-shm`) along with the old save: one
+      left by a crash would be applied to the restored file the next time it is opened. (ASA uses a rollback
+      journal, `journal_mode = delete`, and leaves none at rest.)
+- [x] **Test:** restore, server stopped. An `.arkrbf` (the server's own backup): 1 file, the world save is
+      byte-identical to it. A zip, full restore: 3 files (world, `.arkprofile`, `.arktribe`), each identical to
+      the zip's, with their saved times. Each restore first zipped the current state (both zips verified: the
+      first holds the world as it was before the test). Restored world: SQLite `integrity_check` = ok, no side
+      files left; the server started on it (Running / Available).
 - [x] The player list was hidden at first (ASE-only `ArkData`), then brought back on **AsaSavegameToolkit 1.0.2**
       (NuGet, MIT): `ArkData` keeps its `DataContainer` / `PlayerData` / `TribeData` API but reads the ASA
       `.arkprofile` / `.arktribe` files with the toolkit (the old byte-search parser, the Steam lookups and
@@ -404,7 +412,7 @@ The Island, Scorched Earth, The Center, Aberration, Extinction, Astraeos, Ragnar
 - [ ] Folder pickers (install dir, backup dir), Help and other links open in the browser.
 - [ ] Install/update server via SteamCMD; start, stop (with countdown), restart.
 - [ ] Status and player count update; RCON window connects, auto-scrolls, kick/ban work.
-- [ ] Backup and restore a world save.
+- [x] Backup and restore a world save.
 - [ ] Scheduled tasks (auto-start, auto-update, auto-backup, auto-shutdown) are created and actually run
       (they must point at the `.exe`, not the `.dll`).
 - [ ] Server Monitor: "Create shortcut" produces a working desktop shortcut.

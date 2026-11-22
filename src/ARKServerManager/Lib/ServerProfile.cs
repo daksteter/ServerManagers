@@ -5144,6 +5144,10 @@ namespace ServerManagerTool.Lib
             var restoreFileInfo = new FileInfo(restoreFile);
             var restoredFileCount = 0;
 
+            // ASA world saves are SQLite databases: a journal or WAL file the old save left behind (after a crash) would
+            // be applied to the restored file the next time it is opened, so it goes along with the old save.
+            var worldSideFiles = WorldSaveSideFileSuffixes.Select(suffix => worldFile + suffix).ToList();
+
             if (isArchiveFile)
             {
                 // create a list of files to be deleted
@@ -5152,6 +5156,7 @@ namespace ServerManagerTool.Lib
                 {
                     worldFile
                 };
+                files.AddRange(worldSideFiles);
 
                 if (restoreAll)
                 {
@@ -5230,6 +5235,13 @@ namespace ServerManagerTool.Lib
             }
             else
             {
+                foreach (var file in worldSideFiles)
+                {
+                    // unlike the archive case, a side file that can't be deleted stops the restore
+                    if (File.Exists(file))
+                        File.Delete(file);
+                }
+
                 // copy the selected file
                 File.Copy(restoreFile, worldFile, true);
                 File.SetCreationTime(worldFile, restoreFileInfo.CreationTime);
@@ -7149,6 +7161,11 @@ namespace ServerManagerTool.Lib
         /// (e.g. TheIsland_WP_21.11.2026_23.28.20.arkrbf). They are SQLite databases like the world save itself.
         /// </summary>
         public const string ServerBackupFileExtension = ".arkrbf";
+
+        /// <summary>
+        /// The files SQLite keeps next to a database during a write (rollback journal, write-ahead log and its index).
+        /// </summary>
+        public static readonly string[] WorldSaveSideFileSuffixes = { "-journal", "-wal", "-shm" };
         #endregion
 
         #endregion
