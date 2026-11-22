@@ -37,10 +37,10 @@
                     <Label FontSize="15" Content="{Binding StatusString}" MinWidth="100"/>
                 </StackPanel>
             </Border>
-            <Border Grid.Column="1" Margin="2,2,0,2" Background="{DynamicResource BeigeLabel}" ToolTip="{DynamicResource ServerSettings_PlayersTooltip}">
+            <Border Grid.Column="1" Margin="2,2,0,2" Background="{DynamicResource BeigeLabel}" ToolTip="{Binding PlayersTooltip}">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                     <Label FontSize="15" Content="{DynamicResource ServerSettings_PlayersLabel}"/>
-                    <Label FontSize="15" Content="{Binding Players}"/>
+                    <Label FontSize="15" Content="{Binding PlayersString}"/>
                     <Label FontSize="15" Content="/" Width="20"/>
                     <Label FontSize="15" Content="{Binding MaxPlayers}"/>
                 </StackPanel>

@@ -35,6 +35,7 @@ namespace ServerManagerTool.Lib
         private readonly List<PropertyChangeNotifier> profileNotifiers = new List<PropertyChangeNotifier>();
         private Process serverProcess;
         private IAsyncDisposable updateRegistration;
+        private int lastKnownPlayerCount;
         private System.Timers.Timer motdIntervalTimer = new System.Timers.Timer(3600000);
         private RconClient _rconConsole = null;
 
@@ -45,6 +46,9 @@ namespace ServerManagerTool.Lib
         public static readonly DependencyProperty StatusStringProperty = DependencyProperty.Register(nameof(StatusString), typeof(string), typeof(ServerRuntime), new PropertyMetadata(string.Empty));
         public static readonly DependencyProperty MaxPlayersProperty = DependencyProperty.Register(nameof(MaxPlayers), typeof(int), typeof(ServerRuntime), new PropertyMetadata(0));
         public static readonly DependencyProperty PlayersProperty = DependencyProperty.Register(nameof(Players), typeof(int), typeof(ServerRuntime), new PropertyMetadata(0));
+        public static readonly DependencyProperty PlayerCountStatusProperty = DependencyProperty.Register(nameof(PlayerCountStatus), typeof(PlayerCountStatus), typeof(ServerRuntime), new PropertyMetadata(PlayerCountStatus.Known));
+        public static readonly DependencyProperty PlayersStringProperty = DependencyProperty.Register(nameof(PlayersString), typeof(string), typeof(ServerRuntime), new PropertyMetadata("0"));
+        public static readonly DependencyProperty PlayersTooltipProperty = DependencyProperty.Register(nameof(PlayersTooltip), typeof(string), typeof(ServerRuntime), new PropertyMetadata(string.Empty));
         public static readonly DependencyProperty VersionProperty = DependencyProperty.Register(nameof(Version), typeof(Version), typeof(ServerRuntime), new PropertyMetadata(new Version()));
         public static readonly DependencyProperty ProfileSnapshotProperty = DependencyProperty.Register(nameof(ProfileSnapshot), typeof(ServerProfileSnapshot), typeof(ServerRuntime), new PropertyMetadata(null));
 
@@ -76,6 +80,33 @@ namespace ServerManagerTool.Lib
         {
             get { return (int)GetValue(PlayersProperty); }
             protected set { SetValue(PlayersProperty, value); }
+        }
+
+        /// <summary>
+        /// Whether <see cref="Players"/> is known: the count comes from RCON, so without an RCON reply it isn't.
+        /// </summary>
+        public PlayerCountStatus PlayerCountStatus
+        {
+            get { return (PlayerCountStatus)GetValue(PlayerCountStatusProperty); }
+            protected set { SetValue(PlayerCountStatusProperty, value); }
+        }
+
+        /// <summary>
+        /// The player count to show: the number, or a dash when it isn't known.
+        /// </summary>
+        public string PlayersString
+        {
+            get { return (string)GetValue(PlayersStringProperty); }
+            protected set { SetValue(PlayersStringProperty, value); }
+        }
+
+        /// <summary>
+        /// What the player count means, or why it isn't known.
+        /// </summary>
+        public string PlayersTooltip
+        {
+            get { return (string)GetValue(PlayersTooltipProperty); }
+            protected set { SetValue(PlayersTooltipProperty, value); }
         }
 
         public Version Version
@@ -134,6 +165,7 @@ namespace ServerManagerTool.Lib
                 this.Version = lastInstalled;
             }
 
+            UpdatePlayersString();
             RegisterForUpdates();
         }
 
@@ -374,12 +406,16 @@ namespace ServerManagerTool.Lib
                         break;
                 }
 
-                var previousOnlinePlayerCount = this.Players;
                 this.Players = update.OnlinePlayerCount;
+                this.PlayerCountStatus = update.PlayerCountStatus;
                 this.MaxPlayers = this.ProfileSnapshot.MaxPlayerCount;
+                UpdatePlayersString();
 
-                if (previousOnlinePlayerCount != this.Players)
+                // compared with the last count that was known, so RCON dropping out for a poll (or not answering yet
+                // while the server starts) isn't reported as everyone leaving and coming back
+                if (update.PlayerCountStatus == PlayerCountStatus.Known && update.OnlinePlayerCount != this.lastKnownPlayerCount)
                 {
+                    this.lastKnownPlayerCount = update.OnlinePlayerCount;
                     PluginHelper.Instance.ProcessAlert(AlertType.OnlinePlayerCountChanged, this.ProfileSnapshot.ProfileName, $"{Config.Default.Alert_OnlinePlayerCountChange} {this.Players} / {this.MaxPlayers}");
                 }
 
@@ -745,6 +781,33 @@ namespace ServerManagerTool.Lib
         public void UpdateServerStatusString()
         {
             StatusString = GetServerStatusString(Status);
+            UpdatePlayersString();
+        }
+
+        private void UpdatePlayersString()
+        {
+            PlayersString = GetPlayersString(Players, PlayerCountStatus);
+            PlayersTooltip = GetPlayersTooltip(PlayerCountStatus);
+        }
+
+        public static string GetPlayersString(int players, PlayerCountStatus playerCountStatus)
+        {
+            return playerCountStatus == PlayerCountStatus.Known ? players.ToString() : "–";
+        }
+
+        public static string GetPlayersTooltip(PlayerCountStatus playerCountStatus)
+        {
+            switch (playerCountStatus)
+            {
+                case PlayerCountStatus.RconDisabled:
+                    return _globalizer.GetResourceString("ServerSettings_PlayersRconDisabledTooltip");
+                case PlayerCountStatus.NoRconReply:
+                    return _globalizer.GetResourceString("ServerSettings_PlayersNoRconReplyTooltip");
+                case PlayerCountStatus.RconPasswordRejected:
+                    return _globalizer.GetResourceString("ServerSettings_PlayersRconPasswordRejectedTooltip");
+                default:
+                    return _globalizer.GetResourceString("ServerSettings_PlayersTooltip");
+            }
         }
 
         public static string GetServerStatusString(ServerStatus status)

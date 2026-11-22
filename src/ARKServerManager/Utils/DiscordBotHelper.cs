@@ -100,7 +100,7 @@ namespace ServerManagerTool.Utils
                 return new List<string> { string.Format(_globalizer.GetResourceString("DiscordBot_ProfileMissing"), CommandType.Info) };
             }
 
-            var profileList = new List<(ServerProfileSnapshot Profile, int Players, int MaxPlayers)>();
+            var profileList = new List<(ServerProfileSnapshot Profile, string Players, int MaxPlayers, string PlayersNote)>();
             var responseList = new List<string>();
 
             TaskUtils.RunOnUIThreadAsync(() =>
@@ -150,18 +150,20 @@ namespace ServerManagerTool.Utils
                         }
 
                         _currentProfileCommands.Add(server.Profile.ProfileID, CommandType.Info);
-                        profileList.Add((ServerProfileSnapshot.Create(server.Profile), server.Runtime.Players, server.Runtime.MaxPlayers));
+                        var playersNote = server.Runtime.PlayerCountStatus == PlayerCountStatus.Known ? null : server.Runtime.PlayersTooltip;
+                        profileList.Add((ServerProfileSnapshot.Create(server.Profile), server.Runtime.PlayersString, server.Runtime.MaxPlayers, playersNote));
                     }
                 }
             }).Wait(token);
 
             // ASA servers don't answer Steam (A2S) queries; report the status the app already tracks (players via RCON).
-            foreach (var (profile, players, maxPlayers) in profileList)
+            foreach (var (profile, players, maxPlayers, playersNote) in profileList)
             {
                 var mapName = _globalizer.GetResourceString($"Map_{profile.ServerMap}") ?? profile.ServerMap;
                 responseList.Add($"```{profile.ServerName}\n" +
                     $"{_globalizer.GetResourceString("DiscordBot_MapLabel")} {mapName}\n" +
-                    $"{_globalizer.GetResourceString("ServerSettings_PlayersLabel")} {players} / {maxPlayers}```");
+                    $"{_globalizer.GetResourceString("ServerSettings_PlayersLabel")} {players} / {maxPlayers}" +
+                    (playersNote == null ? string.Empty : $"\n{playersNote}") + "```");
 
                 _currentProfileCommands.Remove(profile.ProfileId);
             }

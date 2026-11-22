@@ -349,8 +349,8 @@
 
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                        <Label Content="{Binding Runtime.Players}" />
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" ToolTip="{Binding Runtime.PlayersTooltip}">
+                                        <Label Content="{Binding Runtime.PlayersString}" />
                                         <Label Content="/" />
                                         <Label Content="{Binding Runtime.MaxPlayers}"/>
                                     </StackPanel>

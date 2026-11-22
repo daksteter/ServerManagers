@@ -905,6 +905,9 @@
     <sys:String x:Key="ServerSettings_AvailabilityTooltip">Whether the server has finished starting and is advertising itself for players to join.</sys:String>
     <sys:String x:Key="ServerSettings_PlayersLabel">Players:</sys:String>
     <sys:String x:Key="ServerSettings_PlayersTooltip">The current number of players connected to the server.</sys:String>
+    <sys:String x:Key="ServerSettings_PlayersRconDisabledTooltip">The player count comes from RCON, which is off for this profile. Turn on Enable RCON in the Administration section and restart the server to see it.</sys:String>
+    <sys:String x:Key="ServerSettings_PlayersNoRconReplyTooltip">No reply from RCON yet, so the player count isn't known. It shows once the server has finished starting; if it stays blank, check the RCON port.</sys:String>
+    <sys:String x:Key="ServerSettings_PlayersRconPasswordRejectedTooltip">The server didn't accept the admin password over RCON, so the player count isn't known. Check the profile's admin password.</sys:String>
 
     <sys:String x:Key="ServerSettings_Availability_Unknown">Unknown</sys:String>
     <sys:String x:Key="ServerSettings_Availability_Unavailable">Unavailable</sys:String>

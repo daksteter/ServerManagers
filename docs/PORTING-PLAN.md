@@ -163,7 +163,15 @@ online check, and the Discord `info` command. Replace with process state + RCON.
       (`global <message>`, not a command) in Global mode.
 - [x] **Test:** stop with countdown (messages show in chat), the repeating MOTD (MOTD interval on), RCON window
       Save World.
-- [ ] Without RCON there is no player count — make that clear in the UI (or default RCON on for new profiles).
+- [x] Without RCON there is no player count — made clear in the UI: the status watcher reports why the count
+      isn't known (`PlayerCountStatus`: RCON off, no RCON reply yet, password rejected), and the profile's status
+      bar, the Server Monitor and the Shutdown window show "–" with a tooltip that says why and what to do; the
+      Discord `info` reply adds the same note. The "player count changed" alert compares with the last known
+      count, so an RCON reply missing for a poll (or while the server starts) no longer reports 0 players and
+      back. RCON stays off by default for new profiles.
+- [x] **Test:** RCON off → "–" with the RCON-off tooltip while the server runs; RCON on → "–" (no reply yet)
+      while it starts, then the count. (A rejected password only happens if the server's ini is edited by hand:
+      the profile writes the password it uses.)
 - [x] **Test:** with the test server running, the app reports Running / Available, 0 players, within one
       poll of starting, over a single RCON connection that stays open.
 - [x] **Test:** the player count went to 1 when a player joined; stop with countdown works.

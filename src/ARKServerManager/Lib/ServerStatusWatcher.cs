@@ -122,7 +122,8 @@ namespace ServerManagerTool.Lib
                     }
                     finally
                     {
-                        Logger.Info($"{nameof(DoUpdateAsync)} {registration.LocalEndpoint}: {statusUpdate.Status}, players: {statusUpdate.OnlinePlayerCount}");
+                        var players = statusUpdate.PlayerCountStatus == PlayerCountStatus.Known ? statusUpdate.OnlinePlayerCount.ToString() : $"unknown ({statusUpdate.PlayerCountStatus})";
+                        Logger.Info($"{nameof(DoUpdateAsync)} {registration.LocalEndpoint}: {statusUpdate.Status}, players: {players}");
                     }
                 }
             }
@@ -175,6 +176,10 @@ namespace ServerManagerTool.Lib
                 // checked, because that check relied on Steam queries.
                 Status = rconAnswered || registration.LogStartupComplete ? WatcherServerStatus.Published : WatcherServerStatus.Initializing,
                 OnlinePlayerCount = onlinePlayerCount,
+                PlayerCountStatus = rconAnswered ? PlayerCountStatus.Known
+                    : registration.RconEndpoint == null ? PlayerCountStatus.RconDisabled
+                    : registration.RconPasswordRejected ? PlayerCountStatus.RconPasswordRejected
+                    : PlayerCountStatus.NoRconReply,
                 Version = registration.LogVersion,
             };
         }

@@ -347,10 +347,10 @@
                                 </Label>
                             </StackPanel>
                         </Border>
-                        <Border Grid.Column="2" Margin="2" ToolTip="{DynamicResource ServerSettings_PlayersTooltip}" Style="{DynamicResource BorderFillLightStyle}">
+                        <Border Grid.Column="2" Margin="2" ToolTip="{Binding PlayersTooltip}" Style="{DynamicResource BorderFillLightStyle}">
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                 <Label FontSize="15" Content="{DynamicResource ServerSettings_PlayersLabel}"/>
-                                <Label FontSize="15" Content="{Binding Players}"/>
+                                <Label FontSize="15" Content="{Binding PlayersString}"/>
                                 <Label FontSize="15" Content="/" MinWidth="20"/>
                                 <Label FontSize="15" Content="{Binding MaxPlayers}"/>
                             </StackPanel>
