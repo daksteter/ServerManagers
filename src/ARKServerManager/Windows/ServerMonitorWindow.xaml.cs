@@ -167,6 +167,10 @@ namespace ServerManagerTool.Windows
 
         private void ServerMonitorWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            // a local value overrides the stand-alone-window style trigger, so only set it when there is nothing to show
+            if (!App.HasServerManagerPatchNotes)
+                PatchNotesButton.Visibility = Visibility.Collapsed;
+
             if (ServerManager == null)
             {
                 ServerManager = ServerManager.Instance;

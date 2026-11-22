@@ -319,7 +319,7 @@ namespace ServerManagerTool {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://arkservermanager.freeforums.net/thread/1194/faq-frequently-asked")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://ark.wiki.gg/wiki/Dedicated_server_setup")]
         public string HelpUrl {
             get {
                 return ((string)(this["HelpUrl"]));
@@ -520,7 +520,7 @@ namespace ServerManagerTool {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://survivetheark.com/index.php?/forums/forum/5-changelog-patch-notes/")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://ark.wiki.gg/wiki/Patch_Notes")]
         public string AppPatchNotesUrl {
             get {
                 return ((string)(this["AppPatchNotesUrl"]));
@@ -1039,7 +1039,7 @@ namespace ServerManagerTool {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("AllowedCheaterSteamIDs.txt")]
+        [global::System.Configuration.DefaultSettingValueAttribute("AllowedCheaterAccountIDs.txt")]
         public string ServerAdminFile {
             get {
                 return ((string)(this["ServerAdminFile"]));
@@ -1295,7 +1295,7 @@ namespace ServerManagerTool {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://arkservermanager.freeforums.net/thread/3024/get-own-steam-web-api")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://steamcommunity.com/dev")]
         public string SteamWebAPIKeyHelpUrl {
             get {
                 return ((string)(this["SteamWebAPIKeyHelpUrl"]));
@@ -1515,15 +1515,6 @@ namespace ServerManagerTool {
             }
             set {
                 this["Alert_UpdateProcessError"] = value;
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://arkservermanager.freeforums.net/board/22/plugins")]
-        public string ServerManagerPluginUrl {
-            get {
-                return ((string)(this["ServerManagerPluginUrl"]));
             }
         }
         
@@ -1975,15 +1966,6 @@ namespace ServerManagerTool {
             }
             set {
                 this["AutoUpdate_VerifyServerAfterUpdate"] = value;
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://arkservermanager.freeforums.net/board/25/game-data")]
-        public string GameDataUrl {
-            get {
-                return ((string)(this["GameDataUrl"]));
             }
         }
         
@@ -2520,7 +2502,7 @@ namespace ServerManagerTool {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://arkservermanager.freeforums.net/thread/8764/get-own-discord-bot")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://docs.discord.com/developers/quick-start/getting-started")]
         public string DiscordBotHelpUrl {
             get {
                 return ((string)(this["DiscordBotHelpUrl"]));

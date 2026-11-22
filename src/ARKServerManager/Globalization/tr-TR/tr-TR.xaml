@@ -28,9 +28,6 @@
     <sys:String x:Key="Map_Fjordur">Fjordur</sys:String>
     <!--#endregion-->
 
-    <!--#region Total Conversion Names -->
-    <!--#endregion-->
-
     <!--#region Branch Names -->
     <sys:String x:Key="Branch_live">Canlı</sys:String>
     <!--#endregion-->
@@ -60,9 +57,6 @@
     <sys:String x:Key="Mod_LostIsland">Lost Island</sys:String>
     <sys:String x:Key="Mod_Fjordur">Fjordur</sys:String>
     <sys:String x:Key="Mod_PGM">PGM</sys:String>
-    <!--#endregion-->
-
-    <!--#region Mod Types -->
     <!--#endregion-->
 
     <!--#region Process Priority -->
@@ -230,17 +224,6 @@
     <sys:String x:Key="PlayerList_Menu_FilterInvalid">Geçersiz Oyuncuları Göster</sys:String>
     <!--#endregion-->
 
-    <!--#region Mod Details Window -->
-
-
-
-    <!--#endregion-->
-
-    <!--#region Workshop Files Window -->
-
-
-    <!--#endregion-->
-
     <!--#region WorldSave Restore Window -->
     <sys:String x:Key="WorldSaveRestore_Title">Geri Yükle</sys:String>
     <sys:String x:Key="WorldSaveRestore_ProfileTitle">Geri Yükle - {0}</sys:String>
@@ -310,7 +293,6 @@
     <sys:String x:Key="GameDataWindow_AddGameDataTooltip">Oyun Veri Dosyası Ekle</sys:String>
     <sys:String x:Key="GameDataWindow_ClearGameDataTooltip">Tüm Kullanıcı Oyun Veri Dosyalarını Sil</sys:String>
     <sys:String x:Key="GameDataWindow_OpenGameDataFolderTooltip">Oyun Veri Klasörünü Aç</sys:String>
-    <sys:String x:Key="GameDataWindow_GameDataForumTooltip">Oyun Veri Forumunu Aç</sys:String>
     <sys:String x:Key="GameDataWindow_ReloadGameDataTooltip">Oyun Veri Dosyalarını Yeniden Yükle</sys:String>
     <sys:String x:Key="GameDataWindow_ValidateGameDataTooltip">Oyun Veri Dosyalarını Doğrula</sys:String>
     <sys:String x:Key="GameDataWindow_RemoveGameDataTooltip">Oyun Veri Dosyasını Sil</sys:String>
@@ -349,7 +331,6 @@
     <sys:String x:Key="PluginsWindow_ClearPluginsTooltip">Tüm Eklentileri Sil</sys:String>
     <sys:String x:Key="PluginsWindow_ConfigPluginTooltip">Eklenti Yapılandırmasını Aç</sys:String>
     <sys:String x:Key="PluginsWindow_OpenPluginsFolderTooltip">Eklentiler Klasörünü Aç</sys:String>
-    <sys:String x:Key="PluginsWindow_PluginsForumTooltip">Eklentiler Forumunu Aç</sys:String>
     <sys:String x:Key="PluginsWindow_RemovePluginTooltip">Eklentiyi Sil</sys:String>
 
     <sys:String x:Key="PluginsWindow_NameColumnLabel">Adı</sys:String>
@@ -2419,7 +2400,6 @@ Wildcard tarafından belgelenmemiştir.</sys:String>
     <sys:String x:Key="RCON_Menu_Kick">At</sys:String>
     <sys:String x:Key="RCON_Menu_Banned">Yasakla</sys:String>
     <sys:String x:Key="RCON_Menu_Whitelisted">Beyaz Listeye Ekle</sys:String>
-    <sys:String x:Key="RCON_Menu_ViewSteamProfile">Steam Profilini Görüntüle...</sys:String>
     <sys:String x:Key="RCON_Menu_ViewProfile">Profili Görüntüle...</sys:String>
     <sys:String x:Key="RCON_Menu_ViewTribe">Kabileyi Görüntüle...</sys:String>
     <sys:String x:Key="RCON_Menu_CopyId">Kimliği Kopyala...</sys:String>
@@ -5486,7 +5466,6 @@ Wildcard tarafından belgelenmemiştir.</sys:String>
     <sys:String x:Key="ProfileValidation_TCModNameMismatch">Harita adı, toplam dönüşüm modunun harita adıyla uyuşmuyor.</sys:String>
     <sys:String x:Key="ProfileValidation_TCModDifferentApplication">Toplam dönüşüm modu farklı bir uygulama içindir.</sys:String>
     <sys:String x:Key="ProfileValidation_TCModOutdated">Toplam dönüşüm modu güncel değil.</sys:String>
-    <sys:String x:Key="ProfileValidation_TCModSteamError">Toplam dönüşüm modu ayrıntıları Steam'den alınamadı.</sys:String>
 
     <!--#endregion-->
 

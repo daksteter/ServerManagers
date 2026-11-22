@@ -25,24 +25,6 @@ namespace ServerManagerTool.Plugin.Discord {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://servermanagers.azurewebsites.net/api/plugin/call/{0}/{1}/")]
-        public string PluginCallUrlFormat {
-            get {
-                return ((string)(this["PluginCallUrlFormat"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("12")]
-        public int PluginCallUrlDelay {
-            get {
-                return ((int)(this["PluginCallUrlDelay"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("5000")]
         public int RequestTimeout {
             get {
@@ -70,8 +52,7 @@ namespace ServerManagerTool.Plugin.Discord {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://raw.githubusercontent.com/Bletch1971/ServerManagers/master/Plugins/Discor" +
-            "d/latest.zip")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string LatestDownloadUrl {
             get {
                 return ((string)(this["LatestDownloadUrl"]));
@@ -80,8 +61,7 @@ namespace ServerManagerTool.Plugin.Discord {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://raw.githubusercontent.com/Bletch1971/ServerManagers/master/Plugins/Discor" +
-            "d/latest.txt")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string LatestVersionUrl {
             get {
                 return ((string)(this["LatestVersionUrl"]));
@@ -90,8 +70,7 @@ namespace ServerManagerTool.Plugin.Discord {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://raw.githubusercontent.com/Bletch1971/ServerManagers/master/Plugins/Discor" +
-            "d/beta/latest.zip")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string LatestBetaDownloadUrl {
             get {
                 return ((string)(this["LatestBetaDownloadUrl"]));
@@ -100,8 +79,7 @@ namespace ServerManagerTool.Plugin.Discord {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://raw.githubusercontent.com/Bletch1971/ServerManagers/master/Plugins/Discor" +
-            "d/beta/latest.txt")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string LatestBetaVersionUrl {
             get {
                 return ((string)(this["LatestBetaVersionUrl"]));
@@ -128,8 +106,7 @@ namespace ServerManagerTool.Plugin.Discord {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://raw.githubusercontent.com/Bletch1971/ServerManagers/master/Plugins/Discor" +
-            "d/VersionFeed.xml")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string VersionFeedUrl {
             get {
                 return ((string)(this["VersionFeedUrl"]));
@@ -138,29 +115,10 @@ namespace ServerManagerTool.Plugin.Discord {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://raw.githubusercontent.com/Bletch1971/ServerManagers/master/Plugins/Discor" +
-            "d/beta/VersionFeed.xml")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string VersionBetaFeedUrl {
             get {
                 return ((string)(this["VersionBetaFeedUrl"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://api.ipify.org")]
-        public string PublicIPCheckUrl1 {
-            get {
-                return ((string)(this["PublicIPCheckUrl1"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://whatismyip.akamai.com/")]
-        public string PublicIPCheckUrl2 {
-            get {
-                return ((string)(this["PublicIPCheckUrl2"]));
             }
         }
     }

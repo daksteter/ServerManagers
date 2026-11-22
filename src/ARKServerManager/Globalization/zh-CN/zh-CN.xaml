@@ -29,9 +29,6 @@
 
     <!--#endregion-->
 
-    <!--#region 总转换名称 -->
-    <!--#endregion-->
-
     <!--#region 区域分支名称 -->
     <sys:String x:Key="Branch_live">生存</sys:String>
     <!--#endregion-->
@@ -62,9 +59,6 @@
 	<sys:String x:Key="Mod_LostIsland">迷失岛(Lost Island)</sys:String>
     <sys:String x:Key="Mod_Valguero">瓦尔盖罗(Valguero)</sys:String>
 	<sys:String x:Key="Mod_Fjordur">维京岛(Fjordur)</sys:String>
-    <!--#endregion-->
-
-    <!--#region Mod 类型 -->
     <!--#endregion-->
 
     <!--#region 进程优先级 -->
@@ -310,7 +304,6 @@
     <sys:String x:Key="GameDataWindow_AddGameDataTooltip">添加游戏数据文件</sys:String>
     <sys:String x:Key="GameDataWindow_ClearGameDataTooltip">删除所有用户游戏数据文件</sys:String>
     <sys:String x:Key="GameDataWindow_OpenGameDataFolderTooltip">打开游戏数据文件夹</sys:String>
-    <sys:String x:Key="GameDataWindow_GameDataForumTooltip">开放游戏数据论坛</sys:String>
     <sys:String x:Key="GameDataWindow_ReloadGameDataTooltip">重新加载游戏数据文件</sys:String>
     <sys:String x:Key="GameDataWindow_ValidateGameDataTooltip">验证游戏数据文件</sys:String>
     <sys:String x:Key="GameDataWindow_RemoveGameDataTooltip">删除游戏数据文件</sys:String>
@@ -349,7 +342,6 @@
     <sys:String x:Key="PluginsWindow_ClearPluginsTooltip">删除所有插件</sys:String>
     <sys:String x:Key="PluginsWindow_ConfigPluginTooltip">打开插件配置</sys:String>
     <sys:String x:Key="PluginsWindow_OpenPluginsFolderTooltip">打开插件文件夹</sys:String>
-    <sys:String x:Key="PluginsWindow_PluginsForumTooltip">打开插件论坛</sys:String>
     <sys:String x:Key="PluginsWindow_RemovePluginTooltip">删除插件</sys:String>
 
     <sys:String x:Key="PluginsWindow_NameColumnLabel">名称</sys:String>
@@ -2105,12 +2097,6 @@
 
     <!--#endregion-->
 
-    <!--#region 服务器设置-程序生成方舟 -->
-
-
-
-    <!--#endregion-->
-
     <!--#region 服务器设置 - 地图刷新设置 -->
     <sys:String x:Key="ServerSettings_MapSpawnerOverridesLabel">地图刷新设置</sys:String>
     <sys:String x:Key="ServerSettings_MapSpawnerOverrides_ContainerLabel">箱子</sys:String>
@@ -2369,7 +2355,6 @@
     <sys:String x:Key="RCON_Menu_Kick">踢出</sys:String>
     <sys:String x:Key="RCON_Menu_Banned">禁掉</sys:String>
     <sys:String x:Key="RCON_Menu_Whitelisted">白名单</sys:String>
-    <sys:String x:Key="RCON_Menu_ViewSteamProfile">查看Steam档案...</sys:String>
     <sys:String x:Key="RCON_Menu_ViewProfile">查看档案...</sys:String>
     <sys:String x:Key="RCON_Menu_ViewTribe">查看部落...</sys:String>
     <sys:String x:Key="RCON_Menu_CopyId">复制Steam或者EPIC ID...</sys:String>
@@ -2849,9 +2834,6 @@
     <sys:String x:Key="IceGolem_Character_BP_C">岩石巨人(冰)</sys:String>
 	<sys:String x:Key="SpiderL_VAL_Character_BP_C">育母蜘蛛 (Lysrix)</sys:String>
     <!--#endregion-->
-
-    <!--#region 恐龙/生物类名称 - 瓦尔盖罗 - BOSS -->
-	<!--#endregion-->
 
     <!--#region 恐龙/生物类名-创世记 （1）-->
     <sys:String x:Key="SpaceWhale_Character_BP_C">鲲</sys:String>
@@ -5901,7 +5883,6 @@
     <sys:String x:Key="ProfileValidation_TCModNameMismatch">地图名称与总转换MOD的地图名称不匹配。</sys:String>
     <sys:String x:Key="ProfileValidation_TCModDifferentApplication">总转换MOD用于其他应用程序。</sys:String>
     <sys:String x:Key="ProfileValidation_TCModOutdated">总转换MOD已过期。</sys:String>
-    <sys:String x:Key="ProfileValidation_TCModSteamError">无法从Steam检索总转换MOD详细信息。</sys:String>
 
     <!--#endregion-->
 

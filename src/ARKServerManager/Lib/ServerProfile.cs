@@ -6945,6 +6945,21 @@ namespace ServerManagerTool.Lib
                 if (adminFile)
                 {
                     var file = Path.Combine(InstallDirectory, Config.Default.SavedRelativePath, Config.Default.ServerAdminFile);
+
+                    // ASA reads AllowedCheaterAccountIDs.txt; earlier versions of this app wrote ASE's AllowedCheaterSteamIDs.txt
+                    var oldFile = Path.Combine(InstallDirectory, Config.Default.SavedRelativePath, "AllowedCheaterSteamIDs.txt");
+                    if (!File.Exists(file) && File.Exists(oldFile))
+                    {
+                        try
+                        {
+                            File.Move(oldFile, file);
+                        }
+                        catch (Exception ex)
+                        {
+                            Logger.Warn($"Could not rename {oldFile} to {Path.GetFileName(file)}: {ex.Message}");
+                        }
+                    }
+
                     if (File.Exists(file))
                     {
                         adminSteamIds = File.ReadAllLines(file);

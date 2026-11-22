@@ -33,6 +33,13 @@ namespace ServerManagerTool
     /// </summary>
     public partial class App : GlobalizedApplication, INotifyPropertyChanged
     {
+        /// <summary>
+        /// True when a release feed or patch-notes URL for this app is configured (none is, by default).
+        /// </summary>
+        public static bool HasServerManagerPatchNotes =>
+            !string.IsNullOrWhiteSpace(Config.Default.ServerManagerVersionFeedUrl) || !string.IsNullOrWhiteSpace(Config.Default.ServerManagerVersionBetaFeedUrl) ||
+            !string.IsNullOrWhiteSpace(Config.Default.LatestASMPatchNotesUrl) || !string.IsNullOrWhiteSpace(Config.Default.LatestASMBetaPatchNotesUrl);
+
         public new static App Instance
         {
             get;

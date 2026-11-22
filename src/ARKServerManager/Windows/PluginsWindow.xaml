@@ -30,9 +30,6 @@
                     <Button Width="22" Height="22" Click="OpenPluginsFolder_Click" Margin="10,0,0,0" ToolTip="{DynamicResource PluginsWindow_OpenPluginsFolderTooltip}">
                         <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/FolderOpen.ico,Size=32}"/>
                     </Button>
-                    <Button Width="22" Height="22" Click="PluginsForum_Click" Margin="20,0,0,0" ToolTip="{DynamicResource PluginsWindow_PluginsForumTooltip}">
-                        <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Help.ico,Size=32}"/>
-                    </Button>
                 </StackPanel>
             </GroupBox.Header>
 

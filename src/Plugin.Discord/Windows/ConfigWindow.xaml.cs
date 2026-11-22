@@ -225,6 +225,9 @@ namespace ServerManagerTool.Plugin.Discord.Windows
                 else
                     sourceUrl = Config.Default.LatestDownloadUrl;
 
+                if (string.IsNullOrWhiteSpace(sourceUrl))
+                    return;
+
                 NetworkUtils.DownloadLatestVersion(sourceUrl, latestZip);
 
                 MessageBox.Show(ResourceUtils.GetResourceString(this.Resources, "ConfigWindow_DownloadSuccessLabel"), ResourceUtils.GetResourceString(this.Resources, "ConfigWindow_DownloadSuccessTitle"), MessageBoxButton.OK, MessageBoxImage.Information);

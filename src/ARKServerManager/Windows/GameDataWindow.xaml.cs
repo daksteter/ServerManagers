@@ -104,11 +104,6 @@ namespace ServerManagerTool
             }
         }
 
-        private void GameDataForum_Click(object sender, RoutedEventArgs e)
-        {
-            ProcessUtils.OpenWithShell(Config.Default.GameDataUrl);
-        }
-
         private void ReloadGameData_Click(object sender, RoutedEventArgs e)
         {
             try

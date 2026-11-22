@@ -141,7 +141,7 @@
                     </Button.Style>
                 </Button>
 
-                <Button Grid.Row="0" Grid.Column="12" Width="22" Height="22" Margin="5,5,5,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="PatchNotes_Click" ToolTip="{DynamicResource ServerSettings_PatchNotesTooltip}">
+                <Button x:Name="PatchNotesButton" Grid.Row="0" Grid.Column="12" Width="22" Height="22" Margin="5,5,5,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="PatchNotes_Click" ToolTip="{DynamicResource ServerSettings_PatchNotesTooltip}">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
                             <Style.Triggers>

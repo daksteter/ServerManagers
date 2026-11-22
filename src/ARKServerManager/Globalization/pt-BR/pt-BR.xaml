@@ -28,9 +28,6 @@
     <sys:String x:Key="Map_Fjordur">Fjordur</sys:String>
     <!--#endregion-->
 
-    <!--#region Total Conversion Names -->
-    <!--#endregion-->
-
     <!--#region Branch Names -->
     <sys:String x:Key="Branch_live">Live</sys:String>
     <!--#endregion-->
@@ -62,9 +59,6 @@
     <sys:String x:Key="Mod_PGM">PGM</sys:String>
     <!--#endregion-->
 	
-	<!--#region Mod Types -->
-    <!--#endregion-->
-
     <!--#region Process Priority -->
     <sys:String x:Key="Priority_low">Baixo</sys:String>
     <sys:String x:Key="Priority_belownormal">Acima do baixo</sys:String>
@@ -233,17 +227,6 @@ Não é o mesmo que o diretório de instalação do servidor, que você pode esc
     <sys:String x:Key="PlayerList_Menu_FilterInvalid">Mostrar inválido</sys:String>
     <!--#endregion-->
 
-    <!--#region Mod Details Window -->
-
-
-
-    <!--#endregion-->
-
-    <!--#region Workshop Files Window -->
-
-
-    <!--#endregion-->
-
     <!--#region WorldSave Restore Window -->
     <sys:String x:Key="WorldSaveRestore_Title">Restaurar</sys:String>
     <sys:String x:Key="WorldSaveRestore_ProfileTitle">Restaurar - {0}</sys:String>
@@ -315,7 +298,6 @@ Não é o mesmo que o diretório de instalação do servidor, que você pode esc
     <sys:String x:Key="GameDataWindow_AddGameDataTooltip">Adicionar arquivo ao Game Data</sys:String>
     <sys:String x:Key="GameDataWindow_ClearGameDataTooltip">Excluir todos os arquivos Game Data do usuário</sys:String>
     <sys:String x:Key="GameDataWindow_OpenGameDataFolderTooltip">Abrir pasta do Game Data</sys:String>
-    <sys:String x:Key="GameDataWindow_GameDataForumTooltip">Fórum do Game Data</sys:String>
     <sys:String x:Key="GameDataWindow_ReloadGameDataTooltip">Recarregar arquivos do Game Data</sys:String>
 	<sys:String x:Key="GameDataWindow_ValidateGameDataTooltip">Validar Game Data do jogo</sys:String>
     <sys:String x:Key="GameDataWindow_RemoveGameDataTooltip">Excluir arquivo do Game Data</sys:String>
@@ -354,7 +336,6 @@ Não é o mesmo que o diretório de instalação do servidor, que você pode esc
     <sys:String x:Key="PluginsWindow_ClearPluginsTooltip">Excluir todos os Plugins</sys:String>
     <sys:String x:Key="PluginsWindow_ConfigPluginTooltip">Abra a configuração do plugin</sys:String>
     <sys:String x:Key="PluginsWindow_OpenPluginsFolderTooltip">Abrir pasta de plugins</sys:String>
-    <sys:String x:Key="PluginsWindow_PluginsForumTooltip">Abra o Fórum de Plugins</sys:String>
     <sys:String x:Key="PluginsWindow_RemovePluginTooltip">Excluir plugin</sys:String>
 
     <sys:String x:Key="PluginsWindow_NameColumnLabel">Nome</sys:String>
@@ -2138,12 +2119,6 @@ Nota: No Gênesis 1 esta configuração está habilitada por padrão e há uma c
 
     <!--#endregion-->
 
-    <!--#region Server Settings - Procedurally Generated Arks -->
-
-
-
-    <!--#endregion-->
-
     <!--#region Server Settings - Map Spawner Overrides -->
     <sys:String x:Key="ServerSettings_MapSpawnerOverridesLabel">Substituições de Spawner no Mapa</sys:String>
     <sys:String x:Key="ServerSettings_MapSpawnerOverrides_ContainerLabel">Recipientes</sys:String>
@@ -2402,7 +2377,6 @@ Nota: No Gênesis 1 esta configuração está habilitada por padrão e há uma c
     <sys:String x:Key="RCON_Menu_Kick">Kick</sys:String>
     <sys:String x:Key="RCON_Menu_Banned">Banir</sys:String>
     <sys:String x:Key="RCON_Menu_Whitelisted">Whitelisted</sys:String>
-    <sys:String x:Key="RCON_Menu_ViewSteamProfile">Visualizar o perfil do Steam ...</sys:String>
     <sys:String x:Key="RCON_Menu_ViewProfile">Ver perfil...</sys:String>
     <sys:String x:Key="RCON_Menu_ViewTribe">Ver Tribo ...</sys:String>
     <sys:String x:Key="RCON_Menu_CopyId">Copiar ID ...</sys:String>
@@ -5492,7 +5466,6 @@ Nota: No Gênesis 1 esta configuração está habilitada por padrão e há uma c
     <sys:String x:Key="ProfileValidation_TCModNameMismatch">O nome do mapa não corresponde ao nome do mod de conversão de mapa .</sys:String>
     <sys:String x:Key="ProfileValidation_TCModDifferentApplication">O mod de conversão total é para uma aplicação diferente.</sys:String>
     <sys:String x:Key="ProfileValidation_TCModOutdated">Conversão total está desatualizado.</sys:String>
-    <sys:String x:Key="ProfileValidation_TCModSteamError">Os detalhes do mod de conversão, não pôde ser recuperado da steam.</sys:String>
 
     <!--#endregion-->
 

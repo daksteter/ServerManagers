@@ -28,9 +28,6 @@
     <sys:String x:Key="Map_Fjordur">Fjordur</sys:String>
     <!--#endregion-->
 
-    <!--#region Total Conversion Names -->
-    <!--#endregion-->
-
     <!--#region Branch Names -->
     <sys:String x:Key="Branch_live">Version Steam (Défaut)</sys:String>
     <!--#endregion-->
@@ -60,9 +57,6 @@
     <sys:String x:Key="Mod_LostIsland">Lost Island</sys:String>
     <sys:String x:Key="Mod_Fjordur">Fjordur</sys:String>
     <sys:String x:Key="Mod_PGM">PGM</sys:String>
-    <!--#endregion-->
-
-    <!--#region Mod Types -->
     <!--#endregion-->
 
     <!--#region Process Priority -->
@@ -232,17 +226,6 @@
     <sys:String x:Key="PlayerList_Menu_FilterInvalid">Afficher invalide</sys:String>
     <!--#endregion-->
 
-    <!--#region Mod Details Window -->
-
-
-
-    <!--#endregion-->
-
-    <!--#region Workshop Files Window -->
-
-
-    <!--#endregion-->
-
     <!--#region WorldSave Restore Window -->
     <sys:String x:Key="WorldSaveRestore_Title">Restaurer</sys:String>
     <sys:String x:Key="WorldSaveRestore_ProfileTitle">Restaurer - {0}</sys:String>
@@ -313,7 +296,6 @@
     <sys:String x:Key="GameDataWindow_AddGameDataTooltip">Ajouter un fichier de données de jeu</sys:String>
     <sys:String x:Key="GameDataWindow_ClearGameDataTooltip">Supprimer tous les fichiers de données de jeu utilisateur</sys:String>
     <sys:String x:Key="GameDataWindow_OpenGameDataFolderTooltip">Ouvrir le dossier Game Data</sys:String>
-    <sys:String x:Key="GameDataWindow_GameDataForumTooltip">Ouvir le forum sur le Game Data</sys:String>
     <sys:String x:Key="GameDataWindow_ReloadGameDataTooltip">Recharger les fichiers de données de jeu</sys:String>
     <sys:String x:Key="GameDataWindow_ValidateGameDataTooltip">Valider les fichiers de données</sys:String>
     <sys:String x:Key="GameDataWindow_RemoveGameDataTooltip">Effacer les fichiers de données de jeu</sys:String>
@@ -352,7 +334,6 @@
     <sys:String x:Key="PluginsWindow_ClearPluginsTooltip">Effacer tous Plugins</sys:String>
     <sys:String x:Key="PluginsWindow_ConfigPluginTooltip">Ouvrir la configuration du plugin</sys:String>
     <sys:String x:Key="PluginsWindow_OpenPluginsFolderTooltip">Ouvrir le dossier des plugins</sys:String>
-    <sys:String x:Key="PluginsWindow_PluginsForumTooltip">Ouvrir forum des Plugins</sys:String>
     <sys:String x:Key="PluginsWindow_RemovePluginTooltip">Effacer Plugin</sys:String>
 
     <sys:String x:Key="PluginsWindow_NameColumnLabel">Nom</sys:String>
@@ -2041,12 +2022,6 @@
 
     <!--#endregion-->
 
-    <!--#region Server Settings - Procedurally Generated Arks -->
-
-
-
-    <!--#endregion-->
-
     <!--#region Server Settings - Map Spawner Overrides -->
     <sys:String x:Key="ServerSettings_MapSpawnerOverridesLabel">Personnalisation de Spawn Dino</sys:String>
     <sys:String x:Key="ServerSettings_MapSpawnerOverrides_ContainerLabel">Conteneurs</sys:String>
@@ -2288,7 +2263,6 @@
     <sys:String x:Key="RCON_Menu_Kick">Kick</sys:String>
     <sys:String x:Key="RCON_Menu_Banned">Banni</sys:String>
     <sys:String x:Key="RCON_Menu_Whitelisted">liste blanche</sys:String>
-    <sys:String x:Key="RCON_Menu_ViewSteamProfile">Voir le profil Steam...</sys:String>
     <sys:String x:Key="RCON_Menu_ViewProfile">Voir le profil...</sys:String>
     <sys:String x:Key="RCON_Menu_ViewTribe">Voir Tribu...</sys:String>
     <sys:String x:Key="RCON_Menu_CopyId">Copier l'identifiant...</sys:String>
@@ -5367,7 +5341,6 @@
     <sys:String x:Key="ProfileValidation_TCModNameMismatch">Le nom de la carte ne correspond pas au nom de la carte du Mod Total conversion.</sys:String>
     <sys:String x:Key="ProfileValidation_TCModDifferentApplication">Le Mod Total conversion est pour une application différente.</sys:String>
     <sys:String x:Key="ProfileValidation_TCModOutdated">Le Mod Total conversion est obsolète.</sys:String>
-    <sys:String x:Key="ProfileValidation_TCModSteamError">les détails du Mod Total conversion n'ont pas pu être récupérés sur steam.</sys:String>
 
     <!--#endregion-->
 

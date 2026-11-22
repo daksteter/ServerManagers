@@ -24,9 +24,6 @@
     <sys:String x:Key="Map_Genesis">Genesis</sys:String>
     <!--#endregion-->
 
-    <!--#region Total Conversion Names -->
-    <!--#endregion-->
-
     <!--#region Branch Names -->
     <sys:String x:Key="Branch_live">Pública</sys:String>
     <!--#endregion-->
@@ -53,9 +50,6 @@
     <sys:String x:Key="Mod_Genesis">Genesis</sys:String>
     <sys:String x:Key="Mod_CrystalIsles">Crystal Isles</sys:String>
     <sys:String x:Key="Mod_PGM">PGM</sys:String>
-    <!--#endregion-->
-
-    <!--#region Mod Types -->
     <!--#endregion-->
 
     <!--#region Process Priority -->
@@ -174,17 +168,6 @@
     <sys:String x:Key="PlayerList_Menu_FilterInvalid">Mostrar inválidos</sys:String>
     <!--#endregion-->
 
-    <!--#region Mod Details Window -->
-
-
-
-    <!--#endregion-->
-
-    <!--#region Workshop Files Window -->
-
-
-    <!--#endregion-->
-
     <!--#region WorldSave Restore Window -->
     <sys:String x:Key="WorldSaveRestore_Title">Restaurar</sys:String>
     <sys:String x:Key="WorldSaveRestore_ProfileTitle">Restaurar - {0}</sys:String>
@@ -253,7 +236,6 @@
     <sys:String x:Key="GameDataWindow_AddGameDataTooltip">Añadir archivo de datos de juego</sys:String>
     <sys:String x:Key="GameDataWindow_ClearGameDataTooltip">Borrar todos los archivos de datos de juego del usuario</sys:String>
     <sys:String x:Key="GameDataWindow_OpenGameDataFolderTooltip">Abrir carpeta de datos de juego</sys:String>
-    <sys:String x:Key="GameDataWindow_GameDataForumTooltip">Ir al foro de datos de juego</sys:String>
     <sys:String x:Key="GameDataWindow_ReloadGameDataTooltip">Recargar los archivos de datos de juego</sys:String>
     <sys:String x:Key="GameDataWindow_ValidateGameDataTooltip">Validar los archivos de datos de juego</sys:String>
     <sys:String x:Key="GameDataWindow_RemoveGameDataTooltip">Borrar archivo de datos de juego</sys:String>
@@ -292,7 +274,6 @@
     <sys:String x:Key="PluginsWindow_ClearPluginsTooltip">Borrar todos los plugins</sys:String>
     <sys:String x:Key="PluginsWindow_ConfigPluginTooltip">Abrir la configuración del plugin</sys:String>
     <sys:String x:Key="PluginsWindow_OpenPluginsFolderTooltip">Abrir carpeta de plugins</sys:String>
-    <sys:String x:Key="PluginsWindow_PluginsForumTooltip">Ir al foro de plugins</sys:String>
     <sys:String x:Key="PluginsWindow_RemovePluginTooltip">Borrar plugin</sys:String>
 
     <sys:String x:Key="PluginsWindow_NameColumnLabel">Nombre</sys:String>
@@ -1771,12 +1752,6 @@
 
     <!--#endregion-->
 
-    <!--#region Server Settings - Procedurally Generated Arks -->
-
-
-
-    <!--#endregion-->
-
     <!--#region Server Settings - Map Spawner Overrides -->
     <sys:String x:Key="ServerSettings_MapSpawnerOverridesLabel">Forzado de generador de mapas</sys:String>
     <sys:String x:Key="ServerSettings_MapSpawnerOverrides_ContainerLabel">Contenedores</sys:String>
@@ -2001,7 +1976,6 @@
     <sys:String x:Key="RCON_Menu_Kick">Expulsar</sys:String>
     <sys:String x:Key="RCON_Menu_Banned">Bloquear</sys:String>
     <sys:String x:Key="RCON_Menu_Whitelisted">Añadir a lista blanca</sys:String>
-    <sys:String x:Key="RCON_Menu_ViewSteamProfile">Ver perfil de Steam...</sys:String>
     <sys:String x:Key="RCON_Menu_ViewProfile">Ver perfil...</sys:String>
     <sys:String x:Key="RCON_Menu_ViewTribe">Ver tribu...</sys:String>
     <sys:String x:Key="RCON_Menu_CopyId">Copiar ID de Steam...</sys:String>
@@ -4937,7 +4911,6 @@
     <sys:String x:Key="ProfileValidation_TCModNameMismatch">El nombre del mapa no coincide con el nombre del mapa del mod de conversión total.</sys:String>
     <sys:String x:Key="ProfileValidation_TCModDifferentApplication">El mod de conversión total es para una aplicación diferente.</sys:String>
     <sys:String x:Key="ProfileValidation_TCModOutdated">El mod de conversión total está anticuado.</sys:String>
-    <sys:String x:Key="ProfileValidation_TCModSteamError">Los detalles del mod de conversión total no han podido ser recuperados de Steam.</sys:String>
 
     <!--#endregion-->
 

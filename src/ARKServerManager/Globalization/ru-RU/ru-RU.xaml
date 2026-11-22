@@ -28,9 +28,6 @@
     <sys:String x:Key="Map_Fjordur">Fjordur</sys:String>
     <!--#endregion-->
 
-    <!--#region Total Conversion Names -->
-    <!--#endregion-->
-
     <!--#region Branch Names -->
     <sys:String x:Key="Branch_live">Основной ARK</sys:String>
     <!--#endregion-->
@@ -60,9 +57,6 @@
     <sys:String x:Key="Mod_LostIsland">Lost Island</sys:String>
     <sys:String x:Key="Mod_Fjordur">Fjordur</sys:String>
     <sys:String x:Key="Mod_PGM">PGM</sys:String>
-    <!--#endregion-->
-
-    <!--#region Mod Types -->
     <!--#endregion-->
 
     <!--#region Process Priority -->
@@ -232,17 +226,6 @@
     <sys:String x:Key="PlayerList_Menu_FilterInvalid">Показать Ошибочные</sys:String>
     <!--#endregion-->
 
-    <!--#region Mod Details Window -->
-
-
-
-    <!--#endregion-->
-
-    <!--#region Workshop Files Window -->
-
-
-    <!--#endregion-->
-
     <!--#region WorldSave Restore Window -->
     <sys:String x:Key="WorldSaveRestore_Title">Восстановить</sys:String>
     <sys:String x:Key="WorldSaveRestore_ProfileTitle">Восстановить - {0}</sys:String>
@@ -314,7 +297,6 @@
     <sys:String x:Key="GameDataWindow_AddGameDataTooltip">Добавить файл данных игры</sys:String>
     <sys:String x:Key="GameDataWindow_ClearGameDataTooltip">Удалить все файлы данных игры пользователя</sys:String>
     <sys:String x:Key="GameDataWindow_OpenGameDataFolderTooltip">Открыть папку с игровыми данными</sys:String>
-    <sys:String x:Key="GameDataWindow_GameDataForumTooltip">Открытый Форум игровых данных</sys:String>
     <sys:String x:Key="GameDataWindow_ReloadGameDataTooltip">Перезагрузить файлы данных игры</sys:String>
     <sys:String x:Key="GameDataWindow_ValidateGameDataTooltip">Проверьте файлы данных игры</sys:String>
     <sys:String x:Key="GameDataWindow_RemoveGameDataTooltip">Удалить файл данных игры</sys:String>
@@ -353,7 +335,6 @@
     <sys:String x:Key="PluginsWindow_ClearPluginsTooltip">Удалить все плагины</sys:String>
     <sys:String x:Key="PluginsWindow_ConfigPluginTooltip">Открыть конфигурацию плагина</sys:String>
     <sys:String x:Key="PluginsWindow_OpenPluginsFolderTooltip">Открыть папку с плагинами</sys:String>
-    <sys:String x:Key="PluginsWindow_PluginsForumTooltip">Открытый форум плагинов</sys:String>
     <sys:String x:Key="PluginsWindow_RemovePluginTooltip">Удалить плагин</sys:String>
 
     <sys:String x:Key="PluginsWindow_NameColumnLabel">Имя</sys:String>
@@ -2112,12 +2093,6 @@
 
     <!--#endregion-->
 
-    <!--#region Server Settings - Procedurally Generated Arks -->
-
-
-
-    <!--#endregion-->
-
     <!--#region Server Settings - Map Spawner Overrides -->
     <sys:String x:Key="ServerSettings_MapSpawnerOverridesLabel">Спавны дино</sys:String>
     <sys:String x:Key="ServerSettings_MapSpawnerOverrides_ContainerLabel">Контейнеры</sys:String>
@@ -2376,7 +2351,6 @@
     <sys:String x:Key="RCON_Menu_Kick">Кикнуть</sys:String>
     <sys:String x:Key="RCON_Menu_Banned">Забанить</sys:String>
     <sys:String x:Key="RCON_Menu_Whitelisted">В Белый список</sys:String>
-    <sys:String x:Key="RCON_Menu_ViewSteamProfile">Показать Steam профиль...</sys:String>
     <sys:String x:Key="RCON_Menu_ViewProfile">Показать профиль...</sys:String>
     <sys:String x:Key="RCON_Menu_ViewTribe">Показать племя...</sys:String>
     <sys:String x:Key="RCON_Menu_CopyId">Скопировать ID...</sys:String>
@@ -2935,10 +2909,6 @@
     <sys:String x:Key="Summoner_Character_BP_C">Суммонер</sys:String>
     <sys:String x:Key="TekStrider_Character_BP_C">Тек Страйдер</sys:String>
     <sys:String x:Key="TekWyvern_Character_BP_C">Тек Виверна (Войдверна)</sys:String>
-    <!--#endregion-->
-
-    <!--#region Dino/Creature Class Names - Genesis: Part 2 - Bosses -->
-	
     <!--#endregion-->
 
     <!--#region Dino/Creature Class Names - Crystal Isles -->
@@ -5540,7 +5510,6 @@
     <sys:String x:Key="ProfileValidation_TCModNameMismatch">Название карты не соответствует total conversion название карты мода.</sys:String>
     <sys:String x:Key="ProfileValidation_TCModDifferentApplication">Total conversion мод для другого приложения.</sys:String>
     <sys:String x:Key="ProfileValidation_TCModOutdated">Total conversion мод устарел.</sys:String>
-    <sys:String x:Key="ProfileValidation_TCModSteamError">Total conversion детали мода не могут быть получены из Steam.</sys:String>
 
     <!--#endregion-->
 

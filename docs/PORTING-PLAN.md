@@ -17,7 +17,7 @@ Turning Bletch1971's ARK Server Manager (ARK: Survival Evolved, "ASE") into a ma
 |---|---|---|
 | 1. Detach from upstream services, rebrand | Done | `5e2a0e75`, `995c49d1` |
 | 2. .NET Framework 4.6.2 → .NET 11, latest packages | Done | `e52b007f`, `6c59861b`, `c80cb7ba`, `f273acaf` |
-| 3. ASA support | In progress: M1–M5 and M7 done, M6 maps only, M8 next | `d554cb0a` plan; `dc58a01b`, `eedbd86a` M1; `0c1aef4d` maps; `ea7753e0`, `d91502ba` M3; `a6d0e38e` M2; `f4e015a2` M5; `d8450b5e` M4; `9609a942`; M7 |
+| 3. ASA support | In progress: M1–M5, M7 and M8 done; M6 has the map list only | `d554cb0a` plan; `dc58a01b`, `eedbd86a` M1; `0c1aef4d` maps; `ea7753e0`, `d91502ba` M3; `a6d0e38e` M2; `f4e015a2` M5; `d8450b5e` M4; `9609a942`; `9670bc09` M7; M8 (next commit) |
 | 4. Cleanup / tech debt | Ongoing | |
 
 What phases 1–2 changed is in the commit messages. Highlights that affect later work:
@@ -52,7 +52,7 @@ What phases 1–2 changed is in the commit messages. Highlights that affect late
 **Verified on the test server:** there is no `version.txt`; `ListPlayers` replies `No Players Connected` when empty
 and the player count went to 1 when a player joined; which INI settings ASE had that ASA ignores (M7).
 **Still to verify:** the admin whitelist file is `AllowedCheaterAccountIDs.txt` in ASA (wiki; the name isn't a
-literal in the server binary, so it can't be confirmed there) — the app still writes `AllowedCheaterSteamIDs.txt` (M8).
+literal in the server binary, so it can't be confirmed there). The app uses that name since M8.
 
 ---
 
@@ -260,12 +260,28 @@ The Island, Scorched Earth, The Center, Aberration, Extinction, Astraeos, Ragnar
 
 ### M8. Links, text and branding
 
-- [ ] Patch-notes URLs (`AppPatchNotesUrl` → ASA changelog; remove `AppPatchNotesUrlSotF`).
-- [ ] Old ASM forum help links (`HelpUrl`, `GameDataUrl`, `ServerManagerPluginUrl`, `DiscordBotHelpUrl`,
-      `SteamWebAPIKeyHelpUrl`) → ASA docs or remove.
-- [ ] Remaining "Survival Evolved" / ASE wording in resource strings.
-- [ ] `VersionFeed.xml` / `VersionFeedBeta.xml` (Bletch's release history) — replace or remove.
-- [ ] App icon / artwork (still ASE ARK art).
+- [x] Links: `AppPatchNotesUrl` → the ARK wiki's Patch Notes page (current ASA patch first); `HelpUrl` → the
+      wiki's Dedicated server setup; `SteamWebAPIKeyHelpUrl` → steamcommunity.com/dev; `DiscordBotHelpUrl` →
+      Discord's getting-started guide. (`AppPatchNotesUrlSotF` went in M4.)
+- [x] Removed the ASM-forum buttons and settings (`GameDataUrl`, `ServerManagerPluginUrl`): no forum exists for
+      this app. The app's own patch-notes buttons (main window, Server Monitor) hide when no release feed or
+      patch-notes URL is configured (none is), like the Donate / Discord buttons.
+- [x] Deleted Bletch's release history (`VersionFeed.xml` / `VersionFeedBeta.xml`, app and Discord plugin).
+- [x] Discord plugin detached from upstream: it reported the machine's public IP to the upstream API every 12 hours
+      (`CallHomeAsync`) and checked / downloaded plugin updates from Bletch1971's GitHub. The call-home is
+      removed, the update and feed URLs are blank, and the update check skips an empty URL.
+- [x] Admin whitelist file → `AllowedCheaterAccountIDs.txt` (ASA's name, per the wiki); an existing
+      `AllowedCheaterSteamIDs.txt` written by earlier versions is renamed when the profile's server files load.
+- [x] Wording (en-US): RCON help and other texts say player ID instead of Steam ID; the server name tooltip no
+      longer mentions Steam. Unused keys (`RCON_Menu_ViewSteamProfile`, `ProfileValidation_TCModSteamError`, the
+      forum tooltips) and regions emptied by earlier removals pruned in all languages. No "Survival Evolved" /
+      "ARK Server Manager" text was left in the English strings or the code.
+- [x] App icon: an original icon (wrench over a three-toed track on a teal tile) replaces the ASE ARK-logo icon
+      (`Art/favicon.ico`, 16–256 px; drawn by a script, no ARK / Wildcard artwork).
+- Note: the other languages' RCON help still says "steam id" (translations not updated).
+- [x] **Test:** the new icon shows on the window and taskbar; Help opens the wiki; the server patch notes button
+      opens the wiki's Patch Notes; the main window and Server Monitor have no patch-notes button; Game Data and
+      Plugins windows have no forum button; admins added in Server Files land in `AllowedCheaterAccountIDs.txt`.
 
 ---
 
