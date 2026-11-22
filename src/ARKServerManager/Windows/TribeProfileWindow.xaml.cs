@@ -85,7 +85,7 @@ namespace ServerManagerTool
         {
             get
             {
-                return new RelayCommand<String>(
+                return field ??= new RelayCommand<String>(
                     execute: (action) =>
                     {
                         if (String.IsNullOrWhiteSpace(action)) return;

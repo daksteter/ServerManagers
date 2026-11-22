@@ -100,7 +100,7 @@ $Icons = [ordered]@{
 # also drawn light, as "Icon.<Name>.OnDark", for the main window's dark header
 $OnDarkIcons = 'ChangeNotes', 'Command', 'Document', 'Help', 'Logs', 'Plugin', 'Settings', 'Steam'
 
-$PluginIcons = 'Add', 'ChangeNotes', 'Delete', 'Download', 'Drag', 'Edit'
+$PluginIcons = 'Add', 'Delete', 'Drag', 'Edit'
 
 function Get-SvgFile([string]$glyph, [int]$size, [string]$style) {
     Join-Path $svgDir "${glyph}_${size}_${style}.svg"

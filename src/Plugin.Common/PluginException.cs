@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Runtime.Serialization;
-using System.Security;
 
 namespace ServerManagerTool.Plugin.Common
 {
@@ -18,12 +16,6 @@ namespace ServerManagerTool.Plugin.Common
 
         public PluginException(string message, Exception innerException)
             : base(message, innerException)
-        {
-        }
-
-        [SecuritySafeCritical]
-        protected PluginException(SerializationInfo info, StreamingContext context)
-            : base(info, context)
         {
         }
     }

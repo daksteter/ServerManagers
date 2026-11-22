@@ -117,7 +117,7 @@ namespace ServerManagerTool
         {
             get
             {
-                return new RelayCommand<PlayerInfo>(
+                return field ??= new RelayCommand<PlayerInfo>(
                     execute: (player) =>
                     {
                         try
@@ -140,7 +140,7 @@ namespace ServerManagerTool
         {
             get
             {
-                return new RelayCommand<PlayerInfo>(
+                return field ??= new RelayCommand<PlayerInfo>(
                     execute: (player) =>
                     {
                         if (player.PlayerData != null)
@@ -166,7 +166,7 @@ namespace ServerManagerTool
         {
             get
             {
-                return new RelayCommand<PlayerFilterType>(
+                return field ??= new RelayCommand<PlayerFilterType>(
                     execute: (filter) =>
                     {
                         this.PlayerFiltering ^= filter;
@@ -182,7 +182,7 @@ namespace ServerManagerTool
         {
             get
             {
-                return new RelayCommand<PlayerSortType>(
+                return field ??= new RelayCommand<PlayerSortType>(
                     execute: (sort) =>
                     {
                         Config.Default.PlayerListSort = (int)this.PlayerSorting;
@@ -197,7 +197,7 @@ namespace ServerManagerTool
         {
             get
             {
-                return new RelayCommand<PlayerInfo>(
+                return field ??= new RelayCommand<PlayerInfo>(
                     execute: (player) => {
                         var savedArksPath = ServerProfile.GetProfileSavePath(this.PlayerListParameters.InstallDirectory, this.PlayerListParameters.AltSaveDirectoryName, this.PlayerListParameters.ServerMap);
                         var window = new PlayerProfileWindow(player, savedArksPath);
@@ -213,7 +213,7 @@ namespace ServerManagerTool
         {
             get
             {
-                return new RelayCommand<PlayerInfo>(
+                return field ??= new RelayCommand<PlayerInfo>(
                     execute: (player) => {
                         var savedArksPath = ServerProfile.GetProfileSavePath(this.PlayerListParameters.InstallDirectory, this.PlayerListParameters.AltSaveDirectoryName, this.PlayerListParameters.ServerMap);
                         var window = new TribeProfileWindow(player, this.ServerPlayers.Players, savedArksPath);

@@ -2796,15 +2796,6 @@ namespace ServerManagerTool {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("3072")]
-        public int ServicePointManager_SecurityProtocol {
-            get {
-                return ((int)(this["ServicePointManager_SecurityProtocol"]));
-            }
-        }
-        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]

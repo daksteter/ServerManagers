@@ -319,7 +319,7 @@ namespace ServerManagerTool
         {
             get
             {
-                return new RelayCommand<object>(
+                return field ??= new RelayCommand<object>(
                     execute: (_) =>
                     {
                         inputBox.Visibility = Visibility.Collapsed;
@@ -365,7 +365,7 @@ namespace ServerManagerTool
         {
             get
             {
-                return new RelayCommand<object>(
+                return field ??= new RelayCommand<object>(
                     execute: (_) =>
                     {
                         inputBox.Visibility = Visibility.Collapsed;
@@ -390,7 +390,7 @@ namespace ServerManagerTool
         {
             get
             {
-                return new RelayCommand<object>(
+                return field ??= new RelayCommand<object>(
                     execute: (_) =>
                     {
                         string logsDir = String.Empty;
@@ -415,7 +415,7 @@ namespace ServerManagerTool
         {
             get
             {
-                return new RelayCommand<object>(
+                return field ??= new RelayCommand<object>(
                     execute: (_) =>
                     {
                         string logsDir = String.Empty;
@@ -438,7 +438,7 @@ namespace ServerManagerTool
         {
             get
             {
-                return new RelayCommand<object>(
+                return field ??= new RelayCommand<object>(
                     execute: (_) =>
                     {
                         var message = _globalizer.GetResourceString("RCON_SaveWorldLabel");
@@ -455,7 +455,7 @@ namespace ServerManagerTool
         {
             get
             {
-                return new RelayCommand<object>(
+                return field ??= new RelayCommand<object>(
                     execute: (_) =>
                     {
                         var message = _globalizer.GetResourceString("RCON_DestroyWildDinosLabel");
@@ -472,7 +472,7 @@ namespace ServerManagerTool
         {
             get
             {
-                return new RelayCommand<PlayerSortType>(
+                return field ??= new RelayCommand<PlayerSortType>(
                     execute: (sort) => 
                     {
                         Config.Default.RCON_PlayerListSort = (int)this.PlayerSorting;
@@ -487,7 +487,7 @@ namespace ServerManagerTool
         {
             get
             {
-                return new RelayCommand<PlayerFilterType>(
+                return field ??= new RelayCommand<PlayerFilterType>(
                     execute: (filter) => 
                     {
                         this.PlayerFiltering ^= filter;
@@ -503,7 +503,7 @@ namespace ServerManagerTool
         {
             get
             {
-                return new RelayCommand<PlayerInfo>(
+                return field ??= new RelayCommand<PlayerInfo>(
                     execute: (player) => 
                     {
                         dockPanel.IsEnabled = false;
@@ -525,7 +525,7 @@ namespace ServerManagerTool
         {
             get
             {
-                return new RelayCommand<PlayerInfo>(
+                return field ??= new RelayCommand<PlayerInfo>(
                     execute: (player) => 
                     {
                         dockPanel.IsEnabled = false;
@@ -547,7 +547,7 @@ namespace ServerManagerTool
         {
             get
             {
-                return new RelayCommand<PlayerInfo>(
+                return field ??= new RelayCommand<PlayerInfo>(
                     execute: (player) => 
                     {
                         dockPanel.IsEnabled = false;
@@ -569,7 +569,7 @@ namespace ServerManagerTool
         {
             get
             {
-                return new RelayCommand<PlayerInfo>(
+                return field ??= new RelayCommand<PlayerInfo>(
                     execute: (player) => {
                         var savedArksPath = ServerProfile.GetProfileSavePath(this.RCONParameters.InstallDirectory, this.RCONParameters.AltSaveDirectoryName, this.RCONParameters.ServerMap);
                         var window = new PlayerProfileWindow(player, savedArksPath);
@@ -585,7 +585,7 @@ namespace ServerManagerTool
         {
             get
             {
-                return new RelayCommand<PlayerInfo>(
+                return field ??= new RelayCommand<PlayerInfo>(
                     execute: (player) => {
                         var savedArksPath = ServerProfile.GetProfileSavePath(this.RCONParameters.InstallDirectory, this.RCONParameters.AltSaveDirectoryName, this.RCONParameters.ServerMap);
                         var window = new TribeProfileWindow(player, this.ServerRCON.Players, savedArksPath);
@@ -601,7 +601,7 @@ namespace ServerManagerTool
         {
             get
             {
-                return new RelayCommand<PlayerInfo>(
+                return field ??= new RelayCommand<PlayerInfo>(
                     execute: (player) =>
                     {
                         try
@@ -624,7 +624,7 @@ namespace ServerManagerTool
         {
             get
             {
-                return new RelayCommand<PlayerInfo>(
+                return field ??= new RelayCommand<PlayerInfo>(
                     execute: (player) => 
                     {
                         if (player.PlayerData != null)
@@ -650,7 +650,7 @@ namespace ServerManagerTool
         {
             get
             {
-                return new RelayCommand<PlayerInfo>(
+                return field ??= new RelayCommand<PlayerInfo>(
                     execute: (player) =>
                     {
                         if (player.PlayerData != null)
@@ -667,7 +667,7 @@ namespace ServerManagerTool
         {
             get
             {
-                return new RelayCommand<PlayerInfo>(
+                return field ??= new RelayCommand<PlayerInfo>(
                     execute: (player) =>
                     {
                         if (player.PlayerData != null)
@@ -684,7 +684,7 @@ namespace ServerManagerTool
         {
             get
             {
-                return new RelayCommand<PlayerInfo>(
+                return field ??= new RelayCommand<PlayerInfo>(
                     execute: (player) =>
                     {
                         if (player.PlayerData != null)

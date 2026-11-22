@@ -50,6 +50,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <InternalsVisibleTo Include="ARKServerManager.UnitTests" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ArkData\ArkData.csproj" />
     <ProjectReference Include="..\ARKServerManager.Common\ARKServerManager.Common.csproj" />
     <ProjectReference Include="..\Plugin.Common\Plugin.Common.csproj" />

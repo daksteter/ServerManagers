@@ -1,12 +1,16 @@
 ﻿using ServerManagerTool.Plugin.Common;
 using ServerManagerTool.Plugin.Discord.Windows;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Windows;
@@ -16,6 +20,9 @@ namespace ServerManagerTool.Plugin.Discord
     public sealed class DiscordPlugin : IAlertPlugin, IBeta
     {
         private const int MAX_MESSAGE_LENGTH = 1980; // 2000 minus some formatting characters
+
+        // one client for every webhook call (HttpClient is meant to be shared)
+        private static readonly HttpClient _httpClient = new HttpClient();
 
         private Object lockObject = new Object();
 
@@ -90,27 +97,32 @@ namespace ServerManagerTool.Plugin.Discord
 
             lock (lockObject)
             {
-                var configProfiles = PluginConfig.ConfigProfiles.Where(cp => cp.IsEnabled
-                                                                    && cp.AlertTypes.Any(pn => pn.Value.Equals(alertType))
-                                                                    && cp.ProfileNames.Any(pn => pn.Value.Equals(profileName, StringComparison.OrdinalIgnoreCase))
-                                                                    && !string.IsNullOrWhiteSpace(cp.DiscordWebhookUrl));
-                if (configProfiles == null || configProfiles.IsEmpty())
-                {
-                    return;
-                }
-
-                foreach (var configProfile in configProfiles)
+                foreach (var configProfile in SelectConfigProfiles(PluginConfig.ConfigProfiles, alertType, profileName))
                 {
                     HandleAlert(configProfile, alertType, profileName, alertMessage);
                 }
             }
         }
 
-        internal void HandleAlert(ConfigProfile configProfile, AlertType alertType, string profileName, string alertMessage)
+        /// <summary>
+        /// The enabled config profiles with a webhook that take this alert type for this server profile.
+        /// </summary>
+        internal static List<ConfigProfile> SelectConfigProfiles(IEnumerable<ConfigProfile> configProfiles, AlertType alertType, string profileName)
         {
-            if (configProfile == null || string.IsNullOrWhiteSpace(configProfile.DiscordWebhookUrl) || string.IsNullOrWhiteSpace(alertMessage))
-                return;
+            return (configProfiles ?? Enumerable.Empty<ConfigProfile>())
+                .Where(cp => cp.IsEnabled
+                          && cp.AlertTypes.Any(pn => pn.Value.Equals(alertType))
+                          && cp.ProfileNames.Any(pn => pn.Value.Equals(profileName, StringComparison.OrdinalIgnoreCase))
+                          && !string.IsNullOrWhiteSpace(cp.DiscordWebhookUrl))
+                .ToList();
+        }
 
+        /// <summary>
+        /// The form data posted to the webhook: the message with the config profile's prefix and styles, and the
+        /// optional text-to-speech flag and bot name.
+        /// </summary>
+        internal static string BuildPostData(ConfigProfile configProfile, string profileName, string alertMessage)
+        {
             // remove any bad characters
             var formattedProfileName = profileName?.Replace("&", "_") ?? string.Empty;
             var formattedAlertMessage = alertMessage?.Replace("&", "_") ?? string.Empty;
@@ -142,28 +154,39 @@ namespace ServerManagerTool.Plugin.Discord
                 postData += $"&username={configProfile.DiscordBotName.Replace("&", "_")}";
             postData += $"&content={formattedAlertMessage}";
 
+            return postData;
+        }
+
+        /// <summary>
+        /// The webhook URL to post to: trimmed, without a trailing slash, asking Discord to wait for the message.
+        /// </summary>
+        internal static string GetWebhookPostUrl(string webhookUrl)
+        {
+            var url = (webhookUrl ?? string.Empty).Trim();
+            if (url.EndsWith("/"))
+                url = url.Substring(0, url.Length - 1);
+            return $"{url}?wait=true";
+        }
+
+        internal void HandleAlert(ConfigProfile configProfile, AlertType alertType, string profileName, string alertMessage)
+        {
+            if (configProfile == null || string.IsNullOrWhiteSpace(configProfile.DiscordWebhookUrl) || string.IsNullOrWhiteSpace(alertMessage))
+                return;
+
+            var postData = BuildPostData(configProfile, profileName, alertMessage);
+
             try
             {
                 var data = Encoding.UTF8.GetBytes(postData);
 
-                var url = configProfile.DiscordWebhookUrl;
-                url = url.Trim();
-                if (url.EndsWith("/"))
-                    url = url.Substring(0, url.Length - 1);
+                var content = new ByteArrayContent(data);
+                content.Headers.ContentType = new MediaTypeHeaderValue("application/x-www-form-urlencoded");
+                using var request = new HttpRequestMessage(HttpMethod.Post, GetWebhookPostUrl(configProfile.DiscordWebhookUrl)) { Content = content };
+                using var timeout = new CancellationTokenSource(Config.Default.RequestTimeout);
 
-                var httpRequest = WebRequest.Create($"{url}?wait=true");
-                httpRequest.Timeout = Config.Default.RequestTimeout;
-                httpRequest.Method = "POST";
-                httpRequest.ContentType = "application/x-www-form-urlencoded";
-                httpRequest.ContentLength = data.Length;
-
-                using (var stream = httpRequest.GetRequestStream())
-                {
-                    stream.Write(data, 0, data.Length);
-                }
-
-                var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
-                var responseString = new StreamReader(httpResponse.GetResponseStream()).ReadToEnd();
+                using var httpResponse = _httpClient.Send(request, timeout.Token);
+                using var reader = new StreamReader(httpResponse.Content.ReadAsStream(timeout.Token));
+                var responseString = reader.ReadToEnd();
                 if (httpResponse.StatusCode == HttpStatusCode.OK)
                 {
                     Debug.WriteLine($"{nameof(HandleAlert)}\r\nResponse: {responseString}");

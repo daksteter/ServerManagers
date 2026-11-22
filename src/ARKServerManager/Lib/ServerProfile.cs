@@ -4159,9 +4159,6 @@ namespace ServerManagerTool.Lib
 
         public string GetLauncherFile() => Path.Combine(GetProfileServerConfigDir(), Config.Default.LauncherFile);
 
-        [Obsolete("This method will be removed in a future version.")]
-        public string GetProfileConfigDir_Old() => Path.Combine(Path.GetDirectoryName(GetProfileFile()), this.ProfileName);
-
         public string GetProfileFile() => Path.Combine(Config.Default.ConfigDirectory, Path.ChangeExtension(this.ProfileID.ToLower(), Config.Default.ProfileExtension));
 
         public string GetProfileKey() => TaskSchedulerUtils.ComputeKey(this.InstallDirectory);
@@ -4878,21 +4875,6 @@ namespace ServerManagerTool.Lib
 
         public void SaveConfigFiles()
         {
-            //
-            // Remove the old profile ini backups
-            //
-            var profileIniDir = GetProfileConfigDir_Old();
-            if (Directory.Exists(profileIniDir))
-            {
-                // set the folder permissions
-                SecurityUtils.SetDirectoryOwnershipForAllUsers(profileIniDir);
-                try
-                {
-                    Directory.Delete(profileIniDir, true);
-                }
-                catch (Exception) { }
-            }
-
             //
             // Save to the installation location
             //

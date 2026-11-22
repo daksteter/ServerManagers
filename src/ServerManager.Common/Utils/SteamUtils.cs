@@ -39,29 +39,6 @@ namespace ServerManagerTool.Common.Utils
             return true;
         }
 
-        public static Process GetSteamProcess()
-        {
-            if (string.IsNullOrWhiteSpace(CommonConfig.Default.SteamClientFile) || !File.Exists(CommonConfig.Default.SteamClientFile))
-                return null;
-
-            // Find the server process.
-            var expectedPath = IOUtils.NormalizePath(CommonConfig.Default.SteamClientFile);
-            var runningProcesses = Process.GetProcessesByName(CommonConfig.Default.SteamProcessName);
-
-            Process process = null;
-            foreach (var runningProcess in runningProcesses)
-            {
-                var runningPath = ProcessUtils.GetMainModuleFilepath(runningProcess.Id);
-                if (string.Equals(expectedPath, runningPath, StringComparison.OrdinalIgnoreCase))
-                {
-                    process = runningProcess;
-                    break;
-                }
-            }
-
-            return process;
-        }
-
         public static string BuildSteamCmdArguments(bool removeQuit, string argumentString)
         {
             if (string.IsNullOrWhiteSpace(argumentString))

@@ -340,8 +340,6 @@ namespace ServerManagerTool
                 Config.Default.AutoUpdate_CacheDir = IOUtils.NormalizeFolder(Config.Default.AutoUpdate_CacheDir);
             }
 
-            ServicePointManager.SecurityProtocol = SecurityUtils.GetSecurityProtocol(Config.Default.ServicePointManager_SecurityProtocol);
-
             AppDomain.CurrentDomain.UnhandledException += ErrorHandling.CurrentDomain_UnhandledException;
 
             // accessible names for icon buttons, from their tooltips (before any window opens)

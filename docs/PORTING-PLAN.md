@@ -421,23 +421,47 @@ The Island, Scorched Earth, The Center, Aberration, Extinction, Astraeos, Ragnar
 
 ## Phase 4 — Cleanup and tech debt
 
-- [ ] `WebClient` / `HttpWebRequest` (SYSLIB0014, ~30 sites) → shared `HttpClient`.
-- [ ] WFO2000 analyzer warnings (82): command getters that create a new instance on every call.
-- [ ] SYSLIB0051 legacy serialization constructors on 3 exception types.
+- [x] `WebClient` / `HttpWebRequest` → `HttpClient` (8 sites were left after the earlier removals). The public IP
+      check and the SteamCMD download share `NetworkUtils.HttpClient`; the IP check now tries its second URL when
+      the first fails and gives up after 15 s. The Discord plugin's webhook post uses its own static client (same
+      form data, same 5 s timeout). `ServicePointManager.SecurityProtocol` and its hidden setting are gone: they
+      don't affect `HttpClient`. The unused `PerformCallToAPIAsync` is deleted.
+- [x] Discord plugin: its update check, download button and patch-notes window are deleted (their URLs were blanked
+      in M8, so the patch-notes button did nothing), with their settings, texts, the two icons and the
+      `System.ServiceModel.Syndication` package. The app's own version feed window stays (hidden while no feed
+      URL is set; it could show a GitHub releases feed later).
+- [x] WFO2000 (40 getters, counted twice in the old build): each command getter now creates its `RelayCommand`
+      once (`field ??=`). None captured state at creation, so behaviour is unchanged.
+- [x] SYSLIB0051: the last legacy serialization constructor (`PluginException`) removed.
+- [x] CS0618 `GetProfileConfigDir_Old`: removed with the code that used it, which on every save (and on deleting a
+      profile) recursively deleted `Profiles\<profile name>`, a folder layout of very old versions. A profile named
+      `.` therefore deleted the whole Profiles folder (reproduced on the test copy), and `..` would have deleted
+      the data folder.
 - [x] Dead code removed: the external status API path (M2), the `ClustersDir` setting (M3).
 - [x] `ArkData` rewritten on AsaSavegameToolkit: its A2S client (`SSQLib`), `LoadOnlinePlayers*` and Steam lookups
       are gone.
-- [ ] Dead code left: `SteamServerDetail*` models, `SteamUtils.GetSteamProcess`.
+- [x] Dead code removed: the `SteamServerDetail*` models, `SteamUtils.GetSteamProcess` and its settings
+      (`SteamProcessName`, `SteamClientFile`).
 - [x] Self-updater removed: the `ServerManager.Updater` project, the Upgrade buttons in the main window and Server
       Monitor, the version check that showed them (it polled an empty URL every 12 hours), its settings
       (`LatestASM*Url`, `UpdaterFile`, `UpdaterPrefix`, `UpdateCheckTime`) and its texts in every language.
 - [x] Upstream's `.azure/` pipelines, Inno Setup script and `.github/workflows/msbuild.yml` deleted; the GitHub
       workflow would have run (and failed) on every push to the new repo. Releases are built with
       `tools\Release\Build-Release.ps1`.
-- [ ] Unit tests: `ZipUtilsUnitTest` needs `D:\_smtest`, `DiscordPluginUnitTest` touches plugin config
-      (`QueryMaster.UnitTests`, which queried real IPs, went with QueryMaster; `RconClientUnitTest` is
-      self-contained). Make the rest self-contained or delete them; add tests for argument building and path logic.
-- [ ] Consider .slnx, nullable reference types, and splitting `ServerProfile.cs` (7k lines) / `ServerSettingsControl` (11k lines).
+- [x] Unit tests are self-contained; `dotnet test src\Server-Managers.slnx` runs 45, all passing.
+  - `ZipUtilsUnitTest` builds its own zip in a temp folder (it read one from `D:\_smtest`).
+  - `DiscordPluginUnitTest` asserted nothing (`Assert.IsTrue(true)`), posted to any webhooks in a local plugin
+    config and opened modal windows. It now tests the webhook message (prefix, styles, truncation, encoding,
+    `&`), the webhook URL and which config profiles get an alert, through methods split out of `HandleAlert`.
+  - New `ARKServerManager.UnitTests`: the server command line (map and `?` options first, `-port=` /
+    `-WinLiveMaxPlayers=`, extra Server Args placement, mod lists, platforms, no admin password) and the save
+    folders, with and without an alternate save name (the layouts verified live in M1 and M5).
+    `GlobalizerExtensions.GetResourceString` returns null without an application, so the game data loads in a
+    test.
+- [x] Considered: the solution is now `src\Server-Managers.slnx` (the redundant x64 / x86 platforms, which all
+      mapped to Any CPU, dropped). Not done: nullable reference types (thousands of warnings across inherited
+      code) and splitting `ServerProfile.cs` (7k lines) / `ServerSettingsControl` (11k lines); both are large
+      changes with regression risk and nothing for users. Worth revisiting only when that code is reworked anyway.
 - [x] UI self-testing: `tools\UiDriver` (FlaUI 5.0.0, UIA3; outside the solution) drives the app from a shell, one
       command per run (launch, windows, tree, find, click, set, get, select, tap, screenshot, close), through
       automation patterns rather than the real mouse. `Deploy-TestApp.ps1` sets up an isolated, non-elevated copy

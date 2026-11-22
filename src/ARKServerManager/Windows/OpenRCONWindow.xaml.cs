@@ -48,7 +48,7 @@ namespace ServerManagerTool
             this.DataContext = this;
         }
 
-        public ICommand ConnectCommand => new RelayCommand<object>(
+        public ICommand ConnectCommand => field ??= new RelayCommand<object>(
             execute: _ => {
                 // set focus to the Connect button, if the Enter key is pressed, the value just entered has not yet been posted to the property.
                 ConnectButton.Focus();

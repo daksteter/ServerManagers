@@ -286,12 +286,5 @@ namespace ServerManagerTool.Common.Utils
             }
             return secureString;
         }
-
-        public static SecurityProtocolType GetSecurityProtocol(int securityProtocolValue)
-        {
-            if (Enum.TryParse(securityProtocolValue.ToString(), out SecurityProtocolType securityProtocol))
-                return securityProtocol;
-            return SecurityProtocolType.Tls12;
-        }
     }
 }

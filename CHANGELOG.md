@@ -97,7 +97,8 @@ First release for ARK: Survival Ascended (ASA). Servers for ARK: Survival Evolve
   - the forum buttons;
   - the original release history.
 
-  The Discord bot plugin no longer calls home or checks the original repository for updates.
+  The Discord plugin no longer calls home, and its update check, download button and patch-notes button (which
+  had nothing left to check) are gone.
 - **ASE-only features:** Steam Workshop mods, total conversions, Survival of the Fittest, procedurally generated
   maps, and the Fjordur traversal buff.
 - **ASE-only launch options and settings**, checked against the ASA server executable.
@@ -106,6 +107,9 @@ First release for ARK: Survival Ascended (ASA). Servers for ARK: Survival Evolve
 
 ### Fixed
 
+- **Saving a profile named `.` deleted the Profiles folder, with every profile in it.** An empty name did the same,
+  and `..` would have tried to delete the whole data folder, including servers installed there. The cause was a
+  cleanup of a folder layout from very old versions, which is gone.
 - **RCON replies over about 4 KB, or arriving in pieces, were cut off.** The rest was then read as the reply to the
   next command.
 - **In the "Global" message mode, some messages were never delivered.** The repeating message of the day and the
@@ -152,5 +156,10 @@ First release for ARK: Survival Ascended (ASA). Servers for ARK: Survival Evolve
 - WPFSharp.Globalizer comes from its published NuGet package (1.2.4), as its license requires for a public
   release, instead of a modified copy of its source. The changes the app relied on (English under other languages,
   resource strings, style loading, the language list) are now in the app.
-- Unit tests for the RCON client, the accessible names and the manifest reader.
+- Unit tests for the RCON client, the accessible names, the manifest reader, the server's command line, the save
+  folders, zip extraction and the Discord plugin's webhook messages. They need no network, server or fixed
+  folders: `dotnet test src\Server-Managers.slnx`.
+- The solution file is `src\Server-Managers.slnx` (the newer format).
+- Web requests use one shared `HttpClient` instead of the obsolete `WebClient`; the analyzer and obsolete-API
+  warnings are cleared, and leftover dead code (Steam server-detail models, a Steam process lookup) is gone.
 - `docs/PORTING-PLAN.md`: what was changed for ASA and why, with the facts it relies on.

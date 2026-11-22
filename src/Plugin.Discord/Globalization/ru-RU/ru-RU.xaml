@@ -23,14 +23,11 @@
     <sys:String x:Key="Global_SaveButtonLabel">Сохранить</sys:String>
 
     <sys:String x:Key="Global_BetaModeLabel"> (Бета-режим)</sys:String>
-    <sys:String x:Key="Global_NewVersionAvailableLabel">Доступна новая версия плагина.</sys:String>
-    <sys:String x:Key="Global_DownloadNewVersionTooltip">Загрузите последнюю версию.</sys:String>
     <!--#endregion-->
 
     <!--#region Config Window -->
     <sys:String x:Key="ConfigWindow_Title">Конфигурация плагина Discord</sys:String>
 
-    <sys:String x:Key="ConfigWindow_PatchNotesTooltip">Просмотрите описание обновления</sys:String>
     <sys:String x:Key="ConfigWindow_AddConfigProfileTooltip">Добавить Профиль</sys:String>
     <sys:String x:Key="ConfigWindow_ClearConfigProfilesTooltip">Удалить Все Профили</sys:String>
     <sys:String x:Key="ConfigWindow_DeleteConfigProfileTooltip">Удалить Профиль</sys:String>
@@ -50,10 +47,6 @@
     <sys:String x:Key="ConfigWindow_DeleteLabel">Нажмите «Да», чтобы подтвердить, что вы хотите выполнить удаление.</sys:String>
     <sys:String x:Key="ConfigWindow_DeleteErrorTitle">Удалить ошибку действия</sys:String>
     <sys:String x:Key="ConfigWindow_DeleteErrorLabel">Произошла ошибка при попытке удалить профиль.</sys:String>
-    <sys:String x:Key="ConfigWindow_DownloadErrorTitle">Ошибка действия загрузки</sys:String>
-    <sys:String x:Key="ConfigWindow_DownloadErrorLabel">Произошла ошибка при попытке выполнить загрузку.</sys:String>
-    <sys:String x:Key="ConfigWindow_DownloadSuccessTitle">Загрузка завершена</sys:String>
-    <sys:String x:Key="ConfigWindow_DownloadSuccessLabel">Последняя версия сохранена на вашем рабочем столе.</sys:String>
     <sys:String x:Key="ConfigWindow_EditErrorTitle">Ошибка редактирования действия</sys:String>
     <sys:String x:Key="ConfigWindow_EditErrorLabel">Произошла ошибка при попытке изменить профиль.</sys:String>
     <sys:String x:Key="ConfigWindow_SaveErrorTitle">Ошибка сохранения</sys:String>
@@ -120,14 +113,6 @@
     <sys:String x:Key="ConfigProfileWindow_TestEnabledErrorLabel">Профиль не включен и не может быть протестирован.</sys:String>
 
     <sys:String x:Key="ConfigProfileWindow_TestAlertMessage">Тест '{0}' тип предупреждения сообщение для имени профиля '{1}'</sys:String>
-    <!--#endregion-->
-
-    <!--#region Version Feed Window -->
-    <sys:String x:Key="VersionFeedWindow_Title">Сведения о версии плагина Discord</sys:String>
-    <sys:String x:Key="VersionFeedWindow_Load_FailedTitle">Ошибка загрузки Подачи</sys:String>
-
-    <sys:String x:Key="VersionFeedWindow_VersionFilterLabel">Версия:</sys:String>
-    <sys:String x:Key="VersionFeedWindow_VersionFilterTooltip">Выберите версию для просмотра подробных сведений.</sys:String>
     <!--#endregion-->
 
 </ResourceDictionary>

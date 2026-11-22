@@ -1,0 +1,19 @@
+<Solution>
+  <Folder Name="/3rd Party Libraries/">
+    <Project Path="ArkData/ArkData.csproj" />
+  </Folder>
+  <Folder Name="/Plugins/">
+    <Project Path="Plugin.Common.UnitTests/Plugin.Common.UnitTests.csproj" />
+    <Project Path="Plugin.Common/Plugin.Common.csproj" />
+    <Project Path="Plugin.Discord.UnitTests/Plugin.Discord.UnitTests.csproj" />
+    <Project Path="Plugin.Discord/Plugin.Discord.csproj" />
+  </Folder>
+  <Folder Name="/UnitTests/">
+    <Project Path="ARKServerManager.UnitTests/ARKServerManager.UnitTests.csproj" />
+    <Project Path="ServerManager.Common.UnitTests/ServerManager.Common.UnitTests.csproj" />
+  </Folder>
+  <Project Path="ARKServerManager.Common/ARKServerManager.Common.csproj" />
+  <Project Path="ARKServerManager/ARKServerManager.csproj" />
+  <Project Path="ServerManager.Common/ServerManager.Common.csproj" />
+  <Project Path="ServerManager.Discord/ServerManager.Discord.csproj" />
+</Solution>

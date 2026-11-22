@@ -543,7 +543,7 @@ namespace ServerManagerTool
         {
             get
             {
-                return new RelayCommand<object>(
+                return field ??= new RelayCommand<object>(
                     execute: (parameter) =>
                     {
                         this.Show();
@@ -562,7 +562,7 @@ namespace ServerManagerTool
         {
             get
             {
-                return new RelayCommand<Server>(
+                return field ??= new RelayCommand<Server>(
                     execute: (server) =>
                     {
                         Debug.WriteLine($"{server.Profile.ProfileName}: {server.Runtime.Status}");

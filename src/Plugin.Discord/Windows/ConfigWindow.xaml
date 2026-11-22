@@ -4,7 +4,7 @@
         xmlns:pc="clr-namespace:ServerManagerTool.Plugin.Common;assembly=ServerManager.Plugin.Common"
         Name="ConfigUI" Title="{DynamicResource ConfigWindow_Title}"
         Icon="/ServerManager.Plugin.Discord;component/Art/favicon.ico"
-        Width="640" Height="480" MinWidth="640" MinHeight="480" ResizeMode="CanResizeWithGrip" WindowStyle="ToolWindow" WindowStartupLocation="CenterOwner" ShowInTaskbar="False" Closing="ConfigWindow_Closing" Loaded="ConfigWindow_Loaded">
+        Width="640" Height="480" MinWidth="640" MinHeight="480" ResizeMode="CanResizeWithGrip" WindowStyle="ToolWindow" WindowStartupLocation="CenterOwner" ShowInTaskbar="False" Closing="ConfigWindow_Closing">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -28,35 +28,14 @@
 
     <Grid Background="{StaticResource BeigeGradient}" MouseLeftButtonUp="OnMouseLeftButtonUp" MouseMove="OnMouseMove">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
             <RowDefinition/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
-            <StackPanel.Style>
-                <Style TargetType="{x:Type StackPanel}">
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding NewVersionAvailable}" Value="False">
-                            <Setter Property="Visibility" Value="Collapsed" />
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </StackPanel.Style>
-
-            <TextBlock Text="{DynamicResource Global_NewVersionAvailableLabel}" TextWrapping="Wrap" VerticalAlignment="Center" FontWeight="Bold"/>
-            <Button Width="22" Height="22" Click="DownloadPlugin_Click" Margin="10,0,0,0" ToolTip="{DynamicResource Global_DownloadNewVersionTooltip}">
-                <Image Source="{StaticResource Icon.Download}" />
-            </Button>
-        </StackPanel>
-
-        <GroupBox Grid.Row="1" HorizontalAlignment="Stretch" Style="{StaticResource GroupBoxStyle}">
+        <GroupBox Grid.Row="0" HorizontalAlignment="Stretch" Style="{StaticResource GroupBoxStyle}">
             <GroupBox.Header>
                 <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
-                    <Button Width="22" Height="22" Click="PatchNotes_Click" ToolTip="{DynamicResource ConfigWindow_PatchNotesTooltip}">
-                        <Image Source="{StaticResource Icon.ChangeNotes}" />
-                    </Button>
-                    <Button Width="22" Height="22" Click="AddConfigProfile_Click" Margin="20,0,0,0" ToolTip="{DynamicResource ConfigWindow_AddConfigProfileTooltip}">
+                    <Button Width="22" Height="22" Click="AddConfigProfile_Click" ToolTip="{DynamicResource ConfigWindow_AddConfigProfileTooltip}">
                         <Image Source="{StaticResource Icon.Add}" />
                     </Button>
                     <Button Width="22" Height="22" Click="ClearConfigProfiles_Click" Margin="10,0,0,0" ToolTip="{DynamicResource ConfigWindow_ClearConfigProfilesTooltip}">
@@ -130,7 +109,7 @@
             </DataGrid>
         </GroupBox>
 
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
             <Button Content="{DynamicResource Global_SaveButtonLabel}" Margin="5" MinWidth="75" HorizontalAlignment="Right" Click="Save_Click"/>
             <Button Content="{DynamicResource Global_CloseButtonLabel}" Margin="5" MinWidth="75" HorizontalAlignment="Left" IsCancel="True"/>
         </StackPanel>

@@ -23,14 +23,11 @@
     <sys:String x:Key="Global_SaveButtonLabel">Speichern</sys:String>
 
     <sys:String x:Key="Global_BetaModeLabel"> (Beta Modus)</sys:String>
-    <sys:String x:Key="Global_NewVersionAvailableLabel">Eine neue Version des Plugins ist verfügbar.</sys:String>
-    <sys:String x:Key="Global_DownloadNewVersionTooltip">Lade die neueste Version herunter.</sys:String>
     <!--#endregion-->
 
     <!--#region Config Window -->
     <sys:String x:Key="ConfigWindow_Title">Discord Plugin Konfiguration</sys:String>
 
-    <sys:String x:Key="ConfigWindow_PatchNotesTooltip">Zeigen Sie die Patch Notes.</sys:String>
     <sys:String x:Key="ConfigWindow_AddConfigProfileTooltip">Profil hinzufügen</sys:String>
     <sys:String x:Key="ConfigWindow_ClearConfigProfilesTooltip">Alle Profile löschen</sys:String>
     <sys:String x:Key="ConfigWindow_DeleteConfigProfileTooltip">Profil löschen</sys:String>
@@ -50,10 +47,6 @@
     <sys:String x:Key="ConfigWindow_DeleteLabel">Klicken Sie auf "Ja", um zu bestätigen, dass Sie die Löschung durchführen möchten.</sys:String>
     <sys:String x:Key="ConfigWindow_DeleteErrorTitle">Fehler Aktion löschen</sys:String>
     <sys:String x:Key="ConfigWindow_DeleteErrorLabel">Beim Versuch, das Profil zu löschen, ist ein Fehler aufgetreten.</sys:String>
-    <sys:String x:Key="ConfigWindow_DownloadErrorTitle">Aktion Fehler herunterladen</sys:String>
-    <sys:String x:Key="ConfigWindow_DownloadErrorLabel">Bei dem Versuch, den Download durchzuführen, ist ein Fehler aufgetreten.</sys:String>
-    <sys:String x:Key="ConfigWindow_DownloadSuccessTitle">Download Erfolgreich</sys:String>
-    <sys:String x:Key="ConfigWindow_DownloadSuccessLabel">Die neueste Version wurde auf Ihrem Desktop gespeichert.</sys:String>
     <sys:String x:Key="ConfigWindow_EditErrorTitle">Fehler Aktion bearbeiten</sys:String>
     <sys:String x:Key="ConfigWindow_EditErrorLabel">Beim Versuch, ein Profil zu bearbeiten, ist ein Fehler aufgetreten.</sys:String>
     <sys:String x:Key="ConfigWindow_SaveErrorTitle">Fehler beim Speichern von Aktionen</sys:String>
@@ -118,14 +111,6 @@
     <sys:String x:Key="ConfigProfileWindow_TestErrorTitle">Test Aktion Fehler</sys:String>
     <sys:String x:Key="ConfigProfileWindow_TestErrorLabel">Beim Versuch, das Konfigurationsprofil zu testen, ist ein Fehler aufgetreten.</sys:String>
     <sys:String x:Key="ConfigProfileWindow_TestEnabledErrorLabel">Das Profil ist nicht aktiviert und kann nicht getestet werden.</sys:String>
-    <!--#endregion-->
-
-    <!--#region Version Feed Window -->
-    <sys:String x:Key="VersionFeedWindow_Title">Discord Plugin Version Details</sys:String>
-    <sys:String x:Key="VersionFeedWindow_Load_FailedTitle">Fehler beim Laden des Feeds</sys:String>
-
-    <sys:String x:Key="VersionFeedWindow_VersionFilterLabel">Version:</sys:String>
-    <sys:String x:Key="VersionFeedWindow_VersionFilterTooltip">Wählen Sie die Version aus, um Details anzuzeigen.</sys:String>
     <!--#endregion-->
 
 </ResourceDictionary>

@@ -90,18 +90,6 @@ namespace ServerManagerTool.Lib
                     }
                     catch (Exception) { }
                 }
-
-                var profileIniDir = server.Profile?.GetProfileConfigDir_Old();
-                if (!string.IsNullOrWhiteSpace(profileIniDir) && Directory.Exists(profileIniDir))
-                {
-                    // set the folder permissions
-                    SecurityUtils.SetDirectoryOwnershipForAllUsers(profileIniDir);
-                    try
-                    {
-                        Directory.Delete(profileIniDir, true);
-                    }
-                    catch (Exception) { }
-                }
             }
 
             server.Runtime?.DeleteFirewallRules();

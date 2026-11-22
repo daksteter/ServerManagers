@@ -23,14 +23,11 @@
     <sys:String x:Key="Global_SaveButtonLabel">Sauvegarder</sys:String>
 
     <sys:String x:Key="Global_BetaModeLabel"> (Mode Beta)</sys:String>
-    <sys:String x:Key="Global_NewVersionAvailableLabel">Une nouvelle version du plugin est disponible.</sys:String>
-    <sys:String x:Key="Global_DownloadNewVersionTooltip">Téléchargez la dernière version.</sys:String>
     <!--#endregion-->
 
     <!--#region Config Window -->
     <sys:String x:Key="ConfigWindow_Title">Configuration du plug-in Discord</sys:String>
 
-    <sys:String x:Key="ConfigWindow_PatchNotesTooltip">Voir les notes Patch.</sys:String>
     <sys:String x:Key="ConfigWindow_AddConfigProfileTooltip">Ajouter un profil</sys:String>
     <sys:String x:Key="ConfigWindow_ClearConfigProfilesTooltip">Supprimer tous les profils</sys:String>
     <sys:String x:Key="ConfigWindow_DeleteConfigProfileTooltip">Supprimer le profil</sys:String>
@@ -50,10 +47,6 @@
     <sys:String x:Key="ConfigWindow_DeleteLabel">Cliquez sur "Oui" pour confirmer que vous souhaitez effectuer la suppression..</sys:String>
     <sys:String x:Key="ConfigWindow_DeleteErrorTitle">Supprimer l'erreur d'action</sys:String>
     <sys:String x:Key="ConfigWindow_DeleteErrorLabel">Une erreur s'est produite lors de la tentative de suppression du profil.</sys:String>
-    <sys:String x:Key="ConfigWindow_DownloadErrorTitle">Télécharger l'erreur d'action</sys:String>
-    <sys:String x:Key="ConfigWindow_DownloadErrorLabel">Une erreur s'est produite lors de la tentative d'exécution du téléchargement.</sys:String>
-    <sys:String x:Key="ConfigWindow_DownloadSuccessTitle">Téléchargement réussi</sys:String>
-    <sys:String x:Key="ConfigWindow_DownloadSuccessLabel">La dernière version a été enregistrée sur votre bureau.</sys:String>
     <sys:String x:Key="ConfigWindow_EditErrorTitle">Edité l'erreur d'action</sys:String>
     <sys:String x:Key="ConfigWindow_EditErrorLabel">Une erreur s'est produite lors de la tentative de modification d'un profil.</sys:String>
     <sys:String x:Key="ConfigWindow_SaveErrorTitle">Enregistrer l'erreur d'action</sys:String>
@@ -120,14 +113,6 @@
     <sys:String x:Key="ConfigProfileWindow_TestEnabledErrorLabel">Le profil n'est pas activé et ne peut pas être testé.</sys:String>
 
     <sys:String x:Key="ConfigProfileWindow_TestAlertMessage">Test '{0}' Type d'alerte Message pour le nom du profil '{1}'</sys:String>
-    <!--#endregion-->
-
-    <!--#region Version Feed Window -->
-    <sys:String x:Key="VersionFeedWindow_Title">Détails de la version du Plugin Discord</sys:String>
-    <sys:String x:Key="VersionFeedWindow_Load_FailedTitle">Erreur du chargement du flux</sys:String>
-
-    <sys:String x:Key="VersionFeedWindow_VersionFilterLabel">Version:</sys:String>
-    <sys:String x:Key="VersionFeedWindow_VersionFilterTooltip">Sélectionnez la version pour afficher les détails.</sys:String>
     <!--#endregion-->
 
 </ResourceDictionary>

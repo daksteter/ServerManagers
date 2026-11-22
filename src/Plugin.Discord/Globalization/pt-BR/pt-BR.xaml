@@ -23,14 +23,11 @@
     <sys:String x:Key="Global_SaveButtonLabel">Salva</sys:String>
 
     <sys:String x:Key="Global_BetaModeLabel"> (Modo beta)</sys:String>
-    <sys:String x:Key="Global_NewVersionAvailableLabel">Uma nova versão do plugin está disponível.</sys:String>
-    <sys:String x:Key="Global_DownloadNewVersionTooltip">Baixe a versão mais recente.</sys:String>
     <!--#endregion-->
 
     <!--#region Config Window -->
     <sys:String x:Key="ConfigWindow_Title">Configuração do plugin Discord</sys:String>
 
-    <sys:String x:Key="ConfigWindow_PatchNotesTooltip">Veja as notas do patch.</sys:String>
     <sys:String x:Key="ConfigWindow_AddConfigProfileTooltip">Adicionar perfil</sys:String>
     <sys:String x:Key="ConfigWindow_ClearConfigProfilesTooltip">Excluir todos os perfis</sys:String>
     <sys:String x:Key="ConfigWindow_DeleteConfigProfileTooltip">Excluir perfil</sys:String>
@@ -50,10 +47,6 @@
     <sys:String x:Key="ConfigWindow_DeleteLabel">Clique em 'Sim' para confirmar que deseja executar a exclusão.</sys:String>
     <sys:String x:Key="ConfigWindow_DeleteErrorTitle">Erro ao Excluir</sys:String>
     <sys:String x:Key="ConfigWindow_DeleteErrorLabel">Ocorreu um erro ao tentar excluir o perfil.</sys:String>
-    <sys:String x:Key="ConfigWindow_DownloadErrorTitle">Erro no download</sys:String>
-    <sys:String x:Key="ConfigWindow_DownloadErrorLabel">Ocorreu um erro ao tentar executar o download.</sys:String>
-    <sys:String x:Key="ConfigWindow_DownloadSuccessTitle">Download bem sucedido</sys:String>
-    <sys:String x:Key="ConfigWindow_DownloadSuccessLabel">A versão mais recente foi salva na sua área de trabalho.</sys:String>
     <sys:String x:Key="ConfigWindow_EditErrorTitle">Erro ao Editar</sys:String>
     <sys:String x:Key="ConfigWindow_EditErrorLabel">Ocorreu um erro ao tentar editar um perfil.</sys:String>
     <sys:String x:Key="ConfigWindow_SaveErrorTitle">Erro ao salvar</sys:String>
@@ -120,14 +113,6 @@
     <sys:String x:Key="ConfigProfileWindow_TestEnabledErrorLabel">O perfil não está ativado e não pode ser testado.</sys:String>
 	
     <sys:String x:Key="ConfigProfileWindow_TestAlertMessage">Teste '{0}' tipo de alerta para nome do perfil '{1}'</sys:String>
-    <!--#endregion-->
-
-    <!--#region Version Feed Window -->
-    <sys:String x:Key="VersionFeedWindow_Title">Detalhes da versão do plugin Discord</sys:String>
-    <sys:String x:Key="VersionFeedWindow_Load_FailedTitle">Erro de carregamento de feed</sys:String>
-
-    <sys:String x:Key="VersionFeedWindow_VersionFilterLabel">Versão:</sys:String>
-    <sys:String x:Key="VersionFeedWindow_VersionFilterTooltip">Selecione a versão para visualizar detalhes.</sys:String>
     <!--#endregion-->
 
 </ResourceDictionary>

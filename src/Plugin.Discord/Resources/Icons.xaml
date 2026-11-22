@@ -35,26 +35,6 @@
         </DrawingImage.Drawing>
     </DrawingImage>
 
-    <!-- document_bullet_list, regular -->
-    <DrawingImage x:Key="Icon.ChangeNotes" po:Freeze="True">
-        <DrawingImage.Drawing>
-            <DrawingGroup>
-                <GeometryDrawing Brush="Transparent" Geometry="M0,0H20V20H0Z"/>
-                <GeometryDrawing Brush="{StaticResource IconNeutralBrush}" Geometry="F1 M6 10.5a.5.5 0 1 1 1 0 .5.5 0 0 1-1 0m.5 1.5a.5.5 0 1 0 0 1 .5.5 0 0 0 0-1M6 14.5a.5.5 0 1 1 1 0 .5.5 0 0 1-1 0M8.5 10a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zM8 12.5c0-.28.22-.5.5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m.5 1.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zM6 2a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V7.41c0-.4-.16-.78-.44-1.06l-3.91-3.91A1.5 1.5 0 0 0 10.59 2zM5 4a1 1 0 0 1 1-1h4v3.5c0 .83.67 1.5 1.5 1.5H15v8a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1zm9.8 3h-3.3a.5.5 0 0 1-.5-.5V3.2z"/>
-            </DrawingGroup>
-        </DrawingImage.Drawing>
-    </DrawingImage>
-
-    <!-- document_bullet_list, regular -->
-    <DrawingImage x:Key="Icon.ChangeNotes.16" po:Freeze="True">
-        <DrawingImage.Drawing>
-            <DrawingGroup>
-                <GeometryDrawing Brush="Transparent" Geometry="M0,0H16V16H0Z"/>
-                <GeometryDrawing Brush="{StaticResource IconNeutralBrush}" Geometry="F1 M5 1a2 2 0 0 0-2 2v10c0 1.1.9 2 2 2h6a2 2 0 0 0 2-2V5.41c0-.4-.16-.78-.44-1.06L9.65 1.44A1.5 1.5 0 0 0 8.59 1zM4 3a1 1 0 0 1 1-1h3v2.5C8 5.33 8.67 6 9.5 6H12v7a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1zm7.8 2H9.5a.5.5 0 0 1-.5-.5V2.2zM7 7.5c0-.28.22-.5.5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5M7.5 9a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zM7 11.5c0-.28.22-.5.5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5M5.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1M6 9.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0M5.5 12a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1"/>
-            </DrawingGroup>
-        </DrawingImage.Drawing>
-    </DrawingImage>
-
     <!-- delete, regular -->
     <DrawingImage x:Key="Icon.Delete" po:Freeze="True">
         <DrawingImage.Drawing>
@@ -71,26 +51,6 @@
             <DrawingGroup>
                 <GeometryDrawing Brush="Transparent" Geometry="M0,0H16V16H0Z"/>
                 <GeometryDrawing Brush="{StaticResource IconDangerBrush}" Geometry="F1 M7 3h2a1 1 0 0 0-2 0M6 3a2 2 0 1 1 4 0h4a.5.5 0 0 1 0 1h-.56l-1.2 8.84A2.5 2.5 0 0 1 9.74 15h-3.5a2.5 2.5 0 0 1-2.48-2.16L2.57 4H2a.5.5 0 0 1 0-1zm1 3.5a.5.5 0 0 0-1 0v5a.5.5 0 0 0 1 0zM9.5 6c.28 0 .5.22.5.5v5a.5.5 0 0 1-1 0v-5c0-.28.22-.5.5-.5m-4.74 6.7c.1.75.74 1.3 1.49 1.3h3.5a1.5 1.5 0 0 0 1.5-1.3L12.42 4H3.57z"/>
-            </DrawingGroup>
-        </DrawingImage.Drawing>
-    </DrawingImage>
-
-    <!-- arrow_download, regular -->
-    <DrawingImage x:Key="Icon.Download" po:Freeze="True">
-        <DrawingImage.Drawing>
-            <DrawingGroup>
-                <GeometryDrawing Brush="Transparent" Geometry="M0,0H20V20H0Z"/>
-                <GeometryDrawing Brush="{StaticResource IconNeutralBrush}" Geometry="F1 M15.5 17a.5.5 0 0 1 .09 1H4.5a.5.5 0 0 1-.09-1H15.5M10 2a.5.5 0 0 1 .5.41V14.3l3.64-3.65a.5.5 0 0 1 .64-.06l.07.06c.17.17.2.44.06.63l-.06.07-4.5 4.5a.5.5 0 0 1-.25.14L10 16a.5.5 0 0 1-.4-.2l-4.46-4.45a.5.5 0 0 1 .64-.76l.07.06 3.65 3.64V2.5c0-.27.22-.5.5-.5"/>
-            </DrawingGroup>
-        </DrawingImage.Drawing>
-    </DrawingImage>
-
-    <!-- arrow_download, regular -->
-    <DrawingImage x:Key="Icon.Download.16" po:Freeze="True">
-        <DrawingImage.Drawing>
-            <DrawingGroup>
-                <GeometryDrawing Brush="Transparent" Geometry="M0,0H16V16H0Z"/>
-                <GeometryDrawing Brush="{StaticResource IconNeutralBrush}" Geometry="F1 M3.5 13h9a.5.5 0 0 1 .09 1H3.5a.5.5 0 0 1-.09-1zh9zM7.91 1H8a.5.5 0 0 1 .5.41v8.89l2.68-2.69a.5.5 0 0 1 .64-.06l.07.06c.17.17.2.44.06.64l-.06.07-3.54 3.53a.5.5 0 0 1-.63.06l-.07-.06L4.1 8.32a.5.5 0 0 1 .64-.77l.07.06L7.5 10.3V1.5a.5.5 0 0 1 .41-.5H8z"/>
             </DrawingGroup>
         </DrawingImage.Drawing>
     </DrawingImage>

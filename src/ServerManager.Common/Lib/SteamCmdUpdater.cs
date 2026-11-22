@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
-using System.Net;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -98,7 +98,7 @@ namespace ServerManagerTool.Common.Lib
                 reporter?.Report(statuses[Status.InstallSteamCmdComplete]);
                 reporter?.Report(statuses[Status.Complete]);
             }
-            catch (TaskCanceledException)
+            catch (OperationCanceledException)
             {
                 reporter?.Report(statuses[Status.Cancelled]);
             }
@@ -127,11 +127,12 @@ namespace ServerManagerTool.Common.Lib
             {
                 // download the SteamCMD zip file
                 var steamZipPath = Path.Combine(steamCmdDirectory, CommonConfig.Default.SteamCmdZipFile);
-                using (var webClient = new WebClient())
+                using (var response = await NetworkUtils.HttpClient.GetAsync(CommonConfig.Default.SteamCmdUrl, HttpCompletionOption.ResponseHeadersRead, cancellationToken))
                 {
-                    using (var cancelRegistration = cancellationToken.Register(webClient.CancelAsync))
+                    response.EnsureSuccessStatusCode();
+                    using (var fileStream = File.Create(steamZipPath))
                     {
-                        await webClient.DownloadFileTaskAsync(CommonConfig.Default.SteamCmdUrl, steamZipPath);
+                        await response.Content.CopyToAsync(fileStream, cancellationToken);
                     }
                 }
 
@@ -188,7 +189,7 @@ namespace ServerManagerTool.Common.Lib
                 reporter?.Report(statuses[Status.InstallSteamCmdComplete]);
                 reporter?.Report(statuses[Status.Complete]);
             }
-            catch (TaskCanceledException)
+            catch (OperationCanceledException)
             {
                 reporter?.Report(statuses[Status.Cancelled]);
             }

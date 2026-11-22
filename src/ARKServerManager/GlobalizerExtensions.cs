@@ -20,10 +20,10 @@ namespace ServerManagerTool
 
         /// <summary>
         /// The string resource with this key, with "\r" and "\n" escapes turned into line breaks; null when there's
-        /// none.
+        /// none (or no application, as in unit tests).
         /// </summary>
         public static string GetResourceString(this GlobalizedApplication application, string key) =>
-            ResourceUtils.GetResourceString(application.Resources, key);
+            application is null ? null : ResourceUtils.GetResourceString(application.Resources, key);
 
         /// <summary>
         /// Switches to a language: the English texts are loaded first and the language's own over them, so texts

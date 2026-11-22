@@ -2366,7 +2366,7 @@ namespace ServerManagerTool
         {
             get
             {
-                return new RelayCommand<ServerSettingsCustomLevelsAction>(
+                return field ??= new RelayCommand<ServerSettingsCustomLevelsAction>(
                     execute: (action) =>
                     {
                         var errorTitle = GlobalizedApplication.Instance.GetResourceString("Generic_ErrorLabel");
@@ -4023,7 +4023,7 @@ namespace ServerManagerTool
         {
             get
             {
-                return new RelayCommand<ServerSettingsResetAction>(
+                return field ??= new RelayCommand<ServerSettingsResetAction>(
                     execute: (action) =>
                     {
                         if (MessageBox.Show(_globalizer.GetResourceString("ServerSettings_ResetLabel"), _globalizer.GetResourceString("ServerSettings_ResetTitle"), MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
@@ -4192,7 +4192,7 @@ namespace ServerManagerTool
         {
             get
             {
-                return new RelayCommand<object>(
+                return field ??= new RelayCommand<object>(
                     execute: async (parameter) =>
                     {
                         try

@@ -4,7 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Net.NetworkInformation;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ServerManagerTool.Common.Utils
@@ -57,74 +59,49 @@ namespace ServerManagerTool.Common.Utils
             return preferredIp;
         }
 
+        /// <summary>
+        /// The app's one HTTP client (HttpClient is meant to be shared: one per request exhausts sockets).
+        /// </summary>
+        public static HttpClient HttpClient { get; } = CreateHttpClient();
+
+        private static HttpClient CreateHttpClient()
+        {
+            var client = new HttpClient();
+            client.DefaultRequestHeaders.UserAgent.ParseAdd($"JVHArkAscendedServerManager/{typeof(NetworkUtils).Assembly.GetName().Version?.ToString(3)}");
+            return client;
+        }
+
+        private static readonly TimeSpan PublicIPCheckTimeout = TimeSpan.FromSeconds(15);
+
         public static string DiscoverPublicIP()
         {
-            using (var webClient = new WebClient())
-            {
-                try
-                {
-                    var publicIP = webClient.DownloadString(CommonConfig.Default.PublicIPCheckUrl1);
-                    if (IPAddress.TryParse(publicIP, out IPAddress address1))
-                    {
-                        return publicIP;
-                    }
-
-                    publicIP = webClient.DownloadString(CommonConfig.Default.PublicIPCheckUrl2);
-                    if (IPAddress.TryParse(publicIP, out IPAddress address2))
-                    {
-                        return publicIP;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    _logger.Error($"{nameof(DiscoverPublicIP)} - Exception checking for public ip. {ex.Message}");
-                }
-
-                return String.Empty;
-            }
+            // on the thread pool, so blocking here can't deadlock a caller on the UI thread
+            return Task.Run(DiscoverPublicIPAsync).GetAwaiter().GetResult();
         }
 
         public static async Task<string> DiscoverPublicIPAsync()
         {
-            using (var webClient = new WebClient())
+            foreach (var url in new[] { CommonConfig.Default.PublicIPCheckUrl1, CommonConfig.Default.PublicIPCheckUrl2 })
             {
+                if (string.IsNullOrWhiteSpace(url))
+                    continue;
+
                 try
                 {
-                    var publicIP = await webClient.DownloadStringTaskAsync(CommonConfig.Default.PublicIPCheckUrl1);
-                    if (IPAddress.TryParse(publicIP, out IPAddress address1))
-                    {
-                        return publicIP;
-                    }
-
-                    publicIP = await webClient.DownloadStringTaskAsync(CommonConfig.Default.PublicIPCheckUrl2);
-                    if (IPAddress.TryParse(publicIP, out IPAddress address2))
+                    using var timeout = new CancellationTokenSource(PublicIPCheckTimeout);
+                    var publicIP = (await HttpClient.GetStringAsync(url, timeout.Token)).Trim();
+                    if (IPAddress.TryParse(publicIP, out _))
                     {
                         return publicIP;
                     }
                 }
                 catch (Exception ex)
                 {
-                    _logger.Error($"{nameof(DiscoverPublicIPAsync)} - Exception checking for public ip. {ex.Message}");
-                }
-
-                return String.Empty;
-            }
-        }
-
-        public static async Task PerformCallToAPIAsync(Uri uri)
-        {
-            try
-            {
-                using (var client = new WebClient())
-                {
-                    var response = await client.DownloadStringTaskAsync(uri);
-                    _logger.Debug($"{nameof(PerformCallToAPIAsync)} - Response calling API: {response}");
+                    _logger.Error($"{nameof(DiscoverPublicIPAsync)} - Exception checking for public ip at {url}. {ex.Message}");
                 }
             }
-            catch (Exception ex)
-            {
-                _logger.Debug($"{nameof(PerformCallToAPIAsync)} - Failed calling API.\r\n{ex.Message}");
-            }
+
+            return String.Empty;
         }
     }
 }

@@ -15,8 +15,6 @@ namespace ServerManagerTool.Plugin.Discord.Windows
     public partial class ConfigWindow : Window
     {
         private static readonly DependencyProperty PluginConfigProperty = DependencyProperty.Register(nameof(PluginConfig), typeof(DiscordPluginConfig), typeof(ConfigWindow));
-        public static readonly DependencyProperty LatestVersionProperty = DependencyProperty.Register(nameof(LatestVersion), typeof(Version), typeof(ConfigWindow), new PropertyMetadata(new Version()));
-        public static readonly DependencyProperty NewVersionAvailableProperty = DependencyProperty.Register(nameof(NewVersionAvailable), typeof(bool), typeof(ConfigWindow), new PropertyMetadata(false));
 
         internal ConfigWindow(DiscordPlugin plugin, DiscordPluginConfig pluginConfig)
         {
@@ -44,18 +42,6 @@ namespace ServerManagerTool.Plugin.Discord.Windows
             set { SetValue(PluginConfigProperty, value); }
         }
 
-        public Version LatestVersion
-        {
-            get { return (Version)GetValue(LatestVersionProperty); }
-            set { SetValue(LatestVersionProperty, value); }
-        }
-
-        public bool NewVersionAvailable
-        {
-            get { return (bool)GetValue(NewVersionAvailableProperty); }
-            set { SetValue(NewVersionAvailableProperty, value); }
-        }
-
         private void ConfigWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (DialogResult.HasValue && DialogResult.Value)
@@ -68,24 +54,6 @@ namespace ServerManagerTool.Plugin.Discord.Windows
                     e.Cancel = true;
                     return;
                 }
-            }
-        }
-
-        private void ConfigWindow_Loaded(object sender, RoutedEventArgs e)
-        {
-            CheckLatestVersionAsync().DoNotWait();
-        }
-
-        private void DownloadPlugin_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                DownloadLatestVersion();
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"ERROR: {nameof(DownloadPlugin_Click)}\r\n{ex.Message}");
-                MessageBox.Show(ResourceUtils.GetResourceString(this.Resources, "ConfigWindow_DownloadErrorLabel"), ResourceUtils.GetResourceString(this.Resources, "ConfigWindow_DownloadErrorTitle"), MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -154,23 +122,6 @@ namespace ServerManagerTool.Plugin.Discord.Windows
             }
         }
 
-        private void PatchNotes_Click(object sender, RoutedEventArgs e)
-        {
-            var url = string.Empty;
-            if (Plugin.BetaEnabled)
-                url = Config.Default.VersionBetaFeedUrl;
-            else
-                url = Config.Default.VersionFeedUrl;
-
-            if (!string.IsNullOrWhiteSpace(url))
-            {
-                var window = new VersionFeedWindow(Plugin, url);
-                window.Owner = this;
-                window.ShowDialog();
-                this.BringIntoView();
-            }
-        }
-
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -190,55 +141,6 @@ namespace ServerManagerTool.Plugin.Discord.Windows
             {
                 Debug.WriteLine($"ERROR: {nameof(Save_Click)} - Save\r\n{ex.Message}");
                 MessageBox.Show(ResourceUtils.GetResourceString(this.Resources, "ConfigWindow_SaveErrorLabel"), ResourceUtils.GetResourceString(this.Resources, "ConfigWindow_SaveErrorTitle"), MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-        private async Task CheckLatestVersionAsync()
-        {
-            try
-            {
-                var newVersion = await NetworkUtils.CheckLatestVersionAsync(Plugin.BetaEnabled);
-
-                this.LatestVersion = newVersion;
-                this.NewVersionAvailable = Plugin.PluginVersion < newVersion;
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"ERROR: {nameof(CheckLatestVersionAsync)}\r\n{ex.Message}");
-            }
-        }
-
-        private void DownloadLatestVersion()
-        {
-            var cursor = this.Cursor;
-
-            try
-            {
-                this.Cursor = Cursors.Wait;
-                Task.Delay(500).Wait();
-
-                var latestZip = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), Config.Default.PluginZipFilename);
-
-                var sourceUrl = string.Empty;
-                if (Plugin.BetaEnabled)
-                    sourceUrl = Config.Default.LatestBetaDownloadUrl;
-                else
-                    sourceUrl = Config.Default.LatestDownloadUrl;
-
-                if (string.IsNullOrWhiteSpace(sourceUrl))
-                    return;
-
-                NetworkUtils.DownloadLatestVersion(sourceUrl, latestZip);
-
-                MessageBox.Show(ResourceUtils.GetResourceString(this.Resources, "ConfigWindow_DownloadSuccessLabel"), ResourceUtils.GetResourceString(this.Resources, "ConfigWindow_DownloadSuccessTitle"), MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"ERROR: {nameof(DownloadLatestVersion)}\r\n{ex.Message}");
-            }
-            finally
-            {
-                this.Cursor = cursor;
             }
         }
 

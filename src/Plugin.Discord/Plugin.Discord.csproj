@@ -14,10 +14,10 @@
     <Page Remove="Globalization\**" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="System.ServiceModel.Syndication" Version="11.0.0" />
+    <ProjectReference Include="..\Plugin.Common\Plugin.Common.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Plugin.Common\Plugin.Common.csproj" />
+    <InternalsVisibleTo Include="ServerManager.Plugin.Discord.UnitTests" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Art\*.ico" />

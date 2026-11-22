@@ -20,12 +20,6 @@
     <Setting Name="SteamCmdAuthenticateArgs" Type="System.String" Scope="Application">
       <Value Profile="(Default)">+login {0} {1} +quit</Value>
     </Setting>
-    <Setting Name="SteamProcessName" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Steam</Value>
-    </Setting>
-    <Setting Name="SteamClientFile" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="UpgradeConfig" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>

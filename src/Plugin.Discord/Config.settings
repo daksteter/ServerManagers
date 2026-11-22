@@ -11,29 +11,8 @@
     <Setting Name="PluginName" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Discord Plugin</Value>
     </Setting>
-    <Setting Name="LatestDownloadUrl" Type="System.String" Scope="Application">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="LatestVersionUrl" Type="System.String" Scope="Application">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="LatestBetaDownloadUrl" Type="System.String" Scope="Application">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="LatestBetaVersionUrl" Type="System.String" Scope="Application">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="PluginZipFilename" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">ServerManager.Plugin.Discord.zip</Value>
-    </Setting>
     <Setting Name="ConfigFile" Type="System.String" Scope="Application">
       <Value Profile="(Default)">_discordplugin.cfg</Value>
-    </Setting>
-    <Setting Name="VersionFeedUrl" Type="System.String" Scope="Application">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="VersionBetaFeedUrl" Type="System.String" Scope="Application">
-      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

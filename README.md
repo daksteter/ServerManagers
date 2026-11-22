@@ -213,6 +213,8 @@ dotnet build src\ARKServerManager -c Release
 The app is built to `src\ARKServerManager\bin\Release\net11.0-windows`. Don't zip that folder for others: a copy
 of the app that has been run writes its settings backups (`userconfig.json`, `commonconfig.json`) into it.
 
+To run the unit tests: `dotnet test src\Server-Managers.slnx`.
+
 To make a release zip, commit your changes and run:
 
 ```powershell

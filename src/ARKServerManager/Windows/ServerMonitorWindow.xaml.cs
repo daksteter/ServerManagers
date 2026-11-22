@@ -724,7 +724,7 @@ namespace ServerManagerTool.Windows
         {
             get
             {
-                return new RelayCommand<object>(
+                return field ??= new RelayCommand<object>(
                     execute: (parameter) =>
                     {
                         this.Show();
@@ -743,7 +743,7 @@ namespace ServerManagerTool.Windows
         {
             get
             {
-                return new RelayCommand<object>(
+                return field ??= new RelayCommand<object>(
                     execute: async (_) =>
                     {
                         var processServersSequentially = ProcessServersSequentially;
@@ -764,7 +764,7 @@ namespace ServerManagerTool.Windows
         {
             get
             {
-                return new RelayCommand<object>(
+                return field ??= new RelayCommand<object>(
                     execute: (_) =>
                     {
                         CancellationTokenSource.Cancel();
@@ -783,7 +783,7 @@ namespace ServerManagerTool.Windows
         {
             get
             {
-                return new RelayCommand<object>(
+                return field ??= new RelayCommand<object>(
                     execute: async (_) =>
                     {
                         var processServersSequentially = ProcessServersSequentially;
@@ -805,7 +805,7 @@ namespace ServerManagerTool.Windows
         {
             get
             {
-                return new RelayCommand<object>(
+                return field ??= new RelayCommand<object>(
                     execute: async (_) =>
                     {
                         var processServersSequentially = ProcessServersSequentially;
@@ -827,7 +827,7 @@ namespace ServerManagerTool.Windows
         {
             get
             {
-                return new RelayCommand<object>(
+                return field ??= new RelayCommand<object>(
                     execute: async (_) =>
                     {
                         var processServersSequentially = ProcessServersSequentially;
@@ -848,7 +848,7 @@ namespace ServerManagerTool.Windows
         {
             get
             {
-                return new RelayCommand<object>(
+                return field ??= new RelayCommand<object>(
                     execute: async (_) =>
                     {
                         var processServersSequentially = ProcessServersSequentially;
@@ -870,7 +870,7 @@ namespace ServerManagerTool.Windows
         {
             get
             {
-                return new RelayCommand<object>(
+                return field ??= new RelayCommand<object>(
                     execute: async (_) =>
                     {
                         var processServersSequentially = ProcessServersSequentially;

@@ -11,14 +11,11 @@
     <sys:String x:Key="Global_SaveButtonLabel">保存</sys:String>
 
     <sys:String x:Key="Global_BetaModeLabel"> (中等模式)</sys:String>
-    <sys:String x:Key="Global_NewVersionAvailableLabel">该插件的新版本可用.</sys:String>
-    <sys:String x:Key="Global_DownloadNewVersionTooltip">下载最新版本.</sys:String>
     <!--#endregion-->
 
     <!--#配置窗口 -->
     <sys:String x:Key="ConfigWindow_Title">Discord（开黑）插件配置</sys:String>
 
-    <sys:String x:Key="ConfigWindow_PatchNotesTooltip">查看修补程序说明.</sys:String>
     <sys:String x:Key="ConfigWindow_AddConfigProfileTooltip">添加配置文件</sys:String>
     <sys:String x:Key="ConfigWindow_ClearConfigProfilesTooltip">删除所有配置文件</sys:String>
     <sys:String x:Key="ConfigWindow_DeleteConfigProfileTooltip">删除配置文件</sys:String>
@@ -38,10 +35,6 @@
     <sys:String x:Key="ConfigWindow_DeleteLabel">单击“是”确认要执行删除.</sys:String>
     <sys:String x:Key="ConfigWindow_DeleteErrorTitle">单击“是”确认要执行删除操作错误</sys:String>
     <sys:String x:Key="ConfigWindow_DeleteErrorLabel">尝试删除配置文件时出错.</sys:String>
-    <sys:String x:Key="ConfigWindow_DownloadErrorTitle">下载操作错误</sys:String>
-    <sys:String x:Key="ConfigWindow_DownloadErrorLabel">尝试执行下载时出错.</sys:String>
-    <sys:String x:Key="ConfigWindow_DownloadSuccessTitle">下载成功</sys:String>
-    <sys:String x:Key="ConfigWindow_DownloadSuccessLabel">最新版本已保存到您的桌面.</sys:String>
     <sys:String x:Key="ConfigWindow_EditErrorTitle">最新版本已保存到桌面编辑操作错误</sys:String>
     <sys:String x:Key="ConfigWindow_EditErrorLabel">尝试编辑配置文件时出错.</sys:String>
     <sys:String x:Key="ConfigWindow_SaveErrorTitle">保存操作错误</sys:String>
@@ -106,14 +99,6 @@
     <sys:String x:Key="ConfigProfileWindow_TestErrorTitle">测试时错误</sys:String>
     <sys:String x:Key="ConfigProfileWindow_TestErrorLabel">尝试测试配置配置文件时出错.</sys:String>
     <sys:String x:Key="ConfigProfileWindow_TestEnabledErrorLabel">配置文件未启用，无法测试.</sys:String>
-    <!--#endregion-->
-
-    <!--#版本提要窗口 -->
-    <sys:String x:Key="VersionFeedWindow_Title">Discord（开黑）插件版本详细信息</sys:String>
-    <sys:String x:Key="VersionFeedWindow_Load_FailedTitle">加载进给错误</sys:String>
-
-    <sys:String x:Key="VersionFeedWindow_VersionFilterLabel">版本:</sys:String>
-    <sys:String x:Key="VersionFeedWindow_VersionFilterTooltip">选择要查看详细信息的版本.</sys:String>
     <!--#endregion-->
 
 </ResourceDictionary>
