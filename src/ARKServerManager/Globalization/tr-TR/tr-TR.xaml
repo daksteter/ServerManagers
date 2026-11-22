@@ -29,7 +29,6 @@
     <!--#endregion-->
 
     <!--#region Total Conversion Names -->
-    <sys:String x:Key="TotalConv_111111111">Primitive Plus</sys:String>
     <!--#endregion-->
 
     <!--#region Branch Names -->
@@ -64,12 +63,6 @@
     <!--#endregion-->
 
     <!--#region Mod Types -->
-    <sys:String x:Key="ModType_Unknown">Bilinmiyor</sys:String>
-    <sys:String x:Key="ModType_NotDownloaded">İndirilmedi</sys:String>
-    <sys:String x:Key="ModType_Map">Harita</sys:String>
-    <sys:String x:Key="ModType_MapExtension">Harita Eklentisi</sys:String>
-    <sys:String x:Key="ModType_Mod">Mod</sys:String>
-    <sys:String x:Key="ModType_TotalConversion">Toplam Dönüşüm</sys:String>
     <!--#endregion-->
 
     <!--#region Process Priority -->
@@ -238,76 +231,14 @@
     <!--#endregion-->
 
     <!--#region Mod Details Window -->
-    <sys:String x:Key="ModDetails_Title">Mod Detayları</sys:String>
-    <sys:String x:Key="ModDetails_ProfileTitle">Mod Detayları - {0}</sys:String>
-    <sys:String x:Key="ModDetails_Load_FailedTitle">Mod Detaylarını Yükleme Hatası</sys:String>
-    <sys:String x:Key="ModDetails_Load_FailedLabel">Mod detayları alınırken bir hata oluştu.\r\n{0}</sys:String>
-    <sys:String x:Key="ModDetails_Purge_FailedTitle">Kullanılmayan Modları Temizleme Hatası</sys:String>
-    <sys:String x:Key="ModDetails_Purge_Title">Kullanılmayan Modları Temizle</sys:String>
-    <sys:String x:Key="ModDetails_Purge_Label">Sunucunuzun Mod klasöründen TÜM kullanılmayan modları temizlemek üzeresiniz. Devam etmek istiyor musunuz?</sys:String>
-    <sys:String x:Key="ModDetails_Purge_SuccessLabel">Mod temizleme tamamlandı, toplam {folderCount} mod klasörü ve {fileCount} mod dosyası temizlendi.</sys:String>
-    <sys:String x:Key="ModDetails_Refresh_FailedTitle">Mod Detaylarını Yenileme Hatası</sys:String>
-    <sys:String x:Key="ModDetails_Reload_FailedTitle">Mod Detaylarını Yeniden Yükleme Hatası</sys:String>
-    <sys:String x:Key="ModDetails_Save_FailedTitle">Modları Kaydetme Hatası</sys:String>
-    <sys:String x:Key="ModDetails_Save_UnknownTitle">Bilinmeyen Mod Türleri</sys:String>
-    <sys:String x:Key="ModDetails_Save_UnknownLabel">İndirilmemiş bir veya daha fazla mod var, bu, harita modlarının ve toplam dönüşüm modlarının doğru bir şekilde algılanmasını engelleyebilir. Devam etmek istiyor musunuz?</sys:String>
-    <sys:String x:Key="ModDetails_Unsaved_Title">Kaydedilmemiş Değişiklikler</sys:String>
-    <sys:String x:Key="ModDetails_Unsaved_Label">Kaydedilmemiş değişiklikler yaptınız, eğer devam ederseniz değişiklikleriniz kaybolacak. Devam etmek istiyor musunuz?</sys:String>
-    <sys:String x:Key="ModDetails_WriteTimestamp_ConfirmTitle">Zaman Damgası Yazma Onayı</sys:String>
-    <sys:String x:Key="ModDetails_WriteTimestamp_ConfirmLabel">Sunucu yöneticisi son güncelleme dosyasında mod sürümünü güncellemek üzeresiniz. Devam etmek istiyor musunuz?</sys:String>
-    <sys:String x:Key="ModDetails_WriteTimestamp_FailedTitle">Zaman Damgası Yazma Hatası</sys:String>
-    <sys:String x:Key="ModDetails_WriteTimestamp_FailedLabel">Mod klasörü bulunamadı veya mevcut değil. Modu indirip tekrar deneyin.</sys:String>
-    <sys:String x:Key="ModDetails_ModDetailFetchFailed_Label">Mod Detayları Steam'den alınamadı.</sys:String>
 
-    <sys:String x:Key="ModDetails_TotalCountLabel">Toplam Sayı:</sys:String>
 
-    <sys:String x:Key="ModDetails_IndexColumnLabel">#</sys:String>
-    <sys:String x:Key="ModDetails_ModIdColumnLabel">Mod Kimliği</sys:String>
-    <sys:String x:Key="ModDetails_TitleColumnLabel">Adı</sys:String>
-    <sys:String x:Key="ModDetails_TypeColumnLabel">Mod Türü</sys:String>
-    <sys:String x:Key="ModDetails_LastUpdatedColumnLabel">Son İndirilen</sys:String>
-    <sys:String x:Key="ModDetails_TimeUpdatedColumnLabel">Son Güncelleme (Yazar)</sys:String>
-    <sys:String x:Key="ModDetails_TimestampColumnLabel">Zaman Damgası</sys:String>
-    <sys:String x:Key="ModDetails_FolderSizeColumnLabel">Klasör Boyutu</sys:String>
 
-    <sys:String x:Key="ModDetails_AddModsTooltip">Modları listeye ekle.</sys:String>
-    <sys:String x:Key="ModDetails_LoadModsTooltip">Sunucu modlar klasöründen mod listesini içe aktar.</sys:String>
-    <sys:String x:Key="ModDetails_MoveModUpTooltip">Modu listede yukarı taşı.</sys:String>
-    <sys:String x:Key="ModDetails_MoveModDownTooltip">Modu listede aşağı taşı.</sys:String>
-    <sys:String x:Key="ModDetails_PurgeModsFolderTooltip">Kullanılmayan modları Modlar klasöründen temizle.</sys:String>
-    <sys:String x:Key="ModDetails_RefreshModsTooltip">Mod listesi bilgisini yenile.</sys:String>
-    <sys:String x:Key="ModDetails_ReloadModsTooltip">Mod listesini profilden yeniden yükle.</sys:String>
-    <sys:String x:Key="ModDetails_RemoveModTooltip">Modu listeden kaldır.</sys:String>
-    <sys:String x:Key="ModDetails_WriteTimestampModTooltip">Son güncelleme dosyasına zaman damgası yaz. Sadece modu manuel olarak güncelliyorsanız kullanın.</sys:String>
-    <sys:String x:Key="ModDetails_RemoveAllModsTooltip">Listeden tüm modları kaldır.</sys:String>
-    <sys:String x:Key="ModDetails_SaveModsTooltip">Modları profiline geri kaydet.</sys:String>
-    <sys:String x:Key="ModDetails_SaveModDetailsTooltip">Biçimli mod detaylarını kaydet.</sys:String>
-    <sys:String x:Key="ModDetails_OpenModFolderTooltip">Sunucu modlar klasörünü aç.</sys:String>
-    <sys:String x:Key="ModDetails_Clipboard_SaveTitle">Mod Detayları</sys:String>
     <!--#endregion-->
 
     <!--#region Workshop Files Window -->
-    <sys:String x:Key="WorkshopFiles_Title">Atölye Detayları</sys:String>
-    <sys:String x:Key="WorkshopFiles_ProfileTitle">Atölye Detayları - {0}</sys:String>
-    <sys:String x:Key="WorkshopFiles_Load_FailedTitle">Atölye Modlarını Yükleme Hatası</sys:String>
-    <sys:String x:Key="WorkshopFiles_Refresh_FailedTitle">Atölye Modlarını Yenileme Hatası</sys:String>
-    <sys:String x:Key="WorkshopFiles_Refresh_FailedLabel">Steam'den atölye bilgilerini yükleme başarısız oldu, yerel önbellek ile dolduruluyor.</sys:String>
-    <sys:String x:Key="WorkshopFiles_TotalCountLabel">Sayı:</sys:String>
-    <sys:String x:Key="WorkshopFiles_LastRefreshedLabel">Son Yenilenme:</sys:String>
-    <sys:String x:Key="WorkshopFiles_FilterExistingLabel">Mevcut modları filtrele</sys:String>
 
-    <sys:String x:Key="WorkshopFiles_SelectedColumnLabel">Seçili</sys:String>
-    <sys:String x:Key="WorkshopFiles_ModIdColumnLabel">Mod Kimliği</sys:String>
-    <sys:String x:Key="WorkshopFiles_TitleColumnLabel">Adı</sys:String>
-    <sys:String x:Key="WorkshopFiles_CreatedDateColumnLabel">Oluşturulma</sys:String>
-    <sys:String x:Key="WorkshopFiles_UpdatedDateColumnLabel">Son Güncelleme</sys:String>
-    <sys:String x:Key="WorkshopFiles_SubscriptionsColumnLabel">Abonelikler</sys:String>
-    <sys:String x:Key="WorkshopFiles_FileSizeColumnLabel">Dosya Boyutu (b)</sys:String>
 
-    <sys:String x:Key="WorkshopFiles_AddTooltip">Mod Ekle</sys:String>
-    <sys:String x:Key="WorkshopFiles_AddSelectedTooltip">Seçilen Modları Ekle</sys:String>
-    <sys:String x:Key="WorkshopFiles_ReloadTooltip">Atölye Bilgilerini Yeniden Yükle</sys:String>
-    <sys:String x:Key="WorkshopFiles_UnselectTooltip">Tümünü Seçme</sys:String>
     <!--#endregion-->
 
     <!--#region WorldSave Restore Window -->
@@ -465,7 +396,6 @@
     <sys:String x:Key="ServerMonitor_StopServersButtonLabel">Seçilen Sunucuları Durdur</sys:String>
     <sys:String x:Key="ServerMonitor_RestartServersButtonTooltip">Seçilen sunucuları yeniden başlatın.</sys:String>
     <sys:String x:Key="ServerMonitor_UpdateServersButtonLabel">Seçilen Sunucuları Güncelle/Doğrula</sys:String>
-    <sys:String x:Key="ServerMonitor_UpdateModsButtonLabel">Sadece Seçilen Sunuculardaki Modları Güncelle</sys:String>
     <sys:String x:Key="ServerMonitor_BackupServersButtonTooltip">Seçilen sunucuları yedekleyin.</sys:String>
     <sys:String x:Key="ServerMonitor_CancelServersButtonTooltip">Seçilen sunucuların işlemesini iptal edin.</sys:String>
     <sys:String x:Key="ServerMonitor_ProcessServersSequentiallyLabel">Sunucuları Sırayla İşle</sys:String>
@@ -586,10 +516,6 @@
     <sys:String x:Key="GlobalSettings_CustomOverrideExcludeItemIndicesTooltip">Etkinleştirilirse, öğe indeksleri geçersiz kılmaları sunucu yöneticisi tarafından yönetilecektir.</sys:String>
     <sys:String x:Key="GlobalSettings_CustomOverridePreventTransferLabel">Transferi Önleme Geçersiz Kılmalarını Etkinleştir</sys:String>
     <sys:String x:Key="GlobalSettings_CustomOverridePreventTransferTooltip">Etkinleştirilirse, transferi önleme geçersiz kılmaları sunucu yöneticisi tarafından yönetilecektir.</sys:String>
-    <sys:String x:Key="GlobalSettings_CustomOverridePGMLabel">PGM Ark Ayarlarını Etkinleştir</sys:String>
-    <sys:String x:Key="GlobalSettings_CustomOverridePGMTooltip">Etkinleştirilirse, PGM ayarları sunucu yöneticisi tarafından yönetilecektir.</sys:String>
-    <sys:String x:Key="GlobalSettings_CustomOverrideSOTFLabel">SotF Ayarlarını Etkinleştir</sys:String>
-    <sys:String x:Key="GlobalSettings_CustomOverrideSOTFTooltip">Etkinleştirilirse, SotF ayarları sunucu yöneticisi tarafından yönetilecektir.</sys:String>
     <sys:String x:Key="GlobalSettings_CustomOverrideOptionsWarningLabel">UYARI: Bu seçeneklerden herhangi biri devre dışı bırakıldığında, sunucu yöneticisi ilgili geçersiz kılmaları okumaz veya yazmaz. Bu seçeneklerden herhangi birini yeniden etkinleştirmek, ilişkili tüm geçersiz kılmaların yapılandırma dosyasından kaldırılmasına neden olur.</sys:String>
 
     <sys:String x:Key="ServerSettings_ProfileSyncSettingsLabel">Özel Profil Eşitleme Seçenekleri</sys:String>
@@ -620,15 +546,6 @@
     <sys:String x:Key="GlobalSettings_ServerStartMinimizedLabel">Sunucu Başlatmayı Küçült</sys:String>
     <sys:String x:Key="GlobalSettings_ServerStartMinimizedTooltip">Etkinleştirilirse, sunucu başlatıldığında komut penceresi küçültülür, aksi takdirde normal olarak açılır.</sys:String>
 
-    <sys:String x:Key="GlobalSettings_UpdateModSettingsLabel">Mod Güncelleme Ayarları</sys:String>
-    <sys:String x:Key="GlobalSettings_UpdateModWithServerLabel">Sunucuyu Güncellerken Modları Güncelle</sys:String>
-    <sys:String x:Key="GlobalSettings_UpdateModWithServerTooltip">Etkinleştirilirse, sunucu güncellendiğinde modlar da güncellenir.</sys:String>
-    <sys:String x:Key="GlobalSettings_ForceUpdateModsLabel">Mod Dosyalarını Zorla İndir</sys:String>
-    <sys:String x:Key="GlobalSettings_ForceUpdateModsTooltip">Etkinleştirilirse, sunucu en son sürüme sahipse bile modlar Steam'den indirilir. Etkinleştirmek mod bozulma sorunlarını düzeltebilir.</sys:String>
-    <sys:String x:Key="GlobalSettings_ForceCopyModsLabel">Mod Dosyalarını Zorla Kopyala</sys:String>
-    <sys:String x:Key="GlobalSettings_ForceCopyModsTooltip">Etkinleştirilirse, mod dosyaları sunucu klasörüne kopyalanır, sunucu en son sürüme sahipse bile. Etkinleştirmek mod bozulma sorunlarını düzeltebilir.</sys:String>
-    <sys:String x:Key="GlobalSettings_ForceUpdateModsIfNoSteamInfoLabel">Steam Bilgisi Yoksa Mod Dosyalarını Zorla İndir</sys:String>
-    <sys:String x:Key="GlobalSettings_ForceUpdateModsIfNoSteamInfoTooltip">Etkinleştirilirse, Steam bilgisi yoksa bile modlar Steam'den indirilir.</sys:String>
 
     <sys:String x:Key="GlobalSettings_BackupSettingsLabel">Yedekleme Ayarları</sys:String>
     <sys:String x:Key="GlobalSettings_BackupIncludeSaveGamesFolderLabel">Dünya Kaydı Yedekleme Yapılırken SaveGames Klasörünü Dahil Et</sys:String>
@@ -752,8 +669,6 @@
     <sys:String x:Key="GlobalSettings_Alerts_ServerUpdateTooltip">Oyun sunucusu güncellendiğinde görüntülenecek bu mesaj.</sys:String>
     <sys:String x:Key="GlobalSettings_Alerts_ServerStatusChangeLabel">Sunucu Durumu Değişikliği:</sys:String>
     <sys:String x:Key="GlobalSettings_Alerts_ServerStatusChangeTooltip">Sunucu durumu değiştiğinde görüntülenecek bu mesaj.</sys:String>
-    <sys:String x:Key="GlobalSettings_Alerts_ModUpdateDetectedLabel">Mod Güncellemesi Algılandı:</sys:String>
-    <sys:String x:Key="GlobalSettings_Alerts_ModUpdateDetectedTooltip">Sunucu yöneticisi bir veya daha fazla modun güncel olmadığını algıladığında görüntülenecek bu mesaj.</sys:String>
     <sys:String x:Key="GlobalSettings_Alerts_OnlinePlayerCountChangeLabel">Çevrimiçi Oyuncu Sayısı Değişikliği:</sys:String>
     <sys:String x:Key="GlobalSettings_Alerts_OnlinePlayerCountChangeTooltip">Çevrimiçi oyuncu sayısı değiştiğinde görüntülenecek bu mesaj.</sys:String>
     <sys:String x:Key="GlobalSettings_Alerts_ForceRespawnDinosLabel">Zorla Yeniden Doğan Dino Uyarısı:</sys:String>
@@ -951,7 +866,6 @@
     <sys:String x:Key="MainWindow_SteamCmd_Label">Devam ederseniz, tüm SteamCMD klasörü, mod önbellek indirmeleri dahil olmak üzere kaldırılacaktır.\r\nSteamCMD'yi yeniden yüklemek istediğinizden emin misiniz?</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_FailedTitle">SteamCMD Yeniden Yükleme Hatası</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_FailedLabel">SteamCMD yeniden yüklenmeye çalışılırken bir hata oluştu. Bu, SteamCmd'yi kararsız bir durumda bıraktı, yeniden yüklemeyi tekrar deneyin veya bunu lütfen bildirin.\r\nHata: {0}</sys:String>
-    <sys:String x:Key="MainWindow_SteamWebApiKeyMissingLabel">Steam WebAPI Anahtarı eksik! Güncellemeler, indirmeler ve profil kurulumu başarısız olabilir. Steam WebAPI Anahtarınızı genel ayarlarda girin</sys:String>
     <sys:String x:Key="MainWindow_DiscordBot_RunningCommandsTitle">Discord Botu Çalışan Komutları</sys:String>
     <sys:String x:Key="MainWindow_DiscordBot_RunningCommandsLabel">Discord botunun çalışan bir veya daha fazla komutu bulunmaktadır, sunucu yöneticisini kapatmaya devam etmek istiyor musunuz?</sys:String>
     <sys:String x:Key="MainWindow_ServerStatus_StartServerActionTitle">Sunucuyu Başlatma Onayı</sys:String>
@@ -998,9 +912,6 @@
     <sys:String x:Key="ServerSettings_ProfileTooltip">Sunucu profili için ad. Bu, kullanıcıların Ark'ta göreceği genel isim değildir. Bunun için 'Sunucu Adı' alanını ayarlayın.</sys:String>
     <sys:String x:Key="ServerSettings_InstalledVersionLabel">Yüklenen Sürüm:</sys:String>
     <sys:String x:Key="ServerSettings_InstalledVersionTooltip">Şu anda indirilmiş olan sunucu sürümü (NOT: sunucu başlatılana kadar güncellenmez).</sys:String>
-    <sys:String x:Key="ServerSettings_OutOfDateModsLabel">Güncel Olmayan Modlar:</sys:String>
-    <sys:String x:Key="ServerSettings_OutOfDateModsTooltip">Şu anda güncel olmayan mod sayısı.</sys:String>
-    <sys:String x:Key="ServerSettings_OutOfDateModsButtonTooltip">Mod kontrolü yapın.</sys:String>
     <sys:String x:Key="ServerSettings_PatchNotesTooltip">Yama Notlarına Bak</sys:String>
     <sys:String x:Key="ServerSettings_OpenLogFolderTooltip">Sunucunun günlükler klasörünü açın.</sys:String>
     <sys:String x:Key="ServerSettings_ValidateProfileTooltip">Sunucu ve mod dosyaları üzerinde temel bir profil doğrulaması yapar.</sys:String>
@@ -1109,10 +1020,6 @@
     <sys:String x:Key="ServerSettings_Save_ServerCache_ErrorTitle">Sunucu önbelleği yapılandırılmadı</sys:String>
     <sys:String x:Key="ServerSettings_Save_ServerCache_ErrorLabel1">Otomatik güncellemeler etkinleştirildi, ancak Sunucu Önbelleği güncellemesi henüz yapılandırılmadı. Sunucu önbelleği, arka planda sunucu güncellemelerini otomatik olarak indirir ve özellikle birden fazla sunucu olduğunda daha hızlı sunucu güncellemelerini etkinleştirmek için kullanılır. İlk olarak önbelleği yapılandırmalısınız, ardından otomatik güncellemeyi etkinleştirebilirsiniz. Önbelleği şimdi yapılandırmak ister misiniz?</sys:String>
     <sys:String x:Key="ServerSettings_Save_ServerCache_ErrorLabel2">Sunucu önbelleği yapılandırılmadı. Otomatik güncellemeler devre dışı bırakılıyor.</sys:String>
-    <sys:String x:Key="ServerSettings_Save_AutoRestart_SotF_ErrorTitle">SotF ile Uyumlu Değil</sys:String>
-    <sys:String x:Key="ServerSettings_Save_AutoRestart_SotF_ErrorLabel">Otomatik yeniden başlatmalar etkinleştirildi ancak SotF ile uyumsuzdur. Otomatik yeniden başlatmalar devre dışı bırakılıyor.</sys:String>
-    <sys:String x:Key="ServerSettings_Save_AutoUpdate_SotF_ErrorTitle">SotF ile Uyumlu Değil</sys:String>
-    <sys:String x:Key="ServerSettings_Save_AutoUpdate_SotF_ErrorLabel">Otomatik güncellemeler etkinleştirildi ancak SotF ile uyumsuzdur. Otomatik güncellemeler devre dışı bırakılıyor.</sys:String>
     <sys:String x:Key="ServerSettings_Save_UpdatePermissions_ErrorTitle">Dizin İzinlerini Güncelle</sys:String>
     <sys:String x:Key="ServerSettings_Save_UpdatePermissions_ErrorLabel">Dizin izinlerini güncelleme başarısız oldu. Bu makinede yönetici haklarına sahip olduğunuzdan emin olun ve yeniden deneyin. Sorun devam ederse, bunu bir hata olarak bildirin.</sys:String>
     <sys:String x:Key="ServerSettings_Save_UpdateSchedule_ErrorTitle">Zamanlama Güncelleme Hatası</sys:String>
@@ -1151,8 +1058,6 @@
     <sys:String x:Key="ServerSettings_NetworkingLabel">Ağ</sys:String>
     <sys:String x:Key="ServerSettings_ServerPortLabel">Sunucu Portu:</sys:String>
     <sys:String x:Key="ServerSettings_ServerPortTooltip">Kullanıcıların sunucunuza bağlanmak için kullanacakları port. Varsayılan değer 7777'dir. Birden fazla sunucu barındırmak istiyorsanız bu ve Sorgu Portunu değiştirin.</sys:String>
-    <sys:String x:Key="ServerSettings_ServerPeerPortLabel">Peer Portu:</sys:String>
-    <sys:String x:Key="ServerSettings_ServerPeerPortTooltip">Sunucu erişilebilirliğini belirlemek için kullanılan pinger portu. Varsayılan değer 7778'dir.</sys:String>
     <sys:String x:Key="ServerSettings_QueryPortLabel">Sorgu Portu:</sys:String>
     <sys:String x:Key="ServerSettings_QueryPortTooltip">Steam'in sunucunuzla iletişim kurmak için kullandığı port. Varsayılan değer 27015'tir. Birden fazla sunucu barındırmak istiyorsanız bu ve Sunucu Portunu değiştirin.</sys:String>
     <sys:String x:Key="ServerSettings_LocalIPLabel">Yerel IP:</sys:String>
@@ -1173,20 +1078,10 @@
     <sys:String x:Key="ServerSettings_RCONResetTooltip">RCON Penceresi ayarlarını varsayılana sıfırlar.</sys:String>
 
     <sys:String x:Key="ServerSettings_MapsAndModsLabel">Haritalar ve Modlar</sys:String>
-    <sys:String x:Key="ServerSettings_MapsAndModsSOTFLabel">Survival of the Fittest etkin - Haritalar ve Modlar devre dışı</sys:String>
     <sys:String x:Key="ServerSettings_MapPathLabel">Harita Adı veya Harita Mod Dizini:</sys:String>
     <sys:String x:Key="ServerSettings_MapPathTooltip">Standart harita adı (örneğin TheIsland, TheCenter) veya modunuzda bir haritası varsa yerel mod dizini (örneğin /Game/Mods/123456789/ModHaritaAdı).</sys:String>
-    <sys:String x:Key="ServerSettings_TotalConversionLabel">Toplam Dönüşüm Kimliği:</sys:String>
-    <sys:String x:Key="ServerSettings_TotalConversionTooltip">Toplam dönüşüm modunun kimliği.</sys:String>
-    <sys:String x:Key="ServerSettings_FindTotalConversionMapNameTooltip">Toplam dönüşüm modunu okuyarak harita adını bulun</sys:String>
-    <sys:String x:Key="ServerSettings_FindTotalConversionMapNameSuccessTitle">Toplam Dönüşüm Harita Adı Bul</sys:String>
-    <sys:String x:Key="ServerSettings_FindTotalConversionMapNameSuccessLabel">Harita adı güncellendi.</sys:String>
-    <sys:String x:Key="ServerSettings_FindTotalConversionMapNameErrorTitle">Toplam Dönüşüm Harita Adı Bulma Hatası</sys:String>
-    <sys:String x:Key="ServerSettings_FindTotalConversionMapNameErrorLabel">Harita adı bulunamadı, lütfen toplam dönüşüm mod kimliğinin doğru olduğunu ve modun indirildiğini kontrol edin.</sys:String>
     <sys:String x:Key="ServerSettings_ModIdsLabel">Mod Kimlikleri:</sys:String>
     <sys:String x:Key="ServerSettings_ModIdsTooltip">Uygulanması gereken mod kimliklerinin, uygulanacak sırasıyla virgülle ayrılmış listesi.</sys:String>
-    <sys:String x:Key="ServerSettings_ModDetailsTooltip">Mod ayrıntılarını görüntüle.</sys:String>
-    <sys:String x:Key="ServerSettings_ModUpgradeTooltip">Şu anda indirilebilir olan modların en son sürümüne yükseltin.</sys:String>
     <sys:String x:Key="ServerSettings_ResetServerButtonLabel">Sıfırla</sys:String>
     <sys:String x:Key="ServerSettings_ResetServerButtonTooltip">Tüm sunucu, oyuncu ve kabile dosyalarını siler ve sunucunuzu yeniden başlatır.</sys:String>
 
@@ -1239,15 +1134,8 @@
     <sys:String x:Key="ServerSettings_CustomLiveTuningUrlTooltip">Kullanılacak özel canlı ayarlama yapılandırma URL'si.</sys:String>
     <sys:String x:Key="ServerSettings_DisableVACLabel">Valve Anti-Cheat Sistemini Devre Dışı Bırak</sys:String>
     <sys:String x:Key="ServerSettings_DisableVACTooltip">Etkinleştirildiğinde, Valve hile tespit sistemi devre dışı bırakılır. Lütfen dikkatli kullanın!</sys:String>
-    <sys:String x:Key="ServerSettings_DisablePMVOptimizationLabel">Oyuncu Hareket Fiziği Optimizasyonunu Devre Dışı Bırak</sys:String>
-    <sys:String x:Key="ServerSettings_DisablePMVOptimizationTooltip">Etkinleştirildiğinde, oyuncu hareket fiziği devre dışı bırakılır.</sys:String>
-    <sys:String x:Key="ServerSettings_DisableAntiSpeedHackLabel">Hız Hilesi Algılama Sistemini Devre Dışı Bırak</sys:String>
-    <sys:String x:Key="ServerSettings_DisableAntiSpeedHackTooltip">Etkinleştirildiğinde, hız hilesi algılama sistemi devre dışı bırakılır.</sys:String>
-    <sys:String x:Key="ServerSettings_AntiSpeedHackBiasLabel">Hız Hilesi Biası</sys:String>
-    <sys:String x:Key="ServerSettings_AntiSpeedHackBiasTooltip">Hız hilesi algılama biasını ayarlar. Varsayılan değer 1.0, devre dışı bırakıldığında 0.0'dır.</sys:String>
     <sys:String x:Key="ServerSettings_UseBattlEyeLabel">BattlEye Anti-Cheat Sistemini Etkinleştir</sys:String>
     <sys:String x:Key="ServerSettings_UseBattlEyeTooltip">Etkinleştirildiğinde, BattlEye Anti-Cheat Sistemi etkinleştirilir.</sys:String>
-    <sys:String x:Key="ServerSettings_AntiSpeedHackBiasUnits">x</sys:String>
     <sys:String x:Key="ServerSettings_OutputServerLogLabel">Sunucu Günlüğünü Sunucu Konsoluna Aktar</sys:String>
     <sys:String x:Key="ServerSettings_OutputServerLogTooltip">Etkinleştirildiğinde, sunucu günlükleri sunucu konsoluna aktarılır.</sys:String>
     <sys:String x:Key="ServerSettings_UseAllAvailableCoresLabel">Tüm Mevcut Çekirdekleri Kullan</sys:String>
@@ -1262,42 +1150,20 @@
     <sys:String x:Key="ServerSettings_ForceShaderModel4Tooltip">Etkinleştirildiğinde, oyunun Shader Model 4'ü kullanması zorlanır, Shader Model 5 yerine.</sys:String>
     <sys:String x:Key="ServerSettings_ForceLowMemoryLabel">Düşük Belleği Zorla</sys:String>
     <sys:String x:Key="ServerSettings_ForceLowMemoryTooltip">Etkinleştirildiğinde, yaklaşık 800 MB RAM tasarrufu için grafik ve ses efektlerini azaltır, muhtemelen 4 GB RAM oyuncularının sonsuz yükleme ekranlarını aşmalarını sağlar.</sys:String>
-    <sys:String x:Key="ServerSettings_ForceNoManSkyLabel">No Man Sky'ı Zorla</sys:String>
-    <sys:String x:Key="ServerSettings_ForceNoManSkyTooltip">Etkinleştirildiğinde, bulutlar ve yıldızlı gece gökyüzü gibi ayrıntılı gökyüzü özellikleri devre dışı bırakılır. Hala yıldızları, güneşi ve ayı görebilirsiniz.</sys:String>
-    <sys:String x:Key="ServerSettings_UseNoMemoryBiasLabel">Bellek Eğilimini Kullanma</sys:String>
-    <sys:String x:Key="ServerSettings_UseNoMemoryBiasTooltip">Etkinleştirildiğinde, eski yöntemi kullanır, daha fazla RAM kullanımı ancak potansiyel performans kaybı yoktur.</sys:String>
     <sys:String x:Key="ServerSettings_StasisKeepControllersLabel">Stasis Kontrolcülerini Sakla</sys:String>
     <sys:String x:Key="ServerSettings_StasisKeepControllersTooltip">Etkinleştirildiğinde, sunucu, istirahat halindeki yaratıkların belleğinde AI'leri saklayarak performans kazanabilir. NOT: Sunucunuzun büyük bir bellek kullanımı yoksa büyük bir bellek yükü nedeniyle sunucunuz sorun yaşayabilir.</sys:String>
     <sys:String x:Key="ServerSettings_UseNoHangDetectionLabel">Mesh Hile Algılamayı Kapat</sys:String>
     <sys:String x:Key="ServerSettings_UseNoHangDetectionTooltip">Etkinleştirildiğinde, asılı kalmaya neden olan bazı çökme türlerini engeller (sunucunun asılı olduğu gibi görünebilir).</sys:String>
     <sys:String x:Key="ServerSettings_NoDinosLabel">Dinozor Yok</sys:String>
     <sys:String x:Key="ServerSettings_NoDinosTooltip">Etkinleştirildiğinde, haritada hiç dinozor spawn olmayacaktır.</sys:String>
-    <sys:String x:Key="ServerSettings_ServerAllowAnselLabel">Sunucu NVIDIA Ansel'e İzin Ver</sys:String>
-    <sys:String x:Key="ServerSettings_ServerAllowAnselTooltip">Etkinleştirildiğinde, sunucuda NVIDIA Ansel etkinleştirilir.</sys:String>
-    <sys:String x:Key="ServerSettings_StructureMemoryOptimizationsLabel">Yapı Bellek Optimizasyonları</sys:String>
-    <sys:String x:Key="ServerSettings_StructureMemoryOptimizationsTooltip">Etkinleştirildiğinde, yapı bellek optimizasyonları etkinleştirilir. NOT: Bu, yapılarla ilgili modlar kullanılırken (güncelleninceye kadar) kullanılmaması gereken bir özelliktir, çünkü bu mod yapılarının snap noktalarını bozabilir.</sys:String>
-    <sys:String x:Key="ServerSettings_UseStructureStasisGridLabel">Yapı İstirahat Izgarasını Kullan</sys:String>
-    <sys:String x:Key="ServerSettings_UseStructureStasisGridTooltip">Büyük binalarda ve çok sayıda oyuncu ile sunucu performansını artırmak için yapı istirahat ızgarasını etkinleştirir. (Lütfen bu, bazı modlara etki edebilir)</sys:String>
-    <sys:String x:Key="ServerSettings_SecureSendArKPayloadLabel">Yaratık Yükleme Sorunu Koruması</sys:String>
-    <sys:String x:Key="ServerSettings_SecureSendArKPayloadTooltip">Yaratık yükleme sorunlarına karşı koruma (Lütfen bu, bazı modlara etki edebilir)</sys:String>
     <sys:String x:Key="ServerSettings_UseItemDupeCheckLabel">Ek Dupe Koruması</sys:String>
     <sys:String x:Key="ServerSettings_UseItemDupeCheckTooltip">Ek dupe korumasını etkinleştirir (Not: Bu, modlara etki edebilir, bu nedenle dikkatli kullanın).</sys:String>
-    <sys:String x:Key="ServerSettings_UseSecureSpawnRulesLabel">Güvenli Eşya/Dino Oluşturma Kuralları</sys:String>
-    <sys:String x:Key="ServerSettings_UseSecureSpawnRulesTooltip">Daha güvenli eşya/dino oluşturma kuralları (Not: Bu, modlara etki edebilir, bu nedenle dikkatli kullanın).</sys:String>
     <sys:String x:Key="ServerSettings_NoUnderMeshCheckingLabel">Mesh Kontrolünü Kapat</sys:String>
     <sys:String x:Key="ServerSettings_NoUnderMeshCheckingTooltip">Etkinleştirildiğinde, Mesh denetim sistemi tamamen devre dışı bırakılır.</sys:String>
     <sys:String x:Key="ServerSettings_NoUnderMeshKillingLabel">Mesh Öldürmeyi Kapat</sys:String>
     <sys:String x:Key="ServerSettings_NoUnderMeshKillingTooltip">Etkinleştirildiğinde, Meshe giren oyuncu öldürmeyi kapatır (ancak hala teleport etmeye izin verir).</sys:String>
-    <sys:String x:Key="ServerSettings_UseVivoxLabel">Vivox'u Etkinleştir</sys:String>
-    <sys:String x:Key="ServerSettings_UseVivoxTooltip">Etkinleştirildiğinde, Vivox'u açar. NOT: Steam Sunucuları sadece.</sys:String>
     <sys:String x:Key="ServerSettings_AllowSharedConnectionsLabel">Paylaşılan Bağlantılara İzin Ver</sys:String>
     <sys:String x:Key="ServerSettings_AllowSharedConnectionsTooltip">Devre dışı bırakılırsa, aile paylaşımı devre dışı bırakılır.</sys:String>
-    <sys:String x:Key="ServerSettings_CrossplayLabel">Çapraz Oyunu Etkinleştir</sys:String>
-    <sys:String x:Key="ServerSettings_CrossplayTooltip">Etkinleştirildiğinde, farklı mağazalardan istemci kullanan oyuncuların sunucuya bağlanmasını sağlayan çapraz oyunu açar.</sys:String>
-    <sys:String x:Key="ServerSettings_EpicOnlyLabel">Sadece Epic Mağaza Oyuncuları</sys:String>
-    <sys:String x:Key="ServerSettings_EpicOnlyTooltip">Etkinleştirildiğinde, yalnızca Epic mağaza istemcisi kullanan oyuncuların bağlanmasına izin verir.</sys:String>
-    <sys:String x:Key="ServerSettings_EnablePublicIPForEpicLabel">Epic için Genel IP'yi Etkinleştir</sys:String>
-    <sys:String x:Key="ServerSettings_EnablePublicIPForEpicTooltip">Etkinleştirildiğinde, EPIC istemcilerinin bağlanmaya çalışacağı genel IP için bir sunucu argümanı ekler.</sys:String>
     <sys:String x:Key="ServerSettings_ForceRespawnDinosLabel">Başlangıçta Dinozorları Zorla Yeniden Doğur (‘Hazır’dan sonra lag'a neden olurken yeniden popüle ediliyor)</sys:String>
     <sys:String x:Key="ServerSettings_ForceRespawnDinosTooltip">Etkinleştirildiğinde, sunucu başlatıldığında TÜM vahşi yaratıklar silinir ve yeniden doğurulur (bu, şu anda evcilleştirilmeyen vahşi yaratıkları yalnızca yok eder).</sys:String>
     <sys:String x:Key="ServerSettings_EnableServerAutoForceRespawnWildDinosIntervalLabel">Otomatik Dinozorları Zorla Yeniden Doğurmayı Etkinleştir</sys:String>
@@ -1351,10 +1217,6 @@
     <sys:String x:Key="ServerSettings_TribeLogDestroyedEnemyStructuresTooltip">Etkinleştirildiğinde, düşman yapı yok etme günlüğü (kurban kabilesi için) saldıran kabileyi Kabile Günlüklerinde görüntüler, yerine genel bir yapı yok etme mesajı kullanmaz.</sys:String>
 
 <sys:String x:Key="ServerSettings_ServerSaveOptionsLabel">Resmi Ayarlar</sys:String>
-<sys:String x:Key="ServerSettings_NewSaveFormatLabel">Yeni Kayıt Formatı(-New Game Save Format)</sys:String>
-<sys:String x:Key="ServerSettings_NewSaveFormatTooltip" xml:space="preserve">Yeni kayıt formatı (sürüm 11) kullanılır, bu format eski kayıt formatına (sürüm 8) kıyasla yaklaşık 4 kat daha hızlı ve %50 daha küçüktür.
-244.6 yamasından itibaren kullanılmıyor; mevcut varsayılan kayıt formatı (sürüm 9) buna dayalıdır. Yalnızca gerekli olduğunda kullanın (örneğin: varsayılan kayıt formatı başarısız olduğunda veya eski kayıt formatına ihtiyaç duyulduğunda).
-Bu seçenek, 2023 resmi sunucu yedeklerini -usestore seçeneğiyle birlikte düzgün şekilde yüklemek için kullanılmalıdır.</sys:String>
 <sys:String x:Key="ServerSettings_UseStoreLabel">Depoyu kullan (-usestorge)</sys:String>
 <sys:String x:Key="ServerSettings_UseStoreTooltip" xml:space="preserve">Resmi (eski olmayan) sunucularla aynı temel davranış: Oyuncu verilerinin işlenmesi sırasında karakter profili dosyası (.arkprofile) harita kaydından (.ark) ayrı olarak kaydedilmez, aynı şekilde yedeği de alınmaz.
 Gerekli olduğunda (örneğin: yeni aktarılmış bir karakter veya yeni oluşturulmuş bir karakter), geçici bir karakter profili dosyası oluşturulur ve bir sonraki dünya kaydına kadar korunur.
@@ -1453,8 +1315,6 @@ Wildcard tarafından belgelenmemiştir.</sys:String>
     <sys:String x:Key="ServerSettings_EventNote">NOT: Sunucunuzda bir etkinliği etkinleştirmek sadece resmi etkinlik çalıştığında yapılmalıdır. Resmi tarihlerden önce veya sonra etkinliği etkinleştirirseniz, sunucunuzun kararsız hale gelmesine veya hiç çalışmamasına neden olabilir.</sys:String>
     <sys:String x:Key="ServerSettings_EventNameLabel">Etkin Etkinleştir:</sys:String>
     <sys:String x:Key="ServerSettings_EventNameTooltip">Etkinleştirilecek etkinliğin adı (etkinliği devre dışı bırakmak için boş bırakın).</sys:String>
-    <sys:String x:Key="ServerSettings_EventColorsChanceOverrideLabel">Dino Renk Şansı:</sys:String>
-    <sys:String x:Key="ServerSettings_EventColorsChanceOverrideTooltip">Dino renk etkinliği şansı.</sys:String>
 
     <!--#endregion-->
 
@@ -2285,9 +2145,6 @@ Wildcard tarafından belgelenmemiştir.</sys:String>
     <!--#endregion-->
 
     <!--#region Server Settings - Survival of the Fittest -->
-    <sys:String x:Key="ServerSettings_SOTFLabel">Survival of the Fittest</sys:String>
-    <sys:String x:Key="ServerSettings_EnableSOTFLabel">Survival of the Fittest'i Etkinleştir</sys:String>
-    <sys:String x:Key="ServerSettings_EnableSOTFTooltip">Etkinleştirildiğinde, sunucuyu 'Survival of the Fittest' sunucusu olarak yapılandırır.</sys:String>
     <sys:String x:Key="ServerSettings_DisableDeathSpectatorLabel">Ölüm İzleyiciyi Devre Dışı Bırak</sys:String>
     <sys:String x:Key="ServerSettings_DisableDeathSpectatorTooltip">Etkinleştirildiğinde, oyuncular öldükten sonra izleyici olamazlar.</sys:String>
     <sys:String x:Key="ServerSettings_OnlyAdminRejoinSpectatorLabel">Sadece Yönetici İzleyici Olarak Yeniden Katılabilir</sys:String>
@@ -2308,184 +2165,13 @@ Wildcard tarafından belgelenmemiştir.</sys:String>
     <sys:String x:Key="ServerSettings_EnableOutputGameReportTooltip">Etkinleştirildiğinde, her oyunun sonunda sunucunun "Kaydedilen" dizininde zaman damgası taşıyan bir HTML sonrası eylem raporu dosyası oluşturur, resmi sıralı sunucuların yaptığı gibi.</sys:String>
     <sys:String x:Key="ServerSettings_EnableGamePlayLoggingLabel">Oyun Oynama Kaydını Etkinleştir</sys:String>
     <sys:String x:Key="ServerSettings_EnableGamePlayLoggingTooltip">Etkinleştirildiğinde, \Kaydedilen dizinine tarihli bir günlük dosyası çıkarır, bu dosya tarih damgalı öldürme ve kazananlar günlüğünü steam kimliği, steam adı, karakter adı vb. içerecektir. Otomatik Turnuva kayıtları için kullanışlıdır.</sys:String>
-    <sys:String x:Key="ServerSettings_SOTFGameOptionsLabel">Oyun Seçenekleri</sys:String>
-    <sys:String x:Key="ServerSettings_SOTFNoEventsLabel">Etkinlik Yok</sys:String>
-    <sys:String x:Key="ServerSettings_SOTFNoEventsTooltip">Etkinleştirildiğinde, Otomatik Evrim Etkinliklerinin hiçbirinin otomatik olarak tetiklenmesine neden olmaz. Sunucu sahibi hala 'cheat ce evorain' vb. ile etkinlikleri manuel olarak tetikleyebilir.</sys:String>
-    <sys:String x:Key="ServerSettings_SOTFNoBossesLabel">Patron Yok</sys:String>
-    <sys:String x:Key="ServerSettings_SOTFNoBossesTooltip">Etkinleştirildiğinde, hiçbir patronun oluşturulmasına neden olmaz</sys:String>
-    <sys:String x:Key="ServerSettings_SOTFBothBossesLabel">Her İki Patron</sys:String>
-    <sys:String x:Key="ServerSettings_SOTFBothBossesTooltip">Etkinleştirildiğinde ve patronlar kullanılıyorsa, bu hem Broodmother'ı hem de Megapithecus'u kendi zamanlarında oluşturacaktır.</sys:String>
-    <sys:String x:Key="ServerSettings_SOTFEvoEventIntervalLabel">Evrim Etkinliği Aralığı</sys:String>
-    <sys:String x:Key="ServerSettings_SOTFEvoEventIntervalTooltip">Evrim Etkinlikleri için aralık faktörünü belirtir. Düşük değerler etkinlikler arası zamanı azaltır, yüksek değerler etkinlikler arası zamanı artırır.</sys:String>
-    <sys:String x:Key="ServerSettings_SOTFRingStartTimeLabel">Halka Başlangıç Zamanı</sys:String>
-    <sys:String x:Key="ServerSettings_SOTFRingStartTimeTooltip">Maç süresini (ölüm halkası ilerlemesi) belirli bir zaman öncesine 'önceden ilerlemek' için bu değeri ayarlayabilirsiniz. Düşük değerler maç süresini azaltır, yüksek değerler maç süresini artırır.</sys:String>
 
-    <sys:String x:Key="ServerSettings_SOTF_HelpTooltip">'Survival of the Fittest', Survival Evolved'a alternatif bir oyundur ve farklı bir dizi sunucu dosyası kullanır ve birçok kuralı değiştirir. Daha fazla ayrıntı için web sitesine bakın.</sys:String>
-    <sys:String x:Key="ServerSettings_SOTF_HelpTitle">SotF web sitesine git?</sys:String>
-    <sys:String x:Key="ServerSettings_SOTF_HelpLabel">'Survival of the Fittest', Survival Evolved'a alternatif bir oyundur ve farklı bir dizi sunucu dosyası kullanır ve birçok kuralı değiştirir. Daha fazla ayrıntı için web sitesine bakın.</sys:String>
     <!--#endregion-->
 
     <!--#region Sunucu Ayarları - Prosedürel Olarak Oluşturulmuş Arklar -->
-    <sys:String x:Key="ServerSettings_PGMLabel">Prosedürel Olarak Oluşturulmuş Arklar</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_EnableLabel">Prosedürel Olarak Oluşturulmuş Arkları Etkinleştir</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_EnableTooltip">Etkinleştirildiğinde, sunucuyu prosedürel olarak oluşturulmuş bir ark kullanacak şekilde yapılandırır.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_PasteSettingsTooltip">Prosedürel Olarak Oluşturulmuş Dizeyi Yapıştır</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_PasteSettingsTitle">Prosedürel Olarak Oluşturulmuş Dizeyi Yapıştır</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_PasteSettingsConfirmTitle">Prosedürel Olarak Oluşturulmuş Dizeyi Yapıştırmayı Onayla</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_PasteSettingsConfirmLabel">TÜM Prosedürel Olarak Oluşturulmuş ARK ayarlarınızı üzerine yazmak üzeresiniz. Devam etmek istiyor musunuz?</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_SaveSettingsTooltip">Prosedürel Olarak Oluşturulmuş Ayar Dizesini Kaydet</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_SaveSettingsTitle">Prosedürel Olarak Oluşturulmuş Ayar Dizesi</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_RandomSettingsLabel">Rastgele Ayarla</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_RandomSettingsTooltip">Prosedürel Olarak Oluşturulmuş Ayarları Rastgele Ayarla</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_NameLabel">Dünya Dosyası Adı</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_NameTooltip">Dünya dosyası için kullanılacak ad (ör. MyPGArk1).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_XLabel">X</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_YLabel">Y</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_ZLabel">Z</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Warning1Label">UYARI: Prosedürel olarak oluşturulmuş Ark sistemi ÇOK DENEYSEL. Dinamik algoritmalar geliştirilmeye devam ettikçe, prosedürel olarak oluşturulmuş Ark'larınızın kayıtları sonraki güncellemelerde mutlaka silinecektir. Bu sistemi şu anda yalnızca prosedürel olarak oluşturulmuş Ark'ın kayıt verilerinin sık sık silinmesini kabul etmeye hazırsanız kullanmanızı öneririz!</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Warning2Label">NOT: Sunucunuzu başlattıktan sonra, bu ayarları değiştirmek HİÇBİR etkisi olmayacaktır. Yeni ayarlarınızla bir ARK oluşturmak için ya Dünya Dosyası Adını değiştirmelisiniz ya da mevcut dünya kayıt dosyasını silmelisiniz. Her iki durumda da TÜM ilerlemenizi kaybedeceksiniz.</sys:String>
 
-    <sys:String x:Key="ServerSettings_PGM_TerrianSettingsLabel">Arazi Ayarları</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_MapSeedLabel">Harita Tohumu</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_MapSeedTooltip">Gürültü ve rastgelelik fonksiyonlarında kullanılan tohum.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_LandscapeRadiusLabel">Manzara Yarıçapı</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_LandscapeRadiusTooltip">Manzaranın yarıçapı, bu yarıçapın dışında kalan alan su olarak tanımlanır (manzaranın kenarları tarafından kesilmesini önlemek için).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_WaterFrequencyLabel">Su Sıklığı</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_WaterFrequencyTooltip">Kara/su üretmek için kullanılan gürültü fonksiyonunun sıklığı.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_MountainsFrequencyLabel">Dağ Sıklığı</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_MountainsFrequencyTooltip">Dağları üretmek için kullanılan gürültü fonksiyonunun sıklığı.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_MountainsSlopeLabel">Dağ Eğimi</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_MountainsSlopeTooltip">Kara ile dağ arasındaki geçişin ne kadar sert olduğu; değer ne kadar yüksekse geçiş o kadar yumuşaktır (0 ile 2 arasında).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_MountainsHeightLabel">Dağ Yüksekliği</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_MountainsHeightTooltip">Dağ yüksekliği için bir çarpan.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_TurbulencePowerLabel">Türbülans Gücü</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_TurbulencePowerTooltip">Gürültü fonksiyonuna gerçekçilik katmak için koordinatları rastgele bozmak amacıyla kullanılan türbülans fonksiyonunun gücü.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_ShoreSlopeLabel">Kıyı Eğimi</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_ShoreSlopeTooltip">Su tabanından kıyıya geçişin ne kadar sert olduğu; değer ne kadar yüksekse geçiş o kadar yumuşaktır (0 ile 2 arasında).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_ShoreLineEndLabel">Kıyı Çizgisi Sonu</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_ShoreLineEndTooltip">.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_WaterLevelLabel">Su Seviyesi</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_WaterLevelTooltip">Su yüzeyi için yükseklik değeri (Okyanus Tabanı seviyesinden 1'e kadar).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_OceanFloorLevelLabel">Okyanus Tabanı Seviyesi</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_OceanFloorLevelTooltip">Okyanus tabanı için yükseklik değeri (-1 ile Su Seviyesi arasında).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_TerrainScaleMultiplierLabel">Arazi Ölçek Çarpanı</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_TerrainScaleMultiplierTooltip">Tüm araziyi ölçeklendirmek için X, Y, Z değerleri.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_ErosionStepsLabel">Aşınma Adımları</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_ErosionStepsTooltip">.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_ErosionStrengthLabel">Aşınma Gücü</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_ErosionStrengthTooltip">.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_DepositionStrengthLabel">Çökme Gücü</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_DepositionStrengthTooltip">.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_TreesGroundSlopeAccuracyLabel">Ağaç Eğim Eşiği</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_TreesGroundSlopeAccuracyTooltip">.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_MountainGeneralTreesPercentLabel">Genel Dağ Ağaçları %</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_MountainGeneralTreesPercentTooltip">.</sys:String>
 
-    <sys:String x:Key="ServerSettings_PGM_BiomeSettingsLabel">Biyom Ayarları</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_SnowBiomeSizeLabel">Kar Biyomu Boyutu</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_SnowBiomeSizeTooltip">Kar biyomunun yarıçapı (0 ile 1 arasında).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_RedWoodBiomeSizeLabel">Kızılçam Biyomu Boyutu</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_RedWoodBiomeSizeTooltip">Kızılçam biyomunun yarıçapı (0 ile 1 arasında).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_MountainBiomeStartLabel">Dağ Biyomu Başlangıcı</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_MountainBiomeStartTooltip">Dağ biyomunun başladığı yükseklik değeri.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_MountainsTreeDensityLabel">Dağ Ağaç Yoğunluğu</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_MountainsTreeDensityTooltip">Dağ biyomundaki ağaç ve kaya yoğunluğu.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_JungleBiomeStartLabel">Orman Biyomu Başlangıcı</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_JungleBiomeStartTooltip">Orman biyomunun başladığı yükseklik değeri.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_IslandBorderCurveExponentLabel">Ada Sınır Eğrisi</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_IslandBorderCurveExponentTooltip">Ada ile su tabanı arasındaki geçişin eğrisinde kullanılan üstel değer.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_MaxSpawnPointHeightLabel">Maksimum Doğma Noktası Yüksekliği</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_MaxSpawnPointHeightTooltip">Bir doğma noktası oluşturulabilecek maksimum arazi yüksekliği.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_GrassDensityLabel">Çimen Yoğunluğu</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_GrassDensityTooltip">Çayır biyomundaki bitki örtüsü yoğunluğu.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_JungleGrassDensityLabel">Orman Çimen Yoğunluğu</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_JungleGrassDensityTooltip">Orman biyomundaki bitki örtüsü yoğunluğu.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_SnowTreeDensityLabel">Kar Ağaç Yoğunluğu</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_SnowTreeDensityTooltip">Kar biyomundaki ağaç ve kaya yoğunluğu.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_RedWoodTreeDensityLabel">Kızılçam Ağaç Yoğunluğu</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_RedWoodTreeDensityTooltip">Kızılçam biyomundaki ağaç ve kaya yoğunluğu.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_TreeDensityLabel">Çayır Ağaç Yoğunluğu</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_TreeDensityTooltip">Çayır biyomundaki ağaç ve kaya yoğunluğu.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_RedwoodGrassDensityLabel">Kızılçam Çimen Yoğunluğu</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_RedwoodGrassDensityTooltip">Kızılçam biyomundaki bitki örtüsü yoğunluğu.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_MountainGrassDensityLabel">Dağ Çimen Yoğunluğu</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_MountainGrassDensityTooltip">Dağ biyomundaki bitki örtüsü yoğunluğu.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_SnowGrassDensityLabel">Kar Çimen Yoğunluğu</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_SnowGrassDensityTooltip">Kar biyomundaki bitki örtüsü yoğunluğu.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_JungleTreeDensityLabel">Orman Ağaç Yoğunluğu</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_JungleTreeDensityTooltip">Orman biyomundaki ağaç ve kaya yoğunluğu.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_ShoreTreeDensityLabel">Sahil Ağaç Yoğunluğu</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_ShoreTreeDensityTooltip">Sahil biyomundaki bitki örtüsü yoğunluğu.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_ShorelineStartOffsetLabel">Sahil Başlangıç Uzaklığı</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_ShorelineStartOffsetTooltip">Suyun başladığı yerden sahil başlangıcına olan mesafe. Daha uzun bir sahil için bu değeri artırın.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_ShorelineThicknessLabel">Sahil Kalınlığı</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_ShorelineThicknessTooltip">Sahil genişliği. Daha kalın ve büyük bir sahil için bu değeri artırabilirsiniz.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_SnowMountainsTreeDensityLabel">Kar Dağı Ağaç Yoğunluğu</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_SnowMountainsTreeDensityTooltip">Kar Dağı biyomundaki ağaç ve kaya yoğunluğu.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_UnderwaterObjectsDensityLabel">Su Altı Nesne Yoğunluğu</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_UnderwaterObjectsDensityTooltip">Su Altı biyomundaki nesne yoğunluğu.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_SnowMountainGrassDensityLabel">Kar Dağı Çimen Yoğunluğu</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_SnowMountainGrassDensityTooltip">Kar Dağı biyomundaki bitki örtüsü yoğunluğu.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_SnowShoreTreeDensityLabel">Kar Sahil Ağaç Yoğunluğu</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_SnowShoreTreeDensityTooltip">Kar Sahili biyomundaki ağaç ve kaya yoğunluğu.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_InlandWaterObjectsDensityLabel">İç Su Nesne Yoğunluğu</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_InlandWaterObjectsDensityTooltip">İç Su biyomundaki nesne yoğunluğu.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_DeepWaterBiomesDepthLabel">Derin Su Biyom Derinliği</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_DeepWaterBiomesDepthTooltip">Derin Su biyomunun derinlik değeri.</sys:String>
 
-    <sys:String x:Key="ServerSettings_PGM_MapSettingsLabel">Harita Ayarları</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SnowBiomeLocationLabel">Kar Biyomu Konumu</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SnowBiomeLocationTooltip">Kar biyomunun konumu (X, Y 0 ile 1 arasında).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_RedWoodForestBiomeLocationLabel">Kızılçam Biyomu Konumu</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_RedWoodForestBiomeLocationTooltip">Kızılçam biyomunun konumu (X, Y 0 ile 1 arasında).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_NorthRegion1StartLabel">Kuzey Bölgesi 1 Başlangıcı</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_NorthRegion1StartTooltip">Kuzey Bölgesi 1'in başlangıç konumu (X, Y 0 ile 1 arasında).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_NorthRegion1EndLabel">Kuzey Bölgesi 1 Sonu</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_NorthRegion1EndTooltip">Kuzey Bölgesi 1'in bitiş konumu (X, Y 0 ile 1 arasında).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_NorthRegion2StartLabel">Kuzey Bölgesi 2 Başlangıcı</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_NorthRegion2StartTooltip">Kuzey Bölgesi 2'nin başlangıç konumu (X, Y 0 ile 1 arasında).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_NorthRegion2EndLabel">Kuzey Bölgesi 2 Sonu</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_NorthRegion2EndTooltip">Kuzey Bölgesi 2'nin bitiş konumu (X, Y 0 ile 1 arasında).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_NorthRegion3StartLabel">Kuzey Bölgesi 3 Başlangıcı</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_NorthRegion3StartTooltip">Kuzey Bölgesi 3'ün başlangıç konumu (X, Y 0 ile 1 arasında).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_NorthRegion3EndLabel">Kuzey Bölgesi 3 Sonu</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_NorthRegion3EndTooltip">Kuzey Bölgesi 3'ün bitiş konumu (X, Y 0 ile 1 arasında).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SouthRegion1StartLabel">Güney Bölgesi 1 Başlangıcı</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SouthRegion1StartTooltip">Güney Bölgesi 1'in başlangıç konumu (X, Y 0 ile 1 arasında).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SouthRegion1EndLabel">Güney Bölgesi 1 Sonu</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SouthRegion1EndTooltip">Güney Bölgesi 1'in bitiş konumu (X, Y 0 ile 1 arasında).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SouthRegion2StartLabel">Güney Bölgesi 2 Başlangıcı</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SouthRegion2StartTooltip">Güney Bölgesi 2'nin başlangıç konumu (X, Y 0 ile 1 arasında).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SouthRegion2EndLabel">Güney Bölgesi 2 Sonu</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SouthRegion2EndTooltip">Güney Bölgesi 2'nin bitiş konumu (X, Y 0 ile 1 arasında).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SouthRegion3StartLabel">Güney Bölgesi 3 Başlangıcı</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SouthRegion3StartTooltip">Güney Bölgesi 3'ün başlangıç konumu (X, Y 0 ile 1 arasında).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SouthRegion3EndLabel">Güney Bölgesi 3 Sonu</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SouthRegion3EndTooltip">Güney Bölgesi 3'ün bitiş konumu (X, Y 0 ile 1 arasında).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_EastRegion1StartLabel">Doğu Bölgesi 1 Başlangıcı</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_EastRegion1StartTooltip">Doğu Bölgesi 1'in başlangıç konumu (X, Y 0 ile 1 arasında).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_EastRegion1EndLabel">Doğu Bölgesi 1 Sonu</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_EastRegion1EndTooltip">Doğu Bölgesi 1'in bitiş konumu (X, Y 0 ile 1 arasında).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_EastRegion2StartLabel">Doğu Bölgesi 2 Başlangıcı</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_EastRegion2StartTooltip">Doğu Bölgesi 2'nin başlangıç konumu (X, Y 0 ile 1 arasında).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_EastRegion2EndLabel">Doğu Bölgesi 2 Sonu</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_EastRegion2EndTooltip">Doğu Bölgesi 2'nin bitiş konumu (X, Y 0 ile 1 arasında).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_EastRegion3StartLabel">Doğu Bölgesi 3 Başlangıcı</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_EastRegion3StartTooltip">Doğu Bölgesi 3'ün başlangıç konumu (X, Y 0 ile 1 arasında).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_EastRegion3EndLabel">Doğu Bölgesi 3 Sonu</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_EastRegion3EndTooltip">Doğu Bölgesi 3'ün bitiş konumu (X, Y 0 ile 1 arasında).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_WestRegion1StartLabel">Batı Bölgesi 1 Başlangıcı</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_WestRegion1StartTooltip">Batı Bölgesi 1'in başlangıç konumu (X, Y 0 ile 1 arasında).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_WestRegion1EndLabel">Batı Bölgesi 1 Sonu</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_WestRegion1EndTooltip">Batı Bölgesi 1'in bitiş konumu (X, Y 0 ile 1 arasında).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_WestRegion2StartLabel">Batı Bölgesi 2 Başlangıcı</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_WestRegion2StartTooltip">Batı Bölgesi 2'nin başlangıç konumu (X, Y 0 ile 1 arasında).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_WestRegion2EndLabel">Batı Bölgesi 2 Sonu</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_WestRegion2EndTooltip">Batı Bölgesi 2'nin bitiş konumu (X, Y 0 ile 1 arasında).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_WestRegion3StartLabel">Batı Bölgesi 3 Başlangıcı</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_WestRegion3StartTooltip">Batı Bölgesi 3'ün başlangıç konumu (X, Y 0 ile 1 arasında).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_WestRegion3EndLabel">Batı Bölgesi 3 Sonu</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_WestRegion3EndTooltip">Batı Bölgesi 3'ün bitiş konumu (X, Y 0 ile 1 arasında).</sys:String>
 
     <!--#region Server Settings - Map Spawner Overrides -->
     <sys:String x:Key="ServerSettings_MapSpawnerOverridesLabel">Spawner Ayarları</sys:String>
@@ -5797,7 +5483,6 @@ Wildcard tarafından belgelenmemiştir.</sys:String>
     <sys:String x:Key="ProfileValidation_WarningLabel">Aşağıdaki doğrulama sorunlarıyla karşılaşıldı.\r\n\r\n{validateMessage}\r\n\r\nSunucu başlatmaya devam etmek istiyor musunuz, bu sorunlara neden olabilir?</sys:String>
 
     <sys:String x:Key="ProfileValidation_ServerPort">Sunucu bağlantı noktası geçerli aralığın dışında ({PortMinimum}-{PortMaximum}).</sys:String>
-    <sys:String x:Key="ProfileValidation_ServerPeerPort">Sunucu eş bağlantı noktası geçerli aralığın dışında ({PortMinimum}-{PortMaximum}).</sys:String>
     <sys:String x:Key="ProfileValidation_QueryPort">Sorgu bağlantı noktası geçerli aralığın dışında ({PortMinimum}-{PortMaximum}).</sys:String>
     <sys:String x:Key="ProfileValidation_RconPort">Rcon bağlantı noktası geçerli aralığın dışında ({PortMinimum}-{PortMaximum}).</sys:String>
 
@@ -5807,15 +5492,6 @@ Wildcard tarafından belgelenmemiştir.</sys:String>
     <sys:String x:Key="ProfileValidation_ServerExeNotDownloaded">Sunucu dosyaları düzgün bir şekilde indirilmedi, sunucu yürütülebilir dosyası ({ServerExe}) mevcut değil.</sys:String>
     <sys:String x:Key="ProfileValidation_ServerDifferentApplication">Sunucu dosyaları farklı bir uygulama için.</sys:String>
 
-    <sys:String x:Key="ProfileValidation_MapModNotDownloaded">Harita modu indirilmedi, mod klasörü mevcut değil.</sys:String>
-    <sys:String x:Key="ProfileValidation_MapModFileNotDownloaded">Harita modu düzgün bir şekilde indirilmedi, mod dosyası mevcut değil.</sys:String>
-    <sys:String x:Key="ProfileValidation_MapModInvalid">Harita modu geçerli bir harita modu değil.</sys:String>
-    <sys:String x:Key="ProfileValidation_MapModFileInvalid">Harita modu düzgün bir şekilde indirilmedi, mod dosyası geçersiz.</sys:String>
-    <sys:String x:Key="ProfileValidation_MapModNameInvalid">Harita modu dosyası mevcut değil veya geçersiz.</sys:String>
-    <sys:String x:Key="ProfileValidation_MapModNameMismatch">Harita adı, harita modunun harita adıyla uyuşmuyor.</sys:String>
-    <sys:String x:Key="ProfileValidation_MapModDifferentApplication">Harita modu farklı bir uygulama içindir.</sys:String>
-    <sys:String x:Key="ProfileValidation_MapModOutdated">Harita modu güncel değil.</sys:String>
-    <sys:String x:Key="ProfileValidation_MapModSteamError">Harita modu ayrıntıları Steam'den alınamadı.</sys:String>
 
     <sys:String x:Key="ProfileValidation_TCModNotDownloaded">Toplam dönüşüm modu indirilmedi, mod klasörü mevcut değil.</sys:String>
     <sys:String x:Key="ProfileValidation_TCModFileNotDownloaded">Toplam dönüşüm modu düzgün bir şekilde indirilmedi, mod dosyası mevcut değil.</sys:String>
@@ -5827,11 +5503,6 @@ Wildcard tarafından belgelenmemiştir.</sys:String>
     <sys:String x:Key="ProfileValidation_TCModOutdated">Toplam dönüşüm modu güncel değil.</sys:String>
     <sys:String x:Key="ProfileValidation_TCModSteamError">Toplam dönüşüm modu ayrıntıları Steam'den alınamadı.</sys:String>
 
-    <sys:String x:Key="ProfileValidation_ModNotDownloaded">Mod {modId} indirilmedi, mod klasörü mevcut değil.</sys:String>
-    <sys:String x:Key="ProfileValidation_ModFileNotDownloaded">Mod {modId} düzgün bir şekilde indirilmedi, mod dosyası mevcut değil.</sys:String>
-    <sys:String x:Key="ProfileValidation_ModDifferentApplication">Mod {modId} farklı bir uygulama içindir.</sys:String>
-    <sys:String x:Key="ProfileValidation_ModOutdated">Mod {modId} güncel değil.</sys:String>
-    <sys:String x:Key="ProfileValidation_ModSteamError">Mod {modId} ayrıntıları Steam'den alınamadı.</sys:String>
     <!--#endregion-->
 
     <!--#region Profile Save -->

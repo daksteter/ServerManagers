@@ -688,7 +688,7 @@ namespace ServerManagerTool.Utils
 
                 Task.Run(() =>
                 {
-                    app.PerformProfileShutdown(profile, true, ServerUpdateType.ServerAndMods, false, false, token);
+                    app.PerformProfileShutdown(profile, true, ServerUpdateType.Server, false, false, token);
                     _currentProfileCommands.Remove(profile.ProfileId);
                 }, token);
 

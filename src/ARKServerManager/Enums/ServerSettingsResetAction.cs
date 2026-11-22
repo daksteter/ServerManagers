@@ -23,7 +23,6 @@
         PreventTransferOverridesSection,
 
         // Properties
-        MapNameTotalConversionProperty,
         BanListProperty,
 
         PlayerMaxXpProperty,

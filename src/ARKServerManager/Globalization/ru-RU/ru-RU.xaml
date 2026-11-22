@@ -29,7 +29,6 @@
     <!--#endregion-->
 
     <!--#region Total Conversion Names -->
-    <sys:String x:Key="TotalConv_111111111">Primitive Plus</sys:String>
     <!--#endregion-->
 
     <!--#region Branch Names -->
@@ -64,12 +63,6 @@
     <!--#endregion-->
 
     <!--#region Mod Types -->
-    <sys:String x:Key="ModType_Unknown">Неизвестный</sys:String>
-    <sys:String x:Key="ModType_NotDownloaded">Не скачано</sys:String>
-    <sys:String x:Key="ModType_Map">Карта</sys:String>
-    <sys:String x:Key="ModType_MapExtension">Расширение карты</sys:String>
-    <sys:String x:Key="ModType_Mod">Модификация</sys:String>
-    <sys:String x:Key="ModType_TotalConversion">Total Conversion</sys:String>
     <!--#endregion-->
 
     <!--#region Process Priority -->
@@ -240,76 +233,14 @@
     <!--#endregion-->
 
     <!--#region Mod Details Window -->
-    <sys:String x:Key="ModDetails_Title">Детали Модов</sys:String>
-    <sys:String x:Key="ModDetails_ProfileTitle">Детали Модов - {0}</sys:String>
-    <sys:String x:Key="ModDetails_Load_FailedTitle">Ошибка загрузки модов</sys:String>
-    <sys:String x:Key="ModDetails_Load_FailedLabel">Произошла ошибка при получении деталей мод.\r\n{0}</sys:String>
-    <sys:String x:Key="ModDetails_Purge_FailedTitle">Ошибка очистки неиспользуемых мод</sys:String>
-    <sys:String x:Key="ModDetails_Purge_Title">Очистить неиспользуемые моды</sys:String>
-    <sys:String x:Key="ModDetails_Purge_Label">Вы собираетесь удалить ВСЕ неиспользованные моды из папки Mod вашего сервера. Вы хотите продолжить?</sys:String>
-    <sys:String x:Key="ModDetails_Purge_SuccessLabel">Очистка мода завершена, в общей сложности {folderCount} мод папок и {fileCount} мод файлы были удалены.</sys:String>
-    <sys:String x:Key="ModDetails_Refresh_FailedTitle">Ошибка обновления Модов</sys:String>
-    <sys:String x:Key="ModDetails_Reload_FailedTitle">Ошибка перезагрузки Модов</sys:String>
-    <sys:String x:Key="ModDetails_Save_FailedTitle">Ошибка сохранения Модов</sys:String>
-    <sys:String x:Key="ModDetails_Save_UnknownTitle">Неизвестный тип Модов</sys:String>
-    <sys:String x:Key="ModDetails_Save_UnknownLabel">Есть один или несколько модов, которые не были загружены, это может помешать корректной работе модов и карт. Вы хотите продолжить?</sys:String>
-    <sys:String x:Key="ModDetails_Unsaved_Title">Без изменений</sys:String>
-    <sys:String x:Key="ModDetails_Unsaved_Label">Вы внесли изменения, которые не были сохранены в профиле, если вы продолжите изменения, вы будете отброшены. Вы хотите продолжить?</sys:String>
-    <sys:String x:Key="ModDetails_WriteTimestamp_ConfirmTitle">Подтверждение отметки времени</sys:String>
-    <sys:String x:Key="ModDetails_WriteTimestamp_ConfirmLabel">Вы собираетесь обновить версию мод в последнем обновленном файле ASM. Вы хотите продолжить?</sys:String>
-    <sys:String x:Key="ModDetails_WriteTimestamp_FailedTitle">Ошибка записи отметки времени</sys:String>
-    <sys:String x:Key="ModDetails_WriteTimestamp_FailedLabel">Папка мод не найдена или не существует. Попробуйте загрузить мод и повторить попытку.</sys:String>
-    <sys:String x:Key="ModDetails_ModDetailFetchFailed_Label">Не можем получить детали мода из Steam.</sys:String>
 
-    <sys:String x:Key="ModDetails_TotalCountLabel">Общее колличество:</sys:String>
 
-    <sys:String x:Key="ModDetails_IndexColumnLabel">#</sys:String>
-    <sys:String x:Key="ModDetails_ModIdColumnLabel">Мод ID</sys:String>
-    <sys:String x:Key="ModDetails_TitleColumnLabel">Имя</sys:String>
-    <sys:String x:Key="ModDetails_TypeColumnLabel">Тип Мода</sys:String>
-    <sys:String x:Key="ModDetails_LastUpdatedColumnLabel">Последняя загрузка</sys:String>
-    <sys:String x:Key="ModDetails_TimeUpdatedColumnLabel">Последнее обновление (Автор)</sys:String>
-    <sys:String x:Key="ModDetails_TimestampColumnLabel">Временная Отметка</sys:String>
-    <sys:String x:Key="ModDetails_FolderSizeColumnLabel">Размер папки</sys:String>
 
-    <sys:String x:Key="ModDetails_AddModsTooltip">Добавить в список.</sys:String>
-    <sys:String x:Key="ModDetails_LoadModsTooltip">Загрузить список модов из папки сервера.</sys:String>
-    <sys:String x:Key="ModDetails_MoveModUpTooltip">Поднять мод в верх по списку.</sys:String>
-    <sys:String x:Key="ModDetails_MoveModDownTooltip">Опустить мод в низ по списку.</sys:String>
-    <sys:String x:Key="ModDetails_PurgeModsFolderTooltip">Очистите неиспользуемые моды из папки Mods.</sys:String>
-    <sys:String x:Key="ModDetails_RefreshModsTooltip">Обновить информацию о модах.</sys:String>
-    <sys:String x:Key="ModDetails_ReloadModsTooltip">Обновить список модов из профиля.</sys:String>
-    <sys:String x:Key="ModDetails_RemoveModTooltip">Удалите мод из списка.</sys:String>
-    <sys:String x:Key="ModDetails_WriteTimestampModTooltip">Запись отметки времени в файл LastUpdatedASM.txt Используйте это только в том случае, если вы вручную обновляете мод.</sys:String>
-    <sys:String x:Key="ModDetails_RemoveAllModsTooltip">Удалите все моды из списка.</sys:String>
-    <sys:String x:Key="ModDetails_SaveModsTooltip">Сохраните моды в профиль.</sys:String>
-    <sys:String x:Key="ModDetails_SaveModDetailsTooltip">Сохраните данные мод по модам.</sys:String>
-    <sys:String x:Key="ModDetails_OpenModFolderTooltip">Открыть папку с модами сервера.</sys:String>
-    <sys:String x:Key="ModDetails_Clipboard_SaveTitle">Детали модов</sys:String>
     <!--#endregion-->
 
     <!--#region Workshop Files Window -->
-    <sys:String x:Key="WorkshopFiles_Title">Детали мастерской</sys:String>
-    <sys:String x:Key="WorkshopFiles_ProfileTitle">Детали мастерской - {0}</sys:String>
-    <sys:String x:Key="WorkshopFiles_Load_FailedTitle">Ошибка загрузки мастерской</sys:String>
-    <sys:String x:Key="WorkshopFiles_Refresh_FailedTitle">Ошибка обновления мастерской</sys:String>
-    <sys:String x:Key="WorkshopFiles_Refresh_FailedLabel">Загрузка информации из Steam не удалась, вместо этого была заполнена локальным кешем.</sys:String>
-	<sys:String x:Key="WorkshopFiles_TotalCountLabel">Общее количество:</sys:String>
-    <sys:String x:Key="WorkshopFiles_LastRefreshedLabel">Последнее обновление:</sys:String>
-    <sys:String x:Key="WorkshopFiles_FilterExistingLabel">Отфильтруйте существующие моды</sys:String>
 
-    <sys:String x:Key="WorkshopFiles_SelectedColumnLabel">Выбрать</sys:String>
-    <sys:String x:Key="WorkshopFiles_ModIdColumnLabel">Mod ID</sys:String>
-    <sys:String x:Key="WorkshopFiles_TitleColumnLabel">Имя</sys:String>
-    <sys:String x:Key="WorkshopFiles_CreatedDateColumnLabel">Создан</sys:String>
-    <sys:String x:Key="WorkshopFiles_UpdatedDateColumnLabel">Последнее обновление</sys:String>
-    <sys:String x:Key="WorkshopFiles_SubscriptionsColumnLabel">Подписок</sys:String>
-    <sys:String x:Key="WorkshopFiles_FileSizeColumnLabel">Размер мода (b)</sys:String>
 
-    <sys:String x:Key="WorkshopFiles_AddTooltip">Добавить мод</sys:String>
-    <sys:String x:Key="WorkshopFiles_AddSelectedTooltip">Добавить выбранные моды</sys:String>
-    <sys:String x:Key="WorkshopFiles_ReloadTooltip">Обновить информацию из мастерской</sys:String>
-    <sys:String x:Key="WorkshopFiles_UnselectTooltip">Отменить все выделенное</sys:String>
     <!--#endregion-->
 
     <!--#region WorldSave Restore Window -->
@@ -468,7 +399,6 @@
     <sys:String x:Key="ServerMonitor_StopServersButtonLabel">Остановить выбранные серверы</sys:String>
     <sys:String x:Key="ServerMonitor_RestartServersButtonTooltip">Перезапустите выбранные серверы.</sys:String>
     <sys:String x:Key="ServerMonitor_UpdateServersButtonLabel">Обновление/Проверка выбранных серверов</sys:String>
-    <sys:String x:Key="ServerMonitor_UpdateModsButtonLabel">Обновить моды только на выбранных серверах</sys:String>
     <sys:String x:Key="ServerMonitor_BackupServersButtonTooltip">Создайте резервную копию выбранных серверов.</sys:String>
     <sys:String x:Key="ServerMonitor_CancelServersButtonTooltip">Отменить обработку выбранных серверов.</sys:String>
     <sys:String x:Key="ServerMonitor_ProcessServersSequentiallyLabel">Обрабатывайть серверы последовательно</sys:String>
@@ -588,10 +518,6 @@
     <sys:String x:Key="GlobalSettings_CustomOverrideExcludeItemIndicesTooltip">Если этот параметр включен, переопределение предметов исключенных элементов будет управляться диспетчером сервера.</sys:String>    
     <sys:String x:Key="GlobalSettings_CustomOverridePreventTransferLabel">Вкл настройки Запретов трансфера дино</sys:String>
     <sys:String x:Key="GlobalSettings_CustomOverridePreventTransferTooltip">Если включено, то настройками запретов трансфера дино будет управлять ASM.</sys:String>
-    <sys:String x:Key="GlobalSettings_CustomOverridePGMLabel">Вкл PGM ARK</sys:String>
-    <sys:String x:Key="GlobalSettings_CustomOverridePGMTooltip">Если включено, то процедурная генерация карт появится в настройках ASM.</sys:String>
-    <sys:String x:Key="GlobalSettings_CustomOverrideSOTFLabel">Вкл SotF</sys:String>
-    <sys:String x:Key="GlobalSettings_CustomOverrideSOTFTooltip">Если включено, Survival Of The Fittest появится в настройках ASM.</sys:String>
     <sys:String x:Key="GlobalSettings_CustomOverrideOptionsWarningLabel">ПРЕДУПРЕЖДЕНИЕ: Если любой из этих параметров отключен, ASM не будет читать или записывать связанные с этип параметры переопределения. Повторное включение любого из этих параметров приведет к удалению всех существующих связанных переопределений в файле конфигурации.</sys:String>
 
     <sys:String x:Key="ServerSettings_ProfileSyncSettingsLabel">Пользовательские настройки синхронизации профиля</sys:String>
@@ -622,15 +548,6 @@
     <sys:String x:Key="GlobalSettings_ServerStartMinimizedLabel">Сворачивать сервер при запуске</sys:String>
     <sys:String x:Key="GlobalSettings_ServerStartMinimizedTooltip">Если включено, то при запуске сервера командное окно будет свернуто, в противном случае оно откроется в обычном режиме.</sys:String>
 
-    <sys:String x:Key="GlobalSettings_UpdateModSettingsLabel">Настройки обновления Модов</sys:String>
-    <sys:String x:Key="GlobalSettings_UpdateModWithServerLabel">Обновить Моды при обновлении Сервера</sys:String>
-    <sys:String x:Key="GlobalSettings_UpdateModWithServerTooltip">Если включено, Моды будут обновляться при обновлении Сервера.</sys:String>
-    <sys:String x:Key="GlobalSettings_ForceUpdateModsLabel">Перезагружать Моды</sys:String>
-    <sys:String x:Key="GlobalSettings_ForceUpdateModsTooltip">Если включено, Мод будет перезагружен, даже если сервер имеет последнюю версию. Включение может устранить проблемы с повреждением Модом.</sys:String>
-    <sys:String x:Key="GlobalSettings_ForceCopyModsLabel">Принудительно копировать файлы</sys:String>
-    <sys:String x:Key="GlobalSettings_ForceCopyModsTooltip">Если включено, файлы Модов будут скопированы в папку сервера, даже если у сервера установлена последняя версия. Включение может устранить проблемы с повреждением Модом.</sys:String>
-    <sys:String x:Key="GlobalSettings_ForceUpdateModsIfNoSteamInfoLabel">Принудительная загрузка файлов Модов при отсутствии информации в Steam</sys:String>
-    <sys:String x:Key="GlobalSettings_ForceUpdateModsIfNoSteamInfoTooltip">Если включено, моды будут загружаться из Steam, даже если информация Steam не доступна.</sys:String>
 
     <sys:String x:Key="GlobalSettings_BackupSettingsLabel">Настройки резервного копирования</sys:String>
     <sys:String x:Key="GlobalSettings_BackupIncludeSaveGamesFolderLabel">Включите папку SaveGames при выполнении резервного копирования World Save</sys:String>
@@ -724,8 +641,6 @@
     <sys:String x:Key="GlobalSettings_Alerts_ServerUpdateTooltip">Это сообщение будет отображаться при обновлении игрового сервера.</sys:String>
     <sys:String x:Key="GlobalSettings_Alerts_ServerStatusChangeLabel">Изменение статуса сервера:</sys:String>
     <sys:String x:Key="GlobalSettings_Alerts_ServerStatusChangeTooltip">Это сообщение будет отображаться при изменении состояния сервера.</sys:String>
-    <sys:String x:Key="GlobalSettings_Alerts_ModUpdateDetectedLabel">Обнаружено обновление мода:</sys:String>
-    <sys:String x:Key="GlobalSettings_Alerts_ModUpdateDetectedTooltip">Это сообщение будет отображаться, когда менеджер сервера обнаружит, что один или несколько модов устарели.</sys:String>
     <sys:String x:Key="GlobalSettings_Alerts_OnlinePlayerCountChangeLabel">Изменение количества Онлайн-Игроков:</sys:String>
     <sys:String x:Key="GlobalSettings_Alerts_OnlinePlayerCountChangeTooltip">Это сообщение будет отображаться при изменении количества онлайн-игроков.</sys:String>
     <sys:String x:Key="GlobalSettings_Alerts_ForceRespawnDinosLabel">Предупреждение о респавне динозавров:</sys:String>
@@ -925,7 +840,6 @@
     <sys:String x:Key="MainWindow_SteamCmd_Label">Если запустить, SteamCMD будет удален, включая все загрузки кэша Модов.\r\nВы уверены, что хотите переустановить SteamCMD?</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_FailedTitle">Ошибка переустановки SteamCMD</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_FailedLabel">Произошла ошибка при попытке переустановки SteamCMD. Попробуйте повторно установить или сообщите об этом.\r\nException: {0}</sys:String>
-	<sys:String x:Key="MainWindow_SteamWebApiKeyMissingLabel">Steam WebAPI Key отсутствует! Обновления, загрузки и установка профилей могли завершиться неудачно. Введите ключ Steam WebApiKey в глобальных настройках.</sys:String>
 
     <sys:String x:Key="MainWindow_DiscordBot_RunningCommandsTitle">Команды запуска бота Discord</sys:String>
     <sys:String x:Key="MainWindow_DiscordBot_RunningCommandsLabel">У бота Discord есть одна или несколько запущенных команд, вы хотите продолжить выключение ASM?</sys:String>
@@ -975,9 +889,6 @@
     <sys:String x:Key="ServerSettings_ProfileTooltip">Имя профиля сервера. Это не публичное имя которое будут видеть пользователи в ARK. Для этого заполните поле "Имя сервера".</sys:String>
     <sys:String x:Key="ServerSettings_InstalledVersionLabel">Установленная версия:</sys:String>
     <sys:String x:Key="ServerSettings_InstalledVersionTooltip">Версия сервера ARK, которая загружена в настоящее время и активна.</sys:String>
-    <sys:String x:Key="ServerSettings_OutOfDateModsLabel">Моды требующие обновления:</sys:String>
-    <sys:String x:Key="ServerSettings_OutOfDateModsTooltip">Количество мод, которые в настоящее время устарели.</sys:String>
-    <sys:String x:Key="ServerSettings_OutOfDateModsButtonTooltip">Выполните проверку модов.</sys:String>
     <sys:String x:Key="ServerSettings_PatchNotesTooltip">Посмотреть описание обновлений.</sys:String>
     <sys:String x:Key="ServerSettings_OpenLogFolderTooltip">Откройте папку Логов Сервера.</sys:String>
     <sys:String x:Key="ServerSettings_ValidateProfileTooltip">Выполняет базовую проверку профиля на сервера и файлов мода.</sys:String>
@@ -1086,10 +997,6 @@
     <sys:String x:Key="ServerSettings_Save_ServerCache_ErrorTitle">Кэш сервера не настроен</sys:String>
     <sys:String x:Key="ServerSettings_Save_ServerCache_ErrorLabel1">Авто-Обновление включено, но обновление кэша сервера еще не настроено. Кэш сервера автоматически загружает обновления сервера в фоновом режиме, чтобы обеспечить более быстрое обновление сервера, особенно при наличии нескольких серверов. Сначала вы должны сконфигурировать кеш, затем включить Авто-Обновление. Вы хотите настроить кеш сейчас?</sys:String>
     <sys:String x:Key="ServerSettings_Save_ServerCache_ErrorLabel2">Кэш сервера не был настроен. Отключение Авто-Обновлений.</sys:String>
-    <sys:String x:Key="ServerSettings_Save_AutoRestart_SotF_ErrorTitle">SotF не совместим</sys:String>
-    <sys:String x:Key="ServerSettings_Save_AutoRestart_SotF_ErrorLabel">Авто-перезагрузка включена, но не совместима с SotF. Отключение Авто-перезагрузки.</sys:String>
-    <sys:String x:Key="ServerSettings_Save_AutoUpdate_SotF_ErrorTitle">SotF не совместим</sys:String>
-    <sys:String x:Key="ServerSettings_Save_AutoUpdate_SotF_ErrorLabel">Авто-Обновление включено, но не совместима с SotF. Отключение Авто-Обновления.</sys:String>
     <sys:String x:Key="ServerSettings_Save_UpdatePermissions_ErrorTitle">Обновить разрешения для каталога</sys:String>
     <sys:String x:Key="ServerSettings_Save_UpdatePermissions_ErrorLabel">Не удалось обновить разрешения каталога. Убедитесь, что у вас есть права администратора на этом компьютере и повторите попытку. Если проблема не устранена, сообщите об этом как об ошибке.</sys:String>
     <sys:String x:Key="ServerSettings_Save_UpdateSchedule_ErrorTitle">Не удалось выполнить расписание обновления</sys:String>
@@ -1128,8 +1035,6 @@
     <sys:String x:Key="ServerSettings_NetworkingLabel">Сетевые</sys:String>
     <sys:String x:Key="ServerSettings_ServerPortLabel">Порт сервера:</sys:String>
     <sys:String x:Key="ServerSettings_ServerPortTooltip">Пользователи будут использовать этот порт для подключения к серверу. По умолчанию 7777. Измените его и Порт Запросов, если вы хотите разместить несколько серверов на одной машине.</sys:String>
-    <sys:String x:Key="ServerSettings_ServerPeerPortLabel">Дополнительный порт:</sys:String>
-    <sys:String x:Key="ServerSettings_ServerPeerPortTooltip">Дополнительный порт, используется для определения доступности сервера. По умолчанию 7778.</sys:String>
     <sys:String x:Key="ServerSettings_QueryPortLabel">Порт Запросов:</sys:String>
     <sys:String x:Key="ServerSettings_QueryPortTooltip">Steam использует этот порт для связи с сервером. По умолчанию 27015. Измените его параметр и Порт сервера, если вы хотите разместить несколько серверов на одной машине.</sys:String>
     <sys:String x:Key="ServerSettings_LocalIPLabel">Локальный IP:</sys:String>
@@ -1150,20 +1055,10 @@
     <sys:String x:Key="ServerSettings_RCONResetTooltip">Сброс настроек окна RCON до значений по умолчанию.</sys:String>
 
     <sys:String x:Key="ServerSettings_MapsAndModsLabel">Карты и моды</sys:String>
-    <sys:String x:Key="ServerSettings_MapsAndModsSOTFLabel">Survival of the Fittest включено - Карты и моды отключено</sys:String>
     <sys:String x:Key="ServerSettings_MapPathLabel">Карта или путь до Карт:</sys:String>
     <sys:String x:Key="ServerSettings_MapPathTooltip">Стандартное имя карты (например: TheIsland), или локальный путь к моду (например /Game/Mods/123456789/myModMap), если ваш мод имеет карту.</sys:String>
-    <sys:String x:Key="ServerSettings_TotalConversionLabel">Total Conversion ID:</sys:String>
-    <sys:String x:Key="ServerSettings_TotalConversionTooltip">Укажите id Total Conversion мода.</sys:String>
-    <sys:String x:Key="ServerSettings_FindTotalConversionMapNameTooltip">Просмотреть Total Conversion моды, чтобы найти имя Карты</sys:String>
-    <sys:String x:Key="ServerSettings_FindTotalConversionMapNameSuccessTitle">Найти Total Conversion Название карты</sys:String>
-    <sys:String x:Key="ServerSettings_FindTotalConversionMapNameSuccessLabel">Название карты обновлено.</sys:String>
-    <sys:String x:Key="ServerSettings_FindTotalConversionMapNameErrorTitle">Найти Total Conversion Ошибка названия карты</sys:String>
-    <sys:String x:Key="ServerSettings_FindTotalConversionMapNameErrorLabel">Не удалось найти название карты, пожалуйста, проверьте Total Conversion идентификатор мода правильный, и мод был загружен.</sys:String>
     <sys:String x:Key="ServerSettings_ModIdsLabel">ID модификаций:</sys:String>
     <sys:String x:Key="ServerSettings_ModIdsTooltip">Разделить запятыми список ID модификаций, в том порядке, в котором они должны применяться (например 123456789,987654321,159753258).</sys:String>
-    <sys:String x:Key="ServerSettings_ModDetailsTooltip">Посмотреть все моды детально.</sys:String>
-    <sys:String x:Key="ServerSettings_ModUpgradeTooltip">Обновить и установить все моды до последней версии.</sys:String>
     <sys:String x:Key="ServerSettings_ResetServerButtonLabel">Сброс</sys:String>
     <sys:String x:Key="ServerSettings_ResetServerButtonTooltip">Удаляет все файлы сервера, игрока, племени и сбрасывает ваш сервер обратно на новый.</sys:String>
 
@@ -1216,15 +1111,8 @@
     <sys:String x:Key="ServerSettings_CustomLiveTuningUrlTooltip">URL-адрес пользовательской конфигурации динамической настройки, которую нужно использовать.</sys:String>
     <sys:String x:Key="ServerSettings_DisableVACLabel">Отключить ValveAntiCheat систему (VAC)</sys:String>
     <sys:String x:Key="ServerSettings_DisableVACTooltip">Если этот параметр включен, система античит Valve будет отключена. Пожалуйста, используйте это с осторожностью!</sys:String>
-    <sys:String x:Key="ServerSettings_DisablePMVOptimizationLabel">Выкл. Оптимизацию ФизикиДвиженияИгрока</sys:String>
-    <sys:String x:Key="ServerSettings_DisablePMVOptimizationTooltip">Если этот параметр включен, Оптимизации Физики-Движения-Игрока будет отключена.</sys:String>
-    <sys:String x:Key="ServerSettings_DisableAntiSpeedHackLabel">Выкл. обнаружение  Анти Спидхака</sys:String>
-    <sys:String x:Key="ServerSettings_DisableAntiSpeedHackTooltip">Если этот параметр включен, обнаружение Анти Спидхака будет отключено.</sys:String>
-    <sys:String x:Key="ServerSettings_AntiSpeedHackBiasLabel">Смещение Анти Спидхака</sys:String>
-    <sys:String x:Key="ServerSettings_AntiSpeedHackBiasTooltip">Регулировка скорости обнаружения смещения Спидхака. По умолчанию 1.0, отключено при 0.0.</sys:String>
     <sys:String x:Key="ServerSettings_UseBattlEyeLabel">Вкл. BattlEye Анти-Чит Систему</sys:String>
     <sys:String x:Key="ServerSettings_UseBattlEyeTooltip">Если опция включена, BattlEye Анти-Чит Система будет включена.</sys:String>
-    <sys:String x:Key="ServerSettings_AntiSpeedHackBiasUnits">x</sys:String>
     <sys:String x:Key="ServerSettings_OutputServerLogLabel">Вывод журнала сервера на консоль сервера</sys:String>
     <sys:String x:Key="ServerSettings_OutputServerLogTooltip">Если этот параметр включен, журналы сервера будут выводиться на консоль сервера.</sys:String>
     <sys:String x:Key="ServerSettings_UseAllAvailableCoresLabel">Использовать все ядра Процессора</sys:String>
@@ -1239,42 +1127,20 @@
     <sys:String x:Key="ServerSettings_ForceShaderModel4Tooltip">Если включено, игра вынуждена использовать Shader Model 4 вместо Shader Model 5.</sys:String>
     <sys:String x:Key="ServerSettings_ForceLowMemoryLabel">Использовать Low Memory</sys:String>
     <sys:String x:Key="ServerSettings_ForceLowMemoryTooltip">Если включено, уменьшает графические и звуковые эффекты, чтобы сэкономить около 800 МБ ОЗУ, что, вероятно, позволит игрокам 4 ГБ RAM пройти мимо экранов с бесконечной загрузкой.</sys:String>
-    <sys:String x:Key="ServerSettings_ForceNoManSkyLabel">Использовать No Man Sky</sys:String>
-    <sys:String x:Key="ServerSettings_ForceNoManSkyTooltip">Если включено, многие детали неба недоступны, например, облака и звездное ночное небо. Вы все еще видите звезды, солнце и луну.</sys:String>
-    <sys:String x:Key="ServerSettings_UseNoMemoryBiasLabel">Использовать No Memory Bias</sys:String>
-    <sys:String x:Key="ServerSettings_UseNoMemoryBiasTooltip">Если включено, будет использоваться старый метод, больше использования ОЗУ, но нет потенциальной потери производительности.</sys:String>
     <sys:String x:Key="ServerSettings_StasisKeepControllersLabel">Stasis Keep Controllers</sys:String>
     <sys:String x:Key="ServerSettings_StasisKeepControllersTooltip">Если это разрешено, сервер может получить производительность, сохранив AI в памяти о статусных существах. ПРИМЕЧАНИЕ: На вашем сервере должно быть много ОЗУ, иначе ваш сервер будет страдать с большими издержками памяти.</sys:String>
     <sys:String x:Key="ServerSettings_UseNoHangDetectionLabel">Нет Hang Detection</sys:String>
     <sys:String x:Key="ServerSettings_UseNoHangDetectionTooltip">Если включено, предотвращает появление некоторых типов сбоев путем зависания (может показаться, что сервер отстает, пока сервер висит).</sys:String>
     <sys:String x:Key="ServerSettings_NoDinosLabel">Нет динозавров</sys:String>
     <sys:String x:Key="ServerSettings_NoDinosTooltip">Если включено, на карте не появятся динозавры.</sys:String>
-    <sys:String x:Key="ServerSettings_ServerAllowAnselLabel">Разрешить Ansel</sys:String>
-    <sys:String x:Key="ServerSettings_ServerAllowAnselTooltip">Если включено, разрешает NVIDIA Ansel на серверах.</sys:String>
-    <sys:String x:Key="ServerSettings_StructureMemoryOptimizationsLabel">Оптимизаций памяти построек</sys:String>
-    <sys:String x:Key="ServerSettings_StructureMemoryOptimizationsTooltip">Если включено, включит оптимизацию памяти построек. Обратите внимание: Новый параметр запуска не рекомендуется использовать на серверах с модами, связанными с постройками.</sys:String>
-    <sys:String x:Key="ServerSettings_UseStructureStasisGridLabel">Структурная Стазисная Решетка</sys:String>
-    <sys:String x:Key="ServerSettings_UseStructureStasisGridTooltip">Включает сетку стазиса структуры для повышения производительности сервера на больших базах с большим количеством игроков. (Обратите внимание, что это может повлиять на некоторые моды)</sys:String>
-    <sys:String x:Key="ServerSettings_SecureSendArKPayloadLabel">Защита от проблем с загрузкой существ</sys:String>
-    <sys:String x:Key="ServerSettings_SecureSendArKPayloadTooltip">Защита от проблем с загрузкой существ (имейте в виду, что это может повлиять на некоторые моды)</sys:String>
     <sys:String x:Key="ServerSettings_UseItemDupeCheckLabel">Дополнительная защита от дублирования</sys:String>
     <sys:String x:Key="ServerSettings_UseItemDupeCheckTooltip">Включает дополнительную защиту от дублирования (Примечание: это может повлиять на моды, поэтому используйте с осторожностью).</sys:String>
-    <sys:String x:Key="ServerSettings_UseSecureSpawnRulesLabel">Правила появления безопасных предметов/динозавров</sys:String>
-    <sys:String x:Key="ServerSettings_UseSecureSpawnRulesTooltip">Более безопасные правила появления предметов/динозавров (Примечание: это может повлиять на моды, поэтому используйте их с осторожностью).</sys:String>
     <sys:String x:Key="ServerSettings_NoUnderMeshCheckingLabel">No Under Mesh Checking</sys:String>
     <sys:String x:Key="ServerSettings_NoUnderMeshCheckingTooltip">Если включено, отключит систему анти-меш под текстурами.</sys:String>
     <sys:String x:Key="ServerSettings_NoUnderMeshKillingLabel">No Under Mesh Killing</sys:String>
     <sys:String x:Key="ServerSettings_NoUnderMeshKillingTooltip">Если включено, отключит убивание персонажей системой анти-меш под текстурами (но телепортирование все же останется)</sys:String>
-    <sys:String x:Key="ServerSettings_UseVivoxLabel">Включить Vivox</sys:String>
-    <sys:String x:Key="ServerSettings_UseVivoxTooltip">Если включено, включит Vivox. ПРИМЕЧАНИЕ: Только для серверов Steam.</sys:String>
     <sys:String x:Key="ServerSettings_AllowSharedConnectionsLabel">Разрешить общие подключения</sys:String>
     <sys:String x:Key="ServerSettings_AllowSharedConnectionsTooltip">Если отключено, семейный доступ будет отключен.</sys:String>
-    <sys:String x:Key="ServerSettings_CrossplayLabel">Включить Crossplay</sys:String>
-    <sys:String x:Key="ServerSettings_CrossplayTooltip">Если включено, включит crossplay, так что игроки, использующие клиентов из разных магазинов, могут подключаться к выделенному серверу.</sys:String>
-    <sys:String x:Key="ServerSettings_EpicOnlyLabel">Разрешить только Epic Store</sys:String>
-    <sys:String x:Key="ServerSettings_EpicOnlyTooltip">Если включено, разрешит подключение только игрокам, использующим клиент Epic store.</sys:String>
-    <sys:String x:Key="ServerSettings_EnablePublicIPForEpicLabel">Включить публичный IP для Epic</sys:String>
-    <sys:String x:Key="ServerSettings_EnablePublicIPForEpicTooltip">Если включено, добавит аргумент сервера для общедоступного IP-адреса, к которому будут пытаться подключиться клиенты EPIC.</sys:String>
     <sys:String x:Key="ServerSettings_ForceRespawnDinosLabel">Перезаселить Мир во время Запуска сервера (Вызывает лаг после запуска Сервера)</sys:String>
     <sys:String x:Key="ServerSettings_ForceRespawnDinosTooltip">Если включено, при запуске сервера все дикие существа будут уничтожены и обновлены (это уничтожит только диких существ, которые в настоящее время не приручены).</sys:String>
     <sys:String x:Key="ServerSettings_EnableServerAutoForceRespawnWildDinosIntervalLabel">Включить Авто Респаун динозавров</sys:String>
@@ -1410,8 +1276,6 @@
     <sys:String x:Key="ServerSettings_EventNote">ПРИМЕЧАНИЕ: Включение события на вашем сервере должно выполняться только во время официального события. Если вы включите событие до или после официальных дат, событие может привести к нестабильной работе вашего сервера или вообще не работать.</sys:String>
     <sys:String x:Key="ServerSettings_EventNameLabel">Активный Event:</sys:String>
     <sys:String x:Key="ServerSettings_EventNameTooltip">Имя события, которое нужно включить (оставьте пустым, чтобы отключить событие).</sys:String>
-    <sys:String x:Key="ServerSettings_EventColorsChanceOverrideLabel">Шанс цвета Дино:</sys:String>
-    <sys:String x:Key="ServerSettings_EventColorsChanceOverrideTooltip">Шанс цвета события Дино.</sys:String>
     <!--#endregion-->
 
     <!--#region Server Settings - Rules -->
@@ -2240,9 +2104,6 @@
     <!--#endregion-->
 
     <!--#region Server Settings - Survival of the Fittest -->
-    <sys:String x:Key="ServerSettings_SOTFLabel">Survival of the Fittest (выживает сильнейший)</sys:String>
-    <sys:String x:Key="ServerSettings_EnableSOTFLabel">Включить Survival of the Fittest</sys:String>
-    <sys:String x:Key="ServerSettings_EnableSOTFTooltip">Если этот параметр включен, выполняется настройка сервера в режиме "Survival of the Fittest".</sys:String>
     <sys:String x:Key="ServerSettings_DisableDeathSpectatorLabel">Отключить "Мертвого зрителя"</sys:String>
     <sys:String x:Key="ServerSettings_DisableDeathSpectatorTooltip">Если этот параметр включен, игрок не может стать зрителем после своей смерти.</sys:String>
     <sys:String x:Key="ServerSettings_OnlyAdminRejoinSpectatorLabel">Только Админ как зритель</sys:String>
@@ -2263,184 +2124,13 @@
     <sys:String x:Key="ServerSettings_EnableOutputGameReportTooltip">Если включено, генерирует файл отчета о результатах после истечения времени, указанный в конце каждой игры в «Сохраненной» директории сервера, как это делают серверы Official Ranked.</sys:String>
     <sys:String x:Key="ServerSettings_EnableGamePlayLoggingLabel">Вкл. лог геймплея</sys:String>
     <sys:String x:Key="ServerSettings_EnableGamePlayLoggingTooltip">Если включен, создает лог файл в папке \Saved, который будет содержать данные победителей с перечнем Steam ID, Steam имя, имя персонажа, и т. д. Удобно для автоматической записи турнира.</sys:String>
-    <sys:String x:Key="ServerSettings_SOTFGameOptionsLabel">Параметры игры</sys:String>
-    <sys:String x:Key="ServerSettings_SOTFNoEventsLabel">Нет Событий</sys:String>
-    <sys:String x:Key="ServerSettings_SOTFNoEventsTooltip">Если параметр включен, события не будут срабатывать автоматически. Админ все еще может вызвать события вручную с помощью "cheat ce evorain" и т.д.</sys:String>
-    <sys:String x:Key="ServerSettings_SOTFNoBossesLabel">Без боссов</sys:String>
-    <sys:String x:Key="ServerSettings_SOTFNoBossesTooltip">Если параметр включен, боссы не будут появляться.</sys:String>
-    <sys:String x:Key="ServerSettings_SOTFBothBossesLabel">Оба босса</sys:String>
-    <sys:String x:Key="ServerSettings_SOTFBothBossesTooltip">Если включено, и если используются боссы, будут появляться оба босса. Паучиха праматерь и Мегапитек в соответствующие моменты времени.</sys:String>
-    <sys:String x:Key="ServerSettings_SOTFEvoEventIntervalLabel">Интервал событий эволюции</sys:String>
-    <sys:String x:Key="ServerSettings_SOTFEvoEventIntervalTooltip">Указывает интервал событий эволюции. Более низкие значения уменьшает время между событиями, более высокие значения увеличивают время между событиями.</sys:String>
-    <sys:String x:Key="ServerSettings_SOTFRingStartTimeLabel">Время поединка</sys:String>
-    <sys:String x:Key="ServerSettings_SOTFRingStartTimeTooltip">Вы можете установить "заранее" время поединка (прогресс кольца смерти) в определенное время. Более низкие значения уменьшают время матча и более высокие значения увеличивают это время.</sys:String>
 
-    <sys:String x:Key="ServerSettings_SOTF_HelpTooltip">Survival of the Fittest - это альтернативная игра Survival Evolved, которая использует другой набор файлов сервера и изменяет многие правила. Подробнее см. В Интернете.</sys:String>
-    <sys:String x:Key="ServerSettings_SOTF_HelpTitle">Перейдите на веб-страницу SotF?</sys:String>
-    <sys:String x:Key="ServerSettings_SOTF_HelpLabel">Survival of the Fittest - это альтернативная игра Survival Evolved, которая использует другой набор файлов сервера и изменяет многие правила. Подробнее см. В Интернете.</sys:String>
     <!--#endregion-->
 
     <!--#region Server Settings - Procedurally Generated Arks -->
-    <sys:String x:Key="ServerSettings_PGMLabel">Процедурная генерация Arks</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_EnableLabel">Включить процедурную генерацию Arks</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_EnableTooltip">Если включено, настраивает сервер для использует генерированный мир Arks.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_PasteSettingsTooltip">Вставить настройки процедурной генерации</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_PasteSettingsTitle">Вставить настройки процедурной генерации</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_PasteSettingsConfirmTitle">Подтвердить настройки процедурной генерации</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_PasteSettingsConfirmLabel">Вы собираетесь перезаписать ВСЕ ваши настройки с использованием процедур сгенерированных ARK. Вы хотите продолжить?</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_SaveSettingsTooltip">Сохранить настройки процедурной генерации</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_SaveSettingsTitle">Настройки процедурной генерации</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_RandomSettingsLabel">Рандомная генерация</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_RandomSettingsTooltip">Рандомная процедура генерации мира</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_NameLabel">Название Карты</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_NameTooltip">Имя, которое будет использоваться для файла (пример MyPGArk1).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_XLabel">X</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_YLabel">Y</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_ZLabel">Z</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Warning1Label">ПРЕДУПРЕЖДЕНИЕ: Процедурно созданная система Ark ВЫСОКО ЭКСПЕРИМЕНТАЛЬНАЯ. Ваши сохраненные обработанные процедурой Арки обязательно будут уничтожены в последующих обновлениях по мере дальнейшего развития динамических алгоритмов. Мы рекомендуем использовать эту систему только в настоящее время, если вы согласны принять частую очистку данных, сохраненных в процедуре, созданных Ark.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Warning2Label">ПРИМЕЧАНИЕ: После того, как вы запустили свой сервер, изменение этих параметров не будет иметь никакого эффекта. Чтобы создать ARK с новыми настройками, вы должны либо изменить имя файла MyPGArk1, либо удалить существующий файл сохранения мира. В обоих случаях вы потеряете ВЕСЬ прогресс.</sys:String>
 
-    <sys:String x:Key="ServerSettings_PGM_TerrianSettingsLabel">Настройки ландшафта</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_MapSeedLabel">Map Seed</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_MapSeedTooltip">The seed used in the noise and random functions.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_LandscapeRadiusLabel">Landscape Radius</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_LandscapeRadiusTooltip">The radius of the landscape, outside of this radius it is water (to avoid cutting the landscape by the terrain border).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_WaterFrequencyLabel">Water Frequency</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_WaterFrequencyTooltip">The frequency of the noise function used to generate land/water.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_MountainsFrequencyLabel">Mountain Frequency</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_MountainsFrequencyTooltip">The frequency of the noise used to generate mountains.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_MountainsSlopeLabel">Mountain Slop</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_MountainsSlopeTooltip">How hard the transition is from land to mountain, the higher the value the smoother the transition (from 0 to 2).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_MountainsHeightLabel">Mountain Height</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_MountainsHeightTooltip">A multiplier for mountain height.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_TurbulencePowerLabel">Turbulence Power</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_TurbulencePowerTooltip">The power of the turbulence function used to randomly perturb the coordinates input to the noise function, to add some realism to the noise.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_ShoreSlopeLabel">Shore Slope</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_ShoreSlopeTooltip">How hard the transition is from water floor to shore, the higher the value the smoother the transition (from 0 to 2).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_ShoreLineEndLabel">Shore Line End</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_ShoreLineEndTooltip">.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_WaterLevelLabel">Water Level</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_WaterLevelTooltip">The height value for the water surface (from Ocean Floor level to 1).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_OceanFloorLevelLabel">Ocean Floor Level</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_OceanFloorLevelTooltip">The height value for the ocean floor (from -1 to Water Level).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_TerrainScaleMultiplierLabel">Terrain Scale Multiplier</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_TerrainScaleMultiplierTooltip">X, Y, Z to scale the whole terrain.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_ErosionStepsLabel">Erosion Steps</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_ErosionStepsTooltip">.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_ErosionStrengthLabel">Erosion Strength</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_ErosionStrengthTooltip">.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_DepositionStrengthLabel">Deposition Strength</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_DepositionStrengthTooltip">.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_TreesGroundSlopeAccuracyLabel">Trees Slope Threshold</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_TreesGroundSlopeAccuracyTooltip">.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_MountainGeneralTreesPercentLabel">General Mountain Trees %</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_MountainGeneralTreesPercentTooltip">.</sys:String>
 
-    <sys:String x:Key="ServerSettings_PGM_BiomeSettingsLabel">Настройки биома</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_SnowBiomeSizeLabel">Snow Biome Size</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_SnowBiomeSizeTooltip">The radius of the Snow biome (from 0 to 1).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_RedWoodBiomeSizeLabel">Redwood Biome Size</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_RedWoodBiomeSizeTooltip">The radius of the Redwood biome (from 0 to 1).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_MountainBiomeStartLabel">Mountain Biome Start</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_MountainBiomeStartTooltip">The height value at which the Mountain biome starts.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_MountainsTreeDensityLabel">Mountains Tree Density</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_MountainsTreeDensityTooltip">Density of trees and rocks in the Mountain biome.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_JungleBiomeStartLabel">Jungle Biome Start</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_JungleBiomeStartTooltip">The height value at which the Jungle biome starts.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_IslandBorderCurveExponentLabel">Island Border Curve</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_IslandBorderCurveExponentTooltip">The exponent used in the curve to smoothly interpolate between island and water floor.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_MaxSpawnPointHeightLabel">Max Spawn Point Height</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_MaxSpawnPointHeightTooltip">The maximum height of land for a spawn point to be created.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_GrassDensityLabel">Grass Density</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_GrassDensityTooltip">Foliage density in the grasslands biome.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_JungleGrassDensityLabel">Jungle Grass Density</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_JungleGrassDensityTooltip">Foliage density in the Jungle biome.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_SnowTreeDensityLabel">Snow Tree Density</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_SnowTreeDensityTooltip">Density of trees and rocks in the Snow biome.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_RedWoodTreeDensityLabel">Redwood Tree Density</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_RedWoodTreeDensityTooltip">Density of trees and rocks in the Redwood biome.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_TreeDensityLabel">Grasslands Tree Density</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_TreeDensityTooltip">Density of trees and rocks in the Grasslands biome.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_RedwoodGrassDensityLabel">Redwood Grass Density</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_RedwoodGrassDensityTooltip">Foliage density in the Redwood biome.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_MountainGrassDensityLabel">Mountain Grass Density</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_MountainGrassDensityTooltip">Foliage density in the Mountain biome.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_SnowGrassDensityLabel">Snow Grass Density</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_SnowGrassDensityTooltip">Foliage density in the Snow biome.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_JungleTreeDensityLabel">Jungle Tree Density</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_JungleTreeDensityTooltip">Density of trees and rocks in the Jungle biome.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_ShoreTreeDensityLabel">Shore Tree Density</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_ShoreTreeDensityTooltip">Foliage density in the Shore biome.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_ShorelineStartOffsetLabel">Shoreline Start Offset</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_ShorelineStartOffsetTooltip">The distance from the water that the shoreline begins. Raise this for a shore that goes farther up to the land.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_ShorelineThicknessLabel">Shoreline Thickness</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_ShorelineThicknessTooltip">The overall width of the shore. Raise this along with ShorelineStartOffset to get a thicker, larger shore.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_SnowMountainsTreeDensityLabel">Snow Mountains Tree Density</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_SnowMountainsTreeDensityTooltip">Density of trees and rocks in the Snow Mountain biome.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_UnderwaterObjectsDensityLabel">Underwater Objects Density</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_UnderwaterObjectsDensityTooltip">Object density in the Underwater biome.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_SnowMountainGrassDensityLabel">Snow Mountain Grass Density</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_SnowMountainGrassDensityTooltip">Foliage density in the Snow Mountain biome.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_SnowShoreTreeDensityLabel">Snow Shore Tree Density</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_SnowShoreTreeDensityTooltip">Density of trees and rocks in the Snow Shore biome.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_InlandWaterObjectsDensityLabel">Inland Water Objects Density</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_InlandWaterObjectsDensityTooltip">Object density in the Inland Water biome.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_DeepWaterBiomesDepthLabel">Deep Water Biomes Depth</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_DeepWaterBiomesDepthTooltip">The depth value of the Deep Water biome.</sys:String>
 
-    <sys:String x:Key="ServerSettings_PGM_MapSettingsLabel">Настройки карты</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SnowBiomeLocationLabel">Snow Biome Location</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SnowBiomeLocationTooltip">The location of the Snow biome (X, Y from 0 to 1).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_RedWoodForestBiomeLocationLabel">Redwood Biome Location</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_RedWoodForestBiomeLocationTooltip">The location of the Redwood biome (X, Y from 0 to 1).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_NorthRegion1StartLabel">North Region 1 Start</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_NorthRegion1StartTooltip">The start location of the North Region 1 (X, Y from 0 to 1).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_NorthRegion1EndLabel">North Region 1 End</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_NorthRegion1EndTooltip">The end location of the North Region 1 (X, Y from 0 to 1).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_NorthRegion2StartLabel">North Region 2 Start</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_NorthRegion2StartTooltip">The start location of the North Region 2 (X, Y from 0 to 1).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_NorthRegion2EndLabel">North Region 2 End</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_NorthRegion2EndTooltip">The end location of the North Region 2 (X, Y from 0 to 1).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_NorthRegion3StartLabel">North Region 3 Start</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_NorthRegion3StartTooltip">The start location of the North Region 3 (X, Y from 0 to 1).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_NorthRegion3EndLabel">North Region 3 End</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_NorthRegion3EndTooltip">The end location of the North Region 3 (X, Y from 0 to 1).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SouthRegion1StartLabel">South Region 1 Start</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SouthRegion1StartTooltip">The start location of the South Region 1 (X, Y from 0 to 1).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SouthRegion1EndLabel">South Region 1 End</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SouthRegion1EndTooltip">The end location of the South Region 1 (X, Y from 0 to 1).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SouthRegion2StartLabel">South Region 2 Start</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SouthRegion2StartTooltip">The start location of the South Region 2 (X, Y from 0 to 1).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SouthRegion2EndLabel">South Region 2 End</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SouthRegion2EndTooltip">The end location of the South Region 2 (X, Y from 0 to 1).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SouthRegion3StartLabel">South Region 3 Start</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SouthRegion3StartTooltip">The start location of the South Region 3 (X, Y from 0 to 1).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SouthRegion3EndLabel">South Region 3 End</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SouthRegion3EndTooltip">The end location of the South Region 3 (X, Y from 0 to 1).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_EastRegion1StartLabel">East Region 1 Start</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_EastRegion1StartTooltip">The start location of the East Region 1 (X, Y from 0 to 1).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_EastRegion1EndLabel">East Region 1 End</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_EastRegion1EndTooltip">The end location of the East Region 1 (X, Y from 0 to 1).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_EastRegion2StartLabel">East Region 2 Start</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_EastRegion2StartTooltip">The start location of the East Region 2 (X, Y from 0 to 1).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_EastRegion2EndLabel">East Region 2 End</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_EastRegion2EndTooltip">The end location of the East Region 2 (X, Y from 0 to 1).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_EastRegion3StartLabel">East Region 3 Start</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_EastRegion3StartTooltip">The start location of the East Region 3 (X, Y from 0 to 1).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_EastRegion3EndLabel">East Region 3 End</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_EastRegion3EndTooltip">The end location of the East Region 3 (X, Y from 0 to 1).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_WestRegion1StartLabel">West Region 1 Start</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_WestRegion1StartTooltip">The start location of the West Region 1 (X, Y from 0 to 1).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_WestRegion1EndLabel">West Region 1 End</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_WestRegion1EndTooltip">The end location of the West Region 1 (X, Y from 0 to 1).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_WestRegion2StartLabel">West Region 2 Start</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_WestRegion2StartTooltip">The start location of the West Region 2 (X, Y from 0 to 1).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_WestRegion2EndLabel">West Region 2 End</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_WestRegion2EndTooltip">The end location of the West Region 2 (X, Y from 0 to 1).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_WestRegion3StartLabel">West Region 3 Start</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_WestRegion3StartTooltip">The start location of the West Region 3 (X, Y from 0 to 1).</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_WestRegion3EndLabel">West Region 3 End</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_WestRegion3EndTooltip">The end location of the West Region 3 (X, Y from 0 to 1).</sys:String>
     <!--#endregion-->
 
     <!--#region Server Settings - Map Spawner Overrides -->
@@ -5847,7 +5537,6 @@
     <sys:String x:Key="ProfileValidation_WarningLabel">Следующие проблемы проверки были обнаружены.\r\n\r\n{validateMessage}\r\n\r\nХотите продолжить запуск сервера, это может вызвать проблемы?</sys:String>
 
     <sys:String x:Key="ProfileValidation_ServerPort">Порт сервера находится за пределами допустимого диапазона ({PortMinimum}-{PortMaximum}).</sys:String>
-    <sys:String x:Key="ProfileValidation_ServerPeerPort">Дополнительный порт сервера находится за пределами допустимого диапазона({PortMinimum}-{PortMaximum}).</sys:String>
     <sys:String x:Key="ProfileValidation_QueryPort">Порт запроса находится за пределами допустимого диапазона ({PortMinimum}-{PortMaximum}).</sys:String>
     <sys:String x:Key="ProfileValidation_RconPort">Порт rcon находится за пределами допустимого диапазона ({PortMinimum}-{PortMaximum}).</sys:String>
 
@@ -5857,15 +5546,6 @@
     <sys:String x:Key="ProfileValidation_ServerExeNotDownloaded">Файлы сервера не были загружены должным образом, исполняемый файл сервера ({ServerExe}) does not exist.</sys:String>
     <sys:String x:Key="ProfileValidation_ServerDifferentApplication">Файлы сервера предназначены для другого приложения.</sys:String>
 
-    <sys:String x:Key="ProfileValidation_MapModNotDownloaded">Карта мода не была загружена, папка мода не существует.</sys:String>
-    <sys:String x:Key="ProfileValidation_MapModFileNotDownloaded">Мод карты не был загружен должным образом, файл мода не существует.</sys:String>
-    <sys:String x:Key="ProfileValidation_MapModInvalid">Мод карты не является действительным модом карты.</sys:String>
-    <sys:String x:Key="ProfileValidation_MapModFileInvalid">Карта мод не была загружена должным образом, файл мода является недействительным.</sys:String>
-    <sys:String x:Key="ProfileValidation_MapModNameInvalid">Файл мода карты не существует или недействителен.</sys:String>
-    <sys:String x:Key="ProfileValidation_MapModNameMismatch">Имя карты не совпадает с именем карты модов карты.</sys:String>
-    <sys:String x:Key="ProfileValidation_MapModDifferentApplication">Карта мод для другого приложения.</sys:String>
-    <sys:String x:Key="ProfileValidation_MapModOutdated">Мод карты устарел.</sys:String>
-    <sys:String x:Key="ProfileValidation_MapModSteamError">Детали мода карты не могут быть получены из Steam.</sys:String>
 
     <sys:String x:Key="ProfileValidation_TCModNotDownloaded">Total conversion мод не был загружен, папка мода не существует.</sys:String>
     <sys:String x:Key="ProfileValidation_TCModFileNotDownloaded">Total conversion мод не был загружен должным образом, файл мода не существует.</sys:String>
@@ -5877,11 +5557,6 @@
     <sys:String x:Key="ProfileValidation_TCModOutdated">Total conversion мод устарел.</sys:String>
     <sys:String x:Key="ProfileValidation_TCModSteamError">Total conversion детали мода не могут быть получены из Steam.</sys:String>
 
-    <sys:String x:Key="ProfileValidation_ModNotDownloaded">Мод {modId} не был загружен, папка мода не существует.</sys:String>
-    <sys:String x:Key="ProfileValidation_ModFileNotDownloaded">Мод {modId} не был загружен должным образом, файл мода не существует.</sys:String>
-    <sys:String x:Key="ProfileValidation_ModDifferentApplication">Мод {modId} для другого приложения.</sys:String>
-    <sys:String x:Key="ProfileValidation_ModOutdated">Мод {modId} устарел.</sys:String>
-    <sys:String x:Key="ProfileValidation_ModSteamError">Мод {modId} детали не могут быть получены из Steam.</sys:String>
     <!--#endregion-->
 
     <!--#region Profile Save -->

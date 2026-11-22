@@ -95,10 +95,10 @@ namespace ServerManagerTool.Lib
             await this.Runtime.StopAsync();
         }
 
-        public async Task<bool> UpgradeAsync(CancellationToken cancellationToken, bool updateServer, BranchSnapshot branch, bool validate, bool updateMods, ProgressDelegate progressCallback)
+        public async Task<bool> UpgradeAsync(CancellationToken cancellationToken, bool updateServer, BranchSnapshot branch, bool validate, ProgressDelegate progressCallback)
         {
             await this.Runtime.AttachToProfile(this.Profile);
-            var success = await this.Runtime.UpgradeAsync(cancellationToken, updateServer, branch, validate, updateMods, progressCallback);
+            var success = await this.Runtime.UpgradeAsync(cancellationToken, updateServer, branch, validate, progressCallback);
             this.Profile.LastInstalledVersion = this.Runtime.Version.ToString();
             return success;
         }

@@ -34,9 +34,6 @@ namespace ServerManagerTool.Lib
         private readonly GlobalizedApplication _globalizer = GlobalizedApplication.Instance;
         private readonly PluginHelper _pluginHelper = PluginHelper.Instance;
 
-        // Steam Workshop mods are an ASE feature; ASA uses CurseForge mods that the server manages itself.
-        private static readonly bool SteamWorkshopModsSupported = false;
-
         public const int MUTEX_TIMEOUT = 5;         // 5 minutes
         public const int MUTEX_ATTEMPTDELAY = 5000; // 5 seconds
 
@@ -76,7 +73,6 @@ namespace ServerManagerTool.Lib
         private const int EXITCODE_CACHEMODDETAILSDOWNLOADFAILED = 2102;
         // update file codes
         private const int EXITCODE_SERVERUPDATEFAILED = 3001;
-        private const int EXITCODE_MODUPDATEFAILED = 3002;
         // shutdown codes
         private const int EXITCODE_SHUTDOWN_GETCMDLINEFAILED = 4001;
         private const int EXITCODE_SHUTDOWN_TIMEOUT = 4002;
@@ -762,9 +758,6 @@ namespace ServerManagerTool.Lib
 
         private void UpgradeLocal(ServerUpdateType updateType, bool validate, bool steamCmdRemoveQuit, CancellationToken cancellationToken)
         {
-            // ASA servers download their CurseForge mods themselves; the Steam Workshop mod update no longer applies.
-            updateType &= ~ServerUpdateType.Mods;
-
             if (_profile == null)
             {
                 ExitCode = EXITCODE_BADPROFILE;
@@ -875,315 +868,6 @@ namespace ServerManagerTool.Lib
                     success = true;
                 }
 
-                // check if we need to update the mods
-                if ((updateType & ServerUpdateType.Mods) == ServerUpdateType.Mods)
-                {
-                    if (success)
-                    {
-                        // ******************
-                        // Mod Update Section
-                        // ******************
-
-                        // build a list of mods to be processed
-                        var modIdList = new List<string>();
-                        if (!string.IsNullOrWhiteSpace(_profile.ServerMapModId))
-                        {
-                            modIdList.Add(_profile.ServerMapModId);
-                        }
-                        if (!string.IsNullOrWhiteSpace(_profile.TotalConversionModId))
-                        {
-                            modIdList.Add(_profile.TotalConversionModId);
-                        }
-                        modIdList.AddRange(_profile.ServerModIds);
-
-                        modIdList = ModUtils.ValidateModList(modIdList);
-
-                        // get the details of the mods to be processed.
-                        var modDetails = SteamUtils.GetSteamModDetails(modIdList);
-                        var forceUpdateMods = Config.Default.ServerUpdate_ForceUpdateModsIfNoSteamInfo || string.IsNullOrWhiteSpace(SteamUtils.SteamWebApiKey);
-
-                        // check if the mod details were retrieved
-                        if (modDetails == null && forceUpdateMods)
-                        {
-                            modDetails = new PublishedFileDetailsResponse();
-                        }
-
-                        if (modDetails != null)
-                        {
-                            // create a new list for any failed mod updates
-                            var failedMods = new List<string>(modIdList.Count);
-
-                            for (var index = 0; index < modIdList.Count; index++)
-                            {
-                                var modId = modIdList[index];
-                                var modTitle = modId;
-                                var modSuccess = false;
-                                gotNewVersion = false;
-                                downloadSuccessful = false;
-
-                                LogProfileMessage($"Started processing mod {index + 1} of {modIdList.Count}.");
-                                LogProfileMessage($"Mod {modId}.");
-
-                                // check if the steam information was downloaded
-                                var modDetail = modDetails.publishedfiledetails?.FirstOrDefault(m => m.publishedfileid.Equals(modId, StringComparison.OrdinalIgnoreCase));
-                                modTitle = $"{modId} - {modDetail?.title ?? "<unknown>"}";
-
-                                if (modDetail != null)
-                                {
-                                    LogProfileMessage($"{modDetail.title}.\r\n");
-                                }
-
-                                var modCachePath = ModUtils.GetModCachePath(modId, _profile.AppId);
-                                var cacheTimeFile = ModUtils.GetLatestModCacheTimeFile(modId, _profile.AppId);
-                                var modPath = ModUtils.GetModPath(_profile.InstallDirectory, modId);
-                                var modTimeFile = ModUtils.GetLatestModTimeFile(_profile.InstallDirectory, modId);
-
-                                var modCacheLastUpdated = 0;
-                                var downloadMod = true;
-                                var copyMod = true;
-                                var updateError = false;
-
-                                if (downloadMod)
-                                {
-                                    // check if the mod needs to be downloaded, or force the download.
-                                    if (Config.Default.ServerUpdate_ForceUpdateMods)
-                                    {
-                                        LogProfileMessage("Forcing mod download - Server Manager setting is TRUE.");
-                                    }
-                                    else if (modDetail == null)
-                                    {
-                                        if (forceUpdateMods)
-                                        {
-                                            LogProfileMessage("Forcing mod download - Mod details not available and Server Manager setting is TRUE.");
-                                        }
-                                        else
-                                        {
-                                            // no steam information downloaded, display an error, mod might no longer be available
-                                            LogProfileMessage("*******************************************************************");
-                                            LogProfileMessage("ERROR: Mod cannot be updated, unable to download steam information.");
-                                            LogProfileMessage("*******************************************************************");
-
-                                            LogProfileMessage($"If the mod update keeps failing try enabling the '{_globalizer.GetResourceString("GlobalSettings_ForceUpdateModsIfNoSteamInfoLabel")}' option in the settings window.\r\n");
-
-                                            downloadMod = false;
-                                            copyMod = false;
-                                            updateError = true;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        // check if the mod detail record is valid (private mod).
-                                        if (modDetail.time_updated <= 0)
-                                        {
-                                            LogProfileMessage("Forcing mod download - mod is private.");
-                                        }
-                                        else
-                                        {
-                                            modCacheLastUpdated = ModUtils.GetModLatestTime(cacheTimeFile);
-                                            if (modCacheLastUpdated <= 0)
-                                            {
-                                                LogProfileMessage("Forcing mod download - mod cache is not versioned.");
-                                            }
-                                            else
-                                            {
-                                                var steamLastUpdated = modDetail.time_updated;
-                                                if (steamLastUpdated <= modCacheLastUpdated)
-                                                {
-                                                    LogProfileMessage("Skipping mod download - mod cache has the latest version.");
-                                                    downloadMod = false;
-                                                }
-                                            }
-                                        }
-                                    }
-
-                                    if (downloadMod)
-                                    {
-                                        // mod will be downloaded
-                                        downloadSuccessful = !Config.Default.SteamCmdRedirectOutput;
-                                        DataReceivedEventHandler modOutputHandler = (s, e) =>
-                                        {
-                                            var dataValue = e.Data ?? string.Empty;
-                                            LogProfileMessage(dataValue);
-                                            if (dataValue.StartsWith("Success."))
-                                            {
-                                                downloadSuccessful = true;
-                                            }
-                                        };
-
-                                        LogProfileMessage("Starting mod download.\r\n");
-
-                                        steamCmdArgs = string.Empty;
-                                        if (Config.Default.SteamCmd_UseAnonymousCredentials)
-                                            steamCmdArgs = SteamUtils.BuildSteamCmdArguments(steamCmdRemoveQuit, Config.Default.SteamCmdInstallModArgsFormat, Config.Default.SteamCmd_AnonymousUsername, Config.Default.AppId, modId);
-                                        else
-                                            steamCmdArgs = SteamUtils.BuildSteamCmdArguments(steamCmdRemoveQuit, Config.Default.SteamCmdInstallModArgsFormat, Config.Default.SteamCmd_Username, Config.Default.AppId, modId);
-
-                                        var SteamCmdIgnoreExitStatusCodes = SteamUtils.GetExitStatusList(Config.Default.SteamCmdIgnoreExitStatusCodes);
-
-                                        modSuccess = ServerUpdater.UpgradeModsAsync(steamCmdFile, steamCmdArgs, workingDirectory, null, null, SteamCmdIgnoreExitStatusCodes, Config.Default.SteamCmdRedirectOutput ? modOutputHandler : null, cancellationToken, SteamCMDProcessWindowStyle).Result;
-                                        if (modSuccess && downloadSuccessful)
-                                        {
-                                            LogProfileMessage("Finished mod download.");
-                                            copyMod = true;
-
-                                            if (Directory.Exists(modCachePath))
-                                            {
-                                                // check if any of the mod files have changed.
-                                                gotNewVersion = new DirectoryInfo(modCachePath).GetFiles("*.*", SearchOption.AllDirectories).Any(file => file.LastWriteTime >= startTime);
-
-                                                LogProfileMessage($"New mod version - {gotNewVersion.ToString().ToUpperInvariant()}.");
-
-                                                var steamLastUpdated = modDetail?.time_updated.ToString() ?? string.Empty;
-                                                if (modDetail == null || modDetail.time_updated <= 0)
-                                                {
-                                                    // get the version number from the steamcmd workshop file.
-                                                    steamLastUpdated = ModUtils.GetSteamWorkshopLatestTime(ModUtils.GetSteamWorkshopFile(_profile.AppId), modId).ToString();
-                                                }
-
-                                                // update the last updated file with the steam updated time.
-                                                File.WriteAllText(cacheTimeFile, steamLastUpdated);
-
-                                                LogProfileMessage($"Mod Cache version: {steamLastUpdated}\r\n");
-                                            }
-                                        }
-                                        else
-                                        {
-                                            modSuccess = false;
-                                            LogProfileMessage("***************************");
-                                            LogProfileMessage("ERROR: Mod download failed.");
-                                            LogProfileMessage("***************************\r\n");
-                                            LogProfileMessage("Check steamcmd logs for more information why the mod update failed.\r\n");
-
-                                            if (Config.Default.SteamCmdRedirectOutput)
-                                            {
-                                                LogProfileMessage($"If the mod update keeps failing try disabling the '{_globalizer.GetResourceString("GlobalSettings_SteamCmdRedirectOutputLabel")}' option in the settings window.\r\n");
-                                            }
-
-                                            copyMod = false;
-
-                                            ExitCode = EXITCODE_MODUPDATEFAILED;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        modSuccess = !updateError;
-                                    }
-                                }
-                                else
-                                {
-                                    modSuccess = !updateError;
-                                }
-
-                                if (copyMod)
-                                {
-                                    // check if the mod needs to be copied, or force the copy.
-                                    if (Config.Default.ServerUpdate_ForceCopyMods)
-                                    {
-                                        LogProfileMessage("Forcing mod copy - Server Manager setting is TRUE.");
-                                    }
-                                    else
-                                    {
-                                        // check the mod version against the cache version.
-                                        var modLastUpdated = ModUtils.GetModLatestTime(modTimeFile);
-                                        if (modLastUpdated <= 0)
-                                        {
-                                            LogProfileMessage("Forcing mod copy - mod is not versioned.");
-                                        }
-                                        else
-                                        {
-                                            modCacheLastUpdated = ModUtils.GetModLatestTime(cacheTimeFile);
-                                            if (modCacheLastUpdated <= modLastUpdated)
-                                            {
-                                                LogProfileMessage("Skipping mod copy - mod has the latest version.");
-                                                LogProfileMessage($"Mod version: {modLastUpdated}");
-                                                copyMod = false;
-                                            }
-                                        }
-                                    }
-
-                                    if (copyMod)
-                                    {
-                                        try
-                                        {
-                                            if (Directory.Exists(modCachePath))
-                                            {
-                                                LogProfileMessage("Started mod copy.");
-                                                int count = 0;
-                                                Task.Run(() => ModUtils.CopyMod(modCachePath, modPath, modId, (p, m, n) =>
-                                                {
-                                                    count++;
-                                                    ProgressCallback?.Invoke(0, ".", count % DIRECTORIES_PER_LINE == 0);
-                                                }), cancellationToken).Wait();
-                                                LogProfileMessage("\r\n");
-                                                LogProfileMessage("Finished mod copy.");
-
-                                                var modLastUpdated = ModUtils.GetModLatestTime(modTimeFile);
-                                                LogProfileMessage($"Mod version: {modLastUpdated}");
-                                            }
-                                            else
-                                            {
-                                                modSuccess = false;
-                                                LogProfileMessage("****************************************************");
-                                                LogProfileMessage("ERROR: Mod cache was not found, mod was not updated.");
-                                                LogProfileMessage("****************************************************");
-                                            }
-                                        }
-                                        catch (Exception ex)
-                                        {
-                                            modSuccess = false;
-                                            LogProfileMessage("***********************");
-                                            LogProfileMessage($"ERROR: Failed mod copy.\r\n{ex.Message}");
-                                            LogProfileMessage("***********************");
-                                        }
-                                    }
-                                }
-
-                                if (!modSuccess)
-                                {
-                                    success = false;
-                                    failedMods.Add($"{index + 1} of {modIdList.Count} - {modTitle}");
-
-                                    ExitCode = EXITCODE_MODUPDATEFAILED;
-                                }
-
-                                LogProfileMessage($"Finished processing mod {modId}.\r\n");
-                            }
-
-                            if (failedMods.Count > 0)
-                            {
-                                LogProfileMessage("**************************************************************************");
-                                LogProfileMessage("ERROR: The following mods failed the update, check above for more details.");
-                                foreach (var failedMod in failedMods)
-                                    LogProfileMessage(failedMod);
-                                LogProfileMessage("**************************************************************************");
-                            }
-                        }
-                        else
-                        {
-                            success = false;
-                            // no steam information downloaded, display an error
-                            LogProfileMessage("********************************************************************");
-                            LogProfileMessage("ERROR: Mods cannot be updated, unable to download steam information.");
-                            LogProfileMessage("********************************************************************\r\n");
-
-                            if (!Config.Default.ServerUpdate_ForceUpdateModsIfNoSteamInfo)
-                            {
-                                LogProfileMessage($"If the mod update keeps failing try enabling the '{_globalizer.GetResourceString("GlobalSettings_ForceUpdateModsIfNoSteamInfoLabel")}' option in the settings window.\r\n");
-                            }
-
-                            ExitCode = EXITCODE_MODUPDATEFAILED;
-                        }
-                    }
-                    else
-                    {
-                        LogProfileMessage("***********************************************************");
-                        LogProfileMessage("ERROR: Mods were not processed as server update had errors.");
-                        LogProfileMessage("***********************************************************\r\n");
-
-                        ExitCode = EXITCODE_SERVERUPDATEFAILED;
-                    }
-                }
-
                 LogProfileMessage("Finished upgrade process.");
             }
             catch (TaskCanceledException)
@@ -1215,34 +899,11 @@ namespace ServerManagerTool.Lib
             var serverLastUpdated = GetServerLatestTime(GetServerTimeFile());
             var updateServer = serverCacheLastUpdated > serverLastUpdated;
 
-            // check if any of the mods need to be updated
-            var updateModIds = new List<string>();
-            var appModList = GetModList();
-
-            // cycle through each mod.
-            foreach (var appMods in appModList)
-            {
-                if (!appMods.AppId.Equals(_profile.AppId, StringComparison.OrdinalIgnoreCase))
-                    continue;
-
-                foreach (var modId in appMods.ModIdList)
-                {
-                    // check if the mod needs to be updated.
-                    var modCacheLastUpdated = ModUtils.GetModLatestTime(ModUtils.GetLatestModCacheTimeFile(modId, _profile.AppId));
-                    var modLastUpdated = ModUtils.GetModLatestTime(ModUtils.GetLatestModTimeFile(_profile.InstallDirectory, modId));
-                    if (modCacheLastUpdated > modLastUpdated || modLastUpdated == 0)
-                        updateModIds.Add(modId);
-                }
-            }
-
             if (ExitCode != EXITCODE_NORMALEXIT)
                 return;
 
-            if (updateServer || updateModIds.Count > 0)
+            if (updateServer)
             {
-                updateModIds = ModUtils.ValidateModList(updateModIds);
-                var modDetails = SteamUtils.GetSteamModDetails(updateModIds);
-
                 UpdateReason = string.Empty;
                 if (Config.Default.AutoUpdate_ShowUpdateReason)
                 {
@@ -1259,25 +920,6 @@ namespace ServerManagerTool.Lib
                     {
                         UpdateReason += $"{delimiter}{_globalizer.GetResourceString("GlobalSettings_AutoUpdate_GameServerLabel")}";
                         delimiter = ", ";
-                    }
-                    if (updateModIds.Count > 0)
-                    {
-                        for (var index = 0; index < updateModIds.Count; index++)
-                        {
-                            if (index == 5)
-                            {
-                                UpdateReason += "...";
-                                break;
-                            }
-
-                            var modId = updateModIds[index];
-                            var modName = modDetails?.publishedfiledetails?.FirstOrDefault(m => m.publishedfileid == modId)?.title ?? string.Empty;
-                            if (string.IsNullOrWhiteSpace(modName))
-                                UpdateReason += $"{delimiter}{modId}";
-                            else
-                                UpdateReason += $"{delimiter}{modName}";
-                            delimiter = ", ";
-                        }
                     }
                 }
 
@@ -1308,9 +950,6 @@ namespace ServerManagerTool.Lib
                     if (ExitCode != EXITCODE_NORMALEXIT)
                         return;
                 }
-
-                Mutex mutex = null;
-                bool createdNew = false;
 
                 alertMessage.AppendLine();
                 if (!string.IsNullOrWhiteSpace(Config.Default.Alert_UpdateResults))
@@ -1351,7 +990,6 @@ namespace ServerManagerTool.Lib
 
                             LogProfileMessage("Updated server from cache. See patch notes.");
                             LogProfileMessage(Config.Default.AppPatchNotesUrl);
-                            LogProfileMessage(Config.Default.AppPatchNotesUrl);
 
                             if (!string.IsNullOrWhiteSpace(Config.Default.Alert_ServerUpdate))
                                 alertMessage.AppendLine(Config.Default.Alert_ServerUpdate);
@@ -1387,111 +1025,6 @@ namespace ServerManagerTool.Lib
                 if (ExitCode != EXITCODE_NORMALEXIT)
                     return;
 
-                // check if the mods need to be updated
-                LogProfileMessage("");
-                if (updateModIds.Count > 0)
-                {
-                    Task.Delay(5000).Wait();
-
-                    LogProfileMessage($"Updating {updateModIds.Count} mods from cache...");
-
-                    emailMessage.AppendLine();
-                    emailMessage.AppendLine("Mod Updates:");
-
-                    try
-                    {
-                        // update the mod files from the cache.
-                        for (var index = 0; index < updateModIds.Count; index++)
-                        {
-                            var modId = updateModIds[index];
-                            var modCachePath = ModUtils.GetModCachePath(modId, _profile.AppId);
-                            var modPath = ModUtils.GetModPath(_profile.InstallDirectory, modId);
-                            var modName = modDetails?.publishedfiledetails?.FirstOrDefault(m => m.publishedfileid == modId)?.title ?? string.Empty;
-
-                            try
-                            {
-                                if (Directory.Exists(modCachePath))
-                                {
-                                    // try to establish a mutex for the mod cache.
-                                    mutex = new Mutex(true, GetMutexName(modCachePath), out createdNew);
-                                    if (!createdNew)
-                                        createdNew = mutex.WaitOne(new TimeSpan(0, MUTEX_TIMEOUT, 0));
-
-                                    // check if the mutex was established
-                                    if (createdNew)
-                                    {
-                                        LogProfileMessage($"Started mod update from cache {index + 1} of {updateModIds.Count}...");
-                                        LogProfileMessage($"Mod Name: {modName} (Mod ID: {modId})");
-
-                                        alertMessage.AppendLine($"{modName} ({modId})");
-
-                                        emailMessage.AppendLine();
-                                        emailMessage.AppendLine($"{modName} ({modId})");
-
-                                        ModUtils.CopyMod(modCachePath, modPath, modId, null);
-
-                                        var modLastUpdated = ModUtils.GetModLatestTime(ModUtils.GetLatestModTimeFile(_profile.InstallDirectory, modId));
-                                        LogProfileMessage($"Mod {modId} version: {modLastUpdated}.");
-
-                                        LogProfileMessage($"Workshop page: https://steamcommunity.com/sharedfiles/filedetails/?id={modId}");
-                                        LogProfileMessage($"Change notes: https://steamcommunity.com/sharedfiles/filedetails/changelog/{modId}");
-
-                                        emailMessage.AppendLine($"Workshop page: https://steamcommunity.com/sharedfiles/filedetails/?id={modId}");
-                                        emailMessage.AppendLine($"Change notes: https://steamcommunity.com/sharedfiles/filedetails/changelog/{modId}");
-
-                                        LogProfileMessage($"Finished mod {modId} update from cache.");
-                                    }
-                                    else
-                                    {
-                                        ExitCode = EXITCODE_PROCESSALREADYRUNNING;
-                                        LogProfileMessage("Mod not updated, could not lock mod cache.");
-                                    }
-                                }
-                                else
-                                {
-                                    LogProfileError($"Mod {modId} cache was not found, mod was not updated from cache.");
-                                    ExitCode = EXITCODE_MODUPDATEFAILED;
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                LogProfileError($"Unable to update mod {modId} from cache.\r\n{ex.Message}");
-                                ExitCode = EXITCODE_MODUPDATEFAILED;
-                            }
-                            finally
-                            {
-                                if (mutex != null)
-                                {
-                                    if (createdNew)
-                                    {
-                                        mutex.ReleaseMutex();
-                                        mutex.Dispose();
-                                    }
-                                    mutex = null;
-                                }
-                            }
-                        }
-
-                        if (ExitCode == EXITCODE_NORMALEXIT)
-                            LogProfileMessage($"Updated {updateModIds.Count} mods from cache.");
-                        else
-                            LogProfileMessage($"Updated {updateModIds.Count} mods from cache BUT there were errors.");
-                    }
-                    catch (Exception ex)
-                    {
-                        LogProfileError($"Unable to update the mods from cache.\r\n{ex.Message}");
-                        ExitCode = EXITCODE_MODUPDATEFAILED;
-                    }
-                }
-                else
-                {
-                    if (appModList.Sum(m => m.ModIdList.Count) > 0)
-                        LogProfileMessage("Mods are already up to date, no updates required.");
-                }
-
-                if (ExitCode != EXITCODE_NORMALEXIT)
-                    return;
-
                 LogProfileMessage("");
                 if (Config.Default.AutoUpdate_OverrideServerStartup)
                 {
@@ -1518,10 +1051,7 @@ namespace ServerManagerTool.Lib
             else
             {
                 LogProfileMessage("");
-                if (appModList.Sum(m => m.ModIdList.Count) > 0)
-                    LogProfileMessage("The server and mods files are already up to date, no updates required.");
-                else
-                    LogProfileMessage("The server files are already up to date, no updates required.");
+                LogProfileMessage("The server files are already up to date, no updates required.");
 
                 var serverVersion = GetServerVersion(_profile.InstallDirectory).ToString();
                 LogProfileMessage($"Server version: {serverVersion}");
@@ -1548,254 +1078,6 @@ namespace ServerManagerTool.Lib
             LogProfileMessage("Finished server update.");
             LogProfileMessage("-----------------------");
 
-            ExitCode = EXITCODE_NORMALEXIT;
-        }
-
-        private void UpdateModCache()
-        {
-            // get a list of mods to be processed
-            var appModList = GetModList();
-
-            // check if there are any mods to be processed
-            if (appModList.Count == 0 || appModList.Sum(m => m.ModIdList.Count) == 0)
-            {
-                ExitCode = EXITCODE_NORMALEXIT;
-                return;
-            }
-
-            LogMessage("");
-            LogMessage("----------------------------");
-            LogMessage("Starting mod cache update...");
-            LogMessage("----------------------------");
-            LogMessage($"Server Manager version: {App.Instance.Version}");
-
-            var totalMods = appModList.Sum(m => m.ModIdList.Count);
-            LogMessage($"Downloading mod information for {totalMods} mods from steam.");
-
-            var forceUpdateMods = Config.Default.ServerUpdate_ForceUpdateModsIfNoSteamInfo || string.IsNullOrWhiteSpace(SteamUtils.SteamWebApiKey);
-
-            // get the details of the mods to be processed.
-            var modDetails = SteamUtils.GetSteamModDetails(appModList);
-            if (modDetails == null)
-            {
-                if (forceUpdateMods)
-                {
-                    LogMessage($"Unable to download mod information from steam.");
-                    LogMessage("");
-                }
-                else
-                {
-                    LogError("Mods cannot be updated, unable to download steam information.");
-                    LogMessage($"If the mod update keeps failing try enabling the '{_globalizer.GetResourceString("GlobalSettings_ForceUpdateModsIfNoSteamInfoLabel")}' option in the settings window.");
-                    ExitCode = EXITCODE_CACHEMODDETAILSDOWNLOADFAILED;
-                    return;
-                }
-            }
-            else
-            {
-                LogMessage($"Downloaded mod information for {totalMods} mods from steam.");
-                LogMessage("");
-            }
-
-            // cycle through each mod finding which needs to be updated.
-            var updateMods = new List<(string AppId, List<string> ModIdList)>();
-            if (modDetails == null)
-            {
-                if (forceUpdateMods)
-                {
-                    LogMessage("All mods will be updated - unable to download steam information and force mod update is TRUE.");
-
-                    updateMods = appModList;
-                    modDetails = new PublishedFileDetailsResponse();
-                }
-            }
-            else
-            {
-                if (Config.Default.ServerUpdate_ForceUpdateMods)
-                {
-                    LogMessage("All mods will be updated - force mod update is TRUE.");
-                    updateMods = appModList;
-                }
-                else
-                {
-                    LogMessage("Mods will be selectively updated - force mod update is FALSE.");
-
-                    foreach (var appMod in appModList)
-                    {
-                        foreach (var modId in appMod.ModIdList)
-                        {
-                            var modDetail = modDetails.publishedfiledetails?.FirstOrDefault(m => m.publishedfileid.Equals(modId, StringComparison.OrdinalIgnoreCase));
-                            if (modDetail == null)
-                            {
-                                LogMessage($"Mod {modId} will not be updated - unable to download steam information.");
-                                continue;
-                            }
-
-                            var updateMod = updateMods.FirstOrDefault(m => m.AppId.Equals(appMod.AppId, StringComparison.OrdinalIgnoreCase));
-
-                            if (modDetail.time_updated == 0)
-                            {
-                                LogMessage($"Mod {modId} will be updated - mod is private.");
-                                if (updateMod == default)
-                                    updateMods.Add((appMod.AppId, new List<string> { modId }));
-                                else
-                                    updateMod.ModIdList.Add(modId);
-                            }
-                            else
-                            {
-                                if (modDetail.creator_app_id is null || modDetail.creator_app_id.Equals(appMod.AppId, StringComparison.OrdinalIgnoreCase))
-                                {
-                                    var cacheTimeFile = ModUtils.GetLatestModCacheTimeFile(modId, appMod.AppId);
-
-                                    // check if the mod needs to be updated
-                                    var steamLastUpdated = modDetail.time_updated;
-                                    var modCacheLastUpdated = ModUtils.GetModLatestTime(cacheTimeFile);
-                                    if (steamLastUpdated > modCacheLastUpdated)
-                                    {
-                                        LogMessage($"Mod {modId} will be updated - new version found.");
-                                        if (updateMod == default)
-                                            updateMods.Add((appMod.AppId, new List<string> { modId }));
-                                        else
-                                            updateMod.ModIdList.Add(modId);
-                                    }
-                                    else if (modCacheLastUpdated == 0)
-                                    {
-                                        LogMessage($"Mod {modId} will be updated - cache not versioned.");
-                                        if (updateMod == default)
-                                            updateMods.Add((appMod.AppId, new List<string> { modId }));
-                                        else
-                                            updateMod.ModIdList.Add(modId);
-                                    }
-                                    else
-                                    {
-                                        LogMessage($"Mod {modId} update skipped - cache contains the latest version.");
-                                    }
-                                }
-                                else
-                                {
-                                    LogMessage($"Mod {modId} update skipped - mod does not belong to this application.");
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            var steamCmdFile = SteamCmdUpdater.GetSteamCmdFile(Config.Default.DataDir);
-            if (string.IsNullOrWhiteSpace(steamCmdFile) || !File.Exists(steamCmdFile))
-            {
-                LogError($"SteamCMD could not be found. Expected location is {steamCmdFile}");
-                ExitCode = EXITCODE_STEAMCMDNOTFOUND;
-                return;
-            }
-
-            var totalUpdateMods = updateMods.Sum(m => m.ModIdList.Count);
-            var updateIndex = 0;
-
-            // cycle through each mod id.
-            foreach (var appMod in updateMods)
-            {
-                for (var index = 0; index < appMod.ModIdList.Count; index++)
-                {
-                    var modId = appMod.ModIdList[index];
-                    var modDetail = modDetails.publishedfiledetails?.FirstOrDefault(m => m.publishedfileid.Equals(modId, StringComparison.OrdinalIgnoreCase));
-
-                    var cacheTimeFile = ModUtils.GetLatestModCacheTimeFile(modId, appMod.AppId);
-                    var modCachePath = ModUtils.GetModCachePath(modId, appMod.AppId);
-
-                    var downloadSuccessful = false;
-
-                    DataReceivedEventHandler modOutputHandler = (s, e) =>
-                    {
-                        var dataValue = e.Data ?? string.Empty;
-                        LogMessage(dataValue);
-                        if (dataValue.StartsWith("Success."))
-                        {
-                            downloadSuccessful = true;
-                        }
-                    };
-
-                    updateIndex++;
-
-                    LogMessage("");
-                    LogMessage($"Started mod cache update {updateIndex} of {totalUpdateMods}");
-                    LogMessage($"{modId} - {modDetail?.title ?? "<unknown>"}");
-
-                    var attempt = 0;
-                    while (true)
-                    {
-                        attempt++;
-                        downloadSuccessful = !Config.Default.SteamCmdRedirectOutput;
-
-                        // update the mod cache
-                        var steamCmdArgs = string.Empty;
-                        if (Config.Default.SteamCmd_UseAnonymousCredentials)
-                            steamCmdArgs = SteamUtils.BuildSteamCmdArguments(false, Config.Default.SteamCmdInstallModArgsFormat, Config.Default.SteamCmd_AnonymousUsername, appMod.AppId, modId);
-                        else
-                            steamCmdArgs = SteamUtils.BuildSteamCmdArguments(false, Config.Default.SteamCmdInstallModArgsFormat, Config.Default.SteamCmd_Username, appMod.AppId, modId);
-                        var workingDirectory = Config.Default.DataDir;
-
-                        var SteamCmdIgnoreExitStatusCodes = SteamUtils.GetExitStatusList(Config.Default.SteamCmdIgnoreExitStatusCodes);
-
-                        var success = ServerUpdater.UpgradeModsAsync(steamCmdFile, steamCmdArgs, workingDirectory, null, null, SteamCmdIgnoreExitStatusCodes, Config.Default.SteamCmdRedirectOutput ? modOutputHandler : null, CancellationToken.None, SteamCMDProcessWindowStyle).Result;
-                        if (success && downloadSuccessful)
-                            // download was successful, exit loop and continue.
-                            break;
-
-                        // download was not successful, log a failed attempt.
-                        var logError = $"Mod {modId} cache update failed";
-                        if (Config.Default.AutoUpdate_RetryOnFail)
-                            logError += $" - attempt {attempt}.";
-                        LogError(logError);
-
-                        // check if we have reached the max failed attempt limit.
-                        if (!Config.Default.AutoUpdate_RetryOnFail || attempt >= MAXRETRIES_STEAM)
-                        {
-                            // failed max limit reached
-                            if (Config.Default.SteamCmdRedirectOutput)
-                            {
-                                LogMessage("Check steamcmd logs for more information why the mod cache update failed.\r\n");
-                                LogMessage($"If the mod cache update keeps failing try disabling the '{_globalizer.GetResourceString("GlobalSettings_SteamCmdRedirectOutputLabel")}' option in the Server Manager settings window.");
-                            }
-
-                            ExitCode = EXITCODE_CACHEMODUPDATEFAILED;
-                            return;
-                        }
-
-                        Task.Delay(5000).Wait();
-                    }
-
-                    // check if any of the mod files have changed.
-                    if (Directory.Exists(modCachePath))
-                    {
-                        var gotNewVersion = new DirectoryInfo(modCachePath).GetFiles("*.*", SearchOption.AllDirectories).Any(file => file.LastWriteTime >= _startTime);
-
-                        if (gotNewVersion)
-                            LogMessage("***** New version downloaded. *****");
-                        else
-                            LogMessage("No new version.");
-
-                        var steamLastUpdated = modDetail?.time_updated.ToString() ?? string.Empty;
-                        if (modDetail == null || modDetail.time_updated <= 0)
-                        {
-                            // get the version number from the steamcmd workshop file.
-                            steamLastUpdated = ModUtils.GetSteamWorkshopLatestTime(ModUtils.GetSteamWorkshopFile(appMod.AppId), modId).ToString();
-                        }
-
-                        File.WriteAllText(cacheTimeFile, steamLastUpdated);
-                        LogMessage($"Mod {modId} cache version: {steamLastUpdated}");
-                    }
-                    else
-                        LogMessage($"Mod {modId} cache does not exist.");
-
-                    LogMessage($"Finished mod {modId} cache update.");
-                }
-            }
-
-            LogMessage("---------------------------");
-            LogMessage("Finished mod cache update.");
-            LogMessage("---------------------------");
-            LogMessage("");
             ExitCode = EXITCODE_NORMALEXIT;
         }
 
@@ -2481,70 +1763,6 @@ namespace ServerManagerTool.Lib
             return LogManager.GetLogger(loggerName);
         }
 
-        private List<(string AppId, List<string> ModIdList)> GetModList()
-        {
-            var appMods = new List<(string AppId, List<string> ModIdList)>();
-
-            // ASA servers download their CurseForge mods themselves; there is no Workshop mod cache to maintain.
-            if (!SteamWorkshopModsSupported)
-                return appMods;
-
-            // check if we need to update the mods.
-            if (Config.Default.ServerUpdate_UpdateModsWhenUpdatingServer)
-            {
-                if (_profile == null)
-                {
-                    // get all the mods for all the profiles.
-                    foreach (var profile in _profiles.Keys)
-                    {
-                        // check if the profile is included int he auto update.
-                        if (!profile.EnableAutoUpdate)
-                            continue;
-
-                        var modIdList = new List<string>();
-
-                        if (!string.IsNullOrWhiteSpace(profile.ServerMapModId))
-                            modIdList.Add(profile.ServerMapModId);
-
-                        if (!string.IsNullOrWhiteSpace(profile.TotalConversionModId))
-                            modIdList.Add(profile.TotalConversionModId);
-
-                        modIdList.AddRange(profile.ServerModIds);
-
-                        var appMod = appMods.FirstOrDefault(m => m.AppId.Equals(profile.AppId, StringComparison.OrdinalIgnoreCase));
-                        if (appMod == default)
-                            appMods.Add((profile.AppId, modIdList));
-                        else
-                            appMod.ModIdList.AddRange(modIdList);
-                    }
-                }
-                else
-                {
-                    // get all the mods for only the specified profile.
-                    var modIdList = new List<string>();
-
-                    if (!string.IsNullOrWhiteSpace(_profile.ServerMapModId))
-                        modIdList.Add(_profile.ServerMapModId);
-
-                    if (!string.IsNullOrWhiteSpace(_profile.TotalConversionModId))
-                        modIdList.Add(_profile.TotalConversionModId);
-
-                    modIdList.AddRange(_profile.ServerModIds);
-
-                    appMods.Add((_profile.AppId, modIdList));
-                }
-            }
-
-            for (int i = 0; i < appMods.Count; i++)
-            {
-                var validatedModList = ModUtils.ValidateModList(appMods[i].ModIdList);
-
-                appMods[i].ModIdList.Clear();
-                appMods[i].ModIdList.AddRange(validatedModList);
-            }
-            return appMods;
-        }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Security", "SCS0006:Weak hashing function.", Justification = "<Pending>")]
         public static string GetMutexName(string directory)
         {
@@ -2738,7 +1956,6 @@ namespace ServerManagerTool.Lib
 
             var profiles = new Dictionary<ServerProfileSnapshot, ServerProfile>();
 
-            ServerRuntime.EnableUpdateModStatus = false;
             ServerProfile.EnableServerFilesWatcher = false;
 
             foreach (var profileFile in Directory.EnumerateFiles(Config.Default.ConfigDirectory, "*" + Config.Default.ProfileExtension))
@@ -3594,7 +2811,7 @@ namespace ServerManagerTool.Lib
                     SteamCMDProcessWindowStyle = ProcessWindowStyle.Hidden,
                     RestartIfShutdown = performRestart,
                 };
-                exitCode = app.PerformProfileShutdown(profile, performRestart, performUpdate ? ServerUpdateType.ServerAndMods : ServerUpdateType.None, true, false, CancellationToken.None);
+                exitCode = app.PerformProfileShutdown(profile, performRestart, performUpdate ? ServerUpdateType.Server : ServerUpdateType.None, true, false, CancellationToken.None);
 
                 if (profile.ServerUpdated)
                 {
@@ -3640,70 +2857,58 @@ namespace ServerManagerTool.Lib
                     // load all the profiles, do this at the very start in case the user changes one or more while the process is running.
                     LoadProfiles();
 
-                    // update the mods - needs to be done before the server cache updates
-                    ServerApp app = new ServerApp
+                    var branches = _profiles.Keys.Where(p => p.EnableAutoUpdate).Select(p => BranchSnapshot.Create(p)).Distinct(new BranchSnapshotComparer());
+                    var exitCodes = new ConcurrentDictionary<BranchSnapshot, int>();
+
+                    // update the server cache for each branch
+                    if (Config.Default.AutoUpdate_ParallelUpdate)
                     {
-                        ServerProcess = ServerProcessType.AutoUpdate,
-                        SteamCMDProcessWindowStyle = ProcessWindowStyle.Hidden
-                    };
-                    app.UpdateModCache();
-                    exitCode = app.ExitCode;
-
-                    if (exitCode == EXITCODE_NORMALEXIT)
-                    {
-                        var branches = _profiles.Keys.Where(p => p.EnableAutoUpdate).Select(p => BranchSnapshot.Create(p)).Distinct(new BranchSnapshotComparer());
-                        var exitCodes = new ConcurrentDictionary<BranchSnapshot, int>();
-
-                        // update the server cache for each branch
-                        if (Config.Default.AutoUpdate_ParallelUpdate)
-                        {
-                            Parallel.ForEach(branches, branch => {
-                                app = new ServerApp
-                                {
-                                    OutputLogs = true,
-                                    SendAlerts = true,
-                                    SendEmails = true,
-                                    ServerProcess = ServerProcessType.AutoUpdate,
-                                    SteamCMDProcessWindowStyle = ProcessWindowStyle.Hidden
-                                };
-                                app.PerformServerBranchUpdate(branch);
-                                exitCodes.TryAdd(branch, app.ExitCode);
-                            });
-                        }
-                        else
-                        {
-                            var delay = 0;
-                            foreach (var branch in branches)
+                        Parallel.ForEach(branches, branch => {
+                            var app = new ServerApp
                             {
-                                if (delay > 0)
-                                    Task.Delay(delay * 1000).Wait();
-                                delay = Math.Max(0, Config.Default.AutoUpdate_SequencialDelayPeriod);
-
-                                app = new ServerApp
-                                {
-                                    OutputLogs = true,
-                                    SendAlerts = true,
-                                    SendEmails = true,
-                                    ServerProcess = ServerProcessType.AutoUpdate,
-                                    SteamCMDProcessWindowStyle = ProcessWindowStyle.Hidden
-                                };
-                                app.PerformServerBranchUpdate(branch);
-                                exitCodes.TryAdd(branch, app.ExitCode);
-                            }
-                        }
-
-                        foreach (var profile in _profiles.Keys)
-                        {
-                            if (profile.ServerUpdated)
-                            {
-                                profile.Update(_profiles[profile]);
-                                _profiles[profile].SaveProfile();
-                            }
-                        }
-
-                        if (exitCodes.Any(c => !c.Value.Equals(EXITCODE_NORMALEXIT)))
-                            exitCode = EXITCODE_EXITWITHERRORS;
+                                OutputLogs = true,
+                                SendAlerts = true,
+                                SendEmails = true,
+                                ServerProcess = ServerProcessType.AutoUpdate,
+                                SteamCMDProcessWindowStyle = ProcessWindowStyle.Hidden
+                            };
+                            app.PerformServerBranchUpdate(branch);
+                            exitCodes.TryAdd(branch, app.ExitCode);
+                        });
                     }
+                    else
+                    {
+                        var delay = 0;
+                        foreach (var branch in branches)
+                        {
+                            if (delay > 0)
+                                Task.Delay(delay * 1000).Wait();
+                            delay = Math.Max(0, Config.Default.AutoUpdate_SequencialDelayPeriod);
+
+                            var app = new ServerApp
+                            {
+                                OutputLogs = true,
+                                SendAlerts = true,
+                                SendEmails = true,
+                                ServerProcess = ServerProcessType.AutoUpdate,
+                                SteamCMDProcessWindowStyle = ProcessWindowStyle.Hidden
+                            };
+                            app.PerformServerBranchUpdate(branch);
+                            exitCodes.TryAdd(branch, app.ExitCode);
+                        }
+                    }
+
+                    foreach (var profile in _profiles.Keys)
+                    {
+                        if (profile.ServerUpdated)
+                        {
+                            profile.Update(_profiles[profile]);
+                            _profiles[profile].SaveProfile();
+                        }
+                    }
+
+                    if (exitCodes.Any(c => !c.Value.Equals(EXITCODE_NORMALEXIT)))
+                        exitCode = EXITCODE_EXITWITHERRORS;
                 }
                 else
                 {

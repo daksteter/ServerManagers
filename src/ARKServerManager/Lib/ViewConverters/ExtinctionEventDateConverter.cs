@@ -1,4 +1,4 @@
-﻿using ServerManagerTool.Utils;
+﻿using ServerManagerTool.Common.Utils;
 using System;
 using System.Globalization;
 using System.Windows.Data;
@@ -14,7 +14,7 @@ namespace ServerManagerTool.Lib.ViewModel
             if (scaledValue <= 0)
                 return string.Empty;
 
-            var displayValue = ModUtils.UnixTimeStampToDateTime(scaledValue);
+            var displayValue = DateTimeUtils.UnixTimeStampToDateTime(scaledValue);
             return displayValue.ToString(CultureInfo.CurrentCulture);
         }
 

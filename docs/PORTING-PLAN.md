@@ -153,14 +153,22 @@ Decision: **plain CurseForge IDs** (no CurseForge API for now).
       the mod cache (`GetModList`), the 15-minute Steam mod status poll, and the Workshop checks in `Validate`.
 - [x] Hidden: total conversion row, mod details / mod update buttons, out-of-date mod panel, global mod update
       options, Server Monitor "Update mods", and the "Steam Web API key missing" banner.
-- [ ] Delete the now-dead code: `Utils/ModUtils.cs`, `WorkshopFilesWindow`, Workshop models in `ServerManager.Common/Model`,
-      `SteamUtils` mod/Workshop queries, mod sections of `ServerApp.UpgradeLocal` / `UpdateFiles` /
-      `UpdateModCache` / `GetModList`, `ServerRuntime.UpdateModStatus` / mod part of `UpgradeAsync`,
-      mod validation in `ServerProfile.Validate` (~5043–5281), mod update settings and UI.
-- [ ] Remove the Steam Web API key requirement (MainWindow red banner; `DisplayModInformation` gating).
-- [ ] `ModDetailsWindow`: rework into a simple CurseForge ID list editor. Optional: show names via the
-      CurseForge API (needs an API key — decision below).
+- [x] Deleted the Workshop code: `ModUtils`, `ModDetailsWindow`, `WorkshopFilesWindow`, `ModDetail*` and the
+      Workshop / published-file models, `SteamUtils` mod queries, the mod parts of `ServerApp.UpgradeLocal` /
+      `UpdateFiles`, `UpdateModCache`, `GetModList`, the mod cache step of the auto-update, `ServerRuntime`
+      mod status (counts, timer, alert) and the mod part of `UpgradeAsync` (no more `updateMods` parameters),
+      total conversions and official mods (profile, game data, UI), the Server Monitor "Update mods" command,
+      `ServerUpdateType.Mods`, the global mod update options and mod alert, and the Steam Web API key banner.
+      The auto-update's parallel branch loop now gets one `ServerApp` per branch (it shared one variable).
+- [x] Also removed the ASE-only launch options hidden in M1 (properties, reset/sync, controls) and the peer port.
+- [x] Removed 22 app settings nothing referenced any more (Workshop/mod options, the Steam-query status URL and
+      delay, `VersionFile`, and eight that were already unused upstream).
+- [ ] The Steam Web API key setting stays for now: the hidden player list (`ArkData`) still uses it for Steam
+      names; it goes with the `ArkData` replacement (M5).
+- [ ] `ModDetailsWindow` replacement: a simple CurseForge ID list editor. Optional: names via the CurseForge
+      API (needs an API key — decision below). For now mods are typed into the Mod IDs box.
 - [ ] Optional: `-passivemods=` support.
+- [ ] Game data files still contain `TotalConversions` / `OfficialMods` arrays (ignored now; M6 replaces the data).
 
 ### M4. Remove SOTF and PGM
 

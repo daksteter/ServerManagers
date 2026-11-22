@@ -92,17 +92,6 @@ namespace ServerManagerTool.Lib
                 gameMaps = maps1.ToArray();
             }
 
-            // total conversion mods
-            gameData.TotalConversions.AddRange(userGameData.TotalConversions);
-
-            if (gameData.TotalConversions.Count > 0)
-            {
-                var mods1 = totalConversions.ToList();
-                mods1.AddRange(gameData.TotalConversions.Select(item => new ComboBoxItem { ValueMember = item.ClassName, DisplayMember = item.Description }));
-
-                totalConversions = mods1.ToArray();
-            }
-
             // creature levels
             if (userGameData.CreatureLevels.Count > 0)
                 gameData.CreatureLevels = userGameData.CreatureLevels;
@@ -148,14 +137,6 @@ namespace ServerManagerTool.Lib
                 events1.AddRange(gameData.Events.Select(item => new ComboBoxItem { ValueMember = item.EventName, DisplayMember = item.Description }));
 
                 events = events1.ToArray();
-            }
-
-            // official mods
-            gameData.OfficialMods.AddRange(userGameData.OfficialMods);
-
-            if (gameData.OfficialMods.Count > 0)
-            {
-                ModUtils.AddOfficialMods(gameData.OfficialMods.Where(m => !string.IsNullOrWhiteSpace(m.ModId)).Select(m => m.ModId).ToList());
             }
 
             // rcon input modes
@@ -286,17 +267,6 @@ namespace ServerManagerTool.Lib
         public static IEnumerable<ComboBoxItem> GetGameMaps() => gameMaps.Select(d => d.Duplicate());
 
         public static string FriendlyMapNameForClass(string className, bool returnEmptyIfNotFound = false) => string.IsNullOrWhiteSpace(className) ? string.Empty : GlobalizedApplication.Instance.GetResourceString("Map_" + className) ?? gameData?.GameMaps?.FirstOrDefault(i => i.ClassName.Equals(className))?.Description ?? (returnEmptyIfNotFound ? string.Empty : className);
-        #endregion
-
-        #region Total Conversions
-        private static ComboBoxItem[] totalConversions = new[]
-        {
-            new ComboBoxItem { ValueMember="", DisplayMember="" },
-        };
-
-        public static IEnumerable<ComboBoxItem> GetTotalConversions() => totalConversions.Select(d => d.Duplicate());
-
-        public static string FriendlyTotalConversionNameForClass(string className, bool returnEmptyIfNotFound = false) => string.IsNullOrWhiteSpace(className) ? string.Empty : GlobalizedApplication.Instance.GetResourceString("TotalConv_" + className) ?? gameData?.TotalConversions?.FirstOrDefault(i => i.ClassName.Equals(className))?.Description ?? (returnEmptyIfNotFound ? string.Empty : className);
         #endregion
 
         #region Stats Multipliers

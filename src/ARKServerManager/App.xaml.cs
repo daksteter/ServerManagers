@@ -530,7 +530,6 @@ namespace ServerManagerTool
 
             if (e.Args.Any(a => a.StartsWith(Constants.ARG_SERVERMONITOR, StringComparison.OrdinalIgnoreCase)))
             {
-                ServerRuntime.EnableUpdateModStatus = false;
                 ServerProfile.EnableServerFilesWatcher = false;
 
                 StartupUri = new Uri("Windows/ServerMonitorWindow.xaml", UriKind.RelativeOrAbsolute);

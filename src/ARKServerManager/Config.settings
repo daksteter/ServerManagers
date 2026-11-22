@@ -5,14 +5,8 @@
     <Setting Name="SteamCmdUrl" Type="System.String" Scope="Application">
       <Value Profile="(Default)">https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip</Value>
     </Setting>
-    <Setting Name="SteamCmdExe" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">SteamCMD.exe</Value>
-    </Setting>
     <Setting Name="SteamCmdDir" Type="System.String" Scope="Application">
       <Value Profile="(Default)">SteamCMD</Value>
-    </Setting>
-    <Setting Name="SteamCmdZip" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">SteamCMD.zip</Value>
     </Setting>
     <Setting Name="SteamCmdInstallArgs" Type="System.String" Scope="Application">
       <Value Profile="(Default)">+login anonymous +quit</Value>
@@ -61,9 +55,6 @@
     </Setting>
     <Setting Name="ServerGameUserSettingsConfigFile" Type="System.String" Scope="Application">
       <Value Profile="(Default)">GameUserSettings.ini</Value>
-    </Setting>
-    <Setting Name="IniExtension" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">.ini</Value>
     </Setting>
     <Setting Name="LoadProfileExtensionList" Type="System.String" Scope="Application">
       <Value Profile="(Default)">*.profile,*.ini</Value>
@@ -188,26 +179,8 @@
     <Setting Name="LauncherFile" Type="System.String" Scope="Application">
       <Value Profile="(Default)">RunServer.cmd</Value>
     </Setting>
-    <Setting Name="SteamCmdInstallModArgsFormat" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">+login {0} +workshop_download_item {1} {2} +quit</Value>
-    </Setting>
-    <Setting Name="AppSteamWorkshopFolderRelativePath" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">steamapps\workshop\content\{0}\</Value>
-    </Setting>
-    <Setting Name="ServerModsRelativePath" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">ShooterGame\Content\Mods</Value>
-    </Setting>
     <Setting Name="AutoUpdate_CacheDir" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="ServerUpdate_UpdateModsWhenUpdatingServer" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="ServerUpdate_ForceUpdateMods" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="ServerUpdate_ForceCopyMods" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="WebAlarmFile" Type="System.String" Scope="Application">
       <Value Profile="(Default)">AlarmPostCredentials.txt</Value>
@@ -223,9 +196,6 @@
     </Setting>
     <Setting Name="StyleName" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="WorkshopCacheFile" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">workshopcache_{0}.json</Value>
     </Setting>
     <Setting Name="Email_Host" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
@@ -269,12 +239,6 @@
     <Setting Name="SteamCmdAuthenticateArgs" Type="System.String" Scope="Application">
       <Value Profile="(Default)">+login {0} {1} +quit</Value>
     </Setting>
-    <Setting Name="SteamWorkshopFolderRelativePath" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">steamapps\workshop</Value>
-    </Setting>
-    <Setting Name="AppSteamWorkshopFile" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">appworkshop_{0}.acf</Value>
-    </Setting>
     <Setting Name="SteamCmd_Password" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
@@ -298,9 +262,6 @@
     </Setting>
     <Setting Name="ServerAppIdFile" Type="System.String" Scope="Application">
       <Value Profile="(Default)">steam_appid.txt</Value>
-    </Setting>
-    <Setting Name="ClustersDir" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Clusters</Value>
     </Setting>
     <Setting Name="LatestASMBetaVersionUrl" Type="System.String" Scope="Application">
       <Value Profile="(Default)" />
@@ -335,9 +296,6 @@
     <Setting Name="DefaultServerFolderName" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Server</Value>
     </Setting>
-    <Setting Name="ServerStatusUrlFormat" Type="System.String" Scope="Application">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="BackupDir" Type="System.String" Scope="Application">
       <Value Profile="(Default)">_backup_</Value>
     </Setting>
@@ -358,9 +316,6 @@
     </Setting>
     <Setting Name="SteamAPIKeyUrl" Type="System.String" Scope="Application">
       <Value Profile="(Default)">https://steamcommunity.com/dev/apikey</Value>
-    </Setting>
-    <Setting Name="ServerUpdate_ForceUpdateModsIfNoSteamInfo" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="AutoBackup_EnableBackup" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
@@ -388,9 +343,6 @@
     </Setting>
     <Setting Name="AutoUpdate_ShowUpdateReason" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="BackupServerExtension" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">.asmbak</Value>
     </Setting>
     <Setting Name="ScheduledTasksCheckTime" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">5</Value>
@@ -440,9 +392,6 @@
     <Setting Name="Alert_UpdateProcessError" Type="System.String" Scope="User">
       <Value Profile="(Default)">The server update process was performed but an error occurred.</Value>
     </Setting>
-    <Setting Name="Alert_ModUpdateDetected" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Mod updates have been detected:</Value>
-    </Setting>
     <Setting Name="ServerManagerPluginUrl" Type="System.String" Scope="Application">
       <Value Profile="(Default)">https://arkservermanager.freeforums.net/board/22/plugins</Value>
     </Setting>
@@ -463,9 +412,6 @@
     </Setting>
     <Setting Name="UpdaterFile" Type="System.String" Scope="Application">
       <Value Profile="(Default)">ServerManagerUpdater.exe</Value>
-    </Setting>
-    <Setting Name="PlayerImageFileExtension" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">.png</Value>
     </Setting>
     <Setting Name="ServerShutdown_WorldSaveDelay" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">60</Value>
@@ -563,9 +509,6 @@
     <Setting Name="ServerStatus_ShowActionConfirmation" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="DefaultStyleFile" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Styles\Default.xaml</Value>
-    </Setting>
     <Setting Name="ScheduledTaskFolder" Type="System.String" Scope="Application">
       <Value Profile="(Default)">JVHArkAscendedServerManager</Value>
     </Setting>
@@ -617,9 +560,6 @@
     <Setting Name="ServerStatusWatcher_LocalStatusQueryDelay" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">5000</Value>
     </Setting>
-    <Setting Name="ServerStatusWatcher_RemoteStatusQueryDelay" Type="System.Int32" Scope="Application">
-      <Value Profile="(Default)">60000</Value>
-    </Setting>
     <Setting Name="MainWindow_MinimizeToTray" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
@@ -632,17 +572,11 @@
     <Setting Name="SectionCustomEngineSettingsEnabled" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="ServerMonitorMessageOutput_Height" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">100</Value>
-    </Setting>
     <Setting Name="Alert_ServerStartedMessageIncludeIPandPort" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="ManagePublicIPAutomatically" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="VersionFile" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">version.txt</Value>
     </Setting>
     <Setting Name="SectionPreventTransferOverridesIsExpanded" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>

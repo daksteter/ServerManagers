@@ -20,7 +20,7 @@ namespace ServerManagerTool.Lib.ViewModel
                 if (!string.IsNullOrWhiteSpace(name))
                     return name;
 
-                var mapName = ModUtils.GetMapName(valueString);
+                var mapName = ServerProfile.GetMapName(valueString);
 
                 // check if the name is stored in the globalization file
                 name = GlobalizedApplication.Instance.GetResourceString($"Map_{mapName}");

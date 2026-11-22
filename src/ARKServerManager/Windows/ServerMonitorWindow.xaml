@@ -107,7 +107,6 @@
                     <controls:DropDownButton.Menu>
                         <ContextMenu>
                             <MenuItem Header="{DynamicResource ServerMonitor_UpdateServersButtonLabel}" Command="{Binding UpdateServersCommand}" CommandParameter="{Binding}"/>
-                            <MenuItem Visibility="Collapsed" Header="{DynamicResource ServerMonitor_UpdateModsButtonLabel}" Command="{Binding UpdateModsCommand}" CommandParameter="{Binding}"/>
                         </ContextMenu>
                     </controls:DropDownButton.Menu>
                 </controls:DropDownButton>

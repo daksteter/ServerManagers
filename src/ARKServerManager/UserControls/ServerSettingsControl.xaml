@@ -200,39 +200,6 @@
                                 <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Website.ico,Size=32}"/>
                             </Button>
 
-                            <StackPanel Grid.Column="4" DataContext="{Binding Runtime, ElementName=SettingsControl}" Orientation="Horizontal" VerticalAlignment="Center">
-                                <StackPanel.Style>
-                                    <Style TargetType="{x:Type StackPanel}">
-                                        <Setter Property="Visibility" Value="Visible"/>
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding TotalModCount}" Value="0">
-                                                <Setter Property="Visibility" Value="Collapsed"/>
-                                            </DataTrigger>
-                                            <DataTrigger Binding="{Binding DisplayModInformation, ElementName=SettingsControl}" Value="False">
-                                                <Setter Property="Visibility" Value="Collapsed"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </StackPanel.Style>
-
-                                <Label  FontSize="15" Content="{DynamicResource ServerSettings_OutOfDateModsLabel}" ToolTip="{DynamicResource ServerSettings_OutOfDateModsTooltip}"/>
-                                <Label  FontSize="15" Content="{Binding OutOfDateModCount, FallbackValue=0}">
-                                    <Label.Style>
-                                        <Style BasedOn="{StaticResource {x:Type Label}}" TargetType="{x:Type Label}">
-                                            <Setter Property="Foreground" Value="Black"/>
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding OutOfDateModCount, FallbackValue=0, Converter={cc:GreaterThanIntValueConverter 0}}" Value="true">
-                                                    <Setter Property="Foreground" Value="Red"/>
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Label.Style>
-                                </Label>
-                                <Button Grid.Column="2" Click="OutOfDateModUpdate_Click" ToolTip="{DynamicResource ServerSettings_OutOfDateModsButtonTooltip}" Style="{StaticResource ButtonStyle1}">
-                                    <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Reload.ico,Size=32}"/>
-                                </Button>
-                            </StackPanel>
-
                             <Button Grid.Column="6" Click="ValidateProfile_Click" ToolTip="{DynamicResource ServerSettings_ValidateProfileTooltip}" Style="{StaticResource ButtonStyle1}">
                                 <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Validate.ico,Size=32}"/>
                             </Button>
@@ -608,9 +575,6 @@
                                         <Label   Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Content="{DynamicResource ServerSettings_ServerPortLabel}" ToolTip="{DynamicResource ServerSettings_ServerPortTooltip}" Foreground="{DynamicResource UnSyncedSetting}"/>
                                         <TextBox Grid.Row="1" Grid.Column="1" Margin="1" Width="100" VerticalContentAlignment="Center" HorizontalAlignment="Left" Text="{Binding ServerPort, Mode=TwoWay, Converter={cc:IntRangeValueConverter 1, 65535}, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True}" SourceUpdated="Ports_SourceUpdated" ToolTip="{DynamicResource ServerSettings_ServerPortTooltip}"/>
 
-                                        <Label   Grid.Row="1" Grid.Column="2" Visibility="Collapsed" VerticalAlignment="Center" Content="{DynamicResource ServerSettings_ServerPeerPortLabel}" ToolTip="{DynamicResource ServerSettings_ServerPeerPortTooltip}" Foreground="{DynamicResource UnSyncedSetting}"/>
-                                        <TextBox Grid.Row="1" Grid.Column="3" Visibility="Collapsed" Margin="1" Width="100" VerticalContentAlignment="Center" HorizontalAlignment="Left" Text="{Binding ServerPeerPort}" ToolTip="{DynamicResource ServerSettings_ServerPeerPortTooltip}" IsEnabled="False"/>
-
                                         <Label   Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Content="{DynamicResource ServerSettings_QueryPortLabel}" ToolTip="{DynamicResource ServerSettings_QueryPortTooltip}" Foreground="{DynamicResource UnSyncedSetting}"/>
                                         <TextBox Grid.Row="1" Grid.Column="3" Margin="1" Width="100" VerticalContentAlignment="Center" HorizontalAlignment="Left" Text="{Binding QueryPort, Converter={cc:IntRangeValueConverter 1, 65535}, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True}" SourceUpdated="Ports_SourceUpdated" ToolTip="{DynamicResource ServerSettings_QueryPortTooltip}"/>
                                     </Grid>
@@ -710,23 +674,6 @@
                                             </Button.Style>
                                         </Button>
 
-                                        <!-- ASA has no total conversions or Workshop mod tools: mods are CurseForge IDs passed as -mods= -->
-                                        <Label   Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Visibility="Collapsed" Content="{DynamicResource ServerSettings_TotalConversionLabel}" ToolTip="{DynamicResource ServerSettings_TotalConversionTooltip}" VerticalAlignment="Center" Foreground="{DynamicResource UnSyncedSetting}"/>
-                                        <ComboBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="1" Name="TotalConversionComboBox" Visibility="Collapsed" ItemsSource="{Binding BaseTotalConversions, ElementName=SettingsControl}" SelectedValue="{Binding TotalConversionModId, Mode=TwoWay, UpdateSourceTrigger=Explicit}" SelectedValuePath="ValueMember" DisplayMemberPath="DisplayMember" IsEditable="True" ToolTip="{DynamicResource ServerSettings_TotalConversionTooltip}" LostFocus="ComboBoxItemList_LostFocus" PreviewMouseWheel="ComboBox_PreviewMouseWheel"/>
-                                        <Button  Grid.Row="1" Grid.Column="3" Width="22" Height="22" Margin="5,1,0,0" Visibility="Collapsed" ToolTip="{DynamicResource ServerSettings_FindTotalConversionMapNameTooltip}" HorizontalAlignment="Left" Command="{Binding ResetActionCommand, ElementName=SettingsControl}" CommandParameter="{x:Static enum:ServerSettingsResetAction.MapNameTotalConversionProperty}">
-                                            <Button.Style>
-                                                <Style BasedOn="{StaticResource ButtonStyle1}" TargetType="{x:Type Button}">
-                                                    <Setter Property="Visibility" Value="Visible"/>
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding DisplayModInformation, ElementName=SettingsControl}" Value="False">
-                                                            <Setter Property="Visibility" Value="Hidden"/>
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </Button.Style>
-                                            <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Find.ico,Size=32}"/>
-                                        </Button>
-
                                         <Label   Grid.Row="2" Grid.Column="0" Content="{DynamicResource ServerSettings_ModIdsLabel}" Grid.ColumnSpan="2" ToolTip="{DynamicResource ServerSettings_ModIdsTooltip}" VerticalAlignment="Center" Foreground="{DynamicResource UnSyncedSetting}"/>
                                         <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="6" Margin="1" ToolTip="{DynamicResource ServerSettings_ModIdsTooltip}">
                                             <Validation.ErrorTemplate>
@@ -745,34 +692,6 @@
                                                 </Binding>
                                             </TextBox.Text>
                                         </TextBox>
-                                        <Button  Grid.Row="2" Grid.Column="7" ToolTip="{DynamicResource ServerSettings_ModDetailsTooltip}" Click="OpenModDetails_Click">
-                                            <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Find.ico,Size=32}"/>
-                                            <Button.Style>
-                                                <Style BasedOn="{StaticResource ButtonStyle1}" TargetType="{x:Type Button}">
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding DisplayModInformation, ElementName=SettingsControl}" Value="False">
-                                                            <Setter Property="Visibility" Value="Hidden"/>
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </Button.Style>
-                                        </Button>
-                                        <Button  Grid.Row="2" Grid.Column="8" DataContext="{Binding Runtime, ElementName=SettingsControl}" Visibility="Collapsed" ToolTip="{DynamicResource ServerSettings_ModUpgradeTooltip}" Click="ModUpgrade_Click">
-                                            <Image Source="{com:Icon Path=/JVH Ark Ascended Server Manager;component/Art/Download.ico,Size=32}"/>
-                                            <Button.Style>
-                                                <Style BasedOn="{StaticResource ButtonStyle1}" TargetType="{x:Type Button}">
-                                                    <Setter Property="IsEnabled" Value="False"/>
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Status}" Value="{x:Static ce:ServerStatus.Stopped}">
-                                                            <Setter Property="IsEnabled" Value="True"/>
-                                                        </DataTrigger>
-                                                        <DataTrigger Binding="{Binding Status}" Value="{x:Static ce:ServerStatus.Uninstalled}">
-                                                            <Setter Property="IsEnabled" Value="True"/>
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </Button.Style>
-                                        </Button>
                                     </Grid>
                                 </GroupBox>
 
@@ -840,7 +759,6 @@
                                             <ColumnDefinition Width="1*"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <cctl:CheckBoxAndTextBlock Grid.Row="0" Grid.Column="0" Margin="5,5,5,0" Visibility="Collapsed" IsChecked="{Binding NewSaveFormat, Mode=TwoWay}" Text="{DynamicResource ServerSettings_NewSaveFormatLabel}" VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="{DynamicResource ServerSettings_NewSaveFormatTooltip}"/>
                                         <cctl:CheckBoxAndTextBlock Grid.Row="0" Grid.Column="1" Margin="5,5,5,0" IsChecked="{Binding UseStore, Mode=TwoWay}" Text="{DynamicResource ServerSettings_UseStoreLabel}" VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="{DynamicResource ServerSettings_UseStoreTooltip}"/>
                                         <cctl:CheckBoxAndTextBlock Grid.Row="0" Grid.Column="2" Margin="5,5,5,0" IsChecked="{Binding BackupTransferPlayerDatas, Mode=TwoWay}" Text="{DynamicResource ServerSettings_BackupTransferPlayerDatasLabel}" VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="{DynamicResource ServerSettings_BackupTransferPlayerDatasTooltip}"/>
                                     </Grid>
@@ -1015,18 +933,13 @@
 
                                         <cctl:CheckBoxAndTextBlock Grid.Row="5" Grid.Column="0" Margin="5,5,5,0" Grid.ColumnSpan="2" IsChecked="{Binding DisableValveAntiCheatSystem, Mode=TwoWay}" Text="{DynamicResource ServerSettings_DisableVACLabel}" VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="{DynamicResource ServerSettings_DisableVACTooltip}"/>
                                         <cctl:CheckBoxAndTextBlock Grid.Row="6" Grid.Column="0" Margin="5,5,5,0" Grid.ColumnSpan="2" IsChecked="{Binding UseBattlEye, Mode=TwoWay}" Text="{DynamicResource ServerSettings_UseBattlEyeLabel}" VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="{DynamicResource ServerSettings_UseBattlEyeTooltip}"/>
-                                        <cctl:CheckBoxAndTextBlock Grid.Row="7" Grid.Column="0" Margin="5,5,5,0" Grid.ColumnSpan="2" Visibility="Collapsed" IsChecked="{Binding DisablePlayerMovePhysicsOptimization, Mode=TwoWay}" Text="{DynamicResource ServerSettings_DisablePMVOptimizationLabel}" VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="{DynamicResource ServerSettings_DisablePMVOptimizationTooltip}"/>
                                         <cctl:CheckBoxAndTextBlock Grid.Row="8" Grid.Column="0" Margin="5,5,5,0" Grid.ColumnSpan="2" IsChecked="{Binding OutputServerLog, Mode=TwoWay}" Text="{DynamicResource ServerSettings_OutputServerLogLabel}" VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="{DynamicResource ServerSettings_OutputServerLogTooltip}"/>
                                         <cctl:CheckBoxAndTextBlock Grid.Row="9" Grid.Column="0" Margin="5,5,5,0" Grid.ColumnSpan="2" IsChecked="{Binding UseNoHangDetection, Mode=TwoWay}" Text="{DynamicResource ServerSettings_UseNoHangDetectionLabel}" VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="{DynamicResource ServerSettings_UseNoHangDetectionTooltip}"/>
                                         <cctl:CheckBoxAndTextBlock Grid.Row="10" Grid.Column="0" Margin="5,5,5,0" Grid.ColumnSpan="2" IsChecked="{Binding NoDinos, Mode=TwoWay}" Text="{DynamicResource ServerSettings_NoDinosLabel}" VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="{DynamicResource ServerSettings_NoDinosTooltip}"/>
                                         <cctl:CheckBoxAndTextBlock Grid.Row="11" Grid.Column="0" Margin="5,5,5,0" Grid.ColumnSpan="2" IsChecked="{Binding NoUnderMeshChecking, Mode=TwoWay}" Text="{DynamicResource ServerSettings_NoUnderMeshCheckingLabel}" VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="{DynamicResource ServerSettings_NoUnderMeshCheckingTooltip}"/>
                                         <cctl:CheckBoxAndTextBlock Grid.Row="12" Grid.Column="0" Margin="5,5,5,0" Grid.ColumnSpan="2" IsChecked="{Binding NoUnderMeshKilling, Mode=TwoWay}" Text="{DynamicResource ServerSettings_NoUnderMeshKillingLabel}" VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="{DynamicResource ServerSettings_NoUnderMeshKillingTooltip}"/>
-                                        <cctl:CheckBoxAndTextBlock Grid.Row="13" Grid.Column="0" Margin="5,5,5,0" Grid.ColumnSpan="2" Visibility="Collapsed" IsChecked="{Binding UseVivox, Mode=TwoWay}" Text="{DynamicResource ServerSettings_UseVivoxLabel}" VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="{DynamicResource ServerSettings_UseVivoxTooltip}"/>
                                         <cctl:CheckBoxAndTextBlock Grid.Row="14" Grid.Column="0" Margin="5,5,5,0" Grid.ColumnSpan="2" IsChecked="{Binding AllowSharedConnections, Mode=TwoWay}" Text="{DynamicResource ServerSettings_AllowSharedConnectionsLabel}" VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="{DynamicResource ServerSettings_AllowSharedConnectionsTooltip}"/>
-                                        <cctl:CheckBoxAndTextBlock Grid.Row="15" Grid.Column="0" Margin="5,5,5,0" Grid.ColumnSpan="2" Visibility="Collapsed" IsChecked="{Binding SecureSendArKPayload, Mode=TwoWay}" Text="{DynamicResource ServerSettings_SecureSendArKPayloadLabel}" VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="{DynamicResource ServerSettings_SecureSendArKPayloadTooltip}"/>
                                         <cctl:CheckBoxAndTextBlock Grid.Row="16" Grid.Column="0" Margin="5,5,5,0" Grid.ColumnSpan="2" IsChecked="{Binding UseItemDupeCheck, Mode=TwoWay}" Text="{DynamicResource ServerSettings_UseItemDupeCheckLabel}" VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="{DynamicResource ServerSettings_UseItemDupeCheckTooltip}"/>
-                                        <cctl:CheckBoxAndTextBlock Grid.Row="17" Grid.Column="0" Margin="5,5,5,0" Grid.ColumnSpan="2" Visibility="Collapsed" IsChecked="{Binding UseSecureSpawnRules, Mode=TwoWay}" Text="{DynamicResource ServerSettings_UseSecureSpawnRulesLabel}" VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="{DynamicResource ServerSettings_UseSecureSpawnRulesTooltip}"/>
-
                                         <cctl:CheckBoxAndTextBlock Grid.Row="18" Grid.Column="0" Grid.ColumnSpan="4" Margin="5,5,5,0" IsChecked="{Binding ForceRespawnDinos, Mode=TwoWay}" Text="{DynamicResource ServerSettings_ForceRespawnDinosLabel}" VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="{DynamicResource ServerSettings_ForceRespawnDinosTooltip}"/>
                                         <cctl:CheckBoxAndTextBlock Grid.Row="19" Grid.Column="0" Grid.ColumnSpan="4" Margin="5,5,5,0" IsChecked="{Binding EnableServerAutoForceRespawnWildDinosInterval, Mode=TwoWay}" Text="{DynamicResource ServerSettings_EnableServerAutoForceRespawnWildDinosIntervalLabel}" VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="{DynamicResource ServerSettings_EnableServerAutoForceRespawnWildDinosIntervalTooltip}"/>
 
@@ -1058,17 +971,10 @@
                                         <TextBox Grid.Row="23" Grid.Column="2" Margin="1,1,0,1" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding CrossArkClusterId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True}" ToolTip="{DynamicResource ServerSettings_CrossArkClusterIdTooltip}"/>
                                         <cctl:CheckBoxAndTextBlock Grid.Row="23" Grid.Column="3" Margin="5,1,0,0" IsEnabled="{Binding CrossArkClusterId, Converter={StaticResource HasStringValueConverter}, FallbackValue=false}" IsChecked="{Binding ClusterDirOverride, Mode=TwoWay}" Text="{DynamicResource ServerSettings_ClusterDirOverrideLabel}" ToolTip="{DynamicResource ServerSettings_ClusterDirOverrideTooltip}" VerticalAlignment="Center" HorizontalAlignment="Left" UseLayoutRounding="False" Foreground="{DynamicResource UnSyncedSetting}"/>
 
-                                        <cctl:CheckBoxAndTextBlock Grid.Row="5" Grid.Column="2" Margin="5,5,5,0" Grid.ColumnSpan="2" Visibility="Collapsed" IsChecked="{Binding DisableAntiSpeedHackDetection, Mode=TwoWay}" Text="{DynamicResource ServerSettings_DisableAntiSpeedHackLabel}" VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="{DynamicResource ServerSettings_DisableAntiSpeedHackTooltip}"/>
-                                        <cctl:AnnotatedSlider Grid.Row="6" Grid.Column="2" Margin="20,1,5,1" Grid.ColumnSpan="2" Label="{DynamicResource ServerSettings_AntiSpeedHackBiasLabel}" Visibility="Collapsed" Value="{Binding SpeedHackBias}" Suffix="{DynamicResource ServerSettings_AntiSpeedHackBiasUnits}" Minimum="0.0" Maximum="1.0" SmallChange="0.1" LargeChange="0.25" TickFrequency="60" LabelRelativeWidth="Auto" SliderRelativeWidth="15*" SuffixRelativeWidth="Auto" ToolTip="{DynamicResource ServerSettings_AntiSpeedHackBiasTooltip}" />
                                         <cctl:CheckBoxAndTextBlock Grid.Row="7" Grid.Column="2" Margin="5,5,5,0" Grid.ColumnSpan="2" IsChecked="{Binding ForceDirectX10, Mode=TwoWay}" Text="{DynamicResource ServerSettings_ForceDirectX10Label}" VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="{DynamicResource ServerSettings_ForceDirectX10Tooltip}"/>
                                         <cctl:CheckBoxAndTextBlock Grid.Row="8" Grid.Column="2" Margin="5,5,5,0" Grid.ColumnSpan="2" IsChecked="{Binding ForceShaderModel4, Mode=TwoWay}" Text="{DynamicResource ServerSettings_ForceShaderModel4Label}" VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="{DynamicResource ServerSettings_ForceShaderModel4Tooltip}"/>
                                         <cctl:CheckBoxAndTextBlock Grid.Row="9" Grid.Column="2" Margin="5,5,5,0" Grid.ColumnSpan="2" IsChecked="{Binding ForceLowMemory, Mode=TwoWay}" Text="{DynamicResource ServerSettings_ForceLowMemoryLabel}" VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="{DynamicResource ServerSettings_ForceLowMemoryTooltip}"/>
-                                        <cctl:CheckBoxAndTextBlock Grid.Row="10" Grid.Column="2" Margin="5,5,5,0" Grid.ColumnSpan="2" Visibility="Collapsed" IsChecked="{Binding ForceNoManSky, Mode=TwoWay}" Text="{DynamicResource ServerSettings_ForceNoManSkyLabel}" VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="{DynamicResource ServerSettings_ForceNoManSkyTooltip}"/>
-                                        <cctl:CheckBoxAndTextBlock Grid.Row="11" Grid.Column="2" Margin="5,5,5,0" Grid.ColumnSpan="2" Visibility="Collapsed" IsChecked="{Binding UseNoMemoryBias, Mode=TwoWay}" Text="{DynamicResource ServerSettings_UseNoMemoryBiasLabel}" VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="{DynamicResource ServerSettings_UseNoMemoryBiasTooltip}"/>
                                         <cctl:CheckBoxAndTextBlock Grid.Row="12" Grid.Column="2" Margin="5,5,5,0" Grid.ColumnSpan="2" IsChecked="{Binding StasisKeepControllers, Mode=TwoWay}" Text="{DynamicResource ServerSettings_StasisKeepControllersLabel}" VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="{DynamicResource ServerSettings_StasisKeepControllersTooltip}"/>
-                                        <cctl:CheckBoxAndTextBlock Grid.Row="13" Grid.Column="2" Margin="5,5,5,0" Grid.ColumnSpan="2" Visibility="Collapsed" IsChecked="{Binding ServerAllowAnsel, Mode=TwoWay}" Text="{DynamicResource ServerSettings_ServerAllowAnselLabel}" VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="{DynamicResource ServerSettings_ServerAllowAnselTooltip}"/>
-                                        <cctl:CheckBoxAndTextBlock Grid.Row="14" Grid.Column="2" Margin="5,5,5,0" Grid.ColumnSpan="2" Visibility="Collapsed" IsChecked="{Binding StructureMemoryOptimizations, Mode=TwoWay}" Text="{DynamicResource ServerSettings_StructureMemoryOptimizationsLabel}" VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="{DynamicResource ServerSettings_StructureMemoryOptimizationsTooltip}"/>
-                                        <cctl:CheckBoxAndTextBlock Grid.Row="15" Grid.Column="2" Margin="5,5,5,0" Grid.ColumnSpan="2" Visibility="Collapsed" IsChecked="{Binding UseStructureStasisGrid, Mode=TwoWay}" Text="{DynamicResource ServerSettings_UseStructureStasisGridLabel}" VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="{DynamicResource ServerSettings_UseStructureStasisGridTooltip}"/>
                                         <!-- ASA: -ServerPlatform replaces the ASE crossplay, Epic-only and public-IP-for-Epic options. -->
                                         <WrapPanel Grid.Row="16" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="2" Margin="5,5,5,0" VerticalAlignment="Center" ToolTip="{DynamicResource ServerSettings_ServerPlatformTooltip}">
                                             <Label Padding="0,0,10,0" VerticalAlignment="Center" Content="{DynamicResource ServerSettings_ServerPlatformLabel}"/>
@@ -1612,54 +1518,6 @@
 
                                         <Label    Grid.Row="0" Grid.Column="0" Content="{DynamicResource ServerSettings_EventNameLabel}" VerticalAlignment="Center" ToolTip="{DynamicResource ServerSettings_EventNameTooltip}"/>
                                         <ComboBox Grid.Row="0" Grid.Column="1" Margin="1" Name="EventComboBox" ItemsSource="{Binding BaseEvents, ElementName=SettingsControl}" SelectedValue="{Binding EventName, Mode=TwoWay, UpdateSourceTrigger=Explicit}" SelectedValuePath="ValueMember" DisplayMemberPath="DisplayMember" IsEditable="True" ToolTip="{DynamicResource ServerSettings_EventNameTooltip}" LostFocus="ComboBoxItemList_LostFocus" PreviewMouseWheel="ComboBox_PreviewMouseWheel"/>
-
-                                        <cctl:AnnotatedSlider Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Label="{DynamicResource ServerSettings_EventColorsChanceOverrideLabel}" Visibility="Collapsed" Value="{Binding EventColorsChanceOverride}" Suffix="{Binding EventColorsChanceOverride, Converter={StaticResource FloatToPercentageConverter}}" Minimum="0" Maximum="1" SmallChange="0.05" LargeChange="0.1" TickFrequency="0.1" ToolTip="{DynamicResource ServerSettings_EventColorsChanceOverrideTooltip}"/>
-
-                                        <Label Grid.Row="2" Grid.Column="0" Visibility="Collapsed" Content="{DynamicResource ServerSettings_NewYear1UTCLabel}" ToolTip="{DynamicResource ServerSettings_NewYear1UTCTooltip}" VerticalAlignment="Center"/>
-                                        <TextBox Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Visibility="Collapsed" ToolTip="{DynamicResource ServerSettings_NewYear1UTCTooltip}">
-                                            <Validation.ErrorTemplate>
-                                                <ControlTemplate>
-                                                    <StackPanel>
-                                                        <!-- Placeholder for the TextBox itself -->
-                                                        <AdornedElementPlaceholder x:Name="textBox"/>
-                                                        <TextBlock Text="{Binding [0].ErrorContent}" Background="Red" Foreground="White"/>
-                                                    </StackPanel>
-                                                </ControlTemplate>
-                                            </Validation.ErrorTemplate>
-                                            <TextBox.Text>
-                                                <Binding Path="NewYear1UTC">
-                                                    <Binding.Converter>
-                                                        <cc:NullableDateTimeToStringConverter />
-                                                    </Binding.Converter>
-                                                    <Binding.ValidationRules>
-                                                        <cvr:DateTimeValidationRule ValidatesOnTargetUpdated="true" />
-                                                    </Binding.ValidationRules>
-                                                </Binding>
-                                            </TextBox.Text>
-                                        </TextBox>
-
-                                        <Label Grid.Row="2" Grid.Column="2" Visibility="Collapsed" Content="{DynamicResource ServerSettings_NewYear2UTCLabel}" ToolTip="{DynamicResource ServerSettings_NewYear2UTCTooltip}" VerticalAlignment="Center"/>
-                                        <TextBox Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" Visibility="Collapsed" ToolTip="{DynamicResource ServerSettings_NewYear2UTCTooltip}">
-                                            <Validation.ErrorTemplate>
-                                                <ControlTemplate>
-                                                    <StackPanel>
-                                                        <!-- Placeholder for the TextBox itself -->
-                                                        <AdornedElementPlaceholder x:Name="textBox"/>
-                                                        <TextBlock Text="{Binding [0].ErrorContent}" Background="Red" Foreground="White"/>
-                                                    </StackPanel>
-                                                </ControlTemplate>
-                                            </Validation.ErrorTemplate>
-                                            <TextBox.Text>
-                                                <Binding Path="NewYear2UTC">
-                                                    <Binding.Converter>
-                                                        <cc:NullableDateTimeToStringConverter />
-                                                    </Binding.Converter>
-                                                    <Binding.ValidationRules>
-                                                        <cvr:DateTimeValidationRule ValidatesOnTargetUpdated="true" />
-                                                    </Binding.ValidationRules>
-                                                </Binding>
-                                            </TextBox.Text>
-                                        </TextBox>
 
                                         <TextBlock Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="6" Margin="5,0,5,0" Text="{DynamicResource ServerSettings_EventNote}" FontWeight="Bold" TextWrapping="WrapWithOverflow" IsEnabled="False"/>
                                     </Grid>

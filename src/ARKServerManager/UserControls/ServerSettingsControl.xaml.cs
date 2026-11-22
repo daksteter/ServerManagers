@@ -49,7 +49,6 @@ namespace ServerManagerTool
         public static readonly DependencyProperty BasePrimalItemListProperty = DependencyProperty.Register(nameof(BasePrimalItemList), typeof(ComboBoxItemList), typeof(ServerSettingsControl), new PropertyMetadata(null));
         public static readonly DependencyProperty BaseSupplyCrateListProperty = DependencyProperty.Register(nameof(BaseSupplyCrateList), typeof(ComboBoxItemList), typeof(ServerSettingsControl), new PropertyMetadata(null));
         public static readonly DependencyProperty BaseGameMapsProperty = DependencyProperty.Register(nameof(BaseGameMaps), typeof(ComboBoxItemList), typeof(ServerSettingsControl), new PropertyMetadata(null));
-        public static readonly DependencyProperty BaseTotalConversionsProperty = DependencyProperty.Register(nameof(BaseTotalConversions), typeof(ComboBoxItemList), typeof(ServerSettingsControl), new PropertyMetadata(null));
         public static readonly DependencyProperty BaseBranchesProperty = DependencyProperty.Register(nameof(BaseBranches), typeof(ComboBoxItemList), typeof(ServerSettingsControl), new PropertyMetadata(null));
         public static readonly DependencyProperty BaseEventsProperty = DependencyProperty.Register(nameof(BaseEvents), typeof(ComboBoxItemList), typeof(ServerSettingsControl), new PropertyMetadata(null));
         public static readonly DependencyProperty BetaVersionProperty = DependencyProperty.Register(nameof(BetaVersion), typeof(bool), typeof(ServerSettingsControl), new PropertyMetadata(false));
@@ -75,7 +74,6 @@ namespace ServerManagerTool
         public static readonly DependencyProperty FilterOnlySelectedEngramsProperty = DependencyProperty.Register(nameof(FilterOnlySelectedEngrams), typeof(bool), typeof(ServerSettingsControl), new PropertyMetadata(false));
         public static readonly DependencyProperty ProcessPrioritiesProperty = DependencyProperty.Register(nameof(ProcessPriorities), typeof(ComboBoxItemList), typeof(ServerSettingsControl), new PropertyMetadata(null));
         public static readonly DependencyProperty CurrentCultureProperty = DependencyProperty.Register(nameof(CurrentCulture), typeof(CultureInfo), typeof(ServerSettingsControl), new PropertyMetadata(null));
-        public static readonly DependencyProperty DisplayModInformationProperty = DependencyProperty.Register(nameof(DisplayModInformation), typeof(bool), typeof(ServerSettingsControl), new PropertyMetadata(false));
         public static readonly DependencyProperty CustomLevelProgressionsInformationProperty = DependencyProperty.Register(nameof(CustomLevelProgressionsInformation), typeof(string), typeof(ServerSettingsControl), new PropertyMetadata(""));
         public static readonly DependencyProperty ProfileLastStartedProperty = DependencyProperty.Register(nameof(ProfileLastStarted), typeof(string), typeof(ServerSettingsControl), new PropertyMetadata(""));
         public static readonly DependencyProperty DinoFilterStringProperty = DependencyProperty.Register(nameof(DinoFilterString), typeof(string), typeof(ServerSettingsControl), new PropertyMetadata(""));
@@ -129,12 +127,6 @@ namespace ServerManagerTool
         {
             get { return (ComboBoxItemList)GetValue(BaseGameMapsProperty); }
             set { SetValue(BaseGameMapsProperty, value); }
-        }
-
-        public ComboBoxItemList BaseTotalConversions
-        {
-            get { return (ComboBoxItemList)GetValue(BaseTotalConversionsProperty); }
-            set { SetValue(BaseTotalConversionsProperty, value); }
         }
 
         public ComboBoxItemList BaseBranches
@@ -287,12 +279,6 @@ namespace ServerManagerTool
             set { SetValue(CurrentCultureProperty, value); }
         }
 
-        public bool DisplayModInformation
-        {
-            get { return (bool)GetValue(DisplayModInformationProperty); }
-            set { SetValue(DisplayModInformationProperty, value); }
-        }
-
         public string CustomLevelProgressionsInformation
         {
             get { return (string)GetValue(CustomLevelProgressionsInformationProperty); }
@@ -335,7 +321,6 @@ namespace ServerManagerTool
 
             this.ServerManager = ServerManager.Instance;
             this.IsAdministrator = SecurityUtils.IsAdministrator();
-            this.DisplayModInformation = false; // Steam Workshop mod details don't apply to ASA's CurseForge mods
 
             RefreshBaseDinoModList();
             RefreshBaseEngramModList();
@@ -347,7 +332,6 @@ namespace ServerManagerTool
             this.BasePrimalItemList = new ComboBoxItemList();
             this.BaseSupplyCrateList = new ComboBoxItemList();
             this.BaseGameMaps = new ComboBoxItemList();
-            this.BaseTotalConversions = new ComboBoxItemList();
             this.BaseBranches = new ComboBoxItemList();
             this.BaseEvents = new ComboBoxItemList();
             this.ProcessPriorities = new ComboBoxItemList();
@@ -371,7 +355,6 @@ namespace ServerManagerTool
             this.RefreshBasePrimalItemList();
             this.RefreshBaseSupplyCrateList();
             this.RefreshBaseGameMapsList();
-            this.RefreshBaseTotalConversionsList();
             this.RefreshCultureList();
             this.RefreshBaseBranchesList();
             this.RefreshBaseEventsList();
@@ -407,12 +390,10 @@ namespace ServerManagerTool
                         ssc.RefreshBasePrimalItemList();
                         ssc.RefreshBaseSupplyCrateList();
                         ssc.RefreshBaseGameMapsList();
-                        ssc.RefreshBaseTotalConversionsList();
                         ssc.RefreshCultureList();
                         ssc.RefreshBaseBranchesList();
                         ssc.RefreshBaseEventsList();
                         ssc.RefreshProcessPrioritiesList();
-                        ssc.DisplayModInformation = false; // Steam Workshop mod details don't apply to ASA's CurseForge mods
                         ssc.UpdateLastStartedDetails(false);
                     }).DoNotWait();
             }
@@ -435,29 +416,10 @@ namespace ServerManagerTool
             if (sender is Window)
                 ((Window)sender).Closed -= Window_Closed;
 
-            if (sender is ShutdownWindow)
-                this.Runtime?.ResetModCheckTimer();
-
-            if (sender is ModDetailsWindow)
-            {
-                ((ModDetailsWindow)sender).SavePerformed -= ModDetailsWindow_SavePerformed;
-                RefreshBaseGameMapsList();
-                RefreshBaseTotalConversionsList();
-            }
-
             if (sender is FindSettingWindow)
             {
                 _findSettingWindow = null;
                 UnselectControl();
-            }
-        }
-
-        private void ModDetailsWindow_SavePerformed(object sender, ProfileEventArgs e)
-        {
-            if (sender is ModDetailsWindow && Equals(e.Profile, Settings))
-            {
-                RefreshBaseGameMapsList();
-                RefreshBaseTotalConversionsList();
             }
         }
 
@@ -532,7 +494,7 @@ namespace ServerManagerTool
 
                             if (Config.Default.ServerUpdate_OnServerStart)
                             {
-                                if (!await UpdateServer(false, true, Config.Default.ServerUpdate_UpdateModsWhenUpdatingServer, true))
+                                if (!await UpdateServer(false, true, true))
                                 {
                                     if (MessageBox.Show(_globalizer.GetResourceString("ServerUpdate_WarningLabel"), _globalizer.GetResourceString("ServerUpdate_Title"), MessageBoxButton.YesNo, MessageBoxImage.Warning) != MessageBoxResult.Yes)
                                         return;
@@ -614,23 +576,7 @@ namespace ServerManagerTool
             }
 
             this.Settings.Save(false, false, null);
-            await UpdateServer(true, true, Config.Default.ServerUpdate_UpdateModsWhenUpdatingServer, false);
-        }
-
-        private async void ModUpgrade_Click(object sender, RoutedEventArgs e)
-        {
-            switch (this.Runtime.Status)
-            {
-                case ServerStatus.Stopped:
-                case ServerStatus.Uninstalled:
-                    break;
-
-                default:
-                    return;
-            }
-
-            this.Settings.Save(false, false, null);
-            await UpdateServer(true, false, true, false);
+            await UpdateServer(true, true, false);
         }
 
         private void OpenRCON_Click(object sender, RoutedEventArgs e)
@@ -656,16 +602,6 @@ namespace ServerManagerTool
                 window.WindowState = WindowState.Normal;
             }
 
-            window.Focus();
-        }
-
-        private void OpenModDetails_Click(object sender, RoutedEventArgs e)
-        {
-            var window = new ModDetailsWindow(this.Server.Profile);
-            window.Owner = Window.GetWindow(this);
-            window.Closed += Window_Closed;
-            window.SavePerformed += ModDetailsWindow_SavePerformed;
-            window.Show();
             window.Focus();
         }
 
@@ -721,22 +657,6 @@ namespace ServerManagerTool
                 var file = Path.Combine(this.Settings.InstallDirectory, Config.Default.LastUpdatedTimeFile);
                 if (File.Exists(file)) files.Add(file);
 
-                file = Path.Combine(this.Settings.InstallDirectory, "version.txt");
-                if (File.Exists(file)) files.Add(file);
-
-                // <server>\ShooterGame\Content\Mods
-                var folder = Path.Combine(this.Settings.InstallDirectory, Config.Default.ServerModsRelativePath);
-                var dirInfo = new DirectoryInfo(folder);
-                if (dirInfo.Exists)
-                {
-                    files.AddRange(dirInfo.GetFiles("*.mod").Select(modFile => modFile.FullName));
-                    foreach (var modFolder in dirInfo.GetDirectories())
-                    {
-                        file = Path.Combine(modFolder.FullName, Config.Default.LastUpdatedTimeFile);
-                        if (File.Exists(file)) files.Add(file);
-                    }
-                }
-
                 // <server>\ShooterGame\Saved\Config\WindowsServer
                 file = Path.Combine(this.Settings.GetProfileServerConfigDir(), Config.Default.ServerGameConfigFile);
                 if (File.Exists(file))
@@ -782,8 +702,8 @@ namespace ServerManagerTool
                 if (File.Exists(file)) files.Add(file);
 
                 // Logs
-                folder = Path.Combine(Config.Default.DataDir, Config.Default.LogsDir, ServerApp.LOGPREFIX_AUTOBACKUP);
-                dirInfo = new DirectoryInfo(folder);
+                var folder = Path.Combine(Config.Default.DataDir, Config.Default.LogsDir, ServerApp.LOGPREFIX_AUTOBACKUP);
+                var dirInfo = new DirectoryInfo(folder);
                 if (dirInfo.Exists)
                 {
                     files.AddRange(dirInfo.GetFiles("*.log").Where(f => f.LastWriteTime > DateTime.Today.AddDays(-MAX_DAYS)).Select(logFile => logFile.FullName));
@@ -835,19 +755,6 @@ namespace ServerManagerTool
                             {
                                 (entryName, profileFile.ToOutputString())
                             });
-                    }
-                }
-
-                // <data folder>\SteamCMD\steamapps\workshop\content\<app id>
-                var appId = Config.Default.AppId;
-                var workshopPath = string.Format(Config.Default.AppSteamWorkshopFolderRelativePath, appId);
-                folder = Path.Combine(Config.Default.DataDir, Config.Default.SteamCmdDir, workshopPath);
-                if (Directory.Exists(folder))
-                {
-                    foreach (var modFolder in Directory.GetDirectories(folder))
-                    {
-                        file = Path.Combine(modFolder, Config.Default.LastUpdatedTimeFile);
-                        if (File.Exists(file)) files.Add(file);
                     }
                 }
                 // <server cache>
@@ -950,10 +857,6 @@ namespace ServerManagerTool
                 comment.AppendLine($"ServerUpdate_OnServerStart: {Config.Default.ServerUpdate_OnServerStart}");
                 comment.AppendLine($"ServerStartMinimized: {Config.Default.ServerStartMinimized}");
 
-                comment.AppendLine($"ServerUpdate_UpdateModsWhenUpdatingServer: {Config.Default.ServerUpdate_UpdateModsWhenUpdatingServer}");
-                comment.AppendLine($"ServerUpdate_ForceUpdateMods: {Config.Default.ServerUpdate_ForceUpdateMods}");
-                comment.AppendLine($"ServerUpdate_ForceCopyMods: {Config.Default.ServerUpdate_ForceCopyMods}");
-                comment.AppendLine($"ServerUpdate_ForceUpdateModsIfNoSteamInfo: {Config.Default.ServerUpdate_ForceUpdateModsIfNoSteamInfo}");
 
                 if (!string.IsNullOrWhiteSpace(Config.Default.BackupPath))
                     comment.AppendLine($"Backup Directory: {Config.Default.BackupPath}");
@@ -1091,7 +994,6 @@ namespace ServerManagerTool
             if (result == CommonFileDialogResult.Ok)
             {
                 Settings.ServerMap = string.Empty;
-                Settings.TotalConversionModId = string.Empty;
 
                 Settings.ChangeInstallationFolder(dialog.FileName, reloadConfigFiles: true);
             }
@@ -1312,11 +1214,6 @@ namespace ServerManagerTool
 
             expression = comboBox.GetBindingExpression(ComboBox.TextProperty);
             expression?.UpdateSource();
-        }
-
-        private void OutOfDateModUpdate_Click(object sender, RoutedEventArgs e)
-        {
-            this.Runtime?.ResetModCheckTimer();
         }
 
         private void ProfileName_SourceUpdated(object sender, DataTransferEventArgs e)
@@ -4005,31 +3902,6 @@ namespace ServerManagerTool
             this.GameMapComboBox.SelectedValue = this.Settings.ServerMap;
         }
 
-        public void RefreshBaseTotalConversionsList()
-        {
-            var newList = new ComboBoxItemList();
-            foreach (var item in GameData.GetTotalConversions())
-            {
-                item.DisplayMember = GameData.FriendlyTotalConversionNameForClass(item.ValueMember);
-                newList.Add(item);
-            }
-
-            if (!string.IsNullOrWhiteSpace(this.Settings.TotalConversionModId))
-            {
-                if (!newList.Any(m => m.ValueMember.Equals(this.Settings.TotalConversionModId)))
-                {
-                    newList.Add(new Common.Model.ComboBoxItem
-                    {
-                        DisplayMember = GameData.FriendlyTotalConversionNameForClass(this.Settings.TotalConversionModId),
-                        ValueMember = this.Settings.TotalConversionModId,
-                    });
-                }
-            }
-
-            this.BaseTotalConversions = newList;
-            this.TotalConversionComboBox.SelectedValue = this.Settings.TotalConversionModId;
-        }
-
         public void RefreshBaseBranchesList()
         {
             var newList = new ComboBoxItemList();
@@ -4135,11 +4007,8 @@ namespace ServerManagerTool
                 return new RelayCommand<ServerSettingsResetAction>(
                     execute: (action) =>
                     {
-                        if (action != ServerSettingsResetAction.MapNameTotalConversionProperty)
-                        {
-                            if (MessageBox.Show(_globalizer.GetResourceString("ServerSettings_ResetLabel"), _globalizer.GetResourceString("ServerSettings_ResetTitle"), MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
-                                return;
-                        }
+                        if (MessageBox.Show(_globalizer.GetResourceString("ServerSettings_ResetLabel"), _globalizer.GetResourceString("ServerSettings_ResetTitle"), MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
+                            return;
 
                         switch (action)
                         {
@@ -4147,7 +4016,6 @@ namespace ServerManagerTool
                             case ServerSettingsResetAction.AdministrationSection:
                                 this.Settings.ResetAdministrationSection();
                                 RefreshBaseGameMapsList();
-                                RefreshBaseTotalConversionsList();
                                 RefreshCultureList();
                                 RefreshBaseBranchesList();
                                 RefreshBaseEventsList();
@@ -4232,27 +4100,6 @@ namespace ServerManagerTool
                                 break;
 
                             // Properties
-                            case ServerSettingsResetAction.MapNameTotalConversionProperty:
-                                // set the map name to the ARK default.
-                                var mapName = string.Empty;
-
-                                // check if we are running an official total conversion mod.
-                                if (!ModUtils.IsOfficialMod(this.Settings.TotalConversionModId))
-                                {
-                                    // we need to read the mod file and retreive the map name
-                                    mapName = ModUtils.GetMapName(this.Settings.InstallDirectory, this.Settings.TotalConversionModId);
-                                    if (string.IsNullOrWhiteSpace(mapName))
-                                    {
-                                        MessageBox.Show(_globalizer.GetResourceString("ServerSettings_FindTotalConversionMapNameErrorLabel"), _globalizer.GetResourceString("ServerSettings_FindTotalConversionMapNameErrorTitle"), MessageBoxButton.OK, MessageBoxImage.Error);
-                                        break;
-                                    }
-                                }
-
-                                this.Settings.ServerMap = mapName;
-
-                                MessageBox.Show(_globalizer.GetResourceString("ServerSettings_FindTotalConversionMapNameSuccessLabel"), _globalizer.GetResourceString("ServerSettings_FindTotalConversionMapNameSuccessTitle"), MessageBoxButton.OK, MessageBoxImage.Information);
-                                break;
-
                             case ServerSettingsResetAction.BanListProperty:
                                 this.Settings.ResetBanlist();
                                 break;
@@ -4348,7 +4195,6 @@ namespace ServerManagerTool
                                 RefreshBasePrimalItemList();
                                 RefreshBaseSupplyCrateList();
                                 RefreshBaseGameMapsList();
-                                RefreshBaseTotalConversionsList();
                                 RefreshCultureList();
                                 RefreshBaseBranchesList();
                                 RefreshBaseEventsList();
@@ -4456,7 +4302,7 @@ namespace ServerManagerTool
             _lastFoundSetting = null;
         }
 
-        private async Task<bool> UpdateServer(bool establishLock, bool updateServer, bool updateMods, bool closeProgressWindow)
+        private async Task<bool> UpdateServer(bool establishLock, bool updateServer, bool closeProgressWindow)
         {
             if (_upgradeCancellationSource != null)
                 return false;
@@ -4486,7 +4332,7 @@ namespace ServerManagerTool
                     await Task.Delay(1000);
 
                     var branch = BranchSnapshot.Create(this.Server.Profile);
-                    return await this.Server.UpgradeAsync(_upgradeCancellationSource.Token, updateServer, branch, true, updateMods, (p, m, n) => { TaskUtils.RunOnUIThreadAsync(() => { window?.AddMessage(m, n); }).DoNotWait(); });
+                    return await this.Server.UpgradeAsync(_upgradeCancellationSource.Token, updateServer, branch, true, (p, m, n) => { TaskUtils.RunOnUIThreadAsync(() => { window?.AddMessage(m, n); }).DoNotWait(); });
                 }
                 else
                 {

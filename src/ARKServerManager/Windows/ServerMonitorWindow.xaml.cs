@@ -417,7 +417,7 @@ namespace ServerManagerTool.Windows
             try
             {
                 server.Profile.Save(false, false, null);
-                await UpdateServerAsync(server, true, true, Config.Default.ServerUpdate_UpdateModsWhenUpdatingServer, false);
+                await UpdateServerAsync(server, true, true, false);
             }
             catch (Exception ex)
             {
@@ -691,7 +691,7 @@ namespace ServerManagerTool.Windows
 
                             if (Config.Default.ServerUpdate_OnServerStart)
                             {
-                                if (!await UpdateServerAsync(server, false, true, Config.Default.ServerUpdate_UpdateModsWhenUpdatingServer, true))
+                                if (!await UpdateServerAsync(server, false, true, true))
                                 {
                                     if (MessageBox.Show(_globalizer.GetResourceString("ServerUpdate_WarningLabel"), _globalizer.GetResourceString("ServerUpdate_Title"), MessageBoxButton.YesNo, MessageBoxImage.Warning) != MessageBoxResult.Yes)
                                         return;
@@ -748,7 +748,7 @@ namespace ServerManagerTool.Windows
             }
         }
 
-        private async Task<bool> UpdateServerAsync(Server server, bool establishLock, bool updateServer, bool updateMods, bool closeProgressWindow)
+        private async Task<bool> UpdateServerAsync(Server server, bool establishLock, bool updateServer, bool closeProgressWindow)
         {
             if (server == null)
                 return false;
@@ -788,7 +788,7 @@ namespace ServerManagerTool.Windows
                     await Task.Delay(1000);
 
                     var branch = BranchSnapshot.Create(serverProfile);
-                    return await server.UpgradeAsync(_upgradeCancellationSource.Token, updateServer, branch, true, updateMods, (p, m, n) => { TaskUtils.RunOnUIThreadAsync(() => { window?.AddMessage(m, n); }).DoNotWait(); });
+                    return await server.UpgradeAsync(_upgradeCancellationSource.Token, updateServer, branch, true, (p, m, n) => { TaskUtils.RunOnUIThreadAsync(() => { window?.AddMessage(m, n); }).DoNotWait(); });
                 }
                 else
                 {
@@ -976,28 +976,6 @@ namespace ServerManagerTool.Windows
             }
         }
 
-        public ICommand UpdateModsCommand
-        {
-            get
-            {
-                return new RelayCommand<object>(
-                    execute: async (_) =>
-                    {
-                        var processServersSequentially = ProcessServersSequentially;
-                        var sequentialProcessDelay = SequentialProcessDelay;
-                        var shutdownReason = ShutdownReason;
-
-                        await UpdateSelectedServersAsync(updateModsOnly: true, processServersSequentially, sequentialProcessDelay, shutdownReason);
-                    },
-                    canExecute: (_) =>
-                    {
-                        return ServerManager?.Servers != null && ServerManager.Servers.Count > 0 && ServerManager.Servers.Any(s => s.Selected) && ServerManager.Servers.All(s => s.Runtime.Status != ServerStatus.Unknown)
-                            && CancellationTokenSource == null;
-                    }
-                );
-            }
-        }
-
         public ICommand UpdateServersCommand
         {
             get
@@ -1009,7 +987,7 @@ namespace ServerManagerTool.Windows
                         var sequentialProcessDelay = SequentialProcessDelay;
                         var shutdownReason = ShutdownReason;
 
-                        await UpdateSelectedServersAsync(updateModsOnly: false, processServersSequentially, sequentialProcessDelay, shutdownReason);
+                        await UpdateSelectedServersAsync(processServersSequentially, sequentialProcessDelay, shutdownReason);
                     },
                     canExecute: (_) =>
                     {
@@ -1563,7 +1541,7 @@ namespace ServerManagerTool.Windows
             }
         }
 
-        private async Task UpdateSelectedServersAsync(bool updateModsOnly, bool processServersSequentially, int sequentialProcessDelay, string shutdownReason)
+        private async Task UpdateSelectedServersAsync(bool processServersSequentially, int sequentialProcessDelay, string shutdownReason)
         {
             if (CancellationTokenSource != null)
                 return;
@@ -1644,7 +1622,7 @@ namespace ServerManagerTool.Windows
                 {
                     AddMessageBlockContent(string.Format(_globalizer.GetResourceString("DiscordBot_UpdateRequested"), profile.ServerName));
 
-                    app.PerformProfileShutdown(profile, true, updateModsOnly ? ServerUpdateType.Mods : ServerUpdateType.ServerAndMods, false, false, token);
+                    app.PerformProfileShutdown(profile, true, ServerUpdateType.Server, false, false, token);
 
                     Task.Delay(DELAY_PROCESSCOMPLETE).Wait();
 

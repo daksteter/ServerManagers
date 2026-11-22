@@ -7,7 +7,5 @@ namespace ServerManagerTool.Enums
     {
         None = 0,
         Server = 1,
-        Mods = 2,
-        ServerAndMods = Server | Mods,
     }
 }

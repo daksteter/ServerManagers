@@ -30,7 +30,6 @@
     <!--#endregion-->
 
     <!--#region 总转换名称 -->
-    <sys:String x:Key="TotalConv_111111111">原始服(Primitive Plus)</sys:String>
     <!--#endregion-->
 
     <!--#region 区域分支名称 -->
@@ -66,12 +65,6 @@
     <!--#endregion-->
 
     <!--#region Mod 类型 -->
-    <sys:String x:Key="ModType_Unknown">未知</sys:String>
-    <sys:String x:Key="ModType_NotDownloaded">未下载</sys:String>
-    <sys:String x:Key="ModType_Map">地图</sys:String>
-    <sys:String x:Key="ModType_MapExtension">地图扩展</sys:String>
-    <sys:String x:Key="ModType_Mod">MOD</sys:String>
-    <sys:String x:Key="ModType_TotalConversion">总转换</sys:String>
     <!--#endregion-->
 
     <!--#region 进程优先级 -->
@@ -235,78 +228,16 @@
     <!--#endregion-->
 
     <!--#region Mod详细信息窗口 -->
-    <sys:String x:Key="ModDetails_Title">MOD 详细</sys:String>
-    <sys:String x:Key="ModDetails_ProfileTitle">MOD 详细 - {0}</sys:String>
-    <sys:String x:Key="ModDetails_Load_FailedTitle">MOD 详细错误</sys:String>
-    <sys:String x:Key="ModDetails_Load_FailedLabel">检查MOD详细时发生错误.\r\n{0}</sys:String>
-    <sys:String x:Key="ModDetails_Purge_FailedTitle">清除未使用的MOD错误</sys:String>
-    <sys:String x:Key="ModDetails_Purge_Title">清除未使用的MOD</sys:String>
-    <sys:String x:Key="ModDetails_Purge_Label">您将要清除服务器的MOD文件夹中的所有未使用的MOD。 你要继续吗？</sys:String>
-    <sys:String x:Key="ModDetails_Purge_SuccessLabel">MOD清除完成，共清除了 {folderCount} 个MOD文件夹和 {fileCount} 个MOD文件。</sys:String>
-    <sys:String x:Key="ModDetails_Refresh_FailedTitle">刷新MOD详细错误</sys:String>
-    <sys:String x:Key="ModDetails_Reload_FailedTitle">重新加载MOD详细错误</sys:String>
-    <sys:String x:Key="ModDetails_Save_FailedTitle">保存MOD错误</sys:String>
-    <sys:String x:Key="ModDetails_Save_UnknownTitle">未知MOD类型</sys:String>
-    <sys:String x:Key="ModDetails_Save_UnknownLabel">有一个或多个MOD尚未下载，这可能会阻止正确检测到地图MOD和总转换MOD。 你想继续吗？</sys:String>
-    <sys:String x:Key="ModDetails_Unsaved_Title">未保存更改</sys:String>
-    <sys:String x:Key="ModDetails_Unsaved_Label">您所做的更改尚未保存到配置文件，如果继续，您的更改将被放弃。你想继续吗？-</sys:String>
-    <sys:String x:Key="ModDetails_WriteTimestamp_ConfirmTitle">写入时间戳确认</sys:String>
-    <sys:String x:Key="ModDetails_WriteTimestamp_ConfirmLabel">您将在服务器管理器上次更新的文件中更新MOD版本。 你要继续吗？</sys:String>
-    <sys:String x:Key="ModDetails_WriteTimestamp_FailedTitle">写时间戳错误</sys:String>
-    <sys:String x:Key="ModDetails_WriteTimestamp_FailedLabel">无法找到或不存在MOD文件夹。 尝试下载MOD并重试。</sys:String>
-    <sys:String x:Key="ModDetails_ModDetailFetchFailed_Label">无法从Steam获取MOD详细信息。</sys:String>
     
-    <sys:String x:Key="ModDetails_TotalCountLabel">总数:</sys:String>
     <sys:String x:Key="ModDetails_FilterLabel">过滤:</sys:String>
 
-    <sys:String x:Key="ModDetails_IndexColumnLabel">#</sys:String>
-    <sys:String x:Key="ModDetails_ModIdColumnLabel">MOD ID</sys:String>
-    <sys:String x:Key="ModDetails_TitleColumnLabel">名称</sys:String>
-    <sys:String x:Key="ModDetails_TypeColumnLabel">Mod 类型</sys:String>
-    <sys:String x:Key="ModDetails_LastUpdatedColumnLabel">最后下载</sys:String>
-    <sys:String x:Key="ModDetails_TimeUpdatedColumnLabel">最后更新（作者）</sys:String>
-    <sys:String x:Key="ModDetails_TimestampColumnLabel">时间戳</sys:String>
-    <sys:String x:Key="ModDetails_FolderSizeColumnLabel">文件大小</sys:String>
 
-    <sys:String x:Key="ModDetails_AddModsTooltip">添加MOD到列表.</sys:String>
-    <sys:String x:Key="ModDetails_LoadModsTooltip">从服务器MOD文件夹加载MOD列表。</sys:String>
-    <sys:String x:Key="ModDetails_MoveModUpTooltip">在列表中向上移动MOD。</sys:String>
-    <sys:String x:Key="ModDetails_MoveModDownTooltip">在列表中向下移动MOD。</sys:String>
-    <sys:String x:Key="ModDetails_PurgeModsFolderTooltip">从MOD文件夹清除未使用的mod.</sys:String>
-    <sys:String x:Key="ModDetails_RefreshModsTooltip">刷新MOD列表信息.</sys:String>
-    <sys:String x:Key="ModDetails_ReloadModsTooltip">从配置文件中重新加载MOD列表.</sys:String>
-    <sys:String x:Key="ModDetails_RemoveModTooltip">删除列表中的MOD.</sys:String>
-    <sys:String x:Key="ModDetails_WriteTimestampModTooltip">将时间戳记写入LastUpdatedASM.txt文件。 只有在你手动更新mod时才使用它。</sys:String>
-    <sys:String x:Key="ModDetails_RemoveAllModsTooltip">删除列表中所有MOD.</sys:String>
-    <sys:String x:Key="ModDetails_SaveModsTooltip">保存MOD到配置文件.</sys:String>
-    <sys:String x:Key="ModDetails_SaveModDetailsTooltip">保存MOD格式的详细信息。</sys:String>
-    <sys:String x:Key="ModDetails_OpenModFolderTooltip">打开服务器MOD文件夹。</sys:String>
-    <sys:String x:Key="ModDetails_Clipboard_SaveTitle">MOD详细信息</sys:String>
     <!--#endregion-->
 
     <!--#region 创意工坊文件窗口 -->
-    <sys:String x:Key="WorkshopFiles_Title">创意工坊详细</sys:String>
-    <sys:String x:Key="WorkshopFiles_ProfileTitle">创意工坊详细 - {0}</sys:String>
-    <sys:String x:Key="WorkshopFiles_Load_FailedTitle">加载创意工坊物品错误</sys:String>
-    <sys:String x:Key="WorkshopFiles_Refresh_FailedTitle">刷新创意工坊物品错误</sys:String>
-    <sys:String x:Key="WorkshopFiles_Refresh_FailedLabel">从Steam载入创意工坊信息失败，改为使用本地缓存。</sys:String>
-    <sys:String x:Key="WorkshopFiles_TotalCountLabel">计数：</sys:String>
-    <sys:String x:Key="WorkshopFiles_LastRefreshedLabel">最后刷新:</sys:String>
     <sys:String x:Key="WorkshopFiles_FilterLabel">过滤:</sys:String>
-    <sys:String x:Key="WorkshopFiles_FilterExistingLabel">过滤掉已存在的MOD</sys:String>
 
-    <sys:String x:Key="WorkshopFiles_SelectedColumnLabel">选择</sys:String>
-    <sys:String x:Key="WorkshopFiles_ModIdColumnLabel">MOD ID</sys:String>
-    <sys:String x:Key="WorkshopFiles_TitleColumnLabel">名称</sys:String>
-    <sys:String x:Key="WorkshopFiles_CreatedDateColumnLabel">创建</sys:String>
-    <sys:String x:Key="WorkshopFiles_UpdatedDateColumnLabel">最后更新</sys:String>
-    <sys:String x:Key="WorkshopFiles_SubscriptionsColumnLabel">订阅</sys:String>
-    <sys:String x:Key="WorkshopFiles_FileSizeColumnLabel">文件大小 (b)</sys:String>
 
-    <sys:String x:Key="WorkshopFiles_AddTooltip">添加MOD</sys:String>
-    <sys:String x:Key="WorkshopFiles_AddSelectedTooltip">添加选择MOD</sys:String>
-    <sys:String x:Key="WorkshopFiles_ReloadTooltip">刷新创意工坊信息</sys:String>
-    <sys:String x:Key="WorkshopFiles_UnselectTooltip">全部取消选择</sys:String>
     <!--#endregion-->
 
     <!--#region 世界保存恢复窗口 -->
@@ -465,7 +396,6 @@
     <sys:String x:Key="ServerMonitor_StopServersButtonLabel">停止选择的服务器</sys:String>
     <sys:String x:Key="ServerMonitor_RestartServersButtonTooltip">重新启动所选的服务器</sys:String>
     <sys:String x:Key="ServerMonitor_UpdateServersButtonLabel">更新/验证所选服务器</sys:String>
-    <sys:String x:Key="ServerMonitor_UpdateModsButtonLabel">只在选定的服务器上更新MOD</sys:String>
     <sys:String x:Key="ServerMonitor_BackupServersButtonTooltip">备份选定的服务器</sys:String>
     <sys:String x:Key="ServerMonitor_CancelServersButtonTooltip">取消处理选定的服务器</sys:String>
     <sys:String x:Key="ServerMonitor_ProcessServersSequentiallyLabel">按顺序处理服务器</sys:String>
@@ -570,10 +500,6 @@
 	<sys:String x:Key="GlobalSettings_CustomOverridePreventTransferLabel">启用禁止恐龙传服设置</sys:String>
     <sys:String x:Key="GlobalSettings_CustomOverridePreventTransferTooltip">如果启用，禁止传服设置将由服务器管理器管理.</sys:String>
     <sys:String x:Key="GlobalSettings_CustomOverrideSupplyCrateTooltip">如果启用，补给箱设置将由方舟服务器管理器进行管理。</sys:String>
-    <sys:String x:Key="GlobalSettings_CustomOverridePGMLabel">启用程序生成方舟设置</sys:String>
-    <sys:String x:Key="GlobalSettings_CustomOverridePGMTooltip">如果启用，程序生成方舟设置将由方舟服务器管理器进行管理。</sys:String>
-    <sys:String x:Key="GlobalSettings_CustomOverrideSOTFLabel">启用适者生存设置</sys:String>
-    <sys:String x:Key="GlobalSettings_CustomOverrideSOTFTooltip">如果启用，适者生存设置将由方舟服务器管理器进行管理。</sys:String>
     <sys:String x:Key="GlobalSettings_CustomOverrideOptionsWarningLabel">警告：上面任何选项被禁用时，方舟服务器管理器将不会读取或写入关联的设置。 重新启用这些选项会导致所有配置文件中删除。</sys:String>
     
 	<sys:String x:Key="ServerSettings_ProfileSyncSettingsLabel">自定义配置文件同步选项</sys:String>
@@ -616,15 +542,6 @@
     <sys:String x:Key="GlobalSettings_SteamCmdCredentialsLabel">在SteamCMD中使用匿名认证</sys:String>
     <sys:String x:Key="GlobalSettings_SteamCmdCredentialsTooltip">控制是否使用匿名用户从SteamCMD下载。</sys:String>
 
-    <sys:String x:Key="GlobalSettings_UpdateModSettingsLabel">Mod更新设置</sys:String>
-    <sys:String x:Key="GlobalSettings_UpdateModWithServerLabel">更新服务器时更新MOD</sys:String>
-    <sys:String x:Key="GlobalSettings_UpdateModWithServerTooltip">如果启用，则在更新服务器时将更新mod。</sys:String>
-    <sys:String x:Key="GlobalSettings_ForceUpdateModsLabel">强制下载mod文件</sys:String>
-    <sys:String x:Key="GlobalSettings_ForceUpdateModsTooltip">如果启用，则即使服务器具有最新版本，也会从Steam中下载Mod。 启用可以修复mod损坏问题。</sys:String>
-    <sys:String x:Key="GlobalSettings_ForceCopyModsLabel">强制复制mod文件</sys:String>
-    <sys:String x:Key="GlobalSettings_ForceCopyModsTooltip">如果启用，则即使服务器具有最新版本，mod文件也将被复制到服务器文件夹中。 启用可以修复mod损坏问题。</sys:String>
-    <sys:String x:Key="GlobalSettings_ForceUpdateModsIfNoSteamInfoLabel">没有可用的Steam信息时强制下载Mod文件</sys:String>
-    <sys:String x:Key="GlobalSettings_ForceUpdateModsIfNoSteamInfoTooltip">如果启用，即使没有可用的Steam信息，也会从Steam中下载Mod。</sys:String>
     <sys:String x:Key="GlobalSettings_WorkshopCacheExpiredHoursLabel">创意工坊缓存到期</sys:String>
     <sys:String x:Key="GlobalSettings_WorkshopCacheExpiredHoursTooltip">自上次刷新创意工坊缓存后的数小时将被视为旧的，并将自动刷新。</sys:String>
     
@@ -841,8 +758,6 @@
     <sys:String x:Key="GlobalSettings_Alerts_ServerUpdateTooltip">当游戏服务器更新时，将显示此消息。</sys:String>
     <sys:String x:Key="GlobalSettings_Alerts_ServerStatusChangeLabel">服务器状态变化：</sys:String>
     <sys:String x:Key="GlobalSettings_Alerts_ServerStatusChangeTooltip">当服务器的状态发生变化时，将显示此消息。</sys:String>
-    <sys:String x:Key="GlobalSettings_Alerts_ModUpdateDetectedLabel">检测到MOD更新：</sys:String>
-    <sys:String x:Key="GlobalSettings_Alerts_ModUpdateDetectedTooltip">当服务器管理器检测到一个或多个mod已过期时，将显示此消息。</sys:String>
     <sys:String x:Key="GlobalSettings_Alerts_OnlinePlayerCountChangeLabel">在线玩家人数变化:</sys:String>
     <sys:String x:Key="GlobalSettings_Alerts_OnlinePlayerCountChangeTooltip">当在线玩家人数发生变化时，将显示此信息。</sys:String>
 	<sys:String x:Key="GlobalSettings_Alerts_ForceRespawnDinosLabel">强制重生恐龙警告：</sys:String>
@@ -918,7 +833,6 @@
     <sys:String x:Key="MainWindow_SteamCmd_Label">如果你进行重新安装，整个SteamCMD文件夹将被删除，包括所有的MOD下载缓存.\r\n你确定你想重新安装 SteamCMD?</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_FailedTitle">重新安装 SteamCMD 错误</sys:String>
     <sys:String x:Key="MainWindow_SteamCmd_FailedLabel">在尝试重新安装SteamCMD时出错。这让SteamCMD处于不稳定的状态，请尝试重新安装一遍或请报告.\r\n例外: {0}</sys:String>
-    <sys:String x:Key="MainWindow_SteamWebApiKeyMissingLabel">Steam WebAPI密钥丢失！配置文件的更新、下载和安装可能会失败。在全局设置中输入</sys:String>
 
     <sys:String x:Key="MainWindow_ServerStatus_StartServerActionTitle">启动服务器确认</sys:String>
     <sys:String x:Key="MainWindow_ServerStatus_StartServerActionLabel">您即将启动服务器，你想继续吗？</sys:String>
@@ -965,9 +879,6 @@
     <sys:String x:Key="ServerSettings_ProfileTooltip">服务器配置文件的名称。这不是方舟游戏服务器的名称，玩家无法查看.</sys:String>
     <sys:String x:Key="ServerSettings_InstalledVersionLabel">安装的版本:</sys:String>
     <sys:String x:Key="ServerSettings_InstalledVersionTooltip">目前本地安装的方舟服务器版本.</sys:String>
-    <sys:String x:Key="ServerSettings_OutOfDateModsLabel">过期的Mod插件:</sys:String>
-    <sys:String x:Key="ServerSettings_OutOfDateModsTooltip">目前已经过期的mod的数量。</sys:String>
-    <sys:String x:Key="ServerSettings_OutOfDateModsButtonTooltip">执行mod检查。</sys:String>
     <sys:String x:Key="ServerSettings_PatchNotesTooltip">查看补丁说明。</sys:String>
     <sys:String x:Key="ServerSettings_OpenLogFolderTooltip">打开服务器的日志文件夹.</sys:String>
     <sys:String x:Key="ServerSettings_ValidateProfileTooltip">在服务器和MOD文件上执行基本的配置文件验证.</sys:String>
@@ -1076,10 +987,6 @@
     <sys:String x:Key="ServerSettings_Save_ServerCache_ErrorTitle">未配置服务器缓存</sys:String>
     <sys:String x:Key="ServerSettings_Save_ServerCache_ErrorLabel1">已启用自动更新，但尚未配置服务器缓存更新。服务器缓存在后台自动下载服务器更新，以启用更快的服务器更新，特别是当有多个服务器。您必须首先配置缓存，然后您可以启用自动更新。您现在是否要配置缓存?</sys:String>
     <sys:String x:Key="ServerSettings_Save_ServerCache_ErrorLabel2">未配置服务器缓存,停用自动更新。</sys:String>
-    <sys:String x:Key="ServerSettings_Save_AutoRestart_SotF_ErrorTitle">SotF不兼容</sys:String>
-    <sys:String x:Key="ServerSettings_Save_AutoRestart_SotF_ErrorLabel">自动重新启动已启用，但与SotF不兼容。 禁用自动重新启动。</sys:String>
-    <sys:String x:Key="ServerSettings_Save_AutoUpdate_SotF_ErrorTitle">SotF不兼容</sys:String>
-    <sys:String x:Key="ServerSettings_Save_AutoUpdate_SotF_ErrorLabel">自动更新已启用，但与SotF不兼容。 禁用自动更新。</sys:String>
     <sys:String x:Key="ServerSettings_Save_UpdatePermissions_ErrorTitle">更新目录权限</sys:String>
     <sys:String x:Key="ServerSettings_Save_UpdatePermissions_ErrorLabel">无法更新目录权限。 确保您对此计算机具有管理员权限，然后重试。 如果问题仍然存在，请将此报告为错误。</sys:String>
     <sys:String x:Key="ServerSettings_Save_UpdateSchedule_ErrorTitle">更新计划失败</sys:String>
@@ -1118,8 +1025,6 @@
     <sys:String x:Key="ServerSettings_NetworkingLabel">网络</sys:String>
     <sys:String x:Key="ServerSettings_ServerPortLabel">服务器端口：</sys:String>
     <sys:String x:Key="ServerSettings_ServerPortTooltip">用户将用于连接到服务器的端口。默认值为7777。如果希望在一台计算机上托管多个服务器，请更改此端口并查询端口。</sys:String>
-	<sys:String x:Key="ServerSettings_ServerPeerPortLabel">对等端口:</sys:String>
-    <sys:String x:Key="ServerSettings_ServerPeerPortTooltip">用于确定服务器可用性的Pinger端口。默认值为7778。</sys:String>
     <sys:String x:Key="ServerSettings_QueryPortLabel">查询端口：</sys:String>
     <sys:String x:Key="ServerSettings_QueryPortTooltip">Steam用于与服务器通信的端口。默认值为27015。如果希望在一台计算机上托管多个服务器，请更改此端口并查询端口。</sys:String>
     <sys:String x:Key="ServerSettings_LocalIPLabel">本地 IP:</sys:String>
@@ -1140,20 +1045,10 @@
     <sys:String x:Key="ServerSettings_RCONResetTooltip">将“ RCON窗口”设置重置为默认值。</sys:String>
 
     <sys:String x:Key="ServerSettings_MapsAndModsLabel">地图和MOD</sys:String>
-    <sys:String x:Key="ServerSettings_MapsAndModsSOTFLabel">大逃杀启用——地图和MOD禁用</sys:String>
     <sys:String x:Key="ServerSettings_MapPathLabel">地图名称或MOD地图路径:</sys:String>
     <sys:String x:Key="ServerSettings_MapPathTooltip">标准地图名称 (例如. TheIsland,TheCenter,ScorchedEarth_P,Ragnarok).或本地MOD地图 例如:(/Game/Mods/504122600/Valhalla) 数字是MOD ID 后面是MOD地图名字，记得更新你的服务器下载MOD地图。</sys:String>
-    <sys:String x:Key="ServerSettings_TotalConversionLabel">总转换MOD ID:</sys:String>
-    <sys:String x:Key="ServerSettings_TotalConversionTooltip">总转换MOD ID，是方舟里的一个模式转换！.</sys:String>
-        <sys:String x:Key="ServerSettings_FindTotalConversionMapNameTooltip">读取总转换MOD ID找到地图名称</sys:String>
-    <sys:String x:Key="ServerSettings_FindTotalConversionMapNameSuccessTitle">查找总转换地图名称</sys:String>
-    <sys:String x:Key="ServerSettings_FindTotalConversionMapNameSuccessLabel">地图名称已更新。</sys:String>
-    <sys:String x:Key="ServerSettings_FindTotalConversionMapNameErrorTitle">查找总转换地图名称错误</sys:String>
-    <sys:String x:Key="ServerSettings_FindTotalConversionMapNameErrorLabel">找不到地图名称，请检查总转换MOD ID是否正确以及MOD是否已下载。</sys:String>
     <sys:String x:Key="ServerSettings_ModIdsLabel">MOD ID编号:</sys:String>
     <sys:String x:Key="ServerSettings_ModIdsTooltip">每个Mod ID编号之间请使用“,”小写逗号来分开，以及以启动顺序来排列.</sys:String>
-    <sys:String x:Key="ServerSettings_ModDetailsTooltip">查看MOD详细信息.</sys:String>
-    <sys:String x:Key="ServerSettings_ModUpgradeTooltip">升级/下载 MOD到目前可用的最新版本。</sys:String>
 	<sys:String x:Key="ServerSettings_ResetServerButtonLabel">重置</sys:String>
     <sys:String x:Key="ServerSettings_ResetServerButtonTooltip">删除所有的服务器、玩家和部落文件，并将你的服务器重新设置为新的。</sys:String>
 
@@ -1208,15 +1103,8 @@
     <sys:String x:Key="ServerSettings_CustomLiveTuningUrlTooltip">要使用的自定义实时调整配置的URL.</sys:String>
     <sys:String x:Key="ServerSettings_DisableVACLabel">禁用Valve防外挂系统（VAC）</sys:String>
     <sys:String x:Key="ServerSettings_DisableVACTooltip">如果启用，该Valve防外挂系统（VAC）将被禁用。请谨慎使用！</sys:String>
-    <sys:String x:Key="ServerSettings_DisablePMVOptimizationLabel">禁用-玩家移动-物理优化</sys:String>
-    <sys:String x:Key="ServerSettings_DisablePMVOptimizationTooltip">如果启用,玩家-移动-物理优化将被禁用。</sys:String>
-    <sys:String x:Key="ServerSettings_DisableAntiSpeedHackLabel">禁用防速度外挂检测</sys:String>
-    <sys:String x:Key="ServerSettings_DisableAntiSpeedHackTooltip">如果启用，禁用反速度外挂入侵检测。</sys:String>
-    <sys:String x:Key="ServerSettings_AntiSpeedHackBiasLabel">防速度外挂偏差设置</sys:String>
-    <sys:String x:Key="ServerSettings_AntiSpeedHackBiasTooltip">调整速度外挂检测偏差。默认值为1.0，禁用值为0.0。</sys:String>
     <sys:String x:Key="ServerSettings_UseBattlEyeLabel">使BattlEye防外挂系统</sys:String>
     <sys:String x:Key="ServerSettings_UseBattlEyeTooltip">如果启用,BattlEye防外挂系统将启用。</sys:String>
-    <sys:String x:Key="ServerSettings_AntiSpeedHackBiasUnits">倍</sys:String>
 	<sys:String x:Key="ServerSettings_OutputServerLogLabel">输出服务器日志到服务器控制台</sys:String>
 	<sys:String x:Key="ServerSettings_OutputServerLogTooltip">如果启用，服务器日志将被输出到服务器控制台</sys:String>
     <sys:String x:Key="ServerSettings_UseAllAvailableCoresLabel">使用所有可用内核</sys:String>
@@ -1231,42 +1119,20 @@
     <sys:String x:Key="ServerSettings_ForceShaderModel4Tooltip">如果启用，游戏被迫使用优化渲染引擎模式4，而不是优化渲染引擎模式5。</sys:String>
     <sys:String x:Key="ServerSettings_ForceLowMemoryLabel">强制使用低内存</sys:String>
     <sys:String x:Key="ServerSettings_ForceLowMemoryTooltip">如果启用，减少图形和音频效果，以节省约800 MB内存，可能使4G内存的玩家通过无限加载屏幕。</sys:String>
-    <sys:String x:Key="ServerSettings_ForceNoManSkyLabel">强制使用无天空特效</sys:String>
-    <sys:String x:Key="ServerSettings_ForceNoManSkyTooltip">如果启用，大量的详细的天空功能是被禁用的，如云彩和繁星点点的夜空。你仍然可以看到星星，太阳和月亮。这只会帮助您消除使您在夜间看不见的闪闪发光的星星。</sys:String>
-    <sys:String x:Key="ServerSettings_UseNoMemoryBiasLabel">使用无内存偏差</sys:String>
-    <sys:String x:Key="ServerSettings_UseNoMemoryBiasTooltip">如果启用，将使用旧的方法，更多的内存使用，但没有潜在的性能损失。</sys:String>
     <sys:String x:Key="ServerSettings_StasisKeepControllersLabel">停滞保持控制器</sys:String>
     <sys:String x:Key="ServerSettings_StasisKeepControllersTooltip">如果启用，服务器可以通过将人工智能保存在静态生物的内存中来获得性能。 注意:你的服务器必须有大量的内存，否则你的服务器会有很大的内存开销。</sys:String>
     <sys:String x:Key="ServerSettings_UseNoHangDetectionLabel">无挂起检测</sys:String>
     <sys:String x:Key="ServerSettings_UseNoHangDetectionTooltip">如果启用，可防止因挂起而导致的某些类型的崩溃(服务器挂起时，可能会出现服务器滞后的情况)。</sys:String>
    <sys:String x:Key="ServerSettings_NoDinosLabel">没有恐龙</sys:String>
     <sys:String x:Key="ServerSettings_NoDinosTooltip">如果启用，则不会在地图上产生恐龙。</sys:String>
-    <sys:String x:Key="ServerSettings_ServerAllowAnselLabel">服务器允许NVIDIA Ansel技术</sys:String>
-    <sys:String x:Key="ServerSettings_ServerAllowAnselTooltip">如果启用，在单个玩家中激活NVIDIA Ansel支持。 连接到服务器时，即使通电和点亮，这也会导致大多数灯（灯）不再起作用。</sys:String>
-    <sys:String x:Key="ServerSettings_StructureMemoryOptimizationsLabel">建筑内存优化</sys:String>
-    <sys:String x:Key="ServerSettings_StructureMemoryOptimizationsTooltip">如果启用，将启用建筑内存优化。 注意：在运行与建筑相关的MOD（直到它们被更新）时，请避免使用它，因为它可能会破坏这些MOD建筑的捕捉点。</sys:String>
-	<sys:String x:Key="ServerSettings_SecureSendArKPayloadLabel">生物上传问题保护</sys:String>
-	<sys:String x:Key="ServerSettings_SecureSendArKPayloadTooltip">防止生物上传问题（请注意，这可能会对一些MOD产生影响）</sys:String>
-	<sys:String x:Key="ServerSettings_UseStructureStasisGridLabel">Structure Stasis Grid(结构停滞网格)</sys:String>
-	<sys:String x:Key="ServerSettings_UseStructureStasisGridTooltip">使结构停滞网格能够在拥有大量玩家的大型基础上提高服务器性能。（请注意，这可能会对某些MOD产生影响）</sys:String>
     <sys:String x:Key="ServerSettings_NoUnderMeshCheckingLabel">无网格下检查</sys:String>
     <sys:String x:Key="ServerSettings_NoUnderMeshCheckingTooltip">如果启用，将完全关闭反啮合系统。</sys:String>
     <sys:String x:Key="ServerSettings_NoUnderMeshKillingLabel">无网下杀死</sys:String>
     <sys:String x:Key="ServerSettings_NoUnderMeshKillingTooltip">如果启用，将关闭反啮合玩家杀死(但仍然允许传送)。</sys:String>
 	<sys:String x:Key="ServerSettings_UseItemDupeCheckLabel">额外的双重保护</sys:String>
 	<sys:String x:Key="ServerSettings_UseItemDupeCheckTooltip">启用额外的重复数据保护（注意：这可能会对MOD产生影响，请谨慎使用）.</sys:String>
-    <sys:String x:Key="ServerSettings_UseVivoxLabel">启用 Vivox</sys:String>
-	<sys:String x:Key="ServerSettings_UseSecureSpawnRulesLabel">安全物品/恐龙产卵规则</sys:String>
-	<sys:String x:Key="ServerSettings_UseSecureSpawnRulesTooltip">更安全的物品/恐龙产卵规则（注意：这可能会对mod产生影响，请谨慎使用）.</sys:String>
-    <sys:String x:Key="ServerSettings_UseVivoxTooltip">如果启用，将开启Vivox通信协议。 注意：仅适用于Steam服务器。</sys:String>
     <sys:String x:Key="ServerSettings_AllowSharedConnectionsLabel">允许共享连接</sys:String>
     <sys:String x:Key="ServerSettings_AllowSharedConnectionsTooltip">如果禁用，将禁用家庭共享。</sys:String>
-    <sys:String x:Key="ServerSettings_CrossplayLabel">启用多平台</sys:String>
-    <sys:String x:Key="ServerSettings_CrossplayTooltip">如果启用，使当前服务器在Steam和EPIC平台互通，使来自不同的客户端玩家可以连接。</sys:String>
-    <sys:String x:Key="ServerSettings_EpicOnlyLabel">仅限EPIC平台</sys:String>
-    <sys:String x:Key="ServerSettings_EpicOnlyTooltip">如果启用，将只允许使用EPIC客户端的玩家连接。</sys:String>
-    <sys:String x:Key="ServerSettings_EnablePublicIPForEpicLabel">启用EPIC公共IP</sys:String>
-    <sys:String x:Key="ServerSettings_EnablePublicIPForEpicTooltip">如果启用，将为EPIC客户端将尝试连接的公共IP添加一个服务器参数。</sys:String>
     <sys:String x:Key="ServerSettings_ForceRespawnDinosLabel">启动时强制重生恐龙(在重新刷新时导致“就绪”后的延迟)</sys:String>
     <sys:String x:Key="ServerSettings_ForceRespawnDinosTooltip">如果启用，将在启动服务器后，将清除并重生所有野生动物（这只会消灭当前尚未驯服的野生动物）。</sys:String>
     <sys:String x:Key="ServerSettings_EnableServerAutoForceRespawnWildDinosIntervalLabel">启用自动强制重生恐龙</sys:String>
@@ -1315,10 +1181,6 @@
     <sys:String x:Key="ServerSettings_TribeLogDestroyedEnemyStructuresTooltip">如果启用，受害者部落将在部落日志中显示攻击者的部落名称，而不是通用建筑销毁消息。</sys:String>
 	
 	<sys:String x:Key="ServerSettings_ServerSaveOptionsLabel">官方保存设置</sys:String>
-    <sys:String x:Key="ServerSettings_NewSaveFormatLabel">新保存游戏格式</sys:String>
-    <sys:String x:Key="ServerSettings_NewSaveFormatTooltip" xml:space="preserve">使用了新的保存格式（版本11），与“旧的保存格式”（版本8）相比，它大约快4倍，小50%。
-自补丁244.6以来已弃用，当前默认保存格式（版本9）基于此。仅在必要时使用（例如：默认保存格式和旧保存格式都会失败）。
-此选项必须用于启动官方2023服务器将备份与-usestore一起保存以正确加载部落所有权.</sys:String>
     <sys:String x:Key="ServerSettings_UseStoreLabel">使用存储</sys:String>
     <sys:String x:Key="ServerSettings_UseStoreTooltip" xml:space="preserve">官方（非传统）服务器在处理玩家角色数据时的基本行为相同：角色配置文件（.arkprofile）不会与地图保存（.ark）或其备份分开保存。
 必要时（例如：刚转移的角色或创建了新角色），会创建一个临时角色配置文件并保存到下一次保存。
@@ -1417,12 +1279,6 @@
     <sys:String x:Key="ServerSettings_EventNote">注意：仅在正式事件运行时才应在服务器上启用事件。 如果您在正式日期之前或之后启用了该事件，则该事件可能会导致服务器变得不稳定或根本无法工作。</sys:String>
     <sys:String x:Key="ServerSettings_EventNameLabel">活动事件：</sys:String>
     <sys:String x:Key="ServerSettings_EventNameTooltip">要启用的事件的名称（留空以禁用事件）。</sys:String>
-	<sys:String x:Key="ServerSettings_EventColorsChanceOverrideLabel">恐龙颜色随机:</sys:String>
-    <sys:String x:Key="ServerSettings_EventColorsChanceOverrideTooltip">恐龙事件颜色随机.</sys:String>
-	<sys:String x:Key="ServerSettings_NewYear1UTCLabel">新年活动 1:</sys:String>
-    <sys:String x:Key="ServerSettings_NewYear1UTCTooltip">新年日期必须输入为 "yyyy.mm.dd hh:mm:ss" （尽管其他格式已被识别并更改为此格式）。ASM将自动将日期转换为游戏所需的值.</sys:String>
-    <sys:String x:Key="ServerSettings_NewYear2UTCLabel">新年活动 2:</sys:String>
-    <sys:String x:Key="ServerSettings_NewYear2UTCTooltip">新年日期必须输入为 "yyyy.mm.dd hh:mm:ss" （尽管其他格式已被识别并更改为此格式）。ASM将自动将日期转换为游戏所需的值.</sys:String>
     <!--#endregion-->
 
     <!--#region 服务器设置 - 规则 -->
@@ -2240,9 +2096,6 @@
     <!--#endregion-->
 
     <!--#region 服务器设置 - 适者生存 -->
-    <sys:String x:Key="ServerSettings_SOTFLabel">适者生存模式设置</sys:String>
-    <sys:String x:Key="ServerSettings_EnableSOTFLabel">开启适者生存模式</sys:String>
-    <sys:String x:Key="ServerSettings_EnableSOTFTooltip">如果启用，配置服务器会作为“大逃杀”的服务器.</sys:String>
     <sys:String x:Key="ServerSettings_SOTFHelpTooltip">适者生存是一种特殊的总转换模式，它改变了许多规则。</sys:String>
     <sys:String x:Key="ServerSettings_DisableDeathSpectatorLabel">禁用死亡后观众模式</sys:String>
     <sys:String x:Key="ServerSettings_DisableDeathSpectatorTooltip">如果启用，玩家不能在他们死后使用观众模式.</sys:String>
@@ -2264,184 +2117,13 @@
     <sys:String x:Key="ServerSettings_EnableOutputGameReportTooltip">如果启用，则在服务器的“已保存”目录中的每个游戏结束时生成时间戳的HTML后处理报告文件，正如官方排名服务器那样。</sys:String>
     <sys:String x:Key="ServerSettings_EnableGamePlayLoggingLabel">启用游戏日志记录</sys:String>
     <sys:String x:Key="ServerSettings_EnableGamePlayLoggingTooltip">如果启用日期，输出日志文件保存的文件夹，其中包含一个时间戳杀者日志列表Steam的名字，身份，角色名称，等方便的自动比赛纪录.</sys:String>
-    <sys:String x:Key="ServerSettings_SOTFGameOptionsLabel">游戏选项</sys:String>
-    <sys:String x:Key="ServerSettings_SOTFNoEventsLabel">没有事件</sys:String>
-    <sys:String x:Key="ServerSettings_SOTFNoEventsTooltip">启用后，该事件不会自动触发。管理员还可以触发使用“作弊CE evorain”等手动事件.</sys:String>
-    <sys:String x:Key="ServerSettings_SOTFNoBossesLabel">没有Boss</sys:String>
-    <sys:String x:Key="ServerSettings_SOTFNoBossesTooltip">如果启用，将导致不产生任何Boss</sys:String>
-    <sys:String x:Key="ServerSettings_SOTFBothBossesLabel">两个Boss</sys:String>
-    <sys:String x:Key="ServerSettings_SOTFBothBossesTooltip">如果启用,这将刷新育母蜘蛛和大金刚在各自区域。</sys:String>
-    <sys:String x:Key="ServerSettings_SOTFEvoEventIntervalLabel">进化事件间隔</sys:String>
-    <sys:String x:Key="ServerSettings_SOTFEvoEventIntervalTooltip">指定间隔事件的演变,较低值降低事件之间的时间,较高值则增加事件之间的时间.</sys:String>
-    <sys:String x:Key="ServerSettings_SOTFRingStartTimeLabel">每局开始时间</sys:String>
-    <sys:String x:Key="ServerSettings_SOTFRingStartTimeTooltip">你可以将其设置为比赛时间（死亡的进度），以一定的时间。 较低值降低比赛的，较高值则增加了比赛的时间。</sys:String>
 
-    <sys:String x:Key="ServerSettings_SOTF_HelpTooltip">适者生存是另一种游戏生存演进，它使用一组不同的服务器上的文件，并改变许多规则。 请参阅网站了解更多详情。</sys:String>
-    <sys:String x:Key="ServerSettings_SOTF_HelpTitle">转到SotF网页？</sys:String>
-    <sys:String x:Key="ServerSettings_SOTF_HelpLabel">适者生存是一种替代的游戏，以生存进化，使用不同的服务器文件，并改变许多规则。见WEB更多的细节.</sys:String>
     <!--#endregion-->
 
     <!--#region 服务器设置-程序生成方舟 -->
-    <sys:String x:Key="ServerSettings_PGMLabel">程序生成方舟</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_EnableLabel">启用程序产生方舟</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_EnableTooltip">如果启用，配置使用程序产生的方舟服务器。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_PasteSettingsTooltip">粘贴程序生成的字符串</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_PasteSettingsTitle">粘贴程序生成的字符串</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_PasteSettingsConfirmTitle">确认粘贴程序产生的字符串</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_PasteSettingsConfirmLabel">您将要覆盖所有的程序产生的ARK设置。 是否要继续？您将要覆盖所有的程序产生的ARK设置。 你想继续吗？</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_SaveSettingsTooltip">保存程序生成的设置字符串</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_SaveSettingsTitle">程序产生的设置字符串</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_RandomSettingsLabel">随机化</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_RandomSettingsTooltip">随机化程序产生的设置</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_NameLabel">世界文件名</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_NameTooltip">用于世界文件的名称（例如：MyPGArk1）。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_XLabel">X</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_YLabel">Y</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_ZLabel">Z</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Warning1Label">警告：程序生成的方舟系统是高度实验性的。 随着动态算法的进一步发展，您保存的过程生成的ARK必然会在随后的更新中被擦除。 我们只建议目前使用这个系统，如果你愿意接受经常清除你的程序生成的方舟的保存数据！</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Warning2Label">注意：启动服务器后，更改这些设置将无效。 要创建新设置的ARK，必须改变方舟存档文件名，或者删除现有的方舟存档文件。 在这两种情况下，您将丢失所有进度。</sys:String>
 
-    <sys:String x:Key="ServerSettings_PGM_TerrianSettingsLabel">地形设置</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_MapSeedLabel">地图种子</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_MapSeedTooltip">种子用于随机函数。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_LandscapeRadiusLabel">景观半径</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_LandscapeRadiusTooltip">景观的半径，在这个半径之外它是水（避免由地形边界切割景观）。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_WaterFrequencyLabel">水频率</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_WaterFrequencyTooltip">用于生成土地/水的的频率。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_MountainsFrequencyLabel">山频率</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_MountainsFrequencyTooltip">用于产生山脉的频率。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_MountainsSlopeLabel">山坡</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_MountainsSlopeTooltip">从陆地到山的过渡有多难，值越高，过渡越平滑（从0到2）。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_MountainsHeightLabel">山高度</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_MountainsHeightTooltip">山高的倍数。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_TurbulencePowerLabel">湍流功率</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_TurbulencePowerTooltip">湍流函数的功率用于随机扰动输入到噪声函数的坐标，以增加噪声的一些现实。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_ShoreSlopeLabel">岸坡</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_ShoreSlopeTooltip">从水地到岸的过渡有多难，值越高，过渡越平滑（从0到2）。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_ShoreLineEndLabel">岸线端</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_ShoreLineEndTooltip">.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_WaterLevelLabel">水位</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_WaterLevelTooltip">水面的高度值（从海平面到1）。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_OceanFloorLevelLabel">海底水平</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_OceanFloorLevelTooltip">海底高度值（从-1到水位）。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_TerrainScaleMultiplierLabel">地形尺度倍数</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_TerrainScaleMultiplierTooltip">X，Y，Z缩放整个地形。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_ErosionStepsLabel">侵蚀步骤</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_ErosionStepsTooltip">.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_ErosionStrengthLabel">侵蚀强度</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_ErosionStrengthTooltip">.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_DepositionStrengthLabel">沉积强度</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_DepositionStrengthTooltip">.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_TreesGroundSlopeAccuracyLabel">树木坡度阈值</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_TreesGroundSlopeAccuracyTooltip">.</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_MountainGeneralTreesPercentLabel">普通山地树木%</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Terrain_MountainGeneralTreesPercentTooltip">.</sys:String>
 
-    <sys:String x:Key="ServerSettings_PGM_BiomeSettingsLabel">生物群设置</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_SnowBiomeSizeLabel">雪生物群大小</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_SnowBiomeSizeTooltip">雪生物群的半径（从0到1）。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_RedWoodBiomeSizeLabel">红木生物群尺寸</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_RedWoodBiomeSizeTooltip">红木生物群系的半径（从0到1）。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_MountainBiomeStartLabel">山生物群开始</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_MountainBiomeStartTooltip">山生物群开始的高度值。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_MountainsTreeDensityLabel">山树密度</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_MountainsTreeDensityTooltip">树木和岩石的密度在山生物群系。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_JungleBiomeStartLabel">丛林生物群开始</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_JungleBiomeStartTooltip">丛林生物群开始的高度值。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_IslandBorderCurveExponentLabel">岛边界曲线</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_IslandBorderCurveExponentTooltip">在曲线中使用的指数在岛和水之间平滑地内插值。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_MaxSpawnPointHeightLabel">最大生成点高度</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_MaxSpawnPointHeightTooltip">要创建产生点的土地的最大高度。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_GrassDensityLabel">草密度</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_GrassDensityTooltip">草地生物群枝叶密度。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_JungleGrassDensityLabel">丛林草密度</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_JungleGrassDensityTooltip">丛林生物群落中的树叶密度。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_SnowTreeDensityLabel">雪树密度</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_SnowTreeDensityTooltip">雪中的生物群落的树木和岩石密度。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_RedWoodTreeDensityLabel">红木树的密度</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_RedWoodTreeDensityTooltip">在红木生态区的树木和岩石密度。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_TreeDensityLabel">草原树密度</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_TreeDensityTooltip">树木和岩石在草原生物群落的密度。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_RedwoodGrassDensityLabel">红木草密度</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_RedwoodGrassDensityTooltip">红木生物群落中的树叶密度。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_MountainGrassDensityLabel">山草密度</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_MountainGrassDensityTooltip">山生物群落中的树叶密度。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_SnowGrassDensityLabel">雪草密度</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_SnowGrassDensityTooltip">雪生物群中的树叶密度。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_JungleTreeDensityLabel">丛林树密度</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_JungleTreeDensityTooltip">丛林生物群落中树木和岩石的密度。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_ShoreTreeDensityLabel">岸树密度</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_ShoreTreeDensityTooltip">岸生物群中的树叶密度。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_ShorelineStartOffsetLabel">海岸线起点偏移</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_ShorelineStartOffsetTooltip">水的距离海岸线开始了。提高这一个海岸更远的土地。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_ShorelineThicknessLabel">海岸线厚度</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_ShorelineThicknessTooltip">岸的总宽度。 与海岸线开始偏移一起提高以获得更厚，更大的海岸。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_SnowMountainsTreeDensityLabel">雪山树密度</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_SnowMountainsTreeDensityTooltip">树和岩石密度在雪山生物群系的。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_UnderwaterObjectsDensityLabel">水下物体密度</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_UnderwaterObjectsDensityTooltip">水下生物群落中的物体密度。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_SnowMountainGrassDensityLabel">雪山草密度</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_SnowMountainGrassDensityTooltip">雪山生物群落的树叶密度。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_SnowShoreTreeDensityLabel">雪岸树密度</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_SnowShoreTreeDensityTooltip">树和岩石在雪岸生物群系的密度。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_InlandWaterObjectsDensityLabel">内陆水体的密度</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_InlandWaterObjectsDensityTooltip">内陆水生物群中的物体密度。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_DeepWaterBiomesDepthLabel">深水生物群深度</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Biome_DeepWaterBiomesDepthTooltip">深水生物群的深度值。</sys:String>
 
-    <sys:String x:Key="ServerSettings_PGM_MapSettingsLabel">地图设置</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SnowBiomeLocationLabel">雪生物群位置</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SnowBiomeLocationTooltip">雪生物群的位置（X，Y从0到1）。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_RedWoodForestBiomeLocationLabel">红木生物区位置</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_RedWoodForestBiomeLocationTooltip">红木生物群落的位置（X，Y从0到1）。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_NorthRegion1StartLabel">北1区开始</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_NorthRegion1StartTooltip">北1区的起始位置（X，Y从0到1）。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_NorthRegion1EndLabel">北1区结束</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_NorthRegion1EndTooltip">北1区的结束位置（X，Y从0到1）。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_NorthRegion2StartLabel">北2区开始</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_NorthRegion2StartTooltip">北2区的起始位置（X，Y从0到1）。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_NorthRegion2EndLabel">北2区结束</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_NorthRegion2EndTooltip">北2区的结束位置（X，Y从0到1）。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_NorthRegion3StartLabel">北3区开始</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_NorthRegion3StartTooltip">北3区的起始位置（X，Y从0到1）。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_NorthRegion3EndLabel">北3区结束</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_NorthRegion3EndTooltip">北3区的结束位置（X，Y从0到1）。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SouthRegion1StartLabel">南1区开始</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SouthRegion1StartTooltip">南1区的起始位置（X，Y从0到1）。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SouthRegion1EndLabel">南1区结束</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SouthRegion1EndTooltip">南1区的结束位置（X，Y从0到1）。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SouthRegion2StartLabel">南2区开始</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SouthRegion2StartTooltip">南2区的起始位置（X，Y从0到1）。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SouthRegion2EndLabel">南2区结束</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SouthRegion2EndTooltip">南2区的结束位置（X，Y从0到1）。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SouthRegion3StartLabel">南3区开始</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SouthRegion3StartTooltip">南3区的起始位置（X，Y从0到1）。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SouthRegion3EndLabel">南3区结束</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_SouthRegion3EndTooltip">南3区的结束位置（X，Y从0到1）。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_EastRegion1StartLabel">东1区开始</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_EastRegion1StartTooltip">东1区的起始位置（X，Y从0到1）。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_EastRegion1EndLabel">东1区结束</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_EastRegion1EndTooltip">东1区的结束位置（X，Y从0到1）。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_EastRegion2StartLabel">东2区开始</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_EastRegion2StartTooltip">东2区的起始位置（X，Y从0到1）。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_EastRegion2EndLabel">东2区结束</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_EastRegion2EndTooltip">东2区的结束位置（X，Y从0到1）。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_EastRegion3StartLabel">东3区开始</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_EastRegion3StartTooltip">东3区的起始位置（X，Y从0到1）。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_EastRegion3EndLabel">东3区结束</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_EastRegion3EndTooltip">东3区的结束位置（X，Y从0到1）。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_WestRegion1StartLabel">西1区开始</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_WestRegion1StartTooltip">西1区的起始位置（X，Y从0到1）。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_WestRegion1EndLabel">西1区结束</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_WestRegion1EndTooltip">西1区的结束位置（X，Y从0到1）。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_WestRegion2StartLabel">西2区开始</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_WestRegion2StartTooltip">西2区的起始位置（X，Y从0到1）。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_WestRegion2EndLabel">西2区结束</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_WestRegion2EndTooltip">西2区的结束位置（X，Y从0到1）。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_WestRegion3StartLabel">西3区开始</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_WestRegion3StartTooltip">西3区的起始位置（X，Y从0到1）。</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_WestRegion3EndLabel">西3区结束</sys:String>
-    <sys:String x:Key="ServerSettings_PGM_Map_WestRegion3EndTooltip">西3区的结束位置（X，Y从0到1）。</sys:String>
     <!--#endregion-->
 
     <!--#region 服务器设置 - 地图刷新设置 -->
@@ -6225,15 +5907,6 @@
     <sys:String x:Key="ProfileValidation_ServerExeNotDownloaded">服务器文件未正确下载，服务器可执行文件 ({ServerExe}) 不存在。</sys:String>
     <sys:String x:Key="ProfileValidation_ServerDifferentApplication">服务器文件用于不同的应用程序。</sys:String>
 
-    <sys:String x:Key="ProfileValidation_MapModNotDownloaded">尚未下载地图MOD，MOD文件夹不存在。</sys:String>
-    <sys:String x:Key="ProfileValidation_MapModFileNotDownloaded">未正确下载地图MOD，MOD文件不存在。</sys:String>
-    <sys:String x:Key="ProfileValidation_MapModInvalid">该地图MOD是无效的。</sys:String>
-    <sys:String x:Key="ProfileValidation_MapModFileInvalid">未正确下载地图MOD，MOD文件无效。</sys:String>
-    <sys:String x:Key="ProfileValidation_MapModNameInvalid">地图MOD文件不存在或无效。</sys:String>
-    <sys:String x:Key="ProfileValidation_MapModNameMismatch">地图名称与地图MOD名称不匹配。</sys:String>
-    <sys:String x:Key="ProfileValidation_MapModDifferentApplication">地图MOD用于不同的应用程序。</sys:String>
-    <sys:String x:Key="ProfileValidation_MapModOutdated">地图MOD已过期。</sys:String>
-    <sys:String x:Key="ProfileValidation_MapModSteamError">无法从Steam检索地图MOD详细信息。</sys:String>
 
     <sys:String x:Key="ProfileValidation_TCModNotDownloaded">总转换MOD尚未下载，MOD文件夹不存在。</sys:String>
     <sys:String x:Key="ProfileValidation_TCModFileNotDownloaded">总转换MOD未正确下载，MOD文件不存在。</sys:String>
@@ -6245,11 +5918,6 @@
     <sys:String x:Key="ProfileValidation_TCModOutdated">总转换MOD已过期。</sys:String>
     <sys:String x:Key="ProfileValidation_TCModSteamError">无法从Steam检索总转换MOD详细信息。</sys:String>
 
-    <sys:String x:Key="ProfileValidation_ModNotDownloaded">MOD {modId} 尚未下载，MOD文件夹不存在。</sys:String>
-    <sys:String x:Key="ProfileValidation_ModFileNotDownloaded">MOD {modId} 未正确下载，MOD文件不存在。</sys:String>
-    <sys:String x:Key="ProfileValidation_ModDifferentApplication">MOD {modId} 用于其他应用程序。</sys:String>
-    <sys:String x:Key="ProfileValidation_ModOutdated">MOD {modId} 已过期。</sys:String>
-    <sys:String x:Key="ProfileValidation_ModSteamError">无法从steam检索MOD {modId} 详细信息。</sys:String>
     <!--#endregion-->
 
     <!--#region 区域配置保存文件 -->

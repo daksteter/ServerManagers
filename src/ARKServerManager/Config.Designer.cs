@@ -34,28 +34,10 @@ namespace ServerManagerTool {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("SteamCMD.exe")]
-        public string SteamCmdExe {
-            get {
-                return ((string)(this["SteamCmdExe"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("SteamCMD")]
         public string SteamCmdDir {
             get {
                 return ((string)(this["SteamCmdDir"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("SteamCMD.zip")]
-        public string SteamCmdZip {
-            get {
-                return ((string)(this["SteamCmdZip"]));
             }
         }
         
@@ -206,15 +188,6 @@ namespace ServerManagerTool {
         public string ServerGameUserSettingsConfigFile {
             get {
                 return ((string)(this["ServerGameUserSettingsConfigFile"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(".ini")]
-        public string IniExtension {
-            get {
-                return ((string)(this["IniExtension"]));
             }
         }
         
@@ -682,33 +655,6 @@ namespace ServerManagerTool {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("+login {0} +workshop_download_item {1} {2} +quit")]
-        public string SteamCmdInstallModArgsFormat {
-            get {
-                return ((string)(this["SteamCmdInstallModArgsFormat"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("steamapps\\workshop\\content\\{0}\\")]
-        public string AppSteamWorkshopFolderRelativePath {
-            get {
-                return ((string)(this["AppSteamWorkshopFolderRelativePath"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("ShooterGame\\Content\\Mods")]
-        public string ServerModsRelativePath {
-            get {
-                return ((string)(this["ServerModsRelativePath"]));
-            }
-        }
-        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
@@ -718,42 +664,6 @@ namespace ServerManagerTool {
             }
             set {
                 this["AutoUpdate_CacheDir"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool ServerUpdate_UpdateModsWhenUpdatingServer {
-            get {
-                return ((bool)(this["ServerUpdate_UpdateModsWhenUpdatingServer"]));
-            }
-            set {
-                this["ServerUpdate_UpdateModsWhenUpdatingServer"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool ServerUpdate_ForceUpdateMods {
-            get {
-                return ((bool)(this["ServerUpdate_ForceUpdateMods"]));
-            }
-            set {
-                this["ServerUpdate_ForceUpdateMods"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool ServerUpdate_ForceCopyMods {
-            get {
-                return ((bool)(this["ServerUpdate_ForceCopyMods"]));
-            }
-            set {
-                this["ServerUpdate_ForceCopyMods"] = value;
             }
         }
         
@@ -821,15 +731,6 @@ namespace ServerManagerTool {
             }
             set {
                 this["StyleName"] = value;
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("workshopcache_{0}.json")]
-        public string WorkshopCacheFile {
-            get {
-                return ((string)(this["WorkshopCacheFile"]));
             }
         }
         
@@ -995,24 +896,6 @@ namespace ServerManagerTool {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("steamapps\\workshop")]
-        public string SteamWorkshopFolderRelativePath {
-            get {
-                return ((string)(this["SteamWorkshopFolderRelativePath"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("appworkshop_{0}.acf")]
-        public string AppSteamWorkshopFile {
-            get {
-                return ((string)(this["AppSteamWorkshopFile"]));
-            }
-        }
-        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
@@ -1097,15 +980,6 @@ namespace ServerManagerTool {
         public string ServerAppIdFile {
             get {
                 return ((string)(this["ServerAppIdFile"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Clusters")]
-        public string ClustersDir {
-            get {
-                return ((string)(this["ClustersDir"]));
             }
         }
         
@@ -1216,15 +1090,6 @@ namespace ServerManagerTool {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string ServerStatusUrlFormat {
-            get {
-                return ((string)(this["ServerStatusUrlFormat"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("_backup_")]
         public string BackupDir {
             get {
@@ -1310,18 +1175,6 @@ namespace ServerManagerTool {
         public string SteamAPIKeyUrl {
             get {
                 return ((string)(this["SteamAPIKeyUrl"]));
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool ServerUpdate_ForceUpdateModsIfNoSteamInfo {
-            get {
-                return ((bool)(this["ServerUpdate_ForceUpdateModsIfNoSteamInfo"]));
-            }
-            set {
-                this["ServerUpdate_ForceUpdateModsIfNoSteamInfo"] = value;
             }
         }
         
@@ -1458,15 +1311,6 @@ namespace ServerManagerTool {
             }
             set {
                 this["AutoUpdate_ShowUpdateReason"] = value;
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(".asmbak")]
-        public string BackupServerExtension {
-            get {
-                return ((string)(this["BackupServerExtension"]));
             }
         }
         
@@ -1674,18 +1518,6 @@ namespace ServerManagerTool {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Mod updates have been detected:")]
-        public string Alert_ModUpdateDetected {
-            get {
-                return ((string)(this["Alert_ModUpdateDetected"]));
-            }
-            set {
-                this["Alert_ModUpdateDetected"] = value;
-            }
-        }
-        
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("https://arkservermanager.freeforums.net/board/22/plugins")]
@@ -1746,15 +1578,6 @@ namespace ServerManagerTool {
         public string UpdaterFile {
             get {
                 return ((string)(this["UpdaterFile"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(".png")]
-        public string PlayerImageFileExtension {
-            get {
-                return ((string)(this["PlayerImageFileExtension"]));
             }
         }
         
@@ -2088,15 +1911,6 @@ namespace ServerManagerTool {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Styles\\Default.xaml")]
-        public string DefaultStyleFile {
-            get {
-                return ((string)(this["DefaultStyleFile"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("JVHArkAscendedServerManager")]
         public string ScheduledTaskFolder {
             get {
@@ -2290,15 +2104,6 @@ namespace ServerManagerTool {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("60000")]
-        public int ServerStatusWatcher_RemoteStatusQueryDelay {
-            get {
-                return ((int)(this["ServerStatusWatcher_RemoteStatusQueryDelay"]));
-            }
-        }
-        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
@@ -2346,18 +2151,6 @@ namespace ServerManagerTool {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("100")]
-        public double ServerMonitorMessageOutput_Height {
-            get {
-                return ((double)(this["ServerMonitorMessageOutput_Height"]));
-            }
-            set {
-                this["ServerMonitorMessageOutput_Height"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool Alert_ServerStartedMessageIncludeIPandPort {
             get {
@@ -2377,15 +2170,6 @@ namespace ServerManagerTool {
             }
             set {
                 this["ManagePublicIPAutomatically"] = value;
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("version.txt")]
-        public string VersionFile {
-            get {
-                return ((string)(this["VersionFile"]));
             }
         }
         

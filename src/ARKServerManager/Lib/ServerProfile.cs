@@ -254,18 +254,6 @@ namespace ServerManagerTool.Lib
             set
             {
                 SetValue(ServerPortProperty, value);
-                ServerPeerPort = value + 1;
-                UpdatePortsString();
-            }
-        }
-
-        public static readonly DependencyProperty ServerPeerPortProperty = DependencyProperty.Register(nameof(ServerPeerPort), typeof(int), typeof(ServerProfile), new PropertyMetadata(7778));
-        public int ServerPeerPort
-        {
-            get { return (int)GetValue(ServerPeerPortProperty); }
-            set 
-            { 
-                SetValue(ServerPeerPortProperty, value);
                 UpdatePortsString();
             }
         }
@@ -406,14 +394,6 @@ namespace ServerManagerTool.Lib
             set { SetValue(ServerMapProperty, value); }
         }
 
-        public static readonly DependencyProperty TotalConversionModIdProperty = DependencyProperty.Register(nameof(TotalConversionModId), typeof(string), typeof(ServerProfile), new PropertyMetadata(String.Empty));
-        [DataMember]
-        public string TotalConversionModId
-        {
-            get { return (string)GetValue(TotalConversionModIdProperty); }
-            set { SetValue(TotalConversionModIdProperty, value); }
-        }
-
         public static readonly DependencyProperty ServerModIdsProperty = DependencyProperty.Register(nameof(ServerModIds), typeof(string), typeof(ServerProfile), new PropertyMetadata(String.Empty));
         [DataMember]
         // ASA: passed on the command line as -mods= (CurseForge project IDs); ActiveMods is no longer used.
@@ -526,30 +506,6 @@ namespace ServerManagerTool.Lib
             set { SetValue(DisableValveAntiCheatSystemProperty, value); }
         }
 
-        public static readonly DependencyProperty DisablePlayerMovePhysicsOptimizationProperty = DependencyProperty.Register(nameof(DisablePlayerMovePhysicsOptimization), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
-        [DataMember]
-        public bool DisablePlayerMovePhysicsOptimization
-        {
-            get { return (bool)GetValue(DisablePlayerMovePhysicsOptimizationProperty); }
-            set { SetValue(DisablePlayerMovePhysicsOptimizationProperty, value); }
-        }
-
-        public static readonly DependencyProperty DisableAntiSpeedHackDetectionProperty = DependencyProperty.Register(nameof(DisableAntiSpeedHackDetection), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
-        [DataMember]
-        public bool DisableAntiSpeedHackDetection
-        {
-            get { return (bool)GetValue(DisableAntiSpeedHackDetectionProperty); }
-            set { SetValue(DisableAntiSpeedHackDetectionProperty, value); }
-        }
-
-        public static readonly DependencyProperty SpeedHackBiasProperty = DependencyProperty.Register(nameof(SpeedHackBias), typeof(float), typeof(ServerProfile), new PropertyMetadata(1.0f));
-        [DataMember]
-        public float SpeedHackBias
-        {
-            get { return (float)GetValue(SpeedHackBiasProperty); }
-            set { SetValue(SpeedHackBiasProperty, value); }
-        }
-
         public static readonly DependencyProperty UseBattlEyeProperty = DependencyProperty.Register(nameof(UseBattlEye), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
         [DataMember]
         public bool UseBattlEye
@@ -654,22 +610,6 @@ namespace ServerManagerTool.Lib
             set { SetValue(ForceLowMemoryProperty, value); }
         }
 
-        public static readonly DependencyProperty ForceNoManSkyProperty = DependencyProperty.Register(nameof(ForceNoManSky), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
-        [DataMember]
-        public bool ForceNoManSky
-        {
-            get { return (bool)GetValue(ForceNoManSkyProperty); }
-            set { SetValue(ForceNoManSkyProperty, value); }
-        }
-
-        public static readonly DependencyProperty UseNoMemoryBiasProperty = DependencyProperty.Register(nameof(UseNoMemoryBias), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
-        [DataMember]
-        public bool UseNoMemoryBias
-        {
-            get { return (bool)GetValue(UseNoMemoryBiasProperty); }
-            set { SetValue(UseNoMemoryBiasProperty, value); }
-        }
-
         public static readonly DependencyProperty StasisKeepControllersProperty = DependencyProperty.Register(nameof(StasisKeepControllers), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
         [DataMember]
         public bool StasisKeepControllers
@@ -694,30 +634,6 @@ namespace ServerManagerTool.Lib
             set { SetValue(AllowHideDamageSourceFromLogsProperty, value); }
         }
 
-        public static readonly DependencyProperty ServerAllowAnselProperty = DependencyProperty.Register(nameof(ServerAllowAnsel), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
-        [DataMember]
-        public bool ServerAllowAnsel
-        {
-            get { return (bool)GetValue(ServerAllowAnselProperty); }
-            set { SetValue(ServerAllowAnselProperty, value); }
-        }
-
-        public static readonly DependencyProperty StructureMemoryOptimizationsProperty = DependencyProperty.Register(nameof(StructureMemoryOptimizations), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
-        [DataMember]
-        public bool StructureMemoryOptimizations
-        {
-            get { return (bool)GetValue(StructureMemoryOptimizationsProperty); }
-            set { SetValue(StructureMemoryOptimizationsProperty, value); }
-        }
-
-        public static readonly DependencyProperty UseStructureStasisGridProperty = DependencyProperty.Register(nameof(UseStructureStasisGrid), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
-        [DataMember]
-        public bool UseStructureStasisGrid
-        {
-            get { return (bool)GetValue(UseStructureStasisGridProperty); }
-            set { SetValue(UseStructureStasisGridProperty, value); }
-        }
-
         public static readonly DependencyProperty NoUnderMeshCheckingProperty = DependencyProperty.Register(nameof(NoUnderMeshChecking), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
         [DataMember]
         public bool NoUnderMeshChecking
@@ -740,30 +656,6 @@ namespace ServerManagerTool.Lib
         {
             get { return (bool)GetValue(NoDinosProperty); }
             set { SetValue(NoDinosProperty, value); }
-        }
-
-        public static readonly DependencyProperty CrossplayProperty = DependencyProperty.Register(nameof(Crossplay), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
-        [DataMember]
-        public bool Crossplay
-        {
-            get { return (bool)GetValue(CrossplayProperty); }
-            set { SetValue(CrossplayProperty, value); }
-        }
-
-        public static readonly DependencyProperty EpicOnlyProperty = DependencyProperty.Register(nameof(EpicOnly), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
-        [DataMember]
-        public bool EpicOnly
-        {
-            get { return (bool)GetValue(EpicOnlyProperty); }
-            set { SetValue(EpicOnlyProperty, value); }
-        }
-
-        public static readonly DependencyProperty EnablePublicIPForEpicProperty = DependencyProperty.Register(nameof(EnablePublicIPForEpic), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
-        [DataMember]
-        public bool EnablePublicIPForEpic
-        {
-            get { return (bool)GetValue(EnablePublicIPForEpicProperty); }
-            set { SetValue(EnablePublicIPForEpicProperty, value); }
         }
 
         // ASA -ServerPlatform: which platforms may join. All are allowed by default, as the server does without the option.
@@ -797,14 +689,6 @@ namespace ServerManagerTool.Lib
         {
             get { return (bool)GetValue(ServerPlatformMicrosoftStoreProperty); }
             set { SetValue(ServerPlatformMicrosoftStoreProperty, value); }
-        }
-
-        public static readonly DependencyProperty UseVivoxProperty = DependencyProperty.Register(nameof(UseVivox), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
-        [DataMember]
-        public bool UseVivox
-        {
-            get { return (bool)GetValue(UseVivoxProperty); }
-            set { SetValue(UseVivoxProperty, value); }
         }
 
         public static readonly DependencyProperty EnableBadWordListURLProperty = DependencyProperty.Register(nameof(EnableBadWordListURL), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
@@ -927,28 +811,12 @@ namespace ServerManagerTool.Lib
             set { SetValue(ClusterDirOverrideProperty, value); }
         }
 
-        public static readonly DependencyProperty SecureSendArKPayloadProperty = DependencyProperty.Register(nameof(SecureSendArKPayload), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
-        [DataMember]
-        public bool SecureSendArKPayload
-        {
-            get { return (bool)GetValue(SecureSendArKPayloadProperty); }
-            set { SetValue(SecureSendArKPayloadProperty, value); }
-        }
-
         public static readonly DependencyProperty UseItemDupeCheckProperty = DependencyProperty.Register(nameof(UseItemDupeCheck), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
         [DataMember]
         public bool UseItemDupeCheck
         {
             get { return (bool)GetValue(UseItemDupeCheckProperty); }
             set { SetValue(UseItemDupeCheckProperty, value); }
-        }
-
-        public static readonly DependencyProperty UseSecureSpawnRulesProperty = DependencyProperty.Register(nameof(UseSecureSpawnRules), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
-        [DataMember]
-        public bool UseSecureSpawnRules
-        {
-            get { return (bool)GetValue(UseSecureSpawnRulesProperty); }
-            set { SetValue(UseSecureSpawnRulesProperty, value); }
         }
 
         public static readonly DependencyProperty ProcessPriorityProperty = DependencyProperty.Register(nameof(ProcessPriority), typeof(string), typeof(ServerProfile), new PropertyMetadata("normal"));
@@ -997,14 +865,6 @@ namespace ServerManagerTool.Lib
         {
             get { return (bool)GetValue(LauncherArgsPrefixProperty); }
             set { SetValue(LauncherArgsPrefixProperty, value); }
-        }
-
-        public static readonly DependencyProperty NewSaveFormatProperty = DependencyProperty.Register(nameof(NewSaveFormat), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
-        [DataMember]
-        public bool NewSaveFormat
-        {
-            get { return (bool)GetValue(NewSaveFormatProperty); }
-            set { SetValue(NewSaveFormatProperty, value); }
         }
 
         public static readonly DependencyProperty UseStoreProperty = DependencyProperty.Register(nameof(UseStore), typeof(bool), typeof(ServerProfile), new PropertyMetadata(false));
@@ -1253,29 +1113,6 @@ namespace ServerManagerTool.Lib
             set { SetValue(EventNameProperty, value); }
         }
 
-        public static readonly DependencyProperty EventColorsChanceOverrideProperty = DependencyProperty.Register(nameof(EventColorsChanceOverride), typeof(float), typeof(ServerProfile), new PropertyMetadata(0.0f));
-        [DataMember]
-        public float EventColorsChanceOverride
-        {
-            get { return (float)GetValue(EventColorsChanceOverrideProperty); }
-            set { SetValue(EventColorsChanceOverrideProperty, value); }
-        }
-
-        public static readonly DependencyProperty NewYear1UTCProperty = DependencyProperty.Register(nameof(NewYear1UTC), typeof(NullableValue<DateTime>), typeof(ServerProfile), new PropertyMetadata(new NullableValue<DateTime>()));
-        [DataMember]
-        public NullableValue<DateTime> NewYear1UTC
-        {
-            get { return (NullableValue<DateTime>)GetValue(NewYear1UTCProperty); }
-            set { SetValue(NewYear1UTCProperty, value); }
-        }
-
-        public static readonly DependencyProperty NewYear2UTCProperty = DependencyProperty.Register(nameof(NewYear2UTC), typeof(NullableValue<DateTime>), typeof(ServerProfile), new PropertyMetadata(new NullableValue<DateTime>()));
-        [DataMember]
-        public NullableValue<DateTime> NewYear2UTC
-        {
-            get { return (NullableValue<DateTime>)GetValue(NewYear2UTCProperty); }
-            set { SetValue(NewYear2UTCProperty, value); }
-        }
         #endregion
 
         #region Rules
@@ -3796,7 +3633,7 @@ namespace ServerManagerTool.Lib
             try
             {
                 var appIdServer = Config.Default.AppIdServer;
-                var manifestFile = ModUtils.GetSteamManifestFile(InstallDirectory, appIdServer);
+                var manifestFile = IOUtils.NormalizePath(Path.Combine(InstallDirectory, Config.Default.SteamManifestFolderRelativePath, string.Format(Config.Default.AppSteamManifestFile, appIdServer)));
                 if (string.IsNullOrWhiteSpace(manifestFile) || !File.Exists(manifestFile))
                     return;
 
@@ -4675,7 +4512,7 @@ namespace ServerManagerTool.Lib
 
         public void UpdatePortsString()
         {
-            this.PortsString = $"{this.ServerPort}, {this.ServerPeerPort}, {this.QueryPort}";
+            this.PortsString = $"{this.ServerPort}, {this.QueryPort}";
         }
 
         public bool UpdateSchedules()
@@ -4749,11 +4586,6 @@ namespace ServerManagerTool.Lib
             if (ServerPort < ushort.MinValue || ServerPort > ushort.MaxValue)
             {
                 var message = _globalizer.GetResourceString("ProfileValidation_ServerPort")?.Replace("{PortMinimum}", ushort.MinValue.ToString()).Replace("{PortMaximum}", ushort.MaxValue.ToString());
-                result.AppendLine(message);
-            }
-            if (ServerPeerPort < ushort.MinValue || ServerPeerPort > ushort.MaxValue)
-            {
-                var message = _globalizer.GetResourceString("ProfileValidation_ServerPeerPort")?.Replace("{PortMinimum}", ushort.MinValue.ToString()).Replace("{PortMaximum}", ushort.MaxValue.ToString());
                 result.AppendLine(message);
             }
             if (QueryPort < ushort.MinValue || QueryPort > ushort.MaxValue)
@@ -5151,9 +4983,6 @@ namespace ServerManagerTool.Lib
         {
             this.ClearValue(CultureProperty);
             this.ClearValue(DisableValveAntiCheatSystemProperty);
-            this.ClearValue(DisablePlayerMovePhysicsOptimizationProperty);
-            this.ClearValue(DisableAntiSpeedHackDetectionProperty);
-            this.ClearValue(SpeedHackBiasProperty);
             this.ClearValue(UseBattlEyeProperty);
 
             this.ClearValue(ForceRespawnDinosProperty);
@@ -5164,28 +4993,17 @@ namespace ServerManagerTool.Lib
             this.ClearValue(ForceDirectX10Property);
             this.ClearValue(ForceShaderModel4Property);
             this.ClearValue(ForceLowMemoryProperty);
-            this.ClearValue(ForceNoManSkyProperty);
-            this.ClearValue(UseNoMemoryBiasProperty);
             this.ClearValue(UseNoHangDetectionProperty);
-            this.ClearValue(ServerAllowAnselProperty);
-            this.ClearValue(StructureMemoryOptimizationsProperty);
-            this.ClearValue(UseStructureStasisGridProperty);
             this.ClearValue(NoUnderMeshCheckingProperty);
             this.ClearValue(NoUnderMeshKillingProperty);
             this.ClearValue(NoDinosProperty);
-            this.ClearValue(UseVivoxProperty);
             this.ClearValue(AllowSharedConnectionsProperty);
-            this.ClearValue(CrossplayProperty);
-            this.ClearValue(EpicOnlyProperty);
-            this.ClearValue(EnablePublicIPForEpicProperty);
             this.ClearValue(ServerPlatformPCProperty);
             this.ClearValue(ServerPlatformXboxProperty);
             this.ClearValue(ServerPlatformPlayStationProperty);
             this.ClearValue(ServerPlatformMicrosoftStoreProperty);
             this.ClearValue(OutputServerLogProperty);
-            this.ClearValue(SecureSendArKPayloadProperty);
             this.ClearValue(UseItemDupeCheckProperty);
-            this.ClearValue(UseSecureSpawnRulesProperty);
 
             this.ClearValue(AltSaveDirectoryNameProperty);
             this.ClearValue(CrossArkClusterIdProperty);
@@ -5222,7 +5040,6 @@ namespace ServerManagerTool.Lib
             this.ClearValue(AdminPasswordProperty);
             this.ClearValue(SpectatorPasswordProperty);
             this.ClearValue(ServerPortProperty);
-            this.ClearValue(ServerPeerPortProperty);
             this.ClearValue(QueryPortProperty);
             this.ClearValue(ServerIPProperty);
 
@@ -5243,7 +5060,6 @@ namespace ServerManagerTool.Lib
             this.ClearValue(AdminLoggingProperty);
 
             this.ClearValue(ServerMapProperty);
-            this.ClearValue(TotalConversionModIdProperty);
             this.ClearValue(ServerModIdsProperty);
 
             this.ClearValue(EnableExtinctionEventProperty);
@@ -5276,7 +5092,6 @@ namespace ServerManagerTool.Lib
             this.ClearValue(LauncherArgsPrefixProperty);
             this.ClearValue(LauncherArgsProperty);
 
-            this.ClearValue(NewSaveFormatProperty);
             this.ClearValue(UseStoreProperty);
             this.ClearValue(BackupTransferPlayerDatasProperty);
         }
@@ -5644,9 +5459,6 @@ namespace ServerManagerTool.Lib
             this.ClearValue(BranchPasswordProperty);
 
             this.ClearValue(EventNameProperty);
-            this.ClearValue(EventColorsChanceOverrideProperty);
-            this.ClearNullableValue(NewYear1UTCProperty);
-            this.ClearNullableValue(NewYear2UTCProperty);
         }
 
         public void ResetStackSizeOverridesSection()
@@ -5845,14 +5657,10 @@ namespace ServerManagerTool.Lib
             this.SetValue(CustomLiveTuningUrlProperty, sourceProfile.CustomLiveTuningUrl);
             this.SetValue(DisableValveAntiCheatSystemProperty, sourceProfile.DisableValveAntiCheatSystem);
             this.SetValue(UseBattlEyeProperty, sourceProfile.UseBattlEye);
-            this.SetValue(DisablePlayerMovePhysicsOptimizationProperty, sourceProfile.DisablePlayerMovePhysicsOptimization);
-            this.SetValue(DisableAntiSpeedHackDetectionProperty, sourceProfile.DisableAntiSpeedHackDetection);
-            this.SetValue(SpeedHackBiasProperty, sourceProfile.SpeedHackBias);
             this.SetValue(UseNoHangDetectionProperty, sourceProfile.UseNoHangDetection);
             this.SetValue(NoDinosProperty, sourceProfile.NoDinos);
             this.SetValue(NoUnderMeshCheckingProperty, sourceProfile.NoUnderMeshChecking);
             this.SetValue(NoUnderMeshKillingProperty, sourceProfile.NoUnderMeshKilling);
-            this.SetValue(UseVivoxProperty, sourceProfile.UseVivox);
             this.SetValue(AllowSharedConnectionsProperty, sourceProfile.AllowSharedConnections);
             this.SetValue(ForceRespawnDinosProperty, sourceProfile.ForceRespawnDinos);
             this.SetValue(EnableServerAutoForceRespawnWildDinosIntervalProperty, sourceProfile.EnableServerAutoForceRespawnWildDinosInterval);
@@ -5860,15 +5668,7 @@ namespace ServerManagerTool.Lib
             this.SetValue(ForceDirectX10Property, sourceProfile.ForceDirectX10);
             this.SetValue(ForceShaderModel4Property, sourceProfile.ForceShaderModel4);
             this.SetValue(ForceLowMemoryProperty, sourceProfile.ForceLowMemory);
-            this.SetValue(ForceNoManSkyProperty, sourceProfile.ForceNoManSky);
-            this.SetValue(UseNoMemoryBiasProperty, sourceProfile.UseNoMemoryBias);
             this.SetValue(StasisKeepControllersProperty, sourceProfile.StasisKeepControllers);
-            this.SetValue(ServerAllowAnselProperty, sourceProfile.ServerAllowAnsel);
-            this.SetValue(StructureMemoryOptimizationsProperty, sourceProfile.StructureMemoryOptimizations);
-            this.SetValue(UseStructureStasisGridProperty, sourceProfile.UseStructureStasisGrid);
-            this.SetValue(CrossplayProperty, sourceProfile.Crossplay);
-            this.SetValue(EpicOnlyProperty, sourceProfile.EpicOnly);
-            this.SetValue(EnablePublicIPForEpicProperty, sourceProfile.EnablePublicIPForEpic);
             this.SetValue(ServerPlatformPCProperty, sourceProfile.ServerPlatformPC);
             this.SetValue(ServerPlatformXboxProperty, sourceProfile.ServerPlatformXbox);
             this.SetValue(ServerPlatformPlayStationProperty, sourceProfile.ServerPlatformPlayStation);
@@ -5881,9 +5681,7 @@ namespace ServerManagerTool.Lib
                 this.SetValue(ClusterDirOverrideProperty, sourceProfile.ClusterDirOverride);
             }
             this.SetValue(ClusterDirOverrideProperty, sourceProfile.ClusterDirOverride);
-            this.SetValue(SecureSendArKPayloadProperty, sourceProfile.SecureSendArKPayload);
             this.SetValue(UseItemDupeCheckProperty, sourceProfile.UseItemDupeCheck);
-            this.SetValue(UseSecureSpawnRulesProperty, sourceProfile.UseSecureSpawnRules);
 
             // server filter options
             this.SetValue(EnableBadWordListURLProperty, sourceProfile.EnableBadWordListURL);
@@ -5912,7 +5710,6 @@ namespace ServerManagerTool.Lib
             //this.SetValue(LauncherArgsPrefixProperty, sourceProfile.LauncherArgsPrefix);
             //this.SetValue(AdditionalArgsProperty, sourceProfile.AdditionalArgs);
 
-            this.SetValue(NewSaveFormatProperty, sourceProfile.NewSaveFormat);
             this.SetValue(UseStoreProperty, sourceProfile.UseStore);
             this.SetValue(BackupTransferPlayerDatasProperty, sourceProfile.BackupTransferPlayerDatas);
         }
@@ -6402,9 +6199,6 @@ namespace ServerManagerTool.Lib
             this.SetValue(BranchPasswordProperty, sourceProfile.BranchPassword);
 
             this.SetValue(EventNameProperty, sourceProfile.EventName);
-            this.SetValue(EventColorsChanceOverrideProperty, sourceProfile.EventColorsChanceOverride);
-            this.SetNullableValue(NewYear1UTCProperty, sourceProfile.NewYear1UTC);
-            this.SetNullableValue(NewYear2UTCProperty, sourceProfile.NewYear2UTC);
         }
 
         private void SyncServerFiles(ServerProfile sourceProfile)
@@ -6713,11 +6507,12 @@ namespace ServerManagerTool.Lib
         /// <summary>The world save's file name without extension; the same as the map name.</summary>
         public static string GetProfileMapFileName(ServerProfile profile) => GetProfileMapFileName(profile?.ServerMap);
 
-        public static string GetProfileMapFileName(string serverMap) => ModUtils.GetMapName(serverMap);
+        public static string GetProfileMapFileName(string serverMap) => GetMapName(serverMap);
 
-        public static string GetProfileMapModId(ServerProfile profile) => ModUtils.GetMapModId(profile?.ServerMap);
+        public static string GetProfileMapName(ServerProfile profile) => GetMapName(profile?.ServerMap);
 
-        public static string GetProfileMapName(ServerProfile profile) => ModUtils.GetMapName(profile?.ServerMap);
+        /// <summary>The map a ServerMap setting names. ASA maps are plain names such as TheIsland_WP (also for mod maps).</summary>
+        public static string GetMapName(string serverMap) => serverMap?.Trim() ?? string.Empty;
 
         public static string GetProfileSaveGamesPath(ServerProfile profile)
         {
@@ -6744,7 +6539,7 @@ namespace ServerManagerTool.Lib
                 ? Path.Combine(installDirectory ?? string.Empty, Config.Default.SavedFilesRelativePath)
                 : Path.Combine(installDirectory ?? string.Empty, Config.Default.SavedRelativePath, altSaveDirectoryName);
 
-            return Path.Combine(savedArksFolder, ModUtils.GetMapName(serverMap));
+            return Path.Combine(savedArksFolder, GetMapName(serverMap));
         }
 
         /// <summary>

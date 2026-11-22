@@ -19,15 +19,11 @@ namespace ServerManagerTool.Lib
         public string ServerName;
         public IPAddress ServerIPAddress;
         public int ServerPort;
-        public int ServerPeerPort;
         public int QueryPort;
         public bool RCONEnabled;
         public int RCONPort;
         public string RCONPassword;
         public string ServerMap;
-        public string ServerMapModId;
-        public string TotalConversionModId;
-        public List<string> ServerModIds;
         public string MOTD;
         public int MOTDDuration;
         public bool MOTDIntervalEnabled;
@@ -68,15 +64,11 @@ namespace ServerManagerTool.Lib
                 ServerName = profile.ServerName,
                 ServerIPAddress = string.IsNullOrWhiteSpace(profile.ServerIP) ? IPAddress.Loopback : IPAddress.TryParse(profile.ServerIP.Trim(), out IPAddress ipAddress) ? ipAddress : IPAddress.Loopback,
                 ServerPort = profile.ServerPort,
-                ServerPeerPort = profile.ServerPeerPort,
                 QueryPort = profile.QueryPort,
                 RCONEnabled = profile.RCONEnabled,
                 RCONPort = profile.RCONPort,
                 RCONPassword = profile.AdminPassword,
                 ServerMap = ServerProfile.GetProfileMapName(profile),
-                ServerMapModId = ServerProfile.GetProfileMapModId(profile),
-                TotalConversionModId = profile.TotalConversionModId ?? string.Empty,
-                ServerModIds = ModUtils.GetModIdList(profile.ServerModIds),
                 MOTD = profile.MOTD,
                 MOTDDuration = Math.Max(profile.MOTDDuration, 10),
                 MOTDIntervalEnabled = profile.MOTDInterval.HasValue && !string.IsNullOrWhiteSpace(profile.MOTD),

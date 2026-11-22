@@ -37,12 +37,10 @@ namespace ServerManagerTool.Utils
                     data.SupplyCrates.AddRange(fileData.SupplyCrates);
                     data.Inventories.AddRange(fileData.Inventories);
                     data.GameMaps.AddRange(fileData.GameMaps);
-                    data.TotalConversions.AddRange(fileData.TotalConversions);
                     data.PlayerLevels.AddRange(fileData.PlayerLevels);
                     data.CreatureLevels.AddRange(fileData.CreatureLevels);
                     data.Branches.AddRange(fileData.Branches);
                     data.Events.AddRange(fileData.Events);
-                    data.OfficialMods.AddRange(fileData.OfficialMods);
                     data.RconInputModes.AddRange(fileData.RconInputModes);
 
                     if (fileData.PlayerAdditionalLevels > 0 && fileData.PlayerAdditionalLevels > data.PlayerAdditionalLevels)
@@ -118,9 +116,6 @@ namespace ServerManagerTool.Utils
         public List<GameMapDataItem> GameMaps = new List<GameMapDataItem>();
 
         [DataMember(IsRequired = false)]
-        public List<TotalConversionDataItem> TotalConversions = new List<TotalConversionDataItem>();
-
-        [DataMember(IsRequired = false)]
         public List<PlayerLevelDataItem> PlayerLevels = new List<PlayerLevelDataItem>();
 
         [DataMember(IsRequired = false)]
@@ -134,9 +129,6 @@ namespace ServerManagerTool.Utils
 
         [DataMember(IsRequired = false)]
         public List<EventDataItem> Events = new List<EventDataItem>();
-
-        [DataMember(IsRequired = false)]
-        public List<OfficialModItem> OfficialMods = new List<OfficialModItem>();
 
         [DataMember(IsRequired = false)]
         public List<RconInputModeItem> RconInputModes = new List<RconInputModeItem>();
@@ -157,10 +149,8 @@ namespace ServerManagerTool.Utils
                 data.SupplyCrates.ForEach(c => c.IsUserData = isUserData);
                 data.Inventories.ForEach(c => c.IsUserData = isUserData);
                 data.GameMaps.ForEach(c => c.IsUserData = isUserData);
-                data.TotalConversions.ForEach(c => c.IsUserData = isUserData);
                 data.Branches.ForEach(c => c.IsUserData = isUserData);
                 data.Events.ForEach(c => c.IsUserData = isUserData);
-                data.OfficialMods.ForEach(c => c.IsUserData = isUserData);
                 data.RconInputModes.ForEach(c => c.IsUserData = isUserData);
             }
             return data;
@@ -261,11 +251,6 @@ namespace ServerManagerTool.Utils
     }
 
     [DataContract]
-    public class TotalConversionDataItem : BaseDataItem
-    {
-    }
-
-    [DataContract]
     public class PlayerLevelDataItem
     {
         [DataMember]
@@ -299,17 +284,6 @@ namespace ServerManagerTool.Utils
         public string EventName = string.Empty;
         [DataMember]
         public string Description = string.Empty;
-
-        public bool IsUserData = false;
-    }
-
-    [DataContract]
-    public class OfficialModItem
-    {
-        [DataMember]
-        public string ModId = string.Empty;
-        [DataMember]
-        public string ModName = string.Empty;
 
         public bool IsUserData = false;
     }
