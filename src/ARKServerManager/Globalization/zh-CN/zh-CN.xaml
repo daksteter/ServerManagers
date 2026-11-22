@@ -1182,7 +1182,7 @@
 	<sys:String x:Key="ServerSettings_LauncherArgsPrefixLabel">前缀启动程序</sys:String>
     <sys:String x:Key="ServerSettings_LauncherArgsPrefixTooltip">如果启用，RunServer.cmd文件将在服务器启动前包括Launcher Args字段（将允许在服务器启动前执行其他文件）。</sys:String>
     <sys:String x:Key="ServerSettings_ServerArgsLabel">服务器参数:</sys:String>
-    <sys:String x:Key="ServerSettings_ServerArgsTooltip">服务器的其他命令行参数。如果指定此项，请添加以?开头，然后是其他参数。例如：?MaxPlayers=5?QueryPort=9999 -nosteamclient</sys:String>
+    <sys:String x:Key="ServerSettings_ServerArgsTooltip">服务器的其他命令行参数。如果指定此项，请添加以?开头，然后是其他参数。例如：?SettingName=Value -OptionName</sys:String>
     <sys:String x:Key="ServerSettings_ShowCommandButtonLabel">显示命令...</sys:String>
     <sys:String x:Key="ServerSettings_ShowCommandButtonTooltip">查看服务器的命令行启动命令。</sys:String>
     <!--#endregion-->

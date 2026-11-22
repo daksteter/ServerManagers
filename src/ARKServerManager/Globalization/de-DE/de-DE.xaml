@@ -1033,7 +1033,7 @@
     <sys:String x:Key="ServerSettings_LauncherArgsOverrideLabel">Überschreibe Launcher</sys:String>
     <sys:String x:Key="ServerSettings_LauncherArgsOverrideTooltip">Wenn aktiviert, enthält die Datei RunServer.cmd nur das, was im Feld Launcher Args enthalten ist.</sys:String>
     <sys:String x:Key="ServerSettings_ServerArgsLabel">Server Args:</sys:String>
-    <sys:String x:Key="ServerSettings_ServerArgsTooltip">Zusätzliche Befehlszeilenargumente für den Server. Wenn Du dies angibst, fügen Du die Argumente hinzu, die zuerst mit ?'s beginnen, gefolgt von anderen Argumenten. Zum Beispiel :?MaxPlayers = 5?QueryPort = 9999 -nosteamclient</sys:String>
+    <sys:String x:Key="ServerSettings_ServerArgsTooltip">Zusätzliche Befehlszeilenargumente für den Server. Wenn Du dies angibst, fügen Du die Argumente hinzu, die zuerst mit ?'s beginnen, gefolgt von anderen Argumenten. Zum Beispiel: ?SettingName=Value -OptionName</sys:String>
     <sys:String x:Key="ServerSettings_ShowCommandButtonLabel">Befehl anzeigen...</sys:String>
     <sys:String x:Key="ServerSettings_ShowCommandButtonTooltip">Zeigt den Befehl zum Starten der Befehlszeile für den Server an.</sys:String>
     <!--#endregion-->

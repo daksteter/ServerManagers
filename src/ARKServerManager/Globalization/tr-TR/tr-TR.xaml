@@ -1208,7 +1208,7 @@ Wildcard tarafından belgelenmemiştir.</sys:String>
     <sys:String x:Key="ServerSettings_LauncherArgsPrefixLabel">Başlatma Komutunu Önce Koy</sys:String>
     <sys:String x:Key="ServerSettings_LauncherArgsPrefixTooltip">Etkinleştirildiğinde, RunServer.cmd dosyası sunucu başlatılmadan önce Başlatma Argümanları alanını içerir (sunucu başlatılmadan önce diğer dosyaların çalıştırılmasına izin verir).</sys:String>
     <sys:String x:Key="ServerSettings_ServerArgsLabel">Sunucu Argümanları:</sys:String>
-    <sys:String x:Key="ServerSettings_ServerArgsTooltip">Sunucu için ek komut satırı argümanları. Belirtiyorsanız, önce ? ile başlayan argümanları, ardından diğer argümanları ekleyin. Örneğin: ?MaxPlayers=5?QueryPort=9999 -nosteamclient</sys:String>
+    <sys:String x:Key="ServerSettings_ServerArgsTooltip">Sunucu için ek komut satırı argümanları. Belirtiyorsanız, önce ? ile başlayan argümanları, ardından diğer argümanları ekleyin. Örneğin: ?SettingName=Value -OptionName</sys:String>
     <sys:String x:Key="ServerSettings_ShowCommandButtonLabel">Komutu Göster...</sys:String>
     <sys:String x:Key="ServerSettings_ShowCommandButtonTooltip">Sunucu için komut satırı başlatma komutunu görüntüler.</sys:String>
     <!--#endregion-->

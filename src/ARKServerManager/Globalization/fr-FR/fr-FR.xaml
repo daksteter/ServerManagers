@@ -1124,7 +1124,7 @@
     <sys:String x:Key="ServerSettings_LauncherArgsPrefixLabel">Prefix du lanceur</sys:String>
     <sys:String x:Key="ServerSettings_LauncherArgsPrefixTooltip">Si activé, le fichier RunServer.cmd inclura le champ args Lanceur avant le démarrage du serveur (permettra d'exécuter d'autres fichiers avant le démarrage du serveur).</sys:String>
     <sys:String x:Key="ServerSettings_ServerArgsLabel">Serveur Args:</sys:String>
-    <sys:String x:Key="ServerSettings_ServerArgsTooltip">Arguments de ligne de commande supplémentaires pour le serveur. Si vous spécifiez ceci, ajoutez les arguments commençant par? En premier, suivis de tout autre argument. Par exemple:?MaxPlayers=5?QueryPort=9999-nosteamclient</sys:String>
+    <sys:String x:Key="ServerSettings_ServerArgsTooltip">Arguments de ligne de commande supplémentaires pour le serveur. Si vous spécifiez ceci, ajoutez les arguments commençant par? En premier, suivis de tout autre argument. Par exemple: ?SettingName=Value -OptionName</sys:String>
     <sys:String x:Key="ServerSettings_ShowCommandButtonLabel">Afficher la commande...</sys:String>
     <sys:String x:Key="ServerSettings_ShowCommandButtonTooltip">Afficher la commande de démarrage de la ligne de commande pour le serveur.</sys:String>
     <!--#endregion-->

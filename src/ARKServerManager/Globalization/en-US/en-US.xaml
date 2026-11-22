@@ -1222,7 +1222,7 @@ Undocumented bye wildcard.</sys:String>
     <sys:String x:Key="ServerSettings_LauncherArgsPrefixLabel">Prefix Launcher</sys:String>
     <sys:String x:Key="ServerSettings_LauncherArgsPrefixTooltip">If enabled, the RunServer.cmd file will include the Launcher Args field before the server start (will allow other files to be executed before the server is started).</sys:String>
     <sys:String x:Key="ServerSettings_ServerArgsLabel">Server Args:</sys:String>
-    <sys:String x:Key="ServerSettings_ServerArgsTooltip">Additional command-line args for the server. If you specify this, add the args which start with ?'s first, followed by any other args.  For example: ?MaxPlayers=5?QueryPort=9999 -nosteamclient</sys:String>
+    <sys:String x:Key="ServerSettings_ServerArgsTooltip">Extra command-line args for the server, for options this page doesn't have. Put the args that start with ? first, then the ones that start with -. For example: ?SettingName=Value -OptionName</sys:String>
     <sys:String x:Key="ServerSettings_ShowCommandButtonLabel">Show Command...</sys:String>
     <sys:String x:Key="ServerSettings_ShowCommandButtonTooltip">View the command line start command for the server.</sys:String>
     <!--#endregion-->

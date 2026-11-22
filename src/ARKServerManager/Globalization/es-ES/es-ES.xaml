@@ -938,7 +938,7 @@
     <sys:String x:Key="ServerSettings_LauncherArgsOverrideLabel">Forzado del lanzador</sys:String>
     <sys:String x:Key="ServerSettings_LauncherArgsOverrideTooltip">Si es activado, el archivo RunServer.cmd sólo contendrá lo que se haya incluido en el campo Argumentos del lanzador.</sys:String>
     <sys:String x:Key="ServerSettings_ServerArgsLabel">Argumentos del servidor:</sys:String>
-    <sys:String x:Key="ServerSettings_ServerArgsTooltip">Argumentos de línea de comandos adicionales para el servidor. Si especificas esto, añade primero los argumentos que comienzan con ?, seguido de cualquier otro argumento.  Por ejemplo: ?MaxPlayers=5?QueryPort=9999 -nosteamclient</sys:String>
+    <sys:String x:Key="ServerSettings_ServerArgsTooltip">Argumentos de línea de comandos adicionales para el servidor. Si especificas esto, añade primero los argumentos que comienzan con ?, seguido de cualquier otro argumento.  Por ejemplo: ?SettingName=Value -OptionName</sys:String>
     <sys:String x:Key="ServerSettings_ShowCommandButtonLabel">Mostrar comando...</sys:String>
     <sys:String x:Key="ServerSettings_ShowCommandButtonTooltip">Ver el comando de inicio de la línea de comando para el servidor.</sys:String>
     <!--#endregion-->

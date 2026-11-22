@@ -1189,7 +1189,7 @@ Undocumented bye wildcard.</sys:String>
     <sys:String x:Key="ServerSettings_LauncherArgsPrefixLabel">Prefixo Launcher</sys:String>
     <sys:String x:Key="ServerSettings_LauncherArgsPrefixTooltip">Se ativado, o arquivo RunServer.cmd incluirá o campo Launcher Args antes do início do servidor (permitirá que outros arquivos sejam executados antes que o servidor seja iniciado).</sys:String>
     <sys:String x:Key="ServerSettings_ServerArgsLabel">Args do servidor:</sys:String>
-    <sys:String x:Key="ServerSettings_ServerArgsTooltip">Args de linha de comando adicionais para o servidor. Se você especificar isso, adicione os argumentos que começam com? Primeiro, seguidos por quaisquer outros argumentos. Por exemplo:?MaxPlayers=5?QueryPort=9999-nosteamclient</sys:String>
+    <sys:String x:Key="ServerSettings_ServerArgsTooltip">Args de linha de comando adicionais para o servidor. Se você especificar isso, adicione os argumentos que começam com? Primeiro, seguidos por quaisquer outros argumentos. Por exemplo: ?SettingName=Value -OptionName</sys:String>
     <sys:String x:Key="ServerSettings_ShowCommandButtonLabel">Mostrar comando ...</sys:String>
     <sys:String x:Key="ServerSettings_ShowCommandButtonTooltip">Visualize o comando de início da linha de comandos para o servidor.</sys:String>
     <!--#endregion-->

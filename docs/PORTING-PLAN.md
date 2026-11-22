@@ -95,7 +95,11 @@ Ordered so each milestone leaves the app runnable. Tick boxes as commits land.
   - [x] Options in the binary that the app didn't offer: `-passivemods`, `-NoWildBabies`,
         `-GBUsageToForceRestart`, `-AlwaysTickDedicatedSkeletalMeshes` added in M7. `-BattlEyeServerRecheck`
         not added (undocumented).
-  - [ ] `AdditionalArgs` are glued on raw — enforce "`?ServerAdminPassword` last" if it ever goes on the command line.
+  - [x] "`?ServerAdminPassword` last": nothing to enforce. The admin password is written to
+        `GameUserSettings.ini`, never to the command line, and Server Args (`AdditionalArgs`) go after the app's
+        own `?` options, so a `?ServerAdminPassword=` typed there is already last unless more `?` options follow it
+        in the same box. The Server Args tooltip's example (`?MaxPlayers=5?QueryPort=9999`: ASA ignores the
+        first, the app sets the second) is now a neutral `?SettingName=Value -OptionName`.
 - [x] Ports: ASA binds no peer port (verified with netstat: only the game port, UDP 27015 and RCON), so the
       peer port is hidden and no longer gets a firewall rule. The server **does** open UDP 27015 (Steam)
       although it doesn't answer queries there, so the query port stays (field, validation, firewall) and
@@ -181,7 +185,7 @@ online check, and the Discord `info` command. Replace with process state + RCON.
 - [x] **Test:** with the test server running, the app reports Running / Available, 0 players, within one
       poll of starting, over a single RCON connection that stays open.
 - [x] **Test:** the player count went to 1 when a player joined; stop with countdown works.
-- [ ] **Test:** the RCON window's player list with a player connected (EOS ID parsing); stop skips the
+- [x] **Test:** the RCON window's player list with a player connected (EOS ID parsing); stop skips the
       countdown on an empty server.
 
 ### M3. Mods: Steam Workshop → CurseForge
@@ -244,7 +248,10 @@ Decision: **plain CurseForge IDs** (no CurseForge API for now).
       ends in the map folder (`SavedArks\<map>`, or `Saved\<AltSaveDirectoryName>\<map>`); all callers updated
       (world file check, backup, restore, reset, player list / RCON parameters). The RCON window now passes the
       map and the player list window the alt save folder name (both were missing).
-- [ ] Verify the `AltSaveDirectoryName` layout (`Saved\<alt>\<map>`, per the wiki) on a live server.
+- [x] Verified the `AltSaveDirectoryName` layout on a live server: started with `?AltSaveDirectoryName=AltTest`,
+      the server created its world at `Saved\AltTest\TheIsland_WP\TheIsland_WP.ark` (an empty database at
+      startup), and the save on Stop went there, with its `.arkrbf` backups; `SavedArks\TheIsland_WP` wasn't
+      touched.
 - [x] Backup: the world save, `.arkprofile`, `.arktribe` and `.arktributetribe` files are copied to a temp
       folder first (full sharing, so the server's writes are never blocked; retried if an SQLite `-journal`
       / `-wal` file appears or the file changes during the copy), then zipped as before. Verified live: the
