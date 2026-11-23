@@ -9,12 +9,22 @@ Changes before the fork are in the original project's history.
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-11-23
+
+From this version on, the app tells you when a newer one is released.
+
 ### Added
 
-- **Update notice.** At startup the app asks GitHub for the latest release. When it's newer, "Version 1.2.0 is
+- **Update notice.** At startup the app asks GitHub for the latest release. When it's newer, "Version 1.3.0 is
   available" (for example) appears next to the version number in the main window and opens the release page. Turn it
   off in Settings with **Check for a new version at startup**. The patch-notes button next to the version is back too,
   and opens the Releases page.
+
+### Fixed
+
+- **The release's `.sha256` file couldn't be checked with `sha256sum -c`** ("No such file or directory"): it had a
+  Windows line ending, which `sha256sum` reads as part of the file name. The hash itself was right; 1.1.0's can be
+  checked with PowerShell's `Get-FileHash`.
 
 ## [1.1.0] - 2026-11-22
 
