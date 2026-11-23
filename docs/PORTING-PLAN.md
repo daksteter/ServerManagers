@@ -3,7 +3,7 @@
 Turning Bletch1971's ARK Server Manager (ARK: Survival Evolved, "ASE") into a manager for
 **ARK: Survival Ascended ("ASA")**, keeping C# / WPF on the latest .NET.
 
-- **Branch:** `main` on a public GitHub fork of Bletch's repo (`origin`); no releases yet, and the self-updater is removed.
+- **Branch:** `main` on a public GitHub fork of Bletch's repo (`origin`); first release 1.1.0 (tag `v1.1.0`), and the self-updater is removed.
 - **Upstream:** `upstream` = Bletch1971/ServerManagers. `master` there holds release binaries only;
   source lives on `source` / `dotnet-8-update`. It's MIT-licensed since November 2026 (Bletch merged the
   license pull request, #34); see the release checklist.
@@ -605,7 +605,8 @@ What's left before a public release (not planned soon). The repo is a public Git
       settings live in a folder per version, and `Config.Upgrade()` only copies them from a lower one.
 - [x] **Manual test checklist** below, especially scheduled tasks (need admin), "Create shortcut" and the
       Discord bot. All ticked in November 2026.
-- [ ] **CHANGELOG:** turn [Unreleased] into the first version, with its date.
+- [x] **CHANGELOG:** turn [Unreleased] into the first version, with its date: `## [1.1.0] - 2026-11-22`, with a
+      new empty [Unreleased] above it. README now points to the Releases page for the download.
 - [x] Third-party licenses: Windows API Code Pack and NeXt.Vdf replaced, WPFSharp.Globalizer from its NuGet
       package, full license texts in THIRD-PARTY-NOTICES.md.
 - [x] Conan Exiles leftovers removed: the projects in `6c59861b`; its installer script and an

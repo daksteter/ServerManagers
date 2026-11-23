@@ -9,7 +9,8 @@ they run, for one server or several on the same machine.
 It is a fork of [ARK Server Manager](https://github.com/Bletch1971/ServerManagers) by Bletch, reworked for
 ARK: Survival Ascended. It doesn't support ARK: Survival Evolved servers.
 
-**Status:** in development; there is no release to download yet. You can [build it from source](#building-from-source).
+**Download:** the latest version is on the [Releases page](https://github.com/daksteter/ServerManagers/releases).
+See [Requirements](#requirements) and [Setting up a server](#setting-up-a-server) to get started.
 
 ## Contents
 
@@ -87,17 +88,23 @@ Chinese. Texts added for ASA are in English only so far.
 
 ## Requirements
 
-- Windows 10 or 11, 64-bit.
+- Windows 10 or 11, 64-bit. Windows Server 2022 with the Desktop Experience works too.
 - The [.NET 11 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/11.0) (x64).
 - About 12 GB of disk space per server, plus room for saves and backups.
 - Administrator rights for firewall rules and scheduled tasks. Everything else works without them.
 
 ## Setting up a server
 
-### 1. Put the app in a permanent folder
+### 1. Download it into a permanent folder
 
-Extract the app to a folder you'll keep, such as `C:\Tools\ASA Server Manager`. Scheduled tasks and desktop
-shortcuts point at the app's location, and later versions are installed by extracting them over the same folder.
+Download `JVH-Ark-Ascended-Server-Manager-<version>.zip` from the
+[Releases page](https://github.com/daksteter/ServerManagers/releases). It holds one folder, named after the
+version; put that folder's contents in a folder you'll keep, such as `C:\Tools\ASA Server Manager`. Scheduled
+tasks and desktop shortcuts point at the app's location, and later versions are installed over the same folder.
+Each release also has a `.sha256` file to check the download against.
+
+The app isn't code-signed, so the first time you start it Windows may say it protected your PC: click
+**More info**, then **Run anyway**.
 
 ### 2. First start
 
@@ -182,8 +189,8 @@ Open the **Automatic Management** section of the profile (it needs the app to ru
 - **RCON** opens the remote console for a running server.
 - **Backup Now** and **Restore...** are in the Administration section, under Saves.
 - **Server Monitor** (main window header) handles several servers at once; tick them and use the toolbar.
-- **Updating the app:** close it and extract the new version over the old folder. Your settings, profiles and
-  servers are kept.
+- **Updating the app:** close it (Exit from the tray icon if it's there), download the new zip and copy the files
+  from its folder over the old ones. Your settings, profiles and servers are kept.
 
 ## Where things are kept
 

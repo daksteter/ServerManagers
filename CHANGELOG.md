@@ -9,6 +9,8 @@ Changes before the fork are in the original project's history.
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-11-22
+
 First release for ARK: Survival Ascended (ASA). Servers for ARK: Survival Evolved (ASE) are no longer supported.
 
 ### Added
