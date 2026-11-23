@@ -12,6 +12,27 @@ namespace ServerManagerTool.Common.Utils
 
         public static bool IsUnc(string path) => new Uri(path).IsUnc;
 
+        /// <summary>
+        /// Whether the folder can't be there: neither it nor its drive (or network share) exists, as after a move to
+        /// another PC, a removed drive or a changed drive letter. A missing folder on an existing drive could be created.
+        /// </summary>
+        public static bool IsOnMissingDrive(string folder)
+        {
+            if (string.IsNullOrWhiteSpace(folder))
+                return false;
+
+            try
+            {
+                var fullPath = Path.GetFullPath(folder);
+                return !Directory.Exists(fullPath) && !Directory.Exists(Path.GetPathRoot(fullPath));
+            }
+            catch (Exception ex) when (ex is ArgumentException || ex is NotSupportedException || ex is PathTooLongException)
+            {
+                // not a usable path at all
+                return true;
+            }
+        }
+
         public static string NormalizeFolder(string path)
         {
             var newPath = path.TrimEnd('\\') + "\\";

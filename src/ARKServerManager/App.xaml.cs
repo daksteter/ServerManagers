@@ -337,7 +337,11 @@ namespace ServerManagerTool
             // accessible names for icon buttons, from their tooltips (before any window opens)
             Common.Lib.AutomationNames.Register();
 
-            ReconfigureLogging();
+            // a data folder whose drive is gone (another PC, a removed drive, a changed drive letter, or settings carried
+            // over in userconfig.json) can't hold the logs: ask for a new data folder below instead of crashing here
+            var missingDataDirectory = IOUtils.IsOnMissingDrive(Config.Default.DataDir) ? Config.Default.DataDir : null;
+            if (missingDataDirectory is null)
+                ReconfigureLogging();
 
             // the icons (Resources\Icons.xaml, made by tools\Icons\Build-Icons.ps1), before any window or style uses
             // them. Added to the app's merged dictionaries, not set in App.xaml: Globalizer manages that collection.
@@ -406,6 +410,16 @@ namespace ServerManagerTool
             PluginHelper.Instance.LoadPlugins(installPath, true);
             PluginHelper.Instance.SetFetchProfileCallback(DiscordPluginHelper.FetchProfiles);
             OnResourceDictionaryChanged(Thread.CurrentThread.CurrentCulture.Name);
+
+            // a scheduled task can't ask for a data folder (and has nowhere to log); Task Scheduler records the exit code
+            if (missingDataDirectory != null && e.Args.Any(a =>
+                a.Equals(Constants.ARG_AUTOBACKUP, StringComparison.OrdinalIgnoreCase)
+                || a.Equals(Constants.ARG_AUTOUPDATE, StringComparison.OrdinalIgnoreCase)
+                || a.StartsWith(Constants.ARG_AUTOSHUTDOWN1, StringComparison.OrdinalIgnoreCase)
+                || a.StartsWith(Constants.ARG_AUTOSHUTDOWN2, StringComparison.OrdinalIgnoreCase)))
+            {
+                Environment.Exit(ServerApp.EXITCODE_INVALIDDATADIRECTORY);
+            }
 
             // check if we are starting server manager for the old server restart - no longer supported
             if (e.Args.Any(a => a.StartsWith(Constants.ARG_AUTORESTART, StringComparison.OrdinalIgnoreCase)))
@@ -505,7 +519,16 @@ namespace ServerManagerTool
             ApplicationStarted = true;
 
             var restartRequired = false;
-            if (string.IsNullOrWhiteSpace(Config.Default.DataDir))
+            if (missingDataDirectory != null)
+            {
+                var message = string.Format(_globalizer.GetResourceString("Application_DataDirectoryMissingLabel"), missingDataDirectory);
+                if (MessageBox.Show(message, _globalizer.GetResourceString("Application_DataDirectoryMissingTitle"), MessageBoxButton.OKCancel, MessageBoxImage.Warning) != MessageBoxResult.OK)
+                {
+                    Environment.Exit(0);
+                }
+            }
+
+            if (string.IsNullOrWhiteSpace(Config.Default.DataDir) || missingDataDirectory != null)
             {
                 var dataDirectoryWindow = new DataDirectoryWindow();
                 dataDirectoryWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;

@@ -63,7 +63,7 @@ namespace ServerManagerTool.Lib
 
         private const int EXITCODE_PROCESSSKIPPED = 1010;
         private const int EXITCODE_PROCESSALREADYRUNNING = 1011;
-        private const int EXITCODE_INVALIDDATADIRECTORY = 1012;
+        internal const int EXITCODE_INVALIDDATADIRECTORY = 1012;
         private const int EXITCODE_INVALIDCACHEDIRECTORY = 1013;
         private const int EXITCODE_CACHENOTFOUND = 1005;
         private const int EXITCODE_STEAMCMDNOTFOUND = 1006;

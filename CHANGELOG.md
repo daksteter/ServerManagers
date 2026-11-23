@@ -147,6 +147,9 @@ First release for ARK: Survival Ascended (ASA). Servers for ARK: Survival Evolve
   page in the Discord Developer Portal; without it Discord now refuses the bot's connection.
 - **The Discord bot answered "Unknown command." when there was a space after the prefix** (`asm! help`); only
   `asm!help` worked.
+- **The app crashed on start when its data folder's drive was gone:** after moving to another PC, removing a drive
+  or changing its letter. It now says the data folder can't be found and opens the data folder window (Cancel quits,
+  so you can connect the drive and start again). Scheduled tasks exit with code 1012 instead of waiting on a message.
 - **A scheduled task waiting for another one to finish with the same server gave up with an error** if that one
   was ended early (from Task Scheduler, or by a crash). It now takes over and carries on.
 - **The RCON window's Ban Player and Unban Player did nothing** (they were bound to commands that don't exist).
@@ -187,8 +190,8 @@ First release for ARK: Survival Ascended (ASA). Servers for ARK: Survival Evolve
   release, instead of a modified copy of its source. The changes the app relied on (English under other languages,
   resource strings, style loading, the language list) are now in the app.
 - Unit tests for the RCON client, the accessible names, the manifest reader, the server's command line, the save
-  folders, new profiles' ports and install folders, zip extraction, the Discord bot's command prefix and the Discord
-  plugin's webhook messages. They need no network, server or fixed folders: `dotnet test src\Server-Managers.slnx`.
+  folders, new profiles' ports and install folders, zip extraction, the missing data folder check, the Discord bot's
+  command prefix and the Discord plugin's webhook messages. They need no network, server or fixed folders: `dotnet test src\Server-Managers.slnx`.
 - The solution file is `src\Server-Managers.slnx` (the newer format); `global.json` pins the .NET 11 SDK.
 - GitHub Actions: every push to `main` is built and tested; pushing a version tag (`v1.2.0`) publishes a GitHub
   release with the zip, its SHA-256 and the changelog section as notes.
