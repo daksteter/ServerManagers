@@ -5,8 +5,8 @@ Turning Bletch1971's ARK Server Manager (ARK: Survival Evolved, "ASE") into a ma
 
 - **Branch:** `main` on a public GitHub fork of Bletch's repo (`origin`); no releases yet, and the self-updater is removed.
 - **Upstream:** `upstream` = Bletch1971/ServerManagers. `master` there holds release binaries only;
-  source lives on `source` / `dotnet-8-update`. The repo has **no LICENSE file** — get permission
-  before distributing anything.
+  source lives on `source` / `dotnet-8-update`. It's MIT-licensed since November 2026 (Bletch merged the
+  license pull request, #34); see the release checklist.
 - **File/line references** below are as of commit `f273acaf` and will drift; search by symbol name.
 
 ---
@@ -543,12 +543,12 @@ The Island, Scorched Earth, The Center, Aberration, Extinction, Astraeos, Ragnar
 What's left before a public release (not planned soon). The repo is a public GitHub fork (`origin`, branch
 `main`); Bletch's repo is `upstream`.
 
-- [ ] **Permission from Bletch**, then a license. ARK Server Manager has no license file; README's License
-      section says "not decided". Asked in November 2026: on Discord (Bletch directly, and in the ASM
-      Discord server; no reply yet), by email, and with a pull request adding the MIT license to his repo
-      (Bletch1971/ServerManagers#34; his repo has issues turned off). The license wanted is MIT. Until he answers,
-      no release: don't push a `v*` tag (the release workflow would publish a zip of his code). This repo is a
-      public fork of his (GitHub doesn't let a fork of a public repo be private), which GitHub's terms allow.
+- [x] **Permission from Bletch**, then a license. ARK Server Manager had no license file. Asked in November
+      2026 on Discord, by email and with a pull request adding the MIT license to his repo (his repo has issues
+      turned off). Bletch answered the email ("I do not mind at all") and merged the pull request
+      (Bletch1971/ServerManagers#34), so ARK Server Manager is MIT now. This repo has the MIT `LICENSE` with his
+      copyright line and its own; the release zip includes it, and README's License section explains it. The game
+      data taken from the ARK Wiki stays CC BY-NC-SA 4.0.
 - [x] **Icons:** none of ARK Server Manager's 51 button and status images could ship. Traced in November 2026:
       - 18 were Windows 10 icons, copied pixel for pixel or with overlays drawn on; Microsoft doesn't allow its
         icons in other software.

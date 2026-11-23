@@ -3,8 +3,8 @@
     Builds a release zip of JVH Ark Ascended Server Manager.
 
 .DESCRIPTION
-    Publishes a clean Release build of the app into an empty staging folder, adds README, CHANGELOG and
-    THIRD-PARTY-NOTICES, checks that nothing that mustn't ship is in it, and zips it as
+    Publishes a clean Release build of the app into an empty staging folder, adds README, CHANGELOG, LICENSE
+    and THIRD-PARTY-NOTICES, checks that nothing that mustn't ship is in it, and zips it as
     artifacts\JVH-Ark-Ascended-Server-Manager-<version>.zip (artifacts\ is ignored by git).
 
     Publishing copies only the app's own files, so a settings backup (userconfig.json / commonconfig.json, which a
@@ -73,7 +73,7 @@ New-Item -ItemType Directory -Force $staging | Out-Null
 dotnet publish $project -c Release -o $staging --artifacts-path $build -p:Version=$Version --nologo -v quiet -clp:ErrorsOnly
 if ($LASTEXITCODE -ne 0) { throw "dotnet publish failed (exit code $LASTEXITCODE)." }
 
-foreach ($doc in 'README.md', 'CHANGELOG.md', 'THIRD-PARTY-NOTICES.md') {
+foreach ($doc in 'README.md', 'CHANGELOG.md', 'LICENSE', 'THIRD-PARTY-NOTICES.md') {
     Copy-Item (Join-Path $repo $doc) $staging
 }
 

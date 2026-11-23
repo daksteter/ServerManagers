@@ -4,7 +4,7 @@ JVH Ark Ascended Server Manager includes, or is built with, the components below
 used under the license named here.
 
 The app itself is a fork of [ARK Server Manager](https://github.com/Bletch1971/ServerManagers) by Bletch
-(Brett Hewitson), which has no license file.
+(Brett Hewitson) and contributors, MIT License, like the app (see LICENSE).
 
 ## Components
 

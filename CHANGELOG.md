@@ -57,6 +57,8 @@ First release for ARK: Survival Ascended (ASA). Servers for ARK: Survival Evolve
   - the settings page's check boxes and sliders, named after their labels.
 
   New tooltips on the Server Monitor's Stop and Update menus and on the folder pickers in Settings.
+- **MIT license.** Anyone may use, change, fork and share the app, keeping the copyright and license notice.
+  Bletch put ARK Server Manager under the MIT license too (November 2026), which makes this possible.
 
 ### Changed
 

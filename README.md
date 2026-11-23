@@ -19,6 +19,7 @@ ARK: Survival Ascended. It doesn't support ARK: Survival Evolved servers.
 - [Running it day to day](#running-it-day-to-day)
 - [Where things are kept](#where-things-are-kept)
 - [Troubleshooting](#troubleshooting)
+- [Support](#support)
 - [Building from source](#building-from-source)
 - [Credits, license and disclaimer](#credits)
 
@@ -208,6 +209,12 @@ Open the **Automatic Management** section of the profile (it needs the app to ru
   data folder's `Logs`. **Create Support Zip** in the profile collects the files needed to diagnose a problem
   into one zip.
 
+## Support
+
+This is a hobby project, shared in case it helps someone else. It comes with no promise of support, fixes or
+updates. Pull requests are welcome and get looked at when there's time. It's free and open source under the
+[MIT license](#license), so you're also welcome to fork it and change it to suit your servers.
+
 ## Building from source
 
 You need the .NET 11 SDK on Windows.
@@ -228,8 +235,8 @@ tools\Release\Build-Release.ps1                  # version from src\Directory.Bu
 tools\Release\Build-Release.ps1 -Version 1.2.0
 ```
 
-It makes a clean build in its own folder, adds this README, the changelog and the third-party notices, checks
-that no settings backup, updater or debug symbols got in, and writes
+It makes a clean build in its own folder, adds this README, the changelog, the license and the third-party
+notices, checks that no settings backup, updater or debug symbols got in, and writes
 `artifacts\JVH-Ark-Ascended-Server-Manager-<version>.zip`. The version must stay above 1.0, or the app won't
 carry users' settings over from earlier builds.
 
@@ -272,7 +279,9 @@ See [CHANGELOG.md](CHANGELOG.md).
 
 ## License
 
-Not decided yet. The original ARK Server Manager has no license file.
+[MIT](LICENSE): use it, change it, fork it and share it freely, as long as the copyright and license notice
+stays with it. ARK Server Manager is MIT too: Bletch added the license to his repo in November 2026. The game data
+taken from the ARK Wiki keeps its own license, CC BY-NC-SA 4.0 (see Credits).
 
 ## Disclaimer
 
