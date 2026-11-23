@@ -134,6 +134,8 @@ First release for ARK: Survival Ascended (ASA). Servers for ARK: Survival Evolve
   over RCON (`saveworld`, then `doexit`) when RCON is on, otherwise with Ctrl+C in the server's console, which ASA
   answers by saving. A server that still hasn't exited a minute later is killed, unsaved. Each step is logged in
   `ServerManager_ServerStatus.log`.
+- **A scheduled task waiting for another one to finish with the same server gave up with an error** if that one
+  was ended early (from Task Scheduler, or by a crash). It now takes over and carries on.
 - **The RCON window's Ban Player and Unban Player did nothing** (they were bound to commands that don't exist).
   Kick, ban and unban now also work for a player whose save file hasn't been read yet; they need only the player
   ID.

@@ -1799,6 +1799,25 @@ namespace ServerManagerTool.Lib
             }
         }
 
+        /// <summary>
+        /// Waits for a lock (<see cref="GetMutexName"/>) that another process holds. If that process ended without
+        /// releasing it (ended from Task Scheduler, killed, or crashed), Windows hands the lock to this waiter as
+        /// abandoned: it's then held here, so carry on instead of failing.
+        /// </summary>
+        /// <returns>true if the lock is now held.</returns>
+        internal static bool WaitForLock(Mutex mutex, TimeSpan timeout, Action<string> log)
+        {
+            try
+            {
+                return mutex.WaitOne(timeout);
+            }
+            catch (AbandonedMutexException)
+            {
+                log?.Invoke("The process holding the lock ended without releasing it; taking the lock over.");
+                return true;
+            }
+        }
+
         private static string GetProfileBackupFolder(ServerProfileSnapshot profile)
         {
             if (string.IsNullOrWhiteSpace(Config.Default.BackupPath))
@@ -2273,7 +2292,7 @@ namespace ServerManagerTool.Lib
                 {
                     var timeout = new TimeSpan(0, MUTEX_TIMEOUT, 0);
                     LogProfileMessage($"Could not lock server, waiting for server to unlock - timeout set to {timeout}.");
-                    createdNew = mutex.WaitOne(timeout);
+                    createdNew = WaitForLock(mutex, timeout, message => LogProfileMessage(message));
                 }
 
                 // check if the mutex was established
@@ -2361,7 +2380,7 @@ namespace ServerManagerTool.Lib
                     {
                         var timeout = new TimeSpan(0, MUTEX_TIMEOUT, 0);
                         LogProfileMessage($"Could not lock server, waiting for server to unlock - timeout set to {timeout}.");
-                        createdNew = mutex.WaitOne(timeout);
+                        createdNew = WaitForLock(mutex, timeout, message => LogProfileMessage(message));
                     }
 
                     // check if the mutex was established
@@ -2467,7 +2486,7 @@ namespace ServerManagerTool.Lib
                 {
                     var timeout = new TimeSpan(0, MUTEX_TIMEOUT, 0);
                     LogProfileMessage($"Could not lock server, waiting for server to unlock - timeout set to {timeout}.");
-                    createdNew = mutex.WaitOne(timeout);
+                    createdNew = WaitForLock(mutex, timeout, message => LogProfileMessage(message));
                 }
 
                 // check if the mutex was established
@@ -2559,7 +2578,7 @@ namespace ServerManagerTool.Lib
                 {
                     var timeout = new TimeSpan(0, MUTEX_TIMEOUT, 0);
                     LogBranchMessage(branch.AppIdServer, branch.BranchName, $"Could not lock cache, waiting for cache to unlock - timeout set to {timeout}.");
-                    createdNew = mutex.WaitOne(timeout);
+                    createdNew = WaitForLock(mutex, timeout, message => LogBranchMessage(branch.AppIdServer, branch.BranchName, message));
                 }
 
                 // check if the mutex was established
@@ -2849,7 +2868,7 @@ namespace ServerManagerTool.Lib
                 // try to establish a mutex for the application.
                 mutex = new Mutex(true, GetMutexName(Config.Default.DataDir), out createdNew);
                 if (!createdNew)
-                    createdNew = mutex.WaitOne(new TimeSpan(0, MUTEX_TIMEOUT, 0));
+                    createdNew = WaitForLock(mutex, new TimeSpan(0, MUTEX_TIMEOUT, 0), message => LogMessage(message));
 
                 // check if the mutex was established.
                 if (createdNew)

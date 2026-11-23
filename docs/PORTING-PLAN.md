@@ -639,8 +639,16 @@ What's left before a public release (not planned soon). The repo is on a private
       Unban work online and offline (the server answers "Banned" / "Unbanned"; a banned player can't join).
       Found on the way: Ban Player and Unban Player were bound to commands that don't exist and did nothing.
 - [x] Backup and restore a world save.
-- [ ] Scheduled tasks (auto-start, auto-update, auto-backup, auto-shutdown) are created and actually run
-      (they must point at the `.exe`, not the `.dll`).
+- [x] Scheduled tasks (auto-start, auto-update, auto-backup, auto-shutdown) are created and actually run
+      (they must point at the `.exe`, not the `.dll`). Tested in November 2026: the backup, update and shutdown
+      tasks run `JVH Ark Ascended Server Manager.exe -ab` / `-au` / `-as1<key>`; auto-start runs the profile's
+      `RunServer.cmd` a minute after login. Each ran to the end (logs in the data folder's `Logs`): the backup
+      saved and zipped; the update filled the new cache folder, then saved, stopped, backed up, updated and
+      restarted the server; the shutdown saved, stopped, backed up and restarted it; auto-start started it. The
+      first auto-start run had the server crash at second 0 (access violation in user32, crash report in
+      `Saved\Crashes`); the second started normally, so a one-off for now. Found on the way: a task waiting
+      for another one's server lock gave up when that one was ended early (the lock is handed over as
+      abandoned); it now takes the lock over.
 - [ ] Server Monitor: "Create shortcut" produces a working desktop shortcut.
 - [ ] Discord bot (if used) connects and answers `info`.
 
