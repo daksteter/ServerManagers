@@ -571,7 +571,7 @@ What's left before a public release (not planned soon). The repo is a public Git
       the app icon. Resizable ones get maximize; the 14 without a taskbar button can't be minimized
       (`WindowUtils.CanMinimize="False"` clears `WS_MINIMIZEBOX`; Windows then shows that button greyed), since a
       minimized dialog would sit in a corner of the desktop with its owner blocked.
-- [ ] **Updates after release:** there's no self-updater. Users update by extracting the new zip over the old
+- [x] **Updates after release:** there's no self-updater. Users update by extracting the new zip over the old
       folder: settings live outside it, and scheduled tasks (which store the exe's path) and the `Plugins` folder
       need the same folder. The repo is public, so an update check needs no token; it waits for the first release.
       Then: first an update notice (ask GitHub for the latest release at startup, link to it); later,
@@ -582,6 +582,11 @@ What's left before a public release (not planned soon). The repo is a public Git
       `v<version>`, with `JVH-Ark-Ascended-Server-Manager-<version>.zip` and its `.sha256`. The zip has a top
       folder named after the version, so an updater (or the README's "extract over the old folder") must copy that
       folder's contents.
+      Done in November 2026 for the notice: at startup the main window asks GitHub's API for the latest release
+      (`AppLatestReleaseApiUrl`, `Utils\AppUpdateHelper.cs`) and, when its tag is newer, shows "Version x.y.z is
+      available" next to the version, opening the release page (only github.com pages are opened). Off with
+      **Check for a new version at startup** in Settings; failures (no network, GitHub's hourly limit) are only logged.
+      The patch-notes button opens the Releases page. One-click updates (above) stay optional, for later.
 - [x] **GitHub Actions** (both run on GitHub in November 2026: the first Build passed, and a trial Release run
       built the zip): `build.yml` builds and tests every push to `main` and
       every pull request (Markdown-only changes skipped; a newer push cancels a running build). `release.yml` runs

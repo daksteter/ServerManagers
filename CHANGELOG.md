@@ -9,6 +9,13 @@ Changes before the fork are in the original project's history.
 
 ## [Unreleased]
 
+### Added
+
+- **Update notice.** At startup the app asks GitHub for the latest release. When it's newer, "Version 1.2.0 is
+  available" (for example) appears next to the version number in the main window and opens the release page. Turn it
+  off in Settings with **Check for a new version at startup**. The patch-notes button next to the version is back too,
+  and opens the Releases page.
+
 ## [1.1.0] - 2026-11-22
 
 First release for ARK: Survival Ascended (ASA). Servers for ARK: Survival Evolved (ASE) are no longer supported.

@@ -258,7 +258,7 @@
       <Value Profile="(Default)">steam_appid.txt</Value>
     </Setting>
     <Setting Name="LatestASMPatchNotesUrl" Type="System.String" Scope="Application">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">https://github.com/daksteter/ServerManagers/releases</Value>
     </Setting>
     <Setting Name="LatestASMBetaPatchNotesUrl" Type="System.String" Scope="Application">
       <Value Profile="(Default)" />
@@ -679,6 +679,12 @@
     </Setting>
     <Setting Name="CheckIfServerManagerRunningOnStartup" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="CheckForAppUpdateOnStartup" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="AppLatestReleaseApiUrl" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://api.github.com/repos/daksteter/ServerManagers/releases/latest</Value>
     </Setting>
     <Setting Name="ServerStartMinimized" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>

@@ -68,6 +68,10 @@
                             <Button x:Name="PatchNotesButton" Margin="5" Click="PatchNotes_Click" ToolTip="{DynamicResource ServerSettings_PatchNotesTooltip}" Style="{StaticResource HeaderButtonStyle}">
                                 <Image Source="{StaticResource Icon.ChangeNotes.OnDark}"/>
                             </Button>
+                            <!-- shown when GitHub has a newer release (light amber: readable on the dark header) -->
+                            <TextBlock x:Name="UpdateAvailableText" Margin="5,0,5,0" FontSize="12" VerticalAlignment="Center" Visibility="Collapsed">
+                                <Hyperlink Foreground="#FFFFC83D" Click="UpdateAvailable_Click" ToolTip="{DynamicResource MainWindow_UpdateAvailableTooltip}"><Run x:Name="UpdateAvailableRun"/></Hyperlink>
+                            </TextBlock>
                         </StackPanel>
                     </Grid>
 

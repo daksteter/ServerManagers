@@ -189,8 +189,10 @@ Open the **Automatic Management** section of the profile (it needs the app to ru
 - **RCON** opens the remote console for a running server.
 - **Backup Now** and **Restore...** are in the Administration section, under Saves.
 - **Server Monitor** (main window header) handles several servers at once; tick them and use the toolbar.
-- **Updating the app:** close it (Exit from the tray icon if it's there), download the new zip and copy the files
-  from its folder over the old ones. Your settings, profiles and servers are kept.
+- **Updating the app:** when a new version is out, a link to it appears next to the version number in the main
+  window. Close the app (Exit from the tray icon if it's there), download the new zip and copy the files from its
+  folder over the old ones. Your settings, profiles and servers are kept. The check can be turned off in Settings
+  (**Check for a new version at startup**).
 
 ## Where things are kept
 

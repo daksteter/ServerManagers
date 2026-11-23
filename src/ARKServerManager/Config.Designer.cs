@@ -967,7 +967,7 @@ namespace ServerManagerTool {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/daksteter/ServerManagers/releases")]
         public string LatestASMPatchNotesUrl {
             get {
                 return ((string)(this["LatestASMPatchNotesUrl"]));
@@ -2616,6 +2616,27 @@ namespace ServerManagerTool {
             }
             set {
                 this["CheckIfServerManagerRunningOnStartup"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CheckForAppUpdateOnStartup {
+            get {
+                return ((bool)(this["CheckForAppUpdateOnStartup"]));
+            }
+            set {
+                this["CheckForAppUpdateOnStartup"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://api.github.com/repos/daksteter/ServerManagers/releases/latest")]
+        public string AppLatestReleaseApiUrl {
+            get {
+                return ((string)(this["AppLatestReleaseApiUrl"]));
             }
         }
         

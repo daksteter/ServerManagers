@@ -203,6 +203,33 @@ namespace ServerManagerTool
 
             this.scheduledTaskChecker.PostAction(CheckForScheduledTasks).DoNotWait();
             this.discordBotChecker.PostAction(CheckForDiscordBot).DoNotWait();
+
+            if (Config.Default.CheckForAppUpdateOnStartup)
+                CheckForAppUpdateAsync().DoNotWait();
+        }
+
+        private string _newReleaseUrl;
+
+        /// <summary>
+        /// Asks GitHub for the latest release, and shows a link to it next to the version when it's newer.
+        /// </summary>
+        private async Task CheckForAppUpdateAsync()
+        {
+            var currentVersion = Assembly.GetEntryAssembly()?.GetName().Version;
+            var release = await AppUpdateHelper.GetNewerReleaseAsync(Config.Default.AppLatestReleaseApiUrl, currentVersion);
+            if (release is null)
+                return;
+
+            // back on the UI thread (the await resumes where it started)
+            _newReleaseUrl = release.Url;
+            UpdateAvailableRun.Text = string.Format(_globalizer.GetResourceString("MainWindow_UpdateAvailableLabel"), release.Version.ToString(3));
+            UpdateAvailableText.Visibility = Visibility.Visible;
+        }
+
+        private void UpdateAvailable_Click(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(_newReleaseUrl))
+                ProcessUtils.OpenWithShell(_newReleaseUrl);
         }
 
         private void MainWindow_LocationChanged(object sender, EventArgs e)

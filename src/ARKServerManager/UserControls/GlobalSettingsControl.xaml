@@ -74,6 +74,7 @@
 
                 <Label    Grid.Row="4" Grid.Column="0" Margin="1" Content="{DynamicResource GlobalSettings_StartModeServerMonitorLabel}" VerticalAlignment="Center"/>
                 <ComboBox Name="WindowStateServerMonitorComboBox" Grid.Row="4" Grid.Column="1" Margin="1,2,1,2" ItemsSource="{Binding ElementName=GlobalSettings, Path=WindowStatesServerMonitor}" SelectedValue="{Binding Config.ServerMonitorWindow_WindowState}" SelectedValuePath="ValueMember" DisplayMemberPath="DisplayMember" PreviewMouseWheel="ComboBox_PreviewMouseWheel"/>
+                <CheckBox Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Margin="5,2,0,2" Content="{DynamicResource GlobalSettings_CheckForAppUpdateLabel}" ToolTip="{DynamicResource GlobalSettings_CheckForAppUpdateTooltip}" IsChecked="{Binding Config.CheckForAppUpdateOnStartup, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
                 <Label    Grid.Row="5" Grid.Column="0" Margin="1" Content="{DynamicResource GlobalSettings_DataDirectoryLabel}" VerticalAlignment="Center"/>
                 <TextBox  Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Margin="1" Text="{Binding Config.DataDir, Mode=TwoWay}" IsReadOnly="True" IsReadOnlyCaretVisible="True" VerticalContentAlignment="Center" />
