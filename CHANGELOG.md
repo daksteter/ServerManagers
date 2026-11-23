@@ -94,6 +94,14 @@ First release for ARK: Survival Ascended (ASA). Servers for ARK: Survival Evolve
 - **The RCON window's player list reads ASA player IDs,** and its "View Profile" / "View Tribe" show ASA players
   and tribes.
 - **The Discord bot's `info` command** reports the status and player count the app already tracks.
+- **The Discord bot's default prefix is `!asa`** (was `asm!`), typed with a space: `!asa status`. A prefix ending in a
+  letter or digit needs that space, so a message that merely starts with it (`!asap`) isn't taken for a command; after
+  other prefixes the space is optional. The help lists the commands the way they're typed. A prefix already set in
+  Settings is kept.
+- **The Discord bot's commands don't need the server when the channel has only one:** `!asa stop` instead of
+  `!asa stop <alias>`. With more than one, the reply asks for the alias or profile ID. The help shows each command's
+  parameters, and a command given too many gets its usage in reply instead of "Parameter count does not match any
+  command."
 
 ### Removed
 
@@ -134,6 +142,11 @@ First release for ARK: Survival Ascended (ASA). Servers for ARK: Survival Evolve
   over RCON (`saveworld`, then `doexit`) when RCON is on, otherwise with Ctrl+C in the server's console, which ASA
   answers by saving. A server that still hasn't exited a minute later is killed, unsaved. Each step is logged in
   `ServerManager_ServerStatus.log`.
+- **The Discord bot didn't see commands typed with its prefix.** It didn't ask Discord for the Message Content
+  intent, without which Discord sends bots empty message text. Turn on **Message Content Intent** on the bot's
+  page in the Discord Developer Portal; without it Discord now refuses the bot's connection.
+- **The Discord bot answered "Unknown command." when there was a space after the prefix** (`asm! help`); only
+  `asm!help` worked.
 - **A scheduled task waiting for another one to finish with the same server gave up with an error** if that one
   was ended early (from Task Scheduler, or by a crash). It now takes over and carries on.
 - **The RCON window's Ban Player and Unban Player did nothing** (they were bound to commands that don't exist).
@@ -174,8 +187,8 @@ First release for ARK: Survival Ascended (ASA). Servers for ARK: Survival Evolve
   release, instead of a modified copy of its source. The changes the app relied on (English under other languages,
   resource strings, style loading, the language list) are now in the app.
 - Unit tests for the RCON client, the accessible names, the manifest reader, the server's command line, the save
-  folders, new profiles' ports and install folders, zip extraction and the Discord plugin's webhook messages. They need no network, server or fixed
-  folders: `dotnet test src\Server-Managers.slnx`.
+  folders, new profiles' ports and install folders, zip extraction, the Discord bot's command prefix and the Discord
+  plugin's webhook messages. They need no network, server or fixed folders: `dotnet test src\Server-Managers.slnx`.
 - The solution file is `src\Server-Managers.slnx` (the newer format); `global.json` pins the .NET 11 SDK.
 - GitHub Actions: every push to `main` is built and tested; pushing a version tag (`v1.2.0`) publishes a GitHub
   release with the zip, its SHA-256 and the changelog section as notes.

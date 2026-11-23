@@ -39,7 +39,9 @@ namespace ServerManagerTool.DiscordBot.Services
                 switch (result?.Error)
                 {
                     case CommandError.BadArgCount:
-                        await context.Channel.SendMessageAsync("Parameter count does not match any command.");
+                        await context.Channel.SendMessageAsync(command.IsSpecified
+                            ? $"Usage: {CommandPrefixHelper.Usage(_botConfig.CommandPrefix, command.Value)}"
+                            : "Parameter count does not match any command.");
                         break;
                     default:
                         await context.Channel.SendMessageAsync(result.ErrorReason);
@@ -95,9 +97,12 @@ namespace ServerManagerTool.DiscordBot.Services
             }
 
             // Check if the message has a valid command prefix
-            var argPos = 0;
-            if (msg.HasStringPrefix(_botConfig.CommandPrefix, ref argPos, StringComparison.OrdinalIgnoreCase) || msg.HasMentionPrefix(_client.CurrentUser, ref argPos))
+            int argPos;
+            if (CommandPrefixHelper.TryGetCommandStart(msg.Content, _botConfig.CommandPrefix, out argPos) || msg.HasMentionPrefix(_client.CurrentUser, ref argPos))
             {
+                // "@bot  status": Discord.Net doesn't find a command whose text starts with a space
+                argPos = CommandPrefixHelper.SkipSpaces(msg.Content, argPos);
+
                 if (LogLevelHelper.CheckLogLevel(LogLevel.Debug, _botConfig.LogLevel))
                     await _logger?.OnLogAsync(new LogMessage(LogSeverity.Debug, MessageSource.System.ToString(), $"Message prefix matched, message will be processed."));
 

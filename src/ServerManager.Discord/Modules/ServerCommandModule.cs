@@ -24,9 +24,9 @@ namespace ServerManagerTool.DiscordBot.Modules
 
         [Command("backup", RunMode = RunMode.Async)]
         [Summary("Backup the server")]
-        [Remarks("backup profileId|alias")]
+        [Remarks("backup [profileId|alias]")]
         [RequireBotPermission(ChannelPermission.ViewChannel | ChannelPermission.SendMessages)]
-        public async Task BackupServerAsync(string profileIdOrAlias)
+        public async Task BackupServerAsync([Name(CommandParameters.ServerName), Summary(CommandParameters.ServerSummary)] string profileIdOrAlias = null)
         {
             try
             {
@@ -59,9 +59,9 @@ namespace ServerManagerTool.DiscordBot.Modules
 
         [Command("restart", RunMode = RunMode.Async)]
         [Summary("Restart the server")]
-        [Remarks("restart profileId|alias")]
+        [Remarks("restart [profileId|alias]")]
         [RequireBotPermission(ChannelPermission.ViewChannel | ChannelPermission.SendMessages)]
-        public async Task RestartServerAsync(string profileIdOrAlias)
+        public async Task RestartServerAsync([Name(CommandParameters.ServerName), Summary(CommandParameters.ServerSummary)] string profileIdOrAlias = null)
         {
             try
             {
@@ -94,9 +94,9 @@ namespace ServerManagerTool.DiscordBot.Modules
 
         [Command("shutdown", RunMode = RunMode.Async)]
         [Summary("Shuts down the server properly")]
-        [Remarks("shutdown profileId|alias")]
+        [Remarks("shutdown [profileId|alias]")]
         [RequireBotPermission(ChannelPermission.ViewChannel | ChannelPermission.SendMessages)]
-        public async Task ShutdownServerAsync(string profileIdOrAlias)
+        public async Task ShutdownServerAsync([Name(CommandParameters.ServerName), Summary(CommandParameters.ServerSummary)] string profileIdOrAlias = null)
         {
             try
             {
@@ -129,9 +129,9 @@ namespace ServerManagerTool.DiscordBot.Modules
 
         [Command("start", RunMode = RunMode.Async)]
         [Summary("Starts the server")]
-        [Remarks("start profileId|alias")]
+        [Remarks("start [profileId|alias]")]
         [RequireBotPermission(ChannelPermission.ViewChannel | ChannelPermission.SendMessages)]
-        public async Task StartServerAsync(string profileIdOrAlias)
+        public async Task StartServerAsync([Name(CommandParameters.ServerName), Summary(CommandParameters.ServerSummary)] string profileIdOrAlias = null)
         {
             try
             {
@@ -164,9 +164,9 @@ namespace ServerManagerTool.DiscordBot.Modules
 
         [Command("stop", RunMode = RunMode.Async)]
         [Summary("Stops the server now, without a countdown (saves the world first)")]
-        [Remarks("stop profileId|alias")]
+        [Remarks("stop [profileId|alias]")]
         [RequireBotPermission(ChannelPermission.ViewChannel | ChannelPermission.SendMessages)]
-        public async Task StopServerAsync(string profileIdOrAlias)
+        public async Task StopServerAsync([Name(CommandParameters.ServerName), Summary(CommandParameters.ServerSummary)] string profileIdOrAlias = null)
         {
             try
             {
@@ -199,9 +199,9 @@ namespace ServerManagerTool.DiscordBot.Modules
 
         [Command("update", RunMode = RunMode.Async)]
         [Summary("Updates the server")]
-        [Remarks("update profileId|alias")]
+        [Remarks("update [profileId|alias]")]
         [RequireBotPermission(ChannelPermission.ViewChannel | ChannelPermission.SendMessages)]
-        public async Task UpdateServerAsync(string profileIdOrAlias)
+        public async Task UpdateServerAsync([Name(CommandParameters.ServerName), Summary(CommandParameters.ServerSummary)] string profileIdOrAlias = null)
         {
             try
             {

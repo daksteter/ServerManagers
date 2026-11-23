@@ -164,12 +164,15 @@ Open the **Automatic Management** section of the profile (it needs the app to ru
 ### 8. The Discord bot (optional)
 
 1. Create a bot in the [Discord Developer Portal](https://discord.com/developers/applications) and invite it to
-   your Discord server. The **Help...** button next to the bot settings links to Discord's guide.
-2. In Settings, turn on **Enable Discord Bot** and enter its **Token**, your Discord **Server Id** and a
-   command **Prefix** such as `!asa `.
+   your Discord server. The **Help...** button next to the bot settings links to Discord's guide. On the bot's
+   **Bot** page, turn on **Message Content Intent**: the bot reads commands from the message text, and Discord
+   refuses its connection without it.
+2. In Settings, turn on **Enable Discord Bot** and enter its **Token** and your Discord **Server Id**. The
+   command **Prefix** is `!asa` unless you change it.
 3. In each profile's **Discord Bot Details**, enter the **Channel Id** the bot listens to for that server, and
-   optionally an **Alias** to use in commands.
-4. Restart the app. In the channel, type the prefix and `help` to see the commands.
+   optionally an **Alias** to use in commands. In a channel with only one server, commands don't need its
+   alias or profile ID: `!asa status`.
+4. Restart the app. In the channel, type `!asa help` (the prefix, a space and `help`) to see the commands.
 
 ## Running it day to day
 

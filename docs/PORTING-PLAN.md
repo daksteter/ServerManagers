@@ -650,7 +650,13 @@ What's left before a public release (not planned soon). The repo is on a private
       for another one's server lock gave up when that one was ended early (the lock is handed over as
       abandoned); it now takes the lock over.
 - [ ] Server Monitor: "Create shortcut" produces a working desktop shortcut.
-- [ ] Discord bot (if used) connects and answers `info`.
+- [x] Discord bot (if used) connects and answers `info`. Tested in a private Discord server (November 2026): it
+      connects, and `help`, `info`, `status`, `list`, `stop` and `start` answer; `stop` waited for the running
+      auto-backup, then stopped the server, and `start` started it. Found on the way: the bot didn't ask for the
+      Message Content intent, so Discord sent it empty messages (it now does, and the intent must be on in the
+      Developer Portal); a space after the prefix gave "Unknown command." (the default prefix is now `!asa`, typed
+      `!asa status`); and `info`, `status` and the control commands always needed a profile ID or alias, which the
+      help never showed (now not needed when the channel has one server, and the help shows the parameters).
 
 ---
 

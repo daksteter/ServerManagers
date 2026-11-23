@@ -1,4 +1,5 @@
-﻿using Discord.Commands;
+﻿using Discord;
+using Discord.Commands;
 using Discord.Interactions;
 using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
@@ -58,6 +59,9 @@ namespace ServerManagerTool.DiscordBot
             {
                 LogLevel = LogLevelHelper.GetLogSeverity(discordBotConfig.LogLevel),
                 MessageCacheSize = 1000,
+                // commands are read from the message text, which Discord only sends with the Message Content intent
+                // (turned on for the bot in the Developer Portal; without it Discord refuses the connection)
+                GatewayIntents = GatewayIntents.Guilds | GatewayIntents.GuildMessages | GatewayIntents.DirectMessages | GatewayIntents.MessageContent,
             };
 
             var commandConfig = new CommandServiceConfig

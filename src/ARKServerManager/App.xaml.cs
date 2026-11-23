@@ -286,14 +286,6 @@ namespace ServerManagerTool
                 Config.Default.UpgradeConfig = false;
                 Config.Default.Save();
             }
-            if (!Config.Default.DiscordBotPrefixFixed)
-            {
-                if (!Config.Default.DiscordBotPrefix.EndsWith("!"))
-                    Config.Default.DiscordBotPrefix += "!";
-                Config.Default.DiscordBotPrefixFixed = true;
-                Config.Default.Save();
-                Config.Default.Reload();
-            }
 
             Config.Default.SteamCmdRedirectOutput = false;
         }

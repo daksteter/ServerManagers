@@ -29,8 +29,6 @@ namespace ServerManagerTool.DiscordBot.Modules
         [RequireBotPermission(ChannelPermission.ViewChannel | ChannelPermission.SendMessages)]
         public async Task HelpAsync()
         {
-            var prefix = _botConfig.CommandPrefix;
-
             var builder = new EmbedBuilder()
             {
                 Color = new Color(114, 137, 218),
@@ -52,7 +50,7 @@ namespace ServerManagerTool.DiscordBot.Modules
                         continue;
                     }
 
-                    commands.Add($"{prefix}{cmd.Aliases.First()}");
+                    commands.Add(CommandPrefixHelper.Usage(_botConfig.CommandPrefix, cmd));
                 }
 
                 // remove all duplicate commands
@@ -114,8 +112,6 @@ namespace ServerManagerTool.DiscordBot.Modules
                 return;
             }
 
-            var prefix = _botConfig.CommandPrefix;
-
             var builder = new EmbedBuilder()
             {
                 Color = new Color(114, 137, 218),
@@ -132,17 +128,13 @@ namespace ServerManagerTool.DiscordBot.Modules
                     continue;
                 }
 
-                var usage = $"{prefix}{cmd.Aliases.First()}";
-                if (cmd.Parameters.Count > 0)
-                {
-                    usage += $" {string.Join(" ", cmd.Parameters.Select(p => p.Name))}";
-                }
-                usage += $"\n";
+                var usage = CommandPrefixHelper.Usage(_botConfig.CommandPrefix, cmd);
+                var parameters = string.Concat(cmd.Parameters.Where(p => !string.IsNullOrWhiteSpace(p.Summary)).Select(p => $"\n{p.Name}: {p.Summary}"));
 
                 builder.AddField(x =>
                 {
                     x.Name = string.Join(", ", cmd.Aliases);
-                    x.Value = $"Summary: {cmd.Summary}\nUsage: {usage}";
+                    x.Value = $"Summary: {cmd.Summary}\nUsage: {usage}{parameters}\n";
                     x.IsInline = false;
                 });
             }

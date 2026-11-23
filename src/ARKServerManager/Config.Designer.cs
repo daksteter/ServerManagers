@@ -2367,7 +2367,7 @@ namespace ServerManagerTool {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("asm!")]
+        [global::System.Configuration.DefaultSettingValueAttribute("!asa")]
         public string DiscordBotPrefix {
             get {
                 return ((string)(this["DiscordBotPrefix"]));
@@ -2535,18 +2535,6 @@ namespace ServerManagerTool {
             }
             set {
                 this["DiscordBotWhitelist"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool DiscordBotPrefixFixed {
-            get {
-                return ((bool)(this["DiscordBotPrefixFixed"]));
-            }
-            set {
-                this["DiscordBotPrefixFixed"] = value;
             }
         }
         

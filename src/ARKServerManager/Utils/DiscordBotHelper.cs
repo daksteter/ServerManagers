@@ -39,6 +39,16 @@ namespace ServerManagerTool.Utils
 
             try
             {
+                // a command without a profile id or alias is for the channel's server, when it has only one
+                if (commandType != CommandType.List && string.IsNullOrWhiteSpace(profileIdOrAlias))
+                {
+                    var channelProfileIds = GetChannelProfileIds(channelId, token);
+                    if (channelProfileIds.Count == 0)
+                        return new List<string> { _globalizer.GetResourceString("DiscordBot_NoChannelProfiles") };
+                    if (channelProfileIds.Count == 1)
+                        profileIdOrAlias = channelProfileIds[0];
+                }
+
                 switch (commandType)
                 {
                     case CommandType.Info:
@@ -91,6 +101,20 @@ namespace ServerManagerTool.Utils
         public static string HandleTranslation(string translationKey)
         {
             return string.IsNullOrWhiteSpace(translationKey) ? string.Empty : _globalizer.GetResourceString(translationKey) ?? translationKey;
+        }
+
+        private static IList<string> GetChannelProfileIds(string channelId, CancellationToken token)
+        {
+            var profileIds = new List<string>();
+
+            TaskUtils.RunOnUIThreadAsync(() =>
+            {
+                profileIds.AddRange(ServerManager.Instance.Servers
+                    .Where(s => string.Equals(channelId, s.Profile.DiscordChannelId, StringComparison.OrdinalIgnoreCase))
+                    .Select(s => s.Profile.ProfileID));
+            }).Wait(token);
+
+            return profileIds;
         }
 
         private static IList<string> GetServerInfo(string channelId, string profileIdOrAlias, CancellationToken token)
@@ -206,7 +230,7 @@ namespace ServerManagerTool.Utils
         {
             if (string.IsNullOrWhiteSpace(profileIdOrAlias))
             {
-                return new List<string> { string.Format(_globalizer.GetResourceString("DiscordBot_ProfileMissing"), CommandType.Info) };
+                return new List<string> { string.Format(_globalizer.GetResourceString("DiscordBot_ProfileMissing"), CommandType.Status) };
             }
 
             var responseList = new List<string>();

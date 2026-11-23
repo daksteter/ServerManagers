@@ -24,9 +24,9 @@ namespace ServerManagerTool.DiscordBot.Modules
 
         [Command("info", RunMode = RunMode.Async)]
         [Summary("Poll server for information")]
-        [Remarks("info profileId|alias")]
+        [Remarks("info [profileId|alias]")]
         [RequireBotPermission(ChannelPermission.ViewChannel | ChannelPermission.SendMessages)]
-        public async Task ServerInfoAsync(string profileIdOrAlias)
+        public async Task ServerInfoAsync([Name(CommandParameters.ServerName), Summary(CommandParameters.ServerSummary)] string profileIdOrAlias = null)
         {
             try
             {
@@ -94,9 +94,9 @@ namespace ServerManagerTool.DiscordBot.Modules
 
         [Command("status", RunMode = RunMode.Async)]
         [Summary("Poll server for status")]
-        [Remarks("status profileId|alias")]
+        [Remarks("status [profileId|alias]")]
         [RequireBotPermission(ChannelPermission.ViewChannel | ChannelPermission.SendMessages)]
-        public async Task ServerStatusAsync(string profileIdOrAlias)
+        public async Task ServerStatusAsync([Name(CommandParameters.ServerName), Summary(CommandParameters.ServerSummary)] string profileIdOrAlias = null)
         {
             try
             {

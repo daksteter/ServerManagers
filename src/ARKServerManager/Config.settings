@@ -615,7 +615,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="DiscordBotPrefix" Type="System.String" Scope="User">
-      <Value Profile="(Default)">asm!</Value>
+      <Value Profile="(Default)">!asa</Value>
     </Setting>
     <Setting Name="DiscordBotToken" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
@@ -658,9 +658,6 @@
     </Setting>
     <Setting Name="DiscordBotWhitelist" Type="ServerManagerTool.DiscordBot.Models.DiscordBotWhitelist" Scope="User">
       <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="DiscordBotPrefixFixed" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="DiscordBotLogLevel" Type="ServerManagerTool.DiscordBot.Enums.LogLevel" Scope="User">
       <Value Profile="(Default)">Info</Value>
