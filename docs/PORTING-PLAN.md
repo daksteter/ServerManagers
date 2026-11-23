@@ -599,8 +599,8 @@ What's left before a public release (not planned soon). The repo is on a private
       stamped version, and zips it into `artifacts\` with its SHA-256. The version is one `<Version>` in
       `src\Directory.Build.props` (1.1.0; the AssemblyInfo files no longer set one). It must stay above 1.0: user
       settings live in a folder per version, and `Config.Upgrade()` only copies them from a lower one.
-- [ ] **Manual test checklist** below, especially scheduled tasks (need admin), "Create shortcut" and the
-      Discord bot.
+- [x] **Manual test checklist** below, especially scheduled tasks (need admin), "Create shortcut" and the
+      Discord bot. All ticked in November 2026.
 - [ ] **CHANGELOG:** turn [Unreleased] into the first version, with its date.
 - [x] Third-party licenses: Windows API Code Pack and NeXt.Vdf replaced, WPFSharp.Globalizer from its NuGet
       package, full license texts in THIRD-PARTY-NOTICES.md.
@@ -649,7 +649,10 @@ What's left before a public release (not planned soon). The repo is on a private
       `Saved\Crashes`); the second started normally, so a one-off for now. Found on the way: a task waiting
       for another one's server lock gave up when that one was ended early (the lock is handed over as
       abandoned); it now takes the lock over.
-- [ ] Server Monitor: "Create shortcut" produces a working desktop shortcut.
+- [x] Server Monitor: "Create shortcut" produces a working desktop shortcut. Tested in November 2026: the button
+      saves "JVH Ark Ascended Server Manager - Server Monitor.lnk" on the desktop, pointing at the `.exe` (not the
+      `.dll`) with `-sm`, the `.exe`'s folder and icon; with the app closed it opened the Server Monitor on its own
+      (after the admin prompt), and closing it quit the app.
 - [x] Discord bot (if used) connects and answers `info`. Tested in a private Discord server (November 2026): it
       connects, and `help`, `info`, `status`, `list`, `stop` and `start` answer; `stop` waited for the running
       auto-backup, then stopped the server, and `start` started it. Found on the way: the bot didn't ask for the
