@@ -65,8 +65,9 @@ jobs:
           tools/Release/Build-Release.ps1 -Version $env:VERSION
           $zip = Get-Item "artifacts/JVH-Ark-Ascended-Server-Manager-$env:VERSION.zip"
           $hash = (Get-FileHash -Algorithm SHA256 $zip).Hash.ToLowerInvariant()
-          # the format sha256sum -c reads
-          Set-Content "$($zip.FullName).sha256" "$hash  $($zip.Name)" -Encoding ascii
+          # the format sha256sum -c reads, with a LF line end (Set-Content writes CRLF, and sha256sum then looks for
+          # a file name ending in a carriage return)
+          [IO.File]::WriteAllText("$($zip.FullName).sha256", "$hash  $($zip.Name)`n")
 
       - name: Keep the zip (trial run)
         if: github.ref_type != 'tag'
