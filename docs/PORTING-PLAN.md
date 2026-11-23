@@ -3,7 +3,7 @@
 Turning Bletch1971's ARK Server Manager (ARK: Survival Evolved, "ASE") into a manager for
 **ARK: Survival Ascended ("ASA")**, keeping C# / WPF on the latest .NET.
 
-- **Branch:** `main` on a private GitHub repo (`origin`); no release channel, and the self-updater is removed.
+- **Branch:** `main` on a public GitHub fork of Bletch's repo (`origin`); no releases yet, and the self-updater is removed.
 - **Upstream:** `upstream` = Bletch1971/ServerManagers. `master` there holds release binaries only;
   source lives on `source` / `dotnet-8-update`. The repo has **no LICENSE file** — get permission
   before distributing anything.
@@ -540,11 +540,15 @@ The Island, Scorched Earth, The Center, Aberration, Extinction, Astraeos, Ragnar
 
 ## Release checklist
 
-What's left before a public release (not planned soon). The repo is on a private GitHub repo (`origin`, branch
+What's left before a public release (not planned soon). The repo is a public GitHub fork (`origin`, branch
 `main`); Bletch's repo is `upstream`.
 
 - [ ] **Permission from Bletch**, then a license. ARK Server Manager has no license file; README's License
-      section says "not decided".
+      section says "not decided". Asked in November 2026: on Discord (Bletch directly, and in the ASM
+      Discord server; no reply yet), by email, and with a pull request adding the MIT license to his repo
+      (Bletch1971/ServerManagers#34; his repo has issues turned off). The license wanted is MIT. Until he answers,
+      no release: don't push a `v*` tag (the release workflow would publish a zip of his code). This repo is a
+      public fork of his (GitHub doesn't let a fork of a public repo be private), which GitHub's terms allow.
 - [x] **Icons:** none of ARK Server Manager's 51 button and status images could ship. Traced in November 2026:
       - 18 were Windows 10 icons, copied pixel for pixel or with overlays drawn on; Microsoft doesn't allow its
         icons in other software.
@@ -569,8 +573,8 @@ What's left before a public release (not planned soon). The repo is on a private
       minimized dialog would sit in a corner of the desktop with its owner blocked.
 - [ ] **Updates after release:** there's no self-updater. Users update by extracting the new zip over the old
       folder: settings live outside it, and scheduled tasks (which store the exe's path) and the `Plugins` folder
-      need the same folder. In-app updates can't work while the repo is private (downloads would need a token).
-      Once public: first an update notice (ask GitHub for the latest release at startup, link to it); later,
+      need the same folder. The repo is public, so an update check needs no token; it waits for the first release.
+      Then: first an update notice (ask GitHub for the latest release at startup, link to it); later,
       optionally, one-click updates, either a small updater (download, check the SHA-256, extract over the folder
       keeping `Plugins`, restart) or Velopack (MIT; but it replaces its install folder on every update, so plugins
       would have to move out of the app folder first, and scheduled tasks be recreated once).
@@ -585,7 +589,7 @@ What's left before a public release (not planned soon). The repo is on a private
       runs `Build-Release.ps1`, writes the `.sha256` and publishes the release with `gh release create` (no
       third-party actions). Run by hand, it's a trial build that keeps the zip as a workflow artifact for 7 days.
       `global.json` pins SDK 11.0.100 (latest feature band allowed). Check: the first Build run after pushing, and
-      a trial Release run. A private repo has 2,000 free Actions minutes a month; Windows minutes count double.
+      a trial Release run. Actions minutes are free on a public repo.
 - [x] **README:** describe the app properly for people finding the repo: what it does in more depth, screenshots,
       a setup walkthrough. Rewritten with grouped features, three screenshots in `docs/images` (main window, Dino
       Settings, Server Monitor; taken on the UiDriver test copy with demo profiles, an example IP from the
