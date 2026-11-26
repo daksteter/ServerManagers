@@ -1157,14 +1157,7 @@ Como esses backups ocorrem a cada 2 horas e são arquivos descompactados, sugere
 
     <sys:String x:Key="ServerSettings_ServerSaveOptionsLabel">Configurações Oficial</sys:String>
     <sys:String x:Key="ServerSettings_UseStoreLabel">Usar Store</sys:String>
-    <sys:String x:Key="ServerSettings_UseStoreTooltip" xml:space="preserve">O mesmo comportamento básico dos servidores oficiais (não legados) no tratamento de dados dos jogadores: o arquivo de perfil do personagem (.arkprofile) não é salvo separadamente do salvamento do mapa (.ark), nem seu backup.
-Quando necessário (por exemplo: um personagem recém-transferido ou um novo personagem foi criado) um arquivo temporário de perfil do personagem é criado e mantido até o próximo salvamento mundial.
-Os perfis da tribo são armazenados em um formato diferente (.arktributetribe). Permite a opção -BackupTransferPlayerDatas (para imitar totalmente o comportamento de salvamento dos servidores oficiais).
-Use a opção -converttostore para converter dados anteriores não armazenados em dados armazenados. Esta opção deve ser usada para carregar corretamente os backups oficiais do servidor 2023 junto com -newsaveformat.</sys:String>
     <sys:String x:Key="ServerSettings_BackupTransferPlayerDatasLabel">Transferência de backup do Jogador</sys:String>
-    <sys:String x:Key="ServerSettings_BackupTransferPlayerDatasTooltip" xml:space="preserve">Imita totalmente os servidores oficiais (não legados) no manuseio dos dados dos jogadores, adicionando arquivos de backup permanentes do perfil do personagem separadamente do salvamento mundial.
-Requer a opção -usestore. Esta opção deve ser usada para reativar totalmente os backups de perfis de personagens ao jogar os backups oficiais de 2023 Server Saves.
-Undocumented bye wildcard.</sys:String>
 
     <sys:String x:Key="ServerSettings_EnableWebAlarmLabel">Ativar alarmes da Web</sys:String>
     <sys:String x:Key="ServerSettings_EnableWebAlarmTooltip">Se ativado, os servidores agora podem receber notificações da Web publicadas em algum lugar quando coisas importantes acontecem a uma tribo.</sys:String>

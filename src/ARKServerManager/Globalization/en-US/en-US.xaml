@@ -1197,14 +1197,12 @@
 
     <sys:String x:Key="ServerSettings_ServerSaveOptionsLabel">Official Save Settings</sys:String>
     <sys:String x:Key="ServerSettings_UseStoreLabel">Use Store</sys:String>
-    <sys:String x:Key="ServerSettings_UseStoreTooltip" xml:space="preserve">Same basic behaviour of official (non-legacy) servers on handling player characters data: character profile file (.arkprofile) is not saved separately from map save (.ark), nor its backup.
-When necessary (e.g.: a character just transferred or a new character has been created) a temporary character profile file is created and kept until next world-save.
-Tribe profiles are stored in a different format (.arktributetribe). Allows -BackupTransferPlayerDatas option (for fully mimic official servers save behaviour).
-Use the option -converttostore to convert previous non stored data to stored data. This option must be used to correctly load the Official 2023 Server Saves backups along with -newsaveformat.</sys:String>
+    <sys:String x:Key="ServerSettings_UseStoreTooltip" xml:space="preserve">Save characters and tribes the way official servers do (-usestore): inside the world save (.ark), instead of an .arkprofile file per character and an .arktribe file per tribe. A new or just-transferred character gets a temporary profile file until the next world save.
+A world backup then always holds the characters and tribes from the same moment. The Player List and the RCON window read them from the world save once the server has saved; the admin and whitelist lists can't show their names, which come from profile files.
+To switch an existing world, back up its save, then start the server once with -converttostore in Server Args: it moves the existing characters and tribes into the world save.</sys:String>
     <sys:String x:Key="ServerSettings_BackupTransferPlayerDatasLabel">Backup Transfer Player Datas (Undocumented)</sys:String>
-    <sys:String x:Key="ServerSettings_BackupTransferPlayerDatasTooltip" xml:space="preserve">Fully mimic official (non-legacy) servers on handling player characters data, adding permanent character profile backup files separately from the world-save.
-Requires -usestore option. This option must be used to fully re-enable character profile backups when playing the Official 2023 Server Saves backups.
-Undocumented bye wildcard.</sys:String>
+    <sys:String x:Key="ServerSettings_BackupTransferPlayerDatasTooltip" xml:space="preserve">Also write each character's .arkprofile file next to the world save, as a backup, the way official servers do (-BackupTransferPlayerDatas). Needs Use Store.
+Wildcard hasn't documented this option.</sys:String>
     
     <sys:String x:Key="ServerSettings_EnableWebAlarmLabel">Enable Web Alarms</sys:String>
     <sys:String x:Key="ServerSettings_EnableWebAlarmTooltip">If enabled, servers can now get web notifications posted somewhere when important things happen to a tribe.</sys:String>

@@ -4517,11 +4517,12 @@ namespace ServerManagerTool.Lib
             if (this.UseStore)
             {
                 serverArgs.Append(" -usestore");
-            }
 
-            if (this.BackupTransferPlayerDatas)
-            {
-                serverArgs.Append(" -BackupTransferPlayerDatas");
+                // only does something with -usestore (the settings page greys it out without Use Store)
+                if (this.BackupTransferPlayerDatas)
+                {
+                    serverArgs.Append(" -BackupTransferPlayerDatas");
+                }
             }
 
             if (this.MaxNumOfSaveBackups != 20)

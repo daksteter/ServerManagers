@@ -1150,14 +1150,7 @@
 	
 	<sys:String x:Key="ServerSettings_ServerSaveOptionsLabel">官方保存设置</sys:String>
     <sys:String x:Key="ServerSettings_UseStoreLabel">使用存储</sys:String>
-    <sys:String x:Key="ServerSettings_UseStoreTooltip" xml:space="preserve">官方（非传统）服务器在处理玩家角色数据时的基本行为相同：角色配置文件（.arkprofile）不会与地图保存（.ark）或其备份分开保存。
-必要时（例如：刚转移的角色或创建了新角色），会创建一个临时角色配置文件并保存到下一次保存。
-部落配置文件以不同的格式存储（.arktributerbe）。允许-BackupTransferPlayerDatas选项（用于完全模拟官方服务器的保存行为）。
-使用converttostore选项可以将以前未存储的数据转换为存储的数据。此选项必须用于正确加载Official 2023 服务器使用新闻保存备份.</sys:String>
     <sys:String x:Key="ServerSettings_BackupTransferPlayerDatasLabel">备份 转移 玩家 数据 (未记录)</sys:String>
-    <sys:String x:Key="ServerSettings_BackupTransferPlayerDatasTooltip" xml:space="preserve">在处理玩家角色数据方面完全模仿官方（非传统）服务器，添加与世界保存分开的永久角色配置文件备份文件。
-需要-usestore选项。在播放官方2023服务器保存备份时，必须使用此选项来完全重新启用角色配置文件备份。
-未记录的bye通配符.</sys:String>
 
    <sys:String x:Key="ServerSettings_EnableWebAlarmLabel">启用Web警报</sys:String>
     <sys:String x:Key="ServerSettings_EnableWebAlarmTooltip">如果启用，当部落发生重要事情时，服务器现在可以在某处发布网络通知。</sys:String>

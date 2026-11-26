@@ -773,19 +773,16 @@
                                 </GroupBox>
 
                                 <GroupBox Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="6" Header="{DynamicResource ServerSettings_ServerSaveOptionsLabel}" Style="{StaticResource GroupBoxStyle}">
+                                    <!-- two columns from the left edge, like the other check box sections -->
                                     <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition/>
-                                            <RowDefinition/>
-                                        </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="1*"/>
                                             <ColumnDefinition Width="1*"/>
                                             <ColumnDefinition Width="1*"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <cctl:CheckBoxAndTextBlock Grid.Row="0" Grid.Column="1" Margin="5,5,5,0" IsChecked="{Binding UseStore, Mode=TwoWay}" Text="{DynamicResource ServerSettings_UseStoreLabel}" VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="{DynamicResource ServerSettings_UseStoreTooltip}"/>
-                                        <cctl:CheckBoxAndTextBlock Grid.Row="0" Grid.Column="2" Margin="5,5,5,0" IsChecked="{Binding BackupTransferPlayerDatas, Mode=TwoWay}" Text="{DynamicResource ServerSettings_BackupTransferPlayerDatasLabel}" VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="{DynamicResource ServerSettings_BackupTransferPlayerDatasTooltip}"/>
+                                        <cctl:CheckBoxAndTextBlock Grid.Column="0" Margin="5,5,5,0" IsChecked="{Binding UseStore, Mode=TwoWay}" Text="{DynamicResource ServerSettings_UseStoreLabel}" VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="{DynamicResource ServerSettings_UseStoreTooltip}"/>
+                                        <!-- needs Use Store; the tooltip still shows while it's unavailable -->
+                                        <cctl:CheckBoxAndTextBlock Grid.Column="1" Margin="5,5,5,0" IsChecked="{Binding BackupTransferPlayerDatas, Mode=TwoWay}" IsEnabled="{Binding UseStore}" ToolTipService.ShowOnDisabled="True" Text="{DynamicResource ServerSettings_BackupTransferPlayerDatasLabel}" VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="{DynamicResource ServerSettings_BackupTransferPlayerDatasTooltip}"/>
                                     </Grid>
                                 </GroupBox>
 

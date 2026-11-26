@@ -1176,14 +1176,7 @@
 
 <sys:String x:Key="ServerSettings_ServerSaveOptionsLabel">Resmi Ayarlar</sys:String>
 <sys:String x:Key="ServerSettings_UseStoreLabel">Depoyu kullan (-usestorge)</sys:String>
-<sys:String x:Key="ServerSettings_UseStoreTooltip" xml:space="preserve">Resmi (eski olmayan) sunucularla aynı temel davranış: Oyuncu verilerinin işlenmesi sırasında karakter profili dosyası (.arkprofile) harita kaydından (.ark) ayrı olarak kaydedilmez, aynı şekilde yedeği de alınmaz.
-Gerekli olduğunda (örneğin: yeni aktarılmış bir karakter veya yeni oluşturulmuş bir karakter), geçici bir karakter profili dosyası oluşturulur ve bir sonraki dünya kaydına kadar korunur.
-Kabile profilleri farklı bir formatta (.arktributetribe) saklanır. Bu, -BackupTransferPlayerDatas seçeneğinin kullanılmasına olanak tanır (resmi sunucuların kayıt davranışını tamamen taklit eder).
-Önceki saklanmamış verileri saklanan verilere dönüştürmek için -converttostore seçeneğini kullanın. Bu seçenek, 2023 resmi sunucu yedeklerini -newsaveformat ile birlikte düzgün şekilde yüklemek için kullanılmalıdır.</sys:String>
 <sys:String x:Key="ServerSettings_BackupTransferPlayerDatasLabel">Oyuncu Yedek Aktarımı</sys:String>
-<sys:String x:Key="ServerSettings_BackupTransferPlayerDatasTooltip" xml:space="preserve">Oyuncu verilerinin işlenmesinde resmi sunucuların (eski olmayan) davranışını tamamen taklit eder, karakter profili dosyasının dünya kaydından ayrı olarak kalıcı yedek dosyalarının oluşturulmasını sağlar.
--usestore seçeneğini gerektirir. Bu seçenek, 2023 resmi sunucu kayıtlarını oynatırken karakter profili yedeklerini tamamen yeniden etkinleştirmek için kullanılmalıdır.
-Wildcard tarafından belgelenmemiştir.</sys:String>
 
     <sys:String x:Key="ServerSettings_EnableWebAlarmLabel">Web Alarmları Etkinleştir</sys:String>
     <sys:String x:Key="ServerSettings_EnableWebAlarmTooltip">Etkinleştirildiğinde, sunucular önemli olaylar gerçekleştiğinde bir kabileye bildirimler gönderebilir.</sys:String>

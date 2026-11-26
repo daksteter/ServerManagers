@@ -89,6 +89,23 @@ namespace ServerManagerTool.UnitTests
         }
 
         [TestMethod]
+        [DataRow(false, false, false, false)]
+        [DataRow(true, false, true, false)]
+        [DataRow(true, true, true, true)]
+        [DataRow(false, true, false, false)] // needs -usestore, so it's left out without it
+        public void GetServerArgs_UseStoreAndBackupTransferPlayerDatas(bool useStore, bool backup, bool expectUseStore, bool expectBackup)
+        {
+            var profile = NewProfile();
+            profile.UseStore = useStore;
+            profile.BackupTransferPlayerDatas = backup;
+
+            var args = profile.GetServerArgs();
+
+            Assert.AreEqual(expectUseStore, args.Contains(" -usestore"));
+            Assert.AreEqual(expectBackup, args.Contains(" -BackupTransferPlayerDatas"));
+        }
+
+        [TestMethod]
         public void GetServerArgs_AdminPassword_IsNotOnTheCommandLine()
         {
             var profile = NewProfile();

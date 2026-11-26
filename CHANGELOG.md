@@ -9,6 +9,15 @@ Changes before the fork are in the original project's history.
 
 ## [Unreleased]
 
+### Changed
+
+- **Official Save Settings, rewritten for ASA.** The Use Store and Backup Transfer Player Datas tooltips described ARK:
+  Survival Evolved (including `-newsaveformat`, which ASA doesn't have). They now say what each does on ASA, and how to
+  switch an existing world to Use Store (start it once with `-converttostore`). Portuguese, Turkish and Chinese show the
+  English tooltips until they're translated again.
+- **The two check boxes line up with the rest of the page,** from the left edge instead of a third of the way across.
+  Backup Transfer Player Datas is unavailable without Use Store, and is only passed to the server with `-usestore`.
+
 ## [1.2.0] - 2026-11-23
 
 From this version on, the app tells you when a newer one is released.
