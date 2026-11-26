@@ -9,6 +9,8 @@ Changes before the fork are in the original project's history.
 
 ## [Unreleased]
 
+## [1.2.1] - 2026-11-25
+
 ### Changed
 
 - **Official Save Settings, rewritten for ASA.** The Use Store and Backup Transfer Player Datas tooltips described ARK:

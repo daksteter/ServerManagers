@@ -11,7 +11,7 @@
     Config.Upgrade() only carries them over from a lower version.
   -->
   <PropertyGroup>
-    <Version>1.2.0</Version>
+    <Version>1.2.1</Version>
   </PropertyGroup>
 
   <!--

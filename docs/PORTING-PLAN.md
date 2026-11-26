@@ -3,7 +3,7 @@
 Turning Bletch1971's ARK Server Manager (ARK: Survival Evolved, "ASE") into a manager for
 **ARK: Survival Ascended ("ASA")**, keeping C# / WPF on the latest .NET.
 
-- **Branch:** `main` on a public GitHub fork of Bletch's repo (`origin`); releases come from `v*` tags (1.1.0, then 1.2.0), and the self-updater is removed.
+- **Branch:** `main` on a public GitHub fork of Bletch's repo (`origin`); releases come from `v*` tags (1.1.0, 1.2.0, then 1.2.1), and the self-updater is removed.
 - **Upstream:** `upstream` = Bletch1971/ServerManagers. `master` there holds release binaries only;
   source lives on `source` / `dotnet-8-update`. It's MIT-licensed since November 2026 (Bletch merged the
   license pull request, #34); see the release checklist.
@@ -606,7 +606,7 @@ What's left before a public release (not planned soon). The repo is a public Git
       (`--artifacts-path`, so a copy of the app running from `bin\Release` doesn't get in the way), adds README,
       CHANGELOG and THIRD-PARTY-NOTICES, refuses settings backups, the updater and `.pdb` files, checks the
       stamped version, and zips it into `artifacts\` with its SHA-256. The version is one `<Version>` in
-      `src\Directory.Build.props` (1.2.0 now; the AssemblyInfo files no longer set one). It must stay above 1.0: user
+      `src\Directory.Build.props` (1.2.1 now; the AssemblyInfo files no longer set one). It must stay above 1.0: user
       settings live in a folder per version, and `Config.Upgrade()` only copies them from a lower one.
 - [x] **Manual test checklist** below, especially scheduled tasks (need admin), "Create shortcut" and the
       Discord bot. All ticked in November 2026.
