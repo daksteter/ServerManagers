@@ -9,6 +9,8 @@ Changes before the fork are in the original project's history.
 
 ## [Unreleased]
 
+## [1.2.2] - 2026-11-28
+
 ### Fixed
 
 - **Mod IDs with a developer's test suffix (`928988-dev`) were refused.** Mod developers add a suffix to test an
