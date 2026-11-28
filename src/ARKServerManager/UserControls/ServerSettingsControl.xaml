@@ -687,7 +687,7 @@
                                             <TextBox.Text>
                                                 <Binding Path="ServerModIds">
                                                     <Binding.ValidationRules>
-                                                        <cvr:IdListValidationRule ValidatesOnTargetUpdated="true" />
+                                                        <cvr:ModIdListValidationRule ValidatesOnTargetUpdated="true" />
                                                     </Binding.ValidationRules>
                                                 </Binding>
                                             </TextBox.Text>
@@ -709,7 +709,7 @@
                                             <TextBox.Text>
                                                 <Binding Path="PassiveModIds">
                                                     <Binding.ValidationRules>
-                                                        <cvr:IdListValidationRule ValidatesOnTargetUpdated="true" />
+                                                        <cvr:ModIdListValidationRule ValidatesOnTargetUpdated="true" />
                                                     </Binding.ValidationRules>
                                                 </Binding>
                                             </TextBox.Text>

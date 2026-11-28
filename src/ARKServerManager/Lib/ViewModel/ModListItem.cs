@@ -12,7 +12,10 @@ namespace ServerManagerTool.Lib.ViewModel
         private bool _isFirst;
         private bool _isLast;
 
-        public long ModId { get; init; }
+        /// <summary>
+        /// As the server takes it: a CurseForge project ID, or one with a developer's test suffix ("928988-dev").
+        /// </summary>
+        public string ModId { get; init; }
 
         /// <summary>
         /// The mod's name, or null if the server hasn't downloaded the mod yet.

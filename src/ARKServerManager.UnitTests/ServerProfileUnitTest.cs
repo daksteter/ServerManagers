@@ -106,6 +106,20 @@ namespace ServerManagerTool.UnitTests
         }
 
         [TestMethod]
+        public void GetServerArgs_ModIdsWithATestSuffix_PassedAsWritten()
+        {
+            var profile = NewProfile();
+            profile.ServerModIds = "928988,931047-dev";
+            profile.PassiveModIds = "12345-dev";
+
+            var args = profile.GetServerArgs();
+
+            // a mod developer's test build of an approved but unpublished mod
+            Assert.Contains(" -mods=928988,931047-dev", args);
+            Assert.Contains(" -passivemods=12345-dev", args);
+        }
+
+        [TestMethod]
         public void GetServerArgs_AdminPassword_IsNotOnTheCommandLine()
         {
             var profile = NewProfile();

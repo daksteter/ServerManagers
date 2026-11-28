@@ -9,6 +9,13 @@ Changes before the fork are in the original project's history.
 
 ## [Unreleased]
 
+### Fixed
+
+- **Mod IDs with a developer's test suffix (`928988-dev`) were refused.** Mod developers add a suffix to test an
+  approved but unpublished build. Mod IDs and Passive Mod IDs said it wasn't a comma-separated list and kept the old
+  value, and the mod list editor dropped such IDs when it opened. They're now accepted everywhere and passed to the
+  server as written; the editor shows the mod's name and page by its project ID.
+
 ## [1.2.1] - 2026-11-25
 
 ### Changed

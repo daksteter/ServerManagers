@@ -170,7 +170,7 @@
     <sys:String x:Key="ModList_Title_Mods">Mods - {0}</sys:String>
     <sys:String x:Key="ModList_Title_PassiveMods">Passive Mods - {0}</sys:String>
     <sys:String x:Key="ModList_AddLabel">Mod IDs to add:</sys:String>
-    <sys:String x:Key="ModList_AddTooltip">One or more CurseForge project IDs, separated by commas or spaces (curseforge.com/projects/&lt;id&gt; links work too). The project ID is listed under About Project on the mod's CurseForge page.</sys:String>
+    <sys:String x:Key="ModList_AddTooltip">One or more CurseForge project IDs, separated by commas or spaces (curseforge.com/projects/&lt;id&gt; links work too). The project ID is listed under About Project on the mod's CurseForge page. A mod developer's test build of an approved but unpublished mod takes its suffix, such as 928988-dev.</sys:String>
     <sys:String x:Key="ModList_AddButtonLabel">Add</sys:String>
     <sys:String x:Key="ModList_CountLabel">Mods:</sys:String>
     <sys:String x:Key="ModList_IndexColumnLabel">#</sys:String>
@@ -1057,7 +1057,7 @@
     <sys:String x:Key="ServerSettings_MapPathLabel">Map Name or Map Mod Path:</sys:String>
     <sys:String x:Key="ServerSettings_MapPathTooltip">The standard map name (e.g. TheIsland, TheCenter), or the local mod path (e.g. /Game/Mods/123456789/ModMapName) if your mod has a map in it.</sys:String>
     <sys:String x:Key="ServerSettings_ModIdsLabel">Mod IDs:</sys:String>
-    <sys:String x:Key="ServerSettings_ModIdsTooltip">A comma-separated list of CurseForge mod project IDs, in load order. The server downloads and updates them itself when it starts (passed as -mods=).</sys:String>
+    <sys:String x:Key="ServerSettings_ModIdsTooltip">A comma-separated list of CurseForge mod project IDs, in load order. The server downloads and updates them itself when it starts (passed as -mods=). A mod developer's test build of an approved but unpublished mod takes its suffix, such as 928988-dev.</sys:String>
     <sys:String x:Key="ServerSettings_ResetServerButtonLabel">Reset</sys:String>
     <sys:String x:Key="ServerSettings_ResetServerButtonTooltip">Deletes all the server, player and tribe files and resets your server back to new.</sys:String>
 

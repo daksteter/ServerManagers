@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Navigation;
@@ -19,9 +18,6 @@ namespace ServerManagerTool
     /// </summary>
     public partial class ModListWindow : Window
     {
-        // a CurseForge project ID, or a curseforge.com/projects/<id> link
-        private static readonly Regex ModIdRegex = new Regex(@"^(?:https?://(?:www\.)?curseforge\.com/projects/)?(\d+)/?$", RegexOptions.IgnoreCase);
-
         private readonly GlobalizedApplication _globalizer = GlobalizedApplication.Instance;
         private readonly Dictionary<long, CurseForgeModLibrary.InstalledMod> _installedMods;
 
@@ -39,12 +35,16 @@ namespace ServerManagerTool
             _installedMods = CurseForgeModLibrary.LoadInstalledMods(installDirectory);
 
             this.Mods = new ObservableCollection<ModListItem>();
-            foreach (var modId in ParseModIds(modIds, out _))
+            var parsed = ModIdUtils.ParseModIds(modIds, out var invalid);
+            foreach (var modId in parsed)
             {
-                if (!this.Mods.Any(m => m.ModId == modId))
+                if (!Contains(modId))
                     this.Mods.Add(CreateItem(modId));
             }
             UpdatePositions();
+
+            // anything in the profile that isn't a mod ID stays in the box (OK asks about it), instead of being dropped
+            this.NewModIds = string.Join(" ", invalid);
 
             this.DataContext = this;
         }
@@ -62,29 +62,14 @@ namespace ServerManagerTool
             set { SetValue(NewModIdsProperty, value); }
         }
 
-        /// <summary>
-        /// The mod IDs in a text (separated by commas, semicolons or white space); anything else goes to <paramref name="invalid"/>.
-        /// </summary>
-        private static List<long> ParseModIds(string text, out List<string> invalid)
+        // "928988" and "928988-dev" are different entries (the published mod and a developer's test build)
+        private bool Contains(string modId) => this.Mods.Any(m => string.Equals(m.ModId, modId, StringComparison.OrdinalIgnoreCase));
+
+        private ModListItem CreateItem(string modId)
         {
-            var modIds = new List<long>();
-            invalid = new List<string>();
-
-            foreach (var token in (text ?? string.Empty).Split(new[] { ',', ';', ' ', '\t', '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries))
-            {
-                var match = ModIdRegex.Match(token.Trim());
-                if (match.Success && long.TryParse(match.Groups[1].Value, out var modId) && modId > 0)
-                    modIds.Add(modId);
-                else
-                    invalid.Add(token.Trim());
-            }
-
-            return modIds;
-        }
-
-        private ModListItem CreateItem(long modId)
-        {
-            _installedMods.TryGetValue(modId, out var installed);
+            // name and page by project ID, so a developer's test build ("928988-dev") shows its mod's
+            ModIdUtils.TryParseModId(modId, out var projectId);
+            _installedMods.TryGetValue(projectId, out var installed);
 
             return new ModListItem
             {
@@ -93,7 +78,7 @@ namespace ServerManagerTool
                 DisplayName = installed?.Name ?? _globalizer.GetResourceString("ModList_NotDownloadedLabel"),
                 FileName = installed?.FileName,
                 FileDate = installed?.FileDate?.ToShortDateString(),
-                Url = installed?.WebsiteUrl ?? CurseForgeModLibrary.GetProjectUrl(modId),
+                Url = installed?.WebsiteUrl ?? CurseForgeModLibrary.GetProjectUrl(projectId),
             };
         }
 
@@ -109,12 +94,12 @@ namespace ServerManagerTool
 
         private void AddMods_Click(object sender, RoutedEventArgs e)
         {
-            var modIds = ParseModIds(this.NewModIds, out var invalid);
+            var modIds = ModIdUtils.ParseModIds(this.NewModIds, out var invalid);
 
             ModListItem lastAdded = null;
             foreach (var modId in modIds)
             {
-                if (this.Mods.Any(m => m.ModId == modId))
+                if (Contains(modId))
                     continue;
 
                 lastAdded = CreateItem(modId);

@@ -50,7 +50,7 @@ See [Requirements](#requirements) and [Setting up a server](#setting-up-a-server
 **Mods**
 
 - Mods by CurseForge project ID (and passive mods, loaded but turned off). The server downloads and updates them
-  itself.
+  itself. A mod developer's test build of an approved but unpublished mod takes its suffix, such as `928988-dev`.
 - A mod list editor to add IDs or curseforge.com links, reorder mods, open their CurseForge pages, and see each
   mod's name and installed version once the server has downloaded it.
 
